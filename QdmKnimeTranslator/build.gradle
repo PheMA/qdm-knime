@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'wrapper'
+
+version = '1.0'
+group = 'org.phema'
+
+repositories {
+	mavenCentral()
+		
+}
+
+dependencies {
+	compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
+	compile group: 'net.lingala.zip4j', name: 'zip4j', version: '1.3.2'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-xjc', version: '2.0.5'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.0.1'
+	compile group: 'org.apache.axis', name: 'axis', version: '1.4'
+	compile 'org.codehaus.mojo:axistools-maven-plugin:1.4'
+	compile 'javax.mail:mail:1.4'
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+	compile group: 'org.ow2.easybeans.persistence', name: 'easybeans-persistence-eclipselink-2.4.x', version: '1.0.1'
+	compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.14'
+	runtime 'org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0'
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+

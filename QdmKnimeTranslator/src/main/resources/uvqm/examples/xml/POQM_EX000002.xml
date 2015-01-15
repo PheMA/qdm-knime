@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="eMeasure.xsl"?>
+<!-- The following sample measure is provided for illustration purposes only. It is a draft, awaiting formal validation by the measure steward. -->
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\xsd\Schemas\EMeasure.xsd">
+	<!-- 
+********************************************************
+eMeasure Header
+********************************************************
+-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POQM_HD000001"/>
+	<id root="88414c01-715a-45bb-83bb-db7ac860fe9d"/>
+	<code code="57024-2" codeSystem="2.16.840.1.113883.6.1" displayName="Health Quality Measure document"/>
+	<title>(DRAFT) Body Mass Index (BMI) 2 through 18 years of age</title>
+	<text>Percentage children, 2 through 18 years of age, whose weight is classified based on BMI percentile for age and gender.</text>
+	<statusCode code="active"/>
+	<setId root="88414c01-715a-45bb-83bb-db7ac860fe9a" extension="BMI"/>
+	<versionNumber value="1"/>
+	<author typeCode="AUT">
+      <assignedPerson classCode="ASSIGNED">
+      			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>National Initiative for Children's Healthcare Quality</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+      </assignedPerson>
+	</author>
+	<custodian typeCode="CST">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>National Initiative for Children's Healthcare Quality</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</custodian>
+	<verifier typeCode="VRF">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>National Initiative for Children's Healthcare Quality</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<verifier typeCode="VRF">
+		<time value="20060501"/>
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+  				<id root="2.16.840.1.113883.19.8"/>
+				<name>National Quality Forum</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRIMPROV" codeSystem="2.16.840.1.113883.5.4" displayName="Improvement notation"/>
+			<value xsi:type="ED" mediaType="text/plain">A higher percentage of times that BMI percentile is captured indicates greater attention to childhood obesity.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure scoring"/>
+			<value xsi:type="CD" code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" displayName="Proportion"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure type"/>
+			<value xsi:type="CD" code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" displayName="process"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="RAT" codeSystem="2.16.840.1.113883.5.4" displayName="Rationale"/>
+			<value xsi:type="ED" mediaType="text/plain">Monitoring the recording of the BMI can capture the degree to which providers are looking at the appropriate indicator of obesity.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">http://aappolicy.aappublications.org/cgi/reprint/pediatrics;112/2/424.pdf</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4" displayName="Risk adjustment"/>
+			<value xsi:type="CD" displayName="none"/>
+		</measureAttribute>
+	</subjectOf>
+	<!-- 
+********************************************************
+eMeasure Body
+********************************************************
+-->
+	<!-- 
+********************************************************
+Data criteria section 
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57025-9" codeSystem="2.16.840.1.113883.6.1" displayName="Data Criteria section" />
+			<title>Data criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Encounter: </content>
+						An interaction between a patient and care provider(s) for the purpose of providing healthcare-related service(s).
+					</item>
+					<item>
+						<content styleCode="Bold">Physical encounter: </content>
+						An encounter, where encounter type &lt;= value set <content styleCode="Underline">BMIPhysicalEncounter (2.16.840.1.113883.11.20.2.1)</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Physical encounter with principal encounter diagnosis of well child: </content>
+						A physical encounter, where principal encounter diagnosis &lt;= SNOMED CT code 102506008 Well child.
+					</item>
+					<item>
+						<content styleCode="Bold">BMI percentile measured: </content>
+						A BMI percentile measurement that has been performed.
+					</item>
+					<item>
+						<content styleCode="Bold">Age 2-18: </content>
+						Age is greater than or equal to 2, and less than or equal to 18.
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<!-- Encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="c751a8e3-73eb-11de-8a39-0800200c9a66"/>
+					<text>An interaction between a patient and care provider(s) for the purpose of providing healthcare-related service(s). </text>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Physical encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="c751a8e1-73eb-11de-8a39-0800200c9a66"/>
+					<code code="BMIPhysicalEncounterOID" displayName="BMIPhysicalEncounter"/>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Physical encounter with principal encounter diagnosis of well child -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="c751a8e2-73eb-11de-8a39-0800200c9a66"/>
+					<code code="BMIPhysicalEncounterOID" displayName="BMIPhysicalEncounter"/>
+					<sourceOf typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<code code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis"/>
+							<value xsi:type="CD" displayName="X"/>
+						</observation>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- BMI percentile measured -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="2b888760-73bb-11de-8a39-0800200c9a66"/>
+					<code code="1111111x" codeSystem="2.16.840.1.113883.6.96" displayName="Body mass index percentile"/>
+					<statusCode code="completed"/>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Age 2-18 -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="42e2aef0-73c4-11de-8a39-0800200c9a66"/>
+					<code code="424144002" codeSystem="2.16.840.1.113883.6.96" displayName="Age"/>
+					<statusCode code="completed"/>
+					<value xsi:type="IVL_PQ">
+						<low value="2" unit="a" inclusive="true"/>
+						<high value="18" unit="a" inclusive="true"/>
+					</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Population criteria section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57026-7" codeSystem="2.16.840.1.113883.6.1" displayName="Population Criteria section"/>
+			<title>Population criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Initial Patient Population</content> = <br/> 
+					AND: Encounter where
+						<list>
+							<item>AND: Age 2-18; </item>
+							<item>AND: Physical encounter with principal encounter diagnosis of well child.</item>
+						</list>
+					</item>
+					<item>
+						<content styleCode="Bold">Denominator</content> =<br/>
+					AND: Encounter where
+						<list>
+							<item>AND: Meets Initial Patient Population criteria;</item>
+						</list>
+					</item>
+					<item>
+						<content styleCode="Bold">Numerator</content> = <br/>
+					AND: Encounter where
+						<list>
+							<item>AND: Meets Denominator criteria;</item>
+							<item>AND: BMI percentile measured.</item>
+						</list>
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="c75181d0-73eb-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="IPP" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Initial Patient Population"/>
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="GEN">
+								<!-- Physical encounter with principal encounter diagnosis of well child -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="c751a8e2-73eb-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<participant typeCode="SBJ">
+										<roleParticipant classCode="PAT"/>
+									</participant>
+									<sourceOf typeCode="GEN">
+										<!-- Age 2-18 -->
+										<observation classCode="OBS" moodCode="EVN.CRT">
+											<id root="42e2aef0-73c4-11de-8a39-0800200c9a66"/>
+										</observation>
+									</sourceOf>
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="c751a8e4-73eb-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="DENOM" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Denominator"/>
+					<sourceOf typeCode="PRCN">
+						<!-- Initial patient population -->
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<id root="c75181d0-73eb-11de-8a39-0800200c9a66"/>
+						</observation>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="c751a8e5-73eb-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="NUMER" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Numerator"/>
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="PRCN">
+								<!-- Denominator -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="c751a8e4-73eb-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<participant typeCode="SBJ">
+										<roleParticipant classCode="PAT"/>
+									</participant>
+									<sourceOf typeCode="GEN">
+										<!-- BMI percentile measured -->
+										<observation classCode="OBS" moodCode="EVN.CRT">
+											<id root="2b888760-73bb-11de-8a39-0800200c9a66"/>
+										</observation>
+									</sourceOf>
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</QualityMeasureDocument>

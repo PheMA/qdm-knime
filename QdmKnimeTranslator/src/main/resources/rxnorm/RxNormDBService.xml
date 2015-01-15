@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://mor.nlm.nih.gov/axis/services/RxNormDBService" xmlns:intf="http://mor.nlm.nih.gov/axis/services/RxNormDBService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="urn:BeanService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="urn:BeanService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="RxPropertyConcept">
+    <sequence>
+     <element name="CATEGORY" nillable="true" type="soapenc:string"/>
+     <element name="NAME" nillable="true" type="soapenc:string"/>
+     <element name="VALUE" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxNode">
+    <sequence>
+     <element name="ATTR" nillable="true" type="impl:ArrayOf_soapenc_string"/>
+     <element name="ID" nillable="true" type="soapenc:string"/>
+     <element name="STR" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxConcept">
+    <sequence>
+     <element name="CUI" nillable="true" type="soapenc:string"/>
+     <element name="LAT" nillable="true" type="soapenc:string"/>
+     <element name="RXCUI" nillable="true" type="soapenc:string"/>
+     <element name="STR" nillable="true" type="soapenc:string"/>
+     <element name="SUPPRESS" nillable="true" type="soapenc:string"/>
+     <element name="SY" nillable="true" type="soapenc:string"/>
+     <element name="TTY" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxMatchInfo">
+    <sequence>
+     <element name="RANK" type="xsd:int"/>
+     <element name="RXAUI" nillable="true" type="soapenc:string"/>
+     <element name="RXCUI" nillable="true" type="soapenc:string"/>
+     <element name="SCORE" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxMatchGroup">
+    <sequence>
+     <element name="comment" nillable="true" type="soapenc:string"/>
+     <element name="rxMatchInfo" nillable="true" type="impl:ArrayOf_tns1_RxMatchInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxConceptGroup">
+    <sequence>
+     <element name="rxConcept" nillable="true" type="impl:ArrayOf_tns1_RxConcept"/>
+     <element name="type" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxMinimalConcept">
+    <sequence>
+     <element name="RXCUI" nillable="true" type="soapenc:string"/>
+     <element name="STR" nillable="true" type="soapenc:string"/>
+     <element name="TTY" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Attribute">
+    <sequence>
+     <element name="NAME" nillable="true" type="soapenc:string"/>
+     <element name="VALUE" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AttributeGroup">
+    <sequence>
+     <element name="attributes" nillable="true" type="impl:ArrayOf_tns1_Attribute"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxDrugMember">
+    <sequence>
+     <element name="attributes" nillable="true" type="impl:ArrayOf_tns1_AttributeGroup"/>
+     <element name="rxMinimalConcept" nillable="true" type="tns1:RxMinimalConcept"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxcuiStatus">
+    <sequence>
+     <element name="date" nillable="true" type="soapenc:string"/>
+     <element name="min" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="status" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxEdge">
+    <sequence>
+     <element name="ID1" nillable="true" type="soapenc:string"/>
+     <element name="ID2" nillable="true" type="soapenc:string"/>
+     <element name="REL" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxTree">
+    <sequence>
+     <element name="rxEdge" nillable="true" type="impl:ArrayOf_tns1_RxEdge"/>
+     <element name="rxNode" nillable="true" type="impl:ArrayOf_tns1_RxNode"/>
+     <element name="title" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RxTermInfo">
+    <sequence>
+     <element name="CODE" nillable="true" type="soapenc:string"/>
+     <element name="RXCUI" nillable="true" type="soapenc:string"/>
+     <element name="SAB" nillable="true" type="soapenc:string"/>
+     <element name="STR" nillable="true" type="soapenc:string"/>
+     <element name="TTY" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:BeanService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_RxPropertyConcept">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxPropertyConcept[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_soapenc_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="soapenc:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxNode">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxNode[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxConcept">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxConcept[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxMatchInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxMatchInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxConceptGroup">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxConceptGroup[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxMinimalConcept">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxMinimalConcept[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_Attribute">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:Attribute[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_AttributeGroup">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AttributeGroup[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxDrugMember">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxDrugMember[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxEdge">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxEdge[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_RxTermInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RxTermInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="closeRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByIdResponse">
+
+      <wsdl:part name="findRxcuiByIdReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getNDCsRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDisplayTermsResponse">
+
+      <wsdl:part name="getDisplayTermsReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTermTypesResponse">
+
+      <wsdl:part name="getTermTypesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProprietaryInformationResponse1">
+
+      <wsdl:part name="getProprietaryInformationReturn" type="impl:ArrayOf_tns1_RxTermInfo"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelatedByRelationshipRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="rela_list" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringResponse">
+
+      <wsdl:part name="findRxcuiByStringReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSourceTypesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelatedByRelationshipResponse">
+
+      <wsdl:part name="getRelatedByRelationshipReturn" type="impl:ArrayOf_tns1_RxConceptGroup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxConceptPropertiesResponse">
+
+      <wsdl:part name="getRxConceptPropertiesReturn" type="tns1:RxConcept"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelaTypesResponse">
+
+      <wsdl:part name="getRelaTypesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDrugsResponse">
+
+      <wsdl:part name="getDrugsReturn" type="impl:ArrayOf_tns1_RxConceptGroup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringRequest2">
+
+      <wsdl:part name="term" type="soapenc:string"/>
+
+      <wsdl:part name="sources" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="allSourcesFlag" type="xsd:int"/>
+
+      <wsdl:part name="matchType" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringRequest1">
+
+      <wsdl:part name="term" type="soapenc:string"/>
+
+      <wsdl:part name="sources" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="allSourcesFlag" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringResponse2">
+
+      <wsdl:part name="findRxcuiByStringReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringResponse1">
+
+      <wsdl:part name="findRxcuiByStringReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getIdTypesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getIdTypesResponse">
+
+      <wsdl:part name="getIdTypesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxPropertyRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="prop_name" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllConceptsByTTYResponse">
+
+      <wsdl:part name="getAllConceptsByTTYReturn" type="impl:ArrayOf_tns1_RxMinimalConcept"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPropCategoriesResponse">
+
+      <wsdl:part name="getPropCategoriesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSpellingSuggestionsRequest">
+
+      <wsdl:part name="term" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="filterByPropertyRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="prop_name" type="soapenc:string"/>
+
+      <wsdl:part name="prop_value" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllConceptsByTTYRequest">
+
+      <wsdl:part name="ttyList" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllPropertiesResponse">
+
+      <wsdl:part name="getAllPropertiesReturn" type="impl:ArrayOf_tns1_RxPropertyConcept"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRemappedResponse">
+
+      <wsdl:part name="findRemappedReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDisplayTermsRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getDrugsRequest">
+
+      <wsdl:part name="name" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProprietaryInformationRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="sources" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="proxyTicket" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMultiIngredBrandRequest">
+
+      <wsdl:part name="ids" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClassMembersRequest">
+
+      <wsdl:part name="id" type="soapenc:string"/>
+
+      <wsdl:part name="src" type="soapenc:string"/>
+
+      <wsdl:part name="rela" type="soapenc:string"/>
+
+      <wsdl:part name="trans" type="soapenc:string"/>
+
+      <wsdl:part name="ttyfilter" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByIdRequest1">
+
+      <wsdl:part name="idType" type="soapenc:string"/>
+
+      <wsdl:part name="id" type="soapenc:string"/>
+
+      <wsdl:part name="allSourcesFlag" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPropNamesResponse">
+
+      <wsdl:part name="getPropNamesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPropCategoriesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllPropertiesRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="propCat" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxNormVersionResponse">
+
+      <wsdl:part name="getRxNormVersionReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByStringRequest">
+
+      <wsdl:part name="term" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxNormVersionRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxConceptPropertiesRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getApproximateMatchResponse">
+
+      <wsdl:part name="getApproximateMatchReturn" type="tns1:RxMatchGroup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMultiIngredBrandResponse">
+
+      <wsdl:part name="getMultiIngredBrandReturn" type="impl:ArrayOf_tns1_RxConcept"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllClassesRequest">
+
+      <wsdl:part name="src" type="soapenc:string"/>
+
+      <wsdl:part name="type" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelatedByTypeResponse">
+
+      <wsdl:part name="getRelatedByTypeReturn" type="impl:ArrayOf_tns1_RxConceptGroup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClassMembersResponse">
+
+      <wsdl:part name="getClassMembersReturn" type="impl:ArrayOf_tns1_RxDrugMember"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTermTypesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRelatedInfoRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSourceTypesResponse">
+
+      <wsdl:part name="getSourceTypesReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByIdResponse1">
+
+      <wsdl:part name="findRxcuiByIdReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRemappedRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxPropertyResponse">
+
+      <wsdl:part name="getRxPropertyReturn" type="impl:ArrayOf_tns1_RxPropertyConcept"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProprietaryInformationRequest1">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="sources" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="proxyTicket" type="soapenc:string"/>
+
+      <wsdl:part name="rxaui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxcuiStatusRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClassHierarchyRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="src" type="soapenc:string"/>
+
+      <wsdl:part name="type" type="soapenc:string"/>
+
+      <wsdl:part name="oneLevel" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPropNamesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelaTypesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSpellingSuggestionsResponse">
+
+      <wsdl:part name="getSpellingSuggestionsReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="closeResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="findRxcuiByIdRequest">
+
+      <wsdl:part name="idType" type="soapenc:string"/>
+
+      <wsdl:part name="id" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRxcuiStatusResponse">
+
+      <wsdl:part name="getRxcuiStatusReturn" type="tns1:RxcuiStatus"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllClassesResponse">
+
+      <wsdl:part name="getAllClassesReturn" type="impl:ArrayOf_tns1_RxNode"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="filterByPropertyResponse">
+
+      <wsdl:part name="filterByPropertyReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRelatedInfoResponse">
+
+      <wsdl:part name="getAllRelatedInfoReturn" type="impl:ArrayOf_tns1_RxConceptGroup"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProprietaryInformationResponse">
+
+      <wsdl:part name="getProprietaryInformationReturn" type="impl:ArrayOf_tns1_RxTermInfo"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRelatedByTypeRequest">
+
+      <wsdl:part name="rxcui" type="soapenc:string"/>
+
+      <wsdl:part name="termType_list" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClassHierarchyResponse">
+
+      <wsdl:part name="getClassHierarchyReturn" type="tns1:RxTree"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getApproximateMatchRequest">
+
+      <wsdl:part name="term" type="soapenc:string"/>
+
+      <wsdl:part name="ranks" type="xsd:int"/>
+
+      <wsdl:part name="options" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getNDCsResponse">
+
+      <wsdl:part name="getNDCsReturn" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DBManager">
+
+      <wsdl:operation name="close">
+
+         <wsdl:input message="impl:closeRequest" name="closeRequest"/>
+
+         <wsdl:output message="impl:closeResponse" name="closeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxProperty" parameterOrder="rxcui prop_name">
+
+         <wsdl:input message="impl:getRxPropertyRequest" name="getRxPropertyRequest"/>
+
+         <wsdl:output message="impl:getRxPropertyResponse" name="getRxPropertyResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllClasses" parameterOrder="src type">
+
+         <wsdl:input message="impl:getAllClassesRequest" name="getAllClassesRequest"/>
+
+         <wsdl:output message="impl:getAllClassesResponse" name="getAllClassesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMultiIngredBrand" parameterOrder="ids">
+
+         <wsdl:input message="impl:getMultiIngredBrandRequest" name="getMultiIngredBrandRequest"/>
+
+         <wsdl:output message="impl:getMultiIngredBrandResponse" name="getMultiIngredBrandResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getApproximateMatch" parameterOrder="term ranks options">
+
+         <wsdl:input message="impl:getApproximateMatchRequest" name="getApproximateMatchRequest"/>
+
+         <wsdl:output message="impl:getApproximateMatchResponse" name="getApproximateMatchResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDisplayTerms">
+
+         <wsdl:input message="impl:getDisplayTermsRequest" name="getDisplayTermsRequest"/>
+
+         <wsdl:output message="impl:getDisplayTermsResponse" name="getDisplayTermsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDrugs" parameterOrder="name">
+
+         <wsdl:input message="impl:getDrugsRequest" name="getDrugsRequest"/>
+
+         <wsdl:output message="impl:getDrugsResponse" name="getDrugsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getIdTypes">
+
+         <wsdl:input message="impl:getIdTypesRequest" name="getIdTypesRequest"/>
+
+         <wsdl:output message="impl:getIdTypesResponse" name="getIdTypesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPropCategories">
+
+         <wsdl:input message="impl:getPropCategoriesRequest" name="getPropCategoriesRequest"/>
+
+         <wsdl:output message="impl:getPropCategoriesResponse" name="getPropCategoriesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPropNames">
+
+         <wsdl:input message="impl:getPropNamesRequest" name="getPropNamesRequest"/>
+
+         <wsdl:output message="impl:getPropNamesResponse" name="getPropNamesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelaTypes">
+
+         <wsdl:input message="impl:getRelaTypesRequest" name="getRelaTypesRequest"/>
+
+         <wsdl:output message="impl:getRelaTypesResponse" name="getRelaTypesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxConceptProperties" parameterOrder="rxcui">
+
+         <wsdl:input message="impl:getRxConceptPropertiesRequest" name="getRxConceptPropertiesRequest"/>
+
+         <wsdl:output message="impl:getRxConceptPropertiesResponse" name="getRxConceptPropertiesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllProperties" parameterOrder="rxcui propCat">
+
+         <wsdl:input message="impl:getAllPropertiesRequest" name="getAllPropertiesRequest"/>
+
+         <wsdl:output message="impl:getAllPropertiesResponse" name="getAllPropertiesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getNDCs" parameterOrder="rxcui">
+
+         <wsdl:input message="impl:getNDCsRequest" name="getNDCsRequest"/>
+
+         <wsdl:output message="impl:getNDCsResponse" name="getNDCsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="filterByProperty" parameterOrder="rxcui prop_name prop_value">
+
+         <wsdl:input message="impl:filterByPropertyRequest" name="filterByPropertyRequest"/>
+
+         <wsdl:output message="impl:filterByPropertyResponse" name="filterByPropertyResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelatedByType" parameterOrder="rxcui termType_list">
+
+         <wsdl:input message="impl:getRelatedByTypeRequest" name="getRelatedByTypeRequest"/>
+
+         <wsdl:output message="impl:getRelatedByTypeResponse" name="getRelatedByTypeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllRelatedInfo" parameterOrder="rxcui">
+
+         <wsdl:input message="impl:getAllRelatedInfoRequest" name="getAllRelatedInfoRequest"/>
+
+         <wsdl:output message="impl:getAllRelatedInfoResponse" name="getAllRelatedInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllConceptsByTTY" parameterOrder="ttyList">
+
+         <wsdl:input message="impl:getAllConceptsByTTYRequest" name="getAllConceptsByTTYRequest"/>
+
+         <wsdl:output message="impl:getAllConceptsByTTYResponse" name="getAllConceptsByTTYResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSourceTypes">
+
+         <wsdl:input message="impl:getSourceTypesRequest" name="getSourceTypesRequest"/>
+
+         <wsdl:output message="impl:getSourceTypesResponse" name="getSourceTypesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSpellingSuggestions" parameterOrder="term">
+
+         <wsdl:input message="impl:getSpellingSuggestionsRequest" name="getSpellingSuggestionsRequest"/>
+
+         <wsdl:output message="impl:getSpellingSuggestionsResponse" name="getSpellingSuggestionsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTermTypes">
+
+         <wsdl:input message="impl:getTermTypesRequest" name="getTermTypesRequest"/>
+
+         <wsdl:output message="impl:getTermTypesResponse" name="getTermTypesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClassMembers" parameterOrder="id src rela trans ttyfilter">
+
+         <wsdl:input message="impl:getClassMembersRequest" name="getClassMembersRequest"/>
+
+         <wsdl:output message="impl:getClassMembersResponse" name="getClassMembersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxcuiStatus" parameterOrder="rxcui">
+
+         <wsdl:input message="impl:getRxcuiStatusRequest" name="getRxcuiStatusRequest"/>
+
+         <wsdl:output message="impl:getRxcuiStatusResponse" name="getRxcuiStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClassHierarchy" parameterOrder="rxcui src type oneLevel">
+
+         <wsdl:input message="impl:getClassHierarchyRequest" name="getClassHierarchyRequest"/>
+
+         <wsdl:output message="impl:getClassHierarchyResponse" name="getClassHierarchyResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProprietaryInformation" parameterOrder="rxcui sources proxyTicket">
+
+         <wsdl:input message="impl:getProprietaryInformationRequest" name="getProprietaryInformationRequest"/>
+
+         <wsdl:output message="impl:getProprietaryInformationResponse" name="getProprietaryInformationResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProprietaryInformation" parameterOrder="rxcui sources proxyTicket rxaui">
+
+         <wsdl:input message="impl:getProprietaryInformationRequest1" name="getProprietaryInformationRequest1"/>
+
+         <wsdl:output message="impl:getProprietaryInformationResponse1" name="getProprietaryInformationResponse1"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxNormVersion">
+
+         <wsdl:input message="impl:getRxNormVersionRequest" name="getRxNormVersionRequest"/>
+
+         <wsdl:output message="impl:getRxNormVersionResponse" name="getRxNormVersionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRemapped" parameterOrder="rxcui">
+
+         <wsdl:input message="impl:findRemappedRequest" name="findRemappedRequest"/>
+
+         <wsdl:output message="impl:findRemappedResponse" name="findRemappedResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiById" parameterOrder="idType id">
+
+         <wsdl:input message="impl:findRxcuiByIdRequest" name="findRxcuiByIdRequest"/>
+
+         <wsdl:output message="impl:findRxcuiByIdResponse" name="findRxcuiByIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiById" parameterOrder="idType id allSourcesFlag">
+
+         <wsdl:input message="impl:findRxcuiByIdRequest1" name="findRxcuiByIdRequest1"/>
+
+         <wsdl:output message="impl:findRxcuiByIdResponse1" name="findRxcuiByIdResponse1"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString" parameterOrder="term">
+
+         <wsdl:input message="impl:findRxcuiByStringRequest" name="findRxcuiByStringRequest"/>
+
+         <wsdl:output message="impl:findRxcuiByStringResponse" name="findRxcuiByStringResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString" parameterOrder="term sources allSourcesFlag">
+
+         <wsdl:input message="impl:findRxcuiByStringRequest1" name="findRxcuiByStringRequest1"/>
+
+         <wsdl:output message="impl:findRxcuiByStringResponse1" name="findRxcuiByStringResponse1"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString" parameterOrder="term sources allSourcesFlag matchType">
+
+         <wsdl:input message="impl:findRxcuiByStringRequest2" name="findRxcuiByStringRequest2"/>
+
+         <wsdl:output message="impl:findRxcuiByStringResponse2" name="findRxcuiByStringResponse2"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelatedByRelationship" parameterOrder="rxcui rela_list">
+
+         <wsdl:input message="impl:getRelatedByRelationshipRequest" name="getRelatedByRelationshipRequest"/>
+
+         <wsdl:output message="impl:getRelatedByRelationshipResponse" name="getRelatedByRelationshipResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RxNormDBServiceSoapBinding" type="impl:DBManager">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="close">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="closeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="closeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxProperty">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRxPropertyRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRxPropertyResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllClasses">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllClassesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllClassesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMultiIngredBrand">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMultiIngredBrandRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMultiIngredBrandResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getApproximateMatch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getApproximateMatchRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getApproximateMatchResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDisplayTerms">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDisplayTermsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDisplayTermsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDrugs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDrugsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDrugsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getIdTypes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getIdTypesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getIdTypesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPropCategories">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPropCategoriesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPropCategoriesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPropNames">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPropNamesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPropNamesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelaTypes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRelaTypesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRelaTypesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxConceptProperties">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRxConceptPropertiesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRxConceptPropertiesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllProperties">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllPropertiesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllPropertiesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getNDCs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getNDCsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getNDCsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="filterByProperty">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="filterByPropertyRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="filterByPropertyResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelatedByType">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRelatedByTypeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRelatedByTypeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllRelatedInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllRelatedInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllRelatedInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllConceptsByTTY">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllConceptsByTTYRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllConceptsByTTYResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSourceTypes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSourceTypesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSourceTypesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSpellingSuggestions">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSpellingSuggestionsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSpellingSuggestionsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTermTypes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTermTypesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTermTypesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClassMembers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClassMembersRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClassMembersResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxcuiStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRxcuiStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRxcuiStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClassHierarchy">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClassHierarchyRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClassHierarchyResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProprietaryInformation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProprietaryInformationRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProprietaryInformationResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProprietaryInformation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProprietaryInformationRequest1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProprietaryInformationResponse1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRxNormVersion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRxNormVersionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRxNormVersionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRemapped">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRemappedRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRemappedResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRxcuiByIdRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRxcuiByIdResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRxcuiByIdRequest1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRxcuiByIdResponse1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRxcuiByStringRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRxcuiByStringResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRxcuiByStringRequest1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRxcuiByStringResponse1">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRxcuiByString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRxcuiByStringRequest2">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRxcuiByStringResponse2">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRelatedByRelationship">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRelatedByRelationshipRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://db.rxnorm.nlm.nih.gov" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRelatedByRelationshipResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mor.nlm.nih.gov/axis/services/RxNormDBService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DBManagerService">
+
+      <wsdl:port binding="impl:RxNormDBServiceSoapBinding" name="RxNormDBService">
+
+         <wsdlsoap:address location="http://mor.nlm.nih.gov/axis/services/RxNormDBService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

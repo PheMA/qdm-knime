@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="eMeasure.xsl"?>
+<!-- The following sample measure is provided for illustration purposes only. It is a draft, awaiting formal validation by the measure steward. -->
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\xsd\Schemas\EMeasure.xsd">
+	<!-- 
+********************************************************
+eMeasure Header
+********************************************************
+-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POQM_HD000001"/>
+	<id root="88414caa-715a-45bb-83bb-db7ac860fe9d"/>
+	<code code="57024-2" codeSystem="2.16.840.1.113883.6.1" displayName="Health Quality Measure document"/>
+	<title>(DRAFT) Admit Decision Time to ED Departure Time for Admitted Patients</title>
+	<text>Median time from admit decision time to time of departure from the emergency department for emergency department patients admitted to inpatient status.</text>
+	<statusCode code="active"/>
+	<effectiveTime>
+		<low value="20091001"/>
+		<high value="20100331"/>
+	</effectiveTime>
+	<setId root="88414c01-715a-45bb-83bb-db7ac860fe9a" extension="ED-2"/>
+	<versionNumber value="1"/>
+	<author typeCode="AUT">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Centers for Medicare &amp; Medicaid Services</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</author>
+	<custodian typeCode="CST">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Centers for Medicare &amp; Medicaid Services</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</custodian>
+	<verifier typeCode="VRF">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Centers for Medicare &amp; Medicaid Services</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRIMPROV" codeSystem="2.16.840.1.113883.5.4" displayName="Improvement notation"/>
+			<value xsi:type="ED" mediaType="text/plain">A decrease in the median value</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure scoring"/>
+			<value xsi:type="CD" code="CONTVAR" codeSystem="2.16.840.1.113883.5.1063" displayName="Continuous variable"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure type"/>
+			<value xsi:type="CD" code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" displayName="process"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="RAT" codeSystem="2.16.840.1.113883.5.4" displayName="Rationale"/>
+			<value xsi:type="ED" mediaType="text/plain">Reducing the time patients remain in the emergency department (ED) can improve access to treatment and increase quality of care. Reducing this time potentially improves access to care specific to the patient condition and increases the capability to provide additional treatment. In recent times, EDs have experienced significant overcrowding. Although once only a problem in large, urban, teaching hospitals, the phenomenon has spread to other suburban and rural healthcare organizations. According to a 2002 national U.S. survey, more than 90 percent of large hospitals report EDs operating "at" or "over" capacity. Approximately one third of hospitals in the US report increases in ambulance diversion in a given year, whereas up to half report crowded conditions in the ED. In a recent national survey, 40 percent of hospital leaders viewed ED crowding as a symptom of workforce shortages. ED crowding may result in delays in the administration of medication such as antibiotics for pneumonia and has been associated with perceptions of compromised emergency care. For patients with non-ST-segment-elevation myocardial infarction, long ED stays were associated with decreased use of guideline-recommended therapies and a higher risk of recurrent myocardial infarction. Overcrowding and heavy emergency resource demand have led to a number of problems, including ambulance refusals, prolonged patient waiting times, increased suffering for those who wait, rushed and unpleasant treatment environments, and potentially poor patient outcomes. When EDs are overwhelmed, their ability to respond to community emergencies and disasters may be compromised.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Sacco RL, et al. Stroke Vol 37, 2006:577</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Diercks DB, et al. Prolonged emergency department stays of non-ST-segment-elevation myocardial infarction patients are associated with worse adherence to the American College of Cardiology/American Heart Association guidelines for management and increased adverse events. Ann Emerg Med.2007;50:489-96.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Derlet RW, Richards JR. Emergency department overcrowding in Florida, New York, and Texas. South Med J. 2002;95:846-9.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4" displayName="Risk adjustment"/>
+			<value xsi:type="ED" mediaType="text/plain">None</value>
+		</measureAttribute>
+	</subjectOf>
+	<componentOf>
+		<qualityMeasureSet classCode="ACT">
+			<id root="88414cxx-715a-45bb-83bb-db7ac860fe9d" extension="ED"/>
+			<title>Emergency Department (ED)</title>
+		</qualityMeasureSet>
+	</componentOf>
+	<!-- 
+********************************************************
+eMeasure Body
+********************************************************
+-->
+	<!-- 
+********************************************************
+Data criteria section 
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57025-9" codeSystem="2.16.840.1.113883.6.1" displayName="Data Criteria section" />
+			<title>Data criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Length of stay &lt;= 120 days: </content>
+						Duration of encounter (encounter end time - encounter start time) is lesss than or equal to 120 days.
+					</item>
+					<item>
+						<content styleCode="Bold">Inpatient encounter: </content>
+						An encounter, where encounter type &lt;= value set <content styleCode="Underline">InpatientEncounter</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">ED encounter: </content>
+						An encounter, where encounter type &lt;= HL7 ActCode EMER "Emergency encounter".
+					</item>
+					<item>
+						<content styleCode="Bold">Observation status: </content>
+						A status where patient requires prolonged monitoring, without necessarily requiring an inpatient admission. 
+					</item>
+					<item>
+						<content styleCode="Bold">Listed for admission: </content>
+						A status where a patient is to be admitted to the hospital.
+					</item>
+					<item>
+						<content styleCode="Bold">Physically departed from ED: </content>
+						Patient has physically left the emergency department. 
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<!-- Length of stay &lt;= 120 days -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66"/>
+					<code code="183797002" codeSystem="2.16.840.1.113883.6.96" displayName="Duration of inpatient stay"/>
+					<statusCode code="completed"/>
+					<value xsi:type="IVL_PQ">
+						<high value="120" unit="d" inclusive="true"/>
+					</value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Inpatient encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+					<code code="InpatientEncounterOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Inpatient encounter Value Set"/>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Emergency encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+					<code code="EMER" codeSystem="2.16.840.1.113883.5.4" displayName="Emergency encounter"/>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Observation status-->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="b421c8a1-7949-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+  	  				<value xsi:type="CD"><originalText>Patient is observation status</originalText></value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Listed for admission -->
+				<observation classCode="OBS" moodCode="CRT">
+					<id root="b421c8a2-7949-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="183767005" codeSystem="2.16.840.1.113883.6.96" displayName="Listed for admission"/>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Physicalyl departed from ED -->
+				<observation classCode="OBS" moodCode="CRT">
+					<id root="b421c8a9-7949-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD"><originalText>Physically departed from ED</originalText></value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Population criteria section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57026-7" codeSystem="2.16.840.1.113883.6.1" displayName="Population Criteria section"/>
+			<title>Population criteria</title>
+			<text>
+				<list>
+					<item>
+					<content styleCode="Bold">Initial Patient Population</content> = <br/> 
+					AND: Inpatient encounter where
+						<list>
+						 <item>AND: Length of Stay &lt;= 120 days.</item>
+						 </list>
+					</item>
+					<item>
+					<content styleCode="Bold">Measure Population</content> =<br />
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Length of Stay &lt;= 120 days;</item>
+							<item>AND: Preceded by ED encounter in facility's ED, where patient NOT Observation status.</item>
+						</list>
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="b421c8a6-7949-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="IPP" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Initial Patient Population"/>
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="b421c8a5-7949-11de-8a39-0800200c9a66"/> 
+							<sourceOf typeCode="GEN">
+								<!-- Inpatient encounter -->
+								<encounter classCode="ENC" moodCode="CRT">
+									<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Length of stay &lt;= 120 days -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="b6b23680-7954-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="MSRPOPL" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Measure Population"/>
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="b6b23681-7954-11de-8a39-0800200c9a66"/> 
+							<participant typeCode="LOC" contextControlCode="OP">
+								<roleParticipant classCode="SDLOC"/>
+							</participant>
+							<sourceOf typeCode="GEN">
+								<!-- Inpatient encounter -->
+								<encounter classCode="ENC" moodCode="CRT">
+									<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Length of stay &lt;= 120 days -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="SAE" inversionInd="true" contextConductionInd="true">
+								<pauseQuantity value="0" unit="min"/>
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<sourceOf typeCode="GEN">
+										<!-- Emergency encounter -->
+										<encounter classCode="ENC" moodCode="CRT">
+											<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+										</encounter>
+									</sourceOf>
+									<sourceOf typeCode="COMP" negationInd="true">
+										<!-- Observation status-->
+										<observation classCode="OBS" moodCode="EVN.CRT">
+											<id root="b421c8a1-7949-11de-8a39-0800200c9a66"/>
+										</observation>
+									</sourceOf>
+								</encounter>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Measure observations section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57027-5" codeSystem="2.16.840.1.113883.6.1" displayName="Measure Observations section"/>
+			<title>Measure observations</title>
+			<text>
+				<list>
+					<item>Time from admit decision to physical departure from the emergency department = ListedForAdmission.effectiveTime - PhysicallyDepartedFromED.effectiveTime.</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="DEF">
+					<id root="b421c8a3-7949-11de-8a39-0800200c9a66"/>
+					<code><originalText>Time from admit decision to physical departure from the emergency department.</originalText></code>
+					<derivationExpr>ListedForAdmission.effectiveTime - PhysicalDepartureFromED.effectiveTime</derivationExpr>
+					<sourceOf typeCode="DRIV">
+						<localVariableName>PhysicallyDepartedFromED</localVariableName>
+						<!-- Physically departed from ED -->
+						<observation classCode="OBS" moodCode="CRT">
+							<id root="b421c8a9-7949-11de-8a39-0800200c9a66"/>
+						</observation>
+					</sourceOf>
+					<sourceOf typeCode="DRIV">
+						<localVariableName>ListedForAdmission</localVariableName>
+						<!-- Listed for admission -->
+						<observation classCode="OBS" moodCode="CRT">
+							<id root="b421c8a2-7949-11de-8a39-0800200c9a66"/>
+						</observation>
+					</sourceOf>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</QualityMeasureDocument>

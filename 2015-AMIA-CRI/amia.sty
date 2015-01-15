@@ -1,0 +1,49 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{amia}
+
+\usepackage{times}
+\usepackage[paper=letterpaper, margin=1in]{geometry}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage[super]{cite}
+
+% suppress the date
+\date{}
+
+% set the title format
+\def\institutes#1{\def\@institutes{#1}}
+
+\renewcommand\maketitle{
+  \begin{center}{\fontsize{14pt}{10pt}\bfseries\rmfamily \@title}\end{center}
+  \begin{center}{\fontsize{12pt}{10pt}\bfseries\rmfamily \@author \\ \@institutes}\end{center}
+}
+
+% no headers or footers
+\thispagestyle{empty}
+\pagestyle{empty}
+
+% caption skip
+\setlength{\belowcaptionskip}{-10.0pt}
+
+% justify text
+\setlength{\parindent}{0pt}
+
+% turn off section numbering
+\setcounter{secnumdepth}{0}
+
+% section and subsection definition
+%\@startsection{<type>}{<level>}{<indent>}{<beforeskip>}{<afterskip>}{<style>} 
+\renewcommand{\section}{\@startsection {section}{1}{\z@}%
+  {-0.5\baselineskip} {0.5\baselineskip} %%
+  {\normalfont\fontsize{10pt}{10pt}\bfseries\rmfamily}}
+
+\renewcommand{\subsection}{\@startsection {section}{1}{\z@}%
+  {-\baselineskip} {0.5\baselineskip} %%
+  {\normalfont\fontsize{10pt}{10pt}\itshape\rmfamily}}
+                     
+\renewcommand{\subsubsection}{\@startsection {section}{1}{\z@}%
+  {-\baselineskip} {0.5\baselineskip} %%
+  {\normalfont\fontsize{10pt}{10pt}\itshape\rmfamily}}
+
+\endinput

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="eMeasure.xsl"?>
+<!-- The following sample measure is provided for illustration purposes only. It is a draft, awaiting formal validation by the measure steward. -->
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\xsd\Schemas\EMeasure.xsd">
+	<!-- 
+********************************************************
+eMeasure Header
+********************************************************
+-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POQM_HD000001"/>
+	<id root="88414c01-715a-45bb-83bb-db7ac860fe9d"/>
+	<code code="57024-2" codeSystem="2.16.840.1.113883.6.1" displayName="Health Quality Measure document"/>
+	<title>(DRAFT) Stroke education</title>
+	<text>Ischemic or hemorrhagic stroke patients or their caregivers who were given educational materials during the hospital stay addressing all of the following: activation of emergency medical system, need for follow-up after discharge, medications prescribed at discharge, risk factors for stroke, and warning signs and symptoms of stroke.</text>
+	<statusCode code="active"/>
+	<!-- Time period during which  the measure should be applied. -->
+	<effectiveTime>
+		<low value="20091001"/>
+		<high value="20100331"/>
+	</effectiveTime>
+	<!-- date time that this measure was released and available for implementor to access  -->
+	<setId root="88414c01-715a-45bb-83bb-db7ac860fe9a" extension="STK-8"/>
+	<versionNumber value="1"/>
+	<!-- author of the measure -->
+	<author typeCode="AUT">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</author>
+	<!-- organization who is responsible for maintaining and managing the eMeasure -->
+	<custodian typeCode="CST">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</custodian>
+	<!-- verified by eMeasure authoring organization before availability date -->
+	<verifier typeCode="VRF">
+      <assignedPerson classCode="ASSIGNED">
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<!-- verified by National Quality Forum availability date -->
+	<verifier typeCode="VRF">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.8"/>
+				<name>National Quality Forum</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<!-- Miscellaneous metadata about the eMeasure. -->
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRIMPROV" codeSystem="2.16.840.1.113883.5.4" displayName="Improvement notation"/>
+			<value xsi:type="ED" mediaType="text/plain">An increase in percentage of stroke educational material were given to the ischemic or hemorrhagic stroke patients or their caregivers indicates increase of patients' healthful behaviors, improve health status, and/or decrease health care costs.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="RAT" codeSystem="2.16.840.1.113883.5.4" displayName="Measure rationale"/>
+			<value xsi:type="ED" mediaType="text/plain">There are many examples of how patient education programs for specific chronic conditions have increased healthful behaviors, improved health status, and/or decreased health care costs of their participants. Clinical practice guidelines include recommendations for patient and family education during hospitalization as well as information about resources for social support services. Some clinical trials have shown measurable benefits in patient and caregiver outcomes with the application of education and support strategies. The type of stroke experienced and the resulting outcomes will play a large role in determining not only the course of treatment but also what education will be required. Patient education should include information about the event (e.g., cause, treatment, and risk factors), the role of various medications or strategies, as well as desirable lifestyle modifications to reduce risk or improve outcomes. Family/caregivers will also need guidance in planning effective and realistic care strategies appropriate to the patient�s prognosis and potential for rehabilitation.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure scoring"/>
+			<value xsi:type="CD" code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" displayName="Proportion"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure type"/>
+			<value xsi:type="CD" code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" displayName="process"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Duncan et al, Stroke. 2005;36:e100-e143.</value>
+		</measureAttribute>
+	</subjectOf>
+	<!-- parent measureSet which contains the measure -->
+	<componentOf>
+		<qualityMeasureSet classCode="ACT">
+			<id root="88414c01-715a-45bb-83bb-db7ac860fe9d" extension="STK"/>
+			<title>Stroke (STK)</title>
+		</qualityMeasureSet>
+	</componentOf>
+	<!-- 
+********************************************************
+eMeasure Body
+********************************************************
+-->
+	<!-- 
+********************************************************
+Data Criteria section 
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57025-9" codeSystem="2.16.840.1.113883.6.1" displayName="Data Criteria section" />
+			<title>Data criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Age is 18 or older: </content>
+						Age is greater than or equal to 18 years.
+					</item>
+					<item>
+						<content styleCode="Bold">Length of stay &lt;= 120 days: </content>
+						Duration of encounter (encounter end time - encounter start time) is lesss than or equal to 120 days.
+					</item>
+					<item>
+						<content styleCode="Bold">Inpatient encounter: </content>
+						An encounter, where encounter type &lt;= <content styleCode="Underline">"Joint Commission Inpatient Encounter Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Completed inpatient encounter with principal discharge diagnosis of stroke: </content>
+						A completed inpatient encounter, where principal diagnosis &lt;= <content styleCode="Underline">"Joint Commission Stroke Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Inpatient encounter with reason for admission is elective carotid intervention: </content>
+						An elective inpatient encounter, where reason for admission &lt;= <content styleCode="Underline">"Joint Commission Carotid Intervention Procedure Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Patient is comfort care only status: </content>
+						Patient has a resuscitation status of  &lt;= <content styleCode="Underline">"Joint Commission Comfort Measures Only Value Set"</content>. 
+					</item>
+					<item>
+						<content styleCode="Bold">Patient is in a clinical trial: </content>
+						Patient has signed a consent to participate in a stroke-related clinical trial.
+					</item>
+					<item>
+						<content styleCode="Bold">Patient discharged to home: </content>
+						Patient's discharge disposition is &lt;= SNOMED CT code 306689006 "Discharge home". 
+					</item>
+					<item>
+						<content styleCode="Bold">Provision of education that addresses Activation of Emergency Medical System: </content>
+						Education has been provided (to patient or caregiver) that addresses Activation of Emergency Medical System.
+					</item>
+					<item>
+						<content styleCode="Bold">Provision of education that addresses Need for Follow-up After Discharge: </content>
+						Education has been provided (to patient or caregiver) that addresses Need for Follow-up After Discharge.
+					</item>
+					<item>
+						<content styleCode="Bold">Provision of education that addresses Medications Prescribed at Discharge: </content>
+						Education has been provided (to patient or caregiver) that addresses Medications Prescribed at Discharge.
+					</item>
+					<item>
+						<content styleCode="Bold">Provision of education that addresses Risk Factors for Stroke: </content>
+						Education has been provided (to patient or caregiver) that addresses Risk Factors for Stroke.
+					</item>
+					<item>
+						<content styleCode="Bold">Provision of education that addresses Warning Signs and Symptoms of Stroke: </content>
+						Education has been provided (to patient or caregiver) that addresses Warning Signs and Symptoms of Stroke.
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<!-- Age is 18 or older -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="5b58f4e0-73cd-11de-8a39-0800200c9a66"/>
+					<code code="424144002" codeSystem="2.16.840.1.113883.6.96" displayName="Age"/>
+					<statusCode code="completed"/>
+					<value xsi:type="IVL_PQ">
+						<low value="18" unit="a" inclusive="true"/>
+					</value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Length of stay &lt;= 120 days -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66"/>
+					<code code="183797002" codeSystem="2.16.840.1.113883.6.96" displayName="Duration of inpatient stay"/>
+					<statusCode code="completed"/>
+					<value xsi:type="IVL_PQ">
+						<high value="120" unit="d" inclusive="true"/>
+					</value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Inpatient encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+					<code code="InpatientEncounterOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Inpatient Encounter Value Set"/>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Completed inpatient encounter -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+					<statusCode code="completed"/>
+					<sourceOf typeCode="GEN">
+						<!-- Inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+						</encounter>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Completed inpatient encounter with principal discharge diagnosis of stroke -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="bf1dd0f0-7f7f-11de-8a39-0800200c9a66"/>
+					<sourceOf typeCode="GEN">
+						<!-- Completed inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<code code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis"/>
+							<value xsi:type="CD" code="StrokeOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Stroke Value Set"/>
+						</observation>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Inpatient encounter with reason for admission is elective carotid intervention -->
+				<encounter classCode="ENC" moodCode="EVN">
+					<id root="aebb2a62-73da-11de-8a39-0800200c9a66"/>
+					<priorityCode code="103390000" displayName="Elective" codeSystem="2.16.840.1.113883.6.96"/>
+					<sourceOf typeCode="GEN">
+						<!-- Inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66"/>
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="RSON">
+						<procedure classCode="PROC" moodCode="CRT">
+							<!-- should be INT.CRT -->
+							<code code="EndarterectomyProcedureOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Carotid Intervention Procedure Value Set"/>
+						</procedure>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient is comfort care only status -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="aebb0351-73da-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="ComfortCareOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Comfort Measures Only Value Set"/>
+					<participant typeCode="SBJ">
+						<roleParticipant classCode="PAT"/>
+					</participant>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient is in a clinical trial (they've signed a consent for a stroke-related clinical trial) -->
+				<act classCode="CONS" moodCode="EVN.CRT">
+					<id root="aebb2a60-73da-11de-8a39-0800200c9a66"/>
+					<code code="182771004" codeSystem="2.16.840.1.113883.6.96" displayName="informed consent">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="110465008" displayName="clinical trial">
+								<qualifier>
+									<name code="363702006" displayName="has focus"/>
+									<value code="230690007" displayName="stroke"/>
+								</qualifier>
+							</value>
+						</qualifier>
+					</code>
+					<participant typeCode="SBJ">
+						<signatureCode code="S"/>
+						<roleParticipant classCode="PAT"/>
+					</participant>
+				</act>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient discharged to home -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="aebb2a64-73da-11de-8a39-0800200c9a66"/>
+					<dischargeDispositionCode code="306689006" codeSystem="2.16.840.1.113883.6.96" displayName="Discharge home"/>
+				</encounter>
+			</entry>
+			<!-- Provision of education that addresses Activation of Emergency Medical System -->
+			<entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="f7d92716-7f92-11de-8a39-0800200c9a66"/>
+					<code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="Education">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="123x" displayName="Activation of Emergency Medical System"/>
+						</qualifier>
+					</code>
+				</act>
+			</entry>
+			<!-- Provision of education that addresses Need for Follow-up After Discharge -->
+			<entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="f7d92715-7f92-11de-8a39-0800200c9a66"/>
+					<code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="Education">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="234x" displayName="Need for Follow-up After Discharge"/>
+						</qualifier>
+					</code>
+				</act>
+			</entry>
+			<!-- Provision of education that addresses Medications Prescribed at Discharge -->
+			<entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="f7d92714-7f92-11de-8a39-0800200c9a66"/>
+					<code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="Education">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="345x" displayName="Medications Prescribed at Discharge"/>
+						</qualifier>
+					</code>
+				</act>
+			</entry>
+			<!-- Provision of education that addresses Risk Factors for Stroke -->
+			<entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="f7d92713-7f92-11de-8a39-0800200c9a66"/>
+					<code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="Education">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="456x" displayName="Risk Factors for Stroke"/>
+						</qualifier>
+					</code>
+				</act>
+			</entry>
+			<!-- Provision of education that addresses Warning Signs and Symptoms of Stroke -->
+			<entry typeCode="DRIV">
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="f7d92712-7f92-11de-8a39-0800200c9a66"/>
+					<code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="Education">
+						<qualifier>
+							<name code="363702006" displayName="has focus"/>
+							<value code="567x" displayName="Warning Signs and Symptoms of Stroke"/>
+						</qualifier>
+					</code>
+				</act>
+			</entry>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Population criteria section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57026-7" codeSystem="2.16.840.1.113883.6.1" displayName="Population Criteria section"/>
+			<title>Population criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Initial Patient Population</content> = <br/> AND: Inpatient encounter where
+						<list>
+							<item>AND: Completed inpatient encounter with principal discharge diagnosis of stroke; </item>
+							<item>AND: Age is 18 or older at admission; </item>
+							<item>AND: Length of Stay &lt;= 120 days.</item>
+						</list>
+					</item>
+					<item>
+						<content styleCode="Bold">Denominator</content> =<br/>
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Meets Initial Patient Population criteria;</item>
+							<item>AND: Patient discharged to home;</item>
+							<item>AND NOT: Patient is comfort care only status;</item>
+							<item>AND NOT: Patient is in a clinical trial;</item>
+							<item>AND NOT: Inpatient encounter with reason for admission is elective carotid intervention.</item>
+						</list>
+					</item>
+					<item>
+						<content styleCode="Bold">Numerator</content> = <br/>
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Meets Denominator criteria;</item>
+							<item>AND: Provision of education that addresses Activation of Emergency Medical System;</item>
+							<item>AND: Provision of education that addresses Need for Follow-up After Discharge;</item>
+							<item>AND: Provision of education that addresses Medications Prescribed at Discharge;</item>
+							<item>AND: Provision of education that addresses Risk Factors for Stroke;</item>
+							<item>AND: Provision of education that addresses Warning Signs and Symptoms of Stroke.</item>
+						</list>
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="c751a8e8-73eb-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="IPP" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Initial Patient Population"/>
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="GEN">
+								<!-- Completed inpatient encounter with principal discharge diagnosis of stroke -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="bf1dd0f0-7f7f-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<participant typeCode="SBJ">
+										<roleParticipant classCode="PAT"/>
+									</participant>
+									<sourceOf typeCode="GEN">
+										<!-- Age is 18 or older -->
+										<observation classCode="OBS" moodCode="EVN.CRT">
+											<id root="5b58f4e0-73cd-11de-8a39-0800200c9a66"/>
+										</observation>
+									</sourceOf>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Length of stay &lt;= 120 days -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="f7d92711-7f92-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="DENOM" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Denominator"/>
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND"/>
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="PRCN">
+								<!-- Initial Patient Population -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="c751a8e8-73eb-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Patient discharged to home -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="aebb2a64-73da-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient is comfort care only status -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="aebb0351-73da-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient is in a clinical trial (they've signed a consent for a stroke-related clinical trial) -->
+								<act classCode="CONS" moodCode="EVN.CRT">
+									<id root="aebb2a60-73da-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Inpatient encounter with reason for admission is elective carotid intervention -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="aebb2a62-73da-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="238a0251-7401-11de-8a39-0800200c9a66"/>
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+					<value xsi:type="CD" code="NUMER" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Numerator"/>
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND"/>
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="PRCN">
+								<!-- Denominator -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="f7d92711-7f92-11de-8a39-0800200c9a66"/>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Provision of education that addresses Activation of Emergency Medical System -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="f7d92716-7f92-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Provision of education that addresses Need for Follow-up After Discharge -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="f7d92715-7f92-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Provision of education that addresses Medications Prescribed at Discharge -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="f7d92714-7f92-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Provision of education that addresses Risk Factors for Stroke -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="f7d92713-7f92-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Provision of education that addresses Warning Signs and Symptoms of Stroke -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="f7d92712-7f92-11de-8a39-0800200c9a66"/>
+								</act>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</QualityMeasureDocument>

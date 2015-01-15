@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="eMeasure.xsl"?>
+<!-- The following sample measure is provided for illustration purposes only. It is a draft, awaiting formal validation by the measure steward. -->
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\xsd\Schemas\EMeasure.xsd">
+	<!-- 
+********************************************************
+eMeasure Header
+********************************************************
+-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POQM_HD000001" />
+	<id root="88414c01-715a-45bb-83bb-db7ac860fe9d" />
+	<code code="57024-2" codeSystem="2.16.840.1.113883.6.1" displayName="Health Quality Measure document" />
+	<title>(DRAFT) Anticoagulation therapy for atrial fibrillation/flutter</title>
+	<text>Ischemic stroke patients with atrial fibrillation/flutter who are prescribed anticoagulation therapy at hospital discharge.</text>
+	<statusCode code="active" />
+	<effectiveTime>
+		<low value="20091001" />
+		<high value="20100331" />
+	</effectiveTime>
+	<setId root="88414c01-715a-45bb-83bb-db7ac860fe9a" extension="STK-3" />
+	<versionNumber value="1" />
+	<author typeCode="AUT">
+		<assignedPerson classCode="ASSIGNED">
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5" />
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</author>
+	<custodian typeCode="CST">
+		<assignedPerson classCode="ASSIGNED">
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5" />
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</custodian>
+	<verifier typeCode="VRF">
+		<assignedPerson classCode="ASSIGNED">
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5" />
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<verifier typeCode="VRF">
+			<assignedPerson classCode="ASSIGNED">
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.8" />
+				<name>National Quality Forum</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure scoring"/>
+			<value xsi:type="CD" code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" displayName="Proportion"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure type"/>
+			<value xsi:type="CD" code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" displayName="process"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="RAT" codeSystem="2.16.840.1.113883.5.4" displayName="Rationale" />
+			<value xsi:type="ED" mediaType="text/plain">Nonvalvular atrial fibrillation (NVAF) is a common arrhythmia and an important risk factor for stroke. It is one of several conditions and lifestyle factors that have been identified as risk factors for stroke. It has been estimated that over 2 million adults in the United States have NVAF. While the median age of patients with atrial fibrillation is 75 years, the incidence increases with advancing age. For example, The Framingham Heart Study noted a dramatic increase in stroke risk associated with atrial fibrillation with advancing age, from 1.5% for those 50 to 59 years of age to 23.5% for those 80 to 89 years of age. Furthermore, a prior stroke or transient ischemic attack (TIA) are among a limited number of predictors of high stroke risk within the population of patients with atrial fibrillation. Therefore, much emphasis has been placed on identifying methods for preventing recurrent ischemic stroke as well as preventing first stroke. Prevention strategies focus on the modifiable risk factors such as hypertension, smoking, and atrial fibrillation. Analysis of five placebo-controlled clinical trials investigating the efficacy of warfarin in the primary prevention of thromboembolic stroke, found the relative risk of thromboembolic stroke was reduced by 68% for atrial fibrillation patients treated with warfarin. The administration of anticoagulation therapy, unless there are contraindications, is an established effective strategy in preventing recurrent stroke in high stroke risk-atrial fibrillation patients with TIA or prior stroke.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4"  displayName="Reference" />
+			<value xsi:type="ED" mediaType="text/plain">Goldstein LB, et al. Stroke. 2006;37:1583</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference" />
+			<value xsi:type="ED" mediaType="text/plain">Sacco RL, et al. Stroke Vol 37, 2006:577</value>
+		</measureAttribute>
+	</subjectOf>
+	<componentOf>
+		<qualityMeasureSet classCode="ACT">
+			<id root="88414c01-715a-45bb-83bb-db7ac860fe9d" extension="STK" />
+			<title>Stroke (STK)</title>
+		</qualityMeasureSet>
+	</componentOf>
+	<!-- 
+********************************************************
+eMeasure Body
+********************************************************
+-->
+	<!-- 
+********************************************************
+Data Criteria section 
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57025-9" codeSystem="2.16.840.1.113883.6.1" displayName="Data Criteria section" />
+			<title>Data criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Age is 18 or older: </content>
+						Age is greater than or equal to 18 years.
+					</item>
+					<item>
+						<content styleCode="Bold">Length of stay &lt;= 120 days: </content>
+						Duration of encounter (encounter end time - encounter start time) is lesss than or equal to 120 days.
+					</item>
+					<item>
+						<content styleCode="Bold">Anticoagulation therapy prescribed: </content>
+						A request for administration of a substance, where substance code &lt;= <content styleCode="Underline">"Joint Commission Anticoagulant Medications Stroke Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Anticoagulation therapy prescribed at discharge: </content>
+						A component of the patient discharge is that anticoagulation therapy is prescribed.
+					</item>
+					<item>
+						<content styleCode="Bold">Inpatient encounter: </content>
+						An encounter, where encounter type &lt;= <content styleCode="Underline">"Joint Commission Inpatient Encounter Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Completed inpatient encounter: </content>
+						An inpatient encounter that has ended (i.e. that has a non-null encounter end time).
+					</item>
+					<item>
+						<content styleCode="Bold">Completed inpatient encounter with principal discharge diagnosis of stroke: </content>
+						A completed inpatient encounter, where principal diagnosis &lt;= <content styleCode="Underline">"Joint Commission Stroke Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Completed inpatient encounter with principal discharge diagnosis of ischemic stroke: </content>
+						A completed inpatient encounter, where principal diagnosis &lt;= <content styleCode="Underline">"Joint Commission Ischemic Stroke Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Inpatient encounter with reason for admission is elective carotid intervention: </content>
+						An elective inpatient encounter, where reason for admission &lt;= <content styleCode="Underline">"Joint Commission Carotid Intervention Procedure Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">Patient condition deceased: </content>
+						Patient is dead.
+					</item>
+					<item>
+						<content styleCode="Bold">Patient is comfort care only status: </content>
+						Patient has a resuscitation status of  &lt;= <content styleCode="Underline">"Joint Commission Comfort Measures Only Value Set"</content>. 
+					</item>
+					<item>
+						<content styleCode="Bold">Patient is in a clinical trial: </content>
+						Patient has signed a consent to participate in a stroke-related clinical trial.
+					</item>
+					<item>
+						<content styleCode="Bold">Problem list entry of atrial fibrillation / atrial flutter: </content>
+						Patient's problem list includes an entry &lt;= <content styleCode="Underline">"Joint Commission Atrial Fibrillation / Flutter History and Finding Value Set"</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">There is a reason for anticoagulation therapy not prescribed at discharge: </content>
+						A component of the patient discharge does not include anticoagulation therapy prescribed, and a reason is provided. (This can be any reason, so long as a reason is provided).
+					</item>
+					<item>
+						<content styleCode="Bold">Patient discharge disposition is to another hospital, federal health care facility, or hospice; expired; or left against medical advice: </content>
+						Patient's discharge disposition is &lt;= <content styleCode="Underline">"Joint Commission Discharge Disposition Stroke-3 Exclusion Value Set"</content>. 
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<!-- Age is 18 or older -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="5b58f4e0-73cd-11de-8a39-0800200c9a66" />
+					<code code="424144002" codeSystem="2.16.840.1.113883.6.96" displayName="Age" />
+					<statusCode code="completed" />
+					<value xsi:type="IVL_PQ">
+						<low value="18" unit="a" inclusive="true" />
+					</value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Length of stay &lt;= 120 days -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66" />
+					<code code="183797002" codeSystem="2.16.840.1.113883.6.96" displayName="Duration of inpatient stay" />
+					<statusCode code="completed" />
+					<value xsi:type="IVL_PQ">
+						<high value="120" unit="d" inclusive="true" />
+					</value>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Anticoagulation therapy prescribed -->
+				<substanceAdministration classCode="SBADM" moodCode="CRT">
+					<!-- should be RQO.CRT -->
+					<id root="5b58f4e2-73cd-11de-8a39-0800200c9a66" />
+					<participant typeCode="CSM">
+						<roleParticipant classCode="MANU">
+							<playingMaterial classCode="MMAT" determinerCode="INSTANCE">
+								<code code="AnticoagulantMedicationsOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Anticoagulant Medications � Stroke Value Set" />
+							</playingMaterial>
+						</roleParticipant>
+					</participant>
+				</substanceAdministration>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Anticoagulation therapy prescribed at discharge -->
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="5b58f4e4-73cd-11de-8a39-0800200c9a66" />
+					<code code="58000006" codeSystem="2.16.840.1.113883.6.96" displayName="patient discharge" />
+					<sourceOf typeCode="COMP">
+						<!-- Anticoagulation therapy prescribed -->
+						<substanceAdministration classCode="SBADM" moodCode="CRT">
+							<!-- should be RQO.CRT -->
+							<id root="5b58f4e2-73cd-11de-8a39-0800200c9a66" />
+						</substanceAdministration>
+					</sourceOf>
+				</act>
+			</entry>		
+			<entry typeCode="DRIV">
+				<!-- Inpatient encounter -->
+				<encounter classCode="ENC" moodCode="CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+					<code code="InpatientEncounterOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Inpatient Encounter Value Set" />
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Completed inpatient encounter -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+					<statusCode code="completed" />
+					<sourceOf typeCode="GEN">
+						<!-- Inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+						</encounter>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Completed inpatient encounter with principal discharge diagnosis of stroke -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="bf1dd0f0-7f7f-11de-8a39-0800200c9a66" />
+					<sourceOf typeCode="GEN">
+						<!-- Completed inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<code code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis" />
+							<value xsi:type="CD" code="StrokeOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Stroke Value Set" />
+						</observation>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Completed inpatient encounter with principal discharge diagnosis of ischemic stroke -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="5b58f4e9-73cd-11de-8a39-0800200c9a66" />
+					<sourceOf typeCode="GEN">
+						<!-- Completed inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<code code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis" />
+							<value xsi:type="CD" code="IschemicStrokeOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Ischemic Stroke Value Set" />
+						</observation>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Inpatient encounter with reason for admission is elective carotid intervention -->
+				<encounter classCode="ENC" moodCode="EVN">
+					<id root="aebb2a62-73da-11de-8a39-0800200c9a66" />
+					<priorityCode code="103390000" displayName="Elective" codeSystem="2.16.840.1.113883.6.96"/>
+					<sourceOf typeCode="GEN">
+						<!-- Inpatient encounter -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="5b58f4e6-73cd-11de-8a39-0800200c9a66" />
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="RSON">
+						<procedure classCode="PROC" moodCode="CRT">
+							<!-- should be INT.CRT -->
+							<code code="EndarterectomyProcedureOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Carotid Intervention Procedure Value Set"/>
+						</procedure>
+					</sourceOf>
+				</encounter>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient condition deceased -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="aebb0350-73da-11de-8a39-0800200c9a66" />
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					<value xsi:type="CD" code="419099009" codeSystem="2.16.840.1.113883.6.96" displayName="Dead" />
+					<participant typeCode="SBJ">
+						<roleParticipant classCode="PAT" />
+					</participant>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient is comfort care only status -->
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="aebb0351-73da-11de-8a39-0800200c9a66" />
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					<value xsi:type="CD" code="ComfortCareOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Comfort Measures Only Value Set" />
+					<participant typeCode="SBJ">
+						<roleParticipant classCode="PAT" />
+					</participant>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient is in a clinical trial (they've signed a consent for a stroke-related clinical trial) -->
+				<act classCode="CONS" moodCode="EVN.CRT">
+					<id root="aebb2a60-73da-11de-8a39-0800200c9a66" />
+					<code code="182771004" codeSystem="2.16.840.1.113883.6.96" displayName="informed consent">
+						<qualifier>
+							<name code="363702006" displayName="has focus" />
+							<value code="110465008" displayName="clinical trial">
+								<qualifier>
+									<name code="363702006" displayName="has focus" />
+									<value code="230690007" displayName="stroke" />
+								</qualifier>
+							</value>
+						</qualifier>
+					</code>
+					<participant typeCode="SBJ">
+						<signatureCode code="S" />
+						<roleParticipant classCode="PAT" />
+					</participant>
+				</act>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Problem list entry of atrial fibrillation / atrial flutter -->
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="aebb2a61-73da-11de-8a39-0800200c9a66" />
+					<code code="44100-6" displayName="Medical problem" codeSystem="2.16.840.1.113883.6.1" />
+					<sourceOf typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN.CRT">
+							<code code="ASSERTION" />
+							<value xsi:type="CD" code="AFibFlutterOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Atrial Fibrillation / Flutter History and Finding Value Set" />
+						</observation>
+					</sourceOf>
+				</act>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- There is a reason for anticoagulation therapy not prescribed at discharge -->
+				<act classCode="ACT" moodCode="EVN.CRT">
+					<id root="aebb2a63-73da-11de-8a39-0800200c9a66" />
+					<code code="58000006" codeSystem="2.16.840.1.113883.6.96" displayName="patient discharge" />
+					<sourceOf typeCode="COMP">
+						<substanceAdministration classCode="SBADM" moodCode="CRT" actionNegationInd="true">
+							<sourceOf typeCode="GEN">
+								<!-- Anticoagulation therapy prescribed -->
+								<substanceAdministration classCode="SBADM" moodCode="CRT">
+									<!-- should be RQO.CRT -->
+									<id root="5b58f4e2-73cd-11de-8a39-0800200c9a66" />
+								</substanceAdministration>
+							</sourceOf>
+							<sourceOf typeCode="RSON">
+								<act classCode="ACT" moodCode="CRT"/>
+							</sourceOf>
+						</substanceAdministration>
+					</sourceOf>
+				</act>
+			</entry>
+			<entry typeCode="DRIV">
+				<!-- Patient discharge disposition is to another hospital, federal health care facility, or hospice; expired; or left against medical advice -->
+				<encounter classCode="ENC" moodCode="EVN.CRT">
+					<id root="aebb2a64-73da-11de-8a39-0800200c9a66" />
+					<dischargeDispositionCode code="DischargeTransferOID" codeSystem="2.16.840.1.114443" codeSystemName="HITSP" displayName="Joint Commission Discharge Disposition Stroke-3 Exclusion Value Set" />
+				</encounter>
+			</entry>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Population criteria section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57026-7" codeSystem="2.16.840.1.113883.6.1" displayName="Population Criteria section"/>
+			<title>Population criteria</title>
+			<text>
+				<list>
+					<item>
+					<content styleCode="Bold">Initial Patient Population</content> = <br/> AND: Inpatient encounter where
+						<list>
+						 <item>AND: Completed inpatient encounter with principal discharge diagnosis of stroke; </item>
+						 <item>AND: Age is 18 or older at admission; </item>
+						 <item>AND: Length of Stay &lt;= 120 days.</item>
+						 </list>
+					</item>
+					<item>
+					<content styleCode="Bold">Denominator</content> =<br />
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Meets Initial Patient Population criteria;</item>
+							<item>AND: Completed inpatient encounter with principal discharge diagnosis of ischemic stroke;</item>
+							<item>AND NOT: Patient is comfort care only status;</item>
+							<item>AND NOT: Patient is in a clinical trial;</item>
+							<item>AND NOT: Inpatient encounter with reason for admission is elective carotid intervention;</item>
+							<item>AND NOT: There is a reason for anticoagulation therapy not prescribed at discharge;</item>
+							<item>AND NOT: Patient discharge disposition is to another hospital, federal health care facility, or hospice; expired; or left against medical advice;</item>
+							<item>AND NOT: Patient condition deceased;</item>
+						</list>
+					AND: Problem list entry of atrial fibrillation / atrial flutter.
+					</item>
+					<item>	
+					<content styleCode="Bold">Numerator</content> = <br />
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Meets Denominator encounter criteria;</item>
+							<item>AND: Anticoagulation therapy prescribed at discharge;</item>
+						</list>
+					AND: Problem list entry of atrial fibrillation / atrial flutter.
+					</item>
+				</list>
+			</text>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="c751a8e8-73eb-11de-8a39-0800200c9a66" />
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					<value xsi:type="CD" code="IPP" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Initial Patient Population" />
+					<sourceOf typeCode="PRCN">
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="GEN">
+								<!-- Completed inpatient encounter with principal discharge diagnosis of stroke -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="bf1dd0f0-7f7f-11de-8a39-0800200c9a66" />
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<participant typeCode="SBJ">
+										<roleParticipant classCode="PAT" />
+									</participant>
+									<sourceOf typeCode="GEN">
+										<!-- Age is 18 or older -->
+										<observation classCode="OBS" moodCode="EVN.CRT">
+											<id root="5b58f4e0-73cd-11de-8a39-0800200c9a66" />
+										</observation>
+									</sourceOf>
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Length of stay &lt;= 120 days -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="5b58f4e1-73cd-11de-8a39-0800200c9a66" />
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="238a0250-7401-11de-8a39-0800200c9a66" />
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					<value xsi:type="CD" code="DENOM" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Denominator" />
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND" />
+						<!-- Denominator encounter criteria -->
+						<encounter classCode="ENC" moodCode="CRT">
+							<id root="6026f0c0-7f8b-11de-8a39-0800200c9a66"/>
+							<sourceOf typeCode="PRCN">
+								<!-- Initial Patient Population -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="c751a8e8-73eb-11de-8a39-0800200c9a66" />
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="GEN">
+								<!-- Completed inpatient encounter with principal discharge diagnosis of ischemic stroke -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="5b58f4e9-73cd-11de-8a39-0800200c9a66" />
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient is comfort care only status -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="aebb0351-73da-11de-8a39-0800200c9a66" />
+								</observation>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient is in a clinical trial (they've signed a consent for a stroke-related clinical trial) -->
+								<act classCode="CONS" moodCode="EVN.CRT">
+									<id root="aebb2a60-73da-11de-8a39-0800200c9a66" />
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Inpatient encounter with reason for admission is elective carotid intervention -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="aebb2a62-73da-11de-8a39-0800200c9a66" />
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- There is a reason for anticoagulation therapy not prescribed at discharge -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="aebb2a63-73da-11de-8a39-0800200c9a66" />
+								</act>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient discharge disposition is to another hospital, federal health care facility, or hospice; expired; or left against medical advice -->
+								<encounter classCode="ENC" moodCode="EVN.CRT">
+									<id root="aebb2a64-73da-11de-8a39-0800200c9a66" />
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP" negationInd="true">
+								<!-- Patient condition deceased -->
+								<observation classCode="OBS" moodCode="EVN.CRT">
+									<id root="aebb0350-73da-11de-8a39-0800200c9a66" />
+								</observation>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND" />
+						<!-- Problem list entry of atrial fibrillation / atrial flutter -->
+						<act classCode="ACT" moodCode="EVN.CRT">
+							<id root="aebb2a61-73da-11de-8a39-0800200c9a66" />
+						</act>
+					</sourceOf>
+				</observation>
+			</entry>
+			<entry typeCode="DRIV">
+				<observation classCode="OBS" moodCode="EVN.CRT">
+					<id root="238a0251-7401-11de-8a39-0800200c9a66" />
+					<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+					<value xsi:type="CD" code="NUMER" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 Observation Value" displayName="Included in Numerator" />
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND" />
+						<encounter classCode="ENC" moodCode="CRT">
+							<sourceOf typeCode="PRCN">
+								<!-- Denominator encounter criteria -->
+								<encounter classCode="ENC" moodCode="CRT">
+									<id root="6026f0c0-7f8b-11de-8a39-0800200c9a66"/>
+								</encounter>
+							</sourceOf>
+							<sourceOf typeCode="COMP">
+								<!-- Anticoagulation therapy prescribed at discharge -->
+								<act classCode="ACT" moodCode="EVN.CRT">
+									<id root="5b58f4e4-73cd-11de-8a39-0800200c9a66" />
+								</act>
+							</sourceOf>
+						</encounter>
+					</sourceOf>
+					<sourceOf typeCode="PRCN">
+						<conjunctionCode code="AND" />
+						<!-- Problem list entry of atrial fibrillation / atrial flutter -->
+						<act classCode="ACT" moodCode="EVN.CRT">
+							<id root="aebb2a61-73da-11de-8a39-0800200c9a66" />
+						</act>
+					</sourceOf>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</QualityMeasureDocument>

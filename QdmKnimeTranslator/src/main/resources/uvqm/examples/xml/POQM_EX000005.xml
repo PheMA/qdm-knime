@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="eMeasure.xsl"?>
+<!-- The following sample measure is provided for illustration purposes only. It is a draft, awaiting formal validation by the measure steward. -->
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\xsd\Schemas\EMeasure.xsd">
+	<!-- 
+********************************************************
+eMeasure Header
+********************************************************
+-->
+	<typeId root="2.16.840.1.113883.1.3" extension="POQM_HD000001"/>
+	<id root="88414caa-715a-45bb-83bb-db7ac860aa9d"/>
+	<code code="57024-2" codeSystem="2.16.840.1.113883.6.1" displayName="Health Quality Measure document"/>
+	<title>(DRAFT) Hours of physical restraint use</title>
+	<text>The total number of hours that all patients admitted to a hospital-based inpatient psychiatric setting were maintained in physical restraint.</text>
+	<statusCode code="active"/>
+	<effectiveTime>
+		<low value="20091001"/>
+		<high value="20100331"/>
+	</effectiveTime>
+	<setId root="88414c01-715a-45bb-83bb-db7ac860xx9a" extension="HBIPS-2"/>
+	<versionNumber value="1"/>
+	<author typeCode="AUT">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</author>
+	<custodian typeCode="CST">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</custodian>
+	<verifier typeCode="VRF">
+      <assignedPerson classCode="ASSIGNED">
+  			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Joint Commission</name>
+				<contactParty classCode="CON" nullFlavor="UNK"/>
+			</representedOrganization>
+		</assignedPerson>
+	</verifier>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRIMPROV" codeSystem="2.16.840.1.113883.5.4" displayName="Improvement notation"/>
+			<value xsi:type="ED" mediaType="text/plain">Improvement Noted As: A decrease in the rate</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure scoring"/>
+			<value xsi:type="CD" code="RATIO" codeSystem="2.16.840.1.113883.5.1063" displayName="Ratio"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4" displayName="Measure type"/>
+			<value xsi:type="CD" code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" displayName="process"/>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="RAT" codeSystem="2.16.840.1.113883.5.4" displayName="Rationale"/>
+			<value xsi:type="ED" mediaType="text/plain">Mental health providers that value and respect an individual’s autonomy, independence and safety seek to avoid the use of dangerous or restrictive interventions at all times (Donat, 2003). The use of seclusion and restraint is limited to situations deemed to meet the threshold of imminent danger and when restraint and seclusion are used; such use is rigorously monitored and analyzed to prevent future use. Providers also seek to prevent violence or aggression from occurring in their treatment environments by focusing their attention on prevention activities that have a growing evidence base (Donat, 2003).</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Donat, D. (August, 2003). An analysis of successful efforts to reduce the use of seclusion and restraint at a public psychiatric hospital. Psychiatric Services. 54(8): 1119-1123.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="REF" codeSystem="2.16.840.1.113883.5.4" displayName="Reference"/>
+			<value xsi:type="ED" mediaType="text/plain">Fisher, W. A. (2003). Elements of successful restraint and seclusion reduction programs and their application in a large, urban, state psychiatric hospital. Journal of Psychiatric Practice, 9(1), 7-15.</value>
+		</measureAttribute>
+	</subjectOf>
+	<subjectOf>
+		<measureAttribute>
+			<code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4" displayName="Risk adjustment"/>
+			<value xsi:type="ED" mediaType="text/plain">None</value>
+		</measureAttribute>
+	</subjectOf>
+	<componentOf>
+		<qualityMeasureSet classCode="ACT">
+			<id root="88414cxx-71xx-45bb-83bb-db7ac860fe9d"/>
+			<title>Hospital-Based Inpatient Psychiatric Services (HBIPS)</title>
+		</qualityMeasureSet>
+	</componentOf>
+	<!-- 
+********************************************************
+eMeasure Body
+********************************************************
+-->
+	<!-- 
+********************************************************
+Data criteria section 
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57025-9" codeSystem="2.16.840.1.113883.6.1" displayName="Data Criteria section" />
+			<title>Data criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Age >= 1: </content>
+						Age is greater than or equal to 1.
+					</item>
+					<item>
+						<content styleCode="Bold">Restraint event: </content>
+						An event where the subject is maintained in physical restraint.
+					</item>
+					<item>
+						<content styleCode="Bold">Psychiatric inpatient encounter: </content>
+						An encounter, where encounter type &lt;= value set <content styleCode="Underline">PsychiatricInpatientEncounter</content>.
+					</item>
+					<item>
+						<content styleCode="Bold">On leave from psychiatric inpatient encounter: </content>
+						A status where patient is on approved leave of absence from a psychiatric inpatient encounter. 
+					</item>
+				</list>
+			</text>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Population criteria section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57026-7" codeSystem="2.16.840.1.113883.6.1" displayName="Population Criteria section"/>
+			<title>Population criteria</title>
+			<text>
+				<list>
+					<item>
+						<content styleCode="Bold">Initial Patient Population</content> = <br/> 
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Psychiatric inpatient encounter.</item>
+						</list>
+					</item>
+					<item>
+						<content styleCode="Bold">Numerator</content> =<br/>
+					AND: Inpatient encounter where
+						<list>
+							<item>AND: Psychiatric inpatient encounter;</item>
+							<item>AND: Restraint event;</item>
+							<item>AND: Age >= 1.</item>
+						</list>
+					</item>
+				</list>
+			</text>
+		</section>
+	</component>
+	<!-- 
+********************************************************
+Measure observations section
+********************************************************
+-->
+	<component>
+		<section>
+			<code code="57027-5" codeSystem="2.16.840.1.113883.6.1" displayName="Measure Observations section"/>
+			<title>Measure observations</title>
+			<text>
+				<list>
+					<item>
+					Psychiatric inpatient encounter duration = <br/>
+					 (TODAY - PsychiatricInpatientEncounter.effectiveTime.low) -<br/>
+					 SUM(OnLeaveFromPsychiatricInpatientEncounter.effectiveTime.duration).
+					</item>
+					<item>
+					Restraint time = <br/>
+					 SUM(RestraintEvent.effectiveTime.duration).
+					</item>
+				</list>
+			</text>
+		</section>
+	</component>
+</QualityMeasureDocument>

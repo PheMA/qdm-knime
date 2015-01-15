@@ -1,0 +1,1113 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml-stylesheet type='text/xsl' href='/measures/cda.xsl'?>
+<!--
+Date: October 31, 2012
+Disclaimer: These QRDA sample files are designed to provide a file that is valid for errors against the CDA.sdtc schema and QRDA schematron using hypothetical patient data; however, the content of the QRDA sample 
+documents may not have "clinically" consistent data.  Additionally, the files are valid against the referenced eMeasure to provide a general idea about the content and structure of a QDM-based QRDA. When eMeasure data 
+criteria are “or”, the QRDA documents may not have all of the Quality Data Elements data criteria specified in the eMeasure. These expected errors are listed in the file where they occur. In the Patient Data Section, the 
+narrative block may not consistently agree with the entries.  The narrative block does not reflect the dates/times present in the clinical statements.
+-->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDA/infrastructure/cda/CDA_SDTC.xsd" xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
+  <!-- QRDA Header -->
+  <realmCode code="US" />
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+  <!-- US Realm Header Template Id -->
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" />
+  <!-- QRDA templateId -->
+  <templateId root="2.16.840.1.113883.10.20.24.1.1" />
+  <templateId root="2.16.840.1.113883.10.20.24.1.2" />
+  <id root="f2d5f971-d67a-4456-8833-213f01331ca19" />
+  <!-- QRDA document type code -->
+  <code code="55182-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Quality Measure Report" />
+  <title>QRDA Incidence Report</title>
+  <effectiveTime value="201212310000-0400" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" />
+  <languageCode code="en-US" />
+  <setId extension="111199021" root="2.16.840.1.113883.19" />
+  <!-- the original -->
+  <versionNumber value="1" />
+  <recordTarget>
+    <patientRole>
+      <id extension="12345" root="2.16.840.1.113883.4.572" />
+      <addr use="HP">
+        <!-- HP is "primary home" from codeSystem 2.16.840.1.113883.5.1119 -->
+        <streetAddressLine>17 Daws Rd.</streetAddressLine>
+        <city>Blue Bell</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+        <!-- US is "United States" from ISO 3166-1 Country Codes: 1.0.3166.1 -->
+      </addr>
+      <telecom use="HP" value="tel:(781)555-1212" />
+      <!-- HP is "primary home" from AddressUse 2.16.840.1.113883.5.1119 -->
+      <patient>
+        <name use="L">
+          <!-- L is "Legal" from EntityNameUse 2.16.840.1.113883.5.45 -->
+          <prefix>Mr.</prefix>
+          <given>Adam</given>
+          <given qualifier="CL">Frankie</given>
+          <!-- CL is "Call me" from EntityNamePartQualifier
+               2.16.840.1.113883.5.43 -->
+          <family>Everyman</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male" />
+        <birthTime value="19541125" />
+        <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" displayName="Married" />
+        <religiousAffiliationCode code="1013" codeSystem="2.16.840.1.113883.5.1076" codeSystemName="Religious Affiliation " displayName="Christian (non-Catholic, non-specific)" />
+        <raceCode code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="White" />
+        <ethnicGroupCode code="2186-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="Not Hispanic or Latino" />
+        <guardian>
+          <code code="GRFTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Grandfather" />
+          <addr use="HP">
+            <streetAddressLine>17 Daws Rd.</streetAddressLine>
+            <city>Blue Bell</city>
+            <state>MA</state>
+            <postalCode>02368</postalCode>
+            <country>US</country>
+          </addr>
+          <telecom use="HP" value="tel:(781)555-1212" />
+          <guardianPerson>
+            <name>
+              <given>Ralph</given>
+              <family>Relative</family>
+            </name>
+          </guardianPerson>
+        </guardian>
+        <birthplace>
+          <place>
+            <addr>
+              <state>MA</state>
+              <postalCode>02368</postalCode>
+              <country>US</country>
+            </addr>
+          </place>
+        </birthplace>
+        <languageCommunication>
+          <languageCode code="fr-CN" />
+          <modeCode code="RWR" codeSystem="2.16.840.1.113883.5.60" codeSystemName="LanguageAbilityMode" displayName="Receive Written" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id root="2.16.840.1.113883.19" />
+        <name>Good Health Clinic</name>
+        <telecom use="WP" value="tel:(781)555-1212" />
+        <addr>
+          <streetAddressLine>21 North Ave</streetAddressLine>
+          <city>Burlington</city>
+          <state>MA</state>
+          <postalCode>02368</postalCode>
+          <country>US</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20050329224411+0500" />
+    <assignedAuthor>
+      <id nullFlavor="UNK" root="2.16.840.1.113883.4.6" />
+      <addr>
+        <streetAddressLine>21 North Ave.</streetAddressLine>
+        <city>Burlington</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="WP" value="tel:(555)555-1003" />
+      <assignedAuthoringDevice>
+        <manufacturerModelName>Good Health Medical Device</manufacturerModelName>
+        <softwareName>Good Health Report Generator</softwareName>
+      </assignedAuthoringDevice>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.16.840.1.113883.19.5" />
+        <name>Good Health Clinic</name>
+        <telecom use="WP" value="tel:(555)555-1212" />
+        <addr use="WP">
+          <streetAddressLine>17 Daws Rd.</streetAddressLine>
+          <city>Blue Bell</city>
+          <state>MA</state>
+          <postalCode>02368</postalCode>
+          <country>US</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <legalAuthenticator>
+    <time value="201212310000-0400" />
+    <signatureCode code="S" />
+    <assignedEntity>
+      <id extension="KP00017" root="2.16.840.1.113883.19" />
+      <addr>
+        <streetAddressLine>21 North Ave.</streetAddressLine>
+        <city>Burlington</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="WP" value="tel:(555)555-1003" />
+      <assignedPerson>
+        <name>
+          <given>Henry</given>
+          <family>Seven</family>
+        </name>
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  <!--  QRDA Body -->
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <!-- 
+    *****************************************************************
+    Measure Section
+    *****************************************************************
+  -->
+          <!-- This is the templateId for Measure Section -->
+          <templateId root="2.16.840.1.113883.10.20.24.2.2" />
+          <!-- This is the templateId for Measure Section QDM -->
+          <templateId root="2.16.840.1.113883.10.20.24.2.3" />
+          <!-- This is the LOINC code for "Measure document". This stays the same for 
+    all measure section required by QRDA standard -->
+          <code code="55186-1" codeSystem="2.16.840.1.113883.6.1" />
+          <title>Measure Section</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>eMeasure Title</th>
+                  <th>Version neutral identifier</th>
+                  <th>eMeasure Version Number</th>
+                  <th>NQF eMeasure Number</th>
+                  <th>Version specific identifier</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Intensive Care Unit Venous Thromboembolism Prophylaxis</td>
+                  <td>53586ce1-3d0d-4ff7-85e6-ee2d43975815</td>
+                  <td>1</td>
+                  <td>0372</td>
+                  <td>8a4d92b2-3802-9d1c-0138-15abdf856eac</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <!-- This is the templateId for Measure Reference -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.98" />
+              <!-- This is the templateId for eMeasure Reference QDM -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.97" />
+              <statusCode code="completed" />
+              <reference typeCode="REFR">
+                <externalDocument classCode="DOC" moodCode="EVN">
+                  <!-- SHALL: This is the version specific identifier for eMeasure:   QualityMeasureDocument/id  it is a GUID-->
+                  <id root="8a4d92b2-3802-9d1c-0138-15abdf856eac" />
+                  <!-- SHOULD: This is the NQF Number, root is an NQF OID and for    eMeasure Number and extension is the eMeasure's NQF number -->
+                  <id extension="0372" root="2.16.840.1.113883.3.560.1" />
+                  <!-- SHOULD This is the title of the eMeasure -->
+                  <text>Intensive Care Unit Venous Thromboembolism Prophylaxis</text>
+                  <!-- SHOULD: setId is the eMeasure version neutral id  -->
+                  <setId root="fa91ba68-1e66-4a23-8eb2-baa8e6df2f2f" />
+                  <!-- This is the sequential eMeasure Version number -->
+                  <versionNumber value="1" />
+                </externalDocument>
+              </reference>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!-- 	Reporting Parameters -->
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.17.2.1" />
+          <code code="55187-9" codeSystem="2.16.840.1.113883.6.1" />
+          <title>Reporting Parameters</title>
+          <text>
+            <list>
+              <item>Reporting period: 01 Jan 2012 - 31 Dec 2012</item>
+            </list>
+          </text>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.17.3.8" />
+              <code code="252116004" codeSystem="2.16.840.1.113883.6.96" displayName="Observation Parameters" />
+              <effectiveTime>
+                <low value="20120101" />
+                <high value="20121231" />
+              </effectiveTime>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.17.2.4" />
+          <templateId root="2.16.840.1.113883.10.20.24.2.1" />
+          <code code="55188-7" codeSystem="2.16.840.1.113883.6.1" />
+          <title>Patient Data</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Data Element - Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Device, Applied: Graduated compression stockings (GCS) - Compression hosiery
+                    class II thigh length stocking circular knit standard stock size (physical
+                    object)</td>
+                </tr>
+                <tr>
+                  <td>Intervention, Performed: Palliative Care - palliative care
+                    (regime/therapy)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: General or Neuraxial Anesthesia - Anesthesia for radical
+                    surgery on nose (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Diagnosis, Active: Obstetrics - Spontaneous abortion in third trimester
+                    (disorder)</td>
+                </tr>
+                <tr>
+                  <td>Patient Characteristic Clinical Trial Participant: Clinical Trial Participant
+                    - Clinical Trial Participant (person)</td>
+                </tr>
+                <tr>
+                  <td>Device, Applied: Intermittent pneumatic compression devices (IPC) -
+                    intermittent pneumatic compression stockings (physical object)</td>
+                </tr>
+                <tr>
+                  <td>Medication, Administered: Factor Xa Inhibitor - 0.8 ML Fondaparinux sodium
+                    12.5 MG/ML Prefilled Syringe</td>
+                </tr>
+                <tr>
+                  <td>Intervention, Order: Palliative Care - palliative care (regime/therapy)</td>
+                </tr>
+                <tr>
+                  <td>Encounter, Performed: Inpatient Encounter - hospital admission, short-term, 24
+                    hours (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Encounter, Performed: Emergency Department Visit - Emergency Department visit
+                    (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Intracranial Neurosurgery - Other craniotomy</td>
+                </tr>
+                <tr>
+                  <td>Medication, Administered: Unfractionated Heparin - Heparin sodium 20000 UNT/ML
+                    Injectable Solution</td>
+                </tr>
+                <tr>
+                  <td>Patient Characteristic Payer: Payer - Foreign Fee/Foreign Medical
+                    Program(FMP)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Knee Replacement Surgery - Supplement Right Knee Joint,
+                    Tibial Surface with Liner, Open Approach</td>
+                </tr>
+                <tr>
+                  <td>Risk Category Assessment: VTE Risk Assessment - </td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: General Surgery - Total splenectomy</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Hip Fracture Surgery - Secondary arthroplasty of hip for
+                    correction of congenital deformity (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Urological Surgery - Closure of vesicocervicovaginal
+                    fistula (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Gynecological Surgery - Vaginal hysterectomy with
+                    colpo-urethrocystopexy, Marshall-Marchetti-Krantz type (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Procedure, Performed: Hip Replacement Surgery - Resurfacing hip, total,
+                    acetabulum and femoral head</td>
+                </tr>
+                <tr>
+                  <td>Diagnosis, Active: Obstetrics VTE - obstetric blood-clot pulmonary embolism
+                    with postnatal complication (disorder)</td>
+                </tr>
+                <tr>
+                  <td>Medication, Administered: Warfarin - Warfarin Sodium 2.5 MG Oral Tablet</td>
+                </tr>
+                <tr>
+                  <td>Device, Applied: Venous foot pumps (VFP) - venous foot pump, device (physical
+                    object)</td>
+                </tr>
+                <tr>
+                  <td>Diagnosis, Active: Venous Thromboembolism - Thrombophlebitis of the popliteal
+                    vein (disorder)</td>
+                </tr>
+                <tr>
+                  <td>Encounter, Performed: ICU Admission or Transfer - Patient transfer to
+                    intensive care unit (procedure)</td>
+                </tr>
+                <tr>
+                  <td>Medication, Administered: Low Molecular Weight Heparin - 0.6 ML Enoxaparin
+                    sodium 100 MG/ML Prefilled Syringe</td>
+                </tr>
+                <tr>
+                  <td>Medication, Administered: Anticoagulant Therapy - 0.3 ML Dalteparin Sodium
+                    25000 UNT/ML Prefilled Syringe</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure Activity Procedure -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.7" />
+              <id root="F3D6FD73-B2C0-4274-BFD2-A485957734DB" />
+              <code code="360030002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="application of device" />
+              <text>Device, Applied</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20110101" />
+                <!-- <high value="20111231" /> -->
+              </effectiveTime>
+              <participant typeCode="DEV">
+                <participantRole classCode="MANU">
+                  <playingDevice classCode="DEV">
+                    <code code="401641000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Compression hosiery class II thigh length stocking circular knit standard stock size (physical object)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.256" />
+                  </playingDevice>
+                </participantRole>
+              </participant>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Consolidation CDA: Procedure Activity Act template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.12" />
+              <templateId root="2.16.840.1.113883.10.20.24.3.32" />
+              <id root="db734647-fc99-424c-a864-7e3cda82e703" />
+              <code code="103735009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="palliative care (regime/therapy)" sdtc:valueSet="2.16.840.1.113883.3.526.2.1076" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="201203011130" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="7760001" displayName="Anesthesia for radical surgery on nose (procedure)" codeSystem="2.16.840.1.113883.6.96" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.348" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <!--  Problem observation template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+              <!-- Diagnosis, active template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.11" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="diagnosis" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: Stop Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+              <priorityCode code="63161005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Principal" />
+              <value code="1748006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Thrombophlebitis of tibial vein (disorder)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.279" xsi:type="CD" />
+              <!-- Status -->
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- Problem Status (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                  <!-- Problem Status, Active template -->
+                  <templateId root="2.16.840.1.113883.10.20.24.3.94" />
+                  <id root="bb0df042-77ee-4ee2-bc85-24adffdef4cc" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="status" />
+                  <statusCode code="completed" />
+                  <value code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="active" xsi:type="CD" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.24.3.51" />
+              <id root="F3D6FD73-B2C0-4274-BFD2-A485957734DB" />
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20110101" />
+                <!-- <high value="20111231" /> -->
+              </effectiveTime>
+              <value code="428024001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="clinical trial participant" xsi:type="CD" />
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure Activity Procedure -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="F3D6FD73-B2C0-4274-BFD2-A485957734DB" />
+              <code code="360030002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="application of device" />
+              <text>Device, Applied</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20110101" />
+                <high value="20111231" />
+              </effectiveTime>
+              <participant typeCode="DEV">
+                <participantRole classCode="MANU">
+                  <playingDevice classCode="DEV">
+                    <code code="442111003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="intermittent pneumatic compression stockings (physical object)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.214" />
+                  </playingDevice>
+                </participantRole>
+              </participant>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Medication, Administered template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.42" />
+              <id root="2c79402e-5cc6-4688-8eb8-7b872d894228" />
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Administration" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="EVN">
+                  <!-- Medication Activity (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+                  <id root="c0ea7bf3-50e7-4e7a-83a3-e5a9ccbb8541" />
+                  <text>Medication active: 0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+                    wheezing</text>
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <!-- Attribute: start datetime -->
+                    <low value="20110301" />
+                    <!-- Attribute: stop datetime -->
+                    <high value="20120301" />
+                  </effectiveTime>
+                  <!-- Attribute: frequency -->
+                  <effectiveTime institutionSpecified="true" operator="A" xsi:type="PIVL_TS">
+                    <period unit="h" value="6" />
+                  </effectiveTime>
+                  <!-- Attribute: refill -->
+                  <repeatNumber value="2" />
+                  <!-- Attribute: dose -->
+                  <doseQuantity value="1" />
+                  <rateQuantity unit="ml/min" value="90" />
+                  <maxDoseQuantity nullFlavor="UNK">
+                    <numerator nullFlavor="UNK" />
+                    <denominator nullFlavor="UNK" />
+                  </maxDoseQuantity>
+                  <consumable>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- Medication Information (consolidation) template -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <id root="37bfe02a-3e97-4bd6-9197-bbd0ed0de79e" />
+                      <manufacturedMaterial>
+                        <code code="861356" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="0.8 ML Fondaparinux sodium 12.5 MG/ML Prefilled Syringe" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.211">
+                          <!-- Would be actual    valueSetOID -->
+                          <originalText>
+                            <reference value="#Med1" />
+                          </originalText>
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="RQO">
+              <!-- Plan of Care Activity Act template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" />
+              <!-- Intervention Order template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.31" />
+              <id root="db734647-fc99-424c-a864-7e3cda82e703" />
+              <code code="103735009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="palliative care (regime/therapy)" sdtc:valueSet="2.16.840.1.113883.3.526.2.1076" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <author>
+                <time value="20120401" />
+                <assignedAuthor>
+                  <id root="88414c01-715a-45bb-83bb-db7ac860fe9d" />
+                </assignedAuthor>
+              </author>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <!--  Encounter activities template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+              <!-- Encounter performed template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.23" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="74857009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="hospital admission, short-term, 24 hours (procedure)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.23" />
+              <text>Encounter, Performed: Prenatal initial visit</text>
+              <statusCode code="completed" />
+              <!-- Length of Stay -->
+              <effectiveTime>
+                <!-- Attribute: admission datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: discharge datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <!--  Encounter activities template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+              <!-- Encounter performed template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.23" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="4525004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Emergency Department visit (procedure)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.292" />
+              <text>Encounter, Performed: Prenatal initial visit</text>
+              <statusCode code="completed" />
+              <!-- Length of Stay -->
+              <effectiveTime>
+                <!-- Attribute: admission datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: discharge datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="01.24" displayName="Other craniotomy" codeSystem="2.16.840.1.113883.6.2" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.345" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Medication, Administered template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.42" />
+              <id root="2c79402e-5cc6-4688-8eb8-7b872d894228" />
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Administration" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="EVN">
+                  <!-- Medication Activity (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+                  <id root="c0ea7bf3-50e7-4e7a-83a3-e5a9ccbb8541" />
+                  <text>Medication active: 0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+                    wheezing</text>
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <!-- Attribute: start datetime -->
+                    <low value="20110301" />
+                    <!-- Attribute: stop datetime -->
+                    <high value="20120301" />
+                  </effectiveTime>
+                  <!-- Attribute: frequency -->
+                  <effectiveTime institutionSpecified="true" operator="A" xsi:type="PIVL_TS">
+                    <period unit="h" value="6" />
+                  </effectiveTime>
+                  <!-- Attribute: refill -->
+                  <repeatNumber value="2" />
+                  <!-- Attribute: dose -->
+                  <doseQuantity value="1" />
+                  <rateQuantity unit="ml/min" value="90" />
+                  <maxDoseQuantity nullFlavor="UNK">
+                    <numerator nullFlavor="UNK" />
+                    <denominator nullFlavor="UNK" />
+                  </maxDoseQuantity>
+                  <consumable>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- Medication Information (consolidation) template -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <id root="37bfe02a-3e97-4bd6-9197-bbd0ed0de79e" />
+                      <manufacturedMaterial>
+                        <code code="849722" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Heparin sodium 20000 UNT/ML Injectable Solution" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.218">
+                          <!-- Would be actual    valueSetOID -->
+                          <originalText>
+                            <reference value="#Med1" />
+                          </originalText>
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.24.3.55" />
+              <id root="4ddf1cc3-e325-472e-ad76-b2c66a5ee164" />
+              <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment source" />
+              <statusCode code="completed" />
+              <value code="1" codeSystem="2.16.840.1.113883.3.221.5" codeSystemName="Source of Payment Typology" displayName="Medicare" sdtc:valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD" />
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.7" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="360030002" displayName="application of device" codeSystem="2.16.840.1.113883.6.96" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+              <participant typeCode="DEV">
+                <participantRole classCode="MANU">
+                  <playingDevice classCode="DEV">
+                    <code code="401621005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Compression hosiery class I below knee stocking circular knit standard stock size (physical object)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.256" />
+                  </playingDevice>
+                </participantRole>
+              </participant>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <!-- Consolidation Assessment Scale Observation templateId -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.69" />
+              <!-- Risk Category Assessment -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.69" />
+              <id root="F3D6FD73-B2C0-4274-BFD2-A485957734DB" />
+              <code code="72136-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Risk for venous thromboembolism" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.357" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20110101" />
+              </effectiveTime>
+              <value value="7" xsi:type="INT" />
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="41.5" displayName="Total splenectomy" codeSystem="2.16.840.1.113883.6.2" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.255" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="265745003" displayName="Secondary arthroplasty of hip for correction of congenital deformity (procedure)" codeSystem="2.16.840.1.113883.6.96" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.258" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="56256008" displayName="Closure of vesicocervicovaginal fistula (procedure)" codeSystem="2.16.840.1.113883.6.96" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.272" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="112918004" displayName="Vaginal hysterectomy with colpo-urethrocystopexy, Marshall-Marchetti-Krantz type (procedure)" codeSystem="2.16.840.1.113883.6.96" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.257" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- Consolidated Procedure Activity Procedure TemplateId 
+      (Implied Template) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure, Performed TemplateId -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="d68b7e32-7810-4f5b-9cc2-acd54b0fd85d" />
+              <code code="00.85" displayName="Resurfacing hip, total, acetabulum and femoral head" codeSystem="2.16.840.1.113883.6.2" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.259" />
+              <text>Procedure, Performed: Heart Transplant And Ventricular-Assist-Device Procedure
+                (ordinality: 'Principal')</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: End Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <!--  Problem observation template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+              <!-- Diagnosis, active template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.11" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="diagnosis" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: Stop Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+              <priorityCode code="63161005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Principal" />
+              <value code="200304004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="obstetric blood-clot pulmonary embolism with postnatal complication (disorder)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.340" xsi:type="CD" />
+              <!-- Status -->
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- Problem Status (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                  <!-- Problem Status, Active template -->
+                  <templateId root="2.16.840.1.113883.10.20.24.3.94" />
+                  <id root="bb0df042-77ee-4ee2-bc85-24adffdef4cc" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="status" />
+                  <statusCode code="completed" />
+                  <value code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="active" xsi:type="CD" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Medication, Administered template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.42" />
+              <id root="2c79402e-5cc6-4688-8eb8-7b872d894228" />
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Administration" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="EVN">
+                  <!-- Medication Activity (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+                  <id root="c0ea7bf3-50e7-4e7a-83a3-e5a9ccbb8541" />
+                  <text>Medication active: 0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+                    wheezing</text>
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <!-- Attribute: start datetime -->
+                    <low value="20110301" />
+                    <!-- Attribute: stop datetime -->
+                    <high value="20120301" />
+                  </effectiveTime>
+                  <!-- Attribute: frequency -->
+                  <effectiveTime institutionSpecified="true" operator="A" xsi:type="PIVL_TS">
+                    <period unit="h" value="6" />
+                  </effectiveTime>
+                  <!-- Attribute: refill -->
+                  <repeatNumber value="2" />
+                  <!-- Attribute: dose -->
+                  <doseQuantity value="1" />
+                  <rateQuantity unit="ml/min" value="90" />
+                  <maxDoseQuantity nullFlavor="UNK">
+                    <numerator nullFlavor="UNK" />
+                    <denominator nullFlavor="UNK" />
+                  </maxDoseQuantity>
+                  <consumable>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- Medication Information (consolidation) template -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <id root="37bfe02a-3e97-4bd6-9197-bbd0ed0de79e" />
+                      <manufacturedMaterial>
+                        <code code="855312" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Warfarin Sodium 2.5 MG Oral Tablet" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.232">
+                          <!-- Would be actual    valueSetOID -->
+                          <originalText>
+                            <reference value="#Med1" />
+                          </originalText>
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" />
+              <!-- Procedure Activity Procedure -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.64" />
+              <id root="F3D6FD73-B2C0-4274-BFD2-A485957734DB" />
+              <code code="360030002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="application of device" />
+              <text>Device, Applied</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20110101" />
+                <high nullFlavor="NI" />
+              </effectiveTime>
+              <participant typeCode="DEV">
+                <participantRole classCode="MANU">
+                  <playingDevice classCode="DEV">
+                    <code code="442023007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="venous foot pump, device (physical object)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.230" />
+                  </playingDevice>
+                </participantRole>
+              </participant>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <!--  Problem observation template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.4" />
+              <!-- Diagnosis, active template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.11" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="diagnosis" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <!-- Attribute: Start Datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: Stop Datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+              <priorityCode code="63161005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Principal" />
+              <value code="195411001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Thrombophlebitis of the popliteal vein (disorder)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.330" xsi:type="CD" />
+              <!-- Status -->
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- Problem Status (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.6" />
+                  <!-- Problem Status, Active template -->
+                  <templateId root="2.16.840.1.113883.10.20.24.3.94" />
+                  <id root="bb0df042-77ee-4ee2-bc85-24adffdef4cc" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="status" />
+                  <statusCode code="completed" />
+                  <value code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="active" xsi:type="CD" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <!--  Encounter activities template -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" />
+              <!-- Encounter performed template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.23" />
+              <id root="2a620155-9d11-439e-92b3-5d9815ff4de8" />
+              <code code="397821002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Patient transfer to intensive care unit (procedure)" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.305" />
+              <text>Encounter, Performed: Prenatal initial visit</text>
+              <statusCode code="completed" />
+              <!-- Length of Stay -->
+              <effectiveTime>
+                <!-- Attribute: admission datetime -->
+                <low value="20120329090000+0500" />
+                <!-- Attribute: discharge datetime -->
+                <high value="20120329103000+0500" />
+              </effectiveTime>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Medication, Administered template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.42" />
+              <id root="2c79402e-5cc6-4688-8eb8-7b872d894228" />
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Administration" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="EVN">
+                  <!-- Medication Activity (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+                  <id root="c0ea7bf3-50e7-4e7a-83a3-e5a9ccbb8541" />
+                  <text>Medication active: 0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+                    wheezing</text>
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <!-- Attribute: start datetime -->
+                    <low value="20110301" />
+                    <!-- Attribute: stop datetime -->
+                    <high value="20120301" />
+                  </effectiveTime>
+                  <!-- Attribute: frequency -->
+                  <effectiveTime institutionSpecified="true" operator="A" xsi:type="PIVL_TS">
+                    <period unit="h" value="6" />
+                  </effectiveTime>
+                  <!-- Attribute: refill -->
+                  <repeatNumber value="2" />
+                  <!-- Attribute: dose -->
+                  <doseQuantity value="1" />
+                  <rateQuantity unit="ml/min" value="90" />
+                  <maxDoseQuantity nullFlavor="UNK">
+                    <numerator nullFlavor="UNK" />
+                    <denominator nullFlavor="UNK" />
+                  </maxDoseQuantity>
+                  <consumable>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- Medication Information (consolidation) template -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <id root="37bfe02a-3e97-4bd6-9197-bbd0ed0de79e" />
+                      <manufacturedMaterial>
+                        <code code="854238" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="0.6 ML Enoxaparin sodium 100 MG/ML Prefilled Syringe" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.219">
+                          <!-- Would be actual    valueSetOID -->
+                          <originalText>
+                            <reference value="#Med1" />
+                          </originalText>
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Medication, Administered template -->
+              <templateId root="2.16.840.1.113883.10.20.24.3.42" />
+              <id root="2c79402e-5cc6-4688-8eb8-7b872d894228" />
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Administration" />
+              <statusCode code="completed" />
+              <effectiveTime value="20110305" />
+              <entryRelationship typeCode="COMP">
+                <substanceAdministration classCode="SBADM" moodCode="EVN">
+                  <!-- Medication Activity (consolidation) template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" />
+                  <id root="c0ea7bf3-50e7-4e7a-83a3-e5a9ccbb8541" />
+                  <text>Medication active: 0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+                    wheezing</text>
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <!-- Attribute: start datetime -->
+                    <low value="20110301" />
+                    <!-- Attribute: stop datetime -->
+                    <high value="20120301" />
+                  </effectiveTime>
+                  <!-- Attribute: frequency -->
+                  <effectiveTime institutionSpecified="true" operator="A" xsi:type="PIVL_TS">
+                    <period unit="h" value="6" />
+                  </effectiveTime>
+                  <!-- Attribute: refill -->
+                  <repeatNumber value="2" />
+                  <!-- Attribute: dose -->
+                  <doseQuantity value="1" />
+                  <rateQuantity unit="ml/min" value="90" />
+                  <maxDoseQuantity nullFlavor="UNK">
+                    <numerator nullFlavor="UNK" />
+                    <denominator nullFlavor="UNK" />
+                  </maxDoseQuantity>
+                  <consumable>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- Medication Information (consolidation) template -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" />
+                      <id root="37bfe02a-3e97-4bd6-9197-bbd0ed0de79e" />
+                      <manufacturedMaterial>
+                        <code code="978736" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="0.3 ML Dalteparin Sodium 25000 UNT/ML Prefilled Syringe" sdtc:valueSet="2.16.840.1.113883.3.117.1.7.1.200">
+                          <!-- Would be actual    valueSetOID -->
+                          <originalText>
+                            <reference value="#Med1" />
+                          </originalText>
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </consumable>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
