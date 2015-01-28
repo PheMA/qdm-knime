@@ -14,6 +14,7 @@ import net.lingala.zip4j.exception.ZipException;
 
 import org.junit.Test;
 
+import edu.phema.QdmKnime.Aggregation;
 import edu.phema.QdmKnime.Attribute;
 import edu.phema.QdmKnime.Connection;
 import edu.phema.QdmKnime.KnimeProject;
@@ -130,6 +131,14 @@ public class WorkflowTest {
 		nodeF.setInputElementId(0, nodeEId);
 		nodeF.setMode_Comparison(null, 20.0);
 		//nodeF.setMode_isPresent();
+		
+		int nodeGId = newNode();
+		Aggregation nodeG = new Aggregation(nodeGId);
+		nodeG.setNodeText("COUNT >= 5");
+		nodeG.setGroupByNodeText("COUNT");
+		nodeG.setFilterNodeText(">= 5");
+		project.addKnimeNode(nodeG);
+		
 		project.addKnimeNode(nodeF);
 		
 		/*
@@ -161,6 +170,8 @@ public class WorkflowTest {
 		project.addKnimeConnection(connD);
 		connD.setSource(nodeE.getId(), 0);
 		connD.setDest(nodeF.getId(), 1);
+		
+		
 		
 		project.buildProject();
 		
