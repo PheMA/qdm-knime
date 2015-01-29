@@ -1,0 +1,2867 @@
+{
+  "id": "40280381-446B-B8C2-0144-95DE69F81CF4",
+  "nqf_id": "0437",
+  "hqmf_id": "40280381-446B-B8C2-0144-95DE69F81CF4",
+  "hqmf_set_id": "2838875A-07B5-4BF0-BE04-C3EB99F53975",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS91v4",
+  "name": "Thrombolytic Therapy",
+  "description": "Acute ischemic stroke patients who arrive at this hospital within 2 hours of time last known well and for whom IV t-PA was initiated at this hospital within 3 hours of time last known well.",
+  "type": "eh",
+  "category": "Stroke",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0437';\n        hqmfjs.hqmf_id = '40280381-446B-B8C2-0144-95DE69F81CF4';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.292':{'SNOMED-CT':['4525004']},'2.16.840.1.113883.3.117.1.7.1.424':{'SNOMED-CT':['183452005','32485007']},'2.16.840.1.113883.3.117.1.7.1.212':{'SNOMED-CT':['195155004','195160000','195165005','195167002','195168007','195169004','20908003','230706003','230707007','230708002','230709005','230710000','230711001','230712008','23276006','270907008','274100004','276277008','276278003','276280009','276281008','276282001','276283006','276284000','276285004','276286003','276722003','28318001','28837001','42429001','425957003','449020009','49422009','52201006','73020009','75038005','7713009','95454007'],'ICD-9-CM':['430','431'],'ICD-10-CM':['I60.00','I60.01','I60.02','I60.10','I60.11','I60.12','I60.20','I60.21','I60.22','I60.30','I60.31','I60.32','I60.4','I60.50','I60.51','I60.52','I60.6','I60.7','I60.8','I60.9','I61.0','I61.1','I61.2','I61.3','I61.4','I61.5','I61.6','I61.8','I61.9']},'2.16.840.1.113883.3.117.1.7.1.247':{'SNOMED-CT':['111297002','116288000','195185009','195186005','195189003','195190007','195212005','195213000','195216008','195217004','195230003','230690007','230691006','230692004','230693009','230694003','230695002','230696001','230698000','230699008','230700009','233964008','288723005','300920004','64586002','71444005'],'ICD-9-CM':['433.01','433.10','433.11','433.21','433.31','433.81','433.91','434.00','434.01','434.11','434.91','436'],'ICD-10-CM':['I63.00','I63.011','I63.012','I63.019','I63.02','I63.031','I63.032','I63.039','I63.09','I63.10','I63.111','I63.112','I63.119','I63.12','I63.131','I63.132','I63.139','I63.19','I63.20','I63.211','I63.212','I63.219','I63.22','I63.231','I63.232','I63.239','I63.29','I63.30','I63.311','I63.312','I63.319','I63.321','I63.322','I63.329','I63.331','I63.332','I63.339','I63.341','I63.342','I63.349','I63.39','I63.40','I63.411','I63.412','I63.419','I63.421','I63.422','I63.429','I63.431','I63.432','I63.439','I63.441','I63.442','I63.449','I63.49','I63.50','I63.511','I63.512','I63.519','I63.521','I63.522','I63.529','I63.531','I63.532','I63.539','I63.541','I63.542','I63.549','I63.59','I63.6','I63.8','I63.9','I65.21','I65.22','I65.23','I65.29','I66.01','I66.02','I66.03','I66.09','I66.11','I66.12','I66.13','I66.19','I66.21','I66.22','I66.23','I66.29','I66.3','I67.89']},'2.16.840.1.113883.3.117.1.7.1.93':{'SNOMED-CT':['105480006','182890002','182895007','182896008','182897004','182898009','182900006','182901005','182903008','183944003','183945002','183947005','183948000','275936005','371138003','385648002','406149000','413312003','416432009','443390004']},'2.16.840.1.113883.3.117.1.7.1.226':{'RxNorm':['308056']},'2.16.840.1.113883.3.117.1.7.1.213':{'LOINC':['34714-6','38875-1','46418-0','52129-4','6301-6']},'2.16.840.1.113883.3.117.1.7.1.222':{'SNOMED-CT':['418114005','419993007','47625008']},'2.16.840.1.113883.3.117.1.7.1.267':{'LOINC':['13056-7','15201-7','26515-7','26516-5','49497-1','71692-8','777-3','778-1']},'2.16.840.1.113883.3.117.1.7.1.417':{'SNOMED-CT':['128974000']},'2.16.840.1.113762.1.4.1045.14':{'SNOMED-CT':['405795006']},'2.16.840.1.113762.1.4.1021.6':{'RxNorm':['8410']},'2.16.840.1.113762.1.4.1045.24':{'LOINC':['46417-2','5964-2']},'2.16.840.1.113762.1.4.1045.25':{'LOINC':['3173-2']},'2.16.840.1.113883.3.526.2.1044':{'LOINC':['8480-6']},'2.16.840.1.113883.3.526.2.1045':{'LOINC':['8462-4']},'2.16.840.1.113883.3.117.1.7.1.269':{'LOINC':['72089-6']},'2.16.840.1.113762.1.4.1045.15':{'SNOMED-CT':['307521008']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.117.1.7.1.14':{'SNOMED-CT':['63161005']},'2.16.840.1.113883.3.117.1.7.1.473':{'SNOMED-CT':['161590003','183932001','183964008','183966005','266721009','31438003','35688006','397745006','407563006','410529002','410534003','410536001','416098002','419511003','428024001','428119001','59037007','62014003','79899007']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceABaselineState1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.417\", \"specificOccurrence\": \"OccurrenceABaselineState1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANonElectiveInpatientEncounter3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\", \"specificOccurrence\": \"OccurrenceANonElectiveInpatientEncounter3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceATimeOfSymptomOnset4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.14\", \"specificOccurrence\": \"OccurrenceATimeOfSymptomOnset4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABaselineState1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.417\", \"specificOccurrence\": \"OccurrenceABaselineState1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANonElectiveInpatientEncounter3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\", \"specificOccurrence\": \"OccurrenceANonElectiveInpatientEncounter3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.MedicationAdministeredNotDoneMedicalReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredNotDonePatientRefusal = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceATimeOfSymptomOnset4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.14\", \"specificOccurrence\": \"OccurrenceATimeOfSymptomOnset4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.MedicationOrderNotDoneMedicalReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationOrderNotDonePatientRefusal = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingBaselineState = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.417\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingTimeOfSymptomOnset = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.14\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_5 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.OccurrenceANonElectiveInpatientEncounter3(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\", \"specificOccurrence\": \"OccurrenceANonElectiveInpatientEncounter3\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\", \"specificOccurrence\": \"OccurrenceANonElectiveInpatientEncounter3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\", \"specificOccurrence\": \"OccurrenceANonElectiveInpatientEncounter3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActiveIschemicStroke_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.247\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_16(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveHemorrhagicStroke_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.212\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_16(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveIschemicStroke_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.247\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceANonElectiveInpatientEncounter3(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit2_precondition_21 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceANonElectiveInpatientEncounter3(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceABaselineState1_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.417\", \"specificOccurrence\": \"OccurrenceABaselineState1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit2(patient), new IVL_PQ(null, new PQ(120, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.14\", \"specificOccurrence\": \"OccurrenceATimeOfSymptomOnset4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit2(patient), new IVL_PQ(null, new PQ(120, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceABaselineState1_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.417\", \"specificOccurrence\": \"OccurrenceABaselineState1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultProthrombinTime_precondition_30 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.24\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(15, \"s\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultInr_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.213\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(1.7, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultPlateletCount_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.267\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(100000, null, false)));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultPartialThromboplastinTime_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.25\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(40, \"s\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingSystolicBloodPressure_precondition_38 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.2.1044\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(185, \"mm[Hg]\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingDiastolicBloodPressure_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.2.1045\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(110, \"mm[Hg]\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.269\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new PQ(0, null, true));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.269\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(22, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderTPaIngredientSpecific_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderTPaIngredientSpecific_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_50 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1_precondition_55(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.14\", \"specificOccurrence\": \"OccurrenceATimeOfSymptomOnset4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultProthrombinTime_precondition_57 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.24\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(15, \"s\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultInr_precondition_59 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.213\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(1.7, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultPlateletCount_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.267\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(100000, null, false)));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultPartialThromboplastinTime_precondition_63 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.25\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(40, \"s\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingSystolicBloodPressure_precondition_65 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.2.1044\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(185, \"mm[Hg]\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingDiastolicBloodPressure_precondition_67 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.2.1045\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(110, \"mm[Hg]\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_69 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.269\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new PQ(0, null, true));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_71 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.269\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(22, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderTPaIngredientSpecific_precondition_73 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderTPaIngredientSpecific_precondition_75 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_77 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_79 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_82(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit2_precondition_89 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_84 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit2_precondition_89(patient), new IVL_PQ(null, new PQ(2, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedIntravenousThrombolyticTPaTherapy_precondition_86 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.15\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit2_precondition_89(patient), new IVL_PQ(null, new PQ(2, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_94 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceABaselineState1(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_96 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.226\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceATimeOfSymptomOnset4(patient), new IVL_PQ(null, new PQ(180, \"min\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceABaselineState1\",\"type\":\"PHYSICAL_EXAM_BASELINE_STATE\",\"function\":\"OccurrenceABaselineState1\"},{\"id\":\"OccurrenceAEmergencyDepartmentVisit2\",\"type\":\"ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT\",\"function\":\"OccurrenceAEmergencyDepartmentVisit2\"},{\"id\":\"OccurrenceANonElectiveInpatientEncounter3\",\"type\":\"ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER\",\"function\":\"OccurrenceANonElectiveInpatientEncounter3\"},{\"id\":\"OccurrenceATimeOfSymptomOnset4\",\"type\":\"PHYSICAL_EXAM_TIME_OF_SYMPTOM_ONSET\",\"function\":\"OccurrenceATimeOfSymptomOnset4\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('18', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_5, hqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_7, hqmfjs.OccurrenceANonElectiveInpatientEncounter3_precondition_9,\n      atLeastOneTrue('15', patient, initialSpecificContext, hqmfjs.DiagnosisActiveIschemicStroke_precondition_11, hqmfjs.DiagnosisActiveHemorrhagicStroke_precondition_13\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('29', patient, initialSpecificContext, hqmfjs.DiagnosisActiveIschemicStroke_precondition_19, hqmfjs.OccurrenceAEmergencyDepartmentVisit2_precondition_21,\n      atLeastOneTrue('27', patient, initialSpecificContext, hqmfjs.OccurrenceABaselineState1_precondition_23, hqmfjs.OccurrenceATimeOfSymptomOnset4_precondition_25\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('100', patient, initialSpecificContext,\n      atLeastOneTrue('98', patient, initialSpecificContext, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_94, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_96\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    allTrue('93', patient, initialSpecificContext,\n      atLeastOneTrue('91', patient, initialSpecificContext,\n        atLeastOneTrue('54', patient, initialSpecificContext, hqmfjs.LaboratoryTestResultProthrombinTime_precondition_30, hqmfjs.LaboratoryTestResultInr_precondition_32, hqmfjs.LaboratoryTestResultPlateletCount_precondition_34, hqmfjs.LaboratoryTestResultPartialThromboplastinTime_precondition_36, hqmfjs.PhysicalExamFindingSystolicBloodPressure_precondition_38, hqmfjs.PhysicalExamFindingDiastolicBloodPressure_precondition_40, hqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_42, hqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_44, hqmfjs.MedicationOrderTPaIngredientSpecific_precondition_46, hqmfjs.MedicationOrderTPaIngredientSpecific_precondition_48, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_50, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_52\n        ),\n        atLeastOneTrue('81', patient, initialSpecificContext, hqmfjs.LaboratoryTestResultProthrombinTime_precondition_57, hqmfjs.LaboratoryTestResultInr_precondition_59, hqmfjs.LaboratoryTestResultPlateletCount_precondition_61, hqmfjs.LaboratoryTestResultPartialThromboplastinTime_precondition_63, hqmfjs.PhysicalExamFindingSystolicBloodPressure_precondition_65, hqmfjs.PhysicalExamFindingDiastolicBloodPressure_precondition_67, hqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_69, hqmfjs.RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_71, hqmfjs.MedicationOrderTPaIngredientSpecific_precondition_73, hqmfjs.MedicationOrderTPaIngredientSpecific_precondition_75, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_77, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_79\n        ),\n        atLeastOneTrue('88', patient, initialSpecificContext, hqmfjs.MedicationAdministeredThrombolyticTPaTherapy_precondition_84, hqmfjs.ProcedurePerformedIntravenousThrombolyticTPaTherapy_precondition_86\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = [\"OccurrenceANonElectiveInpatientEncounter3\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0437",
+    "hqmf_id": "40280381-446B-B8C2-0144-95DE69F81CF4",
+    "hqmf_set_id": "2838875A-07B5-4BF0-BE04-C3EB99F53975",
+    "hqmf_version_number": 4,
+    "title": "Thrombolytic Therapy",
+    "description": "Acute ischemic stroke patients who arrive at this hospital within 2 hours of time last known well and for whom IV t-PA was initiated at this hospital within 3 hours of time last known well.",
+    "cms_id": "CMS91v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "3D3E3EF8-0282-4BC0-91DD-B731AFF3DE71",
+        "preconditions": [
+          {
+            "id": 18,
+            "preconditions": [
+              {
+                "id": 5,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_5"
+              },
+              {
+                "id": 7,
+                "reference": "OccurrenceANonElectiveInpatientEncounter3_precondition_7"
+              },
+              {
+                "id": 9,
+                "reference": "OccurrenceANonElectiveInpatientEncounter3_precondition_9"
+              },
+              {
+                "id": 15,
+                "preconditions": [
+                  {
+                    "id": 11,
+                    "reference": "DiagnosisActiveIschemicStroke_precondition_11"
+                  },
+                  {
+                    "id": 13,
+                    "reference": "DiagnosisActiveHemorrhagicStroke_precondition_13"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "0A4DF333-B2BD-4CCB-8277-4BE8FFE10120",
+        "preconditions": [
+          {
+            "id": 29,
+            "preconditions": [
+              {
+                "id": 19,
+                "reference": "DiagnosisActiveIschemicStroke_precondition_19"
+              },
+              {
+                "id": 21,
+                "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_21"
+              },
+              {
+                "id": 27,
+                "preconditions": [
+                  {
+                    "id": 23,
+                    "reference": "OccurrenceABaselineState1_precondition_23"
+                  },
+                  {
+                    "id": 25,
+                    "reference": "OccurrenceATimeOfSymptomOnset4_precondition_25"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "281A9391-5F14-4C96-AD4B-5A7A5BAA15E6",
+        "preconditions": [
+          {
+            "id": 93,
+            "preconditions": [
+              {
+                "id": 91,
+                "preconditions": [
+                  {
+                    "id": 54,
+                    "preconditions": [
+                      {
+                        "id": 30,
+                        "reference": "LaboratoryTestResultProthrombinTime_precondition_30"
+                      },
+                      {
+                        "id": 32,
+                        "reference": "LaboratoryTestResultInr_precondition_32"
+                      },
+                      {
+                        "id": 34,
+                        "reference": "LaboratoryTestResultPlateletCount_precondition_34"
+                      },
+                      {
+                        "id": 36,
+                        "reference": "LaboratoryTestResultPartialThromboplastinTime_precondition_36"
+                      },
+                      {
+                        "id": 38,
+                        "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_38"
+                      },
+                      {
+                        "id": 40,
+                        "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_40"
+                      },
+                      {
+                        "id": 42,
+                        "reference": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_42"
+                      },
+                      {
+                        "id": 44,
+                        "reference": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_44"
+                      },
+                      {
+                        "id": 46,
+                        "reference": "MedicationOrderTPaIngredientSpecific_precondition_46"
+                      },
+                      {
+                        "id": 48,
+                        "reference": "MedicationOrderTPaIngredientSpecific_precondition_48"
+                      },
+                      {
+                        "id": 50,
+                        "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_50"
+                      },
+                      {
+                        "id": 52,
+                        "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_52"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 81,
+                    "preconditions": [
+                      {
+                        "id": 57,
+                        "reference": "LaboratoryTestResultProthrombinTime_precondition_57"
+                      },
+                      {
+                        "id": 59,
+                        "reference": "LaboratoryTestResultInr_precondition_59"
+                      },
+                      {
+                        "id": 61,
+                        "reference": "LaboratoryTestResultPlateletCount_precondition_61"
+                      },
+                      {
+                        "id": 63,
+                        "reference": "LaboratoryTestResultPartialThromboplastinTime_precondition_63"
+                      },
+                      {
+                        "id": 65,
+                        "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_65"
+                      },
+                      {
+                        "id": 67,
+                        "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_67"
+                      },
+                      {
+                        "id": 69,
+                        "reference": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_69"
+                      },
+                      {
+                        "id": 71,
+                        "reference": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_71"
+                      },
+                      {
+                        "id": 73,
+                        "reference": "MedicationOrderTPaIngredientSpecific_precondition_73"
+                      },
+                      {
+                        "id": 75,
+                        "reference": "MedicationOrderTPaIngredientSpecific_precondition_75"
+                      },
+                      {
+                        "id": 77,
+                        "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_77"
+                      },
+                      {
+                        "id": 79,
+                        "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_79"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 88,
+                    "preconditions": [
+                      {
+                        "id": 84,
+                        "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_84"
+                      },
+                      {
+                        "id": 86,
+                        "reference": "ProcedurePerformedIntravenousThrombolyticTPaTherapy_precondition_86"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "8EF92A8C-AABB-4832-A645-3CDB65D1DEFA",
+        "preconditions": [
+          {
+            "id": 100,
+            "preconditions": [
+              {
+                "id": 98,
+                "preconditions": [
+                  {
+                    "id": 94,
+                    "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_94"
+                  },
+                  {
+                    "id": 96,
+                    "reference": "MedicationAdministeredThrombolyticTPaTherapy_precondition_96"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceABaselineState1": {
+        "title": "Baseline State",
+        "description": "Physical Exam: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_BASELINE_STATE",
+        "source_data_criteria": "OccurrenceABaselineState1",
+        "variable": false
+      },
+      "OccurrenceAEmergencyDepartmentVisit2": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+        "variable": false
+      },
+      "OccurrenceANonElectiveInpatientEncounter3": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER",
+        "source_data_criteria": "OccurrenceANonElectiveInpatientEncounter3",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Administered not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDonePatientRefusal": {
+        "title": "Patient Refusal",
+        "description": "Medication, Administered not done: Patient Refusal",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+        "variable": false
+      },
+      "OccurrenceATimeOfSymptomOnset4": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_TIME_OF_SYMPTOM_ONSET",
+        "source_data_criteria": "OccurrenceATimeOfSymptomOnset4",
+        "variable": false
+      },
+      "MedicationOrderNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Order not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationOrderNotDonePatientRefusal": {
+        "title": "Patient Refusal",
+        "description": "Medication, Order not done: Patient Refusal",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+        "variable": false
+      },
+      "PhysicalExamFindingBaselineState": {
+        "title": "Baseline State",
+        "description": "Physical Exam, Finding: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingBaselineState",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false
+      },
+      "PhysicalExamFindingTimeOfSymptomOnset": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam, Finding: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingTimeOfSymptomOnset",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_5": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceANonElectiveInpatientEncounter3",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceANonElectiveInpatientEncounter3_precondition_7": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER",
+        "source_data_criteria": "OccurrenceANonElectiveInpatientEncounter3",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "OccurrenceANonElectiveInpatientEncounter3_precondition_9": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER",
+        "source_data_criteria": "OccurrenceANonElectiveInpatientEncounter3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceANonElectiveInpatientEncounter3_precondition_16": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER",
+        "source_data_criteria": "OccurrenceANonElectiveInpatientEncounter3",
+        "variable": false
+      },
+      "DiagnosisActiveIschemicStroke_precondition_11": {
+        "title": "Ischemic Stroke",
+        "description": "Diagnosis, Active: Ischemic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.247",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicStroke",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceANonElectiveInpatientEncounter3_precondition_16"
+          }
+        ]
+      },
+      "DiagnosisActiveHemorrhagicStroke_precondition_13": {
+        "title": "Hemorrhagic Stroke",
+        "description": "Diagnosis, Active: Hemorrhagic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.212",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveHemorrhagicStroke",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceANonElectiveInpatientEncounter3_precondition_16"
+          }
+        ]
+      },
+      "DiagnosisActiveIschemicStroke_precondition_19": {
+        "title": "Ischemic Stroke",
+        "description": "Diagnosis, Active: Ischemic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.247",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicStroke",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceANonElectiveInpatientEncounter3"
+          }
+        ]
+      },
+      "OccurrenceAEmergencyDepartmentVisit2_precondition_21": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceANonElectiveInpatientEncounter3",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceABaselineState1_precondition_23": {
+        "title": "Baseline State",
+        "description": "Physical Exam: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_BASELINE_STATE",
+        "source_data_criteria": "OccurrenceABaselineState1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAEmergencyDepartmentVisit2",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "120",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceATimeOfSymptomOnset4_precondition_25": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_TIME_OF_SYMPTOM_ONSET",
+        "source_data_criteria": "OccurrenceATimeOfSymptomOnset4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEmergencyDepartmentVisit2",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "120",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceABaselineState1_precondition_55": {
+        "title": "Baseline State",
+        "description": "Physical Exam: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_BASELINE_STATE",
+        "source_data_criteria": "OccurrenceABaselineState1",
+        "variable": false
+      },
+      "LaboratoryTestResultProthrombinTime_precondition_30": {
+        "title": "Prothrombin Time",
+        "description": "Laboratory Test, Result: Prothrombin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.24",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultProthrombinTime",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "s",
+            "value": "15",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultInr_precondition_32": {
+        "title": "INR",
+        "description": "Laboratory Test, Result: INR",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultInr",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "1.7",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultPlateletCount_precondition_34": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Result: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPlateletCount",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "value": "100000",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultPartialThromboplastinTime_precondition_36": {
+        "title": "Partial Thromboplastin Time",
+        "description": "Laboratory Test, Result: Partial Thromboplastin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.25",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPartialThromboplastinTime",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "s",
+            "value": "40",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PhysicalExamFindingSystolicBloodPressure_precondition_38": {
+        "title": "Systolic Blood Pressure",
+        "description": "Physical Exam, Finding: Systolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1044",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "mm[Hg]",
+            "value": "185",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PhysicalExamFindingDiastolicBloodPressure_precondition_40": {
+        "title": "Diastolic Blood Pressure",
+        "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1045",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "mm[Hg]",
+            "value": "110",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_42": {
+        "title": "National Institute of Health Stroke Scale",
+        "description": "Risk Category Assessment: National Institute of Health Stroke Scale",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.269",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale",
+        "variable": false,
+        "value": {
+          "type": "PQ",
+          "value": "0",
+          "inclusive?": true,
+          "derived?": false
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_44": {
+        "title": "National Institute of Health Stroke Scale",
+        "description": "Risk Category Assessment: National Institute of Health Stroke Scale",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.269",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "22",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderTPaIngredientSpecific_precondition_46": {
+        "title": "t-PA ingredient specific",
+        "description": "Medication, Order: t-PA ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationOrderTPaIngredientSpecific",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderTPaIngredientSpecific_precondition_48": {
+        "title": "t-PA ingredient specific",
+        "description": "Medication, Order: t-PA ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationOrderTPaIngredientSpecific",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_50": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_52": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1_precondition_55",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceATimeOfSymptomOnset4_precondition_82": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_TIME_OF_SYMPTOM_ONSET",
+        "source_data_criteria": "OccurrenceATimeOfSymptomOnset4",
+        "variable": false
+      },
+      "LaboratoryTestResultProthrombinTime_precondition_57": {
+        "title": "Prothrombin Time",
+        "description": "Laboratory Test, Result: Prothrombin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.24",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultProthrombinTime",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "s",
+            "value": "15",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultInr_precondition_59": {
+        "title": "INR",
+        "description": "Laboratory Test, Result: INR",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultInr",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "1.7",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultPlateletCount_precondition_61": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Result: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPlateletCount",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "value": "100000",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultPartialThromboplastinTime_precondition_63": {
+        "title": "Partial Thromboplastin Time",
+        "description": "Laboratory Test, Result: Partial Thromboplastin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.25",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPartialThromboplastinTime",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "s",
+            "value": "40",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PhysicalExamFindingSystolicBloodPressure_precondition_65": {
+        "title": "Systolic Blood Pressure",
+        "description": "Physical Exam, Finding: Systolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1044",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "mm[Hg]",
+            "value": "185",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PhysicalExamFindingDiastolicBloodPressure_precondition_67": {
+        "title": "Diastolic Blood Pressure",
+        "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1045",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "mm[Hg]",
+            "value": "110",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_69": {
+        "title": "National Institute of Health Stroke Scale",
+        "description": "Risk Category Assessment: National Institute of Health Stroke Scale",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.269",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale",
+        "variable": false,
+        "value": {
+          "type": "PQ",
+          "value": "0",
+          "inclusive?": true,
+          "derived?": false
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale_precondition_71": {
+        "title": "National Institute of Health Stroke Scale",
+        "description": "Risk Category Assessment: National Institute of Health Stroke Scale",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.269",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "22",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderTPaIngredientSpecific_precondition_73": {
+        "title": "t-PA ingredient specific",
+        "description": "Medication, Order: t-PA ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationOrderTPaIngredientSpecific",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderTPaIngredientSpecific_precondition_75": {
+        "title": "t-PA ingredient specific",
+        "description": "Medication, Order: t-PA ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationOrderTPaIngredientSpecific",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_77": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_79": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4_precondition_82",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAEmergencyDepartmentVisit2_precondition_89": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+        "variable": false
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_84": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_89",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "2",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedIntravenousThrombolyticTPaTherapy_precondition_86": {
+        "title": "Intravenous Thrombolytic (t-PA) Therapy",
+        "description": "Procedure, Performed: Intravenous Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.15",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedIntravenousThrombolyticTPaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_89",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "2",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_94": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceABaselineState1",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy_precondition_96": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceATimeOfSymptomOnset4",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "min",
+                "value": "180",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "OccurrenceABaselineState1": {
+        "title": "Baseline State",
+        "description": "Physical Exam: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_BASELINE_STATE",
+        "source_data_criteria": "OccurrenceABaselineState1",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "PhysicalExamFindingDiastolicBloodPressure": {
+        "title": "Diastolic Blood Pressure",
+        "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1045",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+        "variable": false
+      },
+      "OccurrenceAEmergencyDepartmentVisit2": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+        "variable": false
+      },
+      "DiagnosisActiveHemorrhagicStroke": {
+        "title": "Hemorrhagic Stroke",
+        "description": "Diagnosis, Active: Hemorrhagic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.212",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveHemorrhagicStroke",
+        "variable": false
+      },
+      "LaboratoryTestResultInr": {
+        "title": "INR",
+        "description": "Laboratory Test, Result: INR",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultInr",
+        "variable": false
+      },
+      "ProcedurePerformedIntravenousThrombolyticTPaTherapy": {
+        "title": "Intravenous Thrombolytic (t-PA) Therapy",
+        "description": "Procedure, Performed: Intravenous Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.15",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedIntravenousThrombolyticTPaTherapy",
+        "variable": false
+      },
+      "DiagnosisActiveIschemicStroke": {
+        "title": "Ischemic Stroke",
+        "description": "Diagnosis, Active: Ischemic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.247",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicStroke",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale": {
+        "title": "National Institute of Health Stroke Scale",
+        "description": "Risk Category Assessment: National Institute of Health Stroke Scale",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.269",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentNationalInstituteOfHealthStrokeScale",
+        "variable": false
+      },
+      "OccurrenceANonElectiveInpatientEncounter3": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NON_ELECTIVE_INPATIENT_ENCOUNTER",
+        "source_data_criteria": "OccurrenceANonElectiveInpatientEncounter3",
+        "variable": false
+      },
+      "PhysicalExamFindingSystolicBloodPressure": {
+        "title": "Systolic Blood Pressure",
+        "description": "Physical Exam, Finding: Systolic Blood Pressure",
+        "code_list_id": "2.16.840.1.113883.3.526.2.1044",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+        "variable": false
+      },
+      "MedicationAdministeredThrombolyticTPaTherapy": {
+        "title": "Thrombolytic (t-PA) Therapy",
+        "description": "Medication, Administered: Thrombolytic (t-PA) Therapy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredThrombolyticTPaTherapy",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Administered not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDonePatientRefusal": {
+        "title": "Patient Refusal",
+        "description": "Medication, Administered not done: Patient Refusal",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.226",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+        "variable": false
+      },
+      "OccurrenceATimeOfSymptomOnset4": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PHYSICAL_EXAM_TIME_OF_SYMPTOM_ONSET",
+        "source_data_criteria": "OccurrenceATimeOfSymptomOnset4",
+        "variable": false
+      },
+      "LaboratoryTestResultPlateletCount": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Result: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPlateletCount",
+        "variable": false
+      },
+      "LaboratoryTestResultProthrombinTime": {
+        "title": "Prothrombin Time",
+        "description": "Laboratory Test, Result: Prothrombin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.24",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultProthrombinTime",
+        "variable": false
+      },
+      "LaboratoryTestResultPartialThromboplastinTime": {
+        "title": "Partial Thromboplastin Time",
+        "description": "Laboratory Test, Result: Partial Thromboplastin Time",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.25",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultPartialThromboplastinTime",
+        "variable": false
+      },
+      "MedicationOrderTPaIngredientSpecific": {
+        "title": "t-PA ingredient specific",
+        "description": "Medication, Order: t-PA ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderTPaIngredientSpecific",
+        "variable": false
+      },
+      "MedicationOrderNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Order not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationOrderNotDonePatientRefusal": {
+        "title": "Patient Refusal",
+        "description": "Medication, Order not done: Patient Refusal",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.6",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+        "variable": false
+      },
+      "PhysicalExamFindingBaselineState": {
+        "title": "Baseline State",
+        "description": "Physical Exam, Finding: Baseline State",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.417",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingBaselineState",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false
+      },
+      "PhysicalExamFindingTimeOfSymptomOnset": {
+        "title": "Time of Symptom Onset",
+        "description": "Physical Exam, Finding: Time of Symptom Onset",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.14",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingTimeOfSymptomOnset",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "The administration of thrombolytic agents to carefully screened, eligible patients with acute ischemic stroke has been shown to be beneficial in several clinical trials. These included two positive randomized controlled trials in the United States: The National Institute of Neurological Disorders and Stroke (NINDS) Studies, Part I and Part II. Based on the results of these studies, the Food and Drug Administration (FDA) approved the use of intravenous recombinant tissue plasminogen activator (IV r-TPA or t-PA) for the treatment of acute ischemic stroke when given within 3 hours of stroke symptom onset. A large meta-analysis controlling for factors associated with stroke outcome confirmed the benefit of IV t-PA in patients treated within 3 hours of symptom onset. While controversy still exists among some specialists, the major society practice guidelines developed in the United States all recommend the use of IV t-PA for eligible patients. Physicians with experience and skill in stroke management and the interpretation of CT scans should supervise treatment.\n\nThe European Cooperative Acute Stroke Study (ECASS) III trial indicated that intravenous rtPA can be given safely to, and can improve outcomes for, carefully selected patients treated 3 to 4.5 hours after stroke; however, as the NINDS investigators concluded, the earlier that IV thrombolytic therapy is initiated, the better the patient outcome. Therefore, the target for IV t-PA initiation remains within 3 hours of time last known well. The administration of IV thrombolytic therapy beyond 3 hours of stroke symptom onset has not been FDA approved.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The administration of thrombolytic agents to carefully screened, eligible patients with acute ischemic stroke has been shown to be beneficial in several clinical trials. These included two positive randomized controlled trials in the United States: The National Institute of Neurological Disorders and Stroke (NINDS) Studies, Part I and Part II. Based on the results of these studies, the Food and Drug Administration (FDA) approved the use of intravenous recombinant tissue plasminogen activator (IV r-TPA or t-PA) for the treatment of acute ischemic stroke when given within 3 hours of stroke symptom onset. A large meta-analysis controlling for factors associated with stroke outcome confirmed the benefit of IV t-PA in patients treated within 3 hours of symptom onset. While controversy still exists among some specialists, the major society practice guidelines developed in the United States all recommend the use of IV t-PA for eligible patients. Physicians with experience and skill in stroke management and the interpretation of CT scans should supervise treatment.\n\nThe European Cooperative Acute Stroke Study (ECASS) III trial indicated that intravenous rtPA can be given safely to, and can improve outcomes for, carefully selected patients treated 3 to 4.5 hours after stroke; however, as the NINDS investigators concluded, the earlier that IV thrombolytic therapy is initiated, the better the patient outcome. Therefore, the target for IV t-PA initiation remains within 3 hours of time last known well. The administration of IV thrombolytic therapy beyond 3 hours of stroke symptom onset has not been FDA approved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "The administration of thrombolytic agents to carefully screened, eligible patients with acute ischemic stroke has been shown to be beneficial in several clinical trials. Intravenous recombinant tissue plasminogen activator (IV r-TPA or t-PA) should be used for the treatment of acute ischemic stroke when given within 3 hours of stroke symptom onset.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The administration of thrombolytic agents to carefully screened, eligible patients with acute ischemic stroke has been shown to be beneficial in several clinical trials. Intravenous recombinant tissue plasminogen activator (IV r-TPA or t-PA) should be used for the treatment of acute ischemic stroke when given within 3 hours of stroke symptom onset.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "An increase in the rate",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "An increase in the rate",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0437",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0437"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "91",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "91",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Wardlaw, J. M., V. Murray, E. Berge, and G. J. Del Zoppo. \"Thrombolysis for Acute Ischaemic Stroke.\" [In eng]. Cochrane Database Syst Rev, no. 4 (2009): CD000213.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Wardlaw, J. M., V. Murray, E. Berge, and G. J. Del Zoppo. \"Thrombolysis for Acute Ischaemic Stroke.\" [In eng]. Cochrane Database Syst Rev, no. 4 (2009): CD000213.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nThe “baseline state” value set and its associated effectiveTime intend to capture the date and time prior to hospital arrival at which it was witnessed or reported that the patient was last known to be without the signs and symptoms of the current stroke or at his or her baseline state of health. The time of symptom onset value set and its associated effectiveTime is intended to capture the date and time at which symptoms started if symptom onset was witnessed. Since none of the value sets make any specific reference to stroke, their use is only meaningful in the context of stroke-specific documentation, such as a stroke assessment form or template. \n\nThe “Non-elective Inpatient Encounter” value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the “Inpatient encounter” value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective admissions include emergency, urgent and unplanned admissions, including patients admitted for observation.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nThe “baseline state” value set and its associated effectiveTime intend to capture the date and time prior to hospital arrival at which it was witnessed or reported that the patient was last known to be without the signs and symptoms of the current stroke or at his or her baseline state of health. The time of symptom onset value set and its associated effectiveTime is intended to capture the date and time at which symptoms started if symptom onset was witnessed. Since none of the value sets make any specific reference to stroke, their use is only meaningful in the context of stroke-specific documentation, such as a stroke assessment form or template. \n\nThe “Non-elective Inpatient Encounter” value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the “Inpatient encounter” value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective admissions include emergency, urgent and unplanned admissions, including patients admitted for observation.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients age 18 and older discharged from inpatient care (non-elective admissions) with a principal diagnosis of ischemic or hemorrhagic stroke and a length of stay less or equal to 120 days.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients age 18 and older discharged from inpatient care (non-elective admissions) with a principal diagnosis of ischemic or hemorrhagic stroke and a length of stay less or equal to 120 days.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Ischemic stroke patients admitted through the Emergency Department whose time of arrival is within 2 hours (less than or equal to 120 minutes) of 1) time they were known to be at their baseline state of health; or 2) time of symptom onset if time last known at baseline state is not known.",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Ischemic stroke patients admitted through the Emergency Department whose time of arrival is within 2 hours (less than or equal to 120 minutes) of 1) time they were known to be at their baseline state of health; or 2) time of symptom onset if time last known at baseline state is not known.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Acute ischemic stroke patients for whom IV thrombolytic therapy was initiated at this hospital within 3 hours (less than or equal to 180 minutes) of when it was witnessed or reported that the patient was last known to be without the signs and symptoms of the current stroke or at his or her baseline state of health.",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Acute ischemic stroke patients for whom IV thrombolytic therapy was initiated at this hospital within 3 hours (less than or equal to 180 minutes) of when it was witnessed or reported that the patient was last known to be without the signs and symptoms of the current stroke or at his or her baseline state of health.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Patients with a documented Reason For Not Initiating IV Thrombolytic.",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with a documented Reason For Not Initiating IV Thrombolytic.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.292",
+    "2.16.840.1.113883.3.117.1.7.1.424",
+    "2.16.840.1.113883.3.117.1.7.1.212",
+    "2.16.840.1.113883.3.117.1.7.1.247",
+    "2.16.840.1.113883.3.117.1.7.1.93",
+    "2.16.840.1.113883.3.117.1.7.1.226",
+    "2.16.840.1.113883.3.117.1.7.1.213",
+    "2.16.840.1.113883.3.117.1.7.1.222",
+    "2.16.840.1.113883.3.117.1.7.1.267",
+    "2.16.840.1.113883.3.117.1.7.1.417",
+    "2.16.840.1.113762.1.4.1045.14",
+    "2.16.840.1.113762.1.4.1021.6",
+    "2.16.840.1.113762.1.4.1045.24",
+    "2.16.840.1.113762.1.4.1045.25",
+    "2.16.840.1.113883.3.526.2.1044",
+    "2.16.840.1.113883.3.526.2.1045",
+    "2.16.840.1.113883.3.117.1.7.1.269",
+    "2.16.840.1.113762.1.4.1045.15",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.117.1.7.1.14",
+    "2.16.840.1.113883.3.117.1.7.1.473"
+  ],
+  "population_ids": {
+    "IPP": "3D3E3EF8-0282-4BC0-91DD-B731AFF3DE71",
+    "DENOM": "0A4DF333-B2BD-4CCB-8277-4BE8FFE10120",
+    "NUMER": "8EF92A8C-AABB-4832-A645-3CDB65D1DEFA",
+    "DENEXCEP": "281A9391-5F14-4C96-AD4B-5A7A5BAA15E6"
+  }
+}

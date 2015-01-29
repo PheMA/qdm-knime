@@ -1,0 +1,4653 @@
+{
+  "id": "0373",
+  "hqmf_id": "40280381-446B-B8C2-0144-9EDBDF9F2CC2",
+  "hqmf_set_id": "6F069BB2-B3C4-4BF4-ADC5-F6DD424A10B7",
+  "hqmf_version_number": 3,
+  "title": "Venous Thromboembolism Patients with Anticoagulation Overlap Therapy",
+  "description": "This measure assesses the number of patients diagnosed with confirmed VTE who received an overlap of parenteral (intravenous [IV] or subcutaneous [subcu]) anticoagulation and warfarin therapy. For patients who received less than five days of overlap therapy, they should be discharged on both medications or have a reason for discontinuation of overlap therapy. Overlap therapy should be administered for at least five days with an international normalized ratio (INR) greater than or equal to 2 prior to discontinuation of the parenteral anticoagulation therapy, discharged on both medications or have a reason for discontinuation of overlap therapy.",
+  "cms_id": "CMS73v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "35319B4C-AE79-4B61-8204-C838BB1163B3",
+      "preconditions": [
+        {
+          "id": 31,
+          "preconditions": [
+            {
+              "id": 5,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_5"
+            },
+            {
+              "id": 7,
+              "reference": "OccurrenceAEncounterInpatient3_precondition_7"
+            },
+            {
+              "id": 9,
+              "reference": "OccurrenceAEncounterInpatient3_precondition_9"
+            },
+            {
+              "id": 29,
+              "preconditions": [
+                {
+                  "id": 15,
+                  "preconditions": [
+                    {
+                      "id": 11,
+                      "reference": "DiagnosisActiveVenousThromboembolism_precondition_11"
+                    },
+                    {
+                      "id": 13,
+                      "reference": "DiagnosisActiveObstetricsVte_precondition_13"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 27,
+                  "preconditions": [
+                    {
+                      "id": 18,
+                      "reference": "OccurrenceAEncounterInpatient3_precondition_18"
+                    },
+                    {
+                      "id": 24,
+                      "preconditions": [
+                        {
+                          "id": 20,
+                          "reference": "DiagnosisActiveVenousThromboembolism_precondition_20"
+                        },
+                        {
+                          "id": 22,
+                          "reference": "DiagnosisActiveObstetricsVte_precondition_22"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "4F931730-52B1-46EA-8DD6-C22061E92E2E",
+      "preconditions": [
+        {
+          "id": 51,
+          "preconditions": [
+            {
+              "id": 43,
+              "reference": "GROUP_FIRST_298"
+            },
+            {
+              "id": 49,
+              "preconditions": [
+                {
+                  "id": 45,
+                  "reference": "MedicationAdministeredWarfarin_precondition_45"
+                },
+                {
+                  "id": 47,
+                  "reference": "MedicationAdministeredWarfarin_precondition_47"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "9381821C-1378-4B91-9569-1FF645A72C09",
+      "preconditions": [
+        {
+          "id": 82,
+          "preconditions": [
+            {
+              "id": 80,
+              "preconditions": [
+                {
+                  "id": 56,
+                  "preconditions": [
+                    {
+                      "id": 52,
+                      "reference": "InterventionOrderComfortMeasures_precondition_52"
+                    },
+                    {
+                      "id": 54,
+                      "reference": "InterventionPerformedComfortMeasures_precondition_54"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 68,
+                  "preconditions": [
+                    {
+                      "id": 59,
+                      "reference": "OccurrenceAEncounterInpatient3_precondition_59"
+                    },
+                    {
+                      "id": 65,
+                      "preconditions": [
+                        {
+                          "id": 61,
+                          "reference": "InterventionOrderComfortMeasures_precondition_61"
+                        },
+                        {
+                          "id": 63,
+                          "reference": "InterventionPerformedComfortMeasures_precondition_63"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 70,
+                  "reference": "OccurrenceAEncounterInpatient3_precondition_70"
+                },
+                {
+                  "id": 72,
+                  "reference": "OccurrenceAEncounterInpatient3_precondition_72"
+                },
+                {
+                  "id": 74,
+                  "reference": "OccurrenceAEncounterInpatient3_precondition_74"
+                },
+                {
+                  "id": 76,
+                  "reference": "OccurrenceAEncounterInpatient3_precondition_76"
+                },
+                {
+                  "id": 78,
+                  "reference": "OccurrenceAEncounterInpatient3_precondition_78"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "E196675E-BFA1-4D68-8B05-B48ACEF1723F",
+      "preconditions": [
+        {
+          "id": 296,
+          "preconditions": [
+            {
+              "id": 294,
+              "preconditions": [
+                {
+                  "id": 225,
+                  "preconditions": [
+                    {
+                      "id": 101,
+                      "preconditions": [
+                        {
+                          "id": 84,
+                          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_84"
+                        },
+                        {
+                          "id": 87,
+                          "reference": "MedicationAdministeredWarfarin_precondition_87"
+                        },
+                        {
+                          "id": 99,
+                          "preconditions": [
+                            {
+                              "id": 89,
+                              "reference": "OccurrenceAEncounterInpatient3_precondition_89"
+                            },
+                            {
+                              "id": 97,
+                              "preconditions": [
+                                {
+                                  "id": 92,
+                                  "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_92"
+                                },
+                                {
+                                  "id": 95,
+                                  "reference": "MedicationAdministeredWarfarin_precondition_95"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 223,
+                      "preconditions": [
+                        {
+                          "id": 163,
+                          "preconditions": [
+                            {
+                              "id": 126,
+                              "reference": "GROUP_DATEDIFF_304"
+                            },
+                            {
+                              "id": 161,
+                              "preconditions": [
+                                {
+                                  "id": 130,
+                                  "reference": "LaboratoryTestResultInr_precondition_130"
+                                },
+                                {
+                                  "id": 155,
+                                  "preconditions": [
+                                    {
+                                      "id": 134,
+                                      "reference": "LaboratoryTestResultInr_precondition_134"
+                                    },
+                                    {
+                                      "id": 153,
+                                      "preconditions": [
+                                        {
+                                          "id": 142,
+                                          "preconditions": [
+                                            {
+                                              "id": 136,
+                                              "reference": "MedicationDischargeParenteralAnticoagulant_precondition_136"
+                                            },
+                                            {
+                                              "id": 138,
+                                              "reference": "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_138"
+                                            },
+                                            {
+                                              "id": 140,
+                                              "reference": "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_140"
+                                            }
+                                          ],
+                                          "conjunction_code": "atLeastOneTrue"
+                                        },
+                                        {
+                                          "id": 149,
+                                          "preconditions": [
+                                            {
+                                              "id": 145,
+                                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_145"
+                                            },
+                                            {
+                                              "id": 147,
+                                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_147"
+                                            }
+                                          ],
+                                          "conjunction_code": "atLeastOneTrue"
+                                        }
+                                      ],
+                                      "conjunction_code": "atLeastOneTrue"
+                                    }
+                                  ],
+                                  "conjunction_code": "allTrue"
+                                },
+                                {
+                                  "id": 159,
+                                  "reference": "DiagnosisActiveThrombocytopenia_precondition_159"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 221,
+                          "preconditions": [
+                            {
+                              "id": 188,
+                              "reference": "GROUP_DATEDIFF_310"
+                            },
+                            {
+                              "id": 219,
+                              "preconditions": [
+                                {
+                                  "id": 190,
+                                  "reference": "MedicationDischargeParenteralAnticoagulant_precondition_190"
+                                },
+                                {
+                                  "id": 196,
+                                  "preconditions": [
+                                    {
+                                      "id": 192,
+                                      "reference": "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_192"
+                                    },
+                                    {
+                                      "id": 194,
+                                      "reference": "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_194"
+                                    }
+                                  ],
+                                  "conjunction_code": "atLeastOneTrue"
+                                },
+                                {
+                                  "id": 203,
+                                  "preconditions": [
+                                    {
+                                      "id": 199,
+                                      "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_199"
+                                    },
+                                    {
+                                      "id": 201,
+                                      "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_201"
+                                    }
+                                  ],
+                                  "conjunction_code": "atLeastOneTrue"
+                                },
+                                {
+                                  "id": 211,
+                                  "preconditions": [
+                                    {
+                                      "id": 207,
+                                      "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_207"
+                                    },
+                                    {
+                                      "id": 209,
+                                      "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_209"
+                                    }
+                                  ],
+                                  "conjunction_code": "atLeastOneTrue"
+                                },
+                                {
+                                  "id": 217,
+                                  "reference": "DiagnosisActiveThrombocytopenia_precondition_217"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 285,
+                  "preconditions": [
+                    {
+                      "id": 235,
+                      "preconditions": [
+                        {
+                          "id": 227,
+                          "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_227"
+                        },
+                        {
+                          "id": 229,
+                          "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_229"
+                        },
+                        {
+                          "id": 231,
+                          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_231"
+                        },
+                        {
+                          "id": 233,
+                          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_233"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 251,
+                      "preconditions": [
+                        {
+                          "id": 238,
+                          "reference": "OccurrenceAEncounterInpatient3_precondition_238"
+                        },
+                        {
+                          "id": 248,
+                          "preconditions": [
+                            {
+                              "id": 240,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_240"
+                            },
+                            {
+                              "id": 242,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_242"
+                            },
+                            {
+                              "id": 244,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_244"
+                            },
+                            {
+                              "id": 246,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_246"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    },
+                    {
+                      "id": 266,
+                      "preconditions": [
+                        {
+                          "id": 253,
+                          "reference": "OccurrenceAVteDiagnosticTest2_precondition_253"
+                        },
+                        {
+                          "id": 263,
+                          "preconditions": [
+                            {
+                              "id": 255,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_255"
+                            },
+                            {
+                              "id": 257,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_257"
+                            },
+                            {
+                              "id": 259,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_259"
+                            },
+                            {
+                              "id": 261,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_261"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    },
+                    {
+                      "id": 283,
+                      "preconditions": [
+                        {
+                          "id": 268,
+                          "reference": "OccurrenceAEncounterInpatient3_precondition_268"
+                        },
+                        {
+                          "id": 270,
+                          "reference": "OccurrenceAVteDiagnosticTest2_precondition_270"
+                        },
+                        {
+                          "id": 280,
+                          "preconditions": [
+                            {
+                              "id": 272,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_272"
+                            },
+                            {
+                              "id": 274,
+                              "reference": "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_274"
+                            },
+                            {
+                              "id": 276,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_276"
+                            },
+                            {
+                              "id": 278,
+                              "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_278"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 291,
+                  "preconditions": [
+                    {
+                      "id": 287,
+                      "reference": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis_precondition_287"
+                    },
+                    {
+                      "id": 289,
+                      "reference": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis_precondition_289"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "MedicationOrderNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Order not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationOrderNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Order not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationDischargeNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Discharge not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationDischargeNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Discharge not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDonePatientRefusal",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient3": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "DiagnosticStudyResultVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Administered not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_5": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient3",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_7": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "LENGTH_OF_STAY": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "unit": "d",
+            "value": "120",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient3_precondition_9": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EDU",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_16": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_11": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_16"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_13": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_16"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_18": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_25": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_20": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_25"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_22": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_25"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_32": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_34": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient3",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_36": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient3",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_37": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_36",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_39": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient3",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_40": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_39"
+        }
+      ]
+    },
+    "GROUP_FIRST_298": {
+      "title": "GROUP_FIRST_298",
+      "description": "",
+      "children_criteria": [
+        "OccurrenceAVteDiagnosticTest2_precondition_32",
+        "OccurrenceAVteDiagnosticTest2_precondition_34",
+        "OccurrenceAVteDiagnosticTest2_precondition_37",
+        "OccurrenceAVteDiagnosticTest2_precondition_40"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_298",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_45": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_47": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_57": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_52": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_57"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_54": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_57"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_59": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_66": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_61": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_66"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_63": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_66"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_70": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient3_precondition_72": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.209",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient3_precondition_74": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient3_precondition_76": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.207",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient3_precondition_78": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.308",
+          "title": "discharge status"
+        }
+      }
+    },
+    "MedicationAdministeredWarfarin_precondition_83": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_84": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_83",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_86": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_87": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_86",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_89": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_91": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_92": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_91",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_94": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_95": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_94",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_103": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_104": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_103",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_106": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_107": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_106",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_109": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_110": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_109",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_112": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_113": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_FIRST_300": {
+      "title": "GROUP_FIRST_300",
+      "description": "",
+      "children_criteria": [
+        "MedicationAdministeredParenteralAnticoagulant_precondition_104",
+        "MedicationAdministeredWarfarin_precondition_107",
+        "MedicationAdministeredParenteralAnticoagulant_precondition_110",
+        "MedicationAdministeredWarfarin_precondition_113"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_300",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_118": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_120": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "GROUP_RECENT_302": {
+      "title": "GROUP_RECENT_302",
+      "description": "",
+      "children_criteria": [
+        "OccurrenceAParenteralAnticoagulant4_precondition_118",
+        "OccurrenceAParenteralAnticoagulant4_precondition_120"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_RECENT_302",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "GROUP_DATEDIFF_304": {
+      "title": "GROUP_DATEDIFF_304",
+      "description": "",
+      "children_criteria": [
+        "GROUP_FIRST_300",
+        "GROUP_RECENT_302"
+      ],
+      "derivation_operator": "XPRODUCT",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_DATEDIFF_304",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "DATEDIFF",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_128": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "LaboratoryTestResultInr_precondition_130": {
+      "title": "INR",
+      "description": "Laboratory Test, Result: INR",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultInr",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "value": "2.0",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_128",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_132": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "LaboratoryTestResultInr_precondition_134": {
+      "title": "INR",
+      "description": "Laboratory Test, Result: INR",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultInr",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "value": "2.0",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_132",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_143": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "MedicationDischargeParenteralAnticoagulant_precondition_136": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Discharge: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_143"
+        }
+      ]
+    },
+    "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_138": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Discharge: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_143"
+        }
+      ]
+    },
+    "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_140": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Discharge: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_143"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_150": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_145": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_150",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_147": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_150",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_157": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "DiagnosisActiveThrombocytopenia_precondition_159": {
+      "title": "Thrombocytopenia",
+      "description": "Diagnosis, Active: Thrombocytopenia",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.45",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveThrombocytopenia",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_157",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_165": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_166": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_165",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_168": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_169": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_168",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_171": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_172": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredWarfarin_precondition_171",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_174": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_175": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MedicationAdministeredParenteralAnticoagulant_precondition_174",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_FIRST_306": {
+      "title": "GROUP_FIRST_306",
+      "description": "",
+      "children_criteria": [
+        "MedicationAdministeredParenteralAnticoagulant_precondition_166",
+        "MedicationAdministeredWarfarin_precondition_169",
+        "MedicationAdministeredParenteralAnticoagulant_precondition_172",
+        "MedicationAdministeredWarfarin_precondition_175"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_306",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_180": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_182": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "GROUP_RECENT_308": {
+      "title": "GROUP_RECENT_308",
+      "description": "",
+      "children_criteria": [
+        "OccurrenceAParenteralAnticoagulant4_precondition_180",
+        "OccurrenceAParenteralAnticoagulant4_precondition_182"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_RECENT_308",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "GROUP_DATEDIFF_310": {
+      "title": "GROUP_DATEDIFF_310",
+      "description": "",
+      "children_criteria": [
+        "GROUP_FIRST_306",
+        "GROUP_RECENT_308"
+      ],
+      "derivation_operator": "XPRODUCT",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_DATEDIFF_310",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "DATEDIFF",
+          "value": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationDischargeParenteralAnticoagulant_precondition_190": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Discharge: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_197": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_192": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Discharge: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_197"
+        }
+      ]
+    },
+    "MedicationDischargeParenteralAnticoagulantIngredientSpecific_precondition_194": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Discharge: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_197"
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_204": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_199": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_204",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_201": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_204",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_212": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_207": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_212",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_209": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_212",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAParenteralAnticoagulant4_precondition_215": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "DiagnosisActiveThrombocytopenia_precondition_217": {
+      "title": "Thrombocytopenia",
+      "description": "Diagnosis, Active: Thrombocytopenia",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.45",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveThrombocytopenia",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAParenteralAnticoagulant4_precondition_215",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_236": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient3"
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_227": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_236",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_229": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_236",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_231": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_236",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_233": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_236",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_238": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_249": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_240": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_249",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_242": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_249",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_244": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_249",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_246": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_249",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_253": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient3",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_264": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_255": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_264",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_257": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_264",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_259": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_264",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_261": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient3_precondition_264",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient3_precondition_268": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_270": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_281": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_272": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_281",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific_precondition_274": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_281",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_276": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_281",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredParenteralAnticoagulant_precondition_278": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_281",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest2_precondition_292": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false
+    },
+    "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis_precondition_287": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient3"
+        },
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_292"
+        }
+      ]
+    },
+    "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis_precondition_289": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        },
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAVteDiagnosticTest2_precondition_292"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "DiagnosisActiveVenousThromboembolism": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false
+    },
+    "DiagnosisActiveObstetricsVte": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false
+    },
+    "LaboratoryTestResultInr": {
+      "title": "INR",
+      "description": "Laboratory Test, Result: INR",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultInr",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "MedicationAdministeredWarfarin": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false
+    },
+    "MedicationDischargeParenteralAnticoagulant": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Discharge: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulant",
+      "variable": false
+    },
+    "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis",
+      "variable": false
+    },
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "MedicationOrderParenteralAnticoagulantIngredientSpecific": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Order: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderParenteralAnticoagulantIngredientSpecific",
+      "variable": false
+    },
+    "MedicationOrderNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Order not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationOrderNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Order not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationDischargeParenteralAnticoagulantIngredientSpecific": {
+      "title": "Parenteral anticoagulant ingredient specific",
+      "description": "Medication, Discharge: Parenteral anticoagulant ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeParenteralAnticoagulantIngredientSpecific",
+      "variable": false
+    },
+    "MedicationDischargeNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Discharge not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationDischargeNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Discharge not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.4",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDonePatientRefusal",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false
+    },
+    "InterventionPerformedComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false
+    },
+    "DiagnosisActiveThrombocytopenia": {
+      "title": "Thrombocytopenia",
+      "description": "Diagnosis, Active: Thrombocytopenia",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.45",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveThrombocytopenia",
+      "variable": false
+    },
+    "OccurrenceAVteDiagnosticTest2": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest2",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient3": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient3",
+      "variable": false
+    },
+    "OccurrenceAParenteralAnticoagulant4": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_PARENTERAL_ANTICOAGULANT",
+      "source_data_criteria": "OccurrenceAParenteralAnticoagulant4",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "DiagnosticStudyResultVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "MedicationAdministeredParenteralAnticoagulant": {
+      "title": "Parenteral Anticoagulant",
+      "description": "Medication, Administered: Parenteral Anticoagulant",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredParenteralAnticoagulant",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Administered not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.266",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "For patients who present with a confirmed acute VTE, parenteral anticoagulation is the first line of therapy because of its rapid onset of action (Buller et al., 2004).  Warfarin can be initiated on the first day of treatment after the first dose of a parenteral anticoagulant has been given. Because the warfarin has a very slow onset of action, it cannot be used as mono-therapy for acute VTE (Ansell et al., 2008). \n\nThe strong (Level I) recommendations to overlap parenteral anticoagulation with oral warfarin therapy in the initial treatment of VTE events is based in part on the known effect of warfarin on the coagulation cascade (Brandjes, et al.,1992). The early increase in the Pro thrombin time (PT) and INR often reflects the laboratory finding of initial reduction in clotting factors of the extrinsic pathway of coagulation resulting in prolongation of the PT/INR, while the patient is still at risk of thromboembolic events due to persistent levels of coagulation factors of the intrinsic pathway and common pathways of coagulation.\n\nThe recommendation that heparins and warfarin overlap for a five-day period is based on pharmacokinetic, pharmacologic, pathophysiologic, and clinical evidence as noted by Wittkowsky A.K. (2005). All studies support the pharmacokinetic characteristics of warfarin and the time delay in achieving an antithrombotic effect suggesting the need for overlap of heparin during initial warfarin dosing in order to prevent thrombus extension, embolization to the lungs, death due to Pulmonary Emboli (PE), and the development of complications such as recurrent thromboembolic events and the postthrombotic syndrome. Kearon et al, 2008 also denotes current recommendation for treatment of confirmed VTE to begin with oral warfarin therapy, with combination of initial anticoagulation therapy for a minimum of 5 days and until the INR is >2.0 for at least 24 hours, and then a recommended target rate.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For patients who present with a confirmed acute VTE, parenteral anticoagulation is the first line of therapy because of its rapid onset of action (Buller et al., 2004).  Warfarin can be initiated on the first day of treatment after the first dose of a parenteral anticoagulant has been given. Because the warfarin has a very slow onset of action, it cannot be used as mono-therapy for acute VTE (Ansell et al., 2008). \n\nThe strong (Level I) recommendations to overlap parenteral anticoagulation with oral warfarin therapy in the initial treatment of VTE events is based in part on the known effect of warfarin on the coagulation cascade (Brandjes, et al.,1992). The early increase in the Pro thrombin time (PT) and INR often reflects the laboratory finding of initial reduction in clotting factors of the extrinsic pathway of coagulation resulting in prolongation of the PT/INR, while the patient is still at risk of thromboembolic events due to persistent levels of coagulation factors of the intrinsic pathway and common pathways of coagulation.\n\nThe recommendation that heparins and warfarin overlap for a five-day period is based on pharmacokinetic, pharmacologic, pathophysiologic, and clinical evidence as noted by Wittkowsky A.K. (2005). All studies support the pharmacokinetic characteristics of warfarin and the time delay in achieving an antithrombotic effect suggesting the need for overlap of heparin during initial warfarin dosing in order to prevent thrombus extension, embolization to the lungs, death due to Pulmonary Emboli (PE), and the development of complications such as recurrent thromboembolic events and the postthrombotic syndrome. Kearon et al, 2008 also denotes current recommendation for treatment of confirmed VTE to begin with oral warfarin therapy, with combination of initial anticoagulation therapy for a minimum of 5 days and until the INR is >2.0 for at least 24 hours, and then a recommended target rate.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Overlap therapy of both warfarin and parenteral therapy is the recommended treatment for VTE patients if there are no contraindications. This therapy should take place over five or more days, until an INR greater than or equal to 2.0 is reached prior to discontinuation of parenteral therapy.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Overlap therapy of both warfarin and parenteral therapy is the recommended treatment for VTE patients if there are no contraindications. This therapy should take place over five or more days, until an INR greater than or equal to 2.0 is reached prior to discontinuation of parenteral therapy.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "An increase in the rate",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "An increase in the rate",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0373",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0373"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "73",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "73",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Wittkowsky AK. Why warfarin and heparin need to overlap when treating acute venous thromboembolism. Dis Mon 2005; 51:112-115.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Wittkowsky AK. Why warfarin and heparin need to overlap when treating acute venous thromboembolism. Dis Mon 2005; 51:112-115.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nFor date difference calculations, use the LAST (most recent) of the alternative dates as the end date and the EARLIEST of the alternative dates as the start date. The calculation should be performed as end date minus start date.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nFor date difference calculations, use the LAST (most recent) of the alternative dates as the end date and the EARLIEST of the alternative dates as the start date. The calculation should be performed as end date minus start date.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients with a diagnosis code for venous thromboembolism (VTE), a patient age greater than or equal to 18 years, and a length of stay less than or equal to 120 days.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with a diagnosis code for venous thromboembolism (VTE), a patient age greater than or equal to 18 years, and a length of stay less than or equal to 120 days.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Patients with confirmed VTE who received warfarin.",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with confirmed VTE who received warfarin.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "•\tPatients with Comfort Measures documented\n•\tPatients discharged to a health care facility for hospice care\n•\tPatients discharged to home for hospice care\n•\tPatients who expired\n•\tPatients who left against medical advice\n•\tPatients discharged to another hospital\n•\tPatients without warfarin therapy during hospitalization \n•\tPatients without VTE confirmed by diagnostic testing",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "•\tPatients with Comfort Measures documented\n•\tPatients discharged to a health care facility for hospice care\n•\tPatients discharged to home for hospice care\n•\tPatients who expired\n•\tPatients who left against medical advice\n•\tPatients discharged to another hospital\n•\tPatients without warfarin therapy during hospitalization \n•\tPatients without VTE confirmed by diagnostic testing",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who received overlap therapy (warfarin and parenteral anticoagulation):\n\n•\tFive or more days, with an INR greater than or equal to 2 prior to discontinuation of parenteral therapy OR\n•\tFive or more days, with an INR less than 2 and discharged on overlap therapy OR\n•\tLess than five days and discharged on overlap therapy OR\n•\tWith documentation of reason for discontinuation of parenteral therapy OR\n•\tWith documentation of a reason for no overlap therapy",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who received overlap therapy (warfarin and parenteral anticoagulation):\n\n•\tFive or more days, with an INR greater than or equal to 2 prior to discontinuation of parenteral therapy OR\n•\tFive or more days, with an INR less than 2 and discharged on overlap therapy OR\n•\tLess than five days and discharged on overlap therapy OR\n•\tWith documentation of reason for discontinuation of parenteral therapy OR\n•\tWith documentation of a reason for no overlap therapy",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

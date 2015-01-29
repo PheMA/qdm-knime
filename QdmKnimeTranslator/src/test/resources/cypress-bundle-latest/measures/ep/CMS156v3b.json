@@ -1,0 +1,1403 @@
+{
+  "id": "40280381-4555-E1C1-0145-9515DE702DF5",
+  "nqf_id": "0022",
+  "hqmf_id": "40280381-4555-E1C1-0145-9515DE702DF5",
+  "hqmf_set_id": "A3837FF8-1ABC-4BA9-800E-FD4E7953ADBD",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS156v3",
+  "name": "Use of High-Risk Medications in the Elderly",
+  "description": "Percentage of patients 66 years of age and older who were ordered high-risk medications. Two rates are reported.\r\na. Percentage of patients who were ordered at least one high-risk medication. \r\nb. Percentage of patients who were ordered at least two different high-risk medications.",
+  "type": "ep",
+  "category": "Core",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0022';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-9515DE702DF5';\n        hqmfjs.sub_id = 'b';\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.196.12.1253':{'RxNorm':['1000351','1000352','1000355','1000356','1000395','1000398','1000486','1000490','1000496','1009467','1010696','1010807','1010946','1012570','1012650','1012690','1012757','1012764','1012904','1012937','1012940','1012950','1012953','1012963','1012970','1012972','1012974','1012980','1012982','1012995','1013611','1013619','1014456','1020199','1020477','1037364','1037379','1038851','1038876','1041814','1042684','1042688','1042693','1042829','1043400','1046384','1046751','1046781','1046799','1048124','1049289','1049630','1049900','1049904','1049906','1049909','1049918','1050385','1052457','1052462','1052467','1052647','1052679','1052928','1053618','1053624','1053629','1085945','1086443','1086463','1086475','1086720','1086750','1086991','1087459','1087607','1088936','1089822','1089917','1089968','1090443','1090532','1090699','1092189','1092373','1092398','1092411','1092566','1093075','1093083','1093098','1094131','1094330','1094350','1094355','1094406','1094434','1094501','1094549','1098443','1098496','1098498','1098881','1098906','1099308','1099446','1099627','1099644','1099653','1099654','1099659','1099668','1099677','1099684','1099694','1099711','1099779','1099788','1099872','1099948','1100501','1101427','1101439','1101446','1101457','1101555','1101741','1101855','1111171','1111440','1112220','1112489','1112779','1112791','1112864','1112906','1112908','1113380','1113397','1113417','1113522','1113998','1114003','1114361','1114838','1115329','1115804','1116090','1117245','1117392','1119420','1125488','1147029','1147619','1147795','1148155','1149632','1188532','1189337','1190174','1190448','1192477','1193293','1233546','1233575','1234260','1234261','1234263','1234386','1234874','1234884','1234941','1235563','1236048','1236066','1236081','1236387','1236395','1236403','1236428','1236459','1237035','1237110','1237118','1242072','1242502','1242522','1242564','1242582','1242618','1244523','1244630','1244714','1244743','1244745','1244747','1244918','1244951','1245284','1245291','1245298','1245374','1245706','1248057','1248354','1248473','1248750','1249617','1250528','1250751','1250949','1251039','1251185','1251493','1251499','1251614','1251621','1251625','1251770','1251771','1251776','1251791','1251792','1251794','1251811','1251838','1251928','1291266','1291711','1291718','1291854','1291867','1291868','1292098','1292322','1292342','1293239','1293298','1293344','1293491','1293706','1293710','1294201','1294322','1294348','1294380','1294382','1294383','1294557','1294560','1294564','1294567','1294594','1294602','1294607','1297366','1297369','1297390','1297517','1297947','1297967','1297974','1298226','1298267','1298288','1298295','1298348','1298371','1298433','1298442','1298751','1298764','1298799','1298834','1299646','1299662','1300084','1300164','1304533','1305588','1305775','1305781','1307111','1307147','1307244','1308438','1308442','1310503','1310627','1313969','1356113','1356800','1356807','1356833','1356841','1356848','1356859','1356866','1357013','1357389','1357553','1357894','1358753','1358757','1359114','1359123','1359124','1359126','1359127','1362789','1363011','1363034','1363288','1363293','1363306','1363309','1363504','1363651','1363752','1363780','1364278','1366822','1366825','1366953','1367203','1367219','1367222','1367225','1367227','1368963','1369424','1369848','1369910','1369913','1369971','1369972','1370116','1370122','1370125','1372265','1372312','1374770','1375110','1375932','1421985','1422884','1423709','1423711','1424045','1424295','1424850','1424872','1424903','1429345','1430148','1430149','1430150','1430522','1430530','1431286','1432994','1440003','1483549','1483552','1483553','153444','197426','197427','197428','197429','197446','197447','197459','197495','197496','197501','197502','197622','197647','197657','197658','197659','197660','197661','197662','197663','197664','197665','197666','197667','197668','197669','197670','197737','197745','197746','197817','197818','197819','197923','197924','197925','197928','197929','197930','197935','197943','197944','197945','197955','197956','197958','197960','197963','198032','198033','198034','198035','198036','198083','198084','198085','198086','198089','198270','198274','198275','198276','198277','198278','198280','198368','199164','199167','199168','199208','199314','199329','199340','199341','199543','199549','199607','199782','199820','200330','200331','200332','200335','200336','204434','204452','205333','208545','235760','238003','238004','238006','238090','238133','238134','238135','238153','238154','238175','240093','240826','241527','241946','242333','242891','242892','242923','243025','243220','243628','245373','248478','282462','282463','284437','284438','308170','308322','309232','309239','309243','309244','309249','309709','309952','309953','309955','309958','309960','310143','310169','310187','310197','310203','310204','310205','310206','310212','310213','310215','310534','310536','310537','310539','310661','310991','310992','311534','311538','312288','312289','312357','312362','312370','312914','312915','313352','313354','313357','313385','313386','313387','313389','313391','313393','313396','313406','313496','313497','313498','313499','314000','314132','314267','315201','315234','315235','317077','318179','346508','346713','346714','346966','347151','348906','349199','349281','349419','349533','349563','351089','351130','351192','351228','351254','351262','351263','359280','359281','359431','391980','402242','402250','403849','403922','403923','410205','425319','431804','435430','435436','435462','435463','435470','435517','476152','476540','476545','477245','477587','483169','485607','487079','540323','540358','542947','544218','577027','577029','577154','583078','584640','597658','597675','602598','618368','618370','618376','618378','631644','636382','636793','636794','644097','647171','647172','668535','688240','688507','692766','695963','700850','700851','700860','701393','702220','702519','704848','707680','723520','728118','728581','730794','730878','731007','731032','749850','755584','755618','756245','756251','756268','756342','762986','828299','828320','828348','828353','828358','834022','835564','835568','835572','835577','835589','835591','835593','848328','848331','848342','856706','856720','856762','856769','856773','856783','856792','856797','856825','856834','856840','856845','856853','857291','857296','857297','857301','857305','857315','857416','857430','857461','859003','860092','860096','860113','860114','860115','860215','860221','860225','860231','860792','861447','861455','861459','861463','861467','861470','861473','861476','861479','861482','861493','861494','861509','861573','861578','861743','861748','861753','861846','862006','862013','862019','862025','863669','866021','866144','881320','882504','883702','883703','883704','884707','885209','885213','885219','889520','891445','895560','895664','901814','905269','905273','905283','905295','978944','978946','991042','991486','991528','992432','992438','992441','992447','992454','992460','992475','992478','992858','992900','993943','994012','994226','994237','994521','994528','994535','994541','994824','995062','995082','995123','995128','995211','995214','995218','995232','995235','995241','995253','995258','995270','995274','995278','995281','995285','995428','995591','995592','996640','996757','997008','997156','997272','998254','998369','999434','999731']},'2.16.840.1.113883.3.464.1003.196.12.1254':{'RxNorm':['1232194','1232202','311989','311992','311994','311995','313761','313762','485440','485442','485465','828692','836641','836647','854873','854876','854880','854894']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1025':{'CPT':['99395','99396','99397']},'2.16.840.1.113883.3.464.1003.101.12.1023':{'CPT':['99385','99386','99387']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']},'2.16.840.1.113883.3.526.3.1240':{'HCPCS':['G0438','G0439']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_1 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(66, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1025\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1240\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderHighRiskMedicationsForTheElderly_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1253\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_21 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"cumulativeMedicationDuration\", new IVL_PQ(new PQ(90, \"d\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderHighRiskMedicationsForTheElderly_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1253\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_28 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"cumulativeMedicationDuration\", new IVL_PQ(new PQ(90, \"d\", false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_COUNT_35 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.MedicationOrderHighRiskMedicationsForTheElderly_precondition_26(patient, initialSpecificContext),\n    hqmfjs.MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_28(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = COUNT(events, new IVL_PQ(new PQ(2, \" \", true), null), initialSpecificContext);\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('18', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_1,\n      atLeastOneTrue('15', patient, initialSpecificContext, hqmfjs.EncounterPerformedOfficeVisit_precondition_3, hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_5, hqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_7, hqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_9, hqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_11, hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_13\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER_1', patient, initialSpecificContext,\n    allTrue('33', patient, initialSpecificContext, hqmfjs.GROUP_COUNT_35\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0022",
+    "hqmf_id": "40280381-4555-E1C1-0145-9515DE702DF5",
+    "hqmf_set_id": "A3837FF8-1ABC-4BA9-800E-FD4E7953ADBD",
+    "hqmf_version_number": 3,
+    "title": "Use of High-Risk Medications in the Elderly",
+    "description": "Percentage of patients 66 years of age and older who were ordered high-risk medications. Two rates are reported.\r\na. Percentage of patients who were ordered at least one high-risk medication. \r\nb. Percentage of patients who were ordered at least two different high-risk medications.",
+    "cms_id": "CMS156v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "055E1D25-42C9-4D4F-9D07-A5C954E5A941",
+        "preconditions": [
+          {
+            "id": 18,
+            "preconditions": [
+              {
+                "id": 1,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_1"
+              },
+              {
+                "id": 15,
+                "preconditions": [
+                  {
+                    "id": 3,
+                    "reference": "EncounterPerformedOfficeVisit_precondition_3"
+                  },
+                  {
+                    "id": 5,
+                    "reference": "EncounterPerformedFaceToFaceInteraction_precondition_5"
+                  },
+                  {
+                    "id": 7,
+                    "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_7"
+                  },
+                  {
+                    "id": 9,
+                    "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_9"
+                  },
+                  {
+                    "id": 11,
+                    "reference": "EncounterPerformedAnnualWellnessVisit_precondition_11"
+                  },
+                  {
+                    "id": 13,
+                    "reference": "EncounterPerformedHomeHealthcareServices_precondition_13"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "F09806A4-F15F-4E7A-BFD3-4C1444164D6E"
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "2A3201B2-CD1D-4C9F-A0D0-E018B722F38B",
+        "preconditions": [
+          {
+            "id": 25,
+            "preconditions": [
+              {
+                "id": 23,
+                "preconditions": [
+                  {
+                    "id": 19,
+                    "reference": "MedicationOrderHighRiskMedicationsForTheElderly_precondition_19"
+                  },
+                  {
+                    "id": 21,
+                    "reference": "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_21"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER_1": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "AA4ADE15-9439-42A3-AF70-08E53C991F9B",
+        "preconditions": [
+          {
+            "id": 33,
+            "preconditions": [
+              {
+                "id": 31,
+                "reference": "GROUP_COUNT_35"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_1": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "66",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_3": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_5": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_7": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_9": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedAnnualWellnessVisit_precondition_11": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_13": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationOrderHighRiskMedicationsForTheElderly_precondition_19": {
+        "title": "High Risk Medications for the Elderly",
+        "description": "Medication, Order: High Risk Medications for the Elderly",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1253",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsForTheElderly",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_21": {
+        "title": "High-Risk Medications With Days Supply Criteria",
+        "description": "Medication, Order: High-Risk Medications With Days Supply Criteria",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria",
+        "variable": false,
+        "field_values": {
+          "CUMULATIVE_MEDICATION_DURATION": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "90",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationOrderHighRiskMedicationsForTheElderly_precondition_26": {
+        "title": "High Risk Medications for the Elderly",
+        "description": "Medication, Order: High Risk Medications for the Elderly",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1253",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsForTheElderly",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_28": {
+        "title": "High-Risk Medications With Days Supply Criteria",
+        "description": "Medication, Order: High-Risk Medications With Days Supply Criteria",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria",
+        "variable": false,
+        "field_values": {
+          "CUMULATIVE_MEDICATION_DURATION": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "90",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_COUNT_35": {
+        "title": "GROUP_COUNT_35",
+        "description": "",
+        "children_criteria": [
+          "MedicationOrderHighRiskMedicationsForTheElderly_precondition_26",
+          "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria_precondition_28"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_COUNT_35",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "COUNT",
+            "value": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": " ",
+                "value": "2",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedAnnualWellnessVisit": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "MedicationOrderHighRiskMedicationsForTheElderly": {
+        "title": "High Risk Medications for the Elderly",
+        "description": "Medication, Order: High Risk Medications for the Elderly",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1253",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsForTheElderly",
+        "variable": false
+      },
+      "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria": {
+        "title": "High-Risk Medications With Days Supply Criteria",
+        "description": "Medication, Order: High-Risk Medications With Days Supply Criteria",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderHighRiskMedicationsWithDaysSupplyCriteria",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Seniors receiving inappropriate medications are more likely to report poorer health status at follow-up, compared to seniors who receive appropriate medications (Fu, Liu, and Christensen 2004). In 2005, rates of potentially inappropriate medication use in the elderly were as large or larger than in a 1996 national sample, highlighting the need for progress in this area (Simon et al. 2005). While some adverse drug events are not preventable, studies estimate that between 30 and 80 percent of adverse drug events in the elderly are preventable (MacKinnon and Hepler 2003).\r\n\r\nReducing the number of inappropriate prescriptions can lead to improved patient safety and significant cost savings.  Conservative estimates of extra costs due to potentially inappropriate medications in the elderly average $7.2 billion a year (Fu, Liu, and Christensen 2004). Medication use by older adults will likely increase further as the U.S. population ages, new drugs are developed, and new therapeutic and preventive uses for medications are discovered (Rothberg et al. 2008). By the year 2030, nearly one in five U.S. residents is expected to be aged 65 years or older; this age group is projected to more than double in number from 38.7 million in 2008 to more than 88.5 million in 2050.  Likewise, the population aged 85 years or older is expected to increase almost four-fold, from 5.4 million to 19 million between 2008 and 2050.  As the elderly population continues to grow, the number of older adults who present with multiple medical conditions for which several medications are prescribed continues to increase, resulting in polypharmacy (Gray and Gardner 2009).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Seniors receiving inappropriate medications are more likely to report poorer health status at follow-up, compared to seniors who receive appropriate medications (Fu, Liu, and Christensen 2004). In 2005, rates of potentially inappropriate medication use in the elderly were as large or larger than in a 1996 national sample, highlighting the need for progress in this area (Simon et al. 2005). While some adverse drug events are not preventable, studies estimate that between 30 and 80 percent of adverse drug events in the elderly are preventable (MacKinnon and Hepler 2003).\r\n\r\nReducing the number of inappropriate prescriptions can lead to improved patient safety and significant cost savings.  Conservative estimates of extra costs due to potentially inappropriate medications in the elderly average $7.2 billion a year (Fu, Liu, and Christensen 2004). Medication use by older adults will likely increase further as the U.S. population ages, new drugs are developed, and new therapeutic and preventive uses for medications are discovered (Rothberg et al. 2008). By the year 2030, nearly one in five U.S. residents is expected to be aged 65 years or older; this age group is projected to more than double in number from 38.7 million in 2008 to more than 88.5 million in 2050.  Likewise, the population aged 85 years or older is expected to increase almost four-fold, from 5.4 million to 19 million between 2008 and 2050.  As the elderly population continues to grow, the number of older adults who present with multiple medical conditions for which several medications are prescribed continues to increase, resulting in polypharmacy (Gray and Gardner 2009).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "The measure is based on the literature and key clinical expert consensus processes by Beers in 1997, Zahn in 2001 and an updated process by Fick in 2003, which identified drugs of concern in the elderly based on various high-risk criteria. NCQA's Medication Management expert panel selected a subset of drugs that should be used with caution in the elderly for inclusion in the proposed measure based upon these two lists.  NCQA analyzed the prevalence of drugs prescribed according to the Beers and Zhan classifications and determined that drugs identified by Zhan that are classified as never or rarely appropriate would form the basis for the list (Fick 2003).\r\n\r\n\r\nCertain medications (MacKinnon 2003) are associated with increased risk of harms from drug side-effects and drug toxicity and pose a concern for patient safety. There is clinical consensus that these drugs pose increased risks in the elderly (Kaufman 2005). Studies link prescription drug use by the elderly with adverse drug events that contribute to hospitalization, increased length of hospital stay, increased duration of illness, nursing home placement and falls and fractures that are further associated with physical, functional and social decline in the elderly (AHRQ 2009).",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The measure is based on the literature and key clinical expert consensus processes by Beers in 1997, Zahn in 2001 and an updated process by Fick in 2003, which identified drugs of concern in the elderly based on various high-risk criteria. NCQA's Medication Management expert panel selected a subset of drugs that should be used with caution in the elderly for inclusion in the proposed measure based upon these two lists.  NCQA analyzed the prevalence of drugs prescribed according to the Beers and Zhan classifications and determined that drugs identified by Zhan that are classified as never or rarely appropriate would form the basis for the list (Fick 2003).\r\n\r\n\r\nCertain medications (MacKinnon 2003) are associated with increased risk of harms from drug side-effects and drug toxicity and pose a concern for patient safety. There is clinical consensus that these drugs pose increased risks in the elderly (Kaufman 2005). Studies link prescription drug use by the elderly with adverse drug events that contribute to hospitalization, increased length of hospital stay, increased duration of illness, nursing home placement and falls and fractures that are further associated with physical, functional and social decline in the elderly (AHRQ 2009).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Lower score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Lower score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0022",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0022"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "156",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "156",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Rothberg, M.B., P.S. Perkow, F. Liu, B. Korc-Grodzicki, M.J. Brennan, S. Bellantonio, M. Heelon, P.K. Lindenauer. 2008. “Potentially Inappropriate Medication Use in Hospitalized Elders.” J Hosp Med 3:91-102.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Rothberg, M.B., P.S. Perkow, F. Liu, B. Korc-Grodzicki, M.J. Brennan, S. Bellantonio, M. Heelon, P.K. Lindenauer. 2008. “Potentially Inappropriate Medication Use in Hospitalized Elders.” J Hosp Med 3:91-102.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "A high-risk medication is identified by either of the following:\r\n     a. A prescription for medications classified as high risk at any dose and for any duration\r\n     b. Prescriptions for medications classified as high risk at any dose with greater than a 90 day supply",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A high-risk medication is identified by either of the following:\r\n     a. A prescription for medications classified as high risk at any dose and for any duration\r\n     b. Prescriptions for medications classified as high risk at any dose with greater than a 90 day supply",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The intent of Numerator 1 of the measure is to assess if the patient has been prescribed at least one high-risk medication.  The intent of Numerator 2 of the measure is to assess if the patient has been prescribed at least two different high-risk medications.\r\n\r\nCUMULATIVE MEDICATION DURATION is an individual’s total number of medication days over a specific period; the period counts multiple prescriptions with gaps in between, but does not count the gaps during which a medication was not dispensed.\r\n \r\nTo determine the cumulative medication duration, determine first the number of the Medication Days for each prescription in the period: the number of doses divided by the dose frequency per day. Then add the Medication Days for each prescription without counting any days between the prescriptions.\r\n\r\nFor example, there is an original prescription for 30 days with 2 refills for thirty days each. After a gap of 3 months, the medication was prescribed again for 60 days with 1 refill for 60 days. The cumulative medication duration is (30 x 3) + (60 x 2) = 210 days over the 10 month period.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The intent of Numerator 1 of the measure is to assess if the patient has been prescribed at least one high-risk medication.  The intent of Numerator 2 of the measure is to assess if the patient has been prescribed at least two different high-risk medications.\r\n\r\nCUMULATIVE MEDICATION DURATION is an individual’s total number of medication days over a specific period; the period counts multiple prescriptions with gaps in between, but does not count the gaps during which a medication was not dispensed.\r\n \r\nTo determine the cumulative medication duration, determine first the number of the Medication Days for each prescription in the period: the number of doses divided by the dose frequency per day. Then add the Medication Days for each prescription without counting any days between the prescriptions.\r\n\r\nFor example, there is an original prescription for 30 days with 2 refills for thirty days each. After a gap of 3 months, the medication was prescribed again for 60 days with 1 refill for 60 days. The cumulative medication duration is (30 x 3) + (60 x 2) = 210 days over the 10 month period.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients 66 years and older who had a visit during the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients 66 years and older who had a visit during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals initial patient population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals initial patient population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Numerator 1: Patients with an order for at least one high-risk medication during the measurement period. \r\nNumerator 2: Patients with an order for at least two different high-risk medications during the measurement period.",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Numerator 1: Patients with an order for at least one high-risk medication during the measurement period. \r\nNumerator 2: Patients with an order for at least two different high-risk medications during the measurement period.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","title":"1+ High-Risk Medications","id":"Population1"},
+      {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","title":"2+ High-Risk Medications","id":"Population2"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "sub_id": "b",
+  "subtitle": "2+ High-Risk Medications",
+  "short_subtitle": "2+ High-Risk Medications",
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.196.12.1253",
+    "2.16.840.1.113883.3.464.1003.196.12.1254",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1025",
+    "2.16.840.1.113883.3.464.1003.101.12.1023",
+    "2.16.840.1.113883.3.464.1003.101.12.1016",
+    "2.16.840.1.113883.3.526.3.1240"
+  ],
+  "population_ids": {
+    "IPP": "055E1D25-42C9-4D4F-9D07-A5C954E5A941",
+    "DENOM": "F09806A4-F15F-4E7A-BFD3-4C1444164D6E",
+    "NUMER": "AA4ADE15-9439-42A3-AF70-08E53C991F9B"
+  }
+}

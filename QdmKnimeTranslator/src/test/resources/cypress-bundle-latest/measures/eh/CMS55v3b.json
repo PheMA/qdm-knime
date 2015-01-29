@@ -1,0 +1,1361 @@
+{
+  "id": "40280381-43DB-D64C-0144-64CB12982D97",
+  "nqf_id": "0495",
+  "hqmf_id": "40280381-43DB-D64C-0144-64CB12982D97",
+  "hqmf_set_id": "9A033274-3D9B-11E1-8634-00237D5BF174",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS55v3",
+  "name": "Median Time from ED Arrival to ED Departure for Admitted ED Patients",
+  "description": "Median time from emergency department arrival to time of departure from the emergency room for patients admitted to the facility from the emergency department.",
+  "type": "eh",
+  "category": "Emergency Department",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0495';\n        hqmfjs.hqmf_id = '40280381-43DB-D64C-0144-64CB12982D97';\n        hqmfjs.sub_id = 'b';\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.292':{'SNOMED-CT':['4525004']},'2.16.840.1.113883.3.117.1.7.1.299':{'SNOMED-CT':['10278007','10327003','10349009','10532003','105491000119107','106013002','106014008','109006','109805003','11003002','110281001','11061003','111475002','111476001','111477005','111479008','111480006','111482003','111483008','111485001','111487009','111490003','111491004','11387009','1145003','11806006','11941006','1196001','12348006','126943008','128293007','129104009','12939007','129562004','129602009','129604005','12969000','130121000119104','13313007','13438001','13601005','13670005','13746004','1376001','1380006','1383008','14070001','14077003','14183003','14291003','14495005','145841000119107','1471000119103','14784000','1499003','15193003','15277004','153501000119105','15639000','15662003','1581000119101','15945005','15977008','162004','16295005','16506000','16805009','1686006','16966009','16990005','17226007','17496003','17782008','18003009','18085000','1816003','18260003','18478005','18541000119100','18653004','18689007','18818009','18941000','191447007','191452002','191454001','191455000','191457008','191458003','191459006','191461002','191464005','191465006','191466007','191475009','191476005','191478006','191480000','191483003','191484009','191485005','191486006','191492000','191493005','191494004','191495003','191496002','191499009','191501001','191507002','191508007','191509004','191510009','191511008','191512001','191519005','191525009','191526005','191527001','191530008','191531007','191536002','191537006','191538001','191539009','191540006','191542003','191547009','191548004','191554003','191555002','191559008','191562006','191564007','191567000','191569002','191570001','191571002','191572009','191574005','191577003','191584006','191586008','191588009','191590005','191592002','191593007','191595000','191597008','191606003','191610000','191611001','191613003','191615005','191616006','191618007','191620005','191621009','191623007','191625000','191627008','191629006','191630001','191632009','191634005','191636007','191638008','191639000','191641004','191643001','191658009','191659001','191668004','191670008','191672000','191676002','191677006','191680007','191683009','191687005','191692007','191693002','191696005','191697001','191714002','191722009','191724005','191725006','191726007','191736004','191737008','191738003','191746002','191753006','191765005','191772006','191773001','191774007','191787001','191804003','191805002','191811004','191812006','191813001','191819002','191820008','191821007','191825003','191826002','191831000','191832007','191833002','191837001','191838006','191839003','191843004','191844005','191845006','191849000','191853003','191855005','191865004','191867007','191868002','191873008','191874002','191875001','191887008','191888003','191889006','191965003','191970005','191972002','191973007','191980009','191990001','191997003','192003008','192007009','192014006','192016008','192017004','192029008','192037000','192042008','192044009','192046006','192049004','192051000','192056005','192057001','192058006','192063005','192064004','192072002','192073007','192080009','192097003','192099000','192100008','192108001','192110004','192118006','192122001','192123006','192127007','192138007','192147004','192523000','192527004','192562009','192575009','192611004','192616009','192630004','192631000','19300006','1938002','194437008','19445006','1973000','197480006','19766004','199257008','199259006','199260001','199261002','199262009','20010003','20385005','20871009','20876004','20960007','21000000','21586000','21647008','21897009','21900002','219152002','22121000','22230001','22381000119105','22407005','22419002','22574000','229025005','229621000','229623002','229629003','229630008','229632000','229672009','229683000','229699006','229700007','229714007','229715008','229729009','229733002','229734008','229736005','229740001','229744005','229745006','229748008','229750000','229751001','230258005','230265002','230266001','230267005','230268000','230269008','230282000','230286002','230287006','230288001','230289009','230290000','230334008','230335009','230338006','230455006','230488004','230497000','2312009','231437006','231438001','231439009','231440006','231442003','231444002','231445001','231446000','231448004','231449007','231450007','231451006','231452004','231454003','231457005','231458000','231461004','231467000','231470001','231472009','231473004','231474005','231475006','231485007','231487004','231489001','231494001','231495000','231496004','231500002','231504006','231518004','231520001','231522009','231523004','231524005','231525006','231526007','231527003','231528008','231532002','231535000','231538003','231539006','231540008','231542000','233690008','23560001','236074001','23645006','237351003','237352005','23772009','238959007','238961003','238967004','238972008','238973003','238974009','238975005','238977002','238979004','2403008','24121004','24125008','24315006','247803002','247804008','24781009','248118000','248290002','249520001','25501002','25753007','25766007','25772007','26025008','2618002','26203008','26416006','26453000','26516009','26665006','26714005','26852004','268612007','268617001','268621008','268622001','268624000','268633003','268640002','268650001','268651002','268652009','268654005','268661009','268664001','268666004','268667008','268668003','268669006','268672004','268715000','268722008','268734000','268957000','26929004','270901009','270902002','270903007','270905000','271428004','271952001','27387000','274948002','274950005','274952002','274953007','27544004','275471001','275474009','276300008','2776000','278506006','278508007','278852008','278853003','278857002','278919001','27956007','279982005','280032002','280377008','280378003','280982009','280983004','280984005','280986007','280994000','281004','2815001','28357009','28368009','28475009','28663008','28676002','286933003','288281000119100','28857002','28864000','28884001','29212009','29599000','29733004','29929003','30059008','300706003','300960003','300992002','301643003','30169000','302507002','30310000','30336007','30491001','30509009','30520009','30687003','307417003','30871003','30935000','310202009','31027006','310495003','310496002','310497006','311173003','31177006','312098001','312936002','312991009','313182004','31373002','313915006','31446002','3158007','31611000','31658008','31715000','31781004','317816007','318784009','319768000','32009006','320751009','321717001','32358001','32388005','32552001','32721004','32875003','32880007','3298001','33078009','33135002','33323008','33380008','33449004','33693007','33871004','34116005','34315001','34938008','3503000','35218008','35252006','35253001','35481005','35489007','35607004','35722002','35827000','35846004','35919005','36124002','361272001','36217008','36474008','36583000','36622002','370143000','371024007','371026009','371596008','371599001','371600003','371604007','371631005','37224001','37331004','373618009','37739004','37746008','37868008','37872007','38328002','38368003','38547003','386537007','386805003','386810004','386821008','386822001','386823006','386824000','386825004','38694004','39003006','3914008','39465007','3972004','397803000','397923000','398066007','39807006','39809009','39951001','40083003','402732001','402733006','402735004','402736003','403474003','403583006','403586003','403590001','403593004','403594005','40379007','40571009','406506008','408856003','408858002','40987004','41083005','41524005','41526007','41552001','416073003','416340002','416714005','416780008','416975007','417143004','417360004','41836007','418475009','420614009','421023003','421529006','42344001','425390006','425476007','425499006','425533007','425832009','425881006','425885002','425914008','425919003','42594001','426041005','426095000','426174008','426590003','426824009','426873000','426881004','427205009','427229002','427327003','427469003','427975003','428007007','42868002','428687006','428703001','428708005','429458009','429672007','429998004','4306003','430744005','430751001','430852001','430909002','43150009','43497001','43568002','43614003','439960005','44124003','441527004','441704009','441711008','441716003','441833000','442057004','442059001','442176004','442243005','442245003','442344002','442351006','442406005','443265004','443735008','44376007','443919007','4441000','44433009','446175003','44966003','45479006','45677003','45912004','45924006','46206005','46229002','46244001','46372006','46432001','46721000','46762006','46975003','472981000','47372000','47447001','47505003','47664006','47916000','4817008','48500005','48589009','48826008','48937005','4926007','4932002','49468007','49512000','49540005','49564006','5002000','50026000','50299009','50320000','50705009','50722006','50878001','50933003','5095008','50983008','51133006','51443000','51493001','5158005','51637008','52448006','52702003','52866005','52910006','52954000','53049002','53050002','53467004','53607008','53936005','53956006','54319003','54417002','5444000','54502004','54587008','5464005','54761006','55009008','5509004','5510009','55341008','55516002','55668003','55728007','55967005','56267009','56294008','56573006','56576003','56627002','5664002','568005','56882008','5703000','57194009','57588009','57715001','58214004','58329000','58535001','58647003','58690002','58703003','58727001','59050008','59174009','59216005','59252009','59617007','59645001','59651006','59923000','60103007','60123008','609225004','61104008','61144001','61180001','61212007','61403008','61569007','61771000119106','61901004','62351001','62491004','63181006','63249007','63393005','6348008','63649001','63701002','63835008','63909006','63983005','64060000','64165008','64731001','6475002','64905009','65064003','65096006','66108005','66214007','66307007','66344007','66347000','66381006','66590003','66631006','66936004','67002003','67123006','67233009','68019004','68569003','68890003','68963006','68995007','69322001','69392006','69479009','70043001','7025000','70328006','70340006','7052005','70546001','70691001','7071007','70747007','70814008','70932007','70936005','71103003','71294008','71328000','71336009','71959007','71961003','71984005','7200002','72366004','72861004','7291006','73097000','73462009','7397008','73972002','74007000','74010007','74142004','74266001','7461003','74686005','74732009','74934004','75122001','75360000','75752004','75837004','76236006','76441001','76566000','76812003','76868007','77355000','77475008','77486005','77675002','77815007','7794004','78004001','78269000','78358001','78640000','78667006','78689005','79204003','79298009','79578000','79584002','79842004','79866005','80711002','80868005','81319007','8185002','81903006','82096005','82339009','82415003','82494000','82636008','82738004','82959004','82998009','83168008','83225003','83367009','83458005','83501007','83631006','83746006','83890006','84209002','84466009','84758004','84760002','84788008','84984002','85061001','8511007','85248005','85821003','85861002','8635005','87132004','87203005','87414006','87798009','87950005','87991007','88339003','8837000','88845000','88939009','88975006','89415002','89451009','89618007','89765005','89948007','90755006','90790003','91388009','9167000','9340000','9345005','93461009','95637005','95919007','9674006'],'ICD-9-CM':['290.0','290.10','290.11','290.12','290.13','290.20','290.21','290.3','290.40','290.41','290.42','290.43','290.8','290.9','291.0','291.1','291.2','291.3','291.4','291.5','291.81','291.82','291.89','291.9','292.0','292.11','292.12','292.2','292.81','292.82','292.83','292.84','292.85','292.89','292.9','293.0','293.1','293.81','293.82','293.83','293.84','293.89','293.9','294.0','294.10','294.11','294.20','294.21','294.8','294.9','295.00','295.01','295.02','295.03','295.04','295.05','295.10','295.11','295.12','295.13','295.14','295.15','295.20','295.21','295.22','295.23','295.24','295.25','295.30','295.31','295.32','295.33','295.34','295.35','295.40','295.41','295.42','295.43','295.44','295.45','295.50','295.51','295.52','295.53','295.54','295.55','295.60','295.61','295.62','295.63','295.64','295.65','295.70','295.71','295.72','295.73','295.74','295.75','295.80','295.81','295.82','295.83','295.84','295.85','295.90','295.91','295.92','295.93','295.94','295.95','296.00','296.01','296.02','296.03','296.04','296.05','296.06','296.10','296.11','296.12','296.13','296.14','296.15','296.16','296.20','296.21','296.22','296.23','296.24','296.25','296.26','296.30','296.31','296.32','296.33','296.34','296.35','296.36','296.40','296.41','296.42','296.43','296.44','296.45','296.46','296.50','296.51','296.52','296.53','296.54','296.55','296.56','296.60','296.61','296.62','296.63','296.64','296.65','296.66','296.7','296.80','296.81','296.82','296.89','296.90','296.99','297.0','297.1','297.2','297.3','297.8','297.9','298.0','298.1','298.2','298.3','298.4','298.8','298.9','299.00','299.01','299.10','299.11','299.80','299.81','299.90','299.91','300.00','300.01','300.02','300.09','300.10','300.11','300.12','300.13','300.14','300.15','300.16','300.19','300.20','300.21','300.22','300.23','300.29','300.3','300.4','300.5','300.6','300.7','300.81','300.82','300.89','300.9','301.0','301.10','301.11','301.12','301.13','301.20','301.21','301.22','301.3','301.4','301.50','301.51','301.59','301.6','301.7','301.81','301.82','301.83','301.84','301.89','301.9','302.0','302.1','302.2','302.3','302.4','302.50','302.51','302.52','302.53','302.6','302.70','302.71','302.72','302.73','302.74','302.75','302.76','302.79','302.81','302.82','302.83','302.84','302.85','302.89','302.9','303.00','303.01','303.02','303.03','303.90','303.91','303.92','303.93','304.00','304.01','304.02','304.03','304.10','304.11','304.12','304.13','304.20','304.21','304.22','304.23','304.30','304.31','304.32','304.33','304.40','304.41','304.42','304.43','304.50','304.51','304.52','304.53','304.60','304.61','304.62','304.63','304.70','304.71','304.72','304.73','304.80','304.81','304.82','304.83','304.90','304.91','304.92','304.93','305.00','305.01','305.02','305.03','305.1','305.20','305.21','305.22','305.23','305.30','305.31','305.32','305.33','305.40','305.41','305.42','305.43','305.50','305.51','305.52','305.53','305.60','305.61','305.62','305.63','305.70','305.71','305.72','305.73','305.80','305.81','305.82','305.83','305.90','305.91','305.92','305.93','306.0','306.1','306.2','306.3','306.4','306.50','306.51','306.52','306.53','306.59','306.6','306.7','306.8','306.9','307.0','307.1','307.20','307.21','307.22','307.23','307.3','307.40','307.41','307.42','307.43','307.44','307.45','307.46','307.47','307.48','307.49','307.50','307.51','307.52','307.53','307.54','307.59','307.6','307.7','307.80','307.81','307.89','307.9','308.0','308.1','308.2','308.3','308.4','308.9','309.0','309.1','309.21','309.22','309.23','309.24','309.28','309.29','309.3','309.4','309.81','309.82','309.83','309.89','309.9','310.0','310.1','310.2','310.81','310.89','310.9','311','312.00','312.01','312.02','312.03','312.10','312.11','312.12','312.13','312.20','312.21','312.22','312.23','312.30','312.31','312.32','312.33','312.34','312.35','312.39','312.4','312.81','312.82','312.89','312.9','313.0','313.1','313.21','313.22','313.23','313.3','313.81','313.82','313.83','313.89','313.9','314.00','314.01','314.1','314.2','314.8','314.9','315.00','315.01','315.02','315.09','315.1','315.2','315.31','315.32','315.34','315.35','315.39','315.4','315.5','315.8','315.9','316','317','318.0','318.1','318.2','319'],'ICD-10-CM':['F01.50','F01.51','F02.80','F02.81','F03.90','F03.91','F04','F05','F06.0','F06.1','F06.2','F06.30','F06.31','F06.32','F06.33','F06.34','F06.4','F06.8','F07.0','F07.81','F07.89','F07.9','F09','F10.10','F10.120','F10.121','F10.129','F10.14','F10.150','F10.151','F10.159','F10.180','F10.181','F10.182','F10.188','F10.19','F10.20','F10.21','F10.220','F10.221','F10.229','F10.230','F10.231','F10.232','F10.239','F10.24','F10.250','F10.251','F10.259','F10.26','F10.27','F10.280','F10.281','F10.282','F10.288','F10.29','F10.920','F10.921','F10.929','F10.94','F10.950','F10.951','F10.959','F10.96','F10.97','F10.980','F10.981','F10.982','F10.988','F10.99','F11.10','F11.120','F11.121','F11.122','F11.129','F11.14','F11.150','F11.151','F11.159','F11.181','F11.182','F11.188','F11.19','F11.20','F11.21','F11.220','F11.221','F11.222','F11.229','F11.23','F11.24','F11.250','F11.251','F11.259','F11.281','F11.282','F11.288','F11.29','F11.90','F11.920','F11.921','F11.922','F11.929','F11.93','F11.94','F11.950','F11.951','F11.959','F11.981','F11.982','F11.988','F11.99','F12.10','F12.120','F12.121','F12.122','F12.129','F12.150','F12.151','F12.159','F12.180','F12.188','F12.19','F12.20','F12.21','F12.220','F12.221','F12.222','F12.229','F12.250','F12.251','F12.259','F12.280','F12.288','F12.29','F12.90','F12.920','F12.921','F12.922','F12.929','F12.950','F12.951','F12.959','F12.980','F12.988','F12.99','F13.10','F13.120','F13.121','F13.129','F13.14','F13.150','F13.151','F13.159','F13.180','F13.181','F13.182','F13.188','F13.19','F13.20','F13.21','F13.220','F13.221','F13.229','F13.230','F13.231','F13.232','F13.239','F13.24','F13.250','F13.251','F13.259','F13.26','F13.27','F13.280','F13.281','F13.282','F13.288','F13.29','F13.90','F13.920','F13.921','F13.929','F13.930','F13.931','F13.932','F13.939','F13.94','F13.950','F13.951','F13.959','F13.96','F13.97','F13.980','F13.981','F13.982','F13.988','F13.99','F14.10','F14.120','F14.121','F14.122','F14.129','F14.14','F14.150','F14.151','F14.159','F14.180','F14.181','F14.182','F14.188','F14.19','F14.20','F14.21','F14.220','F14.221','F14.222','F14.229','F14.23','F14.24','F14.250','F14.251','F14.259','F14.280','F14.281','F14.282','F14.288','F14.29','F14.90','F14.920','F14.921','F14.922','F14.929','F14.94','F14.950','F14.951','F14.959','F14.980','F14.981','F14.982','F14.988','F14.99','F15.10','F15.120','F15.121','F15.122','F15.129','F15.14','F15.150','F15.151','F15.159','F15.180','F15.181','F15.182','F15.188','F15.19','F15.20','F15.21','F15.220','F15.221','F15.222','F15.229','F15.23','F15.24','F15.250','F15.251','F15.259','F15.280','F15.281','F15.282','F15.288','F15.29','F15.90','F15.920','F15.921','F15.922','F15.929','F15.93','F15.94','F15.950','F15.951','F15.959','F15.980','F15.981','F15.982','F15.988','F15.99','F16.10','F16.120','F16.121','F16.122','F16.129','F16.14','F16.150','F16.151','F16.159','F16.180','F16.183','F16.188','F16.19','F16.20','F16.21','F16.220','F16.221','F16.229','F16.24','F16.250','F16.251','F16.259','F16.280','F16.283','F16.288','F16.29','F16.90','F16.920','F16.921','F16.929','F16.94','F16.950','F16.951','F16.959','F16.980','F16.983','F16.988','F16.99','F17.200','F17.201','F17.203','F17.208','F17.209','F17.210','F17.211','F17.213','F17.218','F17.219','F17.220','F17.221','F17.223','F17.228','F17.229','F17.290','F17.291','F17.293','F17.298','F17.299','F18.10','F18.120','F18.121','F18.129','F18.14','F18.150','F18.151','F18.159','F18.17','F18.180','F18.188','F18.19','F18.20','F18.21','F18.220','F18.221','F18.229','F18.24','F18.250','F18.251','F18.259','F18.27','F18.280','F18.288','F18.29','F18.90','F18.920','F18.921','F18.929','F18.94','F18.950','F18.951','F18.959','F18.97','F18.980','F18.988','F18.99','F19.10','F19.120','F19.121','F19.122','F19.129','F19.14','F19.150','F19.151','F19.159','F19.16','F19.17','F19.180','F19.181','F19.182','F19.188','F19.19','F19.20','F19.21','F19.220','F19.221','F19.222','F19.229','F19.230','F19.231','F19.232','F19.239','F19.24','F19.250','F19.251','F19.259','F19.26','F19.27','F19.280','F19.281','F19.282','F19.288','F19.29','F19.90','F19.920','F19.921','F19.922','F19.929','F19.930','F19.931','F19.932','F19.939','F19.94','F19.950','F19.951','F19.959','F19.96','F19.97','F19.980','F19.981','F19.982','F19.988','F19.99','F20.0','F20.1','F20.2','F20.3','F20.5','F20.81','F20.89','F20.9','F21','F22','F23','F24','F25.0','F25.1','F25.8','F25.9','F28','F29','F30.10','F30.11','F30.12','F30.13','F30.2','F30.3','F30.4','F30.8','F30.9','F31.0','F31.10','F31.11','F31.12','F31.13','F31.2','F31.30','F31.31','F31.32','F31.4','F31.5','F31.60','F31.61','F31.62','F31.63','F31.64','F31.70','F31.71','F31.72','F31.73','F31.74','F31.75','F31.76','F31.77','F31.78','F31.81','F31.89','F31.9','F32.0','F32.1','F32.2','F32.3','F32.4','F32.5','F32.8','F32.9','F33.0','F33.1','F33.2','F33.3','F33.40','F33.41','F33.42','F33.8','F33.9','F34.0','F34.1','F34.8','F34.9','F39','F40.00','F40.01','F40.02','F40.10','F40.11','F40.210','F40.218','F40.220','F40.228','F40.230','F40.231','F40.232','F40.233','F40.240','F40.241','F40.242','F40.243','F40.248','F40.290','F40.291','F40.298','F40.8','F40.9','F41.0','F41.1','F41.3','F41.8','F41.9','F42','F43.0','F43.10','F43.11','F43.12','F43.20','F43.21','F43.22','F43.23','F43.24','F43.25','F43.29','F43.8','F43.9','F44.0','F44.1','F44.2','F44.4','F44.5','F44.6','F44.7','F44.81','F44.89','F44.9','F45.0','F45.1','F45.20','F45.21','F45.22','F45.29','F45.41','F45.42','F45.8','F45.9','F48.1','F48.2','F48.8','F48.9','F50.00','F50.01','F50.02','F50.2','F50.8','F50.9','F51.01','F51.02','F51.03','F51.04','F51.05','F51.09','F51.11','F51.12','F51.13','F51.19','F51.3','F51.4','F51.5','F51.8','F51.9','F52.0','F52.1','F52.21','F52.22','F52.31','F52.32','F52.4','F52.5','F52.6','F52.8','F52.9','F53','F54','F55.0','F55.1','F55.2','F55.3','F55.4','F55.8','F59','F60.0','F60.1','F60.2','F60.3','F60.4','F60.5','F60.6','F60.7','F60.81','F60.89','F60.9','F63.0','F63.1','F63.2','F63.3','F63.81','F63.89','F63.9','F64.1','F64.2','F64.8','F64.9','F65.0','F65.1','F65.2','F65.3','F65.4','F65.50','F65.51','F65.52','F65.81','F65.89','F65.9','F66','F68.10','F68.11','F68.12','F68.13','F68.8','F69','F70','F71','F72','F73','F78','F79','F80.0','F80.1','F80.2','F80.4','F80.81','F80.89','F80.9','F81.0','F81.2','F81.81','F81.89','F81.9','F82','F84.0','F84.2','F84.3','F84.5','F84.8','F84.9','F88','F89','F90.0','F90.1','F90.2','F90.8','F90.9','F91.0','F91.1','F91.2','F91.3','F91.8','F91.9','F93.0','F93.8','F93.9','F94.0','F94.1','F94.2','F94.8','F94.9','F95.0','F95.1','F95.2','F95.8','F95.9','F98.0','F98.1','F98.21','F98.29','F98.3','F98.4','F98.5','F98.8','F98.9','F99','G25.61','G30.9','G31.1','G31.2','G31.84','G44.001','G44.009','G44.011','G44.019','G44.021','G44.029','G44.209','G47.00','G47.10','G47.20','G47.29','G47.50','G47.8','G47.9','G89.29','H93.25','I67.3','N53.9','R37','R40.1','R41.0','R41.3','R45.1','R45.2','R45.5','R45.6','R45.7','R45.81','R45.82','R46.3','R46.81','R48.0','R48.8','R62.50','R63.2','R68.82','S06.9X0S','S09.90XS','T73.0XXA','Z55.3','Z62.891','Z71.41','Z72.0','Z72.6','Z72.821','Z73.3','Z73.4','Z81.2','Z87.890']},'2.16.840.1.113883.3.666.5.307':{'SNOMED-CT':['183452005','32485007','8715000']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.117.1.7.1.14':{'SNOMED-CT':['63161005']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAEncounterInpatient2(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = denormalizeEventsByLocation(events, \"facilityArrival\", new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = denormalizeEventsByLocation(events, \"facilityDeparture\", new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.GROUP_TIMEDIFF_30 = function(patient, initialSpecificContext) {\n  var events = XPRODUCT(\n    hqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_11(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_13(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = TIMEDIFF(events, new ANYNonNull(), initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\", \"specificOccurrence\": \"OccurrenceAEmergencyDepartmentVisit1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAEncounterInpatient2(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActivePsychiatricMentalHealthPatient_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.299\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActivePsychiatricMentalHealthPatient_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.299\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEmergencyDepartmentVisit1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAEmergencyDepartmentVisit1\",\"type\":\"ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT\",\"function\":\"OccurrenceAEmergencyDepartmentVisit1\"},{\"id\":\"OccurrenceAEncounterInpatient2\",\"type\":\"ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT\",\"function\":\"OccurrenceAEncounterInpatient2\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('7', patient, initialSpecificContext, hqmfjs.OccurrenceAEncounterInpatient2_precondition_3, hqmfjs.OccurrenceAEncounterInpatient2_precondition_5\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('STRAT', patient, initialSpecificContext,\n    allTrue('22', patient, initialSpecificContext, hqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_20\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('MSRPOPL', patient, initialSpecificContext,\n    allTrue('10', patient, initialSpecificContext, hqmfjs.OccurrenceAEmergencyDepartmentVisit1_precondition_8\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.OBSERV = function(patient, initialSpecificContext) {\n  return  hqmfjs.GROUP_TIMEDIFF_30(patient, initialSpecificContext);\n};\n\n\n        \n        \n        var occurrenceId = [\"OccurrenceAEncounterInpatient2\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,true,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": true,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0495",
+    "hqmf_id": "40280381-43DB-D64C-0144-64CB12982D97",
+    "hqmf_set_id": "9A033274-3D9B-11E1-8634-00237D5BF174",
+    "hqmf_version_number": 3,
+    "title": "Median Time from ED Arrival to ED Departure for Admitted ED Patients",
+    "description": "Median time from emergency department arrival to time of departure from the emergency room for patients admitted to the facility from the emergency department.",
+    "cms_id": "CMS55v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "5D650DA4-BDB8-4570-813E-B57378B42A19",
+        "preconditions": [
+          {
+            "id": 7,
+            "preconditions": [
+              {
+                "id": 3,
+                "reference": "OccurrenceAEncounterInpatient2_precondition_3"
+              },
+              {
+                "id": 5,
+                "reference": "OccurrenceAEncounterInpatient2_precondition_5"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "MSRPOPL": {
+        "conjunction?": true,
+        "type": "MSRPOPL",
+        "title": "Measure Population",
+        "hqmf_id": "64DAB958-01F2-4D95-8584-6E5079A5C52E",
+        "preconditions": [
+          {
+            "id": 10,
+            "preconditions": [
+              {
+                "id": 8,
+                "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_8"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "OBSERV": {
+        "conjunction?": false,
+        "type": "OBSERV",
+        "title": "Measure Observation",
+        "hqmf_id": "0FB70FBD-D8DD-4605-961C-2B91194D7250",
+        "aggregator": "MEDIAN",
+        "preconditions": [
+          {
+            "id": 17,
+            "reference": "GROUP_TIMEDIFF_30"
+          }
+        ]
+      },
+      "STRAT": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D27-5493-013D-4D86B9D664F5",
+        "preconditions": [
+          {
+            "id": 22,
+            "preconditions": [
+              {
+                "id": 20,
+                "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_20"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT_1": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D27-5493-013D-4D86BA2664F8",
+        "preconditions": [
+          {
+            "id": 25,
+            "preconditions": [
+              {
+                "id": 23,
+                "reference": "DiagnosisActivePsychiatricMentalHealthPatient_precondition_23"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue",
+            "negation": true
+          }
+        ]
+      },
+      "STRAT_2": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D27-5493-013D-4D86BA6864FA",
+        "preconditions": [
+          {
+            "id": 28,
+            "preconditions": [
+              {
+                "id": 26,
+                "reference": "DiagnosisActivePsychiatricMentalHealthPatient_precondition_26"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceAEmergencyDepartmentVisit1": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "OccurrenceAEncounterInpatient2_precondition_3": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "OccurrenceAEncounterInpatient2_precondition_5": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEmergencyDepartmentVisit1_precondition_8": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAEncounterInpatient2",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAEmergencyDepartmentVisit1_precondition_11": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false,
+        "field_values": {
+          "FACILITY_LOCATION_ARRIVAL_DATETIME": {
+            "type": "ANYNonNull"
+          }
+        }
+      },
+      "OccurrenceAEmergencyDepartmentVisit1_precondition_13": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false,
+        "field_values": {
+          "FACILITY_LOCATION_DEPARTURE_DATETIME": {
+            "type": "ANYNonNull"
+          }
+        }
+      },
+      "GROUP_TIMEDIFF_30": {
+        "title": "GROUP_TIMEDIFF_30",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAEmergencyDepartmentVisit1_precondition_11",
+          "OccurrenceAEmergencyDepartmentVisit1_precondition_13"
+        ],
+        "derivation_operator": "XPRODUCT",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_TIMEDIFF_30",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "TIMEDIFF",
+            "value": {
+              "type": "ANYNonNull"
+            }
+          }
+        ]
+      },
+      "OccurrenceAEmergencyDepartmentVisit1_precondition_20": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAEncounterInpatient2",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActivePsychiatricMentalHealthPatient_precondition_23": {
+        "title": "Psychiatric/Mental Health Patient",
+        "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEmergencyDepartmentVisit1"
+          }
+        ]
+      },
+      "DiagnosisActivePsychiatricMentalHealthPatient_precondition_26": {
+        "title": "Psychiatric/Mental Health Patient",
+        "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEmergencyDepartmentVisit1"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "OccurrenceAEmergencyDepartmentVisit1": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+        "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "DiagnosisActivePsychiatricMentalHealthPatient": {
+        "title": "Psychiatric/Mental Health Patient",
+        "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain\r\n\r\nLOINC(R) is a registered trademark of the Regenstrief Institute.\r\n\r\nThis material contains SNOMED Clinical Terms(R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Measure specifications are in the Public Domain\r\n\r\nLOINC(R) is a registered trademark of the Regenstrief Institute.\r\n\r\nThis material contains SNOMED Clinical Terms(R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "CONTVAR",
+          "title": "Continuous Variable"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "The measure is stratified. \r\n\r\nStratum 1 - all patients seen in the ED and admitted as an inpatient\r\nStratum 2 - all patients seen in the ED and admitted as an inpatient who do not have a diagnosis consistent with psychiatric/mental health disorders\r\nStratum 3 - all patients seen in the ED and admitted as an inpatient who have a diagnosis consistent with psychiatric/mental health disorders",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The measure is stratified. \r\n\r\nStratum 1 - all patients seen in the ED and admitted as an inpatient\r\nStratum 2 - all patients seen in the ED and admitted as an inpatient who do not have a diagnosis consistent with psychiatric/mental health disorders\r\nStratum 3 - all patients seen in the ED and admitted as an inpatient who have a diagnosis consistent with psychiatric/mental health disorders",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "Calculate the ED time in minutes for each person in the measure population; report the median time for all calculations performed. The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the TIMEDIFF between the Emergency Department departure time and the Emergency Department arrival time. The calculation requires the median across all ED encounter durations.",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Calculate the ED time in minutes for each person in the measure population; report the median time for all calculations performed. The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the TIMEDIFF between the Emergency Department departure time and the Emergency Department arrival time. The calculation requires the median across all ED encounter durations.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "In recent times, EDs have experienced significant overcrowding. Although once only a problem in large, urban, teaching hospitals, the phenomenon has spread to other suburban and rural healthcare organizations. According to a 2002 national U.S. survey, more than 90% of large hospitals report EDs operating \"at\" or \"over\" capacity. Approximately one third of hospitals in the US report increases in ambulance diversion in a given year, whereas up to half report crowded conditions in the ED. In a recent national survey, 40% of hospital leaders viewed ED crowding as a symptom of workforce shortages. ED crowding may result in delays in the administration of medication such as antibiotics for pneumonia and has been associated with perceptions of compromised emergency care. For patients with non-ST-segment-elevation myocardial infarction, long ED stays were associated with decreased use of guideline-recommended therapies and a higher risk of recurrent myocardial infarction. Overcrowding and heavy emergency resource demand have led to a number of problems, including ambulance refusals, prolonged patient waiting times, increased suffering for those who wait, rushed and unpleasant treatment environments, and potentially poor patient outcomes. When EDs are overwhelmed, their ability to respond to community emergencies and disasters may be compromised.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "In recent times, EDs have experienced significant overcrowding. Although once only a problem in large, urban, teaching hospitals, the phenomenon has spread to other suburban and rural healthcare organizations. According to a 2002 national U.S. survey, more than 90% of large hospitals report EDs operating \"at\" or \"over\" capacity. Approximately one third of hospitals in the US report increases in ambulance diversion in a given year, whereas up to half report crowded conditions in the ED. In a recent national survey, 40% of hospital leaders viewed ED crowding as a symptom of workforce shortages. ED crowding may result in delays in the administration of medication such as antibiotics for pneumonia and has been associated with perceptions of compromised emergency care. For patients with non-ST-segment-elevation myocardial infarction, long ED stays were associated with decreased use of guideline-recommended therapies and a higher risk of recurrent myocardial infarction. Overcrowding and heavy emergency resource demand have led to a number of problems, including ambulance refusals, prolonged patient waiting times, increased suffering for those who wait, rushed and unpleasant treatment environments, and potentially poor patient outcomes. When EDs are overwhelmed, their ability to respond to community emergencies and disasters may be compromised.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Reducing the time patients remain in the emergency department (ED) can improve access to treatment and increase quality of care. Reducing this time potentially improves access to care specific to the patient condition and increases the capability to provide additional treatment.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Reducing the time patients remain in the emergency department (ED) can improve access to treatment and increase quality of care. Reducing this time potentially improves access to care specific to the patient condition and increases the capability to provide additional treatment.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "A decrease in the median value indicates less time in the emergency department and enhanced throughput.",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A decrease in the median value indicates less time in the emergency department and enhanced throughput.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0495",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0495"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "None",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "55",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "55",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Wilper AP, Woolhandler S, Lasser KE, McCormick D, Cutrona SL, Bor DH, Himmelstein DU. Waits to see an emergency department physician: U.S. trends and predictors, 1997-2004. Health Aff (Millwood). 2008;27:w84-95.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Wilper AP, Woolhandler S, Lasser KE, McCormick D, Cutrona SL, Bor DH, Himmelstein DU. Waits to see an emergency department physician: U.S. trends and predictors, 1997-2004. Health Aff (Millwood). 2008;27:w84-95.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "This measure specification defines how to determine an individual Emergency Department stay. Reporting requires the median of all patient stays [Encounter: encounter ED] arrival date and time - [Encounter: encounter ED] ED departure date and time. \r\n\r\nCalculate the ED time in minutes for each person in the measure population; report the median time for all calculations performed. The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the TIMEDIFF for the Emergency Department departure time minus the Emergency Department arrival time. The calculation requires the median across all ED encounter durations.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "This measure specification defines how to determine an individual Emergency Department stay. Reporting requires the median of all patient stays [Encounter: encounter ED] arrival date and time - [Encounter: encounter ED] ED departure date and time. \r\n\r\nCalculate the ED time in minutes for each person in the measure population; report the median time for all calculations performed. The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the TIMEDIFF for the Emergency Department departure time minus the Emergency Department arrival time. The calculation requires the median across all ED encounter durations.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "All patients discharged from acute inpatient care with Length of Stay (Discharge Date minus Admission Date) less than or equal to 120 days.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "All patients discharged from acute inpatient care with Length of Stay (Discharge Date minus Admission Date) less than or equal to 120 days.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Not Applicable",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Not Applicable",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Not Applicable",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Any ED Patient from the facility’s emergency department",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Any ED Patient from the facility’s emergency department",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Time (in minutes) from ED arrival to ED departure for patients admitted to the facility from the emergency department.",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Time (in minutes) from ED arrival to ED departure for patients admitted to the facility from the emergency department.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure, also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure, also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","title":"Unstratified","id":"Population1"},
+      {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT","stratification":"40280381-3D27-5493-013D-4D86B9D664F5","title":"RS1: ED and inpatient","id":"Population2"},
+      {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT_1","stratification":"40280381-3D27-5493-013D-4D86BA2664F8","title":"RS2: ED and inpatient w/out psych","id":"Population3"},
+      {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT_2","stratification":"40280381-3D27-5493-013D-4D86BA6864FA","title":"RS3: ED and inpatient w/ psych","id":"Population4"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "sub_id": "b",
+  "subtitle": "RS1: ED and inpatient",
+  "short_subtitle": "RS1: ED and inpatient",
+  "aggregator": "MEDIAN",
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.292",
+    "2.16.840.1.113883.3.117.1.7.1.299",
+    "2.16.840.1.113883.3.666.5.307",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.117.1.7.1.14"
+  ],
+  "population_ids": {
+    "STRAT": "40280381-3D27-5493-013D-4D86B9D664F5",
+    "IPP": "5D650DA4-BDB8-4570-813E-B57378B42A19",
+    "MSRPOPL": "64DAB958-01F2-4D95-8584-6E5079A5C52E",
+    "OBSERV": "0FB70FBD-D8DD-4605-961C-2B91194D7250",
+    "stratification": "40280381-3D27-5493-013D-4D86B9D664F5"
+  }
+}

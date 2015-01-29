@@ -1,0 +1,1474 @@
+{
+  "id": "0101",
+  "hqmf_id": "40280381-4555-E1C1-0145-672613970D15",
+  "hqmf_set_id": "BC5B4A57-B964-4399-9D40-667C896F31EA",
+  "hqmf_version_number": 3,
+  "title": "Falls: Screening for Future Fall Risk",
+  "description": "Percentage of patients 65 years of age and older who were screened for future fall risk during the measurement period.",
+  "cms_id": "CMS139v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "2448B0C6-6848-4DCB-AA6D-F199337A2C5C",
+      "preconditions": [
+        {
+          "id": 25,
+          "preconditions": [
+            {
+              "id": 2,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_2"
+            },
+            {
+              "id": 22,
+              "preconditions": [
+                {
+                  "id": 4,
+                  "reference": "EncounterPerformedFaceToFaceInteraction_precondition_4"
+                },
+                {
+                  "id": 6,
+                  "reference": "EncounterPerformedOfficeVisit_precondition_6"
+                },
+                {
+                  "id": 8,
+                  "reference": "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_8"
+                },
+                {
+                  "id": 10,
+                  "reference": "EncounterPerformedNursingFacilityVisit_precondition_10"
+                },
+                {
+                  "id": 12,
+                  "reference": "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_12"
+                },
+                {
+                  "id": 14,
+                  "reference": "EncounterPerformedHomeHealthcareServices_precondition_14"
+                },
+                {
+                  "id": 16,
+                  "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_16"
+                },
+                {
+                  "id": 18,
+                  "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_18"
+                },
+                {
+                  "id": 20,
+                  "reference": "EncounterPerformedAnnualWellnessVisit_precondition_20"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "EC400908-35BE-439B-92A9-231D99CEA9DF"
+    },
+    "DENEXCEP": {
+      "conjunction?": true,
+      "type": "DENEXCEP",
+      "title": "Denominator Exception",
+      "hqmf_id": "FEC7251A-BF8D-4472-97D8-E2A9C0A42176",
+      "preconditions": [
+        {
+          "id": 37,
+          "preconditions": [
+            {
+              "id": 35,
+              "preconditions": [
+                {
+                  "id": 26,
+                  "reference": "RiskCategoryAssessmentFallsScreening_precondition_26"
+                },
+                {
+                  "id": 33,
+                  "preconditions": [
+                    {
+                      "id": 28,
+                      "reference": "OccurrenceAPatientNotAmbulatory1_precondition_28"
+                    },
+                    {
+                      "id": 32,
+                      "preconditions": [
+                        {
+                          "id": 30,
+                          "reference": "OccurrenceAPatientNotAmbulatory1_precondition_30"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "663FB12B-0FF4-49AB-80A3-624C5E7DF892",
+      "preconditions": [
+        {
+          "id": 40,
+          "preconditions": [
+            {
+              "id": 38,
+              "reference": "RiskCategoryAssessmentFallsScreening_precondition_38"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "RiskCategoryAssessmentNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Risk Category Assessment not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1028",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReason",
+      "variable": false
+    },
+    "RiskCategoryAssessmentPatientNotAmbulatory": {
+      "title": "Patient not ambulatory",
+      "description": "Risk Category Assessment: Patient not ambulatory",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1009",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentPatientNotAmbulatory",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_2": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "65",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_4": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_6": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_8": {
+      "title": "Preventive Care Services-Individual Counseling",
+      "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedNursingFacilityVisit_precondition_10": {
+      "title": "Nursing Facility Visit",
+      "description": "Encounter, Performed: Nursing Facility Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_12": {
+      "title": "Care Services in Long-Term Residential Facility",
+      "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedHomeHealthcareServices_precondition_14": {
+      "title": "Home Healthcare Services",
+      "description": "Encounter, Performed: Home Healthcare Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_16": {
+      "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_18": {
+      "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedAnnualWellnessVisit_precondition_20": {
+      "title": "Annual Wellness Visit",
+      "description": "Encounter, Performed: Annual Wellness Visit",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "RiskCategoryAssessmentFallsScreening_precondition_26": {
+      "title": "Falls Screening",
+      "description": "Risk Category Assessment: Falls Screening",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1028",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+      "source_data_criteria": "RiskCategoryAssessmentFallsScreening",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPatientNotAmbulatory1_precondition_28": {
+      "title": "Patient not ambulatory",
+      "description": "Risk Category Assessment: Patient not ambulatory",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1009",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PATIENT_NOT_AMBULATORY",
+      "source_data_criteria": "OccurrenceAPatientNotAmbulatory1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPatientNotAmbulatory1_precondition_30": {
+      "title": "Patient not ambulatory",
+      "description": "Risk Category Assessment: Patient not ambulatory",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1009",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PATIENT_NOT_AMBULATORY",
+      "source_data_criteria": "OccurrenceAPatientNotAmbulatory1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "RiskCategoryAssessmentFallsScreening_precondition_38": {
+      "title": "Falls Screening",
+      "description": "Risk Category Assessment: Falls Screening",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1028",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentFallsScreening",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "EncounterPerformedAnnualWellnessVisit": {
+      "title": "Annual Wellness Visit",
+      "description": "Encounter, Performed: Annual Wellness Visit",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "EncounterPerformedCareServicesInLongTermResidentialFacility": {
+      "title": "Care Services in Long-Term Residential Facility",
+      "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+      "variable": false
+    },
+    "EncounterPerformedFaceToFaceInteraction": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false
+    },
+    "RiskCategoryAssessmentFallsScreening": {
+      "title": "Falls Screening",
+      "description": "Risk Category Assessment: Falls Screening",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1028",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentFallsScreening",
+      "variable": false
+    },
+    "RiskCategoryAssessmentNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Risk Category Assessment not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1028",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReason",
+      "variable": false
+    },
+    "EncounterPerformedHomeHealthcareServices": {
+      "title": "Home Healthcare Services",
+      "description": "Encounter, Performed: Home Healthcare Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+      "variable": false
+    },
+    "EncounterPerformedNursingFacilityVisit": {
+      "title": "Nursing Facility Visit",
+      "description": "Encounter, Performed: Nursing Facility Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+      "variable": false
+    },
+    "EncounterPerformedOfficeVisit": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false
+    },
+    "OccurrenceAPatientNotAmbulatory1": {
+      "title": "Patient not ambulatory",
+      "description": "Risk Category Assessment: Patient not ambulatory",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1009",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PATIENT_NOT_AMBULATORY",
+      "source_data_criteria": "OccurrenceAPatientNotAmbulatory1",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+      "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareServicesIndividualCounseling": {
+      "title": "Preventive Care Services-Individual Counseling",
+      "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+      "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+      "variable": false
+    },
+    "RiskCategoryAssessmentPatientNotAmbulatory": {
+      "title": "Patient not ambulatory",
+      "description": "Risk Category Assessment: Patient not ambulatory",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1009",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentPatientNotAmbulatory",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Copyright 2013 National Committee for Quality Assurance (NCQA) and American Medical Association. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Copyright 2013 National Committee for Quality Assurance (NCQA) and American Medical Association. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "As the leading cause of both fatal and nonfatal injuries for older adults, falls are one of the most common and significant health issues facing people aged 65 years or older (Schneider, Shubert and Harmon 2010). Moreover, the rate of falls increases with age (Dykes et al. 2010). Older adults are five times more likely to be hospitalized for fall-related injuries than any other cause-related injury. It is estimated that one in every three adults over 65 will fall each year (Centers for Disease Control and Prevention 2012). In those over age 80, the rate of falls increases to fifty percent (Doherty et al. 2009). Falls are also associated with substantial cost and resource use, approaching $30,000 per fall hospitalization (Woolcott et al. 2011). Identifying at-risk patients is the most important part of management, as applying preventive measures in this vulnerable population can have a profound effect on public health (al-Aama 2011). Family physicians have a pivotal role in screening older patients for risk of falls, and applying preventive strategies for patients at risk (al-Aama 2011).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "As the leading cause of both fatal and nonfatal injuries for older adults, falls are one of the most common and significant health issues facing people aged 65 years or older (Schneider, Shubert and Harmon 2010). Moreover, the rate of falls increases with age (Dykes et al. 2010). Older adults are five times more likely to be hospitalized for fall-related injuries than any other cause-related injury. It is estimated that one in every three adults over 65 will fall each year (Centers for Disease Control and Prevention 2012). In those over age 80, the rate of falls increases to fifty percent (Doherty et al. 2009). Falls are also associated with substantial cost and resource use, approaching $30,000 per fall hospitalization (Woolcott et al. 2011). Identifying at-risk patients is the most important part of management, as applying preventive measures in this vulnerable population can have a profound effect on public health (al-Aama 2011). Family physicians have a pivotal role in screening older patients for risk of falls, and applying preventive strategies for patients at risk (al-Aama 2011).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "All older persons who are under the care of a heath professional (or their caregivers) should be asked at least once a year about falls.  (AGS/BGS/AAOS)\n\nOlder persons who present for medical attention because of a fall, report recurrent falls in the past year, or demonstrate abnormalities of gait and/or balance should have a fall evaluation performed.  This evaluation should be performed by a clinician with appropriate skills and experience, which may necessitate referral to a specialist (eg, geriatrician).  (AGS/BGS/AAOS)\n\nOlder people in contact with health care professionals should be asked routinely whether they have fallen in the past year and asked about the frequency, context, and characteristics of the falls.  (NICE) (Grade C)\n\nOlder people reporting a fall or considered at risk of falling should be observed for balance and gait deficits and considered for their ability to benefit from interventions to improve strength and balance.  (NICE) (Grade C)",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All older persons who are under the care of a heath professional (or their caregivers) should be asked at least once a year about falls.  (AGS/BGS/AAOS)\n\nOlder persons who present for medical attention because of a fall, report recurrent falls in the past year, or demonstrate abnormalities of gait and/or balance should have a fall evaluation performed.  This evaluation should be performed by a clinician with appropriate skills and experience, which may necessitate referral to a specialist (eg, geriatrician).  (AGS/BGS/AAOS)\n\nOlder people in contact with health care professionals should be asked routinely whether they have fallen in the past year and asked about the frequency, context, and characteristics of the falls.  (NICE) (Grade C)\n\nOlder people reporting a fall or considered at risk of falling should be observed for balance and gait deficits and considered for their ability to benefit from interventions to improve strength and balance.  (NICE) (Grade C)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "A higher score indicates better quality.",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A higher score indicates better quality.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0101",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0101"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]) and the National Committee for Quality Assurance (NCQA). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI) or NCQA. Neither the AMA, PCPI, NCQA nor its members shall be responsible for any use of the Measures.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, PCPI, NCQA and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]) and the National Committee for Quality Assurance (NCQA). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI) or NCQA. Neither the AMA, PCPI, NCQA nor its members shall be responsible for any use of the Measures.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, PCPI, NCQA and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "139",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "139",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Woolcott, J.C., K.M. Khan, S. Mitrovic, A.H. Anis, C.A. Marra. 2011. “The Cost of Fall Related Presentations to the ED: A Prospective, In-Person, Patient-Tracking Analysis of Health Resource Utilization.” Osteporos Int [Epub ahead of print].",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Woolcott, J.C., K.M. Khan, S. Mitrovic, A.H. Anis, C.A. Marra. 2011. “The Cost of Fall Related Presentations to the ED: A Prospective, In-Person, Patient-Tracking Analysis of Health Resource Utilization.” Osteporos Int [Epub ahead of print].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "Future fall risk: Patients are considered at risk for future falls if they have had 2 or more falls in the past year or any fall with injury in the past year.\n\nFall: A sudden, unintentional change in position causing an individual to land at a lower level, on an object, the floor, or the ground, other than as a consequence of sudden onset of paralysis, epileptic seizure, or overwhelming external force.",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Future fall risk: Patients are considered at risk for future falls if they have had 2 or more falls in the past year or any fall with injury in the past year.\n\nFall: A sudden, unintentional change in position causing an individual to land at a lower level, on an object, the floor, or the ground, other than as a consequence of sudden onset of paralysis, epileptic seizure, or overwhelming external force.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "None",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients aged 65 years and older with a visit during the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients aged 65 years and older with a visit during the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who were screened for future fall risk at least once within the measurement period",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who were screened for future fall risk at least once within the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Documentation of medical reason(s) for not screening for fall risk (eg, patient is not ambulatory)",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Documentation of medical reason(s) for not screening for fall risk (eg, patient is not ambulatory)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

@@ -1,0 +1,2041 @@
+{
+  "id": "40280381-446B-B8C2-0144-95DDB52A1CDC",
+  "nqf_id": "0469",
+  "hqmf_id": "40280381-446B-B8C2-0144-95DDB52A1CDC",
+  "hqmf_set_id": "FD7CA18D-B56D-4BCA-AF35-71CE36B15246",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS113v3",
+  "name": "Elective Delivery",
+  "description": "Patients with elective vaginal deliveries or elective cesarean sections at >= 37 and < 39 weeks of gestation completed",
+  "type": "eh",
+  "category": "Pregnancy",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0469';\n        hqmfjs.hqmf_id = '40280381-446B-B8C2-0144-95DDB52A1CDC';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.282':{'ICD-10-PCS':['10D00Z0','10D00Z1','10D00Z2'],'SNOMED-CT':['11466000','177141003','177142005','177143000','236985002','236986001','236987005','236988000','236989008','236990004','274130007','288042004','398307005','41059002','57271003','84195007','89053004'],'ICD-9-PCS':['74.0','74.1','74.2','74.4','74.99']},'2.16.840.1.113883.3.117.1.7.1.401':{'SNOMED-CT':['11466000','14119008','15413009','177141003','177142005','177143000','177152009','177157003','177158008','177161009','177162002','177164001','177167008','177168003','177170007','177173009','177174003','177175002','177176001','177179008','177180006','177181005','177184002','17744000','17860005','18625004','19390001','199771001','22633006','236974004','236975003','236976002','236977006','236978001','236980007','236985002','236986001','236987005','236988000','236990004','237311001','25296001','25828002','26313002','265639000','274130007','275168001','275169009','287976008','288039005','288193006','29613008','302382009','302383004','30476003','306727001','33807004','359940006','359943008','38479009','398307005','40704000','41059002','416055001','417121007','4504004','45718005','48204000','54973000','5556001','57271003','61586001','62508004','69422002','71166009','72492007','84195007','89053004','89346004','89849000']},'2.16.840.1.113883.3.117.1.7.1.391':{'ICD-9-CM':['650','651.01','651.11','651.21','651.31','651.41','651.51','651.61','651.71','651.81','651.91','652.01','652.11','652.21','652.31','652.41','652.51','652.61','652.71','652.81','652.91','653.01','653.11','653.21','653.31','653.41','653.51','653.61','653.71','653.81','653.91','654.01','654.02','654.11','654.12','654.21','654.31','654.32','654.41','654.42','654.51','654.52','654.61','654.62','654.71','654.72','654.81','654.82','654.91','654.92','655.01','655.11','655.21','655.31','655.41','655.51','655.61','655.71','655.81','655.91','656.01','656.11','656.21','656.31','656.41','656.51','656.61','656.71','656.81','656.91','657.01','658.01','658.11','658.21','658.31','658.41','658.81','658.91','659.01','659.11','659.21','659.31','659.41','659.51','659.61','659.71','659.81','659.91']},'2.16.840.1.113883.3.117.1.7.1.372':{'ICD-9-CM':['640.81','640.91','641.01','641.11','641.21','641.31','641.81','641.91','642.01','642.02','642.11','642.12','642.21','642.22','642.31','642.32','642.41','642.42','642.51','642.52','642.61','642.62','642.71','642.72','642.91','642.92','643.01','643.11','643.21','643.81','643.91','644.21','645.11','645.21','646.01','646.11','646.12','646.21','646.22','646.31','646.41','646.42','646.51','646.52','646.61','646.62','646.71','646.81','646.82','646.91','647.01','647.02','647.11','647.12','647.21','647.22','647.31','647.32','647.41','647.42','647.51','647.52','647.61','647.62','647.81','647.82','647.91','647.92','648.01','648.02','648.11','648.12','648.21','648.22','648.31','648.32','648.41','648.42','648.51','648.52','648.61','648.62','648.71','648.72','648.81','648.82','648.91','648.92','649.01','649.02','649.11','649.12','649.21','649.22','649.31','649.32','649.41','649.42','649.51','649.61','649.62','649.81','649.82']},'2.16.840.1.113883.3.117.1.7.1.397':{'ICD-9-CM':['660.01','660.11','660.21','660.31','660.41','660.51','660.61','660.71','660.81','660.91','661.01','661.11','661.21','661.31','661.41','661.91','662.01','662.11','662.21','662.31','663.01','663.11','663.21','663.31','663.41','663.51','663.61','663.81','663.91','664.01','664.11','664.21','664.31','664.41','664.51','664.81','664.91','665.01','665.11','665.22','665.31','665.41','665.51','665.61','665.71','665.72','665.81','665.82','665.91','665.92','666.02','666.12','666.22','666.32','667.02','667.12','668.01','668.02','668.11','668.12','668.21','668.22','668.81','668.82','668.91','668.92','669.01','669.02','669.11','669.12','669.21','669.22','669.32','669.41','669.42','669.51','669.61','669.71','669.81','669.82','669.91','669.92']},'2.16.840.1.113883.3.117.1.7.1.375':{'ICD-9-CM':['670.02','670.12','670.22','670.32','670.82','671.01','671.02','671.11','671.12','671.21','671.22','671.31','671.42','671.51','671.52','671.81','671.82','671.91','671.92','672.02','673.01','673.02','673.11','673.12','673.21','673.22','673.31','673.32','673.81','673.82','674.01','674.02','674.12','674.22','674.32','674.42','674.82','674.92','675.01','675.02','675.11','675.12','675.21','675.22','675.81','675.82','675.91','675.92','676.01','676.02','676.11','676.12','676.21','676.22','676.31','676.32','676.41','676.42','676.51','676.52','676.61','676.62','676.81','676.82','676.91','676.92']},'2.16.840.1.113762.1.4.1045.28':{'SNOMED-CT':['397836004']},'2.16.840.1.113762.1.4.1045.26':{'SNOMED-CT':['444135009']},'2.16.840.1.113883.3.117.1.7.1.281':{'SNOMED-CT':['20236002','289211007','366325002','6383007','6893006','84457005']},'2.16.840.1.113883.3.117.1.7.1.286':{'ICD-9-CM':['042','641.01','641.11','641.21','641.31','641.81','641.91','642.01','642.02','642.11','642.12','642.21','642.22','642.31','642.32','642.41','642.42','642.51','642.52','642.61','642.62','642.71','642.72','642.91','642.92','645.11','646.21','646.22','646.71','648.01','648.51','648.52','648.61','648.62','648.81','648.82','649.31','649.32','651.01','651.11','651.21','651.31','651.41','651.51','651.61','651.71','651.81','651.91','652.01','652.61','655.01','655.11','655.31','655.41','655.51','655.61','655.81','656.01','656.11','656.21','656.31','656.41','656.51','657.01','658.01','658.11','658.21','658.41','659.71','663.51','V08','V23.5','V27.1'],'SNOMED-CT':['10562009','10573002','106007006','111438007','111880001','112071002','11687002','12729009','12867002','13866000','14022007','15230009','1538006','15394000','15663008','15938005','163540009','16356006','16756008','169582001','169827000','17594002','18416000','198899007','198900002','198903000','198905007','198906008','198910006','198912003','198917009','198918004','198920001','198922009','198923004','198925006','198927003','198928008','198941007','198942000','198944004','198945003','198946002','198947006','198949009','198951008','198952001','198953006','198954000','198965005','198966006','198967002','198968007','198983002','198984008','198985009','198986005','198990007','198991006','198992004','198993009','198997005','198999008','199000005','199002002','199003007','199005000','199007008','199063009','199064003','199117000','199118005','199223000','199225007','199226008','199227004','199266007','199267003','199268008','199306007','199307003','199317008','199318003','199321001','199322008','199325005','199326006','199344003','199345002','199577000','199578005','199582007','199583002','199646006','199647002','199653002','199654008','199658006','199659003','199660008','199661007','199662000','199670005','199672002','199673007','199677008','199678003','199895009','199896005','200473005','200474004','22271007','231958008','235888006','23717007','237227006','237230004','237236005','237237001','237246007','237247003','237266003','237267007','237270006','237271005','237272003','237273008','237274002','237275001','237276000','237277009','237279007','237281009','237282002','237283007','237300009','237301008','237625008','237627000','237628005','239104000','24042004','240611008','24095001','26078007','267197003','267199000','267207004','267262008','27388005','276369006','288207006','288250001','29259002','307632004','308551004','310592002','310594001','312974005','33669002','34165000','34694006','34818008','34842007','35347003','367390009','36813001','37382001','37618003','38063000','38720006','3885002','397949005','398254007','398276003','4006006','405736009','41114007','415105001','41962002','420491007','420738003','420989005','421223006','421389009','421443003','422155003','42686001','427139004','428511009','429187001','4307007','430881000','43990006','44223004','44795003','46764007','46894009','4783006','48194001','48552006','48888007','54213000','57480000','59566000','60810003','62246005','62479008','62531004','63287004','64254006','65147003','65402008','6636004','67359005','69897008','69909000','71028008','71546005','71874008','72022006','7266006','75022004','75150001','76751001','7792000','78381004','78808002','79668009','80190007','80224003','80997009','81626002','82141001','8218002','82260000','82701004','86041002','86203003','86356004','86406008','8762007','87814002','90968009','91162000','91923005','91947003','91948008','95605009'],'ICD-10-CM':['B20','O09.291','O09.292','O09.293','O09.299','O10.011','O10.012','O10.013','O10.02','O10.111','O10.112','O10.113','O10.12','O10.211','O10.212','O10.213','O10.22','O10.311','O10.312','O10.313','O10.32','O10.411','O10.412','O10.413','O10.42','O10.911','O10.912','O10.913','O10.92','O11.1','O11.2','O11.3','O12.11','O12.12','O12.13','O13.1','O13.2','O13.3','O14.02','O14.03','O14.12','O14.13','O14.22','O14.23','O14.92','O14.93','O15.02','O15.03','O15.1','O15.2','O16.1','O16.2','O16.3','O24.011','O24.012','O24.013','O24.02','O24.111','O24.112','O24.113','O24.12','O24.311','O24.312','O24.313','O24.32','O24.410','O24.414','O24.419','O24.420','O24.424','O24.429','O24.811','O24.812','O24.813','O24.82','O24.911','O24.912','O24.913','O24.92','O26.611','O26.612','O26.613','O26.62','O26.831','O26.832','O26.833','O30.101','O30.102','O30.103','O30.201','O30.202','O30.203','O30.801','O30.802','O30.803','O30.91','O30.92','O30.93','O31.11X0','O31.11X1','O31.11X2','O31.11X3','O31.11X4','O31.11X5','O31.11X9','O31.12X0','O31.12X1','O31.12X2','O31.12X3','O31.12X4','O31.12X5','O31.12X9','O31.13X0','O31.13X1','O31.13X2','O31.13X3','O31.13X4','O31.13X5','O31.13X9','O31.21X0','O31.21X1','O31.21X2','O31.21X3','O31.21X4','O31.21X5','O31.21X9','O31.22X0','O31.22X1','O31.22X2','O31.22X3','O31.22X4','O31.22X5','O31.22X9','O31.23X0','O31.23X1','O31.23X2','O31.23X3','O31.23X4','O31.23X5','O31.23X9','O31.31X0','O31.31X1','O31.31X2','O31.31X3','O31.31X4','O31.31X5','O31.31X9','O31.32X0','O31.32X1','O31.32X2','O31.32X3','O31.32X4','O31.32X5','O31.32X9','O31.33X0','O31.33X1','O31.33X2','O31.33X3','O31.33X4','O31.33X5','O31.33X9','O31.8X10','O31.8X11','O31.8X12','O31.8X13','O31.8X14','O31.8X15','O31.8X19','O31.8X20','O31.8X21','O31.8X22','O31.8X23','O31.8X24','O31.8X25','O31.8X29','O31.8X30','O31.8X31','O31.8X32','O31.8X33','O31.8X34','O31.8X35','O31.8X39','O32.0XX0','O32.0XX1','O32.0XX2','O32.0XX3','O32.0XX4','O32.0XX5','O32.0XX9','O32.9XX0','O32.9XX1','O32.9XX2','O32.9XX3','O32.9XX4','O32.9XX5','O32.9XX9','O35.0XX0','O35.0XX1','O35.0XX2','O35.0XX3','O35.0XX4','O35.0XX5','O35.0XX9','O35.1XX0','O35.1XX1','O35.1XX2','O35.1XX3','O35.1XX4','O35.1XX5','O35.1XX9','O35.3XX0','O35.3XX1','O35.3XX2','O35.3XX3','O35.3XX4','O35.3XX5','O35.3XX9','O35.4XX0','O35.4XX1','O35.4XX2','O35.4XX3','O35.4XX4','O35.4XX5','O35.4XX9','O35.5XX0','O35.5XX1','O35.5XX2','O35.5XX3','O35.5XX4','O35.5XX5','O35.5XX9','O35.6XX0','O35.6XX1','O35.6XX2','O35.6XX3','O35.6XX4','O35.6XX5','O35.6XX9','O35.8XX0','O35.8XX1','O35.8XX2','O35.8XX3','O35.8XX4','O35.8XX5','O35.8XX9','O36.0110','O36.0111','O36.0112','O36.0113','O36.0114','O36.0115','O36.0119','O36.0120','O36.0121','O36.0122','O36.0123','O36.0124','O36.0125','O36.0129','O36.0130','O36.0131','O36.0132','O36.0133','O36.0134','O36.0135','O36.0139','O36.0910','O36.0911','O36.0912','O36.0913','O36.0914','O36.0915','O36.0919','O36.0920','O36.0921','O36.0922','O36.0923','O36.0924','O36.0925','O36.0929','O36.0930','O36.0931','O36.0932','O36.0933','O36.0934','O36.0935','O36.0939','O36.1110','O36.1111','O36.1112','O36.1113','O36.1114','O36.1115','O36.1119','O36.1120','O36.1121','O36.1122','O36.1123','O36.1124','O36.1125','O36.1129','O36.1130','O36.1131','O36.1132','O36.1133','O36.1134','O36.1135','O36.1139','O36.1910','O36.1911','O36.1912','O36.1913','O36.1914','O36.1915','O36.1919','O36.1920','O36.1921','O36.1922','O36.1923','O36.1924','O36.1925','O36.1929','O36.1930','O36.1931','O36.1932','O36.1933','O36.1934','O36.1935','O36.1939','O36.4XX0','O36.4XX1','O36.4XX2','O36.4XX3','O36.4XX4','O36.4XX5','O36.4XX9','O36.5110','O36.5111','O36.5112','O36.5113','O36.5114','O36.5115','O36.5119','O36.5120','O36.5121','O36.5122','O36.5123','O36.5124','O36.5125','O36.5129','O36.5130','O36.5131','O36.5132','O36.5133','O36.5134','O36.5135','O36.5139','O36.5910','O36.5911','O36.5912','O36.5913','O36.5914','O36.5915','O36.5919','O36.5920','O36.5921','O36.5922','O36.5923','O36.5924','O36.5925','O36.5929','O36.5930','O36.5931','O36.5932','O36.5933','O36.5934','O36.5935','O36.5939','O40.1XX0','O40.1XX1','O40.1XX2','O40.1XX3','O40.1XX4','O40.1XX5','O40.1XX9','O40.2XX0','O40.2XX1','O40.2XX2','O40.2XX3','O40.2XX4','O40.2XX5','O40.2XX9','O40.3XX0','O40.3XX1','O40.3XX2','O40.3XX3','O40.3XX4','O40.3XX5','O40.3XX9','O41.01X0','O41.01X1','O41.01X2','O41.01X3','O41.01X4','O41.01X5','O41.01X9','O41.02X0','O41.02X1','O41.02X2','O41.02X3','O41.02X4','O41.02X5','O41.02X9','O41.03X0','O41.03X1','O41.03X2','O41.03X3','O41.03X4','O41.03X5','O41.03X9','O41.1010','O41.1011','O41.1012','O41.1013','O41.1014','O41.1015','O41.1019','O41.1020','O41.1021','O41.1022','O41.1023','O41.1024','O41.1025','O41.1029','O41.1030','O41.1031','O41.1032','O41.1033','O41.1034','O41.1035','O41.1039','O41.1210','O41.1211','O41.1212','O41.1213','O41.1214','O41.1215','O41.1219','O41.1220','O41.1221','O41.1222','O41.1223','O41.1224','O41.1225','O41.1229','O41.1230','O41.1231','O41.1232','O41.1233','O41.1234','O41.1235','O41.1239','O41.1410','O41.1411','O41.1412','O41.1413','O41.1414','O41.1415','O41.1419','O41.1420','O41.1421','O41.1422','O41.1423','O41.1424','O41.1425','O41.1429','O41.1430','O41.1431','O41.1432','O41.1433','O41.1434','O41.1435','O41.1439','O42.011','O42.012','O42.013','O42.02','O42.111','O42.112','O42.113','O42.12','O42.911','O42.912','O42.913','O42.92','O43.011','O43.012','O43.013','O43.021','O43.022','O43.023','O43.029','O44.01','O44.02','O44.03','O44.11','O44.12','O44.13','O45.001','O45.002','O45.003','O45.011','O45.012','O45.013','O45.021','O45.022','O45.023','O45.091','O45.092','O45.093','O45.8X1','O45.8X2','O45.8X3','O45.91','O45.92','O45.93','O46.001','O46.002','O46.003','O46.011','O46.012','O46.013','O46.021','O46.022','O46.023','O46.091','O46.092','O46.093','O46.8X1','O46.8X2','O46.8X3','O46.91','O46.92','O46.93','O48.0','O67.0','O67.8','O67.9','O68','O69.4XX0','O69.4XX1','O69.4XX2','O69.4XX3','O69.4XX4','O69.4XX5','O69.4XX9','O76','O99.111','O99.112','O99.113','O99.12','O99.810','O99.814','O99.815','Z21','Z37.1']},'2.16.840.1.113883.3.117.1.7.1.136':{'SNOMED-CT':['15809008','20216003','236722007','50726009','7395000','77099001']},'2.16.840.1.113883.3.117.1.7.1.137':{'SNOMED-CT':['434591000124100']},'2.16.840.1.113883.3.117.1.7.1.138':{'SNOMED-CT':['15504009','199960005','199961009','199964001','199965000','34430009','370500003','49561003','69270005']},'2.16.840.1.113762.1.4.1045.27':{'SNOMED-CT':['87605005']},'2.16.840.1.113883.3.117.1.7.1.421':{'ICD-10-PCS':['10D00Z0'],'SNOMED-CT':['177142005','236986001','84195007'],'ICD-9-PCS':['74.0']},'2.16.840.1.113883.3.117.1.7.1.422':{'SNOMED-CT':['236901008','236902001','265059000','42010004','428652006','446804002','84064003']},'2.16.840.1.113883.3.117.1.7.1.288':{'SNOMED-CT':['177129005','177135005','177136006','237002008','288189000','288190009','308037008','31208007','408818004'],'ICD-9-PCS':['73.01','73.1','73.4']},'2.16.840.1.113762.1.4.1045.55':{'RxNorm':['1249598','238013','312191','317139','486591','486593','486596','486598']},'2.16.840.1.113762.1.4.1045.56':{'RxNorm':['197619']},'2.16.840.1.113762.1.4.1045.57':{'SNOMED-CT':['408816000','408818004']},'2.16.840.1.113883.3.666.5.307':{'SNOMED-CT':['183452005','32485007','8715000']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceACesareanSection1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.282\", \"specificOccurrence\": \"OccurrenceACesareanSection1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACesareanSection1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.282\", \"specificOccurrence\": \"OccurrenceACesareanSection1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2(patient), new IVL_PQ(new PQ(8, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_5 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2(patient), new IVL_PQ(null, new PQ(65, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedurePerformedDeliveryProcedures_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.401\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_22(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.391\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_22(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveComplicationMainlyRelatedToPregnancy_precondition_15 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.372\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_22(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.397\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_22(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveComplicationOfThePuerperium_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.375\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_22(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingTimeOfDelivery_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.28\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingEstimatedGestationalAgeAtDelivery_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.26\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(37, \"wk\", true), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.PhysicalExamFindingTimeOfDelivery_precondition_25(patient), new IVL_PQ(null, new PQ(1, \"d\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_29 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.286\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAEncounterInpatient2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.286\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAEncounterInpatient2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedCesareanSection_precondition_35 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.282\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingLabor_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.281\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceACesareanSection1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisResolvedPerforationOfUterus_precondition_39 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"resolved\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.136\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisResolvedUterineWindow_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"resolved\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.137\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisResolvedUterineRupture_precondition_43 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"resolved\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.138\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisInactiveCornualEctopicPregnancy_precondition_45 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"inactive\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.27\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedClassicalCesareanSection_precondition_47 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.421\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedMyomectomy_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.422\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient2_precondition_69 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedurePerformedMedicalInductionOfLabor_precondition_57 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.288\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_69(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingLabor_precondition_66 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.281\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredOxytocin_precondition_59 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.55\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.PhysicalExamFindingLabor_precondition_66(patient));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_69(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredDinoprostone_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.56\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.PhysicalExamFindingLabor_precondition_66(patient));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_69(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedArtificialRuptureOfMembranes_precondition_63 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.57\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.PhysicalExamFindingLabor_precondition_66(patient));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient2_precondition_69(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceACesareanSection1\",\"type\":\"PROCEDURE_PERFORMED_CESAREAN_SECTION\",\"function\":\"OccurrenceACesareanSection1\"},{\"id\":\"OccurrenceAEncounterInpatient2\",\"type\":\"ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT\",\"function\":\"OccurrenceAEncounterInpatient2\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('24', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_5, hqmfjs.OccurrenceAEncounterInpatient2_precondition_7, hqmfjs.OccurrenceAEncounterInpatient2_precondition_9,\n      atLeastOneTrue('21', patient, initialSpecificContext, hqmfjs.ProcedurePerformedDeliveryProcedures_precondition_11, hqmfjs.DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare_precondition_13, hqmfjs.DiagnosisActiveComplicationMainlyRelatedToPregnancy_precondition_15, hqmfjs.DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery_precondition_17, hqmfjs.DiagnosisActiveComplicationOfThePuerperium_precondition_19\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('28', patient, initialSpecificContext, hqmfjs.PhysicalExamFindingEstimatedGestationalAgeAtDelivery_precondition_26\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('73', patient, initialSpecificContext,\n      atLeastOneTrue('71', patient, initialSpecificContext,\n        allTrue('55', patient, initialSpecificContext, hqmfjs.ProcedurePerformedCesareanSection_precondition_35,\n          allFalse('54', patient, initialSpecificContext, hqmfjs.PhysicalExamFindingLabor_precondition_37,\n            atLeastOneTrue('51', patient, initialSpecificContext, hqmfjs.DiagnosisResolvedPerforationOfUterus_precondition_39, hqmfjs.DiagnosisResolvedUterineWindow_precondition_41, hqmfjs.DiagnosisResolvedUterineRupture_precondition_43, hqmfjs.DiagnosisInactiveCornualEctopicPregnancy_precondition_45, hqmfjs.ProcedurePerformedClassicalCesareanSection_precondition_47, hqmfjs.ProcedurePerformedMyomectomy_precondition_49\n            )\n          )\n        ),\n        atLeastOneTrue('68', patient, initialSpecificContext, hqmfjs.ProcedurePerformedMedicalInductionOfLabor_precondition_57,\n          atLeastOneTrue('65', patient, initialSpecificContext, hqmfjs.MedicationAdministeredOxytocin_precondition_59, hqmfjs.MedicationAdministeredDinoprostone_precondition_61, hqmfjs.ProcedurePerformedArtificialRuptureOfMembranes_precondition_63\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('34', patient, initialSpecificContext, hqmfjs.DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_29,\n      allFalse('33', patient, initialSpecificContext, hqmfjs.DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_31\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = [\"OccurrenceAEncounterInpatient2\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0469",
+    "hqmf_id": "40280381-446B-B8C2-0144-95DDB52A1CDC",
+    "hqmf_set_id": "FD7CA18D-B56D-4BCA-AF35-71CE36B15246",
+    "hqmf_version_number": 3,
+    "title": "Elective Delivery",
+    "description": "Patients with elective vaginal deliveries or elective cesarean sections at >= 37 and < 39 weeks of gestation completed",
+    "cms_id": "CMS113v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "5EBD1FA3-47BF-43D8-9EC7-64605D98E7BC",
+        "preconditions": [
+          {
+            "id": 24,
+            "preconditions": [
+              {
+                "id": 3,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_3"
+              },
+              {
+                "id": 5,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_5"
+              },
+              {
+                "id": 7,
+                "reference": "OccurrenceAEncounterInpatient2_precondition_7"
+              },
+              {
+                "id": 9,
+                "reference": "OccurrenceAEncounterInpatient2_precondition_9"
+              },
+              {
+                "id": 21,
+                "preconditions": [
+                  {
+                    "id": 11,
+                    "reference": "ProcedurePerformedDeliveryProcedures_precondition_11"
+                  },
+                  {
+                    "id": 13,
+                    "reference": "DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare_precondition_13"
+                  },
+                  {
+                    "id": 15,
+                    "reference": "DiagnosisActiveComplicationMainlyRelatedToPregnancy_precondition_15"
+                  },
+                  {
+                    "id": 17,
+                    "reference": "DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery_precondition_17"
+                  },
+                  {
+                    "id": 19,
+                    "reference": "DiagnosisActiveComplicationOfThePuerperium_precondition_19"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "AE3B6976-8379-41B0-89AF-E708D0F7B662",
+        "preconditions": [
+          {
+            "id": 28,
+            "preconditions": [
+              {
+                "id": 26,
+                "reference": "PhysicalExamFindingEstimatedGestationalAgeAtDelivery_precondition_26"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "63A1B62C-8679-4C1F-BAD1-792AFB510F1A",
+        "preconditions": [
+          {
+            "id": 34,
+            "preconditions": [
+              {
+                "id": 29,
+                "reference": "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_29"
+              },
+              {
+                "id": 33,
+                "preconditions": [
+                  {
+                    "id": 31,
+                    "reference": "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_31"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "2E10338B-2108-4D41-8774-FCEF2C2DACB9",
+        "preconditions": [
+          {
+            "id": 73,
+            "preconditions": [
+              {
+                "id": 71,
+                "preconditions": [
+                  {
+                    "id": 55,
+                    "preconditions": [
+                      {
+                        "id": 35,
+                        "reference": "ProcedurePerformedCesareanSection_precondition_35"
+                      },
+                      {
+                        "id": 54,
+                        "preconditions": [
+                          {
+                            "id": 37,
+                            "reference": "PhysicalExamFindingLabor_precondition_37"
+                          },
+                          {
+                            "id": 51,
+                            "preconditions": [
+                              {
+                                "id": 39,
+                                "reference": "DiagnosisResolvedPerforationOfUterus_precondition_39"
+                              },
+                              {
+                                "id": 41,
+                                "reference": "DiagnosisResolvedUterineWindow_precondition_41"
+                              },
+                              {
+                                "id": 43,
+                                "reference": "DiagnosisResolvedUterineRupture_precondition_43"
+                              },
+                              {
+                                "id": 45,
+                                "reference": "DiagnosisInactiveCornualEctopicPregnancy_precondition_45"
+                              },
+                              {
+                                "id": 47,
+                                "reference": "ProcedurePerformedClassicalCesareanSection_precondition_47"
+                              },
+                              {
+                                "id": 49,
+                                "reference": "ProcedurePerformedMyomectomy_precondition_49"
+                              }
+                            ],
+                            "conjunction_code": "atLeastOneTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 68,
+                    "preconditions": [
+                      {
+                        "id": 57,
+                        "reference": "ProcedurePerformedMedicalInductionOfLabor_precondition_57"
+                      },
+                      {
+                        "id": 65,
+                        "preconditions": [
+                          {
+                            "id": 59,
+                            "reference": "MedicationAdministeredOxytocin_precondition_59"
+                          },
+                          {
+                            "id": 61,
+                            "reference": "MedicationAdministeredDinoprostone_precondition_61"
+                          },
+                          {
+                            "id": 63,
+                            "reference": "ProcedurePerformedArtificialRuptureOfMembranes_precondition_63"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceACesareanSection1": {
+        "title": "Cesarean Section",
+        "description": "Procedure, Performed: Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.282",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_PERFORMED_CESAREAN_SECTION",
+        "source_data_criteria": "OccurrenceACesareanSection1",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_3": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "8",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_5": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "65",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient2_precondition_7": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "OccurrenceAEncounterInpatient2_precondition_9": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient2_precondition_22": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "ProcedurePerformedDeliveryProcedures_precondition_11": {
+        "title": "Delivery Procedures",
+        "description": "Procedure, Performed: Delivery Procedures",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.401",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedDeliveryProcedures",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_22"
+          }
+        ]
+      },
+      "DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare_precondition_13": {
+        "title": "Normal Delivery and Other Indications for Care",
+        "description": "Diagnosis, Active: Normal Delivery and Other Indications for Care",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.391",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_22"
+          }
+        ]
+      },
+      "DiagnosisActiveComplicationMainlyRelatedToPregnancy_precondition_15": {
+        "title": "Complication Mainly Related to Pregnancy",
+        "description": "Diagnosis, Active: Complication Mainly Related to Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.372",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationMainlyRelatedToPregnancy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_22"
+          }
+        ]
+      },
+      "DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery_precondition_17": {
+        "title": "Complication Mainly in the Course of Labor and Delivery",
+        "description": "Diagnosis, Active: Complication Mainly in the Course of Labor and Delivery",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.397",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_22"
+          }
+        ]
+      },
+      "DiagnosisActiveComplicationOfThePuerperium_precondition_19": {
+        "title": "Complication of the Puerperium",
+        "description": "Diagnosis, Active: Complication of the Puerperium",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.375",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationOfThePuerperium",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_22"
+          }
+        ]
+      },
+      "PhysicalExamFindingTimeOfDelivery_precondition_25": {
+        "title": "Time of Delivery",
+        "description": "Physical Exam, Finding: Time of Delivery",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.28",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingTimeOfDelivery",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2"
+          }
+        ]
+      },
+      "PhysicalExamFindingEstimatedGestationalAgeAtDelivery_precondition_26": {
+        "title": "Estimated Gestational Age at Delivery",
+        "description": "Physical Exam, Finding: Estimated Gestational Age at Delivery",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.26",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingEstimatedGestationalAgeAtDelivery",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "wk",
+            "value": "37",
+            "inclusive?": true,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "PhysicalExamFindingTimeOfDelivery_precondition_25",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_29": {
+        "title": "Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "description": "Diagnosis, Active: Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.286",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAEncounterInpatient2"
+          }
+        ]
+      },
+      "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation_precondition_31": {
+        "title": "Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "description": "Diagnosis, Active: Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.286",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAEncounterInpatient2"
+          }
+        ]
+      },
+      "ProcedurePerformedCesareanSection_precondition_35": {
+        "title": "Cesarean Section",
+        "description": "Procedure, Performed: Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.282",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedCesareanSection",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient2"
+          }
+        ]
+      },
+      "PhysicalExamFindingLabor_precondition_37": {
+        "title": "Labor",
+        "description": "Physical Exam, Finding: Labor",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.281",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingLabor",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceACesareanSection1"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient2_precondition_52": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "DiagnosisResolvedPerforationOfUterus_precondition_39": {
+        "title": "Perforation of Uterus",
+        "description": "Diagnosis, Resolved: Perforation of Uterus",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.136",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedPerforationOfUterus",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "DiagnosisResolvedUterineWindow_precondition_41": {
+        "title": "Uterine Window",
+        "description": "Diagnosis, Resolved: Uterine Window",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.137",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedUterineWindow",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "DiagnosisResolvedUterineRupture_precondition_43": {
+        "title": "Uterine Rupture",
+        "description": "Diagnosis, Resolved: Uterine Rupture",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.138",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedUterineRupture",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "DiagnosisInactiveCornualEctopicPregnancy_precondition_45": {
+        "title": "Cornual Ectopic Pregnancy",
+        "description": "Diagnosis, Inactive: Cornual Ectopic Pregnancy",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.27",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "inactive",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisInactiveCornualEctopicPregnancy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "ProcedurePerformedClassicalCesareanSection_precondition_47": {
+        "title": "Classical Cesarean Section",
+        "description": "Procedure, Performed: Classical Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.421",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedClassicalCesareanSection",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "ProcedurePerformedMyomectomy_precondition_49": {
+        "title": "Myomectomy",
+        "description": "Procedure, Performed: Myomectomy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.422",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedMyomectomy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_52"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient2_precondition_69": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "ProcedurePerformedMedicalInductionOfLabor_precondition_57": {
+        "title": "Medical Induction of Labor",
+        "description": "Procedure, Performed: Medical Induction of Labor",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.288",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedMedicalInductionOfLabor",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_69"
+          }
+        ]
+      },
+      "PhysicalExamFindingLabor_precondition_66": {
+        "title": "Labor",
+        "description": "Physical Exam, Finding: Labor",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.281",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingLabor",
+        "variable": false
+      },
+      "MedicationAdministeredOxytocin_precondition_59": {
+        "title": "Oxytocin",
+        "description": "Medication, Administered: Oxytocin",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.55",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredOxytocin",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "PhysicalExamFindingLabor_precondition_66"
+          },
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_69"
+          }
+        ]
+      },
+      "MedicationAdministeredDinoprostone_precondition_61": {
+        "title": "Dinoprostone",
+        "description": "Medication, Administered: Dinoprostone",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.56",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredDinoprostone",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "PhysicalExamFindingLabor_precondition_66"
+          },
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_69"
+          }
+        ]
+      },
+      "ProcedurePerformedArtificialRuptureOfMembranes_precondition_63": {
+        "title": "Artificial Rupture of Membranes",
+        "description": "Procedure, Performed: Artificial Rupture of Membranes",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.57",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedArtificialRuptureOfMembranes",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "PhysicalExamFindingLabor_precondition_66"
+          },
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient2_precondition_69"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "ProcedurePerformedArtificialRuptureOfMembranes": {
+        "title": "Artificial Rupture of Membranes",
+        "description": "Procedure, Performed: Artificial Rupture of Membranes",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.57",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedArtificialRuptureOfMembranes",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "OccurrenceACesareanSection1": {
+        "title": "Cesarean Section",
+        "description": "Procedure, Performed: Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.282",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_PERFORMED_CESAREAN_SECTION",
+        "source_data_criteria": "OccurrenceACesareanSection1",
+        "variable": false
+      },
+      "ProcedurePerformedClassicalCesareanSection": {
+        "title": "Classical Cesarean Section",
+        "description": "Procedure, Performed: Classical Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.421",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedClassicalCesareanSection",
+        "variable": false
+      },
+      "DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery": {
+        "title": "Complication Mainly in the Course of Labor and Delivery",
+        "description": "Diagnosis, Active: Complication Mainly in the Course of Labor and Delivery",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.397",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationMainlyInTheCourseOfLaborAndDelivery",
+        "variable": false
+      },
+      "DiagnosisActiveComplicationMainlyRelatedToPregnancy": {
+        "title": "Complication Mainly Related to Pregnancy",
+        "description": "Diagnosis, Active: Complication Mainly Related to Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.372",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationMainlyRelatedToPregnancy",
+        "variable": false
+      },
+      "DiagnosisActiveComplicationOfThePuerperium": {
+        "title": "Complication of the Puerperium",
+        "description": "Diagnosis, Active: Complication of the Puerperium",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.375",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveComplicationOfThePuerperium",
+        "variable": false
+      },
+      "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation": {
+        "title": "Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "description": "Diagnosis, Active: Conditions Possibly Justifying Elective Delivery Prior to 39 Weeks Gestation",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.286",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveConditionsPossiblyJustifyingElectiveDeliveryPriorTo39WeeksGestation",
+        "variable": false
+      },
+      "DiagnosisInactiveCornualEctopicPregnancy": {
+        "title": "Cornual Ectopic Pregnancy",
+        "description": "Diagnosis, Inactive: Cornual Ectopic Pregnancy",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.27",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "inactive",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisInactiveCornualEctopicPregnancy",
+        "variable": false
+      },
+      "ProcedurePerformedDeliveryProcedures": {
+        "title": "Delivery Procedures",
+        "description": "Procedure, Performed: Delivery Procedures",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.401",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedDeliveryProcedures",
+        "variable": false
+      },
+      "MedicationAdministeredDinoprostone": {
+        "title": "Dinoprostone",
+        "description": "Medication, Administered: Dinoprostone",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.56",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredDinoprostone",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient2",
+        "variable": false
+      },
+      "PhysicalExamFindingEstimatedGestationalAgeAtDelivery": {
+        "title": "Estimated Gestational Age at Delivery",
+        "description": "Physical Exam, Finding: Estimated Gestational Age at Delivery",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.26",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingEstimatedGestationalAgeAtDelivery",
+        "variable": false
+      },
+      "PhysicalExamFindingLabor": {
+        "title": "Labor",
+        "description": "Physical Exam, Finding: Labor",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.281",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingLabor",
+        "variable": false
+      },
+      "ProcedurePerformedMedicalInductionOfLabor": {
+        "title": "Medical Induction of Labor",
+        "description": "Procedure, Performed: Medical Induction of Labor",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.288",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedMedicalInductionOfLabor",
+        "variable": false
+      },
+      "ProcedurePerformedMyomectomy": {
+        "title": "Myomectomy",
+        "description": "Procedure, Performed: Myomectomy",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.422",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedMyomectomy",
+        "variable": false
+      },
+      "DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare": {
+        "title": "Normal Delivery and Other Indications for Care",
+        "description": "Diagnosis, Active: Normal Delivery and Other Indications for Care",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.391",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveNormalDeliveryAndOtherIndicationsForCare",
+        "variable": false
+      },
+      "MedicationAdministeredOxytocin": {
+        "title": "Oxytocin",
+        "description": "Medication, Administered: Oxytocin",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.55",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredOxytocin",
+        "variable": false
+      },
+      "DiagnosisResolvedPerforationOfUterus": {
+        "title": "Perforation of Uterus",
+        "description": "Diagnosis, Resolved: Perforation of Uterus",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.136",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedPerforationOfUterus",
+        "variable": false
+      },
+      "PhysicalExamFindingTimeOfDelivery": {
+        "title": "Time of Delivery",
+        "description": "Physical Exam, Finding: Time of Delivery",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.28",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingTimeOfDelivery",
+        "variable": false
+      },
+      "DiagnosisResolvedUterineRupture": {
+        "title": "Uterine Rupture",
+        "description": "Diagnosis, Resolved: Uterine Rupture",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.138",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedUterineRupture",
+        "variable": false
+      },
+      "DiagnosisResolvedUterineWindow": {
+        "title": "Uterine Window",
+        "description": "Diagnosis, Resolved: Uterine Window",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.137",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedUterineWindow",
+        "variable": false
+      },
+      "ProcedurePerformedCesareanSection": {
+        "title": "Cesarean Section",
+        "description": "Procedure, Performed: Cesarean Section",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.282",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedCesareanSection",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c) ) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Measure specifications are in the Public Domain\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c) ) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "For almost 3 decades, the American College of Obstetricians and Gynecologists (ACOG) and the American Academy of Pediatrics (AAP) have had in place a standard requiring 39 completed weeks gestation prior to ELECTIVE delivery, either vaginal or operative (ACOG, 1996). A survey conducted in 2007 of almost 20,000 births in HCA hospitals throughout the U.S. carried out in conjunction with the March of Dimes at the request of ACOG revealed that almost 1/3 of all babies delivered in the United States are electively delivered with 5% of all deliveries in the U.S. delivered in a manner violating ACOG/AAP guidelines. Most of these are for convenience, and result in significant short term neonatal morbidity (neonatal intensive care unit admission rates of 13- 21%) (Clark et al., 2009).\nAccording to Glantz (2005), compared to spontaneous labor, elective inductions result in more cesarean deliveries and longer maternal length of stay. The American Academy of Family Physicians (2000) also notes that elective induction doubles the cesarean delivery rate. Repeat elective cesarean sections before 39 weeks gestation also result in higher rates of adverse respiratory outcomes, mechanical ventilation, sepsis and hypoglycemia for the newborns (Tita et al., 2009).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For almost 3 decades, the American College of Obstetricians and Gynecologists (ACOG) and the American Academy of Pediatrics (AAP) have had in place a standard requiring 39 completed weeks gestation prior to ELECTIVE delivery, either vaginal or operative (ACOG, 1996). A survey conducted in 2007 of almost 20,000 births in HCA hospitals throughout the U.S. carried out in conjunction with the March of Dimes at the request of ACOG revealed that almost 1/3 of all babies delivered in the United States are electively delivered with 5% of all deliveries in the U.S. delivered in a manner violating ACOG/AAP guidelines. Most of these are for convenience, and result in significant short term neonatal morbidity (neonatal intensive care unit admission rates of 13- 21%) (Clark et al., 2009).\nAccording to Glantz (2005), compared to spontaneous labor, elective inductions result in more cesarean deliveries and longer maternal length of stay. The American Academy of Family Physicians (2000) also notes that elective induction doubles the cesarean delivery rate. Repeat elective cesarean sections before 39 weeks gestation also result in higher rates of adverse respiratory outcomes, mechanical ventilation, sepsis and hypoglycemia for the newborns (Tita et al., 2009).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Guidelines from the American College of Obstetricians and Gynecologists and the American Academy of Pediatrics do not support non-medically indicated elective deliveries at <39 weeks gestation. Evidence suggests that early term deliveries result in significant short term neonatal morbidity. Therefore, it is recommended that elective deliveries should not be performed at <39 weeks gestation unless medically-indicated.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Guidelines from the American College of Obstetricians and Gynecologists and the American Academy of Pediatrics do not support non-medically indicated elective deliveries at <39 weeks gestation. Evidence suggests that early term deliveries result in significant short term neonatal morbidity. Therefore, it is recommended that elective deliveries should not be performed at <39 weeks gestation unless medically-indicated.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Decrease in the rate",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Decrease in the rate",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0469",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0469"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "113",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "113",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Tita, A., Landon, M., Spong, C., Lai, Y., Leveno, K., Varner, M, et al. (2009). Timing of elective repeat cesarean delivery at term and neonatal outcomes. [Electronic Version]. NEJM. 360:2, 111-120.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Tita, A., Landon, M., Spong, C., Lai, Y., Leveno, K., Varner, M, et al. (2009). Timing of elective repeat cesarean delivery at term and neonatal outcomes. [Electronic Version]. NEJM. 360:2, 111-120.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nWherever the gestational age is mentioned with relative timing to delivery, the intent is to capture the estimated gestational age on the day of delivery. \n\nGestational age should be rounded off to the nearest completed week, not the following week. For example, an infant born on the 5th day of the 36th week (35 weeks and 5/7 days) is at a gestational age of 35 weeks, not 36 weeks.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nWherever the gestational age is mentioned with relative timing to delivery, the intent is to capture the estimated gestational age on the day of delivery. \n\nGestational age should be rounded off to the nearest completed week, not the following week. For example, an infant born on the 5th day of the 36th week (35 weeks and 5/7 days) is at a gestational age of 35 weeks, not 36 weeks.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients age >= 8 years and < 65 admitted to the hospital for inpatient acute care and had a length of stay < 120 days.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients age >= 8 years and < 65 admitted to the hospital for inpatient acute care and had a length of stay < 120 days.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Patients delivering newborns with >= 37 and < 39 weeks of gestation completed",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients delivering newborns with >= 37 and < 39 weeks of gestation completed",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Patients with conditions possibly justifying elective delivery prior to 39 weeks gestation",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with conditions possibly justifying elective delivery prior to 39 weeks gestation",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients with elective deliveries with medical induction of labor or cesarean section and not in labor.",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with elective deliveries with medical induction of labor or cesarean section and not in labor.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.282",
+    "2.16.840.1.113883.3.117.1.7.1.401",
+    "2.16.840.1.113883.3.117.1.7.1.391",
+    "2.16.840.1.113883.3.117.1.7.1.372",
+    "2.16.840.1.113883.3.117.1.7.1.397",
+    "2.16.840.1.113883.3.117.1.7.1.375",
+    "2.16.840.1.113762.1.4.1045.28",
+    "2.16.840.1.113762.1.4.1045.26",
+    "2.16.840.1.113883.3.117.1.7.1.281",
+    "2.16.840.1.113883.3.117.1.7.1.286",
+    "2.16.840.1.113883.3.117.1.7.1.136",
+    "2.16.840.1.113883.3.117.1.7.1.137",
+    "2.16.840.1.113883.3.117.1.7.1.138",
+    "2.16.840.1.113762.1.4.1045.27",
+    "2.16.840.1.113883.3.117.1.7.1.421",
+    "2.16.840.1.113883.3.117.1.7.1.422",
+    "2.16.840.1.113883.3.117.1.7.1.288",
+    "2.16.840.1.113762.1.4.1045.55",
+    "2.16.840.1.113762.1.4.1045.56",
+    "2.16.840.1.113762.1.4.1045.57",
+    "2.16.840.1.113883.3.666.5.307",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591"
+  ],
+  "population_ids": {
+    "IPP": "5EBD1FA3-47BF-43D8-9EC7-64605D98E7BC",
+    "DENOM": "AE3B6976-8379-41B0-89AF-E708D0F7B662",
+    "DENEX": "63A1B62C-8679-4C1F-BAD1-792AFB510F1A",
+    "NUMER": "2E10338B-2108-4D41-8774-FCEF2C2DACB9"
+  }
+}

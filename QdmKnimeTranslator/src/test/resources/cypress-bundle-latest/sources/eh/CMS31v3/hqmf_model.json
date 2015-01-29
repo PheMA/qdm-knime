@@ -1,0 +1,1395 @@
+{
+  "id": "1354",
+  "hqmf_id": "40280381-43DB-D64C-0144-5571970A2685",
+  "hqmf_set_id": "0924FBAE-3FDB-4D0A-AAB7-9F354E699FDE",
+  "hqmf_version_number": 3,
+  "title": "Hearing Screening Prior To Hospital Discharge",
+  "description": "This measure assesses the proportion of births that have been screened for hearing loss before hospital discharge.",
+  "cms_id": "CMS31v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "615C7A1C-6611-49BF-B1E1-DA7090E996F1",
+      "preconditions": [
+        {
+          "id": 11,
+          "preconditions": [
+            {
+              "id": 3,
+              "reference": "OccurrenceAEncounterInpatient1_precondition_3"
+            },
+            {
+              "id": 9,
+              "preconditions": [
+                {
+                  "id": 5,
+                  "reference": "DiagnosisActiveLivebornNewbornBornInHospital_precondition_5"
+                },
+                {
+                  "id": 7,
+                  "reference": "DiagnosisActiveLivebirth_precondition_7"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "E2CD7340-6780-4783-872E-8E96D23DEEC2"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "857DE65C-41BE-4736-A765-6EEADED9FB8C",
+      "preconditions": [
+        {
+          "id": 24,
+          "preconditions": [
+            {
+              "id": 21,
+              "preconditions": [
+                {
+                  "id": 12,
+                  "reference": "PatientCharacteristicExpiredPatientExpired_precondition_12"
+                },
+                {
+                  "id": 20,
+                  "preconditions": [
+                    {
+                      "id": 18,
+                      "preconditions": [
+                        {
+                          "id": 14,
+                          "reference": "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_14"
+                        },
+                        {
+                          "id": 16,
+                          "reference": "DiagnosticStudyResultNewbornHearingScreenRight_precondition_16"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue",
+                  "negation": true
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "4432C10C-8CDA-40E0-8A4B-2EC7CB70C404",
+      "preconditions": [
+        {
+          "id": 40,
+          "preconditions": [
+            {
+              "id": 37,
+              "preconditions": [
+                {
+                  "id": 29,
+                  "preconditions": [
+                    {
+                      "id": 25,
+                      "reference": "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_25"
+                    },
+                    {
+                      "id": 27,
+                      "reference": "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_27"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 35,
+                  "preconditions": [
+                    {
+                      "id": 31,
+                      "reference": "DiagnosticStudyResultNewbornHearingScreenRight_precondition_31"
+                    },
+                    {
+                      "id": 33,
+                      "reference": "DiagnosticStudyResultNewbornHearingScreenRight_precondition_33"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DiagnosticStudyResultNotDoneMedicalReasons": {
+      "title": "Medical Reasons",
+      "description": "Diagnostic Study, Result not done: Medical Reasons",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "DiagnosticStudyResultNotDoneMedicalReasons",
+      "variable": false
+    },
+    "DiagnosticStudyResultNotDoneMedicalReasons2": {
+      "title": "Medical Reasons",
+      "description": "Diagnostic Study, Result not done: Medical Reasons",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "DiagnosticStudyResultNotDoneMedicalReasons2",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_3": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EDU",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "DiagnosisActiveLivebornNewbornBornInHospital_precondition_5": {
+      "title": "Liveborn Newborn Born in Hospital",
+      "description": "Diagnosis, Active: Liveborn Newborn Born in Hospital",
+      "code_list_id": "2.16.840.1.113762.1.4.1046.6",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveLivebornNewbornBornInHospital",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "DiagnosisActiveLivebirth_precondition_7": {
+      "title": "Livebirth",
+      "description": "Diagnosis, Active: Livebirth",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.1",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveLivebirth",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_22": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "PatientCharacteristicExpiredPatientExpired_precondition_12": {
+      "title": "Patient Expired",
+      "description": "Patient Characteristic Expired: Patient Expired",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+      "property": "expired",
+      "type": "characteristic",
+      "definition": "patient_characteristic_expired",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicExpiredPatientExpired",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "371828006"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_22"
+        }
+      ]
+    },
+    "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_14": {
+      "title": "Newborn Hearing Screen Left",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Left",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenLeft",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_22"
+        }
+      ]
+    },
+    "DiagnosticStudyResultNewbornHearingScreenRight_precondition_16": {
+      "title": "Newborn Hearing Screen Right",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Right",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenRight",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_22"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_38": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_25": {
+      "title": "Newborn Hearing Screen Left",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Left",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenLeft",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.6",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_38"
+        }
+      ]
+    },
+    "DiagnosticStudyResultNewbornHearingScreenLeft_precondition_27": {
+      "title": "Newborn Hearing Screen Left",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Left",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.114222.4.1.214079.1.1.7",
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenLeft",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_38"
+        }
+      ]
+    },
+    "DiagnosticStudyResultNewbornHearingScreenRight_precondition_31": {
+      "title": "Newborn Hearing Screen Right",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Right",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenRight",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.6",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_38"
+        }
+      ]
+    },
+    "DiagnosticStudyResultNewbornHearingScreenRight_precondition_33": {
+      "title": "Newborn Hearing Screen Right",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Right",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.114222.4.1.214079.1.1.7",
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenRight",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_38"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DiagnosisActiveLivebirth": {
+      "title": "Livebirth",
+      "description": "Diagnosis, Active: Livebirth",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.1",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveLivebirth",
+      "variable": false
+    },
+    "DiagnosisActiveLivebornNewbornBornInHospital": {
+      "title": "Liveborn Newborn Born in Hospital",
+      "description": "Diagnosis, Active: Liveborn Newborn Born in Hospital",
+      "code_list_id": "2.16.840.1.113762.1.4.1046.6",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveLivebornNewbornBornInHospital",
+      "variable": false
+    },
+    "DiagnosticStudyResultNewbornHearingScreenLeft": {
+      "title": "Newborn Hearing Screen Left",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Left",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenLeft",
+      "variable": false
+    },
+    "DiagnosticStudyResultNotDoneMedicalReasons": {
+      "title": "Medical Reasons",
+      "description": "Diagnostic Study, Result not done: Medical Reasons",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.3",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "DiagnosticStudyResultNotDoneMedicalReasons",
+      "variable": false
+    },
+    "DiagnosticStudyResultNewbornHearingScreenRight": {
+      "title": "Newborn Hearing Screen Right",
+      "description": "Diagnostic Study, Result: Newborn Hearing Screen Right",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultNewbornHearingScreenRight",
+      "variable": false
+    },
+    "DiagnosticStudyResultNotDoneMedicalReasons2": {
+      "title": "Medical Reasons",
+      "description": "Diagnostic Study, Result not done: Medical Reasons",
+      "code_list_id": "2.16.840.1.114222.4.1.214079.1.1.4",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "DiagnosticStudyResultNotDoneMedicalReasons2",
+      "variable": false
+    },
+    "PatientCharacteristicExpiredPatientExpired": {
+      "title": "Patient Expired",
+      "description": "Patient Characteristic Expired: Patient Expired",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+      "property": "expired",
+      "type": "characteristic",
+      "definition": "patient_characteristic_expired",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicExpiredPatientExpired",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "371828006"
+        ]
+      }
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "None",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Birthing facility staff should review the effectiveness and timeliness of screening relative to nursery discharge. Benchmarks set within the EHCP may trigger hospital or jurisdictional compliance activities, such as re-writing of procedural guidelines or re-training of screening staff.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Birthing facility staff should review the effectiveness and timeliness of screening relative to nursery discharge. Benchmarks set within the EHCP may trigger hospital or jurisdictional compliance activities, such as re-writing of procedural guidelines or re-training of screening staff.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "None",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "An increase in the rate.",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "An increase in the rate.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "1354",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "1354"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "None",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "31",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "31",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "HRSA Title V Block Grant MCHB Performance Measure: Percentage of newborns who have been screened for hearing before hospital discharge.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "HRSA Title V Block Grant MCHB Performance Measure: Percentage of newborns who have been screened for hearing before hospital discharge.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The measurement period is one calendar year but the reporting period is jurisdictionally defined.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The measurement period is one calendar year but the reporting period is jurisdictionally defined.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "All live births discharged during the measurement time period born at a facility",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All live births discharged during the measurement time period born at a facility",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "All live births discharged during the measurement time period born at a facility",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All live births discharged during the measurement time period born at a facility",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patient deceased prior to discharge and has not received hearing screening.",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patient deceased prior to discharge and has not received hearing screening.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "All live births during the measurement time period born at a facility and screened for\nhearing loss prior to discharge, or not being screened due to medical reasons or medical exclusions.",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All live births during the measurement time period born at a facility and screened for\nhearing loss prior to discharge, or not being screened due to medical reasons or medical exclusions.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

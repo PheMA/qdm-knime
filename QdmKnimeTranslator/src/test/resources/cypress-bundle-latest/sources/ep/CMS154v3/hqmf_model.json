@@ -1,0 +1,1601 @@
+{
+  "id": "0069",
+  "hqmf_id": "40280381-4600-425F-0146-1F7808490F52",
+  "hqmf_set_id": "E455FAC0-F2CB-4074-A351-1E68A90FB7CF",
+  "hqmf_version_number": 3,
+  "title": "Appropriate Treatment for Children with Upper Respiratory Infection (URI)",
+  "description": "Percentage of children 3 months-18 years of age who were diagnosed with upper respiratory infection (URI) and were not dispensed an antibiotic prescription on or three days after the episode.",
+  "cms_id": "CMS154v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "F979410D-8E23-4578-9FE3-54D155F9FE0A",
+      "preconditions": [
+        {
+          "id": 39,
+          "preconditions": [
+            {
+              "id": 2,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_2"
+            },
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            },
+            {
+              "id": 37,
+              "preconditions": [
+                {
+                  "id": 20,
+                  "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_20"
+                },
+                {
+                  "id": 34,
+                  "preconditions": [
+                    {
+                      "id": 22,
+                      "reference": "EncounterPerformedOfficeVisit_precondition_22"
+                    },
+                    {
+                      "id": 24,
+                      "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_24"
+                    },
+                    {
+                      "id": 26,
+                      "reference": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_26"
+                    },
+                    {
+                      "id": 28,
+                      "reference": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_28"
+                    },
+                    {
+                      "id": 30,
+                      "reference": "EncounterPerformedHospitalObservationCareInitial_precondition_30"
+                    },
+                    {
+                      "id": 32,
+                      "reference": "EncounterPerformedFaceToFaceInteraction_precondition_32"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "1A34CFE7-1AA5-4662-B38A-FFC16F006B8F"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "9E5CBF0E-036E-485F-95EF-EAC6B94F9574",
+      "preconditions": [
+        {
+          "id": 46,
+          "preconditions": [
+            {
+              "id": 44,
+              "preconditions": [
+                {
+                  "id": 40,
+                  "reference": "DiagnosisActiveCompetingConditionsForRespiratoryConditions_precondition_40"
+                },
+                {
+                  "id": 42,
+                  "reference": "MedicationActiveAntibioticMedicationsForPharyngitis_precondition_42"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "3DC3D983-7716-4572-8D68-1C2709BAF30A",
+      "preconditions": [
+        {
+          "id": 49,
+          "preconditions": [
+            {
+              "id": 47,
+              "reference": "MedicationOrderAntibioticMedicationsForPharyngitis_precondition_47"
+            }
+          ],
+          "conjunction_code": "atLeastOneTrue",
+          "negation": true
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAUpperRespiratoryInfection1": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_UPPER_RESPIRATORY_INFECTION",
+      "source_data_criteria": "OccurrenceAUpperRespiratoryInfection1",
+      "variable": false
+    },
+    "DiagnosisActiveUpperRespiratoryInfection": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveUpperRespiratoryInfection",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_2": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "3",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_6": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedEmergencyDepartmentVisit_precondition_8": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1010",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_10": {
+      "title": "Preventive Care- Initial Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_12": {
+      "title": "Preventive Care - Established Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedHospitalObservationCareInitial_precondition_14": {
+      "title": "Hospital Observation Care - Initial",
+      "description": "Encounter, Performed: Hospital Observation Care - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1002",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalObservationCareInitial",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_16": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAUpperRespiratoryInfection1_precondition_20": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_UPPER_RESPIRATORY_INFECTION",
+      "source_data_criteria": "OccurrenceAUpperRespiratoryInfection1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "GROUP_SDU_CHILDREN_51"
+        }
+      ]
+    },
+    "GROUP_SDU_CHILDREN_51": {
+      "title": "GROUP_SDU_CHILDREN_51",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedOfficeVisit_precondition_6",
+        "EncounterPerformedEmergencyDepartmentVisit_precondition_8",
+        "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_10",
+        "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_12",
+        "EncounterPerformedHospitalObservationCareInitial_precondition_14",
+        "EncounterPerformedFaceToFaceInteraction_precondition_16"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SDU_CHILDREN_51",
+      "variable": false
+    },
+    "OccurrenceAUpperRespiratoryInfection1_precondition_35": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_UPPER_RESPIRATORY_INFECTION",
+      "source_data_criteria": "OccurrenceAUpperRespiratoryInfection1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_22": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "EncounterPerformedEmergencyDepartmentVisit_precondition_24": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1010",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_26": {
+      "title": "Preventive Care- Initial Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_28": {
+      "title": "Preventive Care - Established Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "EncounterPerformedHospitalObservationCareInitial_precondition_30": {
+      "title": "Hospital Observation Care - Initial",
+      "description": "Encounter, Performed: Hospital Observation Care - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1002",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalObservationCareInitial",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_32": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAUpperRespiratoryInfection1_precondition_35"
+        }
+      ]
+    },
+    "DiagnosisActiveCompetingConditionsForRespiratoryConditions_precondition_40": {
+      "title": "Competing Conditions for Respiratory Conditions",
+      "description": "Diagnosis, Active: Competing Conditions for Respiratory Conditions",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveCompetingConditionsForRespiratoryConditions",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAUpperRespiratoryInfection1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "3",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationActiveAntibioticMedicationsForPharyngitis_precondition_42": {
+      "title": "Antibiotic Medications for Pharyngitis",
+      "description": "Medication, Active: Antibiotic Medications for Pharyngitis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntibioticMedicationsForPharyngitis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAUpperRespiratoryInfection1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "30",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderAntibioticMedicationsForPharyngitis_precondition_47": {
+      "title": "Antibiotic Medications for Pharyngitis",
+      "description": "Medication, Order: Antibiotic Medications for Pharyngitis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAntibioticMedicationsForPharyngitis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAUpperRespiratoryInfection1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "3",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "OccurrenceAUpperRespiratoryInfection1": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_UPPER_RESPIRATORY_INFECTION",
+      "source_data_criteria": "OccurrenceAUpperRespiratoryInfection1",
+      "variable": false
+    },
+    "EncounterPerformedOfficeVisit": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1010",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareInitialOfficeVisit0To17": {
+      "title": "Preventive Care- Initial Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17": {
+      "title": "Preventive Care - Established Office Visit, 0 to 17",
+      "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+      "variable": false
+    },
+    "EncounterPerformedHospitalObservationCareInitial": {
+      "title": "Hospital Observation Care - Initial",
+      "description": "Encounter, Performed: Hospital Observation Care - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1002",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalObservationCareInitial",
+      "variable": false
+    },
+    "DiagnosisActiveCompetingConditionsForRespiratoryConditions": {
+      "title": "Competing Conditions for Respiratory Conditions",
+      "description": "Diagnosis, Active: Competing Conditions for Respiratory Conditions",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveCompetingConditionsForRespiratoryConditions",
+      "variable": false
+    },
+    "EncounterPerformedFaceToFaceInteraction": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false
+    },
+    "MedicationActiveAntibioticMedicationsForPharyngitis": {
+      "title": "Antibiotic Medications for Pharyngitis",
+      "description": "Medication, Active: Antibiotic Medications for Pharyngitis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntibioticMedicationsForPharyngitis",
+      "variable": false
+    },
+    "MedicationOrderAntibioticMedicationsForPharyngitis": {
+      "title": "Antibiotic Medications for Pharyngitis",
+      "description": "Medication, Order: Antibiotic Medications for Pharyngitis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAntibioticMedicationsForPharyngitis",
+      "variable": false
+    },
+    "DiagnosisActiveUpperRespiratoryInfection": {
+      "title": "Upper Respiratory Infection",
+      "description": "Diagnosis, Active: Upper Respiratory Infection",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1022",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveUpperRespiratoryInfection",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "In 1998, 25 million patients (adults and children) sought care for non-specific upper respiratory infections (URI, also known as the common cold) and 30 percent received antibiotics (Gonzales 2001). \r\n \r\nInappropriate antibiotic prescriptions for URI, pharyngitis and bronchitis are estimated to amount to 55 percent (22.6 million) of all antibiotics prescribed for acute respiratory infections, costing $726 million in 1998 (Gonzales 2001).\r\n \r\nUsing antibiotics inappropriately can lead to antibiotic resistance, which can result in increased morbidity and mortality (Feikin 2000). The resulting increased effort to treat drug-resistant pathogens can also lead to more repeated health care visits, greater risk of disease complications and increased health care costs (Feikin 2000; Dagan 2000; Watanabe 2000).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "In 1998, 25 million patients (adults and children) sought care for non-specific upper respiratory infections (URI, also known as the common cold) and 30 percent received antibiotics (Gonzales 2001). \r\n \r\nInappropriate antibiotic prescriptions for URI, pharyngitis and bronchitis are estimated to amount to 55 percent (22.6 million) of all antibiotics prescribed for acute respiratory infections, costing $726 million in 1998 (Gonzales 2001).\r\n \r\nUsing antibiotics inappropriately can lead to antibiotic resistance, which can result in increased morbidity and mortality (Feikin 2000). The resulting increased effort to treat drug-resistant pathogens can also lead to more repeated health care visits, greater risk of disease complications and increased health care costs (Feikin 2000; Dagan 2000; Watanabe 2000).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "American Family Physician (Wong, Blumberg, and Lowe 2006) \r\n\r\n- A diagnosis of acute bacterial rhinosinusitis should be considered in patients with symptoms of a viral upper respiratory infection that have not improved after 10 days or that worsen after five to seven days. (C) \r\n\r\n- Treatment of sinus infection with antibiotics in the first week of symptoms is not recommended. (C)\r\n\r\n- Telling patients not to fill an antibiotic prescription unless symptoms worsen or fail to improve after several days can reduce the inappropriate use of antibiotics. (B)",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "American Family Physician (Wong, Blumberg, and Lowe 2006) \r\n\r\n- A diagnosis of acute bacterial rhinosinusitis should be considered in patients with symptoms of a viral upper respiratory infection that have not improved after 10 days or that worsen after five to seven days. (C) \r\n\r\n- Treatment of sinus infection with antibiotics in the first week of symptoms is not recommended. (C)\r\n\r\n- Telling patients not to fill an antibiotic prescription unless symptoms worsen or fail to improve after several days can reduce the inappropriate use of antibiotics. (B)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher scores indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher scores indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0069",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0069"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "154",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "154",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Watanabe, H., S. Sato, K. Kawakami, K. Watanabe, K. Oishi, N. Rikitomi, T. li, H. Ikeda, A. Sato, T. Nagatake. 2000. “A comparative clinical study of pneumonia by penicillin-resistant and sensitive Streptococcus pneumoniae in a community hospital.” Respirology 5(1):59-64.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Watanabe, H., S. Sato, K. Kawakami, K. Watanabe, K. Oishi, N. Rikitomi, T. li, H. Ikeda, A. Sato, T. Nagatake. 2000. “A comparative clinical study of pneumonia by penicillin-resistant and sensitive Streptococcus pneumoniae in a community hospital.” Respirology 5(1):59-64.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Children age 3 months to 18 years who had an outpatient or emergency department (ED) visit with a diagnosis of upper respiratory infection (URI) during the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Children age 3 months to 18 years who had an outpatient or emergency department (ED) visit with a diagnosis of upper respiratory infection (URI) during the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Exclude children who are taking antibiotics in the 30 days prior to the date of the encounter during which the diagnosis was established. Exclude children who had an encounter with a competing diagnosis within three days after the initial diagnosis of URI.",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Exclude children who are taking antibiotics in the 30 days prior to the date of the encounter during which the diagnosis was established. Exclude children who had an encounter with a competing diagnosis within three days after the initial diagnosis of URI.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Children without a prescription for antibiotic medication on or 3 days after the outpatient or ED visit for an upper respiratory infection",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Children without a prescription for antibiotic medication on or 3 days after the outpatient or ED visit for an upper respiratory infection",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

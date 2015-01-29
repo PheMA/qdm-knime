@@ -1,0 +1,1972 @@
+{
+  "id": "0004",
+  "hqmf_id": "40280381-4600-425F-0146-1F6AE4760EEF",
+  "hqmf_set_id": "C3657D72-21B4-4675-820A-86C7FE293BF5",
+  "hqmf_version_number": 3,
+  "title": "Initiation and Engagement of Alcohol and Other Drug Dependence Treatment",
+  "description": "Percentage of patients 13 years of age and older with a new episode of alcohol and other drug (AOD) dependence who received the following. Two rates are reported.\r\na. Percentage of patients who initiated treatment within 14 days of the diagnosis.\r\nb. Percentage of patients who initiated treatment and who had two or more additional services with an AOD diagnosis within 30 days of the initiation visit.",
+  "cms_id": "CMS137v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "AA494FD0-8789-4443-B71B-6C410062F456",
+      "preconditions": [
+        {
+          "id": 29,
+          "preconditions": [
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            },
+            {
+              "id": 7,
+              "reference": "OccurrenceAAlcoholAndDrugDependence1_precondition_6"
+            },
+            {
+              "id": 27,
+              "reference": "OccurrenceAAlcoholAndDrugDependence1_precondition_27"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "3C06637C-35B0-4962-9D91-36EA4149CC61"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "D0DE5851-D2AC-42D4-A7B4-CAB09BFA3C9D",
+      "preconditions": [
+        {
+          "id": 32,
+          "preconditions": [
+            {
+              "id": 30,
+              "reference": "DiagnosisActiveAlcoholAndDrugDependence_precondition_30"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "BEA1444C-FA23-4741-8659-F8ABCA3644EE",
+      "preconditions": [
+        {
+          "id": 40,
+          "preconditions": [
+            {
+              "id": 37,
+              "preconditions": [
+                {
+                  "id": 33,
+                  "reference": "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_33"
+                },
+                {
+                  "id": 35,
+                  "reference": "OccurrenceAPsychVisitPsychotherapy3_precondition_35"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER_1": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "6938BC4A-2870-481D-B9AA-0A3D3313FEF0",
+      "preconditions": [
+        {
+          "id": 67,
+          "preconditions": [
+            {
+              "id": 65,
+              "preconditions": [
+                {
+                  "id": 51,
+                  "preconditions": [
+                    {
+                      "id": 41,
+                      "reference": "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_41"
+                    },
+                    {
+                      "id": 49,
+                      "reference": "GROUP_COUNT_79"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 63,
+                  "preconditions": [
+                    {
+                      "id": 53,
+                      "reference": "OccurrenceAPsychVisitPsychotherapy3_precondition_53"
+                    },
+                    {
+                      "id": 61,
+                      "reference": "GROUP_COUNT_81"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "STRAT": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "8A4D92B2-3946-CDAE-0139-7944BB49014B",
+      "preconditions": [
+        {
+          "id": 72,
+          "preconditions": [
+            {
+              "id": 68,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_68"
+            },
+            {
+              "id": 70,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_70"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "STRAT_1": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "8A4D92B2-3946-CDAE-0139-7944BB80014D",
+      "preconditions": [
+        {
+          "id": 75,
+          "preconditions": [
+            {
+              "id": 73,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_73"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAAlcoholAndDrugDependence1": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALCOHOL_AND_DRUG_DEPENDENCE",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependence1",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "13",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAAlcoholAndDrugDependence1_precondition_6": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALCOHOL_AND_DRUG_DEPENDENCE",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependence1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "10",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_9": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedEmergencyDepartmentVisit_precondition_11": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1010",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedDetoxificationVisit_precondition_13": {
+      "title": "Detoxification Visit",
+      "description": "Encounter, Performed: Detoxification Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1059",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDetoxificationVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedHospitalObservationCareInitial_precondition_15": {
+      "title": "Hospital Observation Care - Initial",
+      "description": "Encounter, Performed: Hospital Observation Care - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1002",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalObservationCareInitial",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedHospitalInpatientVisitInitial_precondition_17": {
+      "title": "Hospital Inpatient Visit - Initial",
+      "description": "Encounter, Performed: Hospital Inpatient Visit - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1004",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalInpatientVisitInitial",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedDischargeServicesHospitalInpatientSameDayDischarge_precondition_19": {
+      "title": "Discharge Services - Hospital Inpatient Same Day Discharge",
+      "description": "Encounter, Performed: Discharge Services - Hospital Inpatient Same Day Discharge",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1006",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDischargeServicesHospitalInpatientSameDayDischarge",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedDischargeServicesHospitalInpatient_precondition_21": {
+      "title": "Discharge Services - Hospital Inpatient",
+      "description": "Encounter, Performed: Discharge Services - Hospital Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1007",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDischargeServicesHospitalInpatient",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_23": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAAlcoholAndDrugDependence1_precondition_27": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALCOHOL_AND_DRUG_DEPENDENCE",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependence1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "GROUP_SDU_CHILDREN_77"
+        }
+      ]
+    },
+    "GROUP_SDU_CHILDREN_77": {
+      "title": "GROUP_SDU_CHILDREN_77",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedOfficeVisit_precondition_9",
+        "EncounterPerformedEmergencyDepartmentVisit_precondition_11",
+        "EncounterPerformedDetoxificationVisit_precondition_13",
+        "EncounterPerformedHospitalObservationCareInitial_precondition_15",
+        "EncounterPerformedHospitalInpatientVisitInitial_precondition_17",
+        "EncounterPerformedDischargeServicesHospitalInpatientSameDayDischarge_precondition_19",
+        "EncounterPerformedDischargeServicesHospitalInpatient_precondition_21",
+        "EncounterPerformedFaceToFaceInteraction_precondition_23"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SDU_CHILDREN_77",
+      "variable": false
+    },
+    "DiagnosisActiveAlcoholAndDrugDependence_precondition_30": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveAlcoholAndDrugDependence",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAAlcoholAndDrugDependence1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "60",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAAlcoholAndDrugDependence1_precondition_38": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALCOHOL_AND_DRUG_DEPENDENCE",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependence1",
+      "variable": false
+    },
+    "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_33": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ALCOHOL_AND_DRUG_DEPENDENCE_TREATMENT",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependenceTreatment2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependence1_precondition_38",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "14",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAPsychVisitPsychotherapy3_precondition_35": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT_PSYCHOTHERAPY",
+      "source_data_criteria": "OccurrenceAPsychVisitPsychotherapy3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependence1_precondition_38",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "14",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_41": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ALCOHOL_AND_DRUG_DEPENDENCE_TREATMENT",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependenceTreatment2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependence1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "14",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_48": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ALCOHOL_AND_DRUG_DEPENDENCE_TREATMENT",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependenceTreatment2",
+      "variable": false
+    },
+    "EncounterPerformedAlcoholAndDrugDependenceTreatment_precondition_43": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAlcoholAndDrugDependenceTreatment",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_48",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "30",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedPsychVisitPsychotherapy_precondition_45": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPsychVisitPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependenceTreatment2_precondition_48",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "30",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_COUNT_79": {
+      "title": "GROUP_COUNT_79",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedAlcoholAndDrugDependenceTreatment_precondition_43",
+        "EncounterPerformedPsychVisitPsychotherapy_precondition_45"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_79",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAPsychVisitPsychotherapy3_precondition_53": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT_PSYCHOTHERAPY",
+      "source_data_criteria": "OccurrenceAPsychVisitPsychotherapy3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAAlcoholAndDrugDependence1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "14",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAPsychVisitPsychotherapy3_precondition_60": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT_PSYCHOTHERAPY",
+      "source_data_criteria": "OccurrenceAPsychVisitPsychotherapy3",
+      "variable": false
+    },
+    "EncounterPerformedAlcoholAndDrugDependenceTreatment_precondition_55": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAlcoholAndDrugDependenceTreatment",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAPsychVisitPsychotherapy3_precondition_60",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "30",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedPsychVisitPsychotherapy_precondition_57": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPsychVisitPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAPsychVisitPsychotherapy3_precondition_60",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "30",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_COUNT_81": {
+      "title": "GROUP_COUNT_81",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedAlcoholAndDrugDependenceTreatment_precondition_55",
+        "EncounterPerformedPsychVisitPsychotherapy_precondition_57"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_81",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_68": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "13",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_70": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "17",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_73": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "OccurrenceAAlcoholAndDrugDependence1": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALCOHOL_AND_DRUG_DEPENDENCE",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependence1",
+      "variable": false
+    },
+    "OccurrenceAAlcoholAndDrugDependenceTreatment2": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ALCOHOL_AND_DRUG_DEPENDENCE_TREATMENT",
+      "source_data_criteria": "OccurrenceAAlcoholAndDrugDependenceTreatment2",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "EncounterPerformedDetoxificationVisit": {
+      "title": "Detoxification Visit",
+      "description": "Encounter, Performed: Detoxification Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1059",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDetoxificationVisit",
+      "variable": false
+    },
+    "EncounterPerformedDischargeServicesHospitalInpatient": {
+      "title": "Discharge Services - Hospital Inpatient",
+      "description": "Encounter, Performed: Discharge Services - Hospital Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1007",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDischargeServicesHospitalInpatient",
+      "variable": false
+    },
+    "EncounterPerformedDischargeServicesHospitalInpatientSameDayDischarge": {
+      "title": "Discharge Services - Hospital Inpatient Same Day Discharge",
+      "description": "Encounter, Performed: Discharge Services - Hospital Inpatient Same Day Discharge",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1006",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedDischargeServicesHospitalInpatientSameDayDischarge",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1010",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "EncounterPerformedFaceToFaceInteraction": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false
+    },
+    "EncounterPerformedHospitalInpatientVisitInitial": {
+      "title": "Hospital Inpatient Visit - Initial",
+      "description": "Encounter, Performed: Hospital Inpatient Visit - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1004",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalInpatientVisitInitial",
+      "variable": false
+    },
+    "EncounterPerformedHospitalObservationCareInitial": {
+      "title": "Hospital Observation Care - Initial",
+      "description": "Encounter, Performed: Hospital Observation Care - Initial",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1002",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHospitalObservationCareInitial",
+      "variable": false
+    },
+    "EncounterPerformedOfficeVisit": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false
+    },
+    "OccurrenceAPsychVisitPsychotherapy3": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT_PSYCHOTHERAPY",
+      "source_data_criteria": "OccurrenceAPsychVisitPsychotherapy3",
+      "variable": false
+    },
+    "DiagnosisActiveAlcoholAndDrugDependence": {
+      "title": "Alcohol and Drug Dependence",
+      "description": "Diagnosis, Active: Alcohol and Drug Dependence",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveAlcoholAndDrugDependence",
+      "variable": false
+    },
+    "EncounterPerformedAlcoholAndDrugDependenceTreatment": {
+      "title": "Alcohol and Drug Dependence Treatment",
+      "description": "Encounter, Performed: Alcohol and Drug Dependence Treatment",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.106.12.1005",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAlcoholAndDrugDependenceTreatment",
+      "variable": false
+    },
+    "EncounterPerformedPsychVisitPsychotherapy": {
+      "title": "Psych Visit - Psychotherapy",
+      "description": "Encounter, Performed: Psych Visit - Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1496",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPsychVisitPsychotherapy",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "Report a total score, and each of the following strata:\r\nStratum 1: Patients age 13-17 \r\nStratum 2: Patients age >=18",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Report a total score, and each of the following strata:\r\nStratum 1: Patients age 13-17 \r\nStratum 2: Patients age >=18",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "There are more deaths, illnesses and disabilities from substance abuse than from any other preventable health condition.  Treatment of medical problems caused by substance use and abuse places a huge burden on the health care system (Schneider Institute 2001). According to a report from the 2001 National Household Survey on Drug Abuse (NHSDA), an estimated 16.6 million Americans aged 12 or older in 2001 were classified with dependence on or abuse of either alcohol or illicit drugs (7.3 percent of the total population) (Substance Abuse and Mental Health Services Administration 2008). Of these, 2.4 million were classified with dependence on or abuse of both alcohol and illicit drugs, 3.2 million were dependent on or abused illicit drugs but not alcohol, and 11.0 million were dependent on or abused alcohol but not illicit drugs (Substance Abuse and Mental Health Services Administration 2008).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "There are more deaths, illnesses and disabilities from substance abuse than from any other preventable health condition.  Treatment of medical problems caused by substance use and abuse places a huge burden on the health care system (Schneider Institute 2001). According to a report from the 2001 National Household Survey on Drug Abuse (NHSDA), an estimated 16.6 million Americans aged 12 or older in 2001 were classified with dependence on or abuse of either alcohol or illicit drugs (7.3 percent of the total population) (Substance Abuse and Mental Health Services Administration 2008). Of these, 2.4 million were classified with dependence on or abuse of both alcohol and illicit drugs, 3.2 million were dependent on or abused illicit drugs but not alcohol, and 11.0 million were dependent on or abused alcohol but not illicit drugs (Substance Abuse and Mental Health Services Administration 2008).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "American Psychiatric Association (2006)\r\n• Because many substance use disorders are chronic, patients usually require long-term treatment, although the intensity and specific components of treatment may vary over time [I rating]. \r\n• It is important to intensify the monitoring for substance use during periods when the patient is at a high risk of relapsing, including during the early stages of treatment, times of transition to less intensive levels of care, and the first year after active treatment has ceased [I rating].\r\n• Outpatient treatment of substance use disorders is appropriate for patients whose clinical condition or environmental circumstances do not require a more intensive level of care [I rating]. As in other treatment settings, a comprehensive approach is optimal, using, where indicated, a variety of psychotherapeutic and pharmacological interventions along with behavioral monitoring [I rating].\r\n\r\nMichigan Quality Improvement Consortium (2009)\r\nPatient Education and Brief Intervention by Primary Care Physician (PCP) or Trained Staff (e.g., RN, MSW) [A rating]\r\n• Assess patient's risk, understanding, and readiness to change. \r\n• Discuss the relationship of substance use to presenting medical concerns or psychosocial problems. \r\n• Negotiate goals and strategies for reducing consumption and other change. \r\n• Involve family members as appropriate. \r\n\r\nReferral Considerations\r\n• Consider referral to community-based services (e.g., Alcoholics Anonymous, Narcotics Anonymous, Cocaine Anonymous) or Employee Assistance Program, or (especially if substance dependent) a substance abuse or behavioral health specialist. [D rating]\r\n• Pharmacologic management should be conducted by or in collaboration with physicians who have expertise in the area of substance use disorders. [D rating]\r\n• Schedule appropriate follow-up within 30 days to re-assess and support behavior change.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "American Psychiatric Association (2006)\r\n• Because many substance use disorders are chronic, patients usually require long-term treatment, although the intensity and specific components of treatment may vary over time [I rating]. \r\n• It is important to intensify the monitoring for substance use during periods when the patient is at a high risk of relapsing, including during the early stages of treatment, times of transition to less intensive levels of care, and the first year after active treatment has ceased [I rating].\r\n• Outpatient treatment of substance use disorders is appropriate for patients whose clinical condition or environmental circumstances do not require a more intensive level of care [I rating]. As in other treatment settings, a comprehensive approach is optimal, using, where indicated, a variety of psychotherapeutic and pharmacological interventions along with behavioral monitoring [I rating].\r\n\r\nMichigan Quality Improvement Consortium (2009)\r\nPatient Education and Brief Intervention by Primary Care Physician (PCP) or Trained Staff (e.g., RN, MSW) [A rating]\r\n• Assess patient's risk, understanding, and readiness to change. \r\n• Discuss the relationship of substance use to presenting medical concerns or psychosocial problems. \r\n• Negotiate goals and strategies for reducing consumption and other change. \r\n• Involve family members as appropriate. \r\n\r\nReferral Considerations\r\n• Consider referral to community-based services (e.g., Alcoholics Anonymous, Narcotics Anonymous, Cocaine Anonymous) or Employee Assistance Program, or (especially if substance dependent) a substance abuse or behavioral health specialist. [D rating]\r\n• Pharmacologic management should be conducted by or in collaboration with physicians who have expertise in the area of substance use disorders. [D rating]\r\n• Schedule appropriate follow-up within 30 days to re-assess and support behavior change.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0004",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0004"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "137",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "137",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Michigan Quality Improvement Consortium. 2009. Screening, diagnosis and referral for substance use disorders. Southfield: Michigan Quality Improvement Consortium.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Michigan Quality Improvement Consortium. 2009. Screening, diagnosis and referral for substance use disorders. Southfield: Michigan Quality Improvement Consortium.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "The initiation visit is the first visit for alcohol or other drug dependence treatment within 14 days after a diagnosis of alcohol or other drug dependence.\r\n\r\nTreatment includes inpatient AOD admissions, outpatient visits, intensive outpatient encounters or partial hospitalization.",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The initiation visit is the first visit for alcohol or other drug dependence treatment within 14 days after a diagnosis of alcohol or other drug dependence.\r\n\r\nTreatment includes inpatient AOD admissions, outpatient visits, intensive outpatient encounters or partial hospitalization.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The new episode of alcohol and other drug dependence should be the first episode of the measurement period that is not preceded in the 60 days prior by another episode of alcohol or other drug dependence.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The new episode of alcohol and other drug dependence should be the first episode of the measurement period that is not preceded in the 60 days prior by another episode of alcohol or other drug dependence.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients age 13 years of age and older who were diagnosed with a new episode of alcohol or drug dependency during a visit in the first 11 months of the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients age 13 years of age and older who were diagnosed with a new episode of alcohol or drug dependency during a visit in the first 11 months of the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients with a previous active diagnosis of alcohol or drug dependence in the 60 days prior to the first episode of alcohol or drug dependence",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with a previous active diagnosis of alcohol or drug dependence in the 60 days prior to the first episode of alcohol or drug dependence",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Numerator 1: Patients who initiated treatment within 14 days of the diagnosis\r\n\r\nNumerator 2: Patients who initiated treatment and who had two or more additional services with an AOD diagnosis within 30 days of the initiation visit",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Numerator 1: Patients who initiated treatment within 14 days of the diagnosis\r\n\r\nNumerator 2: Patients who initiated treatment and who had two or more additional services with an AOD diagnosis within 30 days of the initiation visit",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"Treatment","id":"Population1"},
+    {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"Treatment w/ AOD","id":"Population2"},
+    {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT","stratification":"8A4D92B2-3946-CDAE-0139-7944BB49014B","title":"Treatment, RS1: 13-17","id":"Population3"},
+    {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"8A4D92B2-3946-CDAE-0139-7944BB80014D","title":"Treatment, RS2: \u003E=18","id":"Population4"},
+    {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT","stratification":"8A4D92B2-3946-CDAE-0139-7944BB49014B","title":"Treatment w/ AOD, RS1: 13-17","id":"Population5"},
+    {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"8A4D92B2-3946-CDAE-0139-7944BB80014D","title":"Treatment w AOD, RS2: \u003E=18","id":"Population6"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

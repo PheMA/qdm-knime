@@ -1,0 +1,2528 @@
+{
+  "id": "40280381-4555-E1C1-0145-8F01A1442873",
+  "nqf_id": "0710",
+  "hqmf_id": "40280381-4555-E1C1-0145-8F01A1442873",
+  "hqmf_set_id": "8455CD3E-DBB9-4E0C-8084-3ECE4068FE94",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS159v3",
+  "name": "Depression Remission at Twelve Months",
+  "description": "Adult patients age 18 and older with major depression or dysthymia and an initial PHQ-9 score > 9 who demonstrate remission at twelve months defined as PHQ-9 score less than 5. This measure applies to both patients with newly diagnosed and existing depression whose current PHQ-9 score indicates a need for treatment",
+  "type": "ep",
+  "category": "Behavioral Health Adult",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0710';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-8F01A1442873';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.101.12.1014':{'CPT':['99324','99325','99326','99327','99328','99334','99335','99336','99337']},'2.16.840.1.113883.3.117.1.7.1.14':{'SNOMED-CT':['63161005']},'2.16.840.1.113883.3.526.3.1024':{'SNOMED-CT':['103735009','385763009']},'2.16.840.1.113762.1.4.1080.2':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.113883.3.67.1.101.3.2445':{'CPT':['90791','90792','90832','90834','90837']},'2.16.840.1.113883.3.67.1.101.1.254':{'SNOMED-CT':['19694002','2506003','3109008','36170009','38451003','67711008','78667006','83176005','85080004'],'ICD-9-CM':['300.4'],'ICD-10-CM':['F34.1']},'2.16.840.113883.3.67.1.101.3.2444':{'SNOMED-CT':['14183003','15193003','15639000','18818009','191601008','191602001','191604000','191610000','191611001','191613003','191615005','19527009','20250007','231499006','25922000','2618002','268620009','268621008','274948002','28475009','300706003','30605009','319768000','320751009','33078009','33135002','33736005','36474008','36923009','370143000','38694004','39809009','40379007','42810003','42925002','430852001','46244001','60099002','63412003','63778009','66344007','69392006','70747007','71336009','73867007','75084000','76441001','77911002','79298009','832007','87512008'],'ICD-9-CM':['296.20','296.21','296.22','296.23','296.24','296.25','296.26','296.30','296.31','296.32','296.33','296.34','296.35','296.36'],'ICD-10-CM':['F32.0','F32.1','F32.2','F32.3','F32.4','F32.5','F32.9','F33.0','F33.1','F33.2','F33.3','F33.40','F33.41','F33.42','F33.9']},'2.16.840.1.113883.3.67.1.101.1.246':{'SNOMED-CT':['13601005','1376001','16805009','191753006','191765005','191766006','191772006','191773001','191774007','20010003','231525006','231527003','26665006','268633003','268634009','31027006','33449004','37746008','4306003','442245003','44966003','52954000','55341008','80711002','83890006','84466009'],'ICD-9-CM':['301.0','301.10','301.11','301.12','301.13','301.20','301.21','301.22','301.3','301.4','301.50','301.51','301.59','301.6','301.7','301.81','301.82','301.83','301.84','301.89','301.9'],'ICD-10-CM':['F21','F34.0','F60.0','F60.1','F60.2','F60.3','F60.4','F60.5','F60.6','F60.7','F60.81','F60.89','F60.9','F68.10','F68.11','F68.12','F68.13','F68.8','F69']},'2.16.840.1.113883.3.67.1.101.11.723':{'LOINC':['44249-1','44257-4','44261-6','54635-8']},'2.16.840.1.113883.3.67.1.101.11.721':{'SNOMED-CT':['18632008','371828006']},'2.16.840.1.113883.3.67.1.101.1.128':{'SNOMED-CT':['10875004','10981006','111485001','1196001','12969000','13313007','13581000','13746004','14495005','1499003','162004','16295005','16506000','17782008','191618007','191620005','191621009','191623007','191625000','191627008','191629006','191630001','191632009','191634005','191636007','191638008','191639000','191641004','191643001','192362008','19300006','20960007','21900002','22121000','22407005','26203008','26530004','28663008','28884001','29929003','30520009','30687003','30935000','31446002','33380008','34315001','3530005','35481005','35722002','35846004','36583000','371596008','371599001','371600003','371604007','40926005','41552001','41832009','41836007','43568002','43769008','4441000','45479006','46229002','48937005','49468007','49512000','51637008','53049002','53607008','54761006','55516002','5703000','59617007','61403008','63249007','64731001','65042007','66631006','67002003','68569003','70546001','71294008','71984005','73471000','74686005','75360000','75752004','78269000','78640000','79584002','81319007','82998009','83225003','85248005','86058007','87203005','87950005','9340000'],'ICD-9-CM':['296.00','296.01','296.02','296.03','296.04','296.05','296.06','296.10','296.11','296.12','296.13','296.14','296.15','296.16','296.40','296.41','296.42','296.43','296.44','296.45','296.46','296.50','296.51','296.52','296.53','296.54','296.55','296.56','296.60','296.61','296.62','296.63','296.64','296.65','296.66','296.7','296.80','296.81','296.82','296.89'],'ICD-10-CM':['F30.10','F30.11','F30.12','F30.13','F30.2','F30.3','F30.4','F30.8','F30.9','F31.0','F31.10','F31.11','F31.12','F31.13','F31.2','F31.30','F31.31','F31.32','F31.4','F31.5','F31.60','F31.61','F31.62','F31.63','F31.64','F31.70','F31.71','F31.72','F31.73','F31.74','F31.75','F31.76','F31.77','F31.78','F31.81','F31.89','F31.9']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceADysthymia1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteractionNoEd2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1080.2\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteractionNoEd2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAPhq9Tool5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceAPhq9Tool5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceBPhq9Tool6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceBPhq9Tool6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceCPhq9Tool7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceCPhq9Tool7\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceDPhq9Tool8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceDPhq9Tool8\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAPsychVisit9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2445\", \"specificOccurrence\": \"OccurrenceAPsychVisit9\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteractionNoEd2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1080.2\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteractionNoEd2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAPsychVisit9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2445\", \"specificOccurrence\": \"OccurrenceAPsychVisit9\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActiveDysthymia = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteractionNoEd = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1080.2\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveMajorDepressionIncludingRemission = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentPhq9Tool = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedPsychVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2445\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_10 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAPhq9Tool5_precondition_12 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceAPhq9Tool5\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(9, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(13, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_29 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceBPhq9Tool6_precondition_38 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceBPhq9Tool6\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(9, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAPsychVisit9(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPsychVisit9_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2445\", \"specificOccurrence\": \"OccurrenceAPsychVisit9\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(13, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPsychVisit9_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2445\", \"specificOccurrence\": \"OccurrenceAPsychVisit9\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAPsychVisit9(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAPsychVisit9(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_53 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAPsychVisit9(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAPsychVisit9(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceCPhq9Tool7_precondition_64 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceCPhq9Tool7\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(9, null, false), null));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteractionNoEd2_precondition_66 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1080.2\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteractionNoEd2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(13, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteractionNoEd2_precondition_68 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1080.2\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteractionNoEd2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_72 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_74 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.113883.3.67.1.101.3.2444\", \"specificOccurrence\": \"OccurrenceAMajorDepressionIncludingRemission3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_79 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADysthymia1_precondition_81 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.254\", \"specificOccurrence\": \"OccurrenceADysthymia1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicExpiredDeceased_precondition_93 = function(patient, initialSpecificContext) {\n  var value = patient.expired() || null;\n  var events = value ? [patient.deathdate()] : [];\n  events = SBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"a\", true)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.InterventionOrderPalliativeCare_precondition_95 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveBipolarDisorder_precondition_97 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.128\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActivePersonalityDisorder_precondition_99 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.1.246\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_101 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(1, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPhq9Tool5_precondition_107 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceAPhq9Tool5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceBPhq9Tool6_precondition_109 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceBPhq9Tool6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceCPhq9Tool7_precondition_111 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceCPhq9Tool7\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.GROUP_FIRST_129 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAPhq9Tool5_precondition_107(patient, initialSpecificContext),\n    hqmfjs.OccurrenceBPhq9Tool6_precondition_109(patient, initialSpecificContext),\n    hqmfjs.OccurrenceCPhq9Tool7_precondition_111(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = FIRST(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceDPhq9Tool8_precondition_115 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceDPhq9Tool8\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(5, null, false)));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.GROUP_FIRST_129(patient), new IVL_PQ(null, new PQ(13, \"mo\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPhq9Tool5_precondition_117 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceAPhq9Tool5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceBPhq9Tool6_precondition_119 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceBPhq9Tool6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceCPhq9Tool7_precondition_121 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceCPhq9Tool7\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.GROUP_FIRST_131 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAPhq9Tool5_precondition_117(patient, initialSpecificContext),\n    hqmfjs.OccurrenceBPhq9Tool6_precondition_119(patient, initialSpecificContext),\n    hqmfjs.OccurrenceCPhq9Tool7_precondition_121(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = FIRST(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceDPhq9Tool8_precondition_125 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.67.1.101.11.723\", \"specificOccurrence\": \"OccurrenceDPhq9Tool8\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(5, null, false)));\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.GROUP_FIRST_131(patient), new IVL_PQ(new PQ(10, \"mo\", false), null));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceADysthymia1\",\"type\":\"DIAGNOSIS_ACTIVE_DYSTHYMIA\",\"function\":\"OccurrenceADysthymia1\"},{\"id\":\"OccurrenceAFaceToFaceInteractionNoEd2\",\"type\":\"ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION_NO_ED\",\"function\":\"OccurrenceAFaceToFaceInteractionNoEd2\"},{\"id\":\"OccurrenceAMajorDepressionIncludingRemission3\",\"type\":\"DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION\",\"function\":\"OccurrenceAMajorDepressionIncludingRemission3\"},{\"id\":\"OccurrenceAOfficeVisit4\",\"type\":\"ENCOUNTER_PERFORMED_OFFICE_VISIT\",\"function\":\"OccurrenceAOfficeVisit4\"},{\"id\":\"OccurrenceAPhq9Tool5\",\"type\":\"RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL\",\"function\":\"OccurrenceAPhq9Tool5\"},{\"id\":\"OccurrenceBPhq9Tool6\",\"type\":\"RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL\",\"function\":\"OccurrenceBPhq9Tool6\"},{\"id\":\"OccurrenceCPhq9Tool7\",\"type\":\"RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL\",\"function\":\"OccurrenceCPhq9Tool7\"},{\"id\":\"OccurrenceDPhq9Tool8\",\"type\":\"RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL\",\"function\":\"OccurrenceDPhq9Tool8\"},{\"id\":\"OccurrenceAPsychVisit9\",\"type\":\"ENCOUNTER_PERFORMED_PSYCH_VISIT\",\"function\":\"OccurrenceAPsychVisit9\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('92', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_10,\n      atLeastOneTrue('90', patient, initialSpecificContext,\n        allTrue('36', patient, initialSpecificContext, hqmfjs.OccurrenceAPhq9Tool5_precondition_12,\n          atLeastOneTrue('18', patient, initialSpecificContext, hqmfjs.OccurrenceAOfficeVisit4_precondition_14, hqmfjs.OccurrenceAOfficeVisit4_precondition_16\n          ),\n          atLeastOneTrue('34', patient, initialSpecificContext,\n            allTrue('25', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_20,\n              allFalse('24', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_22\n              )\n            ),\n            allTrue('32', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_27,\n              allFalse('31', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_29\n              )\n            )\n          )\n        ),\n        allTrue('62', patient, initialSpecificContext, hqmfjs.OccurrenceBPhq9Tool6_precondition_38,\n          atLeastOneTrue('44', patient, initialSpecificContext, hqmfjs.OccurrenceAPsychVisit9_precondition_40, hqmfjs.OccurrenceAPsychVisit9_precondition_42\n          ),\n          atLeastOneTrue('60', patient, initialSpecificContext,\n            allTrue('51', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_46,\n              allFalse('50', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_48\n              )\n            ),\n            allTrue('58', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_53,\n              allFalse('57', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_55\n              )\n            )\n          )\n        ),\n        allTrue('88', patient, initialSpecificContext, hqmfjs.OccurrenceCPhq9Tool7_precondition_64,\n          atLeastOneTrue('70', patient, initialSpecificContext, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2_precondition_66, hqmfjs.OccurrenceAFaceToFaceInteractionNoEd2_precondition_68\n          ),\n          atLeastOneTrue('86', patient, initialSpecificContext,\n            allTrue('77', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_72,\n              allFalse('76', patient, initialSpecificContext, hqmfjs.OccurrenceAMajorDepressionIncludingRemission3_precondition_74\n              )\n            ),\n            allTrue('84', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_79,\n              allFalse('83', patient, initialSpecificContext, hqmfjs.OccurrenceADysthymia1_precondition_81\n              )\n            )\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('127', patient, initialSpecificContext, hqmfjs.OccurrenceDPhq9Tool8_precondition_115, hqmfjs.OccurrenceDPhq9Tool8_precondition_125\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('106', patient, initialSpecificContext,\n      atLeastOneTrue('103', patient, initialSpecificContext, hqmfjs.PatientCharacteristicExpiredDeceased_precondition_93, hqmfjs.InterventionOrderPalliativeCare_precondition_95, hqmfjs.DiagnosisActiveBipolarDisorder_precondition_97, hqmfjs.DiagnosisActivePersonalityDisorder_precondition_99, hqmfjs.EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_101\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0710",
+    "hqmf_id": "40280381-4555-E1C1-0145-8F01A1442873",
+    "hqmf_set_id": "8455CD3E-DBB9-4E0C-8084-3ECE4068FE94",
+    "hqmf_version_number": 3,
+    "title": "Depression Remission at Twelve Months",
+    "description": "Adult patients age 18 and older with major depression or dysthymia and an initial PHQ-9 score > 9 who demonstrate remission at twelve months defined as PHQ-9 score less than 5. This measure applies to both patients with newly diagnosed and existing depression whose current PHQ-9 score indicates a need for treatment",
+    "cms_id": "CMS159v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "12757779-EDAE-4272-BB0E-5F6B49350AD4",
+        "preconditions": [
+          {
+            "id": 92,
+            "preconditions": [
+              {
+                "id": 10,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_10"
+              },
+              {
+                "id": 90,
+                "preconditions": [
+                  {
+                    "id": 36,
+                    "preconditions": [
+                      {
+                        "id": 12,
+                        "reference": "OccurrenceAPhq9Tool5_precondition_12"
+                      },
+                      {
+                        "id": 18,
+                        "preconditions": [
+                          {
+                            "id": 14,
+                            "reference": "OccurrenceAOfficeVisit4_precondition_14"
+                          },
+                          {
+                            "id": 16,
+                            "reference": "OccurrenceAOfficeVisit4_precondition_16"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      },
+                      {
+                        "id": 34,
+                        "preconditions": [
+                          {
+                            "id": 25,
+                            "preconditions": [
+                              {
+                                "id": 20,
+                                "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_20"
+                              },
+                              {
+                                "id": 24,
+                                "preconditions": [
+                                  {
+                                    "id": 22,
+                                    "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_22"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          },
+                          {
+                            "id": 32,
+                            "preconditions": [
+                              {
+                                "id": 27,
+                                "reference": "OccurrenceADysthymia1_precondition_27"
+                              },
+                              {
+                                "id": 31,
+                                "preconditions": [
+                                  {
+                                    "id": 29,
+                                    "reference": "OccurrenceADysthymia1_precondition_29"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 62,
+                    "preconditions": [
+                      {
+                        "id": 38,
+                        "reference": "OccurrenceBPhq9Tool6_precondition_38"
+                      },
+                      {
+                        "id": 44,
+                        "preconditions": [
+                          {
+                            "id": 40,
+                            "reference": "OccurrenceAPsychVisit9_precondition_40"
+                          },
+                          {
+                            "id": 42,
+                            "reference": "OccurrenceAPsychVisit9_precondition_42"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      },
+                      {
+                        "id": 60,
+                        "preconditions": [
+                          {
+                            "id": 51,
+                            "preconditions": [
+                              {
+                                "id": 46,
+                                "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_46"
+                              },
+                              {
+                                "id": 50,
+                                "preconditions": [
+                                  {
+                                    "id": 48,
+                                    "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_48"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          },
+                          {
+                            "id": 58,
+                            "preconditions": [
+                              {
+                                "id": 53,
+                                "reference": "OccurrenceADysthymia1_precondition_53"
+                              },
+                              {
+                                "id": 57,
+                                "preconditions": [
+                                  {
+                                    "id": 55,
+                                    "reference": "OccurrenceADysthymia1_precondition_55"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 88,
+                    "preconditions": [
+                      {
+                        "id": 64,
+                        "reference": "OccurrenceCPhq9Tool7_precondition_64"
+                      },
+                      {
+                        "id": 70,
+                        "preconditions": [
+                          {
+                            "id": 66,
+                            "reference": "OccurrenceAFaceToFaceInteractionNoEd2_precondition_66"
+                          },
+                          {
+                            "id": 68,
+                            "reference": "OccurrenceAFaceToFaceInteractionNoEd2_precondition_68"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      },
+                      {
+                        "id": 86,
+                        "preconditions": [
+                          {
+                            "id": 77,
+                            "preconditions": [
+                              {
+                                "id": 72,
+                                "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_72"
+                              },
+                              {
+                                "id": 76,
+                                "preconditions": [
+                                  {
+                                    "id": 74,
+                                    "reference": "OccurrenceAMajorDepressionIncludingRemission3_precondition_74"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          },
+                          {
+                            "id": 84,
+                            "preconditions": [
+                              {
+                                "id": 79,
+                                "reference": "OccurrenceADysthymia1_precondition_79"
+                              },
+                              {
+                                "id": 83,
+                                "preconditions": [
+                                  {
+                                    "id": 81,
+                                    "reference": "OccurrenceADysthymia1_precondition_81"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue",
+                                "negation": true
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "AC7C2A35-74E5-4ECE-8B5A-329FF176C7AA"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "03A447DB-58CD-45B8-9DEA-B830EAC461B5",
+        "preconditions": [
+          {
+            "id": 106,
+            "preconditions": [
+              {
+                "id": 103,
+                "preconditions": [
+                  {
+                    "id": 93,
+                    "reference": "PatientCharacteristicExpiredDeceased_precondition_93"
+                  },
+                  {
+                    "id": 95,
+                    "reference": "InterventionOrderPalliativeCare_precondition_95"
+                  },
+                  {
+                    "id": 97,
+                    "reference": "DiagnosisActiveBipolarDisorder_precondition_97"
+                  },
+                  {
+                    "id": 99,
+                    "reference": "DiagnosisActivePersonalityDisorder_precondition_99"
+                  },
+                  {
+                    "id": 101,
+                    "reference": "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_101"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "8BE4F74E-78DC-42C4-AB87-D177DCAD11AB",
+        "preconditions": [
+          {
+            "id": 127,
+            "preconditions": [
+              {
+                "id": 115,
+                "reference": "OccurrenceDPhq9Tool8_precondition_115"
+              },
+              {
+                "id": 125,
+                "reference": "OccurrenceDPhq9Tool8_precondition_125"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceAFaceToFaceInteractionNoEd2": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION_NO_ED",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteractionNoEd2",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAPsychVisit9": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT",
+        "source_data_criteria": "OccurrenceAPsychVisit9",
+        "variable": false
+      },
+      "DiagnosisActiveDysthymia": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDysthymia",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteractionNoEd": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteractionNoEd",
+        "variable": false
+      },
+      "DiagnosisActiveMajorDepressionIncludingRemission": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveMajorDepressionIncludingRemission",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "RiskCategoryAssessmentPhq9Tool": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentPhq9Tool",
+        "variable": false
+      },
+      "EncounterPerformedPsychVisit": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPsychVisit",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_10": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAPhq9Tool5_precondition_12": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceAPhq9Tool5",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "9",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceAOfficeVisit4_precondition_14": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "13",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAOfficeVisit4_precondition_16": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_20": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_22": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_27": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_29": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceBPhq9Tool6_precondition_38": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "B",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceBPhq9Tool6",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "9",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAPsychVisit9"
+          }
+        ]
+      },
+      "OccurrenceAPsychVisit9_precondition_40": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT",
+        "source_data_criteria": "OccurrenceAPsychVisit9",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "13",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAPsychVisit9_precondition_42": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT",
+        "source_data_criteria": "OccurrenceAPsychVisit9",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_46": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAPsychVisit9"
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_48": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAPsychVisit9"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_53": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAPsychVisit9"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_55": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "ordinality"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAPsychVisit9"
+          }
+        ]
+      },
+      "OccurrenceCPhq9Tool7_precondition_64": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "C",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceCPhq9Tool7",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "value": "9",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAFaceToFaceInteractionNoEd2"
+          }
+        ]
+      },
+      "OccurrenceAFaceToFaceInteractionNoEd2_precondition_66": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION_NO_ED",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteractionNoEd2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "13",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAFaceToFaceInteractionNoEd2_precondition_68": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION_NO_ED",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteractionNoEd2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_72": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAFaceToFaceInteractionNoEd2"
+          }
+        ]
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3_precondition_74": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAFaceToFaceInteractionNoEd2"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_79": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAFaceToFaceInteractionNoEd2"
+          }
+        ]
+      },
+      "OccurrenceADysthymia1_precondition_81": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAFaceToFaceInteractionNoEd2"
+          }
+        ]
+      },
+      "PatientCharacteristicExpiredDeceased_precondition_93": {
+        "title": "Deceased",
+        "description": "Patient Characteristic Expired: Deceased",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.721",
+        "property": "expired",
+        "type": "characteristic",
+        "definition": "patient_characteristic_expired",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicExpiredDeceased",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "18632008",
+            "371828006"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "InterventionOrderPalliativeCare_precondition_95": {
+        "title": "Palliative Care",
+        "description": "Intervention, Order: Palliative Care",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1024",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderPalliativeCare",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveBipolarDisorder_precondition_97": {
+        "title": "Bipolar Disorder",
+        "description": "Diagnosis, Active: Bipolar Disorder",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.128",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveBipolarDisorder",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActivePersonalityDisorder_precondition_99": {
+        "title": "Personality Disorder",
+        "description": "Diagnosis, Active: Personality Disorder",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.246",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePersonalityDisorder",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_101": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAPhq9Tool5_precondition_107": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceAPhq9Tool5",
+        "variable": false
+      },
+      "OccurrenceBPhq9Tool6_precondition_109": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "B",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceBPhq9Tool6",
+        "variable": false
+      },
+      "OccurrenceCPhq9Tool7_precondition_111": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "C",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceCPhq9Tool7",
+        "variable": false
+      },
+      "GROUP_FIRST_129": {
+        "title": "GROUP_FIRST_129",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAPhq9Tool5_precondition_107",
+          "OccurrenceBPhq9Tool6_precondition_109",
+          "OccurrenceCPhq9Tool7_precondition_111"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_FIRST_129",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "FIRST"
+          }
+        ]
+      },
+      "OccurrenceDPhq9Tool8_precondition_115": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "D",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceDPhq9Tool8",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "value": "5",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "GROUP_FIRST_129",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "13",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAPhq9Tool5_precondition_117": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceAPhq9Tool5",
+        "variable": false
+      },
+      "OccurrenceBPhq9Tool6_precondition_119": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "B",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceBPhq9Tool6",
+        "variable": false
+      },
+      "OccurrenceCPhq9Tool7_precondition_121": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "C",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceCPhq9Tool7",
+        "variable": false
+      },
+      "GROUP_FIRST_131": {
+        "title": "GROUP_FIRST_131",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAPhq9Tool5_precondition_117",
+          "OccurrenceBPhq9Tool6_precondition_119",
+          "OccurrenceCPhq9Tool7_precondition_121"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_FIRST_131",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "FIRST"
+          }
+        ]
+      },
+      "OccurrenceDPhq9Tool8_precondition_125": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "D",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceDPhq9Tool8",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "value": "5",
+            "inclusive?": false,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "GROUP_FIRST_131",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "10",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "DiagnosisActiveBipolarDisorder": {
+        "title": "Bipolar Disorder",
+        "description": "Diagnosis, Active: Bipolar Disorder",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.128",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveBipolarDisorder",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false
+      },
+      "PatientCharacteristicExpiredDeceased": {
+        "title": "Deceased",
+        "description": "Patient Characteristic Expired: Deceased",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.721",
+        "property": "expired",
+        "type": "characteristic",
+        "definition": "patient_characteristic_expired",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicExpiredDeceased",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "18632008",
+            "371828006"
+          ]
+        }
+      },
+      "OccurrenceADysthymia1": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DYSTHYMIA",
+        "source_data_criteria": "OccurrenceADysthymia1",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteractionNoEd2": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION_NO_ED",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteractionNoEd2",
+        "variable": false
+      },
+      "OccurrenceAMajorDepressionIncludingRemission3": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_MAJOR_DEPRESSION_INCLUDING_REMISSION",
+        "source_data_criteria": "OccurrenceAMajorDepressionIncludingRemission3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "InterventionOrderPalliativeCare": {
+        "title": "Palliative Care",
+        "description": "Intervention, Order: Palliative Care",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1024",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderPalliativeCare",
+        "variable": false
+      },
+      "DiagnosisActivePersonalityDisorder": {
+        "title": "Personality Disorder",
+        "description": "Diagnosis, Active: Personality Disorder",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.246",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePersonalityDisorder",
+        "variable": false
+      },
+      "OccurrenceAPhq9Tool5": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceAPhq9Tool5",
+        "variable": false
+      },
+      "OccurrenceBPhq9Tool6": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "B",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceBPhq9Tool6",
+        "variable": false
+      },
+      "OccurrenceCPhq9Tool7": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "C",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceCPhq9Tool7",
+        "variable": false
+      },
+      "OccurrenceDPhq9Tool8": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "D",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_PHQ_9_TOOL",
+        "source_data_criteria": "OccurrenceDPhq9Tool8",
+        "variable": false
+      },
+      "OccurrenceAPsychVisit9": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_PSYCH_VISIT",
+        "source_data_criteria": "OccurrenceAPsychVisit9",
+        "variable": false
+      },
+      "DiagnosisActiveDysthymia": {
+        "title": "Dysthymia",
+        "description": "Diagnosis, Active: Dysthymia",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.1.254",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDysthymia",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteractionNoEd": {
+        "title": "Face to Face Interaction - No ED",
+        "description": "Encounter, Performed: Face to Face Interaction - No ED",
+        "code_list_id": "2.16.840.1.113762.1.4.1080.2",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteractionNoEd",
+        "variable": false
+      },
+      "DiagnosisActiveMajorDepressionIncludingRemission": {
+        "title": "Major Depression Including Remission",
+        "description": "Diagnosis, Active: Major Depression Including Remission",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2444",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveMajorDepressionIncludingRemission",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "RiskCategoryAssessmentPhq9Tool": {
+        "title": "PHQ-9 Tool",
+        "description": "Risk Category Assessment: PHQ-9 Tool",
+        "code_list_id": "2.16.840.1.113883.3.67.1.101.11.723",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentPhq9Tool",
+        "variable": false
+      },
+      "EncounterPerformedPsychVisit": {
+        "title": "Psych Visit",
+        "description": "Encounter, Performed: Psych Visit",
+        "code_list_id": "2.16.840.113883.3.67.1.101.3.2445",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPsychVisit",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Copyright MN Community Measurement, 2014. All rights reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Copyright MN Community Measurement, 2014. All rights reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "OUTCOME",
+          "title": "Outcome"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "The Centers for Disease Control and Prevention states that nationally 15.7% of people report being told by a health care professional that they had depression at some point in their lifetime. Persons with a current diagnosis of depression and a lifetime diagnosis of depression or anxiety were significantly more likely than persons without these conditions to have cardiovascular disease, diabetes, asthma and obesity and to be a current smoker, to be physically inactive and to drink heavily. According to National Institute of Mental Health (NIMH), 6.7 percent of the U.S. population ages 18 and older (14.8 million people) in any given year have a diagnosis of a major depressive disorder. Major depression is the leading cause of disability in the U.S. for ages 15 - 44. Additionally, dysthymia accounts for an additional 3.3 million Americans.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The Centers for Disease Control and Prevention states that nationally 15.7% of people report being told by a health care professional that they had depression at some point in their lifetime. Persons with a current diagnosis of depression and a lifetime diagnosis of depression or anxiety were significantly more likely than persons without these conditions to have cardiovascular disease, diabetes, asthma and obesity and to be a current smoker, to be physically inactive and to drink heavily. According to National Institute of Mental Health (NIMH), 6.7 percent of the U.S. population ages 18 and older (14.8 million people) in any given year have a diagnosis of a major depressive disorder. Major depression is the leading cause of disability in the U.S. for ages 15 - 44. Additionally, dysthymia accounts for an additional 3.3 million Americans.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Improvement in the symptoms of depression and an ongoing assessment of the current treatment plan is crucial to the reduction of symptoms and psychosocial well being of patients with major depression. Most people treated for initial depression need to be on medication at least six to twelve months after adequate response to symptoms, patients with recurrent depression need to be treated for three years or more and response with psychotherapy can take eight to twelve weeks of regular and frequent therapy to show improvement. Remission is defined as a PHQ-9 score of less than five at twelve months. The Patient Health Questionnaire (PHQ-9) tool is a widely accepted, standardized tool [Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.] that is completed by the patient, ideally at each visit, and utilized by the provider to monitor treatment progress. This tool was selected for measuring outcomes for this population because it is 1) validated with a sensitivity of .080 and a specificity of 0.92 with substantial heterogeneity I2 = 82%, 2) widely accepted and utilized in Minnesota, 3) available for clinical use, 4) translated into many languages and 5) easy for the patient to complete and the provider to score. Available at www.phqscreeners.com. This nine question tool contains the following questions which are scored on a scale of 0 to 27 based on the scale of Not at All (0), Several Days (1), More Than Half the Days (2), or Nearly Every Day (3) for responses to the questions over the last 2 weeks. \r\n\r\n• Little interest or pleasure in doing things \r\n• Feeling down, depressed, or hopeless\r\n• Feeling tired or having little energy \r\n• Poor appetite or overeating \r\n• Feeling bad about yourself - or that you are a failure or have let yourself or your family down \r\n• Trouble concentrating on things, such as reading the newspaper or watching television \r\n• Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual \r\n• Thoughts that you would be better off dead or of hurting yourself in some way",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Improvement in the symptoms of depression and an ongoing assessment of the current treatment plan is crucial to the reduction of symptoms and psychosocial well being of patients with major depression. Most people treated for initial depression need to be on medication at least six to twelve months after adequate response to symptoms, patients with recurrent depression need to be treated for three years or more and response with psychotherapy can take eight to twelve weeks of regular and frequent therapy to show improvement. Remission is defined as a PHQ-9 score of less than five at twelve months. The Patient Health Questionnaire (PHQ-9) tool is a widely accepted, standardized tool [Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission required to reproduce, translate, display or distribute.] that is completed by the patient, ideally at each visit, and utilized by the provider to monitor treatment progress. This tool was selected for measuring outcomes for this population because it is 1) validated with a sensitivity of .080 and a specificity of 0.92 with substantial heterogeneity I2 = 82%, 2) widely accepted and utilized in Minnesota, 3) available for clinical use, 4) translated into many languages and 5) easy for the patient to complete and the provider to score. Available at www.phqscreeners.com. This nine question tool contains the following questions which are scored on a scale of 0 to 27 based on the scale of Not at All (0), Several Days (1), More Than Half the Days (2), or Nearly Every Day (3) for responses to the questions over the last 2 weeks. \r\n\r\n• Little interest or pleasure in doing things \r\n• Feeling down, depressed, or hopeless\r\n• Feeling tired or having little energy \r\n• Poor appetite or overeating \r\n• Feeling bad about yourself - or that you are a failure or have let yourself or your family down \r\n• Trouble concentrating on things, such as reading the newspaper or watching television \r\n• Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual \r\n• Thoughts that you would be better off dead or of hurting yourself in some way",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0710",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0710"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "This measure is “re-tooled” from the existing NQF # 710 measure. eMeasure development was a collaboration between MN Community Measurement and Telligen with technical assistance provided by Telligen.",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "This measure is “re-tooled” from the existing NQF # 710 measure. eMeasure development was a collaboration between MN Community Measurement and Telligen with technical assistance provided by Telligen.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "159",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "159",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "The PHQ-9: Validity of a Brief Depression Severity Measure Kurt Kroenke, MD, Robert Spitzer, MD J Gen Intern Med 2001 16:606-613",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The PHQ-9: Validity of a Brief Depression Severity Measure Kurt Kroenke, MD, Robert Spitzer, MD J Gen Intern Med 2001 16:606-613",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "Remission is defined as a PHQ-9 score of less than five\r\n\r\nTwelve Months is defined as the point in time from the date in the measurement period that a patient meets the inclusion criteria (diagnosis and elevated PHQ-9 > 9) extending out twelve months and then allowing a grace period of thirty days prior to and thirty days after this date. Any PHQ-9 less than five obtained during this period is deemed as remission at twelve months, values obtained prior to or after this period are not counted as numerator compliant (remission)",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Remission is defined as a PHQ-9 score of less than five\r\n\r\nTwelve Months is defined as the point in time from the date in the measurement period that a patient meets the inclusion criteria (diagnosis and elevated PHQ-9 > 9) extending out twelve months and then allowing a grace period of thirty days prior to and thirty days after this date. Any PHQ-9 less than five obtained during this period is deemed as remission at twelve months, values obtained prior to or after this period are not counted as numerator compliant (remission)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "None",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Adults age 18 and older with a diagnosis of major depression or dysthymia and an initial PHQ-9 score greater than nine during an outpatient encounter.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Adults age 18 and older with a diagnosis of major depression or dysthymia and an initial PHQ-9 score greater than nine during an outpatient encounter.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals the Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals the Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "1: Patients who died\r\n2: Patients who received hospice services\r\n3: Patients who were permanent nursing home residents\r\n4: Patients with a diagnosis of bipolar disorder\r\n5: Patients with a diagnosis of personality disorder",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "1: Patients who died\r\n2: Patients who received hospice services\r\n3: Patients who were permanent nursing home residents\r\n4: Patients with a diagnosis of bipolar disorder\r\n5: Patients with a diagnosis of personality disorder",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Adults who achieved remission at twelve months as demonstrated by a twelve month (+/- 30 days) PHQ-9 score of less than five.",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Adults who achieved remission at twelve months as demonstrated by a twelve month (+/- 30 days) PHQ-9 score of less than five.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.101.12.1014",
+    "2.16.840.1.113883.3.117.1.7.1.14",
+    "2.16.840.1.113883.3.526.3.1024",
+    "2.16.840.1.113762.1.4.1080.2",
+    "2.16.840.113883.3.67.1.101.3.2445",
+    "2.16.840.1.113883.3.67.1.101.1.254",
+    "2.16.840.113883.3.67.1.101.3.2444",
+    "2.16.840.1.113883.3.67.1.101.1.246",
+    "2.16.840.1.113883.3.67.1.101.11.723",
+    "2.16.840.1.113883.3.67.1.101.11.721",
+    "2.16.840.1.113883.3.67.1.101.1.128",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001"
+  ],
+  "population_ids": {
+    "IPP": "12757779-EDAE-4272-BB0E-5F6B49350AD4",
+    "DENOM": "AC7C2A35-74E5-4ECE-8B5A-329FF176C7AA",
+    "DENEX": "03A447DB-58CD-45B8-9DEA-B830EAC461B5",
+    "NUMER": "8BE4F74E-78DC-42C4-AB87-D177DCAD11AB"
+  }
+}

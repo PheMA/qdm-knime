@@ -1,0 +1,1404 @@
+{
+  "id": "0496",
+  "hqmf_id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
+  "hqmf_set_id": "3FD13096-2C8F-40B5-9297-B714E8DE9133",
+  "hqmf_version_number": 4,
+  "title": "Median Time from ED Arrival to ED Departure for Discharged ED Patients",
+  "description": "Median time from emergency department arrival to time of departure from the emergency room for patients discharged from the emergency department.",
+  "cms_id": "CMS32v4",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "4C2E6F8A-C346-4743-8C87-63B1E0821EAF",
+      "preconditions": [
+        {
+          "id": 4,
+          "preconditions": [
+            {
+              "id": 2,
+              "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_2"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "MSRPOPL": {
+      "conjunction?": true,
+      "type": "MSRPOPL",
+      "title": "Measure Population",
+      "hqmf_id": "101C2A01-2B54-4AA3-A41D-4DAC6B6EF9AA",
+      "preconditions": [
+        {
+          "id": 9,
+          "preconditions": [
+            {
+              "id": 5,
+              "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_5"
+            },
+            {
+              "id": 7,
+              "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_7"
+            }
+          ],
+          "conjunction_code": "atLeastOneTrue",
+          "negation": true
+        }
+      ]
+    },
+    "OBSERV": {
+      "conjunction?": false,
+      "type": "OBSERV",
+      "title": "Measure Observation",
+      "hqmf_id": "D3BF8D52-9D5F-4724-B258-ADC20B2A2D8A",
+      "aggregator": "MEDIAN",
+      "preconditions": [
+        {
+          "id": 16,
+          "reference": "GROUP_TIMEDIFF_36"
+        }
+      ]
+    },
+    "STRAT": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "40280381-3D27-5493-013D-61074FD32A72",
+      "preconditions": [
+        {
+          "id": 21,
+          "preconditions": [
+            {
+              "id": 19,
+              "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_19"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "STRAT_1": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "40280381-3D27-5493-013D-610750CB2A74",
+      "preconditions": [
+        {
+          "id": 24,
+          "preconditions": [
+            {
+              "id": 22,
+              "reference": "DiagnosisActivePsychiatricMentalHealthPatient_precondition_22"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "STRAT_2": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "40280381-3D27-5493-013D-610751872A76",
+      "preconditions": [
+        {
+          "id": 27,
+          "preconditions": [
+            {
+              "id": 25,
+              "reference": "TransferToHospitalMeasuresAcuteCareHospital_precondition_25"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "STRAT_3": {
+      "conjunction?": true,
+      "type": "STRAT",
+      "hqmf_id": "40280381-3D27-5493-013D-6107531C2A79",
+      "preconditions": [
+        {
+          "id": 34,
+          "preconditions": [
+            {
+              "id": 32,
+              "preconditions": [
+                {
+                  "id": 28,
+                  "reference": "DiagnosisActivePsychiatricMentalHealthPatient_precondition_28"
+                },
+                {
+                  "id": 30,
+                  "reference": "TransferToHospitalMeasuresAcuteCareHospital_precondition_30"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "atLeastOneTrue",
+          "negation": true
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_2": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "field_values": {
+        "FACILITY_LOCATION_ARRIVAL_DATETIME": {
+          "type": "ANYNonNull"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_5": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "EncounterPerformedEncounterInpatient",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_7": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.666.5.730",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_10": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "field_values": {
+        "FACILITY_LOCATION_ARRIVAL_DATETIME": {
+          "type": "ANYNonNull"
+        }
+      }
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_12": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "field_values": {
+        "FACILITY_LOCATION_DEPARTURE_DATETIME": {
+          "type": "ANYNonNull"
+        }
+      }
+    },
+    "GROUP_TIMEDIFF_36": {
+      "title": "GROUP_TIMEDIFF_36",
+      "description": "",
+      "children_criteria": [
+        "OccurrenceAEmergencyDepartmentVisit1_precondition_10",
+        "OccurrenceAEmergencyDepartmentVisit1_precondition_12"
+      ],
+      "derivation_operator": "XPRODUCT",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_TIMEDIFF_36",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "TIMEDIFF",
+          "value": {
+            "type": "ANYNonNull"
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_19": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "field_values": {
+        "FACILITY_LOCATION_ARRIVAL_DATETIME": {
+          "type": "ANYNonNull"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "DiagnosisActivePsychiatricMentalHealthPatient_precondition_22": {
+      "title": "Psychiatric/Mental Health Patient",
+      "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+      "variable": false,
+      "field_values": {
+        "ORDINAL": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+          "title": "ordinality"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "TransferToHospitalMeasuresAcuteCareHospital_precondition_25": {
+      "title": "Hospital Measures-Acute care hospital",
+      "description": "Transfer To: Hospital Measures-Acute care hospital",
+      "type": "transfers",
+      "definition": "transfer_to",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "TransferToHospitalMeasuresAcuteCareHospital",
+      "variable": false,
+      "field_values": {
+        "TRANSFER_TO": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.666.5.684",
+          "title": "Hospital Measures-Acute care hospital"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosisActivePsychiatricMentalHealthPatient_precondition_28": {
+      "title": "Psychiatric/Mental Health Patient",
+      "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+      "variable": false,
+      "field_values": {
+        "ORDINAL": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+          "title": "ordinality"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "TransferToHospitalMeasuresAcuteCareHospital_precondition_30": {
+      "title": "Hospital Measures-Acute care hospital",
+      "description": "Transfer To: Hospital Measures-Acute care hospital",
+      "type": "transfers",
+      "definition": "transfer_to",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "TransferToHospitalMeasuresAcuteCareHospital",
+      "variable": false,
+      "field_values": {
+        "TRANSFER_TO": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.666.5.684",
+          "title": "Hospital Measures-Acute care hospital"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "DiagnosisActivePsychiatricMentalHealthPatient": {
+      "title": "Psychiatric/Mental Health Patient",
+      "description": "Diagnosis, Active: Psychiatric/Mental Health Patient",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.299",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePsychiatricMentalHealthPatient",
+      "variable": false
+    },
+    "TransferToHospitalMeasuresAcuteCareHospital": {
+      "title": "Hospital Measures-Acute care hospital",
+      "description": "Transfer To: Hospital Measures-Acute care hospital",
+      "type": "transfers",
+      "definition": "transfer_to",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "TransferToHospitalMeasuresAcuteCareHospital",
+      "variable": false,
+      "field_values": {
+        "TRANSFER_TO": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.666.5.684",
+          "title": "Hospital Measures-Acute care hospital"
+        }
+      }
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "None",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "CONTVAR",
+        "title": "Continuous Variable"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "The measure is stratified. Stratum 1 - all discharged ED patients; Stratum 2 – all patients with diagnosis consistent with mental disorders; Stratum 3 – all patients transferred to another acute care hospital; and Stratum 4 – all patients other than those included in populations 2 and 3.\nDo Not Include in any of the Strata: Patients who are not an ED Patient; Patients who expire in the ED; Patients admitted to the hospital from the ED.",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The measure is stratified. Stratum 1 - all discharged ED patients; Stratum 2 – all patients with diagnosis consistent with mental disorders; Stratum 3 – all patients transferred to another acute care hospital; and Stratum 4 – all patients other than those included in populations 2 and 3.\nDo Not Include in any of the Strata: Patients who are not an ED Patient; Patients who expire in the ED; Patients admitted to the hospital from the ED.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "In recent times, EDs have experienced significant overcrowding. Although once only a problem in large, urban, teaching hospitals, the phenomenon has spread to other suburban and rural healthcare organizations. According to a 2002 national U.S. survey, more than 90 percent of large hospitals report EDs operating \"at\" or \"over\" capacity. Overcrowding and heavy emergency resource demand have led to a number of problems, including ambulance refusals, prolonged patient waiting times, increased suffering for those who wait, rushed and unpleasant treatment environments, and potentially poor patient outcomes. Approximately one third of hospitals in the U.S. report increases in ambulance diversion in a given year, whereas up to half report crowded conditions in the ED. In a recent national survey, 40 percent of hospital leaders viewed ED crowding as a symptom of workforce shortages. ED crowding may result in delays in the administration of medication such as antibiotics for pneumonia and has been associated with perceptions of compromised emergency care. For patients with non-ST-segment-elevation myocardial infarction, long ED stays were associated with decreased use of guideline-recommended therapies and a higher risk of recurrent myocardial infarction. When EDs are overwhelmed, their ability to respond to community emergencies and disasters may be compromised.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "In recent times, EDs have experienced significant overcrowding. Although once only a problem in large, urban, teaching hospitals, the phenomenon has spread to other suburban and rural healthcare organizations. According to a 2002 national U.S. survey, more than 90 percent of large hospitals report EDs operating \"at\" or \"over\" capacity. Overcrowding and heavy emergency resource demand have led to a number of problems, including ambulance refusals, prolonged patient waiting times, increased suffering for those who wait, rushed and unpleasant treatment environments, and potentially poor patient outcomes. Approximately one third of hospitals in the U.S. report increases in ambulance diversion in a given year, whereas up to half report crowded conditions in the ED. In a recent national survey, 40 percent of hospital leaders viewed ED crowding as a symptom of workforce shortages. ED crowding may result in delays in the administration of medication such as antibiotics for pneumonia and has been associated with perceptions of compromised emergency care. For patients with non-ST-segment-elevation myocardial infarction, long ED stays were associated with decreased use of guideline-recommended therapies and a higher risk of recurrent myocardial infarction. When EDs are overwhelmed, their ability to respond to community emergencies and disasters may be compromised.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Reducing the time patients remain in the emergency department (ED) can improve access to treatment and increase quality of care. Reducing this time potentially improves access to care specific to the patient condition and increases the capability to provide additional treatment.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Reducing the time patients remain in the emergency department (ED) can improve access to treatment and increase quality of care. Reducing this time potentially improves access to care specific to the patient condition and increases the capability to provide additional treatment.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "A decrease in the median value indicates less time in the emergency department and enhances throughput.",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A decrease in the median value indicates less time in the emergency department and enhances throughput.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0496",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0496"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "None",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "32",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "32",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Wilper AP, Woolhandler S, Lasser KE, McCormick D, Cutrona SL, Bor DH, Himmelstein DU. Waits to see an emergency department physician: U.S. trends and predictors, 1997-2004. Health Aff (Millwood). 2008;.\n27:w84-95.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Wilper AP, Woolhandler S, Lasser KE, McCormick D, Cutrona SL, Bor DH, Himmelstein DU. Waits to see an emergency department physician: U.S. trends and predictors, 1997-2004. Health Aff (Millwood). 2008;.\n27:w84-95.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "This measure uses a continuous variable.  The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the Emergency Department departure time minus the Emergency Department arrival time. The calculation requires the median of all ED encounter durations.  This measure specification defines how to determine an individual Emergency Department stay. Reporting requires the median of all patient stays ([Encounter: encounter ED].departuredatetime - [Encounter: encounter ED].arrivaldatetime).\n\nThe measurement period is one calendar year but the reporting period is 3 months as a calendar quarter; Q1 = Jan – Mar, Q2 = Apr – Jun, Q3 = Jul – Sep, Q4 is Oct – Dec.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This measure uses a continuous variable.  The specification provides elements from the clinical electronic record required to calculate for each ED encounter, i.e., the length of time the patient was in the Emergency Department, also stated as: the Emergency Department departure time minus the Emergency Department arrival time. The calculation requires the median of all ED encounter durations.  This measure specification defines how to determine an individual Emergency Department stay. Reporting requires the median of all patient stays ([Encounter: encounter ED].departuredatetime - [Encounter: encounter ED].arrivaldatetime).\n\nThe measurement period is one calendar year but the reporting period is 3 months as a calendar quarter; Q1 = Jan – Mar, Q2 = Apr – Jun, Q3 = Jul – Sep, Q4 is Oct – Dec.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients seen in an emergency department and discharged.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients seen in an emergency department and discharged.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Not applicable",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not applicable",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Not applicable",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Not applicable",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Any emergency department (ED) visit during the measurement period.",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Any emergency department (ED) visit during the measurement period.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Median Time (in minutes) from ED arrival to ED departure for patients discharged from the emergency department.",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Median Time (in minutes) from ED arrival to ED departure for patients discharged from the emergency department.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","title":"Unstratified","id":"Population1"},
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT","stratification":"40280381-3D27-5493-013D-61074FD32A72","title":"RS1: With ED Encounter","id":"Population2"},
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT_1","stratification":"40280381-3D27-5493-013D-610750CB2A74","title":"RS2: With Mental Disorders","id":"Population3"},
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT_2","stratification":"40280381-3D27-5493-013D-610751872A76","title":"RS3: With Acute care hospital transfer","id":"Population4"},
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV","STRAT":"STRAT_3","stratification":"40280381-3D27-5493-013D-6107531C2A79","title":"RS4: Without Mental Disorders and Acute care hospital transfer","id":"Population5"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

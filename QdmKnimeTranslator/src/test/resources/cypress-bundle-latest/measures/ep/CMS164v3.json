@@ -1,0 +1,1556 @@
+{
+  "id": "40280381-4555-E1C1-0145-6B7813C70FB3",
+  "nqf_id": "0068",
+  "hqmf_id": "40280381-4555-E1C1-0145-6B7813C70FB3",
+  "hqmf_set_id": "0713EA8F-0E5B-4099-8C7C-DD677280398F",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS164v3",
+  "name": "Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic",
+  "description": "Percentage of patients 18 years of age and older who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) in the 12 months prior to the measurement period, or who had an active diagnosis of ischemic vascular disease (IVD) during the measurement period, and who had documentation of use of aspirin or another antithrombotic during the measurement period.",
+  "type": "ep",
+  "category": "Heart",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0068';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-6B7813C70FB3';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.104.12.1003':{'SNOMED-CT':['1055001','109381003','111291001','111296006','111298007','111299004','123641001','123642008','129573006','145891000119104','14977000','149821000119103','1641000119107','19057007','194823009','194828000','194842008','194843003','194849004','195182007','195183002','195185009','195186005','195189003','195190007','195200006','195206000','195230003','195231004','195232006','195233001','195234007','195235008','195236009','195254008','195317001','195318006','195319003','195320009','195321008','195323006','195324000','195325004','195326003','195327007','195335005','195336006','195337002','195340002','195341003','195342005','195343000','20059004','21000119103','21470009','21631000119105','225566008','230692004','230693009','230694003','230695002','230698000','230699008','230700009','230701008','230702001','230703006','230704000','230706003','230707007','230708002','230716006','233817007','233819005','233821000','233823002','233844002','233955003','233956002','233958001','233959009','233960004','233961000','233962007','233964008','233970002','233972005','233973000','233974006','236120009','23687008','251024009','25106000','266253001','266254007','266262004','266263009','26900001','274101000','276219001','280871000','281091000','284871000119105','284881000119108','285141000119106','285151000119108','285161000119105','285171000119104','285191000119103','285201000119100','286959000','287731003','28790007','297136002','297138001','297141005','29899005','300917007','300920004','300995000','301755001','302728008','302904002','302910002','302930003','307363008','307406004','307407008','307408003','307409006','307766002','307767006','312375001','312378004','312822006','314116003','315025001','315348000','35928006','361132001','361133006','363340006','371039008','371041009','371803003','371804009','371805005','371806006','371807002','371808007','371809004','371810009','371811008','371812001','37943007','394659003','39823006','40276003','402861007','408546009','408665008','413102000','41334000','413439005','413444003','413552002','413758000','413838009','413844008','414545008','414795007','420006002','425527003','426107000','426651005','427296003','427567003','428196007','428507003','429245005','429559004','429673002','429811000124106','429821000124103','429831000124100','429841000124105','429851000124107','429861000124109','430721000124101','430731000124103','430781000124102','430831000124106','430841000124101','430851000124104','430861000124102','431391000124106','431401000124108','431411000124106','431421000124103','431431000124100','431466007','432083006','432504007','433821000124102','433891000124100','433901000124101','433911000124103','433931000124109','433941000124104','433951000124102','433961000124100','434151000124101','434821000124104','434831000124101','434881000124100','434891000124102','434951000124104','434961000124102','434991000124105','435271000124103','435281000124100','436021000124100','436031000124102','436041000124107','436781000124104','437911000124106','441574008','442224005','442240008','442421004','442439008','442693003','442701004','442735001','443502000','443971004','444855007','444856008','446712002','45281005','4557003','48601002','49176002','50808002','51274000','51677000','52674009','53741008','5431000124100','5441000124105','5451000124107','54519002','5461000124109','54687002','5534004','55382008','5581000124100','5601000124105','57357009','59021001','59062007','60989005','61490001','63739005','64586002','64775002','65084004','65198009','66189004','6661000119101','67682002','67992007','69742007','71444005','72092001','73192008','75543006','791000119109','8001000119106','80383008','80606009','81817003','85284003','87343002','88174006','89323001','90520006','92517006','95458005','95459002','95580006','9901000119100','99451000119105'],'ICD-9-CM':['411.0','411.1','411.81','411.89','413.0','413.1','413.9','414.00','414.01','414.02','414.03','414.04','414.05','414.06','414.07','414.2','414.8','414.9','429.2','433.00','433.01','433.10','433.11','433.20','433.21','433.30','433.31','433.80','433.81','433.90','433.91','434.00','434.01','434.10','434.11','434.90','434.91','440.1','440.20','440.21','440.22','440.23','440.24','440.29','440.4','444.01','444.09','444.1','444.21','444.22','444.81','444.89','444.9','445.01','445.02','445.81','445.89'],'ICD-10-CM':['I20.0','I20.1','I20.8','I20.9','I24.0','I24.1','I24.8','I24.9','I25.10','I25.110','I25.111','I25.118','I25.119','I25.5','I25.6','I25.700','I25.701','I25.708','I25.709','I25.710','I25.711','I25.718','I25.719','I25.720','I25.721','I25.728','I25.729','I25.730','I25.731','I25.738','I25.739','I25.750','I25.751','I25.758','I25.759','I25.760','I25.761','I25.768','I25.769','I25.790','I25.791','I25.798','I25.799','I25.810','I25.811','I25.812','I25.82','I25.89','I25.9','I63.00','I63.011','I63.012','I63.019','I63.02','I63.031','I63.032','I63.039','I63.09','I63.10','I63.111','I63.112','I63.119','I63.12','I63.131','I63.132','I63.139','I63.19','I63.20','I63.211','I63.212','I63.219','I63.22','I63.231','I63.232','I63.239','I63.29','I63.30','I63.311','I63.312','I63.319','I63.321','I63.322','I63.329','I63.331','I63.332','I63.339','I63.341','I63.342','I63.349','I63.39','I63.40','I63.411','I63.412','I63.419','I63.421','I63.422','I63.429','I63.431','I63.432','I63.439','I63.441','I63.442','I63.449','I63.49','I63.50','I63.511','I63.512','I63.519','I63.521','I63.522','I63.529','I63.531','I63.532','I63.539','I63.541','I63.542','I63.549','I63.59','I63.6','I63.8','I63.9','I65.01','I65.02','I65.03','I65.09','I65.1','I65.21','I65.22','I65.23','I65.29','I65.8','I65.9','I66.01','I66.02','I66.03','I66.09','I66.11','I66.12','I66.13','I66.19','I66.21','I66.22','I66.23','I66.29','I66.3','I66.8','I66.9','I70.1','I70.201','I70.202','I70.203','I70.208','I70.209','I70.211','I70.212','I70.213','I70.218','I70.219','I70.221','I70.222','I70.223','I70.228','I70.229','I70.231','I70.232','I70.233','I70.234','I70.235','I70.238','I70.239','I70.241','I70.242','I70.243','I70.244','I70.245','I70.248','I70.249','I70.25','I70.261','I70.262','I70.263','I70.268','I70.269','I70.291','I70.292','I70.293','I70.298','I70.299','I70.92','I74.01','I74.09','I74.10','I74.11','I74.19','I74.2','I74.3','I74.4','I74.5','I74.8','I74.9','I75.011','I75.012','I75.013','I75.019','I75.021','I75.022','I75.023','I75.029','I75.81','I75.89']},'2.16.840.1.113883.3.464.1003.104.12.1001':{'SNOMED-CT':['10273003','15990001','194798004','194802003','194809007','233825009','233826005','233827001','233828006','233829003','233830008','233831007','233832000','233833005','233834004','233835003','233836002','233837006','233838001','282006','285981000119103','285991000119100','30277009','304914007','307140009','401303003','401314000','52035003','54329005','57054005','58612006','59063002','62695002','64627002','65547006','70211005','70422006','70998009','73795002','76593002','79009004'],'ICD-9-CM':['410.01','410.11','410.21','410.31','410.41','410.51','410.61','410.71','410.81','410.91'],'ICD-10-CM':['I21.01','I21.02','I21.09','I21.11','I21.19','I21.21','I21.29','I21.3','I21.4']},'2.16.840.1.113883.3.464.1003.104.12.1010':{'SNOMED-CT':['11101003','15256002','175066001','232727003','232728008','232729000','397193006','397431004','414089002','414509005','415070008','428488008','429499003','429639007','431759005','609154002','75761004','80762004','85053006','91338001'],'CPT':['92920','92924','92928','92933','92937','92941','92943']},'2.16.840.1.113883.3.464.1003.104.12.1002':{'SNOMED-CT':['10326007','119564002','119565001','175007008','175008003','175009006','175011002','175021005','175022003','175024002','175025001','175026000','175029007','175030002','175031003','175032005','175033000','175045009','175047001','175048006','175050003','232717009','232719007','232720001','232721002','232722009','232723004','232724005','265481001','275215001','275216000','275252001','275253006','30670000','309814006','3546002','359597003','359601003','39202005','39724006','414088005','418551006','419132001','48431000','74371005','82247006'],'CPT':['33510','33511','33512','33513','33514','33516','33517','33518','33519','33521','33522','33523','33533','33534','33535','33536'],'HCPCS':['S2205','S2206','S2207','S2208','S2209']},'2.16.840.1.113883.3.464.1003.196.12.1211':{'RxNorm':['198466','198467','198471','198475','198477','199274','212033','243663','243670','246460','252380','308409','308411','308414','308416','308417','309362','313406','318272','403924','432389','435504','435521','747211','749196','853499','855812','855818']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1025':{'CPT':['99395','99396','99397']},'2.16.840.1.113883.3.464.1003.101.12.1023':{'CPT':['99385','99386','99387']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']},'2.16.840.1.113883.3.526.3.1240':{'HCPCS':['G0438','G0439']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAAspirinAndOtherAntiThrombotics1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1211\", \"specificOccurrence\": \"OccurrenceAAspirinAndOtherAntiThrombotics1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAIschemicVascularDisease2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1003\", \"specificOccurrence\": \"OccurrenceAIschemicVascularDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.MedicationActiveAspirinAndOtherAntiThrombotics = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1211\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveIschemicVascularDisease = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1003\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcuteMyocardialInfarction_precondition_5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(12, \"mo\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAIschemicVascularDisease2_precondition_7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1003\", \"specificOccurrence\": \"OccurrenceAIschemicVascularDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAIschemicVascularDisease2_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1003\", \"specificOccurrence\": \"OccurrenceAIschemicVascularDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedPercutaneousCoronaryInterventions_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1010\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(12, \"mo\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedCoronaryArteryBypassGraft_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.104.12.1002\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(12, \"mo\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1025\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_29 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1240\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_39 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1211\", \"specificOccurrence\": \"OccurrenceAAspirinAndOtherAntiThrombotics1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1211\", \"specificOccurrence\": \"OccurrenceAAspirinAndOtherAntiThrombotics1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAAspirinAndOtherAntiThrombotics1\",\"type\":\"MEDICATION_ACTIVE_ASPIRIN_AND_OTHER_ANTI_THROMBOTICS\",\"function\":\"OccurrenceAAspirinAndOtherAntiThrombotics1\"},{\"id\":\"OccurrenceAIschemicVascularDisease2\",\"type\":\"DIAGNOSIS_ACTIVE_ISCHEMIC_VASCULAR_DISEASE\",\"function\":\"OccurrenceAIschemicVascularDisease2\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('38', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3,\n      atLeastOneTrue('21', patient, initialSpecificContext, hqmfjs.DiagnosisActiveAcuteMyocardialInfarction_precondition_5,\n        allTrue('12', patient, initialSpecificContext, hqmfjs.OccurrenceAIschemicVascularDisease2_precondition_7,\n          allFalse('11', patient, initialSpecificContext, hqmfjs.OccurrenceAIschemicVascularDisease2_precondition_9\n          )\n        ),\n        atLeastOneTrue('18', patient, initialSpecificContext, hqmfjs.ProcedurePerformedPercutaneousCoronaryInterventions_precondition_14, hqmfjs.ProcedurePerformedCoronaryArteryBypassGraft_precondition_16\n        )\n      ),\n      atLeastOneTrue('35', patient, initialSpecificContext, hqmfjs.EncounterPerformedOfficeVisit_precondition_23, hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_25, hqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_27, hqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_29, hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_31, hqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_33\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('44', patient, initialSpecificContext, hqmfjs.OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_39,\n      allFalse('43', patient, initialSpecificContext, hqmfjs.OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_41\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0068",
+    "hqmf_id": "40280381-4555-E1C1-0145-6B7813C70FB3",
+    "hqmf_set_id": "0713EA8F-0E5B-4099-8C7C-DD677280398F",
+    "hqmf_version_number": 3,
+    "title": "Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic",
+    "description": "Percentage of patients 18 years of age and older who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) in the 12 months prior to the measurement period, or who had an active diagnosis of ischemic vascular disease (IVD) during the measurement period, and who had documentation of use of aspirin or another antithrombotic during the measurement period.",
+    "cms_id": "CMS164v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "EBDEE689-5ACF-4FEF-A811-392FD8B94523",
+        "preconditions": [
+          {
+            "id": 38,
+            "preconditions": [
+              {
+                "id": 3,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_3"
+              },
+              {
+                "id": 21,
+                "preconditions": [
+                  {
+                    "id": 5,
+                    "reference": "DiagnosisActiveAcuteMyocardialInfarction_precondition_5"
+                  },
+                  {
+                    "id": 12,
+                    "preconditions": [
+                      {
+                        "id": 7,
+                        "reference": "OccurrenceAIschemicVascularDisease2_precondition_7"
+                      },
+                      {
+                        "id": 11,
+                        "preconditions": [
+                          {
+                            "id": 9,
+                            "reference": "OccurrenceAIschemicVascularDisease2_precondition_9"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 18,
+                    "preconditions": [
+                      {
+                        "id": 14,
+                        "reference": "ProcedurePerformedPercutaneousCoronaryInterventions_precondition_14"
+                      },
+                      {
+                        "id": 16,
+                        "reference": "ProcedurePerformedCoronaryArteryBypassGraft_precondition_16"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              },
+              {
+                "id": 35,
+                "preconditions": [
+                  {
+                    "id": 23,
+                    "reference": "EncounterPerformedOfficeVisit_precondition_23"
+                  },
+                  {
+                    "id": 25,
+                    "reference": "EncounterPerformedFaceToFaceInteraction_precondition_25"
+                  },
+                  {
+                    "id": 27,
+                    "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_27"
+                  },
+                  {
+                    "id": 29,
+                    "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_29"
+                  },
+                  {
+                    "id": 31,
+                    "reference": "EncounterPerformedHomeHealthcareServices_precondition_31"
+                  },
+                  {
+                    "id": 33,
+                    "reference": "EncounterPerformedAnnualWellnessVisit_precondition_33"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "CEB5AEA1-EB73-4C27-BED4-E634E21E214E"
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "EDF6D0B7-1115-4F49-B633-D65D5D406705",
+        "preconditions": [
+          {
+            "id": 44,
+            "preconditions": [
+              {
+                "id": 39,
+                "reference": "OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_39"
+              },
+              {
+                "id": 43,
+                "preconditions": [
+                  {
+                    "id": 41,
+                    "reference": "OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_41"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "MedicationActiveAspirinAndOtherAntiThrombotics": {
+        "title": "Aspirin and Other Anti-thrombotics",
+        "description": "Medication, Active: Aspirin and Other Anti-thrombotics",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1211",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationActiveAspirinAndOtherAntiThrombotics",
+        "variable": false
+      },
+      "DiagnosisActiveIschemicVascularDisease": {
+        "title": "Ischemic Vascular Disease",
+        "description": "Diagnosis, Active: Ischemic Vascular Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1003",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicVascularDisease",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_3": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveAcuteMyocardialInfarction_precondition_5": {
+        "title": "Acute Myocardial Infarction",
+        "description": "Diagnosis, Active: Acute Myocardial Infarction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteMyocardialInfarction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAIschemicVascularDisease2_precondition_7": {
+        "title": "Ischemic Vascular Disease",
+        "description": "Diagnosis, Active: Ischemic Vascular Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1003",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ISCHEMIC_VASCULAR_DISEASE",
+        "source_data_criteria": "OccurrenceAIschemicVascularDisease2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAIschemicVascularDisease2_precondition_9": {
+        "title": "Ischemic Vascular Disease",
+        "description": "Diagnosis, Active: Ischemic Vascular Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1003",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ISCHEMIC_VASCULAR_DISEASE",
+        "source_data_criteria": "OccurrenceAIschemicVascularDisease2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedPercutaneousCoronaryInterventions_precondition_14": {
+        "title": "Percutaneous Coronary Interventions",
+        "description": "Procedure, Performed: Percutaneous Coronary Interventions",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1010",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPercutaneousCoronaryInterventions",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedCoronaryArteryBypassGraft_precondition_16": {
+        "title": "Coronary Artery Bypass Graft",
+        "description": "Procedure, Performed: Coronary Artery Bypass Graft",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1002",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedCoronaryArteryBypassGraft",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_23": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_25": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_27": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_29": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_31": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedAnnualWellnessVisit_precondition_33": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_39": {
+        "title": "Aspirin and Other Anti-thrombotics",
+        "description": "Medication, Active: Aspirin and Other Anti-thrombotics",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1211",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ACTIVE_ASPIRIN_AND_OTHER_ANTI_THROMBOTICS",
+        "source_data_criteria": "OccurrenceAAspirinAndOtherAntiThrombotics1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAspirinAndOtherAntiThrombotics1_precondition_41": {
+        "title": "Aspirin and Other Anti-thrombotics",
+        "description": "Medication, Active: Aspirin and Other Anti-thrombotics",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1211",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ACTIVE_ASPIRIN_AND_OTHER_ANTI_THROMBOTICS",
+        "source_data_criteria": "OccurrenceAAspirinAndOtherAntiThrombotics1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "ProcedurePerformedPercutaneousCoronaryInterventions": {
+        "title": "Percutaneous Coronary Interventions",
+        "description": "Procedure, Performed: Percutaneous Coronary Interventions",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1010",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPercutaneousCoronaryInterventions",
+        "variable": false
+      },
+      "DiagnosisActiveAcuteMyocardialInfarction": {
+        "title": "Acute Myocardial Infarction",
+        "description": "Diagnosis, Active: Acute Myocardial Infarction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteMyocardialInfarction",
+        "variable": false
+      },
+      "ProcedurePerformedCoronaryArteryBypassGraft": {
+        "title": "Coronary Artery Bypass Graft",
+        "description": "Procedure, Performed: Coronary Artery Bypass Graft",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1002",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedCoronaryArteryBypassGraft",
+        "variable": false
+      },
+      "OccurrenceAAspirinAndOtherAntiThrombotics1": {
+        "title": "Aspirin and Other Anti-thrombotics",
+        "description": "Medication, Active: Aspirin and Other Anti-thrombotics",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1211",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ACTIVE_ASPIRIN_AND_OTHER_ANTI_THROMBOTICS",
+        "source_data_criteria": "OccurrenceAAspirinAndOtherAntiThrombotics1",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedAnnualWellnessVisit": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "OccurrenceAIschemicVascularDisease2": {
+        "title": "Ischemic Vascular Disease",
+        "description": "Diagnosis, Active: Ischemic Vascular Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1003",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ISCHEMIC_VASCULAR_DISEASE",
+        "source_data_criteria": "OccurrenceAIschemicVascularDisease2",
+        "variable": false
+      },
+      "MedicationActiveAspirinAndOtherAntiThrombotics": {
+        "title": "Aspirin and Other Anti-thrombotics",
+        "description": "Medication, Active: Aspirin and Other Anti-thrombotics",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1211",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationActiveAspirinAndOtherAntiThrombotics",
+        "variable": false
+      },
+      "DiagnosisActiveIschemicVascularDisease": {
+        "title": "Ischemic Vascular Disease",
+        "description": "Diagnosis, Active: Ischemic Vascular Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1003",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicVascularDisease",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Coronary heart disease (CHD) is a major cause of death in the United States – in 2004, it was an underlying or contributing cause of death for 451,300 people (1 of every 5 deaths). Acute myocardial infarction (AMI) was an underlying or contributing cause of death for 156,000 people (American Heart Association 2008). In addition, nearly 16 million people (or 7.3 percent of the American population) had CHD in 2005 (American Heart Association 2008). The cost of cardiovascular diseases and stroke in the United States for 2008 was estimated at $448.5 billion (American Heart Association 2008). This figure includes health expenditures (direct costs such as the cost of physicians and healthcare practitioners, hospital and nursing home services, medications, home health care and other medical durables) and lost productivity resulting from morbidity and mortality (indirect costs). AMI accounts for 18 percent of hospital discharges and 28 percent of deaths due to heart disease (National Heart, Lung, and Blood Institute 2000). Research has shown that costs associated with cardiovascular disease for hospitals are easily $156 billion (American Heart Association 2008).\r\n\r\nAspirin treatments reduce MI in men (127 events per 100,000 person-years) and women (17 events per 100,000 person-years) (Grieving et al. 2008). While studies have shown warfarin to be more effective, aspirin is a safer, more convenient, and less expensive form of therapy (Patrono et al. 2004). Aspirin therapy has been shown to directly reduce the odds of cardiovascular events among men by 14 percent and among women by 12 percent (Berger et al. 2006). Aspirin use has been shown to reduce the number of strokes by 20 percent, MI by 30 percent, and other vascular events by 30 percent (Weisman and Graham 2002).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Coronary heart disease (CHD) is a major cause of death in the United States – in 2004, it was an underlying or contributing cause of death for 451,300 people (1 of every 5 deaths). Acute myocardial infarction (AMI) was an underlying or contributing cause of death for 156,000 people (American Heart Association 2008). In addition, nearly 16 million people (or 7.3 percent of the American population) had CHD in 2005 (American Heart Association 2008). The cost of cardiovascular diseases and stroke in the United States for 2008 was estimated at $448.5 billion (American Heart Association 2008). This figure includes health expenditures (direct costs such as the cost of physicians and healthcare practitioners, hospital and nursing home services, medications, home health care and other medical durables) and lost productivity resulting from morbidity and mortality (indirect costs). AMI accounts for 18 percent of hospital discharges and 28 percent of deaths due to heart disease (National Heart, Lung, and Blood Institute 2000). Research has shown that costs associated with cardiovascular disease for hospitals are easily $156 billion (American Heart Association 2008).\r\n\r\nAspirin treatments reduce MI in men (127 events per 100,000 person-years) and women (17 events per 100,000 person-years) (Grieving et al. 2008). While studies have shown warfarin to be more effective, aspirin is a safer, more convenient, and less expensive form of therapy (Patrono et al. 2004). Aspirin therapy has been shown to directly reduce the odds of cardiovascular events among men by 14 percent and among women by 12 percent (Berger et al. 2006). Aspirin use has been shown to reduce the number of strokes by 20 percent, MI by 30 percent, and other vascular events by 30 percent (Weisman and Graham 2002).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "U.S. Preventive Services Task Force (2009): \r\nThe U.S. Preventive Services Task Force (USPSTF) strongly recommends that clinicians discuss aspirin chemoprevention with adults who are at increased risk (5-year risk of greater than or equal to 3 percent) for coronary heart disease (CHD). Discussions with patients should address both the potential benefits and harms of aspirin therapy. \r\n\r\nThe USPSTF found good evidence that aspirin decreases the incidence of coronary heart disease in adults who are at increased risk for heart disease. They also found good evidence that aspirin increases the incidence of gastrointestinal bleeding and fair evidence that aspirin increases the incidence of hemorrhagic strokes. The USPSTF concluded that the balance of benefits and harms is most favorable in patients at high risk of CHD (5-year risk of greater than or equal to 3 percent) but is also influenced by patient preferences. \r\n\r\nUSPSTF encourages men age 45 to 79 years to use aspirin when the potential benefit of a reduction in myocardial infarctions outweighs the potential harm of an increase in gastrointestinal hemorrhage. They encourage women age 55 to 79 years to use aspirin when the potential benefit of a reduction in ischemic strokes outweighs the potential harm of an increase in gastrointestinal hemorrhage. \r\n\r\nAmerican Diabetes Association (2008): \r\nUse aspirin therapy (75-162 mg/day) as a primary prevention strategy in those with type 1 or 2 diabetes at increased cardiovascular risk, including those who are 40 years of age or who have additional risk factors (family history of CVD, hypertension, smoking, dyslipidemia, or albuminuria). \r\n\r\nAmerican Heart Association/American Stroke Association (2008): \r\nAHA/ASA: The use of aspirin is recommended for cardiovascular (including but not specific to stroke) prophylaxis among persons whose risk is sufficiently high for the benefits to outweigh the risks associated with treatment (a 10-year risk of cardiovascular events of 6% to 10%). \r\n\r\nAmerican College of Clinical Pharmacy (2004): \r\nFor long-term treatment after PCI, the guideline developers recommend aspirin, 75 to 162 mg/day. For long-term treatment after PCI in patients who receive antithrombotic agents such as clopidogrel or warfarin, the guideline developers recommend lower-dose aspirin, 75 to 100 mg/day. For patients with ischemic stroke who are not receiving thrombolysis, the guideline developers recommend early aspirin therapy, 160 to 325 mg/day.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "U.S. Preventive Services Task Force (2009): \r\nThe U.S. Preventive Services Task Force (USPSTF) strongly recommends that clinicians discuss aspirin chemoprevention with adults who are at increased risk (5-year risk of greater than or equal to 3 percent) for coronary heart disease (CHD). Discussions with patients should address both the potential benefits and harms of aspirin therapy. \r\n\r\nThe USPSTF found good evidence that aspirin decreases the incidence of coronary heart disease in adults who are at increased risk for heart disease. They also found good evidence that aspirin increases the incidence of gastrointestinal bleeding and fair evidence that aspirin increases the incidence of hemorrhagic strokes. The USPSTF concluded that the balance of benefits and harms is most favorable in patients at high risk of CHD (5-year risk of greater than or equal to 3 percent) but is also influenced by patient preferences. \r\n\r\nUSPSTF encourages men age 45 to 79 years to use aspirin when the potential benefit of a reduction in myocardial infarctions outweighs the potential harm of an increase in gastrointestinal hemorrhage. They encourage women age 55 to 79 years to use aspirin when the potential benefit of a reduction in ischemic strokes outweighs the potential harm of an increase in gastrointestinal hemorrhage. \r\n\r\nAmerican Diabetes Association (2008): \r\nUse aspirin therapy (75-162 mg/day) as a primary prevention strategy in those with type 1 or 2 diabetes at increased cardiovascular risk, including those who are 40 years of age or who have additional risk factors (family history of CVD, hypertension, smoking, dyslipidemia, or albuminuria). \r\n\r\nAmerican Heart Association/American Stroke Association (2008): \r\nAHA/ASA: The use of aspirin is recommended for cardiovascular (including but not specific to stroke) prophylaxis among persons whose risk is sufficiently high for the benefits to outweigh the risks associated with treatment (a 10-year risk of cardiovascular events of 6% to 10%). \r\n\r\nAmerican College of Clinical Pharmacy (2004): \r\nFor long-term treatment after PCI, the guideline developers recommend aspirin, 75 to 162 mg/day. For long-term treatment after PCI in patients who receive antithrombotic agents such as clopidogrel or warfarin, the guideline developers recommend lower-dose aspirin, 75 to 100 mg/day. For patients with ischemic stroke who are not receiving thrombolysis, the guideline developers recommend early aspirin therapy, 160 to 325 mg/day.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0068",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0068"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "164",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "164",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "American Heart Association. 2008. “Heart Disease and Stroke Statistics — 2008 Update.” http://www.americanheart.org/downloadable/heart/1200082005246HS_Stats%202008.final.pdf",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "American Heart Association. 2008. “Heart Disease and Stroke Statistics — 2008 Update.” http://www.americanheart.org/downloadable/heart/1200082005246HS_Stats%202008.final.pdf",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "Only patients who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) should be included in the measure.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Only patients who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) should be included in the measure.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients 18 years of age and older with a visit during the measurement period, and an active diagnosis of ischemic vascular disease (IVD) or who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) in the 12 months prior to the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients 18 years of age and older with a visit during the measurement period, and an active diagnosis of ischemic vascular disease (IVD) or who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) in the 12 months prior to the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients who have documentation of use of aspirin or another antithrombotic during the measurement period",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients who have documentation of use of aspirin or another antithrombotic during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.104.12.1003",
+    "2.16.840.1.113883.3.464.1003.104.12.1001",
+    "2.16.840.1.113883.3.464.1003.104.12.1010",
+    "2.16.840.1.113883.3.464.1003.104.12.1002",
+    "2.16.840.1.113883.3.464.1003.196.12.1211",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1025",
+    "2.16.840.1.113883.3.464.1003.101.12.1023",
+    "2.16.840.1.113883.3.464.1003.101.12.1016",
+    "2.16.840.1.113883.3.526.3.1240"
+  ],
+  "population_ids": {
+    "IPP": "EBDEE689-5ACF-4FEF-A811-392FD8B94523",
+    "DENOM": "CEB5AEA1-EB73-4C27-BED4-E634E21E214E",
+    "NUMER": "EDF6D0B7-1115-4F49-B633-D65D5D406705"
+  }
+}

@@ -1,0 +1,2076 @@
+{
+  "id": "40280381-4555-E1C1-0145-85C7311720F5",
+  "nqf_id": "0024",
+  "hqmf_id": "40280381-4555-E1C1-0145-85C7311720F5",
+  "hqmf_set_id": "0B63F730-25D6-4248-B11F-8C09C66A04EB",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS155v3",
+  "name": "Weight Assessment and Counseling for Nutrition and Physical Activity for Children and Adolescents",
+  "description": "Percentage of patients 3-17 years of age who had an outpatient visit with a Primary Care Physician (PCP) or Obstetrician/Gynecologist (OB/GYN) and who had evidence of the following during the measurement period. Three rates are reported.\r\n\r\n - Percentage of patients with height, weight, and body mass index (BMI) percentile documentation\r\n - Percentage of patients with counseling for nutrition\r\n - Percentage of patients with counseling for physical activity",
+  "type": "ep",
+  "category": "Core",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0024';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-85C7311720F5';\n        hqmfjs.sub_id = 'b';\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.101.12.1022':{'CPT':['99381','99382','99383','99384']},'2.16.840.1.113883.3.464.1003.101.12.1024':{'CPT':['99391','99392','99393','99394']},'2.16.840.1.113883.3.464.1003.101.12.1026':{'CPT':['99401','99402','99403','99404']},'2.16.840.1.113883.3.464.1003.101.12.1027':{'CPT':['99411','99412']},'2.16.840.1.113883.3.464.1003.118.12.1035':{'SNOMED-CT':['103736005','183073003','183075005','223415003','223440005','281090004','304507003','304517008','304549008','304558001','310882002','386291006','386292004','386463000','390864007','390893007','398636004','398752005','408289007','410200000','410289001','410335001','426866005','429095004','429778002','439140001']},'2.16.840.1.113883.3.464.1003.121.12.1012':{'LOINC':['59574-4','59575-1','59576-9']},'2.16.840.1.113883.3.464.1003.121.12.1014':{'LOINC':['3137-7','3138-5','8302-2','8306-3','8307-1','8308-9']},'2.16.840.1.113883.3.464.1003.121.12.1015':{'LOINC':['18833-4','29463-7','3141-9','3142-7','8341-0','8350-1','8351-9']},'2.16.840.1.113883.3.464.1003.195.12.1003':{'SNOMED-CT':['103699006','11816003','183059007','183060002','183061003','183062005','183063000','183065007','183066008','183067004','183068009','183069001','183070000','183071001','183101003','229807004','229808009','230089004','266724001','284352003','285390004','285392007','306163007','306164001','306165000','306353006','306354000','313076000','361232005','370847001','386264009','386464006','386469001','398752005','400973003','408289007','408430003','410200000','410270001','410293007','410402005','419155003','424753004','429095004','443288003','61310001'],'CPT':['97802','97803','97804']},'2.16.840.1.113883.3.526.3.378':{'SNOMED-CT':['102872000','102873005','102875003','14418008','169560008','169561007','169562000','169563005','169564004','169565003','169566002','169567006','169568001','199715003','237233002','237238006','237239003','237240001','237241002','237242009','237244005','248985009','281307002','314204000','41587001','45307008','47200007','57630001','58532003','59466002','65727000','72892002','77386006','83074005','9279009'],'ICD-9-CM':['633.11','633.21','633.81','633.91','640.01','640.03','640.83','641.03','641.13','641.21','641.23','641.31','641.33','641.81','641.83','641.91','641.93','642.01','642.02','642.03','642.11','642.12','642.13','642.21','642.22','642.23','642.31','642.32','642.33','642.62','642.63','642.71','642.72','642.73','642.91','642.92','642.93','643.01','643.03','643.81','643.91','643.93','644.03','644.13','644.21','645.11','645.13','645.21','645.23','646.01','646.03','646.11','646.12','646.13','646.21','646.22','646.23','646.31','646.33','646.41','646.42','646.43','646.51','646.52','646.53','646.61','646.62','646.63','646.71','646.73','646.81','646.82','646.83','646.91','646.93','647.01','647.02','647.03','647.11','647.12','647.13','647.21','647.22','647.23','647.31','647.32','647.33','647.41','647.42','647.43','647.51','647.52','647.53','647.61','647.62','647.63','647.81','647.82','647.83','647.91','647.92','647.93','648.01','648.02','648.03','648.11','648.12','648.13','648.21','648.22','648.23','648.31','648.32','648.33','648.41','648.42','648.43','648.51','648.52','648.53','648.61','648.62','648.63','648.71','648.72','648.73','648.81','648.82','648.83','648.91','648.92','648.93','649.01','649.02','649.03','649.11','649.12','649.13','649.21','649.22','649.23','649.31','649.32','649.33','649.41','649.42','649.43','649.51','649.53','649.61','649.62','649.63','649.71','649.73','651.01','651.03','651.11','651.13','651.21','651.23','651.31','651.33','651.41','651.43','651.51','651.53','651.61','651.63','651.71','651.73','651.81','651.83','651.91','651.93','652.01','652.03','652.11','652.13','652.21','652.23','652.31','652.33','652.41','652.43','652.51','652.53','652.61','652.63','652.71','652.73','652.81','652.83','652.91','652.93','653.01','653.03','653.11','653.13','653.21','653.23','653.31','653.33','653.41','653.43','653.51','653.53','653.61','653.63','653.71','653.73','653.81','653.83','653.91','653.93','654.01','654.02','654.03','654.11','654.12','654.13','654.21','654.23','654.31','654.32','654.33','654.41','654.42','654.43','654.51','654.52','654.53','654.61','654.62','654.63','654.71','654.72','654.73','654.81','654.82','654.83','654.91','654.92','654.93','655.01','655.03','655.11','655.13','655.21','655.23','655.31','655.33','655.41','655.43','655.51','655.53','655.61','655.63','655.71','655.73','655.81','655.83','655.91','655.93','656.01','656.03','656.11','656.13','656.21','656.23','656.31','656.33','656.41','656.43','656.51','656.53','656.61','656.73','656.81','656.83','656.91','656.93','657.01','657.03','658.01','658.03','658.11','658.13','658.21','658.23','658.31','658.33','658.41','658.43','658.81','658.83','658.91','658.93','659.01','659.03','659.11','659.13','659.21','659.23','659.31','659.33','659.41','659.43','659.51','659.53','659.61','659.63','659.71','659.73','659.81','659.83','659.91','659.93','660.01','660.03','660.11','660.13','660.21','660.23','660.31','660.33','660.41','660.43','660.51','660.53','660.61','660.63','660.71','660.73','660.81','660.83','660.91','660.93','661.01','661.03','661.11','661.13','661.21','661.23','661.31','661.33','661.41','661.43','661.91','661.93','662.01','662.03','662.11','662.13','662.21','662.23','662.31','662.33','663.01','663.03','663.11','663.13','663.21','663.23','663.31','663.33','663.41','663.43','663.51','663.61','663.63','663.81','663.83','663.91','663.93','664.01','664.11','664.21','664.31','664.51','664.61','664.81','664.91','665.01','665.03','665.11','665.31','665.41','665.51','665.61','665.71','665.72','665.81','665.83','665.91','665.92','665.93','666.02','666.12','666.22','666.32','667.02','667.12','668.01','668.02','668.03','668.11','668.12','668.13','668.21','668.22','668.23','668.81','668.82','668.83','668.91','668.92','668.93','669.01','669.02','669.03','669.11','669.12','669.13','669.51','669.61','669.71','669.81','669.82','669.83','669.91','669.92','669.93','670.02','671.01','671.02','671.03','671.11','671.12','671.13','671.21','671.22','671.23','671.31','671.33','671.42','671.51','671.52','671.53','671.81','671.82','671.83','671.91','671.92','671.93','672.02','673.01','673.02','673.03','673.11','673.12','673.13','673.21','673.22','673.23','673.31','673.32','673.33','673.81','673.82','674.01','674.02','674.03','674.12','674.22','674.32','674.42','674.51','674.52','674.53','674.82','674.92','675.01','675.02','675.03','675.11','675.12','675.13','675.21','675.22','675.23','675.81','675.82','675.83','675.91','675.92','675.93','676.01','676.02','676.03','676.11','676.12','676.13','676.21','676.22','676.23','676.31','676.32','676.41','676.42','676.43','676.51','676.52','676.53','676.61','676.62','676.63','676.81','676.82','676.83','676.91','676.92','676.93','678.01','678.03','678.11','678.13','679.01','679.02','679.03','679.11','679.12','679.13','V22.0','V22.1','V22.2','V23.0','V23.1','V23.2','V23.3','V23.41','V23.49','V23.5','V23.7','V23.81','V23.82','V23.83','V23.84','V23.85','V23.86','V23.89'],'ICD-10-CM':['O00.1','O00.2','O00.8','O00.9','O09.00','O09.01','O09.02','O09.03','O09.10','O09.11','O09.12','O09.13','O09.211','O09.212','O09.213','O09.219','O09.291','O09.292','O09.293','O09.299','O09.30','O09.31','O09.32','O09.33','O09.40','O09.41','O09.42','O09.43','O09.511','O09.512','O09.513','O09.519','O09.521','O09.522','O09.523','O09.529','O09.611','O09.612','O09.613','O09.619','O09.621','O09.622','O09.623','O09.629','O09.70','O09.71','O09.72','O09.73','O09.811','O09.812','O09.813','O09.819','O09.821','O09.822','O09.823','O09.829','O09.891','O09.892','O09.893','O09.899','O09.90','O09.91','O09.92','O09.93','O10.011','O10.012','O10.013','O10.019','O10.111','O10.112','O10.113','O10.119','O10.211','O10.212','O10.213','O10.219','O10.311','O10.312','O10.313','O10.319','O10.411','O10.412','O10.413','O10.419','O10.911','O10.912','O10.913','O10.919','O11.1','O11.2','O11.3','O11.9','O12.00','O12.01','O12.02','O12.03','O12.10','O12.11','O12.12','O12.13','O12.20','O12.21','O12.22','O12.23','O13.1','O13.2','O13.3','O13.9','O14.00','O14.02','O14.03','O14.10','O14.12','O14.13','O14.20','O14.22','O14.23','O14.90','O14.92','O14.93','O15.00','O15.02','O15.03','O16.1','O16.2','O16.3','O16.9','O20.0','O20.8','O20.9','O21.0','O21.1','O21.2','O21.8','O21.9','O22.00','O22.01','O22.02','O22.03','O22.10','O22.11','O22.12','O22.13','O22.20','O22.21','O22.22','O22.23','O22.30','O22.31','O22.32','O22.33','O22.40','O22.41','O22.42','O22.43','O22.50','O22.51','O22.52','O22.53','O22.8X1','O22.8X2','O22.8X3','O22.8X9','O22.90','O22.91','O22.92','O22.93','O23.00','O23.01','O23.02','O23.03','O23.10','O23.11','O23.12','O23.13','O23.20','O23.21','O23.22','O23.23','O23.30','O23.31','O23.32','O23.33','O23.40','O23.41','O23.42','O23.43','O23.511','O23.512','O23.513','O23.519','O23.521','O23.522','O23.523','O23.529','O23.591','O23.592','O23.593','O23.599','O23.90','O23.91','O23.92','O23.93','O24.011','O24.012','O24.013','O24.019','O24.111','O24.112','O24.113','O24.119','O24.311','O24.312','O24.313','O24.319','O24.410','O24.414','O24.419','O24.811','O24.812','O24.813','O24.819','O24.911','O24.912','O24.913','O24.919','O25.10','O25.11','O25.12','O25.13','O26.00','O26.01','O26.02','O26.03','O26.10','O26.11','O26.12','O26.13','O26.20','O26.21','O26.22','O26.23','O26.30','O26.31','O26.32','O26.33','O26.40','O26.41','O26.42','O26.43','O26.50','O26.51','O26.52','O26.53','O26.611','O26.612','O26.613','O26.619','O26.711','O26.712','O26.713','O26.719','O26.811','O26.812','O26.813','O26.819','O26.821','O26.822','O26.823','O26.829','O26.831','O26.832','O26.833','O26.839','O26.841','O26.842','O26.843','O26.849','O26.851','O26.852','O26.853','O26.859','O26.86','O26.872','O26.873','O26.879','O26.891','O26.892','O26.893','O26.899','O26.90','O26.91','O26.92','O26.93','O28.0','O28.1','O28.2','O28.3','O28.4','O28.5','O28.8','O28.9','O29.011','O29.012','O29.013','O29.019','O29.021','O29.022','O29.023','O29.029','O29.091','O29.092','O29.093','O29.099','O29.111','O29.112','O29.113','O29.119','O29.121','O29.122','O29.123','O29.129','O29.191','O29.192','O29.193','O29.199','O29.211','O29.212','O29.213','O29.219','O29.291','O29.292','O29.293','O29.299','O29.3X1','O29.3X2','O29.3X3','O29.3X9','O29.40','O29.41','O29.42','O29.43','O29.5X1','O29.5X2','O29.5X3','O29.5X9','O29.60','O29.61','O29.62','O29.63','O29.8X1','O29.8X2','O29.8X3','O29.8X9','O29.90','O29.91','O29.92','O29.93','O30.001','O30.002','O30.003','O30.009','O30.011','O30.012','O30.013','O30.019','O30.021','O30.022','O30.023','O30.029','O30.031','O30.032','O30.033','O30.039','O30.041','O30.042','O30.043','O30.049','O30.091','O30.092','O30.093','O30.099','O30.101','O30.102','O30.103','O30.109','O30.111','O30.112','O30.113','O30.119','O30.121','O30.122','O30.123','O30.129','O30.191','O30.192','O30.193','O30.199','O30.201','O30.202','O30.203','O30.209','O30.211','O30.212','O30.213','O30.219','O30.221','O30.222','O30.223','O30.229','O30.291','O30.292','O30.293','O30.299','O30.801','O30.802','O30.803','O30.809','O30.811','O30.812','O30.813','O30.819','O30.821','O30.822','O30.823','O30.829','O30.891','O30.892','O30.893','O30.899','O30.90','O30.91','O30.92','O30.93','O31.00X0','O31.00X1','O31.00X2','O31.00X3','O31.00X4','O31.00X5','O31.00X9','O31.01X0','O31.01X1','O31.01X2','O31.01X3','O31.01X4','O31.01X5','O31.01X9','O31.02X0','O31.02X1','O31.02X2','O31.02X3','O31.02X4','O31.02X5','O31.02X9','O31.03X0','O31.03X1','O31.03X2','O31.03X3','O31.03X4','O31.03X5','O31.03X9','O31.10X0','O31.10X1','O31.10X2','O31.10X3','O31.10X4','O31.10X5','O31.10X9','O31.11X0','O31.11X1','O31.11X2','O31.11X3','O31.11X4','O31.11X5','O31.11X9','O31.12X0','O31.12X1','O31.12X2','O31.12X3','O31.12X4','O31.12X5','O31.12X9','O31.13X0','O31.13X1','O31.13X2','O31.13X3','O31.13X4','O31.13X5','O31.13X9','O31.20X0','O31.20X1','O31.20X2','O31.20X3','O31.20X4','O31.20X5','O31.20X9','O31.21X0','O31.21X1','O31.21X2','O31.21X3','O31.21X4','O31.21X5','O31.21X9','O31.22X0','O31.22X1','O31.22X2','O31.22X3','O31.22X4','O31.22X5','O31.22X9','O31.23X0','O31.23X1','O31.23X2','O31.23X3','O31.23X4','O31.23X5','O31.23X9','O31.30X0','O31.30X1','O31.30X2','O31.30X3','O31.30X4','O31.30X5','O31.30X9','O31.31X0','O31.31X1','O31.31X2','O31.31X3','O31.31X4','O31.31X5','O31.31X9','O31.32X0','O31.32X1','O31.32X2','O31.32X3','O31.32X4','O31.32X5','O31.32X9','O31.33X0','O31.33X1','O31.33X2','O31.33X3','O31.33X4','O31.33X5','O31.33X9','O31.8X10','O31.8X11','O31.8X12','O31.8X13','O31.8X14','O31.8X15','O31.8X19','O31.8X20','O31.8X21','O31.8X22','O31.8X23','O31.8X24','O31.8X25','O31.8X29','O31.8X30','O31.8X31','O31.8X32','O31.8X33','O31.8X34','O31.8X35','O31.8X39','O31.8X90','O31.8X91','O31.8X92','O31.8X93','O31.8X94','O31.8X95','O31.8X99','O32.0XX0','O32.0XX1','O32.0XX2','O32.0XX3','O32.0XX4','O32.0XX5','O32.0XX9','O32.1XX0','O32.1XX1','O32.1XX2','O32.1XX3','O32.1XX4','O32.1XX5','O32.1XX9','O32.2XX0','O32.2XX1','O32.2XX2','O32.2XX3','O32.2XX4','O32.2XX5','O32.2XX9','O32.3XX0','O32.3XX1','O32.3XX2','O32.3XX3','O32.3XX4','O32.3XX5','O32.3XX9','O32.4XX0','O32.4XX1','O32.4XX2','O32.4XX3','O32.4XX4','O32.4XX5','O32.4XX9','O32.6XX0','O32.6XX1','O32.6XX2','O32.6XX3','O32.6XX4','O32.6XX5','O32.6XX9','O32.8XX0','O32.8XX1','O32.8XX2','O32.8XX3','O32.8XX4','O32.8XX5','O32.8XX9','O32.9XX0','O32.9XX1','O32.9XX2','O32.9XX3','O32.9XX4','O32.9XX5','O32.9XX9','O33.0','O33.1','O33.2','O33.3XX0','O33.3XX1','O33.3XX2','O33.3XX3','O33.3XX4','O33.3XX5','O33.3XX9','O33.4XX0','O33.4XX1','O33.4XX2','O33.4XX3','O33.4XX4','O33.4XX5','O33.4XX9','O33.5XX0','O33.5XX1','O33.5XX2','O33.5XX3','O33.5XX4','O33.5XX5','O33.5XX9','O33.6XX0','O33.6XX1','O33.6XX2','O33.6XX3','O33.6XX4','O33.6XX5','O33.6XX9','O33.7','O33.8','O33.9','O34.00','O34.01','O34.02','O34.03','O34.10','O34.11','O34.12','O34.13','O34.21','O34.29','O34.30','O34.31','O34.32','O34.33','O34.40','O34.41','O34.42','O34.43','O34.511','O34.512','O34.513','O34.519','O34.521','O34.522','O34.523','O34.529','O34.531','O34.532','O34.533','O34.539','O34.591','O34.592','O34.593','O34.599','O34.60','O34.61','O34.62','O34.63','O34.70','O34.71','O34.72','O34.73','O34.80','O34.81','O34.82','O34.83','O34.90','O34.91','O34.92','O34.93','O35.0XX0','O35.0XX1','O35.0XX2','O35.0XX3','O35.0XX4','O35.0XX5','O35.0XX9','O35.1XX0','O35.1XX1','O35.1XX2','O35.1XX3','O35.1XX4','O35.1XX5','O35.1XX9','O35.2XX0','O35.2XX1','O35.2XX2','O35.2XX3','O35.2XX4','O35.2XX5','O35.2XX9','O35.3XX0','O35.3XX1','O35.3XX2','O35.3XX3','O35.3XX4','O35.3XX5','O35.3XX9','O35.4XX0','O35.4XX1','O35.4XX2','O35.4XX3','O35.4XX4','O35.4XX5','O35.4XX9','O35.5XX0','O35.5XX1','O35.5XX2','O35.5XX3','O35.5XX4','O35.5XX5','O35.5XX9','O35.6XX0','O35.6XX1','O35.6XX2','O35.6XX3','O35.6XX4','O35.6XX5','O35.6XX9','O35.7XX0','O35.7XX1','O35.7XX2','O35.7XX3','O35.7XX4','O35.7XX5','O35.7XX9','O35.8XX0','O35.8XX1','O35.8XX2','O35.8XX3','O35.8XX4','O35.8XX5','O35.8XX9','O35.9XX0','O35.9XX1','O35.9XX2','O35.9XX3','O35.9XX4','O35.9XX5','O35.9XX9','O36.0110','O36.0111','O36.0112','O36.0113','O36.0114','O36.0115','O36.0119','O36.0120','O36.0121','O36.0122','O36.0123','O36.0124','O36.0125','O36.0129','O36.0130','O36.0131','O36.0132','O36.0133','O36.0134','O36.0135','O36.0139','O36.0190','O36.0191','O36.0192','O36.0193','O36.0194','O36.0195','O36.0199','O36.0910','O36.0911','O36.0912','O36.0913','O36.0914','O36.0915','O36.0919','O36.0920','O36.0921','O36.0922','O36.0923','O36.0924','O36.0925','O36.0929','O36.0930','O36.0931','O36.0932','O36.0933','O36.0934','O36.0935','O36.0939','O36.0990','O36.0991','O36.0992','O36.0993','O36.0994','O36.0995','O36.0999','O36.1110','O36.1111','O36.1112','O36.1113','O36.1114','O36.1115','O36.1119','O36.1120','O36.1121','O36.1122','O36.1123','O36.1124','O36.1125','O36.1129','O36.1130','O36.1131','O36.1132','O36.1133','O36.1134','O36.1135','O36.1139','O36.1190','O36.1191','O36.1192','O36.1193','O36.1194','O36.1195','O36.1199','O36.1910','O36.1911','O36.1912','O36.1913','O36.1914','O36.1915','O36.1919','O36.1920','O36.1921','O36.1922','O36.1923','O36.1924','O36.1925','O36.1929','O36.1930','O36.1931','O36.1932','O36.1933','O36.1934','O36.1935','O36.1939','O36.1990','O36.1991','O36.1992','O36.1993','O36.1994','O36.1995','O36.1999','O36.20X0','O36.20X1','O36.20X2','O36.20X3','O36.20X4','O36.20X5','O36.20X9','O36.21X0','O36.21X1','O36.21X2','O36.21X3','O36.21X4','O36.21X5','O36.21X9','O36.22X0','O36.22X1','O36.22X2','O36.22X3','O36.22X4','O36.22X5','O36.22X9','O36.23X0','O36.23X1','O36.23X2','O36.23X3','O36.23X4','O36.23X5','O36.23X9','O36.4XX0','O36.4XX1','O36.4XX2','O36.4XX3','O36.4XX4','O36.4XX5','O36.4XX9','O36.5110','O36.5111','O36.5112','O36.5113','O36.5114','O36.5115','O36.5119','O36.5120','O36.5121','O36.5122','O36.5123','O36.5124','O36.5125','O36.5129','O36.5130','O36.5131','O36.5132','O36.5133','O36.5134','O36.5135','O36.5139','O36.5190','O36.5191','O36.5192','O36.5193','O36.5194','O36.5195','O36.5199','O36.5910','O36.5911','O36.5912','O36.5913','O36.5914','O36.5915','O36.5919','O36.5920','O36.5921','O36.5922','O36.5923','O36.5924','O36.5925','O36.5929','O36.5930','O36.5931','O36.5932','O36.5933','O36.5934','O36.5935','O36.5939','O36.5990','O36.5991','O36.5992','O36.5993','O36.5994','O36.5995','O36.5999','O36.60X0','O36.60X1','O36.60X2','O36.60X3','O36.60X4','O36.60X5','O36.60X9','O36.61X0','O36.61X1','O36.61X2','O36.61X3','O36.61X4','O36.61X5','O36.61X9','O36.62X0','O36.62X1','O36.62X2','O36.62X3','O36.62X4','O36.62X5','O36.62X9','O36.63X0','O36.63X1','O36.63X2','O36.63X3','O36.63X4','O36.63X5','O36.63X9','O36.70X0','O36.70X1','O36.70X2','O36.70X3','O36.70X4','O36.70X5','O36.70X9','O36.71X0','O36.71X1','O36.71X2','O36.71X3','O36.71X4','O36.71X5','O36.71X9','O36.72X0','O36.72X1','O36.72X2','O36.72X3','O36.72X4','O36.72X5','O36.72X9','O36.73X0','O36.73X1','O36.73X2','O36.73X3','O36.73X4','O36.73X5','O36.73X9','O36.8120','O36.8121','O36.8122','O36.8123','O36.8124','O36.8125','O36.8129','O36.8130','O36.8131','O36.8132','O36.8133','O36.8134','O36.8135','O36.8139','O36.8190','O36.8191','O36.8192','O36.8193','O36.8194','O36.8195','O36.8199','O36.8210','O36.8211','O36.8212','O36.8213','O36.8214','O36.8215','O36.8219','O36.8220','O36.8221','O36.8222','O36.8223','O36.8224','O36.8225','O36.8229','O36.8230','O36.8231','O36.8232','O36.8233','O36.8234','O36.8235','O36.8239','O36.8290','O36.8291','O36.8292','O36.8293','O36.8294','O36.8295','O36.8299','O36.8910','O36.8911','O36.8912','O36.8913','O36.8914','O36.8915','O36.8919','O36.8920','O36.8921','O36.8922','O36.8923','O36.8924','O36.8925','O36.8929','O36.8930','O36.8931','O36.8932','O36.8933','O36.8934','O36.8935','O36.8939','O36.8990','O36.8991','O36.8992','O36.8993','O36.8994','O36.8995','O36.8999','O36.90X0','O36.90X1','O36.90X2','O36.90X3','O36.90X4','O36.90X5','O36.90X9','O36.91X0','O36.91X1','O36.91X2','O36.91X3','O36.91X4','O36.91X5','O36.91X9','O36.92X0','O36.92X1','O36.92X2','O36.92X3','O36.92X4','O36.92X5','O36.92X9','O36.93X0','O36.93X1','O36.93X2','O36.93X3','O36.93X4','O36.93X5','O36.93X9','O40.1XX0','O40.1XX1','O40.1XX2','O40.1XX3','O40.1XX4','O40.1XX5','O40.1XX9','O40.2XX0','O40.2XX1','O40.2XX2','O40.2XX3','O40.2XX4','O40.2XX5','O40.2XX9','O40.3XX0','O40.3XX1','O40.3XX2','O40.3XX3','O40.3XX4','O40.3XX5','O40.3XX9','O40.9XX0','O40.9XX1','O40.9XX2','O40.9XX3','O40.9XX4','O40.9XX5','O40.9XX9','O41.00X0','O41.00X1','O41.00X2','O41.00X3','O41.00X4','O41.00X5','O41.00X9','O41.01X0','O41.01X1','O41.01X2','O41.01X3','O41.01X4','O41.01X5','O41.01X9','O41.02X0','O41.02X1','O41.02X2','O41.02X3','O41.02X4','O41.02X5','O41.02X9','O41.03X0','O41.03X1','O41.03X2','O41.03X3','O41.03X4','O41.03X5','O41.03X9','O41.1010','O41.1011','O41.1012','O41.1013','O41.1014','O41.1015','O41.1019','O41.1020','O41.1021','O41.1022','O41.1023','O41.1024','O41.1025','O41.1029','O41.1030','O41.1031','O41.1032','O41.1033','O41.1034','O41.1035','O41.1039','O41.1090','O41.1091','O41.1092','O41.1093','O41.1094','O41.1095','O41.1099','O41.1210','O41.1211','O41.1212','O41.1213','O41.1214','O41.1215','O41.1219','O41.1220','O41.1221','O41.1222','O41.1223','O41.1224','O41.1225','O41.1229','O41.1230','O41.1231','O41.1232','O41.1233','O41.1234','O41.1235','O41.1239','O41.1290','O41.1291','O41.1292','O41.1293','O41.1294','O41.1295','O41.1299','O41.1410','O41.1411','O41.1412','O41.1413','O41.1414','O41.1415','O41.1419','O41.1420','O41.1421','O41.1422','O41.1423','O41.1424','O41.1425','O41.1429','O41.1430','O41.1431','O41.1432','O41.1433','O41.1434','O41.1435','O41.1439','O41.1490','O41.1491','O41.1492','O41.1493','O41.1494','O41.1495','O41.1499','O41.8X10','O41.8X11','O41.8X12','O41.8X13','O41.8X14','O41.8X15','O41.8X19','O41.8X20','O41.8X21','O41.8X22','O41.8X23','O41.8X24','O41.8X25','O41.8X29','O41.8X30','O41.8X31','O41.8X32','O41.8X33','O41.8X34','O41.8X35','O41.8X39','O41.8X90','O41.8X91','O41.8X92','O41.8X93','O41.8X94','O41.8X95','O41.8X99','O41.90X0','O41.90X1','O41.90X2','O41.90X3','O41.90X4','O41.90X5','O41.90X9','O41.91X0','O41.91X1','O41.91X2','O41.91X3','O41.91X4','O41.91X5','O41.91X9','O41.92X0','O41.92X1','O41.92X2','O41.92X3','O41.92X4','O41.92X5','O41.92X9','O41.93X0','O41.93X1','O41.93X2','O41.93X3','O41.93X4','O41.93X5','O41.93X9','O42.00','O42.011','O42.012','O42.013','O42.019','O42.02','O42.10','O42.111','O42.112','O42.113','O42.119','O42.12','O42.90','O42.911','O42.912','O42.913','O42.919','O42.92','O43.011','O43.012','O43.013','O43.019','O43.021','O43.022','O43.023','O43.029','O43.101','O43.102','O43.103','O43.109','O43.111','O43.112','O43.113','O43.119','O43.121','O43.122','O43.123','O43.129','O43.191','O43.192','O43.193','O43.199','O43.211','O43.212','O43.213','O43.219','O43.221','O43.222','O43.223','O43.229','O43.231','O43.232','O43.233','O43.239','O43.811','O43.812','O43.813','O43.819','O43.891','O43.892','O43.893','O43.899','O43.90','O43.91','O43.92','O43.93','O44.00','O44.01','O44.02','O44.03','O44.10','O44.11','O44.12','O44.13','O45.001','O45.002','O45.003','O45.009','O45.011','O45.012','O45.013','O45.019','O45.021','O45.022','O45.023','O45.029','O45.091','O45.092','O45.093','O45.099','O45.8X1','O45.8X2','O45.8X3','O45.8X9','O45.90','O45.91','O45.92','O45.93','O46.001','O46.002','O46.003','O46.009','O46.011','O46.012','O46.013','O46.019','O46.021','O46.022','O46.023','O46.029','O46.091','O46.092','O46.093','O46.099','O46.8X1','O46.8X2','O46.8X3','O46.8X9','O46.90','O46.91','O46.92','O46.93','O47.00','O47.02','O47.03','O47.1','O47.9','O48.0','O48.1','O60.00','O60.02','O60.03','O71.00','O71.02','O71.03','O88.011','O88.012','O88.013','O88.019','O88.111','O88.112','O88.113','O88.119','O88.211','O88.212','O88.213','O88.219','O88.311','O88.312','O88.313','O88.319','O88.811','O88.812','O88.813','O88.819','O90.3','O91.011','O91.012','O91.013','O91.019','O91.111','O91.112','O91.113','O91.119','O91.211','O91.212','O91.213','O91.219','O92.011','O92.012','O92.013','O92.019','O92.111','O92.112','O92.113','O92.119','O92.20','O92.29','O98.011','O98.012','O98.013','O98.019','O98.111','O98.112','O98.113','O98.119','O98.211','O98.212','O98.213','O98.219','O98.311','O98.312','O98.313','O98.319','O98.411','O98.412','O98.413','O98.419','O98.511','O98.512','O98.513','O98.519','O98.611','O98.612','O98.613','O98.619','O98.711','O98.712','O98.713','O98.719','O98.811','O98.812','O98.813','O98.819','O98.911','O98.912','O98.913','O98.919','O99.011','O99.012','O99.013','O99.019','O99.111','O99.112','O99.113','O99.119','O99.210','O99.211','O99.212','O99.213','O99.280','O99.281','O99.282','O99.283','O99.310','O99.311','O99.312','O99.313','O99.320','O99.321','O99.322','O99.323','O99.330','O99.331','O99.332','O99.333','O99.340','O99.341','O99.342','O99.343','O99.350','O99.351','O99.352','O99.353','O99.411','O99.412','O99.413','O99.419','O99.511','O99.512','O99.513','O99.519','O99.611','O99.612','O99.613','O99.619','O99.711','O99.712','O99.713','O99.719','O99.810','O99.820','O99.830','O99.840','O99.841','O99.842','O99.843','O99.89','O9A.111','O9A.112','O9A.113','O9A.119','O9A.211','O9A.212','O9A.213','O9A.219','O9A.311','O9A.312','O9A.313','O9A.319','O9A.411','O9A.412','O9A.413','O9A.419','O9A.511','O9A.512','O9A.513','O9A.519','Z33.1','Z34.00','Z34.01','Z34.02','Z34.03','Z34.80','Z34.81','Z34.82','Z34.83','Z34.90','Z34.91','Z34.92','Z34.93','Z36']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAPregnancy1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.378\", \"specificOccurrence\": \"OccurrenceAPregnancy1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActivePregnancy = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.378\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_2 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(3, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_4 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(17, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1026\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_12 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1022\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1027\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPregnancy1_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.378\", \"specificOccurrence\": \"OccurrenceAPregnancy1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPregnancy1_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.378\", \"specificOccurrence\": \"OccurrenceAPregnancy1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingBmiPercentile_precondition_30 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.121.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingHeight_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.121.12.1014\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingWeight_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.121.12.1015\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1026\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1022\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_50 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1027\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionPerformedCounselingForNutrition_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.195.12.1003\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.GROUP_DURING_CHILDREN_89(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_DURING_CHILDREN_89 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_40(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedOfficeVisit_precondition_42(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_44(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_46(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_48(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_50(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_52(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_59 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_63 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1026\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_65 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1022\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_67 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_69 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1027\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_71 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionPerformedCounselingForPhysicalActivity_precondition_75 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.118.12.1035\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.GROUP_DURING_CHILDREN_91(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_DURING_CHILDREN_91 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_59(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedOfficeVisit_precondition_61(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_63(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_65(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_67(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_69(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_71(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_78 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(3, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_80 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(11, \"a\", true)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_83 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(12, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_85 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(17, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAPregnancy1\",\"type\":\"DIAGNOSIS_ACTIVE_PREGNANCY\",\"function\":\"OccurrenceAPregnancy1\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('23', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_2, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_4,\n      atLeastOneTrue('20', patient, initialSpecificContext, hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_6, hqmfjs.EncounterPerformedOfficeVisit_precondition_8, hqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_10, hqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_12, hqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_14, hqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_16, hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_18\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER_1', patient, initialSpecificContext,\n    allTrue('58', patient, initialSpecificContext, hqmfjs.InterventionPerformedCounselingForNutrition_precondition_56\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('29', patient, initialSpecificContext, hqmfjs.OccurrenceAPregnancy1_precondition_24,\n      allFalse('28', patient, initialSpecificContext, hqmfjs.OccurrenceAPregnancy1_precondition_26\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0024",
+    "hqmf_id": "40280381-4555-E1C1-0145-85C7311720F5",
+    "hqmf_set_id": "0B63F730-25D6-4248-B11F-8C09C66A04EB",
+    "hqmf_version_number": 3,
+    "title": "Weight Assessment and Counseling for Nutrition and Physical Activity for Children and Adolescents",
+    "description": "Percentage of patients 3-17 years of age who had an outpatient visit with a Primary Care Physician (PCP) or Obstetrician/Gynecologist (OB/GYN) and who had evidence of the following during the measurement period. Three rates are reported.\r\n\r\n - Percentage of patients with height, weight, and body mass index (BMI) percentile documentation\r\n - Percentage of patients with counseling for nutrition\r\n - Percentage of patients with counseling for physical activity",
+    "cms_id": "CMS155v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "10127790-AE94-4070-9DD3-1D3776D08D7C",
+        "preconditions": [
+          {
+            "id": 23,
+            "preconditions": [
+              {
+                "id": 2,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_2"
+              },
+              {
+                "id": 4,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+              },
+              {
+                "id": 20,
+                "preconditions": [
+                  {
+                    "id": 6,
+                    "reference": "EncounterPerformedFaceToFaceInteraction_precondition_6"
+                  },
+                  {
+                    "id": 8,
+                    "reference": "EncounterPerformedOfficeVisit_precondition_8"
+                  },
+                  {
+                    "id": 10,
+                    "reference": "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_10"
+                  },
+                  {
+                    "id": 12,
+                    "reference": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_12"
+                  },
+                  {
+                    "id": 14,
+                    "reference": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_14"
+                  },
+                  {
+                    "id": 16,
+                    "reference": "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_16"
+                  },
+                  {
+                    "id": 18,
+                    "reference": "EncounterPerformedHomeHealthcareServices_precondition_18"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "3B3C1568-F875-49B1-9090-E2F494EECBB6"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "B288D5A4-D573-4FAA-92D6-0B01E1B35C7A",
+        "preconditions": [
+          {
+            "id": 29,
+            "preconditions": [
+              {
+                "id": 24,
+                "reference": "OccurrenceAPregnancy1_precondition_24"
+              },
+              {
+                "id": 28,
+                "preconditions": [
+                  {
+                    "id": 26,
+                    "reference": "OccurrenceAPregnancy1_precondition_26"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "FD4649BD-B962-4CBE-BF4A-C2F95F3EA08E",
+        "preconditions": [
+          {
+            "id": 39,
+            "preconditions": [
+              {
+                "id": 36,
+                "preconditions": [
+                  {
+                    "id": 30,
+                    "reference": "PhysicalExamFindingBmiPercentile_precondition_30"
+                  },
+                  {
+                    "id": 32,
+                    "reference": "PhysicalExamFindingHeight_precondition_32"
+                  },
+                  {
+                    "id": 34,
+                    "reference": "PhysicalExamFindingWeight_precondition_34"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER_1": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "52FBD726-4DD1-48F5-98B9-7175754923E1",
+        "preconditions": [
+          {
+            "id": 58,
+            "preconditions": [
+              {
+                "id": 56,
+                "reference": "InterventionPerformedCounselingForNutrition_precondition_56"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER_2": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "C43CE779-C5EE-4C15-A4CC-AF1C446CFB09",
+        "preconditions": [
+          {
+            "id": 77,
+            "preconditions": [
+              {
+                "id": 75,
+                "reference": "InterventionPerformedCounselingForPhysicalActivity_precondition_75"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-5D53298E6DA3",
+        "preconditions": [
+          {
+            "id": 82,
+            "preconditions": [
+              {
+                "id": 78,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_78"
+              },
+              {
+                "id": 80,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_80"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT_1": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-5D532AF06DA5",
+        "preconditions": [
+          {
+            "id": 87,
+            "preconditions": [
+              {
+                "id": 83,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_83"
+              },
+              {
+                "id": 85,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_85"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "DiagnosisActivePregnancy": {
+        "title": "Pregnancy",
+        "description": "Diagnosis, Active: Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.378",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePregnancy",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_2": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "3",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "17",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_6": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_8": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_10": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_12": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_14": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_16": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_18": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAPregnancy1_precondition_24": {
+        "title": "Pregnancy",
+        "description": "Diagnosis, Active: Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.378",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+        "source_data_criteria": "OccurrenceAPregnancy1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAPregnancy1_precondition_26": {
+        "title": "Pregnancy",
+        "description": "Diagnosis, Active: Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.378",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+        "source_data_criteria": "OccurrenceAPregnancy1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "PhysicalExamFindingBmiPercentile_precondition_30": {
+        "title": "BMI percentile",
+        "description": "Physical Exam, Finding: BMI percentile",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1012",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingBmiPercentile",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "PhysicalExamFindingHeight_precondition_32": {
+        "title": "Height",
+        "description": "Physical Exam, Finding: Height",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1014",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingHeight",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "PhysicalExamFindingWeight_precondition_34": {
+        "title": "Weight",
+        "description": "Physical Exam, Finding: Weight",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1015",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingWeight",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_40": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_42": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_44": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_46": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_48": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_50": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_52": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "InterventionPerformedCounselingForNutrition_precondition_56": {
+        "title": "Counseling for Nutrition",
+        "description": "Intervention, Performed: Counseling for Nutrition",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.195.12.1003",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedCounselingForNutrition",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "GROUP_DURING_CHILDREN_89"
+          }
+        ]
+      },
+      "GROUP_DURING_CHILDREN_89": {
+        "title": "GROUP_DURING_CHILDREN_89",
+        "description": "",
+        "children_criteria": [
+          "EncounterPerformedFaceToFaceInteraction_precondition_40",
+          "EncounterPerformedOfficeVisit_precondition_42",
+          "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_44",
+          "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_46",
+          "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_48",
+          "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_50",
+          "EncounterPerformedHomeHealthcareServices_precondition_52"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_DURING_CHILDREN_89",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_59": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_61": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_63": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_65": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_67": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_69": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_71": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "InterventionPerformedCounselingForPhysicalActivity_precondition_75": {
+        "title": "Counseling for Physical Activity",
+        "description": "Intervention, Performed: Counseling for Physical Activity",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1035",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedCounselingForPhysicalActivity",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "GROUP_DURING_CHILDREN_91"
+          }
+        ]
+      },
+      "GROUP_DURING_CHILDREN_91": {
+        "title": "GROUP_DURING_CHILDREN_91",
+        "description": "",
+        "children_criteria": [
+          "EncounterPerformedFaceToFaceInteraction_precondition_59",
+          "EncounterPerformedOfficeVisit_precondition_61",
+          "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_63",
+          "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_65",
+          "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_67",
+          "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_69",
+          "EncounterPerformedHomeHealthcareServices_precondition_71"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_DURING_CHILDREN_91",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_78": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "3",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_80": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "11",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_83": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_85": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "17",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "PhysicalExamFindingBmiPercentile": {
+        "title": "BMI percentile",
+        "description": "Physical Exam, Finding: BMI percentile",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1012",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingBmiPercentile",
+        "variable": false
+      },
+      "InterventionPerformedCounselingForNutrition": {
+        "title": "Counseling for Nutrition",
+        "description": "Intervention, Performed: Counseling for Nutrition",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.195.12.1003",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedCounselingForNutrition",
+        "variable": false
+      },
+      "InterventionPerformedCounselingForPhysicalActivity": {
+        "title": "Counseling for Physical Activity",
+        "description": "Intervention, Performed: Counseling for Physical Activity",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.118.12.1035",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedCounselingForPhysicalActivity",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "PhysicalExamFindingHeight": {
+        "title": "Height",
+        "description": "Physical Exam, Finding: Height",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1014",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingHeight",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "OccurrenceAPregnancy1": {
+        "title": "Pregnancy",
+        "description": "Diagnosis, Active: Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.378",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+        "source_data_criteria": "OccurrenceAPregnancy1",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false
+      },
+      "PhysicalExamFindingWeight": {
+        "title": "Weight",
+        "description": "Physical Exam, Finding: Weight",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1015",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingWeight",
+        "variable": false
+      },
+      "DiagnosisActivePregnancy": {
+        "title": "Pregnancy",
+        "description": "Diagnosis, Active: Pregnancy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.378",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePregnancy",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "Report a total score, and each of the following strata:\r\nStratum 1 – Patients age 3-11  \r\nStratum 2 – Patients age 12-17",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Report a total score, and each of the following strata:\r\nStratum 1 – Patients age 3-11  \r\nStratum 2 – Patients age 12-17",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "One of the most important developments in pediatrics in the past two decades has been the emergence of a new chronic disease: obesity in childhood and adolescence. The rapidly increasing prevalence of obesity among children is one of the most challenging dilemmas currently facing pediatricians. National Health and Nutrition Examination Survey (NHANES) data from Cycle II (1976–1980) compared with data from Cycle III (1988–1994) documents an increase in the prevalence of obesity in all age, ethnic, and gender groups. NHANES data collected from 1999–2000 revealed a continued increase in the number of obese children. In that data collection, the prevalence of obesity (body mass index (BMI) > 95th percentile) was 10 percent among children 2–5 years of age and 15 percent among children 6–19 years of age. When children at risk for obesity (BMI of 85th–94th percentile) were included, the prevalence increased to 20 percent and 30 percent, respectively. Therefore, >1 of every 4 patients examined by pediatricians either is obese or is considered to be at high risk for developing this challenging health problem (O’Brien et al. 2004).\r\n\r\nIn addition to the growing prevalence of obesity in children and adolescents, the number of overweight children at risk of becoming obese is also of great concern. Evidence suggests that overweight children and adolescents are more likely to become obese as adults. For example, one study found that approximately 80 percent of children who were overweight at age 10–15 years were obese adults at age 25 years (Whitaker et al. 1997). Another study found that 25 percent of obese adults were overweight as children. The latter study also found that if overweight begins before 8 years of age, obesity in adulthood is likely to be more severe (Freedman et al. 2001).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "One of the most important developments in pediatrics in the past two decades has been the emergence of a new chronic disease: obesity in childhood and adolescence. The rapidly increasing prevalence of obesity among children is one of the most challenging dilemmas currently facing pediatricians. National Health and Nutrition Examination Survey (NHANES) data from Cycle II (1976–1980) compared with data from Cycle III (1988–1994) documents an increase in the prevalence of obesity in all age, ethnic, and gender groups. NHANES data collected from 1999–2000 revealed a continued increase in the number of obese children. In that data collection, the prevalence of obesity (body mass index (BMI) > 95th percentile) was 10 percent among children 2–5 years of age and 15 percent among children 6–19 years of age. When children at risk for obesity (BMI of 85th–94th percentile) were included, the prevalence increased to 20 percent and 30 percent, respectively. Therefore, >1 of every 4 patients examined by pediatricians either is obese or is considered to be at high risk for developing this challenging health problem (O’Brien et al. 2004).\r\n\r\nIn addition to the growing prevalence of obesity in children and adolescents, the number of overweight children at risk of becoming obese is also of great concern. Evidence suggests that overweight children and adolescents are more likely to become obese as adults. For example, one study found that approximately 80 percent of children who were overweight at age 10–15 years were obese adults at age 25 years (Whitaker et al. 1997). Another study found that 25 percent of obese adults were overweight as children. The latter study also found that if overweight begins before 8 years of age, obesity in adulthood is likely to be more severe (Freedman et al. 2001).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "U.S. Preventive Services Task Force (2005) - Evidence is insufficient to recommend for or against routine screening for overweight in children and adolescents as a means to prevent adverse health outcomes (I rating).\r\n\r\nAmerican Academy of Pediatrics (2004) - BMI should be calculated from the height and weight, and the BMI percentile should be calculated.\r\n\r\nAmerican Medical Association (AMA), Centers for Disease Control and Prevention (CDC), Health Resources and Services Administration (HRSA) (2007) - At minimum, a yearly assessment of weight status in all children.\r\n\r\nInclude calculation of height, weight (measured appropriately), and body mass index (BMI) for age and plotting of those measures on standard growth charts.\r\n\r\nThe AAP and the American College of Clinical Endocrinology (ACCE) (Dorsey 2005) - Screen children for obesity using BMI and examine overweight children for obesity-related diseases.\r\n\r\nCDC (Baker 2005) - Using the percentile BMI for age and gender as the most appropriate and easily available method to screen for childhood overweight or at risk for overweight. \r\n\r\nBright Futures (AAP) (Hagan 2008) - Calculate BMI at every visit.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "U.S. Preventive Services Task Force (2005) - Evidence is insufficient to recommend for or against routine screening for overweight in children and adolescents as a means to prevent adverse health outcomes (I rating).\r\n\r\nAmerican Academy of Pediatrics (2004) - BMI should be calculated from the height and weight, and the BMI percentile should be calculated.\r\n\r\nAmerican Medical Association (AMA), Centers for Disease Control and Prevention (CDC), Health Resources and Services Administration (HRSA) (2007) - At minimum, a yearly assessment of weight status in all children.\r\n\r\nInclude calculation of height, weight (measured appropriately), and body mass index (BMI) for age and plotting of those measures on standard growth charts.\r\n\r\nThe AAP and the American College of Clinical Endocrinology (ACCE) (Dorsey 2005) - Screen children for obesity using BMI and examine overweight children for obesity-related diseases.\r\n\r\nCDC (Baker 2005) - Using the percentile BMI for age and gender as the most appropriate and easily available method to screen for childhood overweight or at risk for overweight. \r\n\r\nBright Futures (AAP) (Hagan 2008) - Calculate BMI at every visit.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0024",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0024"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "155",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "155",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Hagan, J.F., Shaw J.S., Duncan P.M. eds. 2008. Bright Futures: Guidelines for Health Supervision of Infants, Children, and Adolescents, Third Edition. Elk Grove: American Academy of Pediatrics.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Hagan, J.F., Shaw J.S., Duncan P.M. eds. 2008. Bright Futures: Guidelines for Health Supervision of Infants, Children, and Adolescents, Third Edition. Elk Grove: American Academy of Pediatrics.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The visit must be performed by a PCP or OB/GYN. \r\nBecause BMI norms for youth vary with age and gender, this measure evaluates whether BMI percentile is assessed rather than an absolute BMI value.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The visit must be performed by a PCP or OB/GYN. \r\nBecause BMI norms for youth vary with age and gender, this measure evaluates whether BMI percentile is assessed rather than an absolute BMI value.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients 3-17 years of age with at least one outpatient visit with a primary care physician (PCP) or an obstetrician/gynecologist (OB/GYN) during the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients 3-17 years of age with at least one outpatient visit with a primary care physician (PCP) or an obstetrician/gynecologist (OB/GYN) during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals initial patient population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals initial patient population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Patients who have a diagnosis of pregnancy during the measurement period",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients who have a diagnosis of pregnancy during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Numerator 1: Patients who had a height, weight and body mass index (BMI) percentile recorded during the measurement period\r\nNumerator 2: Patients who had counseling for nutrition during a visit that occurs during the measurement period\r\nNumerator 3: Patients who had counseling for physical activity during a visit that occurs during the measurement period",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Numerator 1: Patients who had a height, weight and body mass index (BMI) percentile recorded during the measurement period\r\nNumerator 2: Patients who had counseling for nutrition during a visit that occurs during the measurement period\r\nNumerator 3: Patients who had counseling for physical activity during a visit that occurs during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"BMI Recorded","id":"Population1"},
+      {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"Nutrition Counseling","id":"Population2"},
+      {"NUMER":"NUMER_2","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"Physical Activity Counseling","id":"Population3"},
+      {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT","stratification":"40280381-3D61-56A7-013E-5D53298E6DA3","title":"BMI Recorded, RS1: 3-11","id":"Population4"},
+      {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"40280381-3D61-56A7-013E-5D532AF06DA5","title":"BMI Recorded, RS2: 12-17","id":"Population5"},
+      {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT","stratification":"40280381-3D61-56A7-013E-5D53298E6DA3","title":"Nutrition Counseling, RS1: 3-11","id":"Population6"},
+      {"NUMER":"NUMER_1","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"40280381-3D61-56A7-013E-5D532AF06DA5","title":"Nutrition Counseling, RS2: 12-17","id":"Population7"},
+      {"NUMER":"NUMER_2","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT","stratification":"40280381-3D61-56A7-013E-5D53298E6DA3","title":"Physical Activity Counseling, RS1: 3-11","id":"Population8"},
+      {"NUMER":"NUMER_2","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"40280381-3D61-56A7-013E-5D532AF06DA5","title":"Physical Activity Counseling, RS2: 12-17","id":"Population9"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "sub_id": "b",
+  "subtitle": "Nutrition Counseling",
+  "short_subtitle": "Nutrition Counseling",
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.101.12.1022",
+    "2.16.840.1.113883.3.464.1003.101.12.1024",
+    "2.16.840.1.113883.3.464.1003.101.12.1026",
+    "2.16.840.1.113883.3.464.1003.101.12.1027",
+    "2.16.840.1.113883.3.464.1003.118.12.1035",
+    "2.16.840.1.113883.3.464.1003.121.12.1012",
+    "2.16.840.1.113883.3.464.1003.121.12.1014",
+    "2.16.840.1.113883.3.464.1003.121.12.1015",
+    "2.16.840.1.113883.3.464.1003.195.12.1003",
+    "2.16.840.1.113883.3.526.3.378",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1016"
+  ],
+  "population_ids": {
+    "IPP": "10127790-AE94-4070-9DD3-1D3776D08D7C",
+    "DENOM": "3B3C1568-F875-49B1-9090-E2F494EECBB6",
+    "DENEX": "B288D5A4-D573-4FAA-92D6-0B01E1B35C7A",
+    "NUMER": "52FBD726-4DD1-48F5-98B9-7175754923E1"
+  }
+}

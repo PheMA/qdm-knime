@@ -1,0 +1,3438 @@
+{
+  "id": "40280381-4600-425F-0146-EE66F0005509",
+  "nqf_id": "0041",
+  "hqmf_id": "40280381-4600-425F-0146-EE66F0005509",
+  "hqmf_set_id": "A244AA29-7D11-4616-888A-86E376BFCC6F",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS147v4",
+  "name": "Preventive Care and Screening: Influenza Immunization",
+  "description": "Percentage of patients aged 6 months and older seen for a visit between October 1 and March 31 who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+  "type": "ep",
+  "category": "General Practice Pediatric",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0041';\n        hqmfjs.hqmf_id = '40280381-4600-425F-0146-EE66F0005509';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.101.12.1022':{'CPT':['99381','99382','99383','99384']},'2.16.840.1.113883.3.464.1003.101.12.1024':{'CPT':['99391','99392','99393','99394']},'2.16.840.1.113883.3.464.1003.101.12.1008':{'CPT':['99241','99242','99243','99244','99245']},'2.16.840.1.113883.3.526.3.1254':{'CVX':['111','135','140','141','144','149','150']},'2.16.840.1.113883.3.526.3.1253':{'SNOMED-CT':['213020009','91930004']},'2.16.840.1.113883.3.526.3.1256':{'SNOMED-CT':['294647003','294648008','294649000','315631004']},'2.16.840.1.113883.3.526.3.1257':{'SNOMED-CT':['293112000','293113005','390796006','420113004']},'2.16.840.1.113883.3.464.1003.101.12.1014':{'CPT':['99324','99325','99326','99327','99328','99334','99335','99336','99337']},'2.16.840.1.113883.3.526.3.1009':{'SNOMED-CT':['107724000','182856006','182857002','185335007','224194003','224198000','224199008','242990004','266756008','270459005','309017000','309846006','419808006','424553001']},'2.16.840.1.113883.3.526.3.1012':{'SNOMED-CT':['11797002','12843005','18170008','185316007','185317003','185318008','185320006','185321005','185349003','185463005','185465003','19681004','207195004','270424005','270427003','270430005','308335008','308720009','386473003','390906007','401267002','401271004','406547006','438515009','438516005','439708006','445450000','448337001','4525004','87790002','90526000']},'2.16.840.1.113883.3.526.3.1185':{'SNOMED-CT':['185900003','185901004','185902006','416928007']},'2.16.840.1.113883.3.464.1003.101.12.1026':{'CPT':['99401','99402','99403','99404']},'2.16.840.1.113883.3.464.1003.101.12.1027':{'CPT':['99411','99412']},'2.16.840.1.113883.3.464.1003.101.12.1030':{'CPT':['99420','99429']},'2.16.840.1.113883.3.464.1003.101.12.1013':{'CPT':['99315','99316']},'2.16.840.1.113883.3.464.1003.101.12.1012':{'CPT':['99304','99305','99306','99307','99308','99309','99310']},'2.16.840.1.113883.3.526.3.1084':{'SNOMED-CT':['14684005','225230008','238318009','238319001','238321006','238322004','238323009','428648006','676002','71192002'],'CPT':['90945','90947','90951','90952','90953','90954','90955','90956','90957','90958','90959','90960','90961','90962','90963','90964','90965','90966','90967','90968','90969','90970']},'2.16.840.1.113883.3.526.3.1083':{'SNOMED-CT':['302497006'],'CPT':['90951','90952','90953','90954','90955','90956','90957','90958','90959','90960','90961','90962','90963','90964','90965','90966','90967','90968','90969','90970','99512']},'2.16.840.1.113883.3.526.3.1252':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000'],'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215','99241','99242','99243','99244','99245','99304','99305','99306','99307','99308','99309','99310','99315','99316','99324','99325','99326','99327','99328','99334','99335','99336','99337','99341','99342','99343','99344','99345','99347','99348','99349','99350','99381','99382','99383','99384','99385','99386','99387','99391','99392','99393','99394','99395','99396','99397','99401','99402','99403','99404','99411','99412','99420','99429'],'HCPCS':['G0438','G0439']},'2.16.840.1.113883.3.526.3.1255':{'SNOMED-CT':['315640000']},'2.16.840.1.113883.3.526.3.1007':{'SNOMED-CT':['161590003','183932001','183964008','183966005','216952002','266721009','269191009','274512008','31438003','35688006','371133007','397745006','407563006','410534003','410536001','416098002','416406003','428119001','445528004','59037007','62014003','79899007']},'2.16.840.1.113883.3.526.3.402':{'SNOMED-CT':['442333005','86198006'],'CPT':['90653','90655','90656','90657','90658','90660','90661','90662','90664','90666','90667','90668','90672','90685','90686','90687','90688']},'2.16.840.1.113883.3.526.3.1008':{'SNOMED-CT':['105480006','160932005','160934006','182890002','182895007','182897004','182900006','182902003','183944003','183945002','184081006','185479006','185481008','224187001','225928004','258147002','266710000','266966009','275694009','275936005','281399006','30164005','310343007','373787003','385648002','406149000','408367005','413310006','413311005','413312003','416432009','423656007','424739004','443390004','5015009']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1025':{'CPT':['99395','99396','99397']},'2.16.840.1.113883.3.464.1003.101.12.1023':{'CPT':['99385','99386','99387']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']},'2.16.840.1.113883.3.526.3.1240':{'HCPCS':['G0438','G0439']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAAllergyToEggs1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1253\", \"specificOccurrence\": \"OccurrenceAAllergyToEggs1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAllergyToInfluenzaVaccine2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1256\", \"specificOccurrence\": \"OccurrenceAAllergyToInfluenzaVaccine2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccination3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccination3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAIntoleranceToInfluenzaVaccine6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1257\", \"specificOccurrence\": \"OccurrenceAIntoleranceToInfluenzaVaccine6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedurePerformedNotDoneMedicalReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.ProcedurePerformedNotDonePatientReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.ProcedurePerformedNotDoneSystemReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredNotDoneMedicalReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredNotDonePatientReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredNotDoneSystemReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAllergyToEggs = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1253\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAllergyToInfluenzaVaccine = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1256\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.ProcedureIntoleranceInfluenzaVaccination = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationIntoleranceInfluenzaVaccine = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAllergyInfluenzaVaccine = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveIntoleranceToInfluenzaVaccine = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1257\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_7 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(6, \"mo\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOutpatientConsultation_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_15 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPatientProviderInteraction_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_COUNT_185 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedOfficeVisit_precondition_9(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedOutpatientConsultation_precondition_11(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_13(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_15(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPatientProviderInteraction_precondition_17(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = COUNT(events, new IVL_PQ(new PQ(2, \" \", true), null), initialSpecificContext);\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1022\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1026\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_28 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1027\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesOther_precondition_30 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1030\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedDischargeServicesNursingFacility_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1013\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedNursingFacilityVisit_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1240\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedPeritonealDialysis_precondition_38 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1084\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedHemodialysis_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1083\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1025\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_COUNT_187 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_22(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_24(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_26(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_28(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesOther_precondition_30(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedDischargeServicesNursingFacility_precondition_32(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedNursingFacilityVisit_precondition_34(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_36(patient, initialSpecificContext),\n    hqmfjs.ProcedurePerformedPeritonealDialysis_precondition_38(patient, initialSpecificContext),\n    hqmfjs.ProcedurePerformedHemodialysis_precondition_40(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_42(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_44(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_46(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  events = COUNT(events, new IVL_PQ(new PQ(1, \" \", true), null), initialSpecificContext);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInfluenza_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1252\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(92, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedHemodialysis_precondition_57 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1083\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(92, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedPeritonealDialysis_precondition_59 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1084\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(92, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInfluenza_precondition_64 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1252\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedHemodialysis_precondition_66 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1083\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedPeritonealDialysis_precondition_68 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1084\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_76 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1255\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_78 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_80 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_82 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1009\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_86 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_88 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_90 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1009\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_97 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1255\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_99 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_101 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_103 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1009\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_107 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_109 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_111 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1009\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAllergyToEggs1_precondition_118 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1253\", \"specificOccurrence\": \"OccurrenceAAllergyToEggs1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAllergyToEggs1_precondition_120 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1253\", \"specificOccurrence\": \"OccurrenceAAllergyToEggs1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAllergyToInfluenzaVaccine2_precondition_125 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1256\", \"specificOccurrence\": \"OccurrenceAAllergyToInfluenzaVaccine2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAllergyToInfluenzaVaccine2_precondition_127 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1256\", \"specificOccurrence\": \"OccurrenceAAllergyToInfluenzaVaccine2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_132 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1257\", \"specificOccurrence\": \"OccurrenceAIntoleranceToInfluenzaVaccine6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_134 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1257\", \"specificOccurrence\": \"OccurrenceAIntoleranceToInfluenzaVaccine6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccination3_precondition_139 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccination3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccination3_precondition_141 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccination3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine4_precondition_146 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine4_precondition_148 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine5_precondition_153 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAInfluenzaVaccine5_precondition_155 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\", \"specificOccurrence\": \"OccurrenceAInfluenzaVaccine5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_163 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_165 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_167 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1185\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(153, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_172 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.402\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_174 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1254\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_176 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1185\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(89, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAAllergyToEggs1\",\"type\":\"DIAGNOSIS_ACTIVE_ALLERGY_TO_EGGS\",\"function\":\"OccurrenceAAllergyToEggs1\"},{\"id\":\"OccurrenceAAllergyToInfluenzaVaccine2\",\"type\":\"DIAGNOSIS_ACTIVE_ALLERGY_TO_INFLUENZA_VACCINE\",\"function\":\"OccurrenceAAllergyToInfluenzaVaccine2\"},{\"id\":\"OccurrenceAInfluenzaVaccination3\",\"type\":\"PROCEDURE_INTOLERANCE_INFLUENZA_VACCINATION\",\"function\":\"OccurrenceAInfluenzaVaccination3\"},{\"id\":\"OccurrenceAInfluenzaVaccine4\",\"type\":\"MEDICATION_INTOLERANCE_INFLUENZA_VACCINE\",\"function\":\"OccurrenceAInfluenzaVaccine4\"},{\"id\":\"OccurrenceAInfluenzaVaccine5\",\"type\":\"MEDICATION_ALLERGY_INFLUENZA_VACCINE\",\"function\":\"OccurrenceAInfluenzaVaccine5\"},{\"id\":\"OccurrenceAIntoleranceToInfluenzaVaccine6\",\"type\":\"DIAGNOSIS_ACTIVE_INTOLERANCE_TO_INFLUENZA_VACCINE\",\"function\":\"OccurrenceAIntoleranceToInfluenzaVaccine6\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('54', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_7,\n      atLeastOneTrue('51', patient, initialSpecificContext, hqmfjs.GROUP_COUNT_185, hqmfjs.GROUP_COUNT_187\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('75', patient, initialSpecificContext,\n      atLeastOneTrue('73', patient, initialSpecificContext,\n        atLeastOneTrue('61', patient, initialSpecificContext, hqmfjs.EncounterPerformedEncounterInfluenza_precondition_55, hqmfjs.ProcedurePerformedHemodialysis_precondition_57, hqmfjs.ProcedurePerformedPeritonealDialysis_precondition_59\n        ),\n        atLeastOneTrue('70', patient, initialSpecificContext, hqmfjs.EncounterPerformedEncounterInfluenza_precondition_64, hqmfjs.ProcedurePerformedHemodialysis_precondition_66, hqmfjs.ProcedurePerformedPeritonealDialysis_precondition_68\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('183', patient, initialSpecificContext,\n      atLeastOneTrue('181', patient, initialSpecificContext,\n        atLeastOneTrue('169', patient, initialSpecificContext, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_163, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_165, hqmfjs.CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_167\n        ),\n        atLeastOneTrue('178', patient, initialSpecificContext, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_172, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_174, hqmfjs.CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_176\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    allTrue('162', patient, initialSpecificContext,\n      atLeastOneTrue('160', patient, initialSpecificContext,\n        atLeastOneTrue('94', patient, initialSpecificContext, hqmfjs.CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_76,\n          atLeastOneTrue('84', patient, initialSpecificContext, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_78, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_80, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_82\n          ),\n          atLeastOneTrue('92', patient, initialSpecificContext, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_86, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_88, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_90\n          )\n        ),\n        atLeastOneTrue('115', patient, initialSpecificContext, hqmfjs.CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_97,\n          atLeastOneTrue('105', patient, initialSpecificContext, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_99, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_101, hqmfjs.ProcedurePerformedInfluenzaVaccination_precondition_103\n          ),\n          atLeastOneTrue('113', patient, initialSpecificContext, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_107, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_109, hqmfjs.MedicationAdministeredInfluenzaVaccine_precondition_111\n          )\n        ),\n        allTrue('123', patient, initialSpecificContext, hqmfjs.OccurrenceAAllergyToEggs1_precondition_118,\n          allFalse('122', patient, initialSpecificContext, hqmfjs.OccurrenceAAllergyToEggs1_precondition_120\n          )\n        ),\n        allTrue('130', patient, initialSpecificContext, hqmfjs.OccurrenceAAllergyToInfluenzaVaccine2_precondition_125,\n          allFalse('129', patient, initialSpecificContext, hqmfjs.OccurrenceAAllergyToInfluenzaVaccine2_precondition_127\n          )\n        ),\n        allTrue('137', patient, initialSpecificContext, hqmfjs.OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_132,\n          allFalse('136', patient, initialSpecificContext, hqmfjs.OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_134\n          )\n        ),\n        allTrue('144', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccination3_precondition_139,\n          allFalse('143', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccination3_precondition_141\n          )\n        ),\n        allTrue('151', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccine4_precondition_146,\n          allFalse('150', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccine4_precondition_148\n          )\n        ),\n        allTrue('158', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccine5_precondition_153,\n          allFalse('157', patient, initialSpecificContext, hqmfjs.OccurrenceAInfluenzaVaccine5_precondition_155\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0041",
+    "hqmf_id": "40280381-4600-425F-0146-EE66F0005509",
+    "hqmf_set_id": "A244AA29-7D11-4616-888A-86E376BFCC6F",
+    "hqmf_version_number": 4,
+    "title": "Preventive Care and Screening: Influenza Immunization",
+    "description": "Percentage of patients aged 6 months and older seen for a visit between October 1 and March 31 who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+    "cms_id": "CMS147v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "F48702E6-D39A-49D8-BE3C-8FAB5C6AADDA",
+        "preconditions": [
+          {
+            "id": 54,
+            "preconditions": [
+              {
+                "id": 7,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_7"
+              },
+              {
+                "id": 51,
+                "preconditions": [
+                  {
+                    "id": 20,
+                    "reference": "GROUP_COUNT_185"
+                  },
+                  {
+                    "id": 49,
+                    "reference": "GROUP_COUNT_187"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "B61EC2DC-0841-4906-A84B-5BE5024DA7F1",
+        "preconditions": [
+          {
+            "id": 75,
+            "preconditions": [
+              {
+                "id": 73,
+                "preconditions": [
+                  {
+                    "id": 61,
+                    "preconditions": [
+                      {
+                        "id": 55,
+                        "reference": "EncounterPerformedEncounterInfluenza_precondition_55"
+                      },
+                      {
+                        "id": 57,
+                        "reference": "ProcedurePerformedHemodialysis_precondition_57"
+                      },
+                      {
+                        "id": 59,
+                        "reference": "ProcedurePerformedPeritonealDialysis_precondition_59"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 70,
+                    "preconditions": [
+                      {
+                        "id": 64,
+                        "reference": "EncounterPerformedEncounterInfluenza_precondition_64"
+                      },
+                      {
+                        "id": 66,
+                        "reference": "ProcedurePerformedHemodialysis_precondition_66"
+                      },
+                      {
+                        "id": 68,
+                        "reference": "ProcedurePerformedPeritonealDialysis_precondition_68"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "B5C9EC50-3011-43DC-AD07-CED2D3B770B2",
+        "preconditions": [
+          {
+            "id": 162,
+            "preconditions": [
+              {
+                "id": 160,
+                "preconditions": [
+                  {
+                    "id": 94,
+                    "preconditions": [
+                      {
+                        "id": 76,
+                        "reference": "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_76"
+                      },
+                      {
+                        "id": 84,
+                        "preconditions": [
+                          {
+                            "id": 78,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_78"
+                          },
+                          {
+                            "id": 80,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_80"
+                          },
+                          {
+                            "id": 82,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_82"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      },
+                      {
+                        "id": 92,
+                        "preconditions": [
+                          {
+                            "id": 86,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_86"
+                          },
+                          {
+                            "id": 88,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_88"
+                          },
+                          {
+                            "id": 90,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_90"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 115,
+                    "preconditions": [
+                      {
+                        "id": 97,
+                        "reference": "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_97"
+                      },
+                      {
+                        "id": 105,
+                        "preconditions": [
+                          {
+                            "id": 99,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_99"
+                          },
+                          {
+                            "id": 101,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_101"
+                          },
+                          {
+                            "id": 103,
+                            "reference": "ProcedurePerformedInfluenzaVaccination_precondition_103"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      },
+                      {
+                        "id": 113,
+                        "preconditions": [
+                          {
+                            "id": 107,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_107"
+                          },
+                          {
+                            "id": 109,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_109"
+                          },
+                          {
+                            "id": 111,
+                            "reference": "MedicationAdministeredInfluenzaVaccine_precondition_111"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 123,
+                    "preconditions": [
+                      {
+                        "id": 118,
+                        "reference": "OccurrenceAAllergyToEggs1_precondition_118"
+                      },
+                      {
+                        "id": 122,
+                        "preconditions": [
+                          {
+                            "id": 120,
+                            "reference": "OccurrenceAAllergyToEggs1_precondition_120"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 130,
+                    "preconditions": [
+                      {
+                        "id": 125,
+                        "reference": "OccurrenceAAllergyToInfluenzaVaccine2_precondition_125"
+                      },
+                      {
+                        "id": 129,
+                        "preconditions": [
+                          {
+                            "id": 127,
+                            "reference": "OccurrenceAAllergyToInfluenzaVaccine2_precondition_127"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 137,
+                    "preconditions": [
+                      {
+                        "id": 132,
+                        "reference": "OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_132"
+                      },
+                      {
+                        "id": 136,
+                        "preconditions": [
+                          {
+                            "id": 134,
+                            "reference": "OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_134"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 144,
+                    "preconditions": [
+                      {
+                        "id": 139,
+                        "reference": "OccurrenceAInfluenzaVaccination3_precondition_139"
+                      },
+                      {
+                        "id": 143,
+                        "preconditions": [
+                          {
+                            "id": 141,
+                            "reference": "OccurrenceAInfluenzaVaccination3_precondition_141"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 151,
+                    "preconditions": [
+                      {
+                        "id": 146,
+                        "reference": "OccurrenceAInfluenzaVaccine4_precondition_146"
+                      },
+                      {
+                        "id": 150,
+                        "preconditions": [
+                          {
+                            "id": 148,
+                            "reference": "OccurrenceAInfluenzaVaccine4_precondition_148"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 158,
+                    "preconditions": [
+                      {
+                        "id": 153,
+                        "reference": "OccurrenceAInfluenzaVaccine5_precondition_153"
+                      },
+                      {
+                        "id": 157,
+                        "preconditions": [
+                          {
+                            "id": 155,
+                            "reference": "OccurrenceAInfluenzaVaccine5_precondition_155"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "0ED7B212-369B-489A-A5B5-07BC146FA557",
+        "preconditions": [
+          {
+            "id": 183,
+            "preconditions": [
+              {
+                "id": 181,
+                "preconditions": [
+                  {
+                    "id": 169,
+                    "preconditions": [
+                      {
+                        "id": 163,
+                        "reference": "ProcedurePerformedInfluenzaVaccination_precondition_163"
+                      },
+                      {
+                        "id": 165,
+                        "reference": "MedicationAdministeredInfluenzaVaccine_precondition_165"
+                      },
+                      {
+                        "id": 167,
+                        "reference": "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_167"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  },
+                  {
+                    "id": 178,
+                    "preconditions": [
+                      {
+                        "id": 172,
+                        "reference": "ProcedurePerformedInfluenzaVaccination_precondition_172"
+                      },
+                      {
+                        "id": 174,
+                        "reference": "MedicationAdministeredInfluenzaVaccine_precondition_174"
+                      },
+                      {
+                        "id": 176,
+                        "reference": "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_176"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "ProcedurePerformedNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Procedure, Performed not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDoneMedicalReason",
+        "variable": false
+      },
+      "ProcedurePerformedNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Procedure, Performed not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDonePatientReason",
+        "variable": false
+      },
+      "ProcedurePerformedNotDoneSystemReason": {
+        "title": "System Reason",
+        "description": "Procedure, Performed not done: System Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDoneSystemReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Administered not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Medication, Administered not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDonePatientReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneSystemReason": {
+        "title": "System Reason",
+        "description": "Medication, Administered not done: System Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneSystemReason",
+        "variable": false
+      },
+      "DiagnosisActiveAllergyToEggs": {
+        "title": "Allergy to Eggs",
+        "description": "Diagnosis, Active: Allergy to Eggs",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1253",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAllergyToEggs",
+        "variable": false
+      },
+      "DiagnosisActiveAllergyToInfluenzaVaccine": {
+        "title": "Allergy to Influenza Vaccine",
+        "description": "Diagnosis, Active: Allergy to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1256",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAllergyToInfluenzaVaccine",
+        "variable": false
+      },
+      "ProcedureIntoleranceInfluenzaVaccination": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Intolerance: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedureIntoleranceInfluenzaVaccination",
+        "variable": false
+      },
+      "MedicationIntoleranceInfluenzaVaccine": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Intolerance: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationIntoleranceInfluenzaVaccine",
+        "variable": false
+      },
+      "MedicationAllergyInfluenzaVaccine": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Allergy: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationAllergyInfluenzaVaccine",
+        "variable": false
+      },
+      "DiagnosisActiveIntoleranceToInfluenzaVaccine": {
+        "title": "Intolerance to Influenza Vaccine",
+        "description": "Diagnosis, Active: Intolerance to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1257",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIntoleranceToInfluenzaVaccine",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_7": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "mo",
+                "value": "6",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_9": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedOutpatientConsultation_precondition_11": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOutpatientConsultation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_13": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_15": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPatientProviderInteraction_precondition_17": {
+        "title": "Patient Provider Interaction",
+        "description": "Encounter, Performed: Patient Provider Interaction",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPatientProviderInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_COUNT_185": {
+        "title": "GROUP_COUNT_185",
+        "description": "",
+        "children_criteria": [
+          "EncounterPerformedOfficeVisit_precondition_9",
+          "EncounterPerformedOutpatientConsultation_precondition_11",
+          "EncounterPerformedCareServicesInLongTermResidentialFacility_precondition_13",
+          "EncounterPerformedHomeHealthcareServices_precondition_15",
+          "EncounterPerformedPatientProviderInteraction_precondition_17"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_COUNT_185",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "COUNT",
+            "value": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": " ",
+                "value": "2",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_22": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_24": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_26": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_28": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesOther_precondition_30": {
+        "title": "Preventive Care Services - Other",
+        "description": "Encounter, Performed: Preventive Care Services - Other",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1030",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesOther",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedDischargeServicesNursingFacility_precondition_32": {
+        "title": "Discharge Services - Nursing Facility",
+        "description": "Encounter, Performed: Discharge Services - Nursing Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1013",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedDischargeServicesNursingFacility",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedNursingFacilityVisit_precondition_34": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedAnnualWellnessVisit_precondition_36": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedPeritonealDialysis_precondition_38": {
+        "title": "Peritoneal Dialysis",
+        "description": "Procedure, Performed: Peritoneal Dialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1084",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPeritonealDialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedHemodialysis_precondition_40": {
+        "title": "Hemodialysis",
+        "description": "Procedure, Performed: Hemodialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1083",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedHemodialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_42": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_44": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_46": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_COUNT_187": {
+        "title": "GROUP_COUNT_187",
+        "description": "",
+        "children_criteria": [
+          "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_22",
+          "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_24",
+          "EncounterPerformedPreventiveCareServicesIndividualCounseling_precondition_26",
+          "EncounterPerformedPreventiveCareServicesGroupCounseling_precondition_28",
+          "EncounterPerformedPreventiveCareServicesOther_precondition_30",
+          "EncounterPerformedDischargeServicesNursingFacility_precondition_32",
+          "EncounterPerformedNursingFacilityVisit_precondition_34",
+          "EncounterPerformedAnnualWellnessVisit_precondition_36",
+          "ProcedurePerformedPeritonealDialysis_precondition_38",
+          "ProcedurePerformedHemodialysis_precondition_40",
+          "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_42",
+          "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_44",
+          "EncounterPerformedFaceToFaceInteraction_precondition_46"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_COUNT_187",
+        "variable": false,
+        "subset_operators": [
+          {
+            "type": "COUNT",
+            "value": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": " ",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedEncounterInfluenza_precondition_55": {
+        "title": "Encounter-Influenza",
+        "description": "Encounter, Performed: Encounter-Influenza",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1252",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInfluenza",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "92",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedHemodialysis_precondition_57": {
+        "title": "Hemodialysis",
+        "description": "Procedure, Performed: Hemodialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1083",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedHemodialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "92",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedPeritonealDialysis_precondition_59": {
+        "title": "Peritoneal Dialysis",
+        "description": "Procedure, Performed: Peritoneal Dialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1084",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPeritonealDialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "92",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedEncounterInfluenza_precondition_64": {
+        "title": "Encounter-Influenza",
+        "description": "Encounter, Performed: Encounter-Influenza",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1252",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInfluenza",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedHemodialysis_precondition_66": {
+        "title": "Hemodialysis",
+        "description": "Procedure, Performed: Hemodialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1083",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedHemodialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedPeritonealDialysis_precondition_68": {
+        "title": "Peritoneal Dialysis",
+        "description": "Procedure, Performed: Peritoneal Dialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1084",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPeritonealDialysis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_76": {
+        "title": "Influenza Vaccination Declined",
+        "description": "Communication: From Patient to Provider: Influenza Vaccination Declined",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1255",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_78": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_80": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_82": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1009",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_86": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_88": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_90": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1009",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined_precondition_97": {
+        "title": "Influenza Vaccination Declined",
+        "description": "Communication: From Patient to Provider: Influenza Vaccination Declined",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1255",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_99": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_101": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_103": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1009",
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_107": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_109": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_111": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1009",
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAllergyToEggs1_precondition_118": {
+        "title": "Allergy to Eggs",
+        "description": "Diagnosis, Active: Allergy to Eggs",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1253",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_EGGS",
+        "source_data_criteria": "OccurrenceAAllergyToEggs1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAllergyToEggs1_precondition_120": {
+        "title": "Allergy to Eggs",
+        "description": "Diagnosis, Active: Allergy to Eggs",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1253",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_EGGS",
+        "source_data_criteria": "OccurrenceAAllergyToEggs1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAllergyToInfluenzaVaccine2_precondition_125": {
+        "title": "Allergy to Influenza Vaccine",
+        "description": "Diagnosis, Active: Allergy to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1256",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAAllergyToInfluenzaVaccine2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAllergyToInfluenzaVaccine2_precondition_127": {
+        "title": "Allergy to Influenza Vaccine",
+        "description": "Diagnosis, Active: Allergy to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1256",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAAllergyToInfluenzaVaccine2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_132": {
+        "title": "Intolerance to Influenza Vaccine",
+        "description": "Diagnosis, Active: Intolerance to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1257",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_INTOLERANCE_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAIntoleranceToInfluenzaVaccine6",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAIntoleranceToInfluenzaVaccine6_precondition_134": {
+        "title": "Intolerance to Influenza Vaccine",
+        "description": "Diagnosis, Active: Intolerance to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1257",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_INTOLERANCE_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAIntoleranceToInfluenzaVaccine6",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccination3_precondition_139": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure Intolerance: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_INTOLERANCE_INFLUENZA_VACCINATION",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccination3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccination3_precondition_141": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure Intolerance: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_INTOLERANCE_INFLUENZA_VACCINATION",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccination3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccine4_precondition_146": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Intolerance: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_INTOLERANCE_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccine4_precondition_148": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Intolerance: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_INTOLERANCE_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccine5_precondition_153": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Allergy: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ALLERGY_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAInfluenzaVaccine5_precondition_155": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Allergy: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ALLERGY_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_163": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_165": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_167": {
+        "title": "Previous Receipt of Influenza Vaccine",
+        "description": "Communication: From Patient to Provider: Previous Receipt of Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1185",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "153",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedInfluenzaVaccination_precondition_172": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredInfluenzaVaccine_precondition_174": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine_precondition_176": {
+        "title": "Previous Receipt of Influenza Vaccine",
+        "description": "Communication: From Patient to Provider: Previous Receipt of Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1185",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "89",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "OccurrenceAAllergyToEggs1": {
+        "title": "Allergy to Eggs",
+        "description": "Diagnosis, Active: Allergy to Eggs",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1253",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_EGGS",
+        "source_data_criteria": "OccurrenceAAllergyToEggs1",
+        "variable": false
+      },
+      "OccurrenceAAllergyToInfluenzaVaccine2": {
+        "title": "Allergy to Influenza Vaccine",
+        "description": "Diagnosis, Active: Allergy to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1256",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ALLERGY_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAAllergyToInfluenzaVaccine2",
+        "variable": false
+      },
+      "EncounterPerformedAnnualWellnessVisit": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false
+      },
+      "EncounterPerformedDischargeServicesNursingFacility": {
+        "title": "Discharge Services - Nursing Facility",
+        "description": "Encounter, Performed: Discharge Services - Nursing Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1013",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedDischargeServicesNursingFacility",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInfluenza": {
+        "title": "Encounter-Influenza",
+        "description": "Encounter, Performed: Encounter-Influenza",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1252",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInfluenza",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "ProcedurePerformedHemodialysis": {
+        "title": "Hemodialysis",
+        "description": "Procedure, Performed: Hemodialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1083",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedHemodialysis",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "ProcedurePerformedInfluenzaVaccination": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Performed: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedInfluenzaVaccination",
+        "variable": false
+      },
+      "ProcedurePerformedNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Procedure, Performed not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDoneMedicalReason",
+        "variable": false
+      },
+      "ProcedurePerformedNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Procedure, Performed not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDonePatientReason",
+        "variable": false
+      },
+      "ProcedurePerformedNotDoneSystemReason": {
+        "title": "System Reason",
+        "description": "Procedure, Performed not done: System Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "ProcedurePerformedNotDoneSystemReason",
+        "variable": false
+      },
+      "OccurrenceAInfluenzaVaccination3": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure Intolerance: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_INTOLERANCE_INFLUENZA_VACCINATION",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccination3",
+        "variable": false
+      },
+      "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined": {
+        "title": "Influenza Vaccination Declined",
+        "description": "Communication: From Patient to Provider: Influenza Vaccination Declined",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1255",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderInfluenzaVaccinationDeclined",
+        "variable": false
+      },
+      "MedicationAdministeredInfluenzaVaccine": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Administered: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredInfluenzaVaccine",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Medication, Administered not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneMedicalReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Medication, Administered not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDonePatientReason",
+        "variable": false
+      },
+      "MedicationAdministeredNotDoneSystemReason": {
+        "title": "System Reason",
+        "description": "Medication, Administered not done: System Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "source_data_criteria": "MedicationAdministeredNotDoneSystemReason",
+        "variable": false
+      },
+      "OccurrenceAInfluenzaVaccine4": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Intolerance: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_INTOLERANCE_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine4",
+        "variable": false
+      },
+      "OccurrenceAInfluenzaVaccine5": {
+        "title": "Influenza Vaccine",
+        "description": "Medication Allergy: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ALLERGY_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAInfluenzaVaccine5",
+        "variable": false
+      },
+      "OccurrenceAIntoleranceToInfluenzaVaccine6": {
+        "title": "Intolerance to Influenza Vaccine",
+        "description": "Diagnosis, Active: Intolerance to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1257",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_INTOLERANCE_TO_INFLUENZA_VACCINE",
+        "source_data_criteria": "OccurrenceAIntoleranceToInfluenzaVaccine6",
+        "variable": false
+      },
+      "EncounterPerformedNursingFacilityVisit": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedOutpatientConsultation": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOutpatientConsultation",
+        "variable": false
+      },
+      "EncounterPerformedPatientProviderInteraction": {
+        "title": "Patient Provider Interaction",
+        "description": "Encounter, Performed: Patient Provider Interaction",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPatientProviderInteraction",
+        "variable": false
+      },
+      "ProcedurePerformedPeritonealDialysis": {
+        "title": "Peritoneal Dialysis",
+        "description": "Procedure, Performed: Peritoneal Dialysis",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1084",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedPeritonealDialysis",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesGroupCounseling": {
+        "title": "Preventive Care Services - Group Counseling",
+        "description": "Encounter, Performed: Preventive Care Services - Group Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesGroupCounseling",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesOther": {
+        "title": "Preventive Care Services - Other",
+        "description": "Encounter, Performed: Preventive Care Services - Other",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1030",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesOther",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesIndividualCounseling": {
+        "title": "Preventive Care Services-Individual Counseling",
+        "description": "Encounter, Performed: Preventive Care Services-Individual Counseling",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1026",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesIndividualCounseling",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false
+      },
+      "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine": {
+        "title": "Previous Receipt of Influenza Vaccine",
+        "description": "Communication: From Patient to Provider: Previous Receipt of Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1185",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderPreviousReceiptOfInfluenzaVaccine",
+        "variable": false
+      },
+      "DiagnosisActiveAllergyToEggs": {
+        "title": "Allergy to Eggs",
+        "description": "Diagnosis, Active: Allergy to Eggs",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1253",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAllergyToEggs",
+        "variable": false
+      },
+      "DiagnosisActiveAllergyToInfluenzaVaccine": {
+        "title": "Allergy to Influenza Vaccine",
+        "description": "Diagnosis, Active: Allergy to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1256",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAllergyToInfluenzaVaccine",
+        "variable": false
+      },
+      "ProcedureIntoleranceInfluenzaVaccination": {
+        "title": "Influenza Vaccination",
+        "description": "Procedure, Intolerance: Influenza Vaccination",
+        "code_list_id": "2.16.840.1.113883.3.526.3.402",
+        "type": "procedures",
+        "definition": "procedure_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedureIntoleranceInfluenzaVaccination",
+        "variable": false
+      },
+      "MedicationIntoleranceInfluenzaVaccine": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Intolerance: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_intolerance",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationIntoleranceInfluenzaVaccine",
+        "variable": false
+      },
+      "MedicationAllergyInfluenzaVaccine": {
+        "title": "Influenza Vaccine",
+        "description": "Medication, Allergy: Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1254",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationAllergyInfluenzaVaccine",
+        "variable": false
+      },
+      "DiagnosisActiveIntoleranceToInfluenzaVaccine": {
+        "title": "Intolerance to Influenza Vaccine",
+        "description": "Diagnosis, Active: Intolerance to Influenza Vaccine",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1257",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIntoleranceToInfluenzaVaccine",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Annual influenza vaccination is the most effective method for preventing influenza virus infection and its complications. Influenza vaccine is recommended for all persons aged >=6 months who do not have contraindications to vaccination.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Annual influenza vaccination is the most effective method for preventing influenza virus infection and its complications. Influenza vaccine is recommended for all persons aged >=6 months who do not have contraindications to vaccination.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Routine annual influenza vaccination is recommended for all persons aged >=6 months. To permit time for production of protective antibody levels, vaccination should optimally occur before onset of influenza activity in the community, and providers should offer vaccination as soon as vaccine is available. Vaccination also should continue to be offered throughout the influenza season. (CDC/ACIP, 2011)",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Routine annual influenza vaccination is recommended for all persons aged >=6 months. To permit time for production of protective antibody levels, vaccination should optimally occur before onset of influenza activity in the community, and providers should offer vaccination as soon as vaccine is available. Vaccination also should continue to be offered throughout the influenza season. (CDC/ACIP, 2011)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0041",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0041"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "147",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "147",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Centers for Disease Control and Prevention (CDC). Prevention and control of influenza with vaccines. Recommendations of the Advisory Committee on Immunization Practices (ACIP), 2011. MMWR 2011;60(33);1128-1132. Available at http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6033a3.htm Accessed August 2011.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Centers for Disease Control and Prevention (CDC). Prevention and control of influenza with vaccines. Recommendations of the Advisory Committee on Immunization Practices (ACIP), 2011. MMWR 2011;60(33);1128-1132. Available at http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6033a3.htm Accessed August 2011.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "Previous Receipt – receipt of the current season’s influenza immunization from another provider OR from same provider prior to the visit to which the measure is applied (typically, prior vaccination would include influenza vaccine given since August 1st)",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Previous Receipt – receipt of the current season’s influenza immunization from another provider OR from same provider prior to the visit to which the measure is applied (typically, prior vaccination would include influenza vaccine given since August 1st)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The timeframe for the visit during the \"Encounter, Performed: Encounter-Influenza\" or “Procedure, Performed: Peritoneal Dialysis” or “Procedure, Performed: Hemodialysis” in the Population Criteria-Denominator, refers to the influenza season defined by the measure: October through March (October 1 for the year prior to the start of the reporting period through March 31 during the reporting period).  The “Encounter-Influenza” Grouping OID detailed in the data criteria section below is comprised of several individual OIDs of different encounter types.  The individual OIDs are included in the value set and should be reviewed to determine that an applicable visit occurred during the timeframe for \"Encounter, Performed: Encounter-Influenza” as specified in the denominator.  \r\nTo enable reporting of this measure at the close of the reporting period, this measure will only assess the influenza season that ends in March of the reporting period. The subsequent influenza season (ending March of the following year) will be measured and reported in the following year.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The timeframe for the visit during the \"Encounter, Performed: Encounter-Influenza\" or “Procedure, Performed: Peritoneal Dialysis” or “Procedure, Performed: Hemodialysis” in the Population Criteria-Denominator, refers to the influenza season defined by the measure: October through March (October 1 for the year prior to the start of the reporting period through March 31 during the reporting period).  The “Encounter-Influenza” Grouping OID detailed in the data criteria section below is comprised of several individual OIDs of different encounter types.  The individual OIDs are included in the value set and should be reviewed to determine that an applicable visit occurred during the timeframe for \"Encounter, Performed: Encounter-Influenza” as specified in the denominator.  \r\nTo enable reporting of this measure at the close of the reporting period, this measure will only assess the influenza season that ends in March of the reporting period. The subsequent influenza season (ending March of the following year) will be measured and reported in the following year.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "All patients aged 6 months and older seen for at least two visits or at least one preventive visit during the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "All patients aged 6 months and older seen for at least two visits or at least one preventive visit during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population and seen for a visit between October 1 and March 31",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population and seen for a visit between October 1 and March 31",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients who received an influenza immunization OR who reported previous receipt of an influenza immunization",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Documentation of medical reason(s) for not receiving influenza immunization (eg, patient allergy, other medical reasons)\r\n\r\nDocumentation of patient reason(s) for not receiving influenza immunization (eg, patient declined, other patient reasons)\r\n\r\nDocumentation of system reason(s) for not receiving influenza immunization (eg, vaccine not available, other system reasons)",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Documentation of medical reason(s) for not receiving influenza immunization (eg, patient allergy, other medical reasons)\r\n\r\nDocumentation of patient reason(s) for not receiving influenza immunization (eg, patient declined, other patient reasons)\r\n\r\nDocumentation of system reason(s) for not receiving influenza immunization (eg, vaccine not available, other system reasons)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.101.12.1022",
+    "2.16.840.1.113883.3.464.1003.101.12.1024",
+    "2.16.840.1.113883.3.464.1003.101.12.1008",
+    "2.16.840.1.113883.3.526.3.1254",
+    "2.16.840.1.113883.3.526.3.1253",
+    "2.16.840.1.113883.3.526.3.1256",
+    "2.16.840.1.113883.3.526.3.1257",
+    "2.16.840.1.113883.3.464.1003.101.12.1014",
+    "2.16.840.1.113883.3.526.3.1009",
+    "2.16.840.1.113883.3.526.3.1012",
+    "2.16.840.1.113883.3.526.3.1185",
+    "2.16.840.1.113883.3.464.1003.101.12.1026",
+    "2.16.840.1.113883.3.464.1003.101.12.1027",
+    "2.16.840.1.113883.3.464.1003.101.12.1030",
+    "2.16.840.1.113883.3.464.1003.101.12.1013",
+    "2.16.840.1.113883.3.464.1003.101.12.1012",
+    "2.16.840.1.113883.3.526.3.1084",
+    "2.16.840.1.113883.3.526.3.1083",
+    "2.16.840.1.113883.3.526.3.1252",
+    "2.16.840.1.113883.3.526.3.1255",
+    "2.16.840.1.113883.3.526.3.1007",
+    "2.16.840.1.113883.3.526.3.402",
+    "2.16.840.1.113883.3.526.3.1008",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1025",
+    "2.16.840.1.113883.3.464.1003.101.12.1023",
+    "2.16.840.1.113883.3.464.1003.101.12.1016",
+    "2.16.840.1.113883.3.526.3.1240"
+  ],
+  "population_ids": {
+    "IPP": "F48702E6-D39A-49D8-BE3C-8FAB5C6AADDA",
+    "DENOM": "B61EC2DC-0841-4906-A84B-5BE5024DA7F1",
+    "NUMER": "0ED7B212-369B-489A-A5B5-07BC146FA557",
+    "DENEXCEP": "B5C9EC50-3011-43DC-AD07-CED2D3B770B2"
+  }
+}

@@ -1,0 +1,3199 @@
+{
+  "id": "BPScreen",
+  "hqmf_id": "40280381-4555-E1C1-0145-CC7350473A13",
+  "hqmf_set_id": "9A033A94-3D9B-11E1-8634-00237D5BF174",
+  "hqmf_version_number": 3,
+  "title": "Preventive Care and Screening:  Screening for High Blood Pressure and Follow-Up Documented",
+  "description": "Percentage of patients aged 18 years and older seen during the reporting period who were screened for high blood pressure AND a recommended follow-up plan is documented based on the current blood pressure (BP) reading as indicated",
+  "cms_id": "CMS22v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "A647A120-0FA5-4D89-AB6D-0A3DB4EBE13C",
+      "preconditions": [
+        {
+          "id": 11,
+          "preconditions": [
+            {
+              "id": 6,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_6"
+            },
+            {
+              "id": 9,
+              "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_8"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "DE15A634-EEC3-4448-A3AE-80B154E2B00F"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "43038EA7-DFA5-4919-93B3-7A9D5521A4FF",
+      "preconditions": [
+        {
+          "id": 14,
+          "preconditions": [
+            {
+              "id": 12,
+              "reference": "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_12"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEXCEP": {
+      "conjunction?": true,
+      "type": "DENEXCEP",
+      "title": "Denominator Exception",
+      "hqmf_id": "3CF29F95-0C8C-4F52-B574-4F5E3BFF1FB6",
+      "preconditions": [
+        {
+          "id": 25,
+          "preconditions": [
+            {
+              "id": 23,
+              "preconditions": [
+                {
+                  "id": 15,
+                  "reference": "PhysicalExamPerformedDiastolicBloodPressure_precondition_15"
+                },
+                {
+                  "id": 17,
+                  "reference": "PhysicalExamPerformedDiastolicBloodPressure_precondition_17"
+                },
+                {
+                  "id": 19,
+                  "reference": "PhysicalExamPerformedSystolicBloodPressure_precondition_19"
+                },
+                {
+                  "id": 21,
+                  "reference": "PhysicalExamPerformedSystolicBloodPressure_precondition_21"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "CFA3907C-CC44-4E9F-8B5C-4818561B6183",
+      "preconditions": [
+        {
+          "id": 177,
+          "preconditions": [
+            {
+              "id": 175,
+              "preconditions": [
+                {
+                  "id": 30,
+                  "preconditions": [
+                    {
+                      "id": 26,
+                      "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_26"
+                    },
+                    {
+                      "id": 28,
+                      "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_28"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 69,
+                  "preconditions": [
+                    {
+                      "id": 45,
+                      "preconditions": [
+                        {
+                          "id": 37,
+                          "preconditions": [
+                            {
+                              "id": 33,
+                              "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_33"
+                            },
+                            {
+                              "id": 35,
+                              "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_35"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        },
+                        {
+                          "id": 43,
+                          "preconditions": [
+                            {
+                              "id": 39,
+                              "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_39"
+                            },
+                            {
+                              "id": 41,
+                              "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_41"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    },
+                    {
+                      "id": 67,
+                      "preconditions": [
+                        {
+                          "id": 48,
+                          "reference": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_48"
+                        },
+                        {
+                          "id": 65,
+                          "preconditions": [
+                            {
+                              "id": 60,
+                              "preconditions": [
+                                {
+                                  "id": 50,
+                                  "reference": "InterventionOrderLifestyleRecommendation_precondition_50"
+                                },
+                                {
+                                  "id": 52,
+                                  "reference": "InterventionOrderWeightReductionRecommended_precondition_52"
+                                },
+                                {
+                                  "id": 54,
+                                  "reference": "InterventionOrderDietaryRecommendations_precondition_54"
+                                },
+                                {
+                                  "id": 56,
+                                  "reference": "InterventionOrderPhysicalActivityRecommendation_precondition_56"
+                                },
+                                {
+                                  "id": 58,
+                                  "reference": "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_58"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            },
+                            {
+                              "id": 63,
+                              "reference": "InterventionOrderFollowupWithinOneYear_precondition_63"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 120,
+                  "preconditions": [
+                    {
+                      "id": 90,
+                      "preconditions": [
+                        {
+                          "id": 75,
+                          "preconditions": [
+                            {
+                              "id": 71,
+                              "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_71"
+                            },
+                            {
+                              "id": 73,
+                              "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_73"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue",
+                          "negation": true
+                        },
+                        {
+                          "id": 88,
+                          "preconditions": [
+                            {
+                              "id": 78,
+                              "reference": "OccurrenceASystolicBloodPressure4_precondition_78"
+                            },
+                            {
+                              "id": 80,
+                              "reference": "OccurrenceADiastolicBloodPressure3_precondition_80"
+                            },
+                            {
+                              "id": 83,
+                              "reference": "OccurrenceASystolicBloodPressure4_precondition_82"
+                            },
+                            {
+                              "id": 86,
+                              "reference": "OccurrenceADiastolicBloodPressure3_precondition_85"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 96,
+                      "preconditions": [
+                        {
+                          "id": 92,
+                          "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_92"
+                        },
+                        {
+                          "id": 94,
+                          "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_94"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 118,
+                      "preconditions": [
+                        {
+                          "id": 99,
+                          "reference": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_99"
+                        },
+                        {
+                          "id": 116,
+                          "preconditions": [
+                            {
+                              "id": 111,
+                              "preconditions": [
+                                {
+                                  "id": 101,
+                                  "reference": "InterventionOrderLifestyleRecommendation_precondition_101"
+                                },
+                                {
+                                  "id": 103,
+                                  "reference": "InterventionOrderWeightReductionRecommended_precondition_103"
+                                },
+                                {
+                                  "id": 105,
+                                  "reference": "InterventionOrderDietaryRecommendations_precondition_105"
+                                },
+                                {
+                                  "id": 107,
+                                  "reference": "InterventionOrderPhysicalActivityRecommendation_precondition_107"
+                                },
+                                {
+                                  "id": 109,
+                                  "reference": "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_109"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            },
+                            {
+                              "id": 114,
+                              "reference": "InterventionOrderFollowupWithin4Weeks_precondition_114"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 173,
+                  "preconditions": [
+                    {
+                      "id": 136,
+                      "preconditions": [
+                        {
+                          "id": 127,
+                          "preconditions": [
+                            {
+                              "id": 122,
+                              "reference": "OccurrenceASystolicBloodPressure4_precondition_122"
+                            },
+                            {
+                              "id": 125,
+                              "reference": "OccurrenceASystolicBloodPressure4_precondition_124"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 134,
+                          "preconditions": [
+                            {
+                              "id": 129,
+                              "reference": "OccurrenceADiastolicBloodPressure3_precondition_129"
+                            },
+                            {
+                              "id": 132,
+                              "reference": "OccurrenceADiastolicBloodPressure3_precondition_131"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 142,
+                      "preconditions": [
+                        {
+                          "id": 138,
+                          "reference": "PhysicalExamFindingSystolicBloodPressure_precondition_138"
+                        },
+                        {
+                          "id": 140,
+                          "reference": "PhysicalExamFindingDiastolicBloodPressure_precondition_140"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 171,
+                      "preconditions": [
+                        {
+                          "id": 145,
+                          "reference": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_145"
+                        },
+                        {
+                          "id": 169,
+                          "preconditions": [
+                            {
+                              "id": 157,
+                              "preconditions": [
+                                {
+                                  "id": 147,
+                                  "reference": "InterventionOrderLifestyleRecommendation_precondition_147"
+                                },
+                                {
+                                  "id": 149,
+                                  "reference": "InterventionOrderWeightReductionRecommended_precondition_149"
+                                },
+                                {
+                                  "id": 151,
+                                  "reference": "InterventionOrderDietaryRecommendations_precondition_151"
+                                },
+                                {
+                                  "id": 153,
+                                  "reference": "InterventionOrderPhysicalActivityRecommendation_precondition_153"
+                                },
+                                {
+                                  "id": 155,
+                                  "reference": "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_155"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            },
+                            {
+                              "id": 166,
+                              "preconditions": [
+                                {
+                                  "id": 160,
+                                  "reference": "MedicationOrderAntiHypertensivePharmacologicTherapy_precondition_160"
+                                },
+                                {
+                                  "id": 162,
+                                  "reference": "LaboratoryTestOrderLaboratoryTestsForHypertension_precondition_162"
+                                },
+                                {
+                                  "id": 164,
+                                  "reference": "DiagnosticStudyOrderEcg12LeadOrStudyOrder_precondition_164"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "PhysicalExamPerformedNotDoneMedicalReason": {
+      "title": "Medical reason",
+      "description": "Physical Exam, Performed not done: Medical reason",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalReason",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused": {
+      "title": "Patient Reason refused",
+      "description": "Physical Exam, Performed not done: Patient Reason refused",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDoneMedicalReason1": {
+      "title": "Medical reason",
+      "description": "Physical Exam, Performed not done: Medical reason",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalReason1",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused2": {
+      "title": "Patient Reason refused",
+      "description": "Physical Exam, Performed not done: Patient Reason refused",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused2",
+      "variable": false
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "EncounterPerformedBpScreeningDenominatorEncounterCodesGroupedNew": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBpScreeningDenominatorEncounterCodesGroupedNew",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_6": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_8": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_12": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5"
+        }
+      ]
+    },
+    "PhysicalExamPerformedDiastolicBloodPressure_precondition_15": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Performed: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1521",
+      "source_data_criteria": "PhysicalExamPerformedDiastolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5"
+        }
+      ]
+    },
+    "PhysicalExamPerformedDiastolicBloodPressure_precondition_17": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Performed: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.791",
+      "source_data_criteria": "PhysicalExamPerformedDiastolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5"
+        }
+      ]
+    },
+    "PhysicalExamPerformedSystolicBloodPressure_precondition_19": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Performed: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1521",
+      "source_data_criteria": "PhysicalExamPerformedSystolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5"
+        }
+      ]
+    },
+    "PhysicalExamPerformedSystolicBloodPressure_precondition_21": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Performed: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.791",
+      "source_data_criteria": "PhysicalExamPerformedSystolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5"
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_31": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_26": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "120",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_31"
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_28": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "80",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_31"
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_46": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_33": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "120",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_46"
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_35": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "80",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_46"
+        }
+      ]
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_39": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "140",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_46"
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_41": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "90",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_46"
+        }
+      ]
+    },
+    "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_48": {
+      "title": "Referral to Alternative Provider / Primary Care Provider",
+      "description": "Intervention, Order: Referral to Alternative Provider / Primary Care Provider",
+      "code_list_id": "2.16.840.1.113883.3.600.1475",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2395",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "InterventionOrderLifestyleRecommendation_precondition_50": {
+      "title": "Lifestyle Recommendation",
+      "description": "Intervention, Order: Lifestyle Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1508",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderLifestyleRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderWeightReductionRecommended_precondition_52": {
+      "title": "Weight Reduction Recommended",
+      "description": "Intervention, Order: Weight Reduction Recommended",
+      "code_list_id": "2.16.840.1.113883.3.600.1510",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderWeightReductionRecommended",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderDietaryRecommendations_precondition_54": {
+      "title": "Dietary Recommendations",
+      "description": "Intervention, Order: Dietary Recommendations",
+      "code_list_id": "2.16.840.1.113883.3.600.1515",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderDietaryRecommendations",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderPhysicalActivityRecommendation_precondition_56": {
+      "title": "Physical Activity Recommendation",
+      "description": "Intervention, Order: Physical Activity Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1518",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderPhysicalActivityRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_58": {
+      "title": "Moderation of ETOH Consumption Recommendation",
+      "description": "Intervention, Order: Moderation of ETOH Consumption Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.823",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderModerationOfEtohConsumptionRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_61",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderFollowupWithinOneYear_precondition_63": {
+      "title": "Followup within one year",
+      "description": "Intervention, Order: Followup within one year",
+      "code_list_id": "2.16.840.1.113883.3.600.1474",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderFollowupWithinOneYear",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2395",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_76": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_71": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_76",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_73": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_76",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceASystolicBloodPressure4_precondition_78": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_SYSTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceASystolicBloodPressure4",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "140",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceADiastolicBloodPressure3_precondition_80": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_DIASTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceADiastolicBloodPressure3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "90",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceASystolicBloodPressure4_precondition_82": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_SYSTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceASystolicBloodPressure4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceADiastolicBloodPressure3_precondition_85": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_DIASTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceADiastolicBloodPressure3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_97": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_92": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "140",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_97"
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_94": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "90",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_97"
+        }
+      ]
+    },
+    "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_99": {
+      "title": "Referral to Alternative Provider / Primary Care Provider",
+      "description": "Intervention, Order: Referral to Alternative Provider / Primary Care Provider",
+      "code_list_id": "2.16.840.1.113883.3.600.1475",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2395",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "InterventionOrderLifestyleRecommendation_precondition_101": {
+      "title": "Lifestyle Recommendation",
+      "description": "Intervention, Order: Lifestyle Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1508",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderLifestyleRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderWeightReductionRecommended_precondition_103": {
+      "title": "Weight Reduction Recommended",
+      "description": "Intervention, Order: Weight Reduction Recommended",
+      "code_list_id": "2.16.840.1.113883.3.600.1510",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderWeightReductionRecommended",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderDietaryRecommendations_precondition_105": {
+      "title": "Dietary Recommendations",
+      "description": "Intervention, Order: Dietary Recommendations",
+      "code_list_id": "2.16.840.1.113883.3.600.1515",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderDietaryRecommendations",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderPhysicalActivityRecommendation_precondition_107": {
+      "title": "Physical Activity Recommendation",
+      "description": "Intervention, Order: Physical Activity Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1518",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderPhysicalActivityRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_109": {
+      "title": "Moderation of ETOH Consumption Recommendation",
+      "description": "Intervention, Order: Moderation of ETOH Consumption Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.823",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderModerationOfEtohConsumptionRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_112",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderFollowupWithin4Weeks_precondition_114": {
+      "title": "Followup within 4 weeks",
+      "description": "Intervention, Order: Followup within 4 weeks",
+      "code_list_id": "2.16.840.1.113883.3.600.1537",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderFollowupWithin4Weeks",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2395",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceASystolicBloodPressure4_precondition_122": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_SYSTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceASystolicBloodPressure4",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "140",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceASystolicBloodPressure4_precondition_124": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_SYSTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceASystolicBloodPressure4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceADiastolicBloodPressure3_precondition_129": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_DIASTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceADiastolicBloodPressure3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "90",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceADiastolicBloodPressure3_precondition_131": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_DIASTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceADiastolicBloodPressure3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "1",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_143": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure_precondition_138": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "140",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_143"
+        }
+      ]
+    },
+    "PhysicalExamFindingDiastolicBloodPressure_precondition_140": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mm[Hg]",
+          "value": "90",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_143"
+        }
+      ]
+    },
+    "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider_precondition_145": {
+      "title": "Referral to Alternative Provider / Primary Care Provider",
+      "description": "Intervention, Order: Referral to Alternative Provider / Primary Care Provider",
+      "code_list_id": "2.16.840.1.113883.3.600.1475",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2395",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "InterventionOrderLifestyleRecommendation_precondition_147": {
+      "title": "Lifestyle Recommendation",
+      "description": "Intervention, Order: Lifestyle Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1508",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderLifestyleRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderWeightReductionRecommended_precondition_149": {
+      "title": "Weight Reduction Recommended",
+      "description": "Intervention, Order: Weight Reduction Recommended",
+      "code_list_id": "2.16.840.1.113883.3.600.1510",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderWeightReductionRecommended",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderDietaryRecommendations_precondition_151": {
+      "title": "Dietary Recommendations",
+      "description": "Intervention, Order: Dietary Recommendations",
+      "code_list_id": "2.16.840.1.113883.3.600.1515",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderDietaryRecommendations",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderPhysicalActivityRecommendation_precondition_153": {
+      "title": "Physical Activity Recommendation",
+      "description": "Intervention, Order: Physical Activity Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1518",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderPhysicalActivityRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderModerationOfEtohConsumptionRecommendation_precondition_155": {
+      "title": "Moderation of ETOH Consumption Recommendation",
+      "description": "Intervention, Order: Moderation of ETOH Consumption Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.823",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderModerationOfEtohConsumptionRecommendation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_158",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_167": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "MedicationOrderAntiHypertensivePharmacologicTherapy_precondition_160": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Order: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_167",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "LaboratoryTestOrderLaboratoryTestsForHypertension_precondition_162": {
+      "title": "Laboratory Tests for Hypertension",
+      "description": "Laboratory Test, Order: Laboratory Tests for Hypertension",
+      "code_list_id": "2.16.840.1.113883.3.600.1482",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestOrderLaboratoryTestsForHypertension",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_167",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosticStudyOrderEcg12LeadOrStudyOrder_precondition_164": {
+      "title": "ECG 12 lead or study order",
+      "description": "Diagnostic Study, Order: ECG 12 lead or study order",
+      "code_list_id": "2.16.840.1.113883.3.600.2448",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyOrderEcg12LeadOrStudyOrder",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5_precondition_167",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "DiagnosticStudyOrderEcg12LeadOrStudyOrder": {
+      "title": "ECG 12 lead or study order",
+      "description": "Diagnostic Study, Order: ECG 12 lead or study order",
+      "code_list_id": "2.16.840.1.113883.3.600.2448",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyOrderEcg12LeadOrStudyOrder",
+      "variable": false
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false
+    },
+    "PhysicalExamPerformedDiastolicBloodPressure": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Performed: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamPerformedDiastolicBloodPressure",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDoneMedicalReason": {
+      "title": "Medical reason",
+      "description": "Physical Exam, Performed not done: Medical reason",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalReason",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused": {
+      "title": "Patient Reason refused",
+      "description": "Physical Exam, Performed not done: Patient Reason refused",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused",
+      "variable": false
+    },
+    "PhysicalExamPerformedSystolicBloodPressure": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Performed: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamPerformedSystolicBloodPressure",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDoneMedicalReason1": {
+      "title": "Medical reason",
+      "description": "Physical Exam, Performed not done: Medical reason",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalReason1",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused2": {
+      "title": "Patient Reason refused",
+      "description": "Physical Exam, Performed not done: Patient Reason refused",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused2",
+      "variable": false
+    },
+    "OccurrenceADiastolicBloodPressure3": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_DIASTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceADiastolicBloodPressure3",
+      "variable": false
+    },
+    "OccurrenceASystolicBloodPressure4": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_SYSTOLIC_BLOOD_PRESSURE",
+      "source_data_criteria": "OccurrenceASystolicBloodPressure4",
+      "variable": false
+    },
+    "MedicationOrderAntiHypertensivePharmacologicTherapy": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Order: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAntiHypertensivePharmacologicTherapy",
+      "variable": false
+    },
+    "LaboratoryTestOrderLaboratoryTestsForHypertension": {
+      "title": "Laboratory Tests for Hypertension",
+      "description": "Laboratory Test, Order: Laboratory Tests for Hypertension",
+      "code_list_id": "2.16.840.1.113883.3.600.1482",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestOrderLaboratoryTestsForHypertension",
+      "variable": false
+    },
+    "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider": {
+      "title": "Referral to Alternative Provider / Primary Care Provider",
+      "description": "Intervention, Order: Referral to Alternative Provider / Primary Care Provider",
+      "code_list_id": "2.16.840.1.113883.3.600.1475",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralToAlternativeProviderPrimaryCareProvider",
+      "variable": false
+    },
+    "InterventionOrderFollowupWithinOneYear": {
+      "title": "Followup within one year",
+      "description": "Intervention, Order: Followup within one year",
+      "code_list_id": "2.16.840.1.113883.3.600.1474",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderFollowupWithinOneYear",
+      "variable": false
+    },
+    "InterventionOrderLifestyleRecommendation": {
+      "title": "Lifestyle Recommendation",
+      "description": "Intervention, Order: Lifestyle Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1508",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderLifestyleRecommendation",
+      "variable": false
+    },
+    "InterventionOrderWeightReductionRecommended": {
+      "title": "Weight Reduction Recommended",
+      "description": "Intervention, Order: Weight Reduction Recommended",
+      "code_list_id": "2.16.840.1.113883.3.600.1510",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderWeightReductionRecommended",
+      "variable": false
+    },
+    "InterventionOrderDietaryRecommendations": {
+      "title": "Dietary Recommendations",
+      "description": "Intervention, Order: Dietary Recommendations",
+      "code_list_id": "2.16.840.1.113883.3.600.1515",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderDietaryRecommendations",
+      "variable": false
+    },
+    "InterventionOrderPhysicalActivityRecommendation": {
+      "title": "Physical Activity Recommendation",
+      "description": "Intervention, Order: Physical Activity Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.1518",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderPhysicalActivityRecommendation",
+      "variable": false
+    },
+    "InterventionOrderModerationOfEtohConsumptionRecommendation": {
+      "title": "Moderation of ETOH Consumption Recommendation",
+      "description": "Intervention, Order: Moderation of ETOH Consumption Recommendation",
+      "code_list_id": "2.16.840.1.113883.3.600.823",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderModerationOfEtohConsumptionRecommendation",
+      "variable": false
+    },
+    "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BP_SCREENING_DENOMINATOR_ENCOUNTER_CODES_GROUPED_NEW",
+      "source_data_criteria": "OccurrenceABpScreeningDenominatorEncounterCodesGroupedNew5",
+      "variable": false
+    },
+    "InterventionOrderFollowupWithin4Weeks": {
+      "title": "Followup within 4 weeks",
+      "description": "Intervention, Order: Followup within 4 weeks",
+      "code_list_id": "2.16.840.1.113883.3.600.1537",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderFollowupWithin4Weeks",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "PhysicalExamFindingDiastolicBloodPressure": {
+      "title": "Diastolic Blood Pressure",
+      "description": "Physical Exam, Finding: Diastolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1033",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingDiastolicBloodPressure",
+      "variable": false
+    },
+    "PhysicalExamFindingSystolicBloodPressure": {
+      "title": "Systolic Blood Pressure",
+      "description": "Physical Exam, Finding: Systolic Blood Pressure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1032",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingSystolicBloodPressure",
+      "variable": false
+    },
+    "EncounterPerformedBpScreeningDenominatorEncounterCodesGroupedNew": {
+      "title": "BP Screening Denominator Encounter Codes Grouped New",
+      "description": "Encounter, Performed: BP Screening Denominator Encounter Codes Grouped New",
+      "code_list_id": "2.16.840.1.113883.3.600.1920",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBpScreeningDenominatorEncounterCodesGroupedNew",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Hypertension is a prevalent condition that affects approximately 66.9 million people in the United States. It is estimated that about 20-40% of the adult population has hypertension; the majority of people over age 65 have a hypertension diagnosis (Appleton SL, et. al., 2012 and Luehr D, et. al., 2012). Winter (2013) noted that 1 in 3 American adults have hypertension and the lifetime risk of developing hypertension is 90% (Winter KH, et. al., 2013). The African American population or non-Hispanic Blacks, the elderly, diabetics and those with chronic kidney disease are at increased risk of stroke, myocardial infarction and renal disease. Non-Hispanic Blacks have the highest prevalence at 38.6% (Winter KH, et. al., 2013). Hypertension is a major risk factor for ischemic heart disease, left ventricular hypertrophy, renal failure, stroke and dementia (Luehr D, et. al., 2012). \r\n\r\n\r\nHypertension is the most common reason for adult office visits other than pregnancy. Garrison (2013) stated that in 2007, 42 million ambulatory visits were attributed to hypertension (Garrison GM and Oberhelman S, 2013). It also has the highest utilization of prescription drugs. Numerous resources and treatment options are available, yet only about 40-50% of the hypertensive patients have their blood pressure under control (<140/90) (Appleton SL, et. al., 2012, Luehr D, et. al., 2012). In addition to medication non-compliance, poor outcomes are also attributed to poor adherence to lifestyle changes such as a low-sodium diet, weight loss, increased exercise and limiting alcohol intake.  Many adults find it difficult to continue medications and lifestyle changes when they are asymptomatic.  Symptoms of elevated blood pressure usually do not occur until secondary problems arise such as with vascular diseases (myocardial infarction, stroke, heart failure and renal insufficiency) (Luehr D, et. al., 2012).\r\n\r\nAppropriate follow-up after blood pressure measurement is a pivotal component in preventing the progression of hypertension and the development of heart disease. Detection of marginally or fully elevated blood pressure by a specialty clinician warrants referral to a provider familiar with the management of hypertension and prehypertension.  The 2010 ACCF/AHA Guideline for the Assessment of Cardiovascular Risk in Asymptomatic Adults continues to support using a global risk score such as the Framingham Risk Score, to assess risk of coronary heart disease (CHD) in all asymptomatic adults (Greenland P, et. al., 2010).  Lifestyle modifications have demonstrated effectiveness in lowering blood pressure (JNC 7, 2003).  The synergistic effect of several lifestyle modifications results in greater benefits than a single modification alone. Baseline diagnostic/laboratory testing establishes if a co-existing underlying condition is the etiology of hypertension and evaluates if end organ damage from hypertension has already occurred. Landmark trials such as ALLHAT have repeatedly proven the efficacy of pharmacologic therapy to control blood pressure and reduce the complications of hypertension.  Follow-up intervals based on blood pressure control have been established by the JNC 7 and the USPSTF.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Hypertension is a prevalent condition that affects approximately 66.9 million people in the United States. It is estimated that about 20-40% of the adult population has hypertension; the majority of people over age 65 have a hypertension diagnosis (Appleton SL, et. al., 2012 and Luehr D, et. al., 2012). Winter (2013) noted that 1 in 3 American adults have hypertension and the lifetime risk of developing hypertension is 90% (Winter KH, et. al., 2013). The African American population or non-Hispanic Blacks, the elderly, diabetics and those with chronic kidney disease are at increased risk of stroke, myocardial infarction and renal disease. Non-Hispanic Blacks have the highest prevalence at 38.6% (Winter KH, et. al., 2013). Hypertension is a major risk factor for ischemic heart disease, left ventricular hypertrophy, renal failure, stroke and dementia (Luehr D, et. al., 2012). \r\n\r\n\r\nHypertension is the most common reason for adult office visits other than pregnancy. Garrison (2013) stated that in 2007, 42 million ambulatory visits were attributed to hypertension (Garrison GM and Oberhelman S, 2013). It also has the highest utilization of prescription drugs. Numerous resources and treatment options are available, yet only about 40-50% of the hypertensive patients have their blood pressure under control (<140/90) (Appleton SL, et. al., 2012, Luehr D, et. al., 2012). In addition to medication non-compliance, poor outcomes are also attributed to poor adherence to lifestyle changes such as a low-sodium diet, weight loss, increased exercise and limiting alcohol intake.  Many adults find it difficult to continue medications and lifestyle changes when they are asymptomatic.  Symptoms of elevated blood pressure usually do not occur until secondary problems arise such as with vascular diseases (myocardial infarction, stroke, heart failure and renal insufficiency) (Luehr D, et. al., 2012).\r\n\r\nAppropriate follow-up after blood pressure measurement is a pivotal component in preventing the progression of hypertension and the development of heart disease. Detection of marginally or fully elevated blood pressure by a specialty clinician warrants referral to a provider familiar with the management of hypertension and prehypertension.  The 2010 ACCF/AHA Guideline for the Assessment of Cardiovascular Risk in Asymptomatic Adults continues to support using a global risk score such as the Framingham Risk Score, to assess risk of coronary heart disease (CHD) in all asymptomatic adults (Greenland P, et. al., 2010).  Lifestyle modifications have demonstrated effectiveness in lowering blood pressure (JNC 7, 2003).  The synergistic effect of several lifestyle modifications results in greater benefits than a single modification alone. Baseline diagnostic/laboratory testing establishes if a co-existing underlying condition is the etiology of hypertension and evaluates if end organ damage from hypertension has already occurred. Landmark trials such as ALLHAT have repeatedly proven the efficacy of pharmacologic therapy to control blood pressure and reduce the complications of hypertension.  Follow-up intervals based on blood pressure control have been established by the JNC 7 and the USPSTF.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "The U.S. Preventive Services Task Force (USPSTF) recommends screening for high blood pressure in adults age 18 years and older. This is a grade A recommendation.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The U.S. Preventive Services Task Force (USPSTF) recommends screening for high blood pressure in adults age 18 years and older. This is a grade A recommendation.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality.",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "Not Applicable"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "22",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "22",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Winter K H, Tuttle L A & Viera A J (2013). Hypertension. Prim Care Clin Office Pract, 40, 179-194.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Winter K H, Tuttle L A & Viera A J (2013). Hypertension. Prim Care Clin Office Pract, 40, 179-194.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "Blood Pressure (BP) Classification: \r\nBP is defined by four (4) BP reading classifications: Normal, Pre-Hypertensive, First Hypertensive, and Second Hypertensive Readings\r\n\r\nRecommended BP Follow-Up: \r\nThe current Report of the Joint National Committee on the Prevention, Detection, Evaluation, and Treatment of High Blood Pressure (JNC) recommends BP screening intervals, lifestyle modifications and interventions based on the current BP reading as listed in the “Recommended Blood Pressure Follow-Up Interventions” listed below\r\n\r\nRecommended Lifestyle Modifications: \r\nThe current JNC report outlines lifestyle modifications which must include one or more of the following as indicated:\r\n•  Weight Reduction\r\n•  DASH Eating Plan \r\n•  Dietary Sodium Restriction\r\n•  Increased Physical Activity\r\n•  Moderation in alcohol (ETOH) Consumption\r\n\r\nSecond Hypertensive Reading: \r\nRequires a BP reading of Systolic BP >= 140 mmHg OR Diastolic BP >= 90 mmHg during the current encounter AND a most recent BP reading within the last 12 months Systolic BP >= 140 mmHg OR Diastolic BP >= 90 mmHg\r\n\r\nSecond Hypertensive Reading BP Interventions:  \r\nThe current JNC report outlines BP follow-up interventions for a second hypertensive BP reading and must include one or more of the following as indicated:\r\n•  Anti-Hypertensive Pharmacologic Therapy \r\n•  Laboratory Tests \r\n•  Electrocardiogram (ECG)\r\n\r\nRecommended Blood Pressure Follow-Up Interventions:\r\n•  Normal BP: No follow-up required for Systolic BP < 120 mmHg AND Diastolic BP <80 mmHg\r\n•  Pre-Hypertensive BP: Follow-up with rescreen every year with systolic BP of 120-139 mmHg OR diastolic BP of 80-89 mmHg AND recommend lifestyle modifications OR referral to Alternative/Primary Care Provider\r\n•  First Hypertensive BP Reading: Patients with one elevated reading of systolic BP >= 140 mmHg OR diastolic BP >= 90 mmHg: Follow-up with rescreen > 1 day and < 4 weeks AND  recommend lifestyle modifications OR referral to Alternative/Primary Care Provider  \r\n•  Second Hypertensive BP Reading: Patients with second elevated reading of  systolic BP >=140 mmHg OR diastolic BP >= 90 mmHg:  Follow-up with Recommended lifestyle recommendations  AND one or more of the Second Hypertensive Reading Interventions OR referral to Alternative/Primary Care Provider",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Blood Pressure (BP) Classification: \r\nBP is defined by four (4) BP reading classifications: Normal, Pre-Hypertensive, First Hypertensive, and Second Hypertensive Readings\r\n\r\nRecommended BP Follow-Up: \r\nThe current Report of the Joint National Committee on the Prevention, Detection, Evaluation, and Treatment of High Blood Pressure (JNC) recommends BP screening intervals, lifestyle modifications and interventions based on the current BP reading as listed in the “Recommended Blood Pressure Follow-Up Interventions” listed below\r\n\r\nRecommended Lifestyle Modifications: \r\nThe current JNC report outlines lifestyle modifications which must include one or more of the following as indicated:\r\n•  Weight Reduction\r\n•  DASH Eating Plan \r\n•  Dietary Sodium Restriction\r\n•  Increased Physical Activity\r\n•  Moderation in alcohol (ETOH) Consumption\r\n\r\nSecond Hypertensive Reading: \r\nRequires a BP reading of Systolic BP >= 140 mmHg OR Diastolic BP >= 90 mmHg during the current encounter AND a most recent BP reading within the last 12 months Systolic BP >= 140 mmHg OR Diastolic BP >= 90 mmHg\r\n\r\nSecond Hypertensive Reading BP Interventions:  \r\nThe current JNC report outlines BP follow-up interventions for a second hypertensive BP reading and must include one or more of the following as indicated:\r\n•  Anti-Hypertensive Pharmacologic Therapy \r\n•  Laboratory Tests \r\n•  Electrocardiogram (ECG)\r\n\r\nRecommended Blood Pressure Follow-Up Interventions:\r\n•  Normal BP: No follow-up required for Systolic BP < 120 mmHg AND Diastolic BP <80 mmHg\r\n•  Pre-Hypertensive BP: Follow-up with rescreen every year with systolic BP of 120-139 mmHg OR diastolic BP of 80-89 mmHg AND recommend lifestyle modifications OR referral to Alternative/Primary Care Provider\r\n•  First Hypertensive BP Reading: Patients with one elevated reading of systolic BP >= 140 mmHg OR diastolic BP >= 90 mmHg: Follow-up with rescreen > 1 day and < 4 weeks AND  recommend lifestyle modifications OR referral to Alternative/Primary Care Provider  \r\n•  Second Hypertensive BP Reading: Patients with second elevated reading of  systolic BP >=140 mmHg OR diastolic BP >= 90 mmHg:  Follow-up with Recommended lifestyle recommendations  AND one or more of the Second Hypertensive Reading Interventions OR referral to Alternative/Primary Care Provider",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "Both the systolic and diastolic blood pressure measurements are required for inclusion. If there are multiple blood pressures on the same date of service, use the lowest systolic and lowest diastolic blood pressure on that date as the representative blood pressure.\r\n\r\nEligible professionals who report the measure must perform the blood pressure screening at the time of a qualifying visit by an eligible professional and may not obtain measurements from external sources. \r\n\r\nThe documented follow up plan must be related to the current BP reading as indicated, example: “Patient referred to primary care provider for BP management.”",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Both the systolic and diastolic blood pressure measurements are required for inclusion. If there are multiple blood pressures on the same date of service, use the lowest systolic and lowest diastolic blood pressure on that date as the representative blood pressure.\r\n\r\nEligible professionals who report the measure must perform the blood pressure screening at the time of a qualifying visit by an eligible professional and may not obtain measurements from external sources. \r\n\r\nThe documented follow up plan must be related to the current BP reading as indicated, example: “Patient referred to primary care provider for BP management.”",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "All patients aged 18 years and older before the start of the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All patients aged 18 years and older before the start of the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patient has an active diagnosis of hypertension",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patient has an active diagnosis of hypertension",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who were screened for high blood pressure AND have a recommended follow-up plan documented, as indicated if the blood pressure is pre-hypertensive or hypertensive",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who were screened for high blood pressure AND have a recommended follow-up plan documented, as indicated if the blood pressure is pre-hypertensive or hypertensive",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable.",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Patient Reason(s): \r\nPatient refuses to participate\r\n\r\nOR\r\n\r\nMedical Reason(s):\r\nPatient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status.  This may include but is not limited to severely elevated BP when immediate medical treatment is indicated.",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patient Reason(s): \r\nPatient refuses to participate\r\n\r\nOR\r\n\r\nMedical Reason(s):\r\nPatient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status.  This may include but is not limited to severely elevated BP when immediate medical treatment is indicated.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable.",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable.",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

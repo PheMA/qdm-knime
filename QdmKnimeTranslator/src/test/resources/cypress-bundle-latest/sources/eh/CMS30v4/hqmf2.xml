@@ -1,0 +1,3971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qdm="urn:hhs-qdm:hqmf-r2-extensions:v1">
+  <typeId root="2.16.840.1.113883.1.3" extension="POQM_MT000001UV03" />
+  <templateId>
+    <item root="2.16.840.1.113883.10.20.28.1.1" />
+  </templateId>
+  <id root="2.16.840.1.113883.3.100.1" extension="40280381-446B-B8C2-0144-9E27B6EB2897" />
+  <code code="57024-2" codeSystem="2.16.840.1.113883.6.1"/>
+  <title value="Statin Prescribed at Discharge"/>
+  <text value="Acute myocardial infarction (AMI) patients who are prescribed a statin at hospital discharge."/>
+  <statusCode code="completed" />
+  <setId root="2.16.840.1.113883.3.100.1" extension="EBFA203E-ACC1-4228-906C-855C4BF11310" />
+  <versionNumber value="4"/>
+  <author typeCode="AUT">
+    <responsibleParty classCode="ASSIGNED" />
+  </author>
+  <custodian typeCode="CST">
+    <responsibleParty classCode="ASSIGNED" />
+  </custodian>
+  <controlVariable>
+    <measurePeriod>
+      <code code="MSRTP" codeSystem="2.16.840.1.113883.3.560">
+        <displayName value="Measurement period"/>
+      </code>
+      <value xsi:type="PIVL_TS">
+        <phase lowClosed="true" highClosed="true">
+                <low value="201201010000" />
+                <high value="201212312359" />
+                <width xsi:type="PQ" value="1" unit="a" />
+        </phase>
+      </value>
+    </measurePeriod>
+  </controlVariable>
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Finalized Date/Time"/>
+  </code>
+
+        <value xsi:type="ANY" flavorId="ANY.NONNULL"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="COPY">
+      <displayName value="Copyright"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Measure specifications are in the Public Domain
+CPT(R) is a trademark of the American Medical Association. Current Procedural Terminology. (CPT) is copyright 2012 American Medical Association. All rights reserved. No fee schedules, basic units, relative values, or related listings are included in CPT. The AMA assumes no liability for the data contained herein. Applicable FARS/DFARS restrictions apply to government use.
+ 
+LOINC(R) is a registered trademark of the Regenstrief Institute.
+ 
+
+This material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="MSRSCORE">
+      <displayName value="Measure Scoring"/>
+ 
+  </code>
+
+        <value xsi:type="CD" codeSystem="2.16.840.1.113883.1.11.20367" code="PROPOR">
+      <displayName value="Proportion"/>
+ 
+  </value>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="MSRTYPE">
+      <displayName value="Measure Type"/>
+ 
+  </code>
+
+        <value xsi:type="CD" codeSystem="2.16.840.1.113883.1.11.20368" code="PROCESS">
+      <displayName value="Process"/>
+ 
+  </value>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="STRAT">
+      <displayName value="Stratification"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="MSRADJ">
+      <displayName value="Risk Adjustment"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="MSRAGG">
+      <displayName value="Rate Aggregation"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="RAT">
+      <displayName value="Rationale"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Several randomized clinical trials have proven the benefits of statin drugs (also known as HMG Co-A reductase inhibitors) in reducing the risk of death and recurrent cardiovascular events in a broad range of patients with established cardiovascular disease, including those with prior myocardial infarction (4S, 1994; Sacks, 1996; LIPID Study Group, 1998; and MRC/BHF Heart Protection Study, 2002). Current ACC/AHA guidelines place a strong emphasis on the initiation or maintenance of statin drugs for patients hospitalized with AMI, particularly those with LDL-cholesterol levels above 100 mg/dL (Smith, 2011; Anderson, 2007; and O&#39;Gara, 2013). As a result of the strength of the evidence and guideline support, the ACC/AHA have developed a performance measure to assess this aspect of care for patients with acute myocardial infarction (Krumholz, 2008). Because statins are generally well-tolerated, most patients with AMI are appropriate candidates for this therapy."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.3.560" code="CRS">
+      <displayName value="Clinical Recommendation Statement"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Several randomized clinical trials have proven the benefits of statin drugs (also known as HMG Co-A reductase inhibitors) in reducing the risk of death and recurrent cardiovascular events in a broad range of patients with established cardiovascular disease, including those with prior myocardial infarction."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.3.560" code="IDUR">
+      <displayName value="Improvement Notation"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="An increase in rate."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="NQF ID Number"/>
+  </code>
+
+        <value xsi:type="II" root="2.16.840.1.113883.3.560.1" extension="0639"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="DISC">
+      <displayName value="Disclaimer"/>
+      <originalText value="Disclaimer"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="eMeasure Identifier"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="30"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="REF">
+      <displayName value="Reference"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Smith SC Jr, Benjamin EJ, Bonow RO, Braun LT, Creager MA, et al. AHA/ACCF secondary prevention and risk reduction therapy for patients with coronary and other atherosclerotic vascular disease: 2011 update: a guideline from the American Heart Association and American College of Cardiology Foundation. Circulation. 2011;124:2458–2473."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.3.560" code="DEF">
+      <displayName value="Definition"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.4" code="GUIDE">
+      <displayName value="Guidance"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Exclusion element guidance: 
+The intent for the exclusion for patients who are clinical trial participants was to be limited to patients participating in a clinical trial for acute myocardial infarction (AMI), ST elevation myocardial infarction (STEMI), non-ST elevation myocardial infarction (non-STEMI), heart attack, or acute coronary syndrome (ACS), the same conditions as covered by the measure. However, the value set specifying clinical trial participation is not limited to a specific type of trial. 
+
+Medical or patient reasons for not performing a test or giving a medication are categories for valid medical or patient reasons that are not specifically listed in the exclusion section of the measure. Each is expected to be captured and made available for measurement or clinical decision support within the EHR workflow but the exact method or location of capture is a local or vendor decision."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Transmission Format"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.1063" code="IPP">
+      <originalText value="Initial Patient Population"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="All hospital discharges for acute myocardial infarction (AMI) with hospital stays &lt;= 120 days during the measurement year for patients age 18 and older at the time of hospital admission."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.1063" code="DENOM">
+      <originalText value="Denominator"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Patients age 18 and older with an ICD-9-CM Principal Diagnosis Code for Acute Myocardial Infarction (AMI)."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Denominator Exclusions"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="•	Patients with Comfort Measures Only documented
+•	Patients enrolled in clinical trials
+•	Patients discharged to another hospital 
+•	Patients who left against medical advice 
+•	Patients who expired 
+•	Patients discharged to home for hospice care
+•	Patients discharged to a health care facility for hospice care"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.1063" code="NUMER">
+      <originalText value="Numerator"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="AMI patients who are prescribed a statin medication at hospital discharge."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Numerator Exclusions"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="None"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.1063" code="DENEXCEP">
+      <originalText value="Denominator Exceptions"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Patients with LDL less than 100 mg/dL within the first 24 hours after hospital arrival or 30 days prior to hospital arrival and not discharged on a statin.
+
+Patients with a documented Reason for Not Prescribing Statin Medication at Discharge. This includes patients with a statin allergy, patients with a hold on the administration of statin medications, and patients with a medical or patient reason for not prescribing this medication."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+        <code  codeSystem="2.16.840.1.113883.5.1063" code="MSRPOPL">
+      <originalText value="Measure Population"/>
+ 
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Not applicable"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Measure Observations"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="Not applicable"/>
+
+    </measureAttribute>
+  </subjectOf>
+
+    <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+          <code nullFlavor="OTH">
+      <originalText value="Supplemental Data Elements"/>
+  </code>
+
+        <value xsi:type="ED" mediaType="text/plain" value="For every patient evaluated by this measure also identify payer, race, ethnicity, and sex."/>
+
+    </measureAttribute>
+  </subjectOf>
+
+  <component>
+    <dataCriteriaSection>
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.2.2" />
+      </templateId>
+      <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+      <title value="Data Criteria Section"/>
+      <text value="This section describes the data criteria."/>
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderNotDoneMedicalReason"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDoneMedicalReason"/>
+                    <text value="Medication, Order not done: Medical Reason"/>
+          <statusCode code="ordered"/>
+          
+          
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Medical Reason"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDoneMedicalReason"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderNotDonePatientRefusal"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDonePatientRefusal"/>
+                    <text value="Medication, Order not done: Patient Refusal"/>
+          <statusCode code="ordered"/>
+          
+          
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Patient Refusal"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDonePatientRefusal"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeNotDoneMedicalReason"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDoneMedicalReason"/>
+                    <text value="Medication, Discharge not done: Medical Reason"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Medical Reason"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDoneMedicalReason"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeNotDonePatientRefusal"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDonePatientRefusal"/>
+                    <text value="Medication, Discharge not done: Patient Refusal"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Patient Refusal"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDonePatientRefusal"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+                    <text value="Medication, Administered not done: Hospital Measures - Hold"/>
+          <statusCode code="administered"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Hospital Measures - Hold"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="EncounterPerformedEmergencyDepartmentVisit"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEmergencyDepartmentVisit"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEmergencyDepartmentVisit"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="EncounterPerformedEncounterInpatient"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEncounterInpatient"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEncounterInpatient"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="InterventionPerformedComfortMeasures"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="InterventionPerformedComfortMeasures"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="InterventionPerformedComfortMeasures"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicEthnicityEthnicity"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.56" identifierName="patient characteristic, ethnicity template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicEthnicityEthnicity"/>
+                    <code codeSystemName="CDC Race" codeSystem="2.16.840.1.113883.6.238"
+            code="2135-2">
+              <displayName value="Ethnicity"/>
+          </code>
+
+                    <text value="Patient Characteristic Ethnicity: Ethnicity"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_ethnicity"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicEthnicityEthnicity"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicSexOncAdministrativeSex"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.55" identifierName="patient characteristic, gender template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicSexOncAdministrativeSex"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113762.1.4.1">
+              <displayName value="ONC Administrative Sex"/>
+          </code>
+
+                    <text value="Patient Characteristic Sex: ONC Administrative Sex"/>
+          
+            <value xsi:type="CD" codeSystem="Administrative Sex" code="F">
+ 
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_gender"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicSexOncAdministrativeSex"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicPayerPayer"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.58" identifierName="patient characteristic, payer template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicPayerPayer"/>
+                    <code codeSystemName="Source of Payment Typology" codeSystem="2.16.840.1.113883.3.221.5"
+            code="1">
+              <displayName value="Payer"/>
+          </code>
+
+                    <text value="Patient Characteristic Payer: Payer"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_payer"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicPayerPayer"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicRaceRace"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.59" identifierName="patient characteristic, race template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicRaceRace"/>
+                    <code codeSystemName="CDC Race" codeSystem="2.16.840.1.113883.6.238"
+            code="1002-5">
+              <displayName value="Race"/>
+          </code>
+
+                    <text value="Patient Characteristic Race: Race"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_race"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicRaceRace"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicBirthdateBirthDate_precondition_5"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.54" identifierName="patient characteristic, birthdate template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicBirthdateBirthDate_precondition_5"/>
+                    <code codeSystemName="LOINC" codeSystem="2.16.840.1.113883.6.1"
+            code="21112-8">
+              <displayName value="birth date"/>
+          </code>
+
+                    <text value="Patient Characteristic Birthdate: birth date"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_birthdate"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBS">
+
+            <qdm:temporalInformation precisionUnit="d">
+              
+                <qdm:delta   lowClosed="true">
+  <low  value="18" unit="a"/>
+<high nullFlavor="PINF"/>  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicBirthdateBirthDate"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="DiagnosisActiveHospitalMeasuresAmi_precondition_7"/>
+        <observationCriteria  moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.1" identifierName="diagnosis, active template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="DiagnosisActiveHospitalMeasuresAmi_precondition_7"/>
+                    <text value="Diagnosis, Active: Hospital Measures - AMI"/>
+          <statusCode code="active"/>
+          
+          
+                    <value xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.3011">
+              <displayName value="Hospital Measures - AMI"/>
+          </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="diagnosis"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SDU">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="DiagnosisActiveHospitalMeasuresAmi_precondition_7_ORDINAL"/>
+              
+              <code code="117363000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Ordinal"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.14">
+      <displayName value="ordinality"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="DiagnosisActiveHospitalMeasuresAmi"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_9"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_9"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_9_LENGTH_OF_STAY"/>
+              
+              <code code="183797002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Length of Stay"/> 
+              </code>
+                <value xsi:type="IVL_PQ" highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="120" unit="d"/>
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_11"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_11"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EDU">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="MeasurePeriod"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_14"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_14"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_14_DISCHARGE_STATUS"/>
+              
+              <code code="309039003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Discharge Status"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.309">
+      <displayName value="discharge status"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_16"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_16"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_16_DISCHARGE_STATUS"/>
+              
+              <code code="309039003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Discharge Status"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.87">
+      <displayName value="discharge status"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_18"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_18"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_18_DISCHARGE_STATUS"/>
+              
+              <code code="309039003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Discharge Status"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.209">
+      <displayName value="discharge status"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_20"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_20"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_20_DISCHARGE_STATUS"/>
+              
+              <code code="309039003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Discharge Status"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.207">
+      <displayName value="discharge status"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_22"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_22"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+              <id root="OccurrenceAEncounterInpatient3_precondition_22_DISCHARGE_STATUS"/>
+              
+              <code code="309039003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+                <displayName value="Discharge Status"/> 
+              </code>
+                <value xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.308">
+      <displayName value="discharge status"/>
+ 
+  </value>
+
+            </observationCriteria>
+          </outboundRelationship>
+          <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAClinicalTrialParticipant1_precondition_24"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1_precondition_24"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAClinicalTrialParticipant1_precondition_26"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1_precondition_26"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_31"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_31"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAComfortMeasures4_precondition_33"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_33"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SAS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="INTERVENTION_PERFORMED_COMFORT_MEASURES" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAComfortMeasures4_precondition_35"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_35"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="INTERVENTION_PERFORMED_COMFORT_MEASURES" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAComfortMeasures4_precondition_39"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_39"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SDU">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="INTERVENTION_PERFORMED_COMFORT_MEASURES" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_41"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_41"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_46"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_46"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_50"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_50"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_48"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_48"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_58"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_58"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="LaboratoryTestResultLdlCTest_precondition_60"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.4" identifierName="laboratory test, result template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_60"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.799">
+              <displayName value="LDL-c Test"/>
+          </code>
+
+                    <text value="Laboratory Test, Result: LDL-c Test"/>
+          
+          
+          
+            <value xsi:type="IVL_PQ"  >
+<low nullFlavor="NINF"/>  <high  value="100" unit="mg/dL"/>
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="laboratory_test"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SAS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="24" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="LaboratoryTestResultLdlCTest_precondition_64"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.4" identifierName="laboratory test, result template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_64"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.799">
+              <displayName value="LDL-c Test"/>
+          </code>
+
+                    <text value="Laboratory Test, Result: LDL-c Test"/>
+          
+          
+          
+            <value xsi:type="IVL_PQ"  >
+<low nullFlavor="NINF"/>  <high  value="100" unit="mg/dL"/>
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="laboratory_test"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SAS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="24" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_66"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_66"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_71"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_71"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="LaboratoryTestResultLdlCTest_precondition_73"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.4" identifierName="laboratory test, result template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_73"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.799">
+              <displayName value="LDL-c Test"/>
+          </code>
+
+                    <text value="Laboratory Test, Result: LDL-c Test"/>
+          
+          
+          
+            <value xsi:type="IVL_PQ"  >
+<low nullFlavor="NINF"/>  <high  value="100" unit="mg/dL"/>
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="laboratory_test"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBS">
+
+            <qdm:temporalInformation precisionUnit="d">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="30" unit="d"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="LaboratoryTestResultLdlCTest_precondition_77"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.4" identifierName="laboratory test, result template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_77"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.799">
+              <displayName value="LDL-c Test"/>
+          </code>
+
+                    <text value="Laboratory Test, Result: LDL-c Test"/>
+          
+          
+          
+            <value xsi:type="IVL_PQ"  >
+<low nullFlavor="NINF"/>  <high  value="100" unit="mg/dL"/>
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="laboratory_test"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBS">
+
+            <qdm:temporalInformation precisionUnit="d">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="30" unit="d"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_79"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_79"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_84"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_84"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredStatin_precondition_86"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_86"/>
+                    <text value="Medication, Administered: Statin"/>
+          <statusCode code="administered"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.666.5.1145"/>
+          </reasonCode>
+
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SAS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredStatin_precondition_88"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_88"/>
+                    <text value="Medication, Administered: Statin"/>
+          <statusCode code="administered"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.666.5.1145"/>
+          </reasonCode>
+
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3_precondition_103"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderStatinIngredientSpecific_precondition_92"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific_precondition_92"/>
+                    <text value="Medication, Order: Statin ingredient specific"/>
+          <statusCode code="ordered"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.117.1.7.1.473"/>
+          </reasonCode>
+
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderStatinIngredientSpecific_precondition_94"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific_precondition_94"/>
+                    <text value="Medication, Order: Statin ingredient specific"/>
+          <statusCode code="ordered"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.117.1.7.1.93"/>
+          </reasonCode>
+
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeStatinIngredientSpecific_precondition_96"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific_precondition_96"/>
+                    <text value="Medication, Discharge: Statin ingredient specific"/>
+          <statusCode code="discharge"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.117.1.7.1.473"/>
+          </reasonCode>
+
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeStatinIngredientSpecific_precondition_98"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific_precondition_98"/>
+                    <text value="Medication, Discharge: Statin ingredient specific"/>
+          <statusCode code="discharge"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.117.1.7.1.93"/>
+          </reasonCode>
+
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAllergyStatinAllergen_precondition_100"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.47" identifierName="medication, allergy template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAllergyStatinAllergen_precondition_100"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.423">
+              <displayName value="Statin Allergen"/>
+          </code>
+
+                    <text value="Medication, Allergy: Statin Allergen"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication_allergy"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SBE">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_103"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAllergyStatinAllergen"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredStatin_precondition_105"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_105"/>
+                    <text value="Medication, Administered: Statin"/>
+          <statusCode code="administered"/>
+          
+                    <reasonCode>
+            <item valueSet="2.16.840.1.113883.3.666.5.1145"/>
+          </reasonCode>
+
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SDU">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2_precondition_107"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_107"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="EBS">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+                <qdm:delta  highClosed="true" >
+<low nullFlavor="NINF"/>  <high  value="1" unit="h"/>
+  </qdm:delta>
+
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeStatin_precondition_115"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatin_precondition_115"/>
+                    <text value="Medication, Discharge: Statin"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+                    <temporallyRelatedInformation typeCode="SDU">
+
+            <qdm:temporalInformation precisionUnit="min">
+              
+            </qdm:temporalInformation>
+
+                        <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+
+          </temporallyRelatedInformation>
+
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="DiagnosisActiveHospitalMeasuresAmi"/>
+        <observationCriteria  moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.1" identifierName="diagnosis, active template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="DiagnosisActiveHospitalMeasuresAmi"/>
+                    <text value="Diagnosis, Active: Hospital Measures - AMI"/>
+          <statusCode code="active"/>
+          
+          
+                    <value xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.3011">
+              <displayName value="Hospital Measures - AMI"/>
+          </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="diagnosis"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="DiagnosisActiveHospitalMeasuresAmi"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="LaboratoryTestResultLdlCTest"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.4" identifierName="laboratory test, result template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.799">
+              <displayName value="LDL-c Test"/>
+          </code>
+
+                    <text value="Laboratory Test, Result: LDL-c Test"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="laboratory_test"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicBirthdateBirthDate"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.54" identifierName="patient characteristic, birthdate template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicBirthdateBirthDate"/>
+                    <code codeSystemName="LOINC" codeSystem="2.16.840.1.113883.6.1"
+            code="21112-8">
+              <displayName value="birth date"/>
+          </code>
+
+                    <text value="Patient Characteristic Birthdate: birth date"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_birthdate"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicBirthdateBirthDate"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAClinicalTrialParticipant1"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEmergencyDepartmentVisit2"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAEncounterInpatient3"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="OccurrenceAOccurrenceAComfortMeasures4"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="OCCR">
+            <localVariableName controlInformationRoot="INTERVENTION_PERFORMED_COMFORT_MEASURES" controlInformationExtension="A"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4"/>
+            </criteriaReference>
+          </outboundRelationship>
+
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAllergyStatinAllergen"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.47" identifierName="medication, allergy template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAllergyStatinAllergen"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.423">
+              <displayName value="Statin Allergen"/>
+          </code>
+
+                    <text value="Medication, Allergy: Statin Allergen"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication_allergy"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAllergyStatinAllergen"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderStatinIngredientSpecific"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific"/>
+                    <text value="Medication, Order: Statin ingredient specific"/>
+          <statusCode code="ordered"/>
+          
+          
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderNotDoneMedicalReason"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDoneMedicalReason"/>
+                    <text value="Medication, Order not done: Medical Reason"/>
+          <statusCode code="ordered"/>
+          
+          
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Medical Reason"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDoneMedicalReason"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationOrderNotDonePatientRefusal"/>
+        <supplyCriteria moodCode="EVN" classCode="SPLY" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.51" identifierName="medication, order template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDonePatientRefusal"/>
+                    <text value="Medication, Order not done: Patient Refusal"/>
+          <statusCode code="ordered"/>
+          
+          
+          <participation typeCode="PRD">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Patient Refusal"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SPLY">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderNotDonePatientRefusal"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </supplyCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeStatinIngredientSpecific"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific"/>
+                    <text value="Medication, Discharge: Statin ingredient specific"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Statin ingredient specific"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeNotDoneMedicalReason"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDoneMedicalReason"/>
+                    <text value="Medication, Discharge not done: Medical Reason"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Medical Reason"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDoneMedicalReason"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeNotDonePatientRefusal"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDonePatientRefusal"/>
+                    <text value="Medication, Discharge not done: Patient Refusal"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113762.1.4.1021.7">
+              <displayName value="Patient Refusal"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeNotDonePatientRefusal"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationDischargeStatin"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.48" identifierName="medication, discharge template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatin"/>
+                    <text value="Medication, Discharge: Statin"/>
+          <statusCode code="discharge"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredStatin"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin"/>
+                    <text value="Medication, Administered: Statin"/>
+          <statusCode code="administered"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Statin"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+        <substanceAdministrationCriteria moodCode="EVN" classCode="SBADM" actionNegationInd='true'>
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.45" identifierName="medication, administered template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+                    <text value="Medication, Administered not done: Hospital Measures - Hold"/>
+          <statusCode code="administered"/>
+          
+          
+          <participation typeCode="CSM">
+            <role classCode="THER">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.225">
+              <displayName value="Hospital Measures - Hold"/>
+          </code>
+
+            </role>
+          </participation>
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="SBADM">
+              <id root="2.16.840.1.113883.3.100.1" extension="medication"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredNotDoneHospitalMeasuresHold"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </substanceAdministrationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.6" identifierName="patient characteristic template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant"/>
+                    <code codeSystemName="SNOMED-CT" codeSystem="2.16.840.1.113883.6.96"
+            code="428024001">
+              <displayName value="Clinical Trial Participant"/>
+          </code>
+
+                    <text value="Patient Characteristic Clinical Trial Participant: Clinical Trial Participant"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_clinical_trial_participant"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="EncounterPerformedEmergencyDepartmentVisit"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEmergencyDepartmentVisit"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.117.1.7.1.292">
+              <displayName value="Emergency Department Visit"/>
+          </code>
+
+                    <text value="Encounter, Performed: Emergency Department Visit"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEmergencyDepartmentVisit"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="EncounterPerformedEncounterInpatient"/>
+        <encounterCriteria moodCode="EVN" classCode="ENC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.5" identifierName="encounter, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEncounterInpatient"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113883.3.666.5.307">
+              <displayName value="Encounter Inpatient"/>
+          </code>
+
+                    <text value="Encounter, Performed: Encounter Inpatient"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="ENC">
+              <id root="2.16.840.1.113883.3.100.1" extension="encounter"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="EncounterPerformedEncounterInpatient"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </encounterCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="InterventionPerformedComfortMeasures"/>
+        <procedureCriteria moodCode="EVN" classCode="PROC">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.35" identifierName="intervention, performed template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="InterventionPerformedComfortMeasures"/>
+                    <code xsi:type="CD" valueSet="1.3.6.1.4.1.33895.1.3.0.45">
+              <displayName value="Comfort Measures "/>
+          </code>
+
+                    <text value="Intervention, Performed: Comfort Measures "/>
+          <statusCode code="performed"/>
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="PROC">
+              <id root="2.16.840.1.113883.3.100.1" extension="intervention"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="InterventionPerformedComfortMeasures"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </procedureCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicEthnicityEthnicity"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.56" identifierName="patient characteristic, ethnicity template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicEthnicityEthnicity"/>
+                    <code codeSystemName="CDC Race" codeSystem="2.16.840.1.113883.6.238"
+            code="2135-2">
+              <displayName value="Ethnicity"/>
+          </code>
+
+                    <text value="Patient Characteristic Ethnicity: Ethnicity"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_ethnicity"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicEthnicityEthnicity"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicSexOncAdministrativeSex"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.55" identifierName="patient characteristic, gender template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicSexOncAdministrativeSex"/>
+                    <code xsi:type="CD" valueSet="2.16.840.1.113762.1.4.1">
+              <displayName value="ONC Administrative Sex"/>
+          </code>
+
+                    <text value="Patient Characteristic Sex: ONC Administrative Sex"/>
+          
+            <value xsi:type="CD" codeSystem="Administrative Sex" code="F">
+ 
+  </value>
+
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_gender"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicSexOncAdministrativeSex"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicPayerPayer"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.58" identifierName="patient characteristic, payer template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicPayerPayer"/>
+                    <code codeSystemName="Source of Payment Typology" codeSystem="2.16.840.1.113883.3.221.5"
+            code="1">
+              <displayName value="Payer"/>
+          </code>
+
+                    <text value="Patient Characteristic Payer: Payer"/>
+          
+          
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_payer"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicPayerPayer"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+          
+        </observationCriteria>
+      </entry>
+
+            <entry typeCode="DRIV">
+        <localVariableName value="PatientCharacteristicRaceRace"/>
+        <observationCriteria moodCode="EVN" classCode="OBS">
+                    <templateId>
+            <item root="2.16.840.1.113883.10.20.28.3.59" identifierName="patient characteristic, race template"/>
+            <item root="2.16.840.1.113883.3.100.1.1" identifierName="Source data criteria template"/>
+          </templateId>
+
+          <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicRaceRace"/>
+                    <code codeSystemName="CDC Race" codeSystem="2.16.840.1.113883.6.238"
+            code="1002-5">
+              <displayName value="Race"/>
+          </code>
+
+                    <text value="Patient Characteristic Race: Race"/>
+          
+          <definition>
+            <criteriaReference moodCode="EVN" classCode="OBS">
+              <id root="2.16.840.1.113883.3.100.1" extension="patient_characteristic_race"/>
+            </criteriaReference>
+          </definition>
+          
+                    <outboundRelationship typeCode="SUBJ">
+            <subsetCode code="SOURCE"/>
+            <criteriaReference classCode="OBS" moodCode="EVN">
+              <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicRaceRace"/>
+            </criteriaReference>
+          </outboundRelationship>
+          
+        </observationCriteria>
+      </entry>
+
+    </dataCriteriaSection>
+  </component>
+  <component>
+    <populationCriteriaSection>
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.2.1"/>
+      </templateId>
+      <id root="2.16.840.1.113883.3.100.1" extension="Population0"/>
+      <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+      <title value=""/>
+      <text value="This section describes the Initial Patient Population, Numerator, Denominator, Denominator Exceptions, and Measure Populations"/>
+            <component typeCode="COMP">
+        <initialPopulationCriteria  classCode="OBS" moodCode="EVN" isCriterionInd="true">
+          <id root="c75181d0-73eb-11de-8a39-0800200c9a66"
+            extension="EC5B66D7-DC06-4296-B96A-AF5716B6B61B"/>
+          <code codeSystem="2.16.840.1.113883.5.1063"
+              codeSystemName="HL7 Observation Value"
+              code="IPP">
+            <displayName value="Initial Patient Population"/>
+          </code>
+          <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicBirthdateBirthDate_precondition_5"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="DiagnosisActiveHospitalMeasuresAmi_precondition_7"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_9"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_11"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+        </initialPopulationCriteria>
+      </component>
+
+            <component typeCode="COMP">
+        <denominatorCriteria  classCode="OBS" moodCode="EVN" isCriterionInd="true">
+          <id root="c75181d0-73eb-11de-8a39-0800200c9a66"
+            extension="2C505932-B6DB-4021-AEB8-34FB87464A71"/>
+          <code codeSystem="2.16.840.1.113883.5.1063"
+              codeSystemName="HL7 Observation Value"
+              code="DENOM">
+            <displayName value="Denominator"/>
+          </code>
+          <precondition typeCode="PRCN" nullFlavor="NA">
+            <allTrue>
+              <id/>
+            </allTrue>
+          </precondition>
+        </denominatorCriteria>
+      </component>
+
+            <component typeCode="COMP">
+        <numeratorCriteria  classCode="OBS" moodCode="EVN" isCriterionInd="true">
+          <id root="c75181d0-73eb-11de-8a39-0800200c9a66"
+            extension="61DC6DD6-B348-4C77-BE18-83FF3FD87B13"/>
+          <code codeSystem="2.16.840.1.113883.5.1063"
+              codeSystemName="HL7 Observation Value"
+              code="NUMER">
+            <displayName value="Numerator"/>
+          </code>
+          <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatin_precondition_115"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+        </numeratorCriteria>
+      </component>
+
+            <component typeCode="COMP">
+        <denominatorExceptionCriteria  classCode="OBS" moodCode="EVN" isCriterionInd="true">
+          <id root="c75181d0-73eb-11de-8a39-0800200c9a66"
+            extension="2FC45D8E-03F0-440D-B2DC-65E412B9E776"/>
+          <code codeSystem="2.16.840.1.113883.5.1063"
+              codeSystemName="HL7 Observation Value"
+              code="DENEXCEP">
+            <displayName value="Denominator Exception"/>
+          </code>
+          <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+  <atLeastOneTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_58"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_60"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_64"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_66"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_71"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_73"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="LaboratoryTestResultLdlCTest_precondition_77"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_79"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_84"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_86"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_88"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <atLeastOneTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific_precondition_92"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationOrderStatinIngredientSpecific_precondition_94"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific_precondition_96"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationDischargeStatinIngredientSpecific_precondition_98"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationAllergyStatinAllergen_precondition_100"/>
+    </criteriaReference>
+</precondition>
+  </atLeastOneTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="SBADM">
+      <id root="2.16.840.1.113883.3.100.1" extension="MedicationAdministeredStatin_precondition_105"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_107"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+  </atLeastOneTrue>
+</precondition>
+  </allTrue>
+</precondition>
+        </denominatorExceptionCriteria>
+      </component>
+
+            <component typeCode="COMP">
+        <denominatorExclusionCriteria  classCode="OBS" moodCode="EVN" isCriterionInd="true">
+          <id root="c75181d0-73eb-11de-8a39-0800200c9a66"
+            extension="9E86294D-6BED-45B6-BC32-311A1FA0E986"/>
+          <code codeSystem="2.16.840.1.113883.5.1063"
+              codeSystemName="HL7 Observation Value"
+              code="DENEX">
+            <displayName value="Denominator"/>
+          </code>
+          <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+  <atLeastOneTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_14"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_16"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_18"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_20"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEncounterInpatient3_precondition_22"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1_precondition_24"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAClinicalTrialParticipant1_precondition_26"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_31"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_33"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_35"/>
+    </criteriaReference>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAComfortMeasures4_precondition_39"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_41"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allTrue>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="ENC">
+      <id root="2.16.840.1.113883.3.100.1" extension="OccurrenceAEmergencyDepartmentVisit2_precondition_46"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_50"/>
+    </criteriaReference>
+</precondition>
+    <precondition typeCode="PRCN">
+  <allFalse>
+    <id/>
+    <precondition typeCode="PRCN">
+    <criteriaReference moodCode="EVN" classCode="OBS">
+      <id root="2.16.840.1.113883.3.100.1" extension="PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant_precondition_48"/>
+    </criteriaReference>
+</precondition>
+  </allFalse>
+</precondition>
+  </allTrue>
+</precondition>
+  </atLeastOneTrue>
+</precondition>
+  </allTrue>
+</precondition>
+        </denominatorExclusionCriteria>
+      </component>
+
+    </populationCriteriaSection>
+  </component>
+</QualityMeasureDocument>

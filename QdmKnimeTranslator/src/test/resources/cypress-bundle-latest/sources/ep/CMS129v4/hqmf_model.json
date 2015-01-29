@@ -1,0 +1,1647 @@
+{
+  "id": "0389",
+  "hqmf_id": "40280381-4555-E1C1-0145-75EEED891B1B",
+  "hqmf_set_id": "1635C14D-E612-4FA6-96CD-285361AA7F7B",
+  "hqmf_version_number": 4,
+  "title": "Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients",
+  "description": "Percentage of patients, regardless of age, with a diagnosis of prostate cancer at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+  "cms_id": "CMS129v4",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "8AA79152-295C-49E8-B4F3-966384290032",
+      "preconditions": [
+        {
+          "id": 13,
+          "preconditions": [
+            {
+              "id": 6,
+              "reference": "OccurrenceAProstateCancer3_precondition_6"
+            },
+            {
+              "id": 10,
+              "reference": "PatientCharacteristicSexMale_precondition_10"
+            },
+            {
+              "id": 12,
+              "preconditions": [
+                {
+                  "id": 8,
+                  "reference": "OccurrenceAProstateCancer3_precondition_8"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "9BC32102-1C28-4B0D-AE81-BCF059743738",
+      "preconditions": [
+        {
+          "id": 44,
+          "preconditions": [
+            {
+              "id": 15,
+              "reference": "OccurrenceAProstateCancerTreatment4_precondition_14"
+            },
+            {
+              "id": 42,
+              "preconditions": [
+                {
+                  "id": 22,
+                  "preconditions": [
+                    {
+                      "id": 18,
+                      "reference": "OccurrenceAProstateSpecificAntigenTest5_precondition_17"
+                    },
+                    {
+                      "id": 20,
+                      "reference": "OccurrenceAProstateSpecificAntigenTest5_precondition_20"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 29,
+                  "preconditions": [
+                    {
+                      "id": 25,
+                      "reference": "OccurrenceAGleasonScore2_precondition_24"
+                    },
+                    {
+                      "id": 27,
+                      "reference": "OccurrenceAGleasonScore2_precondition_27"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 40,
+                  "preconditions": [
+                    {
+                      "id": 32,
+                      "reference": "OccurrenceAClinicalStagingProcedure1_precondition_31"
+                    },
+                    {
+                      "id": 38,
+                      "preconditions": [
+                        {
+                          "id": 34,
+                          "reference": "OccurrenceAClinicalStagingProcedure1_precondition_34"
+                        },
+                        {
+                          "id": 36,
+                          "reference": "OccurrenceAClinicalStagingProcedure1_precondition_36"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEXCEP": {
+      "conjunction?": true,
+      "type": "DENEXCEP",
+      "title": "Denominator Exception",
+      "hqmf_id": "6998DFC8-8732-4A8F-8335-E8D42389DF49",
+      "preconditions": [
+        {
+          "id": 54,
+          "preconditions": [
+            {
+              "id": 51,
+              "preconditions": [
+                {
+                  "id": 45,
+                  "reference": "DiagnosisActivePainRelatedToProstateCancer_precondition_45"
+                },
+                {
+                  "id": 47,
+                  "reference": "ProcedurePerformedSalvageTherapy_precondition_47"
+                },
+                {
+                  "id": 49,
+                  "reference": "DiagnosticStudyPerformedBoneScan_precondition_49"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "863BCA26-5D89-4E0E-A527-6D0B3B3B5B1F",
+      "preconditions": [
+        {
+          "id": 57,
+          "preconditions": [
+            {
+              "id": 55,
+              "reference": "DiagnosticStudyPerformedBoneScan_precondition_55"
+            }
+          ],
+          "conjunction_code": "atLeastOneTrue",
+          "negation": true
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAClinicalStagingProcedure1": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+      "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+      "variable": false
+    },
+    "OccurrenceAProstateCancer3": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+      "source_data_criteria": "OccurrenceAProstateCancer3",
+      "variable": false
+    },
+    "OccurrenceAProstateCancerTreatment4": {
+      "title": "Prostate Cancer Treatment",
+      "description": "Procedure, Performed: Prostate Cancer Treatment",
+      "code_list_id": "2.16.840.1.113883.3.526.3.398",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+      "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+      "variable": false
+    },
+    "ProcedureResultClinicalStagingProcedure": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure, Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedureResultClinicalStagingProcedure",
+      "variable": false
+    },
+    "LaboratoryTestResultGleasonScore": {
+      "title": "Gleason Score",
+      "description": "Laboratory Test, Result: Gleason Score",
+      "code_list_id": "2.16.840.1.113883.3.526.3.397",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultGleasonScore",
+      "variable": false
+    },
+    "DiagnosisActiveProstateCancer": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveProstateCancer",
+      "variable": false
+    },
+    "ProcedurePerformedProstateCancerTreatment": {
+      "title": "Prostate Cancer Treatment",
+      "description": "Procedure, Performed: Prostate Cancer Treatment",
+      "code_list_id": "2.16.840.1.113883.3.526.3.398",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedProstateCancerTreatment",
+      "variable": false
+    },
+    "LaboratoryTestResultProstateSpecificAntigenTest": {
+      "title": "Prostate Specific Antigen Test",
+      "description": "Laboratory Test, Result: Prostate Specific Antigen Test",
+      "code_list_id": "2.16.840.1.113883.3.526.3.401",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultProstateSpecificAntigenTest",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "OccurrenceAProstateCancer3_precondition_6": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+      "source_data_criteria": "OccurrenceAProstateCancer3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "PatientCharacteristicSexMale_precondition_10": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "OccurrenceAProstateCancer3_precondition_8": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+      "source_data_criteria": "OccurrenceAProstateCancer3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAProstateCancerTreatment4_precondition_14": {
+      "title": "Prostate Cancer Treatment",
+      "description": "Procedure, Performed: Prostate Cancer Treatment",
+      "code_list_id": "2.16.840.1.113883.3.526.3.398",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+      "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "OccurrenceAProstateSpecificAntigenTest5_precondition_17": {
+      "title": "Prostate Specific Antigen Test",
+      "description": "Laboratory Test: Prostate Specific Antigen Test",
+      "code_list_id": "2.16.840.1.113883.3.526.3.401",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+      "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAClinicalStagingProcedure1"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAProstateSpecificAntigenTest5_precondition_20": {
+      "title": "Prostate Specific Antigen Test",
+      "description": "Laboratory Test: Prostate Specific Antigen Test",
+      "code_list_id": "2.16.840.1.113883.3.526.3.401",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+      "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "ng/mL",
+          "value": "10",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceAGleasonScore2_precondition_24": {
+      "title": "Gleason Score",
+      "description": "Laboratory Test: Gleason Score",
+      "code_list_id": "2.16.840.1.113883.3.526.3.397",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+      "source_data_criteria": "OccurrenceAGleasonScore2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAProstateCancerTreatment4"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAGleasonScore2_precondition_27": {
+      "title": "Gleason Score",
+      "description": "Laboratory Test: Gleason Score",
+      "code_list_id": "2.16.840.1.113883.3.526.3.397",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+      "source_data_criteria": "OccurrenceAGleasonScore2",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "value": "6",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceAClinicalStagingProcedure1_precondition_31": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+      "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAProstateCancerTreatment4"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAClinicalStagingProcedure1_precondition_34": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+      "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1325",
+        "title": "result"
+      }
+    },
+    "OccurrenceAClinicalStagingProcedure1_precondition_36": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+      "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1326",
+        "title": "result"
+      }
+    },
+    "OccurrenceAProstateCancer3_precondition_52": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+      "source_data_criteria": "OccurrenceAProstateCancer3",
+      "variable": false
+    },
+    "DiagnosisActivePainRelatedToProstateCancer_precondition_45": {
+      "title": "Pain Related to Prostate Cancer",
+      "description": "Diagnosis, Active: Pain Related to Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.451",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePainRelatedToProstateCancer",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAProstateCancer3_precondition_52"
+        }
+      ]
+    },
+    "ProcedurePerformedSalvageTherapy_precondition_47": {
+      "title": "Salvage Therapy",
+      "description": "Procedure, Performed: Salvage Therapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.399",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedSalvageTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAProstateCancer3_precondition_52"
+        }
+      ]
+    },
+    "DiagnosticStudyPerformedBoneScan_precondition_49": {
+      "title": "Bone Scan",
+      "description": "Diagnostic Study, Performed: Bone Scan",
+      "code_list_id": "2.16.840.1.113883.3.526.3.320",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.526.3.1494",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAProstateCancer3_precondition_52"
+        }
+      ]
+    },
+    "DiagnosticStudyPerformedBoneScan_precondition_55": {
+      "title": "Bone Scan",
+      "description": "Diagnostic Study, Performed: Bone Scan",
+      "code_list_id": "2.16.840.1.113883.3.526.3.320",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAProstateCancer3"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "DiagnosticStudyPerformedBoneScan": {
+      "title": "Bone Scan",
+      "description": "Diagnostic Study, Performed: Bone Scan",
+      "code_list_id": "2.16.840.1.113883.3.526.3.320",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+      "variable": false
+    },
+    "OccurrenceAClinicalStagingProcedure1": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+      "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+      "variable": false
+    },
+    "OccurrenceAGleasonScore2": {
+      "title": "Gleason Score",
+      "description": "Laboratory Test: Gleason Score",
+      "code_list_id": "2.16.840.1.113883.3.526.3.397",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+      "source_data_criteria": "OccurrenceAGleasonScore2",
+      "variable": false
+    },
+    "PatientCharacteristicSexMale": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "DiagnosisActivePainRelatedToProstateCancer": {
+      "title": "Pain Related to Prostate Cancer",
+      "description": "Diagnosis, Active: Pain Related to Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.451",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePainRelatedToProstateCancer",
+      "variable": false
+    },
+    "OccurrenceAProstateCancer3": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+      "source_data_criteria": "OccurrenceAProstateCancer3",
+      "variable": false
+    },
+    "OccurrenceAProstateCancerTreatment4": {
+      "title": "Prostate Cancer Treatment",
+      "description": "Procedure, Performed: Prostate Cancer Treatment",
+      "code_list_id": "2.16.840.1.113883.3.526.3.398",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+      "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+      "variable": false
+    },
+    "OccurrenceAProstateSpecificAntigenTest5": {
+      "title": "Prostate Specific Antigen Test",
+      "description": "Laboratory Test: Prostate Specific Antigen Test",
+      "code_list_id": "2.16.840.1.113883.3.526.3.401",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+      "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+      "variable": false
+    },
+    "ProcedurePerformedSalvageTherapy": {
+      "title": "Salvage Therapy",
+      "description": "Procedure, Performed: Salvage Therapy",
+      "code_list_id": "2.16.840.1.113883.3.526.3.399",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedSalvageTherapy",
+      "variable": false
+    },
+    "ProcedureResultClinicalStagingProcedure": {
+      "title": "Clinical Staging Procedure",
+      "description": "Procedure, Result: Clinical Staging Procedure",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+      "type": "procedures",
+      "definition": "procedure_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedureResultClinicalStagingProcedure",
+      "variable": false
+    },
+    "LaboratoryTestResultGleasonScore": {
+      "title": "Gleason Score",
+      "description": "Laboratory Test, Result: Gleason Score",
+      "code_list_id": "2.16.840.1.113883.3.526.3.397",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultGleasonScore",
+      "variable": false
+    },
+    "DiagnosisActiveProstateCancer": {
+      "title": "Prostate Cancer",
+      "description": "Diagnosis, Active: Prostate Cancer",
+      "code_list_id": "2.16.840.1.113883.3.526.3.319",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveProstateCancer",
+      "variable": false
+    },
+    "ProcedurePerformedProstateCancerTreatment": {
+      "title": "Prostate Cancer Treatment",
+      "description": "Procedure, Performed: Prostate Cancer Treatment",
+      "code_list_id": "2.16.840.1.113883.3.526.3.398",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedProstateCancerTreatment",
+      "variable": false
+    },
+    "LaboratoryTestResultProstateSpecificAntigenTest": {
+      "title": "Prostate Specific Antigen Test",
+      "description": "Laboratory Test, Result: Prostate Specific Antigen Test",
+      "code_list_id": "2.16.840.1.113883.3.526.3.401",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultProstateSpecificAntigenTest",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "A bone scan is generally not required for staging prostate cancer in men with a low risk of recurrence and receiving primary therapy. This measure is written as a negative measure so that the performance goal is 100%, consistent with the other measures for this condition.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A bone scan is generally not required for staging prostate cancer in men with a low risk of recurrence and receiving primary therapy. This measure is written as a negative measure so that the performance goal is 100%, consistent with the other measures for this condition.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Routine use of a bone scan is not required for staging asymptomatic men with clinically localized prostate cancer when their PSA is equal to or less than 20.0 ng/mL. (AUA, 2009)\n\nFor symptomatic patients and/or those with a life expectancy of greater than 5 years, a bone scan is appropriate for patients with any of the following: 1) T1 disease with PSA over 20 ng/mL or T2 disease with PSA over 10 ng/mL; 2) a Gleason score of 8 or higher; 3) T3 to T4 tumors or symptomatic disease. (NCCN, 2011) (Category 2A)",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Routine use of a bone scan is not required for staging asymptomatic men with clinically localized prostate cancer when their PSA is equal to or less than 20.0 ng/mL. (AUA, 2009)\n\nFor symptomatic patients and/or those with a life expectancy of greater than 5 years, a bone scan is appropriate for patients with any of the following: 1) T1 disease with PSA over 20 ng/mL or T2 disease with PSA over 10 ng/mL; 2) a Gleason score of 8 or higher; 3) T3 to T4 tumors or symptomatic disease. (NCCN, 2011) (Category 2A)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0389",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0389"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "129",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "129",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "National Comprehensive Cancer Network (NCCN). Clinical Practice Guidelines in Oncology: Prostate Cancer. Version 4.2011. Available at www.nccn.org",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "National Comprehensive Cancer Network (NCCN). Clinical Practice Guidelines in Oncology: Prostate Cancer. Version 4.2011. Available at www.nccn.org",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "Risk Strata Definitions: Low, Intermediate, or High –\nLow Risk – PSA <= 10 ng/mL; AND Gleason score 6 or less; AND clinical stage T1c or T2a. (AUA, 2007)\nIntermediate Risk – PSA > 10 to 20 ng/mL; OR Gleason score 7; OR clinical stage T2b, and not qualifying for high risk. (AUA, 2007)\nHigh Risk – PSA > 20 ng/mL; OR Gleason score 8 to 10; OR clinically localized stage T3a. (NCCN, 2011)",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Risk Strata Definitions: Low, Intermediate, or High –\nLow Risk – PSA <= 10 ng/mL; AND Gleason score 6 or less; AND clinical stage T1c or T2a. (AUA, 2007)\nIntermediate Risk – PSA > 10 to 20 ng/mL; OR Gleason score 7; OR clinical stage T2b, and not qualifying for high risk. (AUA, 2007)\nHigh Risk – PSA > 20 ng/mL; OR Gleason score 8 to 10; OR clinically localized stage T3a. (NCCN, 2011)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "A higher score indicates appropriate treatment of patients with prostate cancer at low risk of recurrence.\nOnly patients with prostate cancer with low risk of recurrence will be counted in the performance denominator of this measure.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A higher score indicates appropriate treatment of patients with prostate cancer at low risk of recurrence.\nOnly patients with prostate cancer with low risk of recurrence will be counted in the performance denominator of this measure.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "All patients, regardless of age, with a diagnosis of prostate cancer",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All patients, regardless of age, with a diagnosis of prostate cancer",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Documentation of reason(s) for performing a bone scan (including documented pain, salvage therapy, other medical reasons, bone scan ordered by someone other than reporting physician)",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Documentation of reason(s) for performing a bone scan (including documented pain, salvage therapy, other medical reasons, bone scan ordered by someone other than reporting physician)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

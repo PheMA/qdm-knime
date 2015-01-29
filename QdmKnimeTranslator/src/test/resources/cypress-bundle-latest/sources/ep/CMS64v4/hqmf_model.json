@@ -1,0 +1,5224 @@
+{
+  "id": "CholesterolScreeningRisk",
+  "hqmf_id": "40280381-4555-E1C1-0145-BE9E7F6939A9",
+  "hqmf_set_id": "0336A17B-7C2A-48FC-A657-E9B04269A4CC",
+  "hqmf_version_number": 4,
+  "title": "Preventive Care and Screening: Risk-Stratified Cholesterol – Fasting Low Density Lipoprotein (LDL-C)",
+  "description": "Percentage of patients aged 20 through 79 years who had a fasting LDL-C test performed and whose risk-stratified fasting LDL-C is at or below the recommended LDL-C goal.",
+  "cms_id": "CMS64v4",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "38AAEAD7-7675-4C49-A1AA-F9BAB2495086",
+      "preconditions": [
+        {
+          "id": 13,
+          "preconditions": [
+            {
+              "id": 9,
+              "preconditions": [
+                {
+                  "id": 5,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_5"
+                },
+                {
+                  "id": 7,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_7"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 11,
+              "reference": "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_11"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "380939D4-E8A8-4AEC-878C-E799530C6C7A",
+      "preconditions": [
+        {
+          "id": 33,
+          "preconditions": [
+            {
+              "id": 25,
+              "preconditions": [
+                {
+                  "id": 14,
+                  "reference": "LaboratoryTestPerformedLdlCode_precondition_14"
+                },
+                {
+                  "id": 22,
+                  "preconditions": [
+                    {
+                      "id": 16,
+                      "reference": "LaboratoryTestPerformedTotalCholesterol_precondition_16"
+                    },
+                    {
+                      "id": 18,
+                      "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_18"
+                    },
+                    {
+                      "id": 20,
+                      "reference": "LaboratoryTestPerformedTriglycerides_precondition_20"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 31,
+              "preconditions": [
+                {
+                  "id": 27,
+                  "reference": "DiagnosisActiveChdOrChdRiskEquivalent_precondition_27"
+                },
+                {
+                  "id": 29,
+                  "reference": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_29"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "029B295F-D4DA-4E4D-9008-1B76374DB261",
+      "preconditions": [
+        {
+          "id": 45,
+          "preconditions": [
+            {
+              "id": 43,
+              "preconditions": [
+                {
+                  "id": 34,
+                  "reference": "ProcedureOrderPalliativeCare_precondition_34"
+                },
+                {
+                  "id": 41,
+                  "preconditions": [
+                    {
+                      "id": 36,
+                      "reference": "OccurrenceAPregnancy4_precondition_36"
+                    },
+                    {
+                      "id": 40,
+                      "preconditions": [
+                        {
+                          "id": 38,
+                          "reference": "OccurrenceAPregnancy4_precondition_38"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "0F0516FF-9735-482C-ADB9-9D0B28E0E2FA",
+      "preconditions": [
+        {
+          "id": 51,
+          "preconditions": [
+            {
+              "id": 46,
+              "reference": "OccurrenceALdlCode2_precondition_46"
+            },
+            {
+              "id": 49,
+              "reference": "OccurrenceALdlCode2_precondition_48"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "IPP_1": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "CC4056BC-E622-4A32-84C8-A1E01F4A042E",
+      "preconditions": [
+        {
+          "id": 60,
+          "preconditions": [
+            {
+              "id": 56,
+              "preconditions": [
+                {
+                  "id": 52,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_52"
+                },
+                {
+                  "id": 54,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_54"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 58,
+              "reference": "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_58"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM_1": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "8F9D4C89-AD2D-4243-AA58-7F70EF1302E0",
+      "preconditions": [
+        {
+          "id": 217,
+          "preconditions": [
+            {
+              "id": 72,
+              "preconditions": [
+                {
+                  "id": 61,
+                  "reference": "LaboratoryTestPerformedLdlCode_precondition_61"
+                },
+                {
+                  "id": 69,
+                  "preconditions": [
+                    {
+                      "id": 63,
+                      "reference": "LaboratoryTestPerformedTotalCholesterol_precondition_63"
+                    },
+                    {
+                      "id": 65,
+                      "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_65"
+                    },
+                    {
+                      "id": 67,
+                      "reference": "LaboratoryTestPerformedTriglycerides_precondition_67"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 210,
+              "preconditions": [
+                {
+                  "id": 74,
+                  "reference": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_74"
+                },
+                {
+                  "id": 93,
+                  "reference": "GROUP_COUNT_438"
+                },
+                {
+                  "id": 140,
+                  "preconditions": [
+                    {
+                      "id": 112,
+                      "reference": "GROUP_COUNT_442"
+                    },
+                    {
+                      "id": 126,
+                      "preconditions": [
+                        {
+                          "id": 118,
+                          "preconditions": [
+                            {
+                              "id": 114,
+                              "reference": "PatientCharacteristicSexMale_precondition_114"
+                            },
+                            {
+                              "id": 116,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_116"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 124,
+                          "preconditions": [
+                            {
+                              "id": 120,
+                              "reference": "PatientCharacteristicSexFemale_precondition_120"
+                            },
+                            {
+                              "id": 122,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_122"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 138,
+                      "preconditions": [
+                        {
+                          "id": 133,
+                          "preconditions": [
+                            {
+                              "id": 129,
+                              "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_128"
+                            },
+                            {
+                              "id": 131,
+                              "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_131"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 137,
+                          "preconditions": [
+                            {
+                              "id": 135,
+                              "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_135"
+                            }
+                          ],
+                          "conjunction_code": "allTrue",
+                          "negation": true
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 175,
+                  "preconditions": [
+                    {
+                      "id": 159,
+                      "reference": "GROUP_COUNT_446"
+                    },
+                    {
+                      "id": 173,
+                      "preconditions": [
+                        {
+                          "id": 165,
+                          "preconditions": [
+                            {
+                              "id": 161,
+                              "reference": "PatientCharacteristicSexMale_precondition_161"
+                            },
+                            {
+                              "id": 163,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_163"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 171,
+                          "preconditions": [
+                            {
+                              "id": 167,
+                              "reference": "PatientCharacteristicSexFemale_precondition_167"
+                            },
+                            {
+                              "id": 169,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_169"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 208,
+                  "preconditions": [
+                    {
+                      "id": 194,
+                      "reference": "GROUP_COUNT_450"
+                    },
+                    {
+                      "id": 206,
+                      "preconditions": [
+                        {
+                          "id": 203,
+                          "preconditions": [
+                            {
+                              "id": 199,
+                              "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_198"
+                            },
+                            {
+                              "id": 201,
+                              "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_201"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 205,
+                          "preconditions": [
+                            {
+                              "id": 196,
+                              "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_196"
+                            }
+                          ],
+                          "conjunction_code": "allTrue",
+                          "negation": true
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 216,
+              "preconditions": [
+                {
+                  "id": 212,
+                  "reference": "DiagnosisActiveChdOrChdRiskEquivalent_precondition_212"
+                },
+                {
+                  "id": 214,
+                  "reference": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_214"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX_1": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "AB5766AB-324F-4B5E-9F89-BC7329E0535F",
+      "preconditions": [
+        {
+          "id": 229,
+          "preconditions": [
+            {
+              "id": 227,
+              "preconditions": [
+                {
+                  "id": 218,
+                  "reference": "ProcedureOrderPalliativeCare_precondition_218"
+                },
+                {
+                  "id": 225,
+                  "preconditions": [
+                    {
+                      "id": 220,
+                      "reference": "OccurrenceAPregnancy4_precondition_220"
+                    },
+                    {
+                      "id": 224,
+                      "preconditions": [
+                        {
+                          "id": 222,
+                          "reference": "OccurrenceAPregnancy4_precondition_222"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER_1": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "9ABAB074-B5D9-42B1-856C-AC8A91B847D9",
+      "preconditions": [
+        {
+          "id": 235,
+          "preconditions": [
+            {
+              "id": 230,
+              "reference": "OccurrenceALdlCode2_precondition_230"
+            },
+            {
+              "id": 233,
+              "reference": "OccurrenceALdlCode2_precondition_232"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "IPP_2": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "F2AAEE99-C062-4E40-AC45-4F5B2D0942AE",
+      "preconditions": [
+        {
+          "id": 244,
+          "preconditions": [
+            {
+              "id": 240,
+              "preconditions": [
+                {
+                  "id": 236,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_236"
+                },
+                {
+                  "id": 238,
+                  "reference": "PatientCharacteristicBirthdateBirthDate_precondition_238"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 242,
+              "reference": "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_242"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM_2": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "0534FB0E-4E41-4C06-BA88-BBF7A2D9453C",
+      "preconditions": [
+        {
+          "id": 416,
+          "preconditions": [
+            {
+              "id": 267,
+              "preconditions": [
+                {
+                  "id": 245,
+                  "reference": "LaboratoryTestPerformedLdlCode_precondition_245"
+                },
+                {
+                  "id": 253,
+                  "preconditions": [
+                    {
+                      "id": 247,
+                      "reference": "LaboratoryTestPerformedTotalCholesterol_precondition_247"
+                    },
+                    {
+                      "id": 249,
+                      "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_249"
+                    },
+                    {
+                      "id": 251,
+                      "reference": "LaboratoryTestPerformedTriglycerides_precondition_251"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 256,
+                  "reference": "LaboratoryTestPerformedLdlCode_precondition_256"
+                },
+                {
+                  "id": 264,
+                  "preconditions": [
+                    {
+                      "id": 258,
+                      "reference": "LaboratoryTestPerformedTotalCholesterol_precondition_258"
+                    },
+                    {
+                      "id": 260,
+                      "reference": "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_260"
+                    },
+                    {
+                      "id": 262,
+                      "reference": "LaboratoryTestPerformedTriglycerides_precondition_262"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 409,
+              "preconditions": [
+                {
+                  "id": 269,
+                  "reference": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_269"
+                },
+                {
+                  "id": 288,
+                  "reference": "GROUP_COUNT_454"
+                },
+                {
+                  "id": 330,
+                  "preconditions": [
+                    {
+                      "id": 307,
+                      "reference": "GROUP_COUNT_458"
+                    },
+                    {
+                      "id": 314,
+                      "preconditions": [
+                        {
+                          "id": 310,
+                          "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_309"
+                        },
+                        {
+                          "id": 312,
+                          "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_312"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    },
+                    {
+                      "id": 328,
+                      "preconditions": [
+                        {
+                          "id": 320,
+                          "preconditions": [
+                            {
+                              "id": 316,
+                              "reference": "PatientCharacteristicSexMale_precondition_316"
+                            },
+                            {
+                              "id": 318,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_318"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 326,
+                          "preconditions": [
+                            {
+                              "id": 322,
+                              "reference": "PatientCharacteristicSexFemale_precondition_322"
+                            },
+                            {
+                              "id": 324,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_324"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 372,
+                  "preconditions": [
+                    {
+                      "id": 349,
+                      "reference": "GROUP_COUNT_462"
+                    },
+                    {
+                      "id": 356,
+                      "preconditions": [
+                        {
+                          "id": 352,
+                          "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_351"
+                        },
+                        {
+                          "id": 354,
+                          "reference": "OccurrenceAHighDensityLipoproteinHdl3_precondition_354"
+                        }
+                      ],
+                      "conjunction_code": "allTrue"
+                    },
+                    {
+                      "id": 370,
+                      "preconditions": [
+                        {
+                          "id": 362,
+                          "preconditions": [
+                            {
+                              "id": 358,
+                              "reference": "PatientCharacteristicSexFemale_precondition_358"
+                            },
+                            {
+                              "id": 360,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_360"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 368,
+                          "preconditions": [
+                            {
+                              "id": 364,
+                              "reference": "PatientCharacteristicSexMale_precondition_364"
+                            },
+                            {
+                              "id": 366,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_366"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 407,
+                  "preconditions": [
+                    {
+                      "id": 391,
+                      "reference": "GROUP_COUNT_466"
+                    },
+                    {
+                      "id": 405,
+                      "preconditions": [
+                        {
+                          "id": 397,
+                          "preconditions": [
+                            {
+                              "id": 393,
+                              "reference": "PatientCharacteristicSexFemale_precondition_393"
+                            },
+                            {
+                              "id": 395,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_395"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 403,
+                          "preconditions": [
+                            {
+                              "id": 399,
+                              "reference": "PatientCharacteristicSexMale_precondition_399"
+                            },
+                            {
+                              "id": 401,
+                              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_401"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 415,
+              "preconditions": [
+                {
+                  "id": 411,
+                  "reference": "DiagnosisActiveChdOrChdRiskEquivalent_precondition_411"
+                },
+                {
+                  "id": 413,
+                  "reference": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_413"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX_2": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "A365C56B-539D-4BEC-A744-F53159A1B8B8",
+      "preconditions": [
+        {
+          "id": 428,
+          "preconditions": [
+            {
+              "id": 426,
+              "preconditions": [
+                {
+                  "id": 417,
+                  "reference": "ProcedureOrderPalliativeCare_precondition_417"
+                },
+                {
+                  "id": 424,
+                  "preconditions": [
+                    {
+                      "id": 419,
+                      "reference": "OccurrenceAPregnancy4_precondition_419"
+                    },
+                    {
+                      "id": 423,
+                      "preconditions": [
+                        {
+                          "id": 421,
+                          "reference": "OccurrenceAPregnancy4_precondition_421"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER_2": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "2919957C-F557-484C-A832-B7AF9F2D9685",
+      "preconditions": [
+        {
+          "id": 434,
+          "preconditions": [
+            {
+              "id": 429,
+              "reference": "OccurrenceALdlCode2_precondition_429"
+            },
+            {
+              "id": 432,
+              "reference": "OccurrenceALdlCode2_precondition_431"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "RiskCategoryAssessmentFraminghamCoronaryHeartDisease10YearRisk": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentFraminghamCoronaryHeartDisease10YearRisk",
+      "variable": false
+    },
+    "LaboratoryTestResultLdlCode": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Result: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultLdlCode",
+      "variable": false
+    },
+    "DiagnosisActivePregnancy": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePregnancy",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_5": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "20",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_7": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "79",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_11": {
+      "title": "Cholesterol Measure Encounter Codes",
+      "description": "Encounter, Performed: Cholesterol Measure Encounter Codes",
+      "code_list_id": "2.16.840.1.113883.3.600.1951",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCholesterolMeasureEncounterCodes",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedLdlCode_precondition_14": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Performed: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedLdlCode",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTotalCholesterol_precondition_16": {
+      "title": "Total Cholesterol",
+      "description": "Laboratory Test, Performed: Total Cholesterol",
+      "code_list_id": "2.16.840.1.113883.3.600.879",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTotalCholesterol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_18": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTriglycerides_precondition_20": {
+      "title": "Triglycerides",
+      "description": "Laboratory Test, Performed: Triglycerides",
+      "code_list_id": "2.16.840.1.113883.3.600.883",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTriglycerides",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "DiagnosisActiveChdOrChdRiskEquivalent_precondition_27": {
+      "title": "CHD or CHD Risk Equivalent",
+      "description": "Diagnosis, Active: CHD or CHD Risk Equivalent",
+      "code_list_id": "2.16.840.1.113883.3.600.863",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveChdOrChdRiskEquivalent",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_29": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "%",
+          "value": "20",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedureOrderPalliativeCare_precondition_34": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_36": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_38": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_46": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "100",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_48": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_52": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "20",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_54": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "79",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_58": {
+      "title": "Cholesterol Measure Encounter Codes",
+      "description": "Encounter, Performed: Cholesterol Measure Encounter Codes",
+      "code_list_id": "2.16.840.1.113883.3.600.1951",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCholesterolMeasureEncounterCodes",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedLdlCode_precondition_61": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Performed: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedLdlCode",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTotalCholesterol_precondition_63": {
+      "title": "Total Cholesterol",
+      "description": "Laboratory Test, Performed: Total Cholesterol",
+      "code_list_id": "2.16.840.1.113883.3.600.879",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTotalCholesterol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_65": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTriglycerides_precondition_67": {
+      "title": "Triglycerides",
+      "description": "Laboratory Test, Performed: Triglycerides",
+      "code_list_id": "2.16.840.1.113883.3.600.883",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTriglycerides",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_74": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "%",
+          "value": "10",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_76": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_79": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_82": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_85": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_87": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_436": {
+      "title": "GROUP_FIRST_436",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_85",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_87"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_436",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_438": {
+      "title": "GROUP_COUNT_438",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_76",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_79",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_82",
+        "GROUP_FIRST_436"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_438",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "3",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_95": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_98": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_101": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_104": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_106": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_440": {
+      "title": "GROUP_FIRST_440",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_104",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_106"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_440",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_442": {
+      "title": "GROUP_COUNT_442",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_95",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_98",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_101",
+        "GROUP_FIRST_440"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_442",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexMale_precondition_114": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_116": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "45",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexFemale_precondition_120": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_122": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "55",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_128": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_131": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "60",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_135": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_142": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_145": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_148": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_151": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_153": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_444": {
+      "title": "GROUP_FIRST_444",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_151",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_153"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_444",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_446": {
+      "title": "GROUP_COUNT_446",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_142",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_145",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_148",
+        "GROUP_FIRST_444"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_446",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexMale_precondition_161": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_163": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "45",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexFemale_precondition_167": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_169": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "55",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_177": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_180": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_183": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_186": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_188": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_448": {
+      "title": "GROUP_FIRST_448",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_186",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_188"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_448",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_450": {
+      "title": "GROUP_COUNT_450",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_177",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_180",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_183",
+        "GROUP_FIRST_448"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_450",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_198": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_201": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "60",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_196": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "DiagnosisActiveChdOrChdRiskEquivalent_precondition_212": {
+      "title": "CHD or CHD Risk Equivalent",
+      "description": "Diagnosis, Active: CHD or CHD Risk Equivalent",
+      "code_list_id": "2.16.840.1.113883.3.600.863",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveChdOrChdRiskEquivalent",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_214": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "%",
+          "value": "20",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedureOrderPalliativeCare_precondition_218": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_220": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_222": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_230": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "130",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_232": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_236": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "20",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_238": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "79",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedCholesterolMeasureEncounterCodes_precondition_242": {
+      "title": "Cholesterol Measure Encounter Codes",
+      "description": "Encounter, Performed: Cholesterol Measure Encounter Codes",
+      "code_list_id": "2.16.840.1.113883.3.600.1951",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCholesterolMeasureEncounterCodes",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedLdlCode_precondition_245": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Performed: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedLdlCode",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTotalCholesterol_precondition_247": {
+      "title": "Total Cholesterol",
+      "description": "Laboratory Test, Performed: Total Cholesterol",
+      "code_list_id": "2.16.840.1.113883.3.600.879",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTotalCholesterol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_249": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTriglycerides_precondition_251": {
+      "title": "Triglycerides",
+      "description": "Laboratory Test, Performed: Triglycerides",
+      "code_list_id": "2.16.840.1.113883.3.600.883",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTriglycerides",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedLdlCode_precondition_256": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Performed: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedLdlCode",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTotalCholesterol_precondition_258": {
+      "title": "Total Cholesterol",
+      "description": "Laboratory Test, Performed: Total Cholesterol",
+      "code_list_id": "2.16.840.1.113883.3.600.879",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTotalCholesterol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl_precondition_260": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "LaboratoryTestPerformedTriglycerides_precondition_262": {
+      "title": "Triglycerides",
+      "description": "Laboratory Test, Performed: Triglycerides",
+      "code_list_id": "2.16.840.1.113883.3.600.883",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTriglycerides",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_269": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "%",
+          "value": "10",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_271": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_274": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_277": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_280": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_282": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_452": {
+      "title": "GROUP_FIRST_452",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_280",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_282"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_452",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_454": {
+      "title": "GROUP_COUNT_454",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_271",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_274",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_277",
+        "GROUP_FIRST_452"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_454",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_290": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_293": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_296": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_299": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_301": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_456": {
+      "title": "GROUP_FIRST_456",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_299",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_301"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_456",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_458": {
+      "title": "GROUP_COUNT_458",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_290",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_293",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_296",
+        "GROUP_FIRST_456"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_458",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_309": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_312": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "60",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "PatientCharacteristicSexMale_precondition_316": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_318": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "45",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexFemale_precondition_322": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_324": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "55",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_332": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_335": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_338": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_341": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_343": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_460": {
+      "title": "GROUP_FIRST_460",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_341",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_343"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_460",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_462": {
+      "title": "GROUP_COUNT_462",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_332",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_335",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_338",
+        "GROUP_FIRST_460"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_462",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "2",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_351": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3_precondition_354": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "60",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "PatientCharacteristicSexFemale_precondition_358": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_360": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "55",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexMale_precondition_364": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_366": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "45",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicCurrentCigaretteSmoker_precondition_374": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_377": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_380": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "40",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_383": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_385": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "GROUP_FIRST_464": {
+      "title": "GROUP_FIRST_464",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveDiagnosisOfHypertensionGrouped_precondition_383",
+        "MedicationActiveAntiHypertensivePharmacologicTherapy_precondition_385"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_464",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "GROUP_COUNT_466": {
+      "title": "GROUP_COUNT_466",
+      "description": "",
+      "children_criteria": [
+        "PatientCharacteristicCurrentCigaretteSmoker_precondition_374",
+        "DiagnosisFamilyHistoryFamilyHistoryChd_precondition_377",
+        "LaboratoryTestResultHighDensityLipoproteinHdl_precondition_380",
+        "GROUP_FIRST_464"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_COUNT_466",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": " ",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexFemale_precondition_393": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_395": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "55",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicSexMale_precondition_399": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_401": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "45",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosisActiveChdOrChdRiskEquivalent_precondition_411": {
+      "title": "CHD or CHD Risk Equivalent",
+      "description": "Diagnosis, Active: CHD or CHD Risk Equivalent",
+      "code_list_id": "2.16.840.1.113883.3.600.863",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveChdOrChdRiskEquivalent",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1_precondition_413": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "%",
+          "value": "10",
+          "inclusive?": true,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedureOrderPalliativeCare_precondition_417": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_419": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancy4_precondition_421": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_429": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "mg/dL",
+          "value": "160",
+          "inclusive?": false,
+          "derived?": false
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceALdlCode2_precondition_431": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "PatientCharacteristicCurrentCigaretteSmoker": {
+      "title": "Current Cigarette Smoker",
+      "description": "Patient Characteristic: Current Cigarette Smoker",
+      "code_list_id": "2.16.840.1.113883.3.600.2390",
+      "type": "characteristic",
+      "definition": "patient_characteristic",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicCurrentCigaretteSmoker",
+      "variable": false
+    },
+    "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_FRAMINGHAM_CORONARY_HEART_DISEASE_10_YEAR_RISK",
+      "source_data_criteria": "OccurrenceAFraminghamCoronaryHeartDisease10YearRisk1",
+      "variable": false
+    },
+    "OccurrenceALdlCode2": {
+      "title": "LDL Code",
+      "description": "Laboratory Test: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_LDL_CODE",
+      "source_data_criteria": "OccurrenceALdlCode2",
+      "variable": false
+    },
+    "LaboratoryTestPerformedLdlCode": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Performed: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedLdlCode",
+      "variable": false
+    },
+    "ProcedureOrderPalliativeCare": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false
+    },
+    "DiagnosisActiveChdOrChdRiskEquivalent": {
+      "title": "CHD or CHD Risk Equivalent",
+      "description": "Diagnosis, Active: CHD or CHD Risk Equivalent",
+      "code_list_id": "2.16.840.1.113883.3.600.863",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveChdOrChdRiskEquivalent",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "LaboratoryTestPerformedTotalCholesterol": {
+      "title": "Total Cholesterol",
+      "description": "Laboratory Test, Performed: Total Cholesterol",
+      "code_list_id": "2.16.840.1.113883.3.600.879",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTotalCholesterol",
+      "variable": false
+    },
+    "LaboratoryTestPerformedHighDensityLipoproteinHdl": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Performed: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedHighDensityLipoproteinHdl",
+      "variable": false
+    },
+    "LaboratoryTestPerformedTriglycerides": {
+      "title": "Triglycerides",
+      "description": "Laboratory Test, Performed: Triglycerides",
+      "code_list_id": "2.16.840.1.113883.3.600.883",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedTriglycerides",
+      "variable": false
+    },
+    "DiagnosisFamilyHistoryFamilyHistoryChd": {
+      "title": "Family History CHD",
+      "description": "Diagnosis, Family History: Family History CHD",
+      "code_list_id": "2.16.840.1.113883.3.600.1557",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "family_history",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosisFamilyHistoryFamilyHistoryChd",
+      "variable": false
+    },
+    "DiagnosisActiveDiagnosisOfHypertensionGrouped": {
+      "title": "Diagnosis of hypertension grouped",
+      "description": "Diagnosis, Active: Diagnosis of hypertension grouped",
+      "code_list_id": "2.16.840.1.113883.3.600.263",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiagnosisOfHypertensionGrouped",
+      "variable": false
+    },
+    "MedicationActiveAntiHypertensivePharmacologicTherapy": {
+      "title": "Anti-Hypertensive Pharmacologic Therapy",
+      "description": "Medication, Active: Anti-Hypertensive Pharmacologic Therapy",
+      "code_list_id": "2.16.840.1.113883.3.600.1476",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAntiHypertensivePharmacologicTherapy",
+      "variable": false
+    },
+    "EncounterPerformedCholesterolMeasureEncounterCodes": {
+      "title": "Cholesterol Measure Encounter Codes",
+      "description": "Encounter, Performed: Cholesterol Measure Encounter Codes",
+      "code_list_id": "2.16.840.1.113883.3.600.1951",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedCholesterolMeasureEncounterCodes",
+      "variable": false
+    },
+    "OccurrenceAHighDensityLipoproteinHdl3": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "LABORATORY_TEST_HIGH_DENSITY_LIPOPROTEIN_HDL",
+      "source_data_criteria": "OccurrenceAHighDensityLipoproteinHdl3",
+      "variable": false
+    },
+    "OccurrenceAPregnancy4": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY",
+      "source_data_criteria": "OccurrenceAPregnancy4",
+      "variable": false
+    },
+    "PatientCharacteristicSexFemale": {
+      "title": "Female",
+      "description": "Patient Characteristic Sex: Female",
+      "code_list_id": "2.16.840.1.113883.3.560.100.2",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexFemale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicSexMale": {
+      "title": "Male",
+      "description": "Patient Characteristic Sex: Male",
+      "code_list_id": "2.16.840.1.113883.3.560.100.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexMale",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "M"
+      }
+    },
+    "RiskCategoryAssessmentFraminghamCoronaryHeartDisease10YearRisk": {
+      "title": "Framingham coronary heart disease 10 year risk",
+      "description": "Risk Category Assessment: Framingham coronary heart disease 10 year risk",
+      "code_list_id": "2.16.840.1.113883.3.600.1561",
+      "type": "risk_category_assessments",
+      "definition": "risk_category_assessment",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "RiskCategoryAssessmentFraminghamCoronaryHeartDisease10YearRisk",
+      "variable": false
+    },
+    "LaboratoryTestResultLdlCode": {
+      "title": "LDL Code",
+      "description": "Laboratory Test, Result: LDL Code",
+      "code_list_id": "2.16.840.1.113883.3.600.872",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultLdlCode",
+      "variable": false
+    },
+    "LaboratoryTestResultHighDensityLipoproteinHdl": {
+      "title": "High Density Lipoprotein (HDL)",
+      "description": "Laboratory Test, Result: High Density Lipoprotein (HDL)",
+      "code_list_id": "2.16.840.1.113883.3.600.875",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultHighDensityLipoproteinHdl",
+      "variable": false
+    },
+    "DiagnosisActivePregnancy": {
+      "title": "Pregnancy",
+      "description": "Diagnosis, Active: Pregnancy",
+      "code_list_id": "2.16.840.1.113883.3.600.1622",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePregnancy",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "There are three criteria for this measure based on the patient’s risk category. When a patient could be included in multiple risk categories, the “higher” level of risk will be utilized.\r\n1. Highest Level of Risk: Coronary Heart Disease (CHD) or CHD Risk Equivalent OR 10 year Framingham risk > 20%\r\n\r\n2. Moderate Level of Risk: Multiple (2+) Risk Factors OR 10 year Framingham risk 10-20%\r\n\r\n3. Lowest Level of Risk: 0 or 1 Risk Factor OR 10 year Framingham risk < 10%",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "There are three criteria for this measure based on the patient’s risk category. When a patient could be included in multiple risk categories, the “higher” level of risk will be utilized.\r\n1. Highest Level of Risk: Coronary Heart Disease (CHD) or CHD Risk Equivalent OR 10 year Framingham risk > 20%\r\n\r\n2. Moderate Level of Risk: Multiple (2+) Risk Factors OR 10 year Framingham risk 10-20%\r\n\r\n3. Lowest Level of Risk: 0 or 1 Risk Factor OR 10 year Framingham risk < 10%",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "This measure will be calculated for each of the three strata based on risk category for all patients aged 20 through 79 years who were seen by the eligible professional during the measurement period.",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This measure will be calculated for each of the three strata based on risk category for all patients aged 20 through 79 years who were seen by the eligible professional during the measurement period.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "The Agency for Healthcare Research and Quality (AHRQ) conducts systematic evidence reviews prior to recommendations issued by the U.S. Preventive Services Task Force (USPSTF). In the systematic evidence review, “Screening for Lipid Disorders” by, (Pignone MP et al.  2001), “Coronary Heart Disease (CHD) was identified as the leading cause of morbidity and mortality in the United States, causing nearly 500,000 deaths each year and requiring nearly 12 million hospital days of care per year. It is the leading cause of disabled life-years and is second only to injuries as a cause of life-years lost. The age -adjusted annual death rate for CHD is 100 per 100,000 persons overall and 140 per 100,000 persons among African Americans. The lifetime risk of having a CHD event, calculated at age 40, is estimated to be 49% for men and 32% for women in the United States. CHD accounted for $78 billion in health care costs in 1995” (Pignone MP, et. al. 2001, p. 1).\r\n\r\nIn June 2008, Helfand & Carson (2008) provided a paper called “Screening for Lipid Disorders in Adults: Selective Update of 2001; U.S. Preventive Services Task Force Review” to renew Pignone’s (2001) earlier evidence. Helfand & Carson  (2008) stated: “Based on the National Health and Examination Survey (NHANES) III data in the general US  population, 8.9% of men aged 18-35 and 12.3% of women aged 18-45 have a Total Cholesterol( TC) >240 mg/dL.  Among men aged 18-35 and women younger than 40 who do not smoke, do not have a history of hypertension, and do not have diabetes mellitus, no combination of ATP-III risk factors (TC up to 310 mg/dL and systolic blood pressure) would result in a predicted 10-year risk of major cardiovascular events greater than 10%. Some men younger than 35 years of age who smoke and those who have diabetes have a 10-year risk that exceeds 10% but these men can be identified for lipid testing based on their history. In NHANES, among all non-diabetic women aged 40-45 years, the  probability of being at intermediate or high risk were 1.45% and 0%, respectively; all of these women had a history of hypertension or smoking”(Helfand M & Carson S, 2008, p. 5).\r\n\r\nThe risk of CHD is independently related to several potentially modifiable risk factors besides abnormal lipids, including smoking, diabetes, hypertension, and physical inactivity. Recent epidemiologic studies and basic science research expanded knowledge about several new potential CHD risk factors. Use of a Framingham risk-based algorithm that directly incorporates age, the presence and magnitude of other risk factors, and measures of total cholesterol and HDL is the most accurate approach. “Screening for lipid disorders by measuring cholesterol levels in adult patients is quite feasible for physicians because it involves ordering only a blood test.\r\n\r\nProviders appear to have achieved high levels of lipid screening based on population-based patient survey data.” (Pignone MP, et. al., 2001, p. 34).AHRQ, 2001) This systematic review recommends using a supplemental table to improve the feasibility of a risk-based strategy. In the Helfand & Carson (2008) update to Pignone’s “Screening for  Lipid Disorders” (Pignone MP, 2001), the researchers state: “We did not identify new evidence relevant to the\r\nappropriate interval to screen for hyperlipidemia in the general population or in subgroups of the general population” (Helfand M & Carson S, 2008, p. 5).\r\n\r\nThe primary recommendation of several advisory groups bodies state that adults should undergo an office-based assessment as the first step to identify patients at a higher CHD risk. The National Cholesterol Education Program Panel III (NCEP- III) has adopted using an adaptation of the risk prediction algorithm originating from the Framingham Heart Study estimating a patient’s 10-year risk for developing CHD and has recommended its’ use as the primary goal of preventive treatment. Stratifying CHD risk includes determining if CHD is present as well as CHD risk equivalents and major CHD risk factors. A history of CHD includes myocardial infarction, myocardial ischemia, angina (stable, unstable), percutaneous transluminal coronary angioplasty & coronary artery bypass surgery. CHD risk equivalents include peripheral artery disease, abdominal aortic aneurysm, thrombotic stroke, transient ischemic attacks, diabetes & Framingham 10-yr CHD risk > 20%. Major CHD risk factors include age, yr (men >45; women >55), cigarette smoking, hypertension (BP >140/90 mm Hg) or anti- hypertensive medication, Low HDL-C (<40 mg/dL) & negative risk factor: high HDL-C (>60 mg/dL). The Framingham risk categories include gender, age, systolic blood pressure, smoking status, total cholesterol, and HDL-C levels (NCEP III, 2002).\r\n\r\nNelson RH (2013) noted that “regardless of the recommendations it is useful to consider how successful the medical community has been in meeting guideline goals…a national survey…showed 67% of …patients with elevated cholesterol achieved their LDL cholesterol treatment goal”. Nelson (2013) also stated “data from the National Health and Nutrition Examination Survey (NHANES) documents a steady decline in total cholesterol over several decades, so that in 2002 no more than 17% of US adults had a total cholesterol level of 240 mg/dL or higher. More recent data from an identical survey in 2008 show that the Healthy People 2010 goal of an average cholesterol below 200 mg/dL in all adults ages 20 to 74 was met by both men and women by 2008” (Nelson RH, 2013, p. 202).\r\n\r\n“Based on data from the 2005-2008 NHANES, an estimated 71 million (35.5%) U.S. adults aged>=20 years had high LDL-C, but only 34 million (48.1%) were treated and 23 million (32.2%) had their LDL-C controlled….The prevalence of LDL-C control was lowest among persons who reported receiving medical care less than twice in the previous year (11.7%, being uninsured (13.5%), being Mexican American (20.3%) or having income below the poverty level (21.9%)” (Kuklina EV, et. al., 2011, p. 109).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The Agency for Healthcare Research and Quality (AHRQ) conducts systematic evidence reviews prior to recommendations issued by the U.S. Preventive Services Task Force (USPSTF). In the systematic evidence review, “Screening for Lipid Disorders” by, (Pignone MP et al.  2001), “Coronary Heart Disease (CHD) was identified as the leading cause of morbidity and mortality in the United States, causing nearly 500,000 deaths each year and requiring nearly 12 million hospital days of care per year. It is the leading cause of disabled life-years and is second only to injuries as a cause of life-years lost. The age -adjusted annual death rate for CHD is 100 per 100,000 persons overall and 140 per 100,000 persons among African Americans. The lifetime risk of having a CHD event, calculated at age 40, is estimated to be 49% for men and 32% for women in the United States. CHD accounted for $78 billion in health care costs in 1995” (Pignone MP, et. al. 2001, p. 1).\r\n\r\nIn June 2008, Helfand & Carson (2008) provided a paper called “Screening for Lipid Disorders in Adults: Selective Update of 2001; U.S. Preventive Services Task Force Review” to renew Pignone’s (2001) earlier evidence. Helfand & Carson  (2008) stated: “Based on the National Health and Examination Survey (NHANES) III data in the general US  population, 8.9% of men aged 18-35 and 12.3% of women aged 18-45 have a Total Cholesterol( TC) >240 mg/dL.  Among men aged 18-35 and women younger than 40 who do not smoke, do not have a history of hypertension, and do not have diabetes mellitus, no combination of ATP-III risk factors (TC up to 310 mg/dL and systolic blood pressure) would result in a predicted 10-year risk of major cardiovascular events greater than 10%. Some men younger than 35 years of age who smoke and those who have diabetes have a 10-year risk that exceeds 10% but these men can be identified for lipid testing based on their history. In NHANES, among all non-diabetic women aged 40-45 years, the  probability of being at intermediate or high risk were 1.45% and 0%, respectively; all of these women had a history of hypertension or smoking”(Helfand M & Carson S, 2008, p. 5).\r\n\r\nThe risk of CHD is independently related to several potentially modifiable risk factors besides abnormal lipids, including smoking, diabetes, hypertension, and physical inactivity. Recent epidemiologic studies and basic science research expanded knowledge about several new potential CHD risk factors. Use of a Framingham risk-based algorithm that directly incorporates age, the presence and magnitude of other risk factors, and measures of total cholesterol and HDL is the most accurate approach. “Screening for lipid disorders by measuring cholesterol levels in adult patients is quite feasible for physicians because it involves ordering only a blood test.\r\n\r\nProviders appear to have achieved high levels of lipid screening based on population-based patient survey data.” (Pignone MP, et. al., 2001, p. 34).AHRQ, 2001) This systematic review recommends using a supplemental table to improve the feasibility of a risk-based strategy. In the Helfand & Carson (2008) update to Pignone’s “Screening for  Lipid Disorders” (Pignone MP, 2001), the researchers state: “We did not identify new evidence relevant to the\r\nappropriate interval to screen for hyperlipidemia in the general population or in subgroups of the general population” (Helfand M & Carson S, 2008, p. 5).\r\n\r\nThe primary recommendation of several advisory groups bodies state that adults should undergo an office-based assessment as the first step to identify patients at a higher CHD risk. The National Cholesterol Education Program Panel III (NCEP- III) has adopted using an adaptation of the risk prediction algorithm originating from the Framingham Heart Study estimating a patient’s 10-year risk for developing CHD and has recommended its’ use as the primary goal of preventive treatment. Stratifying CHD risk includes determining if CHD is present as well as CHD risk equivalents and major CHD risk factors. A history of CHD includes myocardial infarction, myocardial ischemia, angina (stable, unstable), percutaneous transluminal coronary angioplasty & coronary artery bypass surgery. CHD risk equivalents include peripheral artery disease, abdominal aortic aneurysm, thrombotic stroke, transient ischemic attacks, diabetes & Framingham 10-yr CHD risk > 20%. Major CHD risk factors include age, yr (men >45; women >55), cigarette smoking, hypertension (BP >140/90 mm Hg) or anti- hypertensive medication, Low HDL-C (<40 mg/dL) & negative risk factor: high HDL-C (>60 mg/dL). The Framingham risk categories include gender, age, systolic blood pressure, smoking status, total cholesterol, and HDL-C levels (NCEP III, 2002).\r\n\r\nNelson RH (2013) noted that “regardless of the recommendations it is useful to consider how successful the medical community has been in meeting guideline goals…a national survey…showed 67% of …patients with elevated cholesterol achieved their LDL cholesterol treatment goal”. Nelson (2013) also stated “data from the National Health and Nutrition Examination Survey (NHANES) documents a steady decline in total cholesterol over several decades, so that in 2002 no more than 17% of US adults had a total cholesterol level of 240 mg/dL or higher. More recent data from an identical survey in 2008 show that the Healthy People 2010 goal of an average cholesterol below 200 mg/dL in all adults ages 20 to 74 was met by both men and women by 2008” (Nelson RH, 2013, p. 202).\r\n\r\n“Based on data from the 2005-2008 NHANES, an estimated 71 million (35.5%) U.S. adults aged>=20 years had high LDL-C, but only 34 million (48.1%) were treated and 23 million (32.2%) had their LDL-C controlled….The prevalence of LDL-C control was lowest among persons who reported receiving medical care less than twice in the previous year (11.7%, being uninsured (13.5%), being Mexican American (20.3%) or having income below the poverty level (21.9%)” (Kuklina EV, et. al., 2011, p. 109).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Routine cholesterol testing should begin in young adulthood (>= 20 years of age). When LDL cholesterol concentrations range from 100–129 mg/dL, young adults should be encouraged to modify life habits to minimize long-term risk. In those with borderline high LDL cholesterol (130–159 mg/dL), clinical attention through therapeutic lifestyle changes is needed both to lower LDL cholesterol and to minimize other risk factors. If LDL cholesterol is high (160–189 mg/dL), more intensive clinical intervention should be initiated, with emphasis on therapeutic lifestyle changes.\r\n\r\nHowever, if LDL cholesterol remains elevated despite therapeutic lifestyle changes, particularly when LDL cholesterol is >= 190 mg/dL, consideration should be given to long-term management with LDL-lowering drugs.\r\n\r\nATP III recognizes that detection of cholesterol disorders and other coronary heart disease (CHD) risk factors occurs primarily through clinical case finding. Risk factors can be detected and evaluated as part of a person’s work-up for any medical problem. Alternatively, public screening programs can identify risk factors, provided that affected individuals are appropriately referred for physician attention. The identification of cholesterol disorders in the setting of a medical examination has the advantage that other cardiovascular risk factors—including prior CHD, PVD, stroke, age, gender, family history, cigarette smoking, high blood pressure, diabetes mellitus, obesity, physical inactivity— co-morbidities, and other factors can be assessed and considered prior to treatment.\r\n\r\nNational Cholesterol Education Program, \r\nNational Heart, Lung, and Blood Institute,\r\nNational Institutes of Health,\r\n NIH Publication No. 02-5215, \r\nSeptember 2002\r\n\r\nWilkinson J (2012) states that screening “must be recommended for men over age 34 and women over age 44 every five years in the “Preventative Services for Adults, Institute for Clinical Systems Improvement (ICSI) Guideline (Wilkinson J, et. al. 2012, p.20).  Varbo (2013) also agreed that “LDL cholesterol is well documented as a causal risk factor for ischemic heart  disease” (Varbo A, et. al., 2013, p. 435).\r\n\r\nThe U.S. Preventive Services Task Force (USPSTF),  2008 strongly recommends screening men aged 35 and older for lipid disorders (Helfand M & Carson S, 2008, p. 40).\r\n\r\nThe USPSTF recommends screening men aged 20 to 35 for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF strongly recommends screening women aged 45 and older for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF recommends screening women aged 20 to 45 for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF makes no recommendation for or against routine screening for lipid disorders in men aged 20 to 35, or in women aged 20 and older who are not at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nNelson (2013) agrees that the recommendations of the USPSTF, published in 2008, remain current and viable in 2013 (Nelson RH, 2013). \r\nThe National Strategy for Quality Improvement in Health Care for 2011 has identified the promotion of the most effective prevention and treatment practices for the leading causes of mortality, starting with cardiovascular disease as one of its’ national priorities. These priorities are based on the most recent research as well as stakeholder input. Opportunities for success include increase blood pressure control in adults, reduced high cholesterol levels in adults, and decrease smoking among adults and adolescents. Illustrative measures include:\r\n• Percentage of patients ages 18 years and older with ischemic vascular disease whose most recent blood pressure during the measurement year is <140/90 mm Hg\r\n• Percentage of patients with ischemic vascular disease whose most recent low-density cholesterol is <100\r\n• Percentage of patients who received evidence-based smoking cessation services (e.g., medications)\r\n\r\nThe U.S. Department of Health and Human Service’s Healthy People 2020 has set a target of 82.1% for HDS-6: Increase the proportion of adults who have had their blood cholesterol checked within the preceding 5 years (a 10% improvement over the next decade).",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Routine cholesterol testing should begin in young adulthood (>= 20 years of age). When LDL cholesterol concentrations range from 100–129 mg/dL, young adults should be encouraged to modify life habits to minimize long-term risk. In those with borderline high LDL cholesterol (130–159 mg/dL), clinical attention through therapeutic lifestyle changes is needed both to lower LDL cholesterol and to minimize other risk factors. If LDL cholesterol is high (160–189 mg/dL), more intensive clinical intervention should be initiated, with emphasis on therapeutic lifestyle changes.\r\n\r\nHowever, if LDL cholesterol remains elevated despite therapeutic lifestyle changes, particularly when LDL cholesterol is >= 190 mg/dL, consideration should be given to long-term management with LDL-lowering drugs.\r\n\r\nATP III recognizes that detection of cholesterol disorders and other coronary heart disease (CHD) risk factors occurs primarily through clinical case finding. Risk factors can be detected and evaluated as part of a person’s work-up for any medical problem. Alternatively, public screening programs can identify risk factors, provided that affected individuals are appropriately referred for physician attention. The identification of cholesterol disorders in the setting of a medical examination has the advantage that other cardiovascular risk factors—including prior CHD, PVD, stroke, age, gender, family history, cigarette smoking, high blood pressure, diabetes mellitus, obesity, physical inactivity— co-morbidities, and other factors can be assessed and considered prior to treatment.\r\n\r\nNational Cholesterol Education Program, \r\nNational Heart, Lung, and Blood Institute,\r\nNational Institutes of Health,\r\n NIH Publication No. 02-5215, \r\nSeptember 2002\r\n\r\nWilkinson J (2012) states that screening “must be recommended for men over age 34 and women over age 44 every five years in the “Preventative Services for Adults, Institute for Clinical Systems Improvement (ICSI) Guideline (Wilkinson J, et. al. 2012, p.20).  Varbo (2013) also agreed that “LDL cholesterol is well documented as a causal risk factor for ischemic heart  disease” (Varbo A, et. al., 2013, p. 435).\r\n\r\nThe U.S. Preventive Services Task Force (USPSTF),  2008 strongly recommends screening men aged 35 and older for lipid disorders (Helfand M & Carson S, 2008, p. 40).\r\n\r\nThe USPSTF recommends screening men aged 20 to 35 for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF strongly recommends screening women aged 45 and older for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF recommends screening women aged 20 to 45 for lipid disorders if they are at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nThe USPSTF makes no recommendation for or against routine screening for lipid disorders in men aged 20 to 35, or in women aged 20 and older who are not at increased risk for coronary heart disease (Helfand M & Carson S, 2008).\r\n\r\nNelson (2013) agrees that the recommendations of the USPSTF, published in 2008, remain current and viable in 2013 (Nelson RH, 2013). \r\nThe National Strategy for Quality Improvement in Health Care for 2011 has identified the promotion of the most effective prevention and treatment practices for the leading causes of mortality, starting with cardiovascular disease as one of its’ national priorities. These priorities are based on the most recent research as well as stakeholder input. Opportunities for success include increase blood pressure control in adults, reduced high cholesterol levels in adults, and decrease smoking among adults and adolescents. Illustrative measures include:\r\n• Percentage of patients ages 18 years and older with ischemic vascular disease whose most recent blood pressure during the measurement year is <140/90 mm Hg\r\n• Percentage of patients with ischemic vascular disease whose most recent low-density cholesterol is <100\r\n• Percentage of patients who received evidence-based smoking cessation services (e.g., medications)\r\n\r\nThe U.S. Department of Health and Human Service’s Healthy People 2020 has set a target of 82.1% for HDS-6: Increase the proportion of adults who have had their blood cholesterol checked within the preceding 5 years (a 10% improvement over the next decade).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality.",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "Not Applicable"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "64",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "64",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Pignone MP, Phillips CJ, Lannon CM, Mulrow CD, Teutsch SM, Lohr KN, Whitener BL (2001). Screening for lipid disorders. Rockville (MD): Agency for Healthcare Research and Quality (AHRQ) (Systematic evidence review; no. 4).  Retrieved from http://guideline.gov/content.aspx?id=12634&search=screening+for+lipid+disorders+in+adults",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Pignone MP, Phillips CJ, Lannon CM, Mulrow CD, Teutsch SM, Lohr KN, Whitener BL (2001). Screening for lipid disorders. Rockville (MD): Agency for Healthcare Research and Quality (AHRQ) (Systematic evidence review; no. 4).  Retrieved from http://guideline.gov/content.aspx?id=12634&search=screening+for+lipid+disorders+in+adults",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "CHD Risk Equivalent:\r\nA CHD risk equivalent is a condition that carries an absolute risk for developing new CHD equal to the risk for having recurrent CHD events in persons with established CHD including:\r\n •  Atherosclerotic disease\r\n  o  Peripheral arterial disease (PAD)\r\n  o  Carotid artery disease\r\n  o  Abdominal aortic aneurysm (AAA)\r\n •  Diabetes o  Type 1 o  Type 2\r\n\r\nMajor CHD Risk Factors:\r\n •  Cigarette smoking\r\n •  Active diagnosis of hypertension or on antihypertensive medication\r\n •  Low HDL cholesterol (HDL-C) (<40 mg/dL)\r\n •  Family history of premature CHD\r\n  o  CHD in male first-degree relative <55 years\r\nOR\r\n  o  CHD in female first-degree relative <65 years\r\n •  Age (men >=45 years; women >=55 years)\r\n\r\nMost Recent LDL-C Test:\r\nA LDL-C test performed or LDL-C result verified by another provider.\r\n\r\n10-year Framingham risk: \r\nThe Framingham Risk Score will be calculated based on the patient data below and will follow the Adult Treatment Panel (ATP) III Guidelines. (see appendix for calculation unless automatically calculated by EHR)\r\n •  Gender\r\n •  Age\r\n •  Total cholesterol - Fasting\r\n •  HDL cholesterol - Fasting\r\n •  Systolic blood pressure (treated or untreated)\r\n •  Smoking status (Cigarette smoking)\r\n\r\nCalculated LDL-C* results:\r\nAre acceptable if the other elements (TRIGLYCERIDES, TOTAL CHOLESTEROL, and HIGH DENSITY LIPOPROTEIN (HDL-C) listed below are submitted AND the triglyceride value is <= 400 mg/dL.\r\n*Calculated LDL value = [TOTAL CHOLESTEROL value –  HIGH DENSITY LIPOPROTEIN (HDL-C) value – (TRIGLYCERIDE value/5)]\r\nRisk Level Recommended LDL-C Goal:\r\nCHD and CHD Risk Equivalent: <100 mg/dL \r\nMultiple (2+) Risk Factors:  <130 mg/dL\r\n0–1 Risk Factor :  <160 mg/dL\r\n*LDL-C goal for multiple-risk-factor persons with 10-year risk >20 percent = <100 mg/dL",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "CHD Risk Equivalent:\r\nA CHD risk equivalent is a condition that carries an absolute risk for developing new CHD equal to the risk for having recurrent CHD events in persons with established CHD including:\r\n •  Atherosclerotic disease\r\n  o  Peripheral arterial disease (PAD)\r\n  o  Carotid artery disease\r\n  o  Abdominal aortic aneurysm (AAA)\r\n •  Diabetes o  Type 1 o  Type 2\r\n\r\nMajor CHD Risk Factors:\r\n •  Cigarette smoking\r\n •  Active diagnosis of hypertension or on antihypertensive medication\r\n •  Low HDL cholesterol (HDL-C) (<40 mg/dL)\r\n •  Family history of premature CHD\r\n  o  CHD in male first-degree relative <55 years\r\nOR\r\n  o  CHD in female first-degree relative <65 years\r\n •  Age (men >=45 years; women >=55 years)\r\n\r\nMost Recent LDL-C Test:\r\nA LDL-C test performed or LDL-C result verified by another provider.\r\n\r\n10-year Framingham risk: \r\nThe Framingham Risk Score will be calculated based on the patient data below and will follow the Adult Treatment Panel (ATP) III Guidelines. (see appendix for calculation unless automatically calculated by EHR)\r\n •  Gender\r\n •  Age\r\n •  Total cholesterol - Fasting\r\n •  HDL cholesterol - Fasting\r\n •  Systolic blood pressure (treated or untreated)\r\n •  Smoking status (Cigarette smoking)\r\n\r\nCalculated LDL-C* results:\r\nAre acceptable if the other elements (TRIGLYCERIDES, TOTAL CHOLESTEROL, and HIGH DENSITY LIPOPROTEIN (HDL-C) listed below are submitted AND the triglyceride value is <= 400 mg/dL.\r\n*Calculated LDL value = [TOTAL CHOLESTEROL value –  HIGH DENSITY LIPOPROTEIN (HDL-C) value – (TRIGLYCERIDE value/5)]\r\nRisk Level Recommended LDL-C Goal:\r\nCHD and CHD Risk Equivalent: <100 mg/dL \r\nMultiple (2+) Risk Factors:  <130 mg/dL\r\n0–1 Risk Factor :  <160 mg/dL\r\n*LDL-C goal for multiple-risk-factor persons with 10-year risk >20 percent = <100 mg/dL",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "This is a two -part measure which is paired with CMS 61: Preventive Care and Screening: Cholesterol – Fasting Low Density Lipoprotein (LDL-C) Test Performed. If the fasting LDL-C results are documented this measure CMS 64 should also be reported.\r\n\r\nTo be eligible for performance calculations, patients must have at least one face-to -face visit with the eligible professional during the measurement period and have one fasting LDL-C performed during the same measurement period with the exception of patients with 0 or 1 risk factors who may have an fasting LDL-C performed up to four (4) years prior to the current measurement period.  To meet the numerator criteria for this measure, the patient’s fasting LDL-C (low density lipoprotein) meets or exceeds the recommended LDL-C goal.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This is a two -part measure which is paired with CMS 61: Preventive Care and Screening: Cholesterol – Fasting Low Density Lipoprotein (LDL-C) Test Performed. If the fasting LDL-C results are documented this measure CMS 64 should also be reported.\r\n\r\nTo be eligible for performance calculations, patients must have at least one face-to -face visit with the eligible professional during the measurement period and have one fasting LDL-C performed during the same measurement period with the exception of patients with 0 or 1 risk factors who may have an fasting LDL-C performed up to four (4) years prior to the current measurement period.  To meet the numerator criteria for this measure, the patient’s fasting LDL-C (low density lipoprotein) meets or exceeds the recommended LDL-C goal.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "All patients 20 through 79 years of age before the beginning of the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All patients 20 through 79 years of age before the beginning of the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Denominator 1: (High Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed during the measurement period and have CHD or CHD Risk Equivalent OR 10 year Framingham risk > 20%\r\n\r\nDenominator 2: (Moderate Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed during the measurement period and have 2 or more Major CHD Risk Factors OR 10 year Framingham Risk 10-20%.  \r\n\r\nDenominator 3: (Low Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed up to 4 years prior to the current measurement period and have 0 or 1 Major CHD Risk Factors OR 10 year Framingham risk <10%.  \r\n\r\n** For Denominator 2 and Denominator 3, HDL-C > or equal to 60 mg/dL subtracts 1 risk from the above (This is a negative risk factor.)",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Denominator 1: (High Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed during the measurement period and have CHD or CHD Risk Equivalent OR 10 year Framingham risk > 20%\r\n\r\nDenominator 2: (Moderate Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed during the measurement period and have 2 or more Major CHD Risk Factors OR 10 year Framingham Risk 10-20%.  \r\n\r\nDenominator 3: (Low Risk)\r\nAll patients aged 20 through 79 years who had a fasting LDL-C or a calculated LDL-C test performed up to 4 years prior to the current measurement period and have 0 or 1 Major CHD Risk Factors OR 10 year Framingham risk <10%.  \r\n\r\n** For Denominator 2 and Denominator 3, HDL-C > or equal to 60 mg/dL subtracts 1 risk from the above (This is a negative risk factor.)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients who have an active diagnosis of pregnancy\r\nOR\r\nPatients who are receiving palliative care",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who have an active diagnosis of pregnancy\r\nOR\r\nPatients who are receiving palliative care",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Numerator 1:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <100 mg/dL\r\nNumerator 2:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <130 mg/dL\r\nNumerator 3:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <160 mg/dL",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Numerator 1:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <100 mg/dL\r\nNumerator 2:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <130 mg/dL\r\nNumerator 3:\r\nPatients whose most recent fasting LDL-C test result is in good control, defined as <160 mg/dL",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"LDL-C \u003C100 mg/dL","id":"Population1"},
+    {"IPP":"IPP_1","DENOM":"DENOM_1","DENEX":"DENEX_1","NUMER":"NUMER_1","title":"LDL-C \u003C130 mg/dL","id":"Population2"},
+    {"IPP":"IPP_2","DENOM":"DENOM_2","DENEX":"DENEX_2","NUMER":"NUMER_2","title":"LDL-C \u003C160 mg/dL","id":"Population3"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

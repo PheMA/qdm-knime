@@ -1,0 +1,1950 @@
+{
+  "id": "40280381-446B-B8C2-0144-95DDF0421CE4",
+  "nqf_id": "0480",
+  "hqmf_id": "40280381-446B-B8C2-0144-95DDF0421CE4",
+  "hqmf_set_id": "7D374C6A-3821-4333-A1BC-4531005D77B8",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS9v3",
+  "name": "Exclusive Breast Milk Feeding",
+  "description": "PC-05 Exclusive breast milk feeding during the newborn's entire hospitalization.\n\nPC-05a Exclusive breast milk feeding during the newborn's entire hospitalization considering mother's choice.",
+  "type": "eh",
+  "category": "Newborn",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0480';\n        hqmfjs.hqmf_id = '40280381-446B-B8C2-0144-95DDF0421CE4';\n        hqmfjs.sub_id = 'a';\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.87':{'SNOMED-CT':['306699001','306701001']},'2.16.840.1.113883.3.117.1.7.1.309':{'SNOMED-CT':['371828006']},'2.16.840.1.113883.3.117.1.7.1.70':{'SNOMED-CT':['3950001']},'2.16.840.1.113762.1.4.1045.47':{'SNOMED-CT':['412726003']},'2.16.840.1.113883.3.117.1.7.1.25':{'SNOMED-CT':['169826009']},'2.16.840.1.113883.3.117.1.7.1.26':{'ICD-9-CM':['V30.00','V30.01'],'ICD-10-CM':['Z38.00','Z38.01']},'2.16.840.1.113883.3.117.1.7.1.35':{'SNOMED-CT':['190745006'],'ICD-9-CM':['271.1'],'ICD-10-CM':['E74.21']},'2.16.840.1.113883.3.117.1.7.1.38':{'SNOMED-CT':['183027000','225372007','230114001','230115000','25156005','304055007'],'ICD-10-PCS':['3E0436Z'],'ICD-9-PCS':['99.15']},'2.16.840.1.113883.3.117.1.7.1.75':{'SNOMED-CT':['405269005']},'2.16.840.1.113883.3.117.1.7.1.30':{'SNOMED-CT':['226789007']},'2.16.840.1.113883.3.117.1.7.1.27':{'SNOMED-CT':['11713004','284458003','284459006','284461002','346712003','386127005','412413001','412414007','67079006']},'2.16.840.1.113762.1.4.1045.29':{'SNOMED-CT':['169643005']},'2.16.840.1.113883.3.666.5.307':{'SNOMED-CT':['183452005','32485007','8715000']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAEncounterInpatient1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirth = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.70\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.47\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(37, \"wk\", true), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient), new IVL_PQ(null, new PQ(1, \"d\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveSingleLiveBirth_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.25\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.26\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveGalactosemia_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.35\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedParenteralInfusion_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.38\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"facility\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.75\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.309\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.87\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.SubstanceAdministeredBreastMilk_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.30\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1_precondition_37(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.27\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1_precondition_37(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.47\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(new PQ(37, \"wk\", true), null));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient), new IVL_PQ(null, new PQ(1, \"d\", false)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveSingleLiveBirth_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.25\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.26\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveGalactosemia_precondition_54 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.35\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedParenteralInfusion_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.38\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_60 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"facility\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.75\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_62 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.309\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_64 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.87\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.CommunicationFromPatientToProviderFeedingIntentionBreast_precondition_66 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.29\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.PatientCharacteristicBirth(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEncounterInpatient1_precondition_78 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\", \"specificOccurrence\": \"OccurrenceAEncounterInpatient1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.SubstanceAdministeredBreastMilk_precondition_72 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.30\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1_precondition_78(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_74 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.27\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.OccurrenceAEncounterInpatient1_precondition_78(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAEncounterInpatient1\",\"type\":\"ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT\",\"function\":\"OccurrenceAEncounterInpatient1\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('21', patient, initialSpecificContext, hqmfjs.OccurrenceAEncounterInpatient1_precondition_2, hqmfjs.OccurrenceAEncounterInpatient1_precondition_4,\n      allTrue('14', patient, initialSpecificContext, hqmfjs.PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_6,\n        atLeastOneTrue('12', patient, initialSpecificContext, hqmfjs.DiagnosisActiveSingleLiveBirth_precondition_8, hqmfjs.DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_10\n        )\n      ),\n      allFalse('20', patient, initialSpecificContext, hqmfjs.DiagnosisActiveGalactosemia_precondition_16, hqmfjs.ProcedurePerformedParenteralInfusion_precondition_18\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('39', patient, initialSpecificContext,\n      allTrue('36', patient, initialSpecificContext, hqmfjs.SubstanceAdministeredBreastMilk_precondition_31,\n        allFalse('35', patient, initialSpecificContext, hqmfjs.SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_33\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('30', patient, initialSpecificContext,\n      atLeastOneTrue('28', patient, initialSpecificContext, hqmfjs.OccurrenceAEncounterInpatient1_precondition_22, hqmfjs.OccurrenceAEncounterInpatient1_precondition_24, hqmfjs.OccurrenceAEncounterInpatient1_precondition_26\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = [\"OccurrenceAEncounterInpatient1\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0480",
+    "hqmf_id": "40280381-446B-B8C2-0144-95DDF0421CE4",
+    "hqmf_set_id": "7D374C6A-3821-4333-A1BC-4531005D77B8",
+    "hqmf_version_number": 3,
+    "title": "Exclusive Breast Milk Feeding",
+    "description": "PC-05 Exclusive breast milk feeding during the newborn's entire hospitalization.\n\nPC-05a Exclusive breast milk feeding during the newborn's entire hospitalization considering mother's choice.",
+    "cms_id": "CMS9v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "F9F3EABD-3602-4354-835B-747B959E61F7",
+        "preconditions": [
+          {
+            "id": 21,
+            "preconditions": [
+              {
+                "id": 2,
+                "reference": "OccurrenceAEncounterInpatient1_precondition_2"
+              },
+              {
+                "id": 4,
+                "reference": "OccurrenceAEncounterInpatient1_precondition_4"
+              },
+              {
+                "id": 14,
+                "preconditions": [
+                  {
+                    "id": 6,
+                    "reference": "PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_6"
+                  },
+                  {
+                    "id": 12,
+                    "preconditions": [
+                      {
+                        "id": 8,
+                        "reference": "DiagnosisActiveSingleLiveBirth_precondition_8"
+                      },
+                      {
+                        "id": 10,
+                        "reference": "DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_10"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              },
+              {
+                "id": 20,
+                "preconditions": [
+                  {
+                    "id": 16,
+                    "reference": "DiagnosisActiveGalactosemia_precondition_16"
+                  },
+                  {
+                    "id": 18,
+                    "reference": "ProcedurePerformedParenteralInfusion_precondition_18"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "9FE2519B-F72D-4517-817B-C4D1AFDB19DD"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "5BB0CB4C-BB0B-488E-B7FE-6499F196D5DE",
+        "preconditions": [
+          {
+            "id": 30,
+            "preconditions": [
+              {
+                "id": 28,
+                "preconditions": [
+                  {
+                    "id": 22,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_22"
+                  },
+                  {
+                    "id": 24,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_24"
+                  },
+                  {
+                    "id": 26,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_26"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "189BD02B-04EE-486E-9E88-143DEA246AB5",
+        "preconditions": [
+          {
+            "id": 39,
+            "preconditions": [
+              {
+                "id": 36,
+                "preconditions": [
+                  {
+                    "id": 31,
+                    "reference": "SubstanceAdministeredBreastMilk_precondition_31"
+                  },
+                  {
+                    "id": 35,
+                    "preconditions": [
+                      {
+                        "id": 33,
+                        "reference": "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_33"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue",
+                    "negation": true
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "IPP_1": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "2708E38E-909A-4A84-B61D-C57E36C70FB0",
+        "preconditions": [
+          {
+            "id": 59,
+            "preconditions": [
+              {
+                "id": 40,
+                "reference": "OccurrenceAEncounterInpatient1_precondition_40"
+              },
+              {
+                "id": 42,
+                "reference": "OccurrenceAEncounterInpatient1_precondition_42"
+              },
+              {
+                "id": 52,
+                "preconditions": [
+                  {
+                    "id": 44,
+                    "reference": "PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_44"
+                  },
+                  {
+                    "id": 50,
+                    "preconditions": [
+                      {
+                        "id": 46,
+                        "reference": "DiagnosisActiveSingleLiveBirth_precondition_46"
+                      },
+                      {
+                        "id": 48,
+                        "reference": "DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_48"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              },
+              {
+                "id": 58,
+                "preconditions": [
+                  {
+                    "id": 54,
+                    "reference": "DiagnosisActiveGalactosemia_precondition_54"
+                  },
+                  {
+                    "id": 56,
+                    "reference": "ProcedurePerformedParenteralInfusion_precondition_56"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM_1": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "8F8FB344-1708-440C-96CB-E1466E480705"
+      },
+      "DENEX_1": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "581E0FDD-D61A-4610-BD0F-45258D74E424",
+        "preconditions": [
+          {
+            "id": 71,
+            "preconditions": [
+              {
+                "id": 69,
+                "preconditions": [
+                  {
+                    "id": 60,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_60"
+                  },
+                  {
+                    "id": 62,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_62"
+                  },
+                  {
+                    "id": 64,
+                    "reference": "OccurrenceAEncounterInpatient1_precondition_64"
+                  },
+                  {
+                    "id": 68,
+                    "preconditions": [
+                      {
+                        "id": 66,
+                        "reference": "CommunicationFromPatientToProviderFeedingIntentionBreast_precondition_66"
+                      }
+                    ],
+                    "conjunction_code": "allTrue",
+                    "negation": true
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER_1": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "E9B12F0B-FF41-4988-B60D-A43B191C949A",
+        "preconditions": [
+          {
+            "id": 80,
+            "preconditions": [
+              {
+                "id": 77,
+                "preconditions": [
+                  {
+                    "id": 72,
+                    "reference": "SubstanceAdministeredBreastMilk_precondition_72"
+                  },
+                  {
+                    "id": 76,
+                    "preconditions": [
+                      {
+                        "id": 74,
+                        "reference": "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_74"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue",
+                    "negation": true
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicBirth": {
+        "title": "Birth",
+        "description": "Patient Characteristic: Birth",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "type": "characteristic",
+        "definition": "patient_characteristic",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirth",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient1": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "OccurrenceAEncounterInpatient1_precondition_2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_4": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_6": {
+        "title": "Estimated Gestational Age at Birth",
+        "description": "Physical Exam, Finding: Estimated Gestational Age at Birth",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.47",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingEstimatedGestationalAgeAtBirth",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "wk",
+            "value": "37",
+            "inclusive?": true,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveSingleLiveBirth_precondition_8": {
+        "title": "Single Live Birth",
+        "description": "Diagnosis, Active: Single Live Birth",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.25",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLiveBirth",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_10": {
+        "title": "Single Liveborn Newborn Born in Hospital",
+        "description": "Diagnosis, Active: Single Liveborn Newborn Born in Hospital",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.26",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLivebornNewbornBornInHospital",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "DiagnosisActiveGalactosemia_precondition_16": {
+        "title": "Galactosemia",
+        "description": "Diagnosis, Active: Galactosemia",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.35",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveGalactosemia",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "ProcedurePerformedParenteralInfusion_precondition_18": {
+        "title": "Parenteral Infusion",
+        "description": "Procedure, Performed: Parenteral Infusion",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.38",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedParenteralInfusion",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_22": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "FACILITY_LOCATION": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.75",
+            "title": "facility location"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_24": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+            "title": "discharge status"
+          }
+        }
+      },
+      "OccurrenceAEncounterInpatient1_precondition_26": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+            "title": "discharge status"
+          }
+        }
+      },
+      "OccurrenceAEncounterInpatient1_precondition_37": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false
+      },
+      "SubstanceAdministeredBreastMilk_precondition_31": {
+        "title": "Breast Milk",
+        "description": "Substance, Administered: Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.30",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredBreastMilk",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1_precondition_37"
+          }
+        ]
+      },
+      "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_33": {
+        "title": "Dietary Intake Other than Breast Milk",
+        "description": "Substance, Administered: Dietary Intake Other than Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.27",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1_precondition_37"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_40": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_42": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "PhysicalExamFindingEstimatedGestationalAgeAtBirth_precondition_44": {
+        "title": "Estimated Gestational Age at Birth",
+        "description": "Physical Exam, Finding: Estimated Gestational Age at Birth",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.47",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingEstimatedGestationalAgeAtBirth",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "wk",
+            "value": "37",
+            "inclusive?": true,
+            "derived?": false
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveSingleLiveBirth_precondition_46": {
+        "title": "Single Live Birth",
+        "description": "Diagnosis, Active: Single Live Birth",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.25",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLiveBirth",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "DiagnosisActiveSingleLivebornNewbornBornInHospital_precondition_48": {
+        "title": "Single Liveborn Newborn Born in Hospital",
+        "description": "Diagnosis, Active: Single Liveborn Newborn Born in Hospital",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.26",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLivebornNewbornBornInHospital",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "DiagnosisActiveGalactosemia_precondition_54": {
+        "title": "Galactosemia",
+        "description": "Diagnosis, Active: Galactosemia",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.35",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveGalactosemia",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "ProcedurePerformedParenteralInfusion_precondition_56": {
+        "title": "Parenteral Infusion",
+        "description": "Procedure, Performed: Parenteral Infusion",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.38",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedParenteralInfusion",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_60": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "FACILITY_LOCATION": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.75",
+            "title": "facility location"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1"
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_62": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+            "title": "discharge status"
+          }
+        }
+      },
+      "OccurrenceAEncounterInpatient1_precondition_64": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+            "title": "discharge status"
+          }
+        }
+      },
+      "CommunicationFromPatientToProviderFeedingIntentionBreast_precondition_66": {
+        "title": "Feeding Intention-Breast",
+        "description": "Communication: From Patient to Provider: Feeding Intention-Breast",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.29",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderFeedingIntentionBreast",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "PatientCharacteristicBirth",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAEncounterInpatient1_precondition_78": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false
+      },
+      "SubstanceAdministeredBreastMilk_precondition_72": {
+        "title": "Breast Milk",
+        "description": "Substance, Administered: Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.30",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredBreastMilk",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1_precondition_78"
+          }
+        ]
+      },
+      "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk_precondition_74": {
+        "title": "Dietary Intake Other than Breast Milk",
+        "description": "Substance, Administered: Dietary Intake Other than Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.27",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "OccurrenceAEncounterInpatient1_precondition_78"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirth": {
+        "title": "Birth",
+        "description": "Patient Characteristic: Birth",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "type": "characteristic",
+        "definition": "patient_characteristic",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirth",
+        "variable": false
+      },
+      "SubstanceAdministeredBreastMilk": {
+        "title": "Breast Milk",
+        "description": "Substance, Administered: Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.30",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredBreastMilk",
+        "variable": false
+      },
+      "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk": {
+        "title": "Dietary Intake Other than Breast Milk",
+        "description": "Substance, Administered: Dietary Intake Other than Breast Milk",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.27",
+        "type": "substances",
+        "definition": "substance",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "SubstanceAdministeredDietaryIntakeOtherThanBreastMilk",
+        "variable": false
+      },
+      "CommunicationFromPatientToProviderFeedingIntentionBreast": {
+        "title": "Feeding Intention-Breast",
+        "description": "Communication: From Patient to Provider: Feeding Intention-Breast",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.29",
+        "type": "communications",
+        "definition": "communication_from_patient_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromPatientToProviderFeedingIntentionBreast",
+        "variable": false
+      },
+      "DiagnosisActiveGalactosemia": {
+        "title": "Galactosemia",
+        "description": "Diagnosis, Active: Galactosemia",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.35",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveGalactosemia",
+        "variable": false
+      },
+      "ProcedurePerformedParenteralInfusion": {
+        "title": "Parenteral Infusion",
+        "description": "Procedure, Performed: Parenteral Infusion",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.38",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedParenteralInfusion",
+        "variable": false
+      },
+      "DiagnosisActiveSingleLiveBirth": {
+        "title": "Single Live Birth",
+        "description": "Diagnosis, Active: Single Live Birth",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.25",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLiveBirth",
+        "variable": false
+      },
+      "DiagnosisActiveSingleLivebornNewbornBornInHospital": {
+        "title": "Single Liveborn Newborn Born in Hospital",
+        "description": "Diagnosis, Active: Single Liveborn Newborn Born in Hospital",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.26",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveSingleLivebornNewbornBornInHospital",
+        "variable": false
+      },
+      "PhysicalExamFindingEstimatedGestationalAgeAtBirth": {
+        "title": "Estimated Gestational Age at Birth",
+        "description": "Physical Exam, Finding: Estimated Gestational Age at Birth",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.47",
+        "type": "physical_exams",
+        "definition": "physical_exam",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PhysicalExamFindingEstimatedGestationalAgeAtBirth",
+        "variable": false
+      },
+      "OccurrenceAEncounterInpatient1": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+        "source_data_criteria": "OccurrenceAEncounterInpatient1",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "LOINC(R) is a registered trademark of the Regenstrief Institute.\n \nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "LOINC(R) is a registered trademark of the Regenstrief Institute.\n \nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Exclusive breast milk feeding for the first 6 months of neonatal life has long been the expressed goal of World Health Organization (WHO), Department of Health and Human Services (DHHS), American Academy of Pediatrics (AAP) and American College of Obstetricians and Gynecologists (ACOG). ACOG has recently reiterated its position (ACOG, 2007). A recent Cochrane review substantiates the benefits (Kramer et al., 2002). Much evidence has now focused on the prenatal and intrapartum period as critical for the success of exclusive (or any) BF (Centers for Disease Control and Prevention [CDC], 2007; Petrova et al., 2007; Shealy et al., 2005; Taveras et al., 2004). Exclusive breast milk feeding rate during birth hospital stay has been calculated by the California Department of Public Health for the last several years using newborn genetic disease testing data. Healthy People 2010 and the CDC have also been active in promoting this goal.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Exclusive breast milk feeding for the first 6 months of neonatal life has long been the expressed goal of World Health Organization (WHO), Department of Health and Human Services (DHHS), American Academy of Pediatrics (AAP) and American College of Obstetricians and Gynecologists (ACOG). ACOG has recently reiterated its position (ACOG, 2007). A recent Cochrane review substantiates the benefits (Kramer et al., 2002). Much evidence has now focused on the prenatal and intrapartum period as critical for the success of exclusive (or any) BF (Centers for Disease Control and Prevention [CDC], 2007; Petrova et al., 2007; Shealy et al., 2005; Taveras et al., 2004). Exclusive breast milk feeding rate during birth hospital stay has been calculated by the California Department of Public Health for the last several years using newborn genetic disease testing data. Healthy People 2010 and the CDC have also been active in promoting this goal.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Exclusive breast milk feeding for the first 6 months of neonatal life can result in numerous long-term health benefits for both mother and newborn and is recommended by a number of national and international organizations. Evidence suggests that the prenatal and intrapartum period is critical for the success of exclusive (or any) breast feeding. Therefore, it is recommended that newborns are fed breast milk only from birth to discharge.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Exclusive breast milk feeding for the first 6 months of neonatal life can result in numerous long-term health benefits for both mother and newborn and is recommended by a number of national and international organizations. Evidence suggests that the prenatal and intrapartum period is critical for the success of exclusive (or any) breast feeding. Therefore, it is recommended that newborns are fed breast milk only from birth to discharge.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Increase in the rate",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Increase in the rate",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0480",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0480"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "9",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "9",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "World Health Organization. (1991). Indicators for assessing breastfeeding practices. Geneva, Switzerland: World Health Organization. Available at: http://www.who.int/child-adolescenthealth/new_publications/nutrition/who_cdd_ser_91.14.pdf.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "World Health Organization. (1991). Indicators for assessing breastfeeding practices. Geneva, Switzerland: World Health Organization. Available at: http://www.who.int/child-adolescenthealth/new_publications/nutrition/who_cdd_ser_91.14.pdf.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "A discharge to a designated cancer center or children’s hospital should be captured as a discharge to another hospital.\n\nThe unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A discharge to a designated cancer center or children’s hospital should be captured as a discharge to another hospital.\n\nThe unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Single term newborns born in the hospital who did not have a diagnosis of galactosemia, were not subject to parenteral infusion, and had a length of stay less than or equal to 120 days.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Single term newborns born in the hospital who did not have a diagnosis of galactosemia, were not subject to parenteral infusion, and had a length of stay less than or equal to 120 days.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "PC-05 Single term newborns discharged from the hospital.\nPC-05a Single term newborns discharged from the hospital.",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "PC-05 Single term newborns discharged from the hospital.\nPC-05a Single term newborns discharged from the hospital.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "PC-05 Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to another hospital, or who expired during the hospitalization.\nPC-05a Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to another hospital, who expired during the hospitalization, or whose mothers chose not to exclusively breast feed..",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "PC-05 Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to another hospital, or who expired during the hospitalization.\nPC-05a Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to another hospital, who expired during the hospitalization, or whose mothers chose not to exclusively breast feed..",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "PC-05 Newborns who were fed breast milk only since birth.\nPC-05a Newborns who were fed breast milk only since birth.",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "PC-05 Newborns who were fed breast milk only since birth.\nPC-05a Newborns who were fed breast milk only since birth.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"All","id":"Population1"},
+      {"IPP":"IPP_1","DENOM":"DENOM_1","DENEX":"DENEX_1","NUMER":"NUMER_1","title":"Refusals Excluded","id":"Population2"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "sub_id": "a",
+  "subtitle": "All",
+  "short_subtitle": "All",
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.87",
+    "2.16.840.1.113883.3.117.1.7.1.309",
+    "2.16.840.1.113883.3.117.1.7.1.70",
+    "2.16.840.1.113762.1.4.1045.47",
+    "2.16.840.1.113883.3.117.1.7.1.25",
+    "2.16.840.1.113883.3.117.1.7.1.26",
+    "2.16.840.1.113883.3.117.1.7.1.35",
+    "2.16.840.1.113883.3.117.1.7.1.38",
+    "2.16.840.1.113883.3.117.1.7.1.75",
+    "2.16.840.1.113883.3.117.1.7.1.30",
+    "2.16.840.1.113883.3.117.1.7.1.27",
+    "2.16.840.1.113762.1.4.1045.29",
+    "2.16.840.1.113883.3.666.5.307",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.3591"
+  ],
+  "population_ids": {
+    "IPP": "F9F3EABD-3602-4354-835B-747B959E61F7",
+    "DENOM": "9FE2519B-F72D-4517-817B-C4D1AFDB19DD",
+    "DENEX": "5BB0CB4C-BB0B-488E-B7FE-6499F196D5DE",
+    "NUMER": "189BD02B-04EE-486E-9E88-143DEA246AB5"
+  }
+}

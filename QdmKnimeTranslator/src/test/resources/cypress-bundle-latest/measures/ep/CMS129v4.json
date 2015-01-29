@@ -1,0 +1,1686 @@
+{
+  "id": "40280381-4555-E1C1-0145-75EEED891B1B",
+  "nqf_id": "0389",
+  "hqmf_id": "40280381-4555-E1C1-0145-75EEED891B1B",
+  "hqmf_set_id": "1635C14D-E612-4FA6-96CD-285361AA7F7B",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS129v4",
+  "name": "Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients",
+  "description": "Percentage of patients, regardless of age, with a diagnosis of prostate cancer at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+  "type": "ep",
+  "category": "Cancer",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0389';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-75EEED891B1B';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.526.3.1098':{'SNOMED-CT':['116783008']},'2.16.840.1.113883.3.560.100.1':{'AdministrativeSex':['M']},'2.16.840.1.113883.3.526.3.398':{'SNOMED-CT':['10492003','113120007','116244007','118161009','118162002','118163007','14473006','168922004','169327006','169328001','169329009','169340001','169349000','169359004','169374002','176106009','176258007','176260009','176261008','176262001','176263006','176267007','176286004','176288003','176319004','19149007','21190008','21372000','228677009','228684001','228688003','228690002','228692005','228693000','228694006','228695007','228697004','228698009','228699001','228701001','228702008','236209003','236211007','236252003','24242005','26294005','265589001','271291003','27877006','28579000','29860002','30426000','312235007','314202001','359922007','359926005','36253005','37851009','384691004','384692006','38915000','394902000','394918006','399124002','399180008','399315003','41371003','41416003','420529003','427357007','427985002','433224001','433225000','440093006','440094000','57525009','62867004','64978007','65381004','65551008','67598001','68986004','72388004','77613002','81232004','83154001','84755001','85768003','87795007','8782006','90199006','90470006','91531008'],'CPT':['55810','55812','55815','55840','55842','55845','55866','55873','55875','55876','77427','77776','77777','77778','77787']},'2.16.840.1.113883.3.526.3.397':{'LOINC':['35266-6']},'2.16.840.1.113883.3.526.3.401':{'LOINC':['10508-0','10886-0','12841-3','15323-9','15324-7','15325-4','19195-7','19201-3','2857-1','33667-7','34611-4','35741-8']},'2.16.840.1.113883.3.526.3.1325':{'SNOMED-CT':['433351000124101']},'2.16.840.1.113883.3.526.3.1326':{'SNOMED-CT':['433361000124104']},'2.16.840.1.113883.3.526.3.451':{'SNOMED-CT':['12584003','161977000','203508001','203509009','20793008','267981009','282743009','297217002','298731003','298740004','301773003','3200003','34789001','36729000','426135001','48926009','89638008'],'ICD-9-CM':['338.3','724.1','724.5','724.6','724.79','733.90','786.50','786.59','789.00','V76.44','V84.03'],'ICD-10-CM':['G89.3','M43.27','M43.28','M53.2X7','M53.2X8','M53.3','M53.86','M53.87','M53.88','M54.6','M54.89','M54.9','M85.9','M89.9','M94.9','R07.82','R07.89','R07.9','R10.0','R10.9','Z12.5','Z15.03']},'2.16.840.1.113883.3.526.3.399':{'SNOMED-CT':['236209003','236211007'],'CPT':['51597','55860','55862','55865','55875','55876']},'2.16.840.1.113883.3.526.3.320':{'LOINC':['25031-6','25032-4','39627-5','39812-3','39813-1','39814-9','39815-6','39816-4','39817-2','39818-0','39819-8','39820-6','39858-6','39879-2','39880-0','39881-8','39882-6','39883-4','39884-2','39901-4','39902-2','39903-0','39904-8','39905-5','41772-5','41836-8','42700-5','44142-8']},'2.16.840.1.113883.3.526.3.1494':{'SNOMED-CT':['433611000124109']},'2.16.840.1.113883.3.526.3.319':{'ICD-9-CM':['185'],'SNOMED-CT':['254900004','278060005','314969001','369485004','369486003','396198006','399068003','399490008','399590005','427492003','93974005','94503003'],'ICD-10-CM':['C61']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAClinicalStagingProcedure1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\", \"specificOccurrence\": \"OccurrenceAClinicalStagingProcedure1\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAGleasonScore2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.397\", \"specificOccurrence\": \"OccurrenceAGleasonScore2\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancer3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\", \"specificOccurrence\": \"OccurrenceAProstateCancer3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancerTreatment4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.398\", \"specificOccurrence\": \"OccurrenceAProstateCancerTreatment4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateSpecificAntigenTest5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.401\", \"specificOccurrence\": \"OccurrenceAProstateSpecificAntigenTest5\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAClinicalStagingProcedure1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\", \"specificOccurrence\": \"OccurrenceAClinicalStagingProcedure1\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancer3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\", \"specificOccurrence\": \"OccurrenceAProstateCancer3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancerTreatment4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.398\", \"specificOccurrence\": \"OccurrenceAProstateCancerTreatment4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedureResultClinicalStagingProcedure = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultGleasonScore = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.397\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveProstateCancer = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.ProcedurePerformedProstateCancerTreatment = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.398\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultProstateSpecificAntigenTest = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.401\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.OccurrenceAProstateCancer3_precondition_6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\", \"specificOccurrence\": \"OccurrenceAProstateCancer3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexMale_precondition_10 = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"M\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.OccurrenceAProstateCancer3_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\", \"specificOccurrence\": \"OccurrenceAProstateCancer3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancerTreatment4_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.398\", \"specificOccurrence\": \"OccurrenceAProstateCancerTreatment4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = FIRST(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateSpecificAntigenTest5_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.401\", \"specificOccurrence\": \"OccurrenceAProstateSpecificAntigenTest5\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAClinicalStagingProcedure1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateSpecificAntigenTest5_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.401\", \"specificOccurrence\": \"OccurrenceAProstateSpecificAntigenTest5\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(10, \"ng/mL\", true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAGleasonScore2_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.397\", \"specificOccurrence\": \"OccurrenceAGleasonScore2\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAProstateCancerTreatment4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAGleasonScore2_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.397\", \"specificOccurrence\": \"OccurrenceAGleasonScore2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new IVL_PQ(null, new PQ(6, null, true)));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\", \"specificOccurrence\": \"OccurrenceAClinicalStagingProcedure1\"};\n  var events = patient.getEvents(eventCriteria);\n  // force a check of results for result types so that performed does not bleed into results\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAProstateCancerTreatment4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\", \"specificOccurrence\": \"OccurrenceAClinicalStagingProcedure1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.526.3.1325\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1098\", \"specificOccurrence\": \"OccurrenceAClinicalStagingProcedure1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.526.3.1326\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAProstateCancer3_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.319\", \"specificOccurrence\": \"OccurrenceAProstateCancer3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActivePainRelatedToProstateCancer_precondition_45 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.451\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAProstateCancer3_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedSalvageTherapy_precondition_47 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.399\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAProstateCancer3_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedBoneScan_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.320\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"reason\", new CodeList(getCodes(\"2.16.840.1.113883.3.526.3.1494\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAProstateCancer3_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedBoneScan_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.320\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAProstateCancer3(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAClinicalStagingProcedure1\",\"type\":\"PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE\",\"function\":\"OccurrenceAClinicalStagingProcedure1\"},{\"id\":\"OccurrenceAGleasonScore2\",\"type\":\"LABORATORY_TEST_GLEASON_SCORE\",\"function\":\"OccurrenceAGleasonScore2\"},{\"id\":\"OccurrenceAProstateCancer3\",\"type\":\"DIAGNOSIS_ACTIVE_PROSTATE_CANCER\",\"function\":\"OccurrenceAProstateCancer3\"},{\"id\":\"OccurrenceAProstateCancerTreatment4\",\"type\":\"PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT\",\"function\":\"OccurrenceAProstateCancerTreatment4\"},{\"id\":\"OccurrenceAProstateSpecificAntigenTest5\",\"type\":\"LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST\",\"function\":\"OccurrenceAProstateSpecificAntigenTest5\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('13', patient, initialSpecificContext, hqmfjs.OccurrenceAProstateCancer3_precondition_6, hqmfjs.PatientCharacteristicSexMale_precondition_10,\n      allFalse('12', patient, initialSpecificContext, hqmfjs.OccurrenceAProstateCancer3_precondition_8\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('44', patient, initialSpecificContext, hqmfjs.OccurrenceAProstateCancerTreatment4_precondition_14,\n      allTrue('42', patient, initialSpecificContext,\n        allTrue('22', patient, initialSpecificContext, hqmfjs.OccurrenceAProstateSpecificAntigenTest5_precondition_17, hqmfjs.OccurrenceAProstateSpecificAntigenTest5_precondition_20\n        ),\n        allTrue('29', patient, initialSpecificContext, hqmfjs.OccurrenceAGleasonScore2_precondition_24, hqmfjs.OccurrenceAGleasonScore2_precondition_27\n        ),\n        allTrue('40', patient, initialSpecificContext, hqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_31,\n          atLeastOneTrue('38', patient, initialSpecificContext, hqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_34, hqmfjs.OccurrenceAClinicalStagingProcedure1_precondition_36\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allFalse('57', patient, initialSpecificContext, hqmfjs.DiagnosticStudyPerformedBoneScan_precondition_55\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    allTrue('54', patient, initialSpecificContext,\n      atLeastOneTrue('51', patient, initialSpecificContext, hqmfjs.DiagnosisActivePainRelatedToProstateCancer_precondition_45, hqmfjs.ProcedurePerformedSalvageTherapy_precondition_47, hqmfjs.DiagnosticStudyPerformedBoneScan_precondition_49\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0389",
+    "hqmf_id": "40280381-4555-E1C1-0145-75EEED891B1B",
+    "hqmf_set_id": "1635C14D-E612-4FA6-96CD-285361AA7F7B",
+    "hqmf_version_number": 4,
+    "title": "Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients",
+    "description": "Percentage of patients, regardless of age, with a diagnosis of prostate cancer at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+    "cms_id": "CMS129v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "8AA79152-295C-49E8-B4F3-966384290032",
+        "preconditions": [
+          {
+            "id": 13,
+            "preconditions": [
+              {
+                "id": 6,
+                "reference": "OccurrenceAProstateCancer3_precondition_6"
+              },
+              {
+                "id": 10,
+                "reference": "PatientCharacteristicSexMale_precondition_10"
+              },
+              {
+                "id": 12,
+                "preconditions": [
+                  {
+                    "id": 8,
+                    "reference": "OccurrenceAProstateCancer3_precondition_8"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "9BC32102-1C28-4B0D-AE81-BCF059743738",
+        "preconditions": [
+          {
+            "id": 44,
+            "preconditions": [
+              {
+                "id": 15,
+                "reference": "OccurrenceAProstateCancerTreatment4_precondition_14"
+              },
+              {
+                "id": 42,
+                "preconditions": [
+                  {
+                    "id": 22,
+                    "preconditions": [
+                      {
+                        "id": 18,
+                        "reference": "OccurrenceAProstateSpecificAntigenTest5_precondition_17"
+                      },
+                      {
+                        "id": 20,
+                        "reference": "OccurrenceAProstateSpecificAntigenTest5_precondition_20"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 29,
+                    "preconditions": [
+                      {
+                        "id": 25,
+                        "reference": "OccurrenceAGleasonScore2_precondition_24"
+                      },
+                      {
+                        "id": 27,
+                        "reference": "OccurrenceAGleasonScore2_precondition_27"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 40,
+                    "preconditions": [
+                      {
+                        "id": 32,
+                        "reference": "OccurrenceAClinicalStagingProcedure1_precondition_31"
+                      },
+                      {
+                        "id": 38,
+                        "preconditions": [
+                          {
+                            "id": 34,
+                            "reference": "OccurrenceAClinicalStagingProcedure1_precondition_34"
+                          },
+                          {
+                            "id": 36,
+                            "reference": "OccurrenceAClinicalStagingProcedure1_precondition_36"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "6998DFC8-8732-4A8F-8335-E8D42389DF49",
+        "preconditions": [
+          {
+            "id": 54,
+            "preconditions": [
+              {
+                "id": 51,
+                "preconditions": [
+                  {
+                    "id": 45,
+                    "reference": "DiagnosisActivePainRelatedToProstateCancer_precondition_45"
+                  },
+                  {
+                    "id": 47,
+                    "reference": "ProcedurePerformedSalvageTherapy_precondition_47"
+                  },
+                  {
+                    "id": 49,
+                    "reference": "DiagnosticStudyPerformedBoneScan_precondition_49"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "863BCA26-5D89-4E0E-A527-6D0B3B3B5B1F",
+        "preconditions": [
+          {
+            "id": 57,
+            "preconditions": [
+              {
+                "id": 55,
+                "reference": "DiagnosticStudyPerformedBoneScan_precondition_55"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue",
+            "negation": true
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceAClinicalStagingProcedure1": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+        "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+        "variable": false
+      },
+      "OccurrenceAProstateCancer3": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+        "source_data_criteria": "OccurrenceAProstateCancer3",
+        "variable": false
+      },
+      "OccurrenceAProstateCancerTreatment4": {
+        "title": "Prostate Cancer Treatment",
+        "description": "Procedure, Performed: Prostate Cancer Treatment",
+        "code_list_id": "2.16.840.1.113883.3.526.3.398",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+        "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+        "variable": false
+      },
+      "ProcedureResultClinicalStagingProcedure": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure, Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedureResultClinicalStagingProcedure",
+        "variable": false
+      },
+      "LaboratoryTestResultGleasonScore": {
+        "title": "Gleason Score",
+        "description": "Laboratory Test, Result: Gleason Score",
+        "code_list_id": "2.16.840.1.113883.3.526.3.397",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultGleasonScore",
+        "variable": false
+      },
+      "DiagnosisActiveProstateCancer": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveProstateCancer",
+        "variable": false
+      },
+      "ProcedurePerformedProstateCancerTreatment": {
+        "title": "Prostate Cancer Treatment",
+        "description": "Procedure, Performed: Prostate Cancer Treatment",
+        "code_list_id": "2.16.840.1.113883.3.526.3.398",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedProstateCancerTreatment",
+        "variable": false
+      },
+      "LaboratoryTestResultProstateSpecificAntigenTest": {
+        "title": "Prostate Specific Antigen Test",
+        "description": "Laboratory Test, Result: Prostate Specific Antigen Test",
+        "code_list_id": "2.16.840.1.113883.3.526.3.401",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultProstateSpecificAntigenTest",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "OccurrenceAProstateCancer3_precondition_6": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+        "source_data_criteria": "OccurrenceAProstateCancer3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "PatientCharacteristicSexMale_precondition_10": {
+        "title": "Male",
+        "description": "Patient Characteristic Sex: Male",
+        "code_list_id": "2.16.840.1.113883.3.560.100.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexMale",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "OccurrenceAProstateCancer3_precondition_8": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+        "source_data_criteria": "OccurrenceAProstateCancer3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAProstateCancerTreatment4_precondition_14": {
+        "title": "Prostate Cancer Treatment",
+        "description": "Procedure, Performed: Prostate Cancer Treatment",
+        "code_list_id": "2.16.840.1.113883.3.526.3.398",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+        "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "FIRST"
+          }
+        ]
+      },
+      "OccurrenceAProstateSpecificAntigenTest5_precondition_17": {
+        "title": "Prostate Specific Antigen Test",
+        "description": "Laboratory Test: Prostate Specific Antigen Test",
+        "code_list_id": "2.16.840.1.113883.3.526.3.401",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+        "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAClinicalStagingProcedure1"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAProstateSpecificAntigenTest5_precondition_20": {
+        "title": "Prostate Specific Antigen Test",
+        "description": "Laboratory Test: Prostate Specific Antigen Test",
+        "code_list_id": "2.16.840.1.113883.3.526.3.401",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+        "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "unit": "ng/mL",
+            "value": "10",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      },
+      "OccurrenceAGleasonScore2_precondition_24": {
+        "title": "Gleason Score",
+        "description": "Laboratory Test: Gleason Score",
+        "code_list_id": "2.16.840.1.113883.3.526.3.397",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+        "source_data_criteria": "OccurrenceAGleasonScore2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAProstateCancerTreatment4"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAGleasonScore2_precondition_27": {
+        "title": "Gleason Score",
+        "description": "Laboratory Test: Gleason Score",
+        "code_list_id": "2.16.840.1.113883.3.526.3.397",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+        "source_data_criteria": "OccurrenceAGleasonScore2",
+        "variable": false,
+        "value": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "value": "6",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      },
+      "OccurrenceAClinicalStagingProcedure1_precondition_31": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+        "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAProstateCancerTreatment4"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAClinicalStagingProcedure1_precondition_34": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+        "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.526.3.1325",
+          "title": "result"
+        }
+      },
+      "OccurrenceAClinicalStagingProcedure1_precondition_36": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+        "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.526.3.1326",
+          "title": "result"
+        }
+      },
+      "OccurrenceAProstateCancer3_precondition_52": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+        "source_data_criteria": "OccurrenceAProstateCancer3",
+        "variable": false
+      },
+      "DiagnosisActivePainRelatedToProstateCancer_precondition_45": {
+        "title": "Pain Related to Prostate Cancer",
+        "description": "Diagnosis, Active: Pain Related to Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.451",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePainRelatedToProstateCancer",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAProstateCancer3_precondition_52"
+          }
+        ]
+      },
+      "ProcedurePerformedSalvageTherapy_precondition_47": {
+        "title": "Salvage Therapy",
+        "description": "Procedure, Performed: Salvage Therapy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.399",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedSalvageTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAProstateCancer3_precondition_52"
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedBoneScan_precondition_49": {
+        "title": "Bone Scan",
+        "description": "Diagnostic Study, Performed: Bone Scan",
+        "code_list_id": "2.16.840.1.113883.3.526.3.320",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+        "variable": false,
+        "field_values": {
+          "REASON": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.526.3.1494",
+            "title": "reason"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAProstateCancer3_precondition_52"
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedBoneScan_precondition_55": {
+        "title": "Bone Scan",
+        "description": "Diagnostic Study, Performed: Bone Scan",
+        "code_list_id": "2.16.840.1.113883.3.526.3.320",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAProstateCancer3"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "DiagnosticStudyPerformedBoneScan": {
+        "title": "Bone Scan",
+        "description": "Diagnostic Study, Performed: Bone Scan",
+        "code_list_id": "2.16.840.1.113883.3.526.3.320",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedBoneScan",
+        "variable": false
+      },
+      "OccurrenceAClinicalStagingProcedure1": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_RESULT_CLINICAL_STAGING_PROCEDURE",
+        "source_data_criteria": "OccurrenceAClinicalStagingProcedure1",
+        "variable": false
+      },
+      "OccurrenceAGleasonScore2": {
+        "title": "Gleason Score",
+        "description": "Laboratory Test: Gleason Score",
+        "code_list_id": "2.16.840.1.113883.3.526.3.397",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_GLEASON_SCORE",
+        "source_data_criteria": "OccurrenceAGleasonScore2",
+        "variable": false
+      },
+      "PatientCharacteristicSexMale": {
+        "title": "Male",
+        "description": "Patient Characteristic Sex: Male",
+        "code_list_id": "2.16.840.1.113883.3.560.100.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexMale",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "DiagnosisActivePainRelatedToProstateCancer": {
+        "title": "Pain Related to Prostate Cancer",
+        "description": "Diagnosis, Active: Pain Related to Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.451",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePainRelatedToProstateCancer",
+        "variable": false
+      },
+      "OccurrenceAProstateCancer3": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROSTATE_CANCER",
+        "source_data_criteria": "OccurrenceAProstateCancer3",
+        "variable": false
+      },
+      "OccurrenceAProstateCancerTreatment4": {
+        "title": "Prostate Cancer Treatment",
+        "description": "Procedure, Performed: Prostate Cancer Treatment",
+        "code_list_id": "2.16.840.1.113883.3.526.3.398",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "PROCEDURE_PERFORMED_PROSTATE_CANCER_TREATMENT",
+        "source_data_criteria": "OccurrenceAProstateCancerTreatment4",
+        "variable": false
+      },
+      "OccurrenceAProstateSpecificAntigenTest5": {
+        "title": "Prostate Specific Antigen Test",
+        "description": "Laboratory Test: Prostate Specific Antigen Test",
+        "code_list_id": "2.16.840.1.113883.3.526.3.401",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "LABORATORY_TEST_PROSTATE_SPECIFIC_ANTIGEN_TEST",
+        "source_data_criteria": "OccurrenceAProstateSpecificAntigenTest5",
+        "variable": false
+      },
+      "ProcedurePerformedSalvageTherapy": {
+        "title": "Salvage Therapy",
+        "description": "Procedure, Performed: Salvage Therapy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.399",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedSalvageTherapy",
+        "variable": false
+      },
+      "ProcedureResultClinicalStagingProcedure": {
+        "title": "Clinical Staging Procedure",
+        "description": "Procedure, Result: Clinical Staging Procedure",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1098",
+        "type": "procedures",
+        "definition": "procedure_result",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedureResultClinicalStagingProcedure",
+        "variable": false
+      },
+      "LaboratoryTestResultGleasonScore": {
+        "title": "Gleason Score",
+        "description": "Laboratory Test, Result: Gleason Score",
+        "code_list_id": "2.16.840.1.113883.3.526.3.397",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultGleasonScore",
+        "variable": false
+      },
+      "DiagnosisActiveProstateCancer": {
+        "title": "Prostate Cancer",
+        "description": "Diagnosis, Active: Prostate Cancer",
+        "code_list_id": "2.16.840.1.113883.3.526.3.319",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveProstateCancer",
+        "variable": false
+      },
+      "ProcedurePerformedProstateCancerTreatment": {
+        "title": "Prostate Cancer Treatment",
+        "description": "Procedure, Performed: Prostate Cancer Treatment",
+        "code_list_id": "2.16.840.1.113883.3.526.3.398",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedProstateCancerTreatment",
+        "variable": false
+      },
+      "LaboratoryTestResultProstateSpecificAntigenTest": {
+        "title": "Prostate Specific Antigen Test",
+        "description": "Laboratory Test, Result: Prostate Specific Antigen Test",
+        "code_list_id": "2.16.840.1.113883.3.526.3.401",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultProstateSpecificAntigenTest",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Copyright 2013 American Medical Association. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "A bone scan is generally not required for staging prostate cancer in men with a low risk of recurrence and receiving primary therapy. This measure is written as a negative measure so that the performance goal is 100%, consistent with the other measures for this condition.",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A bone scan is generally not required for staging prostate cancer in men with a low risk of recurrence and receiving primary therapy. This measure is written as a negative measure so that the performance goal is 100%, consistent with the other measures for this condition.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Routine use of a bone scan is not required for staging asymptomatic men with clinically localized prostate cancer when their PSA is equal to or less than 20.0 ng/mL. (AUA, 2009)\n\nFor symptomatic patients and/or those with a life expectancy of greater than 5 years, a bone scan is appropriate for patients with any of the following: 1) T1 disease with PSA over 20 ng/mL or T2 disease with PSA over 10 ng/mL; 2) a Gleason score of 8 or higher; 3) T3 to T4 tumors or symptomatic disease. (NCCN, 2011) (Category 2A)",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Routine use of a bone scan is not required for staging asymptomatic men with clinically localized prostate cancer when their PSA is equal to or less than 20.0 ng/mL. (AUA, 2009)\n\nFor symptomatic patients and/or those with a life expectancy of greater than 5 years, a bone scan is appropriate for patients with any of the following: 1) T1 disease with PSA over 20 ng/mL or T2 disease with PSA over 10 ng/mL; 2) a Gleason score of 8 or higher; 3) T3 to T4 tumors or symptomatic disease. (NCCN, 2011) (Category 2A)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0389",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0389"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI). Neither the AMA, PCPI nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, the PCPI and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "129",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "129",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "National Comprehensive Cancer Network (NCCN). Clinical Practice Guidelines in Oncology: Prostate Cancer. Version 4.2011. Available at www.nccn.org",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "National Comprehensive Cancer Network (NCCN). Clinical Practice Guidelines in Oncology: Prostate Cancer. Version 4.2011. Available at www.nccn.org",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "Risk Strata Definitions: Low, Intermediate, or High –\nLow Risk – PSA <= 10 ng/mL; AND Gleason score 6 or less; AND clinical stage T1c or T2a. (AUA, 2007)\nIntermediate Risk – PSA > 10 to 20 ng/mL; OR Gleason score 7; OR clinical stage T2b, and not qualifying for high risk. (AUA, 2007)\nHigh Risk – PSA > 20 ng/mL; OR Gleason score 8 to 10; OR clinically localized stage T3a. (NCCN, 2011)",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Risk Strata Definitions: Low, Intermediate, or High –\nLow Risk – PSA <= 10 ng/mL; AND Gleason score 6 or less; AND clinical stage T1c or T2a. (AUA, 2007)\nIntermediate Risk – PSA > 10 to 20 ng/mL; OR Gleason score 7; OR clinical stage T2b, and not qualifying for high risk. (AUA, 2007)\nHigh Risk – PSA > 20 ng/mL; OR Gleason score 8 to 10; OR clinically localized stage T3a. (NCCN, 2011)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "A higher score indicates appropriate treatment of patients with prostate cancer at low risk of recurrence.\nOnly patients with prostate cancer with low risk of recurrence will be counted in the performance denominator of this measure.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A higher score indicates appropriate treatment of patients with prostate cancer at low risk of recurrence.\nOnly patients with prostate cancer with low risk of recurrence will be counted in the performance denominator of this measure.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "All patients, regardless of age, with a diagnosis of prostate cancer",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "All patients, regardless of age, with a diagnosis of prostate cancer",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population at low risk of recurrence receiving interstitial prostate brachytherapy, OR external beam radiotherapy to the prostate, OR radical prostatectomy, OR cryotherapy",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients who did not have a bone scan performed at any time since diagnosis of prostate cancer",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Documentation of reason(s) for performing a bone scan (including documented pain, salvage therapy, other medical reasons, bone scan ordered by someone other than reporting physician)",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Documentation of reason(s) for performing a bone scan (including documented pain, salvage therapy, other medical reasons, bone scan ordered by someone other than reporting physician)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.526.3.1098",
+    "2.16.840.1.113883.3.560.100.1",
+    "2.16.840.1.113883.3.526.3.398",
+    "2.16.840.1.113883.3.526.3.397",
+    "2.16.840.1.113883.3.526.3.401",
+    "2.16.840.1.113883.3.526.3.1325",
+    "2.16.840.1.113883.3.526.3.1326",
+    "2.16.840.1.113883.3.526.3.451",
+    "2.16.840.1.113883.3.526.3.399",
+    "2.16.840.1.113883.3.526.3.320",
+    "2.16.840.1.113883.3.526.3.1494",
+    "2.16.840.1.113883.3.526.3.319",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.3591"
+  ],
+  "population_ids": {
+    "IPP": "8AA79152-295C-49E8-B4F3-966384290032",
+    "DENOM": "9BC32102-1C28-4B0D-AE81-BCF059743738",
+    "NUMER": "863BCA26-5D89-4E0E-A527-6D0B3B3B5B1F",
+    "DENEXCEP": "6998DFC8-8732-4A8F-8335-E8D42389DF49"
+  }
+}

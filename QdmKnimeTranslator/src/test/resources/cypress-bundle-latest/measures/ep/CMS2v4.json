@@ -1,0 +1,2748 @@
+{
+  "id": "40280381-4555-E1C1-0145-DD4E02E44678",
+  "nqf_id": "0418",
+  "hqmf_id": "40280381-4555-E1C1-0145-DD4E02E44678",
+  "hqmf_set_id": "9A031E24-3D9B-11E1-8634-00237D5BF174",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS2v4",
+  "name": "Preventive Care and Screening: Screening for Clinical Depression and Follow-Up Plan",
+  "description": "Percentage of patients aged 12 years and older screened for clinical depression on the date of the encounter using an age appropriate standardized depression screening tool AND if positive, a follow-up plan is documented on the date of the positive screen.",
+  "type": "ep",
+  "category": "Core",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0418';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-DD4E02E44678';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.600.791':{'SNOMED-CT':['105480006','183944003','183945002','413310006','413311005','413312003']},'2.16.840.1.113883.3.600.2449':{'LOINC':['73832-8']},'2.16.840.1.113883.3.600.2452':{'LOINC':['73831-0']},'2.16.840.1.113883.3.600.1916':{'SNOMED-CT':['10197000','108220007','108221006','108224003','108250004','108311000','13607009','14736009','165171009','171207006','18512000','185349003','185463005','185465003','252592009','252603000','270427003','270430005','274803000','277404009','302440009','30346009','308335008','32537008','35025007','370803007','37894004','390906007','406547006','410155007','410157004','43362002','46662001','48423005','53555003','67533008','78318003','83607001','8411005','86013001','90526000','91573000'],'CPT':['90791','90792','90832','90834','90837','90839','92625','96116','96118','96150','96151','97003','99201','99202','99203','99204','99205','99212','99213','99214','99215'],'HCPCS':['G0101','G0402','G0438','G0439','G0444']},'2.16.840.1.113883.3.600.469':{'RxNorm':['1190110','248642','310384','310385','310386','313989','313990','313995','803293']},'2.16.840.1.113883.3.600.450':{'SNOMED-CT':['10875004','10981006','111485001','1196001','13313007','13581000','13746004','14495005','1499003','162004','16295005','16506000','17782008','191618007','191620005','191621009','191623007','191625000','191627008','191629006','191630001','191632009','191634005','191636007','191638008','191639000','191641004','191643001','192362008','19300006','20960007','21900002','22121000','22407005','231444002','26203008','26530004','28663008','28884001','29929003','30520009','30687003','30935000','31446002','33380008','34315001','3530005','35481005','35846004','36583000','371596008','371599001','371600003','371604007','38368003','40926005','41552001','41832009','41836007','43568002','43769008','4441000','45479006','46229002','48937005','49468007','49512000','51637008','53049002','53607008','54761006','55516002','5703000','59617007','61403008','63249007','64731001','65042007','66631006','68569003','70546001','71294008','71984005','73471000','74686005','75360000','75752004','78269000','78640000','79584002','81319007','82998009','83225003','85248005','86058007','87203005','87950005','9340000'],'ICD-9-CM':['296.40','296.41','296.42','296.43','296.44','296.45','296.46','296.80'],'ICD-10-CM':['F31.11','F31.12','F31.13','F31.2','F31.73','F31.74','F31.9']},'2.16.840.1.113883.3.600.467':{'SNOMED-CT':['372067001','385721005','385724002','385725001','385726000','385727009','385887004','385889001','385890005','401277000','410223002','410224008','410225009','410226005','410227001','410228006','410229003','410230008','410231007','410232000','410233005','410234004','425604002','439141002','5694008','88848003','91310009']},'2.16.840.1.113883.3.600.468':{'SNOMED-CT':['372067001','385721005','385724002','385725001','385726000','385727009','385887004','385889001','385890005','401277000','410223002','410224008','410225009','410226005','410227001','410228006','410229003','410230008','410231007','410232000','410233005','410234004','425604002','439141002','5694008','88848003','91310009']},'2.16.840.1.113883.3.600.559':{'SNOMED-CT':['225337009']},'2.16.840.1.113883.3.600.1545':{'SNOMED-CT':['10197000','10997001','165171009','165190001','370803007','38756009','45392008','79094001','90407005']},'2.16.840.1.113883.3.600.538':{'SNOMED-CT':['14129001','183524004','183528001','183583007','183866009','305922005','306136006','306137002','306138007','306204008','306226009','306227000','306252003','306294000','308459004','308477009','390866009','401174001','408293001','429387009','61801003']},'2.16.840.1.113883.3.600.470':{'RxNorm':['1000048','1000054','1000058','1000064','1000070','1000076','1000097','1041790','107078','1086772','1086778','1086784','1086789','1092185','1098649','1098666','1098670','1098674','1098678','1098710','1099288','1099292','1099296','1099300','1099304','1099316','1111695','1119617','1190110','1232585','1245038','1291263','1298857','1298861','1298870','1301023','1301024','197363','197364','197365','197366','198045','198046','198047','198640','198641','199283','199318','199333','199820','200145','200368','200371','237786','242345','242637','242715','245373','245562','248642','251200','252463','252712','252714','252718','253086','259140','259993','260001','260002','282962','283406','283407','283485','283672','284046','309313','309314','309671','309672','310384','310385','310386','310410','311725','311726','312036','312241','312242','312243','312244','312347','312938','312940','312941','313447','313496','313497','313498','313499','313580','313581','313582','313583','313584','313585','313586','313989','313990','313995','314111','314199','314277','317136','349332','349591','349592','349593','349594','349595','351249','351250','351285','410062','410503','476809','485514','562790','562791','562815','577208','596926','596930','596934','608139','608143','730440','730441','730442','790264','790288','794947','803293','808744','808748','808751','808753','835564','835568','835572','835577','835582','835589','835591','835593','856364','856369','856373','856377','856706','856720','856762','856769','856773','856783','856792','856797','856825','856834','856840','856845','856853','857291','857296','857297','857301','857305','857315','859186','859190','859193','861064','865206','865210','865214','884808','884813','884821','884824','895018','895020','895023','898697','898704','899262','903873','903879','903884','903887','903891','905168','905172','966787','966793','991200','993503','993518','993536','993541','993550','993557','993567','993681','993687','993691','994911']},'2.16.840.1.113883.3.600.145':{'SNOMED-CT':['14183003','15193003','15639000','18818009','191610000','191611001','191613003','191616006','191659001','192080009','19527009','19694002','20250007','231504006','231542000','2506003','25922000','2618002','268621008','28475009','3109008','319768000','320751009','33078009','35489007','36170009','36474008','36923009','370143000','38451003','38694004','39809009','40379007','40568001','42925002','430852001','442057004','48589009','63778009','66344007','67711008','69392006','71336009','73867007','75084000','75837004','76441001','77486005','77911002','78667006','79298009','81319007','83176005','832007','84760002','85080004','87512008'],'ICD-9-CM':['290.13','290.21','290.43','296.21','296.22','296.23','296.24','296.25','296.26','296.31','296.32','296.33','296.34','296.36','296.82','298.0','300.4','301.12','309.0','309.1','309.28','311'],'ICD-10-CM':['F01.51','F32.0','F32.1','F32.2','F32.3','F32.4','F32.5','F32.8','F32.9','F33.0','F33.1','F33.2','F33.3','F33.42','F33.9','F34.1','F43.21','F43.23']},'2.16.840.1.113883.3.600.2454':{'SNOMED-CT':['428171000124102','428181000124104']},'2.16.840.1.113883.3.600.792':{'SNOMED-CT':['183932001','397745006','407563006']},'2.16.840.1.113883.3.600.2451':{'SNOMED-CT':['428171000124102']},'2.16.840.1.113883.3.600.2450':{'SNOMED-CT':['428181000124104']},'2.16.840.1.113883.3.600.1542':{'SNOMED-CT':['10197000','10997001','165171009','165190001','370803007','38756009','45392008','79094001','90407005']},'2.16.840.1.113883.3.600.537':{'SNOMED-CT':['183524004','183583007','183851006','183866009','305922005','306136006','306137002','306226009','306227000','306252003','306291008','306294000','308459004','308477009','309627007','390866009','401174001','429387009','61801003']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAAdultDepressionScreening1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionScreeningDenominatorEncounterCodesNew3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.1916\", \"specificOccurrence\": \"OccurrenceADepressionScreeningDenominatorEncounterCodesNew3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABipolarDiagnosis4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\", \"specificOccurrence\": \"OccurrenceABipolarDiagnosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionDiagnosis5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\", \"specificOccurrence\": \"OccurrenceADepressionDiagnosis5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNotDoneMedicalReasonContraindicated = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNotDonePatientReasonRefused = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNotDoneMedicalReasonContraindicated6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentNotDonePatientReasonRefused7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedDepressionScreeningDenominatorEncounterCodesNew = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.1916\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveBipolarDiagnosis = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveDepressionDiagnosis = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_8 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(12, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionScreeningDenominatorEncounterCodesNew3_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.1916\", \"specificOccurrence\": \"OccurrenceADepressionScreeningDenominatorEncounterCodesNew3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionDiagnosis5_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\", \"specificOccurrence\": \"OccurrenceADepressionDiagnosis5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionDiagnosis5_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\", \"specificOccurrence\": \"OccurrenceADepressionDiagnosis5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_16(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionDiagnosis5_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\", \"specificOccurrence\": \"OccurrenceADepressionDiagnosis5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_31(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_28 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADepressionDiagnosis5_precondition_29 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.145\", \"specificOccurrence\": \"OccurrenceADepressionDiagnosis5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_28(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_43 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABipolarDiagnosis4_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\", \"specificOccurrence\": \"OccurrenceABipolarDiagnosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_43(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABipolarDiagnosis4_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\", \"specificOccurrence\": \"OccurrenceABipolarDiagnosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_40(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABipolarDiagnosis4_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\", \"specificOccurrence\": \"OccurrenceABipolarDiagnosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_55(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceABipolarDiagnosis4_precondition_53 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.450\", \"specificOccurrence\": \"OccurrenceABipolarDiagnosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_52(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentAdolescentDepressionScreening_precondition_64 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.600.792\", \"valueSetId\": \"2.16.840.1.113883.3.600.2452\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentAdultDepressionScreening_precondition_66 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.600.792\", \"valueSetId\": \"2.16.840.1.113883.3.600.2449\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentAdolescentDepressionScreening_precondition_68 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.600.791\", \"valueSetId\": \"2.16.840.1.113883.3.600.2452\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.RiskCategoryAssessmentAdultDepressionScreening_precondition_70 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.600.791\", \"valueSetId\": \"2.16.840.1.113883.3.600.2449\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_76 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_79 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_80 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_79(patient), new IVL_PQ(null, new PQ(18, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_82 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2451\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_84 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2450\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2452\", \"specificOccurrence\": \"OccurrenceAAdolescentDepressionScreening2\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2450\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.InterventionPerformedAdditionalEvaluationForDepressionAdolescent_precondition_86 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.1542\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionOrderReferralForDepressionAdolescent_precondition_88 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.600.537\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderDepressionMedicationsAdolescent_precondition_90 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.600.469\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionPerformedFollowUpForDepressionAdolescent_precondition_92 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.467\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedSuicideRiskAssessment_precondition_94 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.559\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_97(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_105 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  events = RECENT(events, initialSpecificContext);\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_108 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2454\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_109 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_108(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_111 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2451\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_113 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2450\")));\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.2449\", \"specificOccurrence\": \"OccurrenceAAdultDepressionScreening1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.600.2450\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.InterventionPerformedAdditionalEvaluationForDepressionAdult_precondition_115 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.1545\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionOrderReferralForDepressionAdult_precondition_117 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.600.538\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderDepressionMedicationsAdult_precondition_119 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.600.470\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.InterventionPerformedFollowUpForDepressionAdult_precondition_121 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.468\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedSuicideRiskAssessment_precondition_123 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.600.559\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_126(patient), new IVL_PQ(null, new PQ(1, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAAdultDepressionScreening1\",\"type\":\"RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING\",\"function\":\"OccurrenceAAdultDepressionScreening1\"},{\"id\":\"OccurrenceAAdolescentDepressionScreening2\",\"type\":\"RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING\",\"function\":\"OccurrenceAAdolescentDepressionScreening2\"},{\"id\":\"OccurrenceADepressionScreeningDenominatorEncounterCodesNew3\",\"type\":\"ENCOUNTER_PERFORMED_DEPRESSION_SCREENING_DENOMINATOR_ENCOUNTER_CODES_NEW\",\"function\":\"OccurrenceADepressionScreeningDenominatorEncounterCodesNew3\"},{\"id\":\"OccurrenceABipolarDiagnosis4\",\"type\":\"DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS\",\"function\":\"OccurrenceABipolarDiagnosis4\"},{\"id\":\"OccurrenceADepressionDiagnosis5\",\"type\":\"DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS\",\"function\":\"OccurrenceADepressionDiagnosis5\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('12', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_8, hqmfjs.OccurrenceADepressionScreeningDenominatorEncounterCodesNew3_precondition_10\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('136', patient, initialSpecificContext,\n      atLeastOneTrue('134', patient, initialSpecificContext,\n        allTrue('103', patient, initialSpecificContext, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_76, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_80,\n          atLeastOneTrue('101', patient, initialSpecificContext, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_82,\n            allTrue('99', patient, initialSpecificContext, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_84,\n              atLeastOneTrue('96', patient, initialSpecificContext, hqmfjs.InterventionPerformedAdditionalEvaluationForDepressionAdolescent_precondition_86, hqmfjs.InterventionOrderReferralForDepressionAdolescent_precondition_88, hqmfjs.MedicationOrderDepressionMedicationsAdolescent_precondition_90, hqmfjs.InterventionPerformedFollowUpForDepressionAdolescent_precondition_92, hqmfjs.ProcedurePerformedSuicideRiskAssessment_precondition_94\n              )\n            )\n          )\n        ),\n        allTrue('132', patient, initialSpecificContext, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_105, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_109,\n          atLeastOneTrue('130', patient, initialSpecificContext, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_111,\n            allTrue('128', patient, initialSpecificContext, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_113,\n              atLeastOneTrue('125', patient, initialSpecificContext, hqmfjs.InterventionPerformedAdditionalEvaluationForDepressionAdult_precondition_115, hqmfjs.InterventionOrderReferralForDepressionAdult_precondition_117, hqmfjs.MedicationOrderDepressionMedicationsAdult_precondition_119, hqmfjs.InterventionPerformedFollowUpForDepressionAdult_precondition_121, hqmfjs.ProcedurePerformedSuicideRiskAssessment_precondition_123\n              )\n            )\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('63', patient, initialSpecificContext,\n      atLeastOneTrue('61', patient, initialSpecificContext,\n        allTrue('23', patient, initialSpecificContext, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_13, hqmfjs.OccurrenceADepressionDiagnosis5_precondition_20,\n          allFalse('22', patient, initialSpecificContext, hqmfjs.OccurrenceADepressionDiagnosis5_precondition_17\n          )\n        ),\n        allTrue('35', patient, initialSpecificContext, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_25, hqmfjs.OccurrenceADepressionDiagnosis5_precondition_32,\n          allFalse('34', patient, initialSpecificContext, hqmfjs.OccurrenceADepressionDiagnosis5_precondition_29\n          )\n        ),\n        allTrue('47', patient, initialSpecificContext, hqmfjs.OccurrenceAAdolescentDepressionScreening2_precondition_37, hqmfjs.OccurrenceABipolarDiagnosis4_precondition_44,\n          allFalse('46', patient, initialSpecificContext, hqmfjs.OccurrenceABipolarDiagnosis4_precondition_41\n          )\n        ),\n        allTrue('59', patient, initialSpecificContext, hqmfjs.OccurrenceAAdultDepressionScreening1_precondition_49, hqmfjs.OccurrenceABipolarDiagnosis4_precondition_56,\n          allFalse('58', patient, initialSpecificContext, hqmfjs.OccurrenceABipolarDiagnosis4_precondition_53\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    allTrue('75', patient, initialSpecificContext,\n      atLeastOneTrue('72', patient, initialSpecificContext, hqmfjs.RiskCategoryAssessmentAdolescentDepressionScreening_precondition_64, hqmfjs.RiskCategoryAssessmentAdultDepressionScreening_precondition_66, hqmfjs.RiskCategoryAssessmentAdolescentDepressionScreening_precondition_68, hqmfjs.RiskCategoryAssessmentAdultDepressionScreening_precondition_70\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0418",
+    "hqmf_id": "40280381-4555-E1C1-0145-DD4E02E44678",
+    "hqmf_set_id": "9A031E24-3D9B-11E1-8634-00237D5BF174",
+    "hqmf_version_number": 4,
+    "title": "Preventive Care and Screening: Screening for Clinical Depression and Follow-Up Plan",
+    "description": "Percentage of patients aged 12 years and older screened for clinical depression on the date of the encounter using an age appropriate standardized depression screening tool AND if positive, a follow-up plan is documented on the date of the positive screen.",
+    "cms_id": "CMS2v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "0A220117-5622-4514-AD92-83AFD25B713D",
+        "preconditions": [
+          {
+            "id": 12,
+            "preconditions": [
+              {
+                "id": 8,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_8"
+              },
+              {
+                "id": 10,
+                "reference": "OccurrenceADepressionScreeningDenominatorEncounterCodesNew3_precondition_10"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "37613083-CBC2-4AC4-9B10-B7325A7A8C3D"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "82EDDBA8-FEE6-4EE1-963B-AF0E2E52022B",
+        "preconditions": [
+          {
+            "id": 63,
+            "preconditions": [
+              {
+                "id": 61,
+                "preconditions": [
+                  {
+                    "id": 23,
+                    "preconditions": [
+                      {
+                        "id": 14,
+                        "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_13"
+                      },
+                      {
+                        "id": 20,
+                        "reference": "OccurrenceADepressionDiagnosis5_precondition_20"
+                      },
+                      {
+                        "id": 22,
+                        "preconditions": [
+                          {
+                            "id": 17,
+                            "reference": "OccurrenceADepressionDiagnosis5_precondition_17"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 35,
+                    "preconditions": [
+                      {
+                        "id": 26,
+                        "reference": "OccurrenceAAdultDepressionScreening1_precondition_25"
+                      },
+                      {
+                        "id": 32,
+                        "reference": "OccurrenceADepressionDiagnosis5_precondition_32"
+                      },
+                      {
+                        "id": 34,
+                        "preconditions": [
+                          {
+                            "id": 29,
+                            "reference": "OccurrenceADepressionDiagnosis5_precondition_29"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 47,
+                    "preconditions": [
+                      {
+                        "id": 38,
+                        "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_37"
+                      },
+                      {
+                        "id": 44,
+                        "reference": "OccurrenceABipolarDiagnosis4_precondition_44"
+                      },
+                      {
+                        "id": 46,
+                        "preconditions": [
+                          {
+                            "id": 41,
+                            "reference": "OccurrenceABipolarDiagnosis4_precondition_41"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 59,
+                    "preconditions": [
+                      {
+                        "id": 50,
+                        "reference": "OccurrenceAAdultDepressionScreening1_precondition_49"
+                      },
+                      {
+                        "id": 56,
+                        "reference": "OccurrenceABipolarDiagnosis4_precondition_56"
+                      },
+                      {
+                        "id": 58,
+                        "preconditions": [
+                          {
+                            "id": 53,
+                            "reference": "OccurrenceABipolarDiagnosis4_precondition_53"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "6E2E3E1C-0E87-4107-B330-7A3F46111752",
+        "preconditions": [
+          {
+            "id": 75,
+            "preconditions": [
+              {
+                "id": 72,
+                "preconditions": [
+                  {
+                    "id": 64,
+                    "reference": "RiskCategoryAssessmentAdolescentDepressionScreening_precondition_64"
+                  },
+                  {
+                    "id": 66,
+                    "reference": "RiskCategoryAssessmentAdultDepressionScreening_precondition_66"
+                  },
+                  {
+                    "id": 68,
+                    "reference": "RiskCategoryAssessmentAdolescentDepressionScreening_precondition_68"
+                  },
+                  {
+                    "id": 70,
+                    "reference": "RiskCategoryAssessmentAdultDepressionScreening_precondition_70"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "DCB5A4DF-8A12-4BED-A6B1-B1D99965CDB0",
+        "preconditions": [
+          {
+            "id": 136,
+            "preconditions": [
+              {
+                "id": 134,
+                "preconditions": [
+                  {
+                    "id": 103,
+                    "preconditions": [
+                      {
+                        "id": 77,
+                        "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_76"
+                      },
+                      {
+                        "id": 80,
+                        "reference": "PatientCharacteristicBirthdateBirthDate_precondition_80"
+                      },
+                      {
+                        "id": 101,
+                        "preconditions": [
+                          {
+                            "id": 82,
+                            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_82"
+                          },
+                          {
+                            "id": 99,
+                            "preconditions": [
+                              {
+                                "id": 84,
+                                "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_84"
+                              },
+                              {
+                                "id": 96,
+                                "preconditions": [
+                                  {
+                                    "id": 86,
+                                    "reference": "InterventionPerformedAdditionalEvaluationForDepressionAdolescent_precondition_86"
+                                  },
+                                  {
+                                    "id": 88,
+                                    "reference": "InterventionOrderReferralForDepressionAdolescent_precondition_88"
+                                  },
+                                  {
+                                    "id": 90,
+                                    "reference": "MedicationOrderDepressionMedicationsAdolescent_precondition_90"
+                                  },
+                                  {
+                                    "id": 92,
+                                    "reference": "InterventionPerformedFollowUpForDepressionAdolescent_precondition_92"
+                                  },
+                                  {
+                                    "id": 94,
+                                    "reference": "ProcedurePerformedSuicideRiskAssessment_precondition_94"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue"
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 132,
+                    "preconditions": [
+                      {
+                        "id": 106,
+                        "reference": "OccurrenceAAdultDepressionScreening1_precondition_105"
+                      },
+                      {
+                        "id": 109,
+                        "reference": "PatientCharacteristicBirthdateBirthDate_precondition_109"
+                      },
+                      {
+                        "id": 130,
+                        "preconditions": [
+                          {
+                            "id": 111,
+                            "reference": "OccurrenceAAdultDepressionScreening1_precondition_111"
+                          },
+                          {
+                            "id": 128,
+                            "preconditions": [
+                              {
+                                "id": 113,
+                                "reference": "OccurrenceAAdultDepressionScreening1_precondition_113"
+                              },
+                              {
+                                "id": 125,
+                                "preconditions": [
+                                  {
+                                    "id": 115,
+                                    "reference": "InterventionPerformedAdditionalEvaluationForDepressionAdult_precondition_115"
+                                  },
+                                  {
+                                    "id": 117,
+                                    "reference": "InterventionOrderReferralForDepressionAdult_precondition_117"
+                                  },
+                                  {
+                                    "id": 119,
+                                    "reference": "MedicationOrderDepressionMedicationsAdult_precondition_119"
+                                  },
+                                  {
+                                    "id": 121,
+                                    "reference": "InterventionPerformedFollowUpForDepressionAdult_precondition_121"
+                                  },
+                                  {
+                                    "id": 123,
+                                    "reference": "ProcedurePerformedSuicideRiskAssessment_precondition_123"
+                                  }
+                                ],
+                                "conjunction_code": "atLeastOneTrue"
+                              }
+                            ],
+                            "conjunction_code": "allTrue"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated": {
+        "title": "Medical reason contraindicated",
+        "description": "Risk Category Assessment not done: Medical reason contraindicated",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDonePatientReasonRefused": {
+        "title": "Patient Reason refused",
+        "description": "Risk Category Assessment not done: Patient Reason refused",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDonePatientReasonRefused",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated6": {
+        "title": "Medical reason contraindicated",
+        "description": "Risk Category Assessment not done: Medical reason contraindicated",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated6",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDonePatientReasonRefused7": {
+        "title": "Patient Reason refused",
+        "description": "Risk Category Assessment not done: Patient Reason refused",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDonePatientReasonRefused7",
+        "variable": false
+      },
+      "EncounterPerformedDepressionScreeningDenominatorEncounterCodesNew": {
+        "title": "Depression Screening Denominator Encounter Codes New",
+        "description": "Encounter, Performed: Depression Screening Denominator Encounter Codes New",
+        "code_list_id": "2.16.840.1.113883.3.600.1916",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedDepressionScreeningDenominatorEncounterCodesNew",
+        "variable": false
+      },
+      "DiagnosisActiveBipolarDiagnosis": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveBipolarDiagnosis",
+        "variable": false
+      },
+      "DiagnosisActiveDepressionDiagnosis": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDepressionDiagnosis",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_8": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceADepressionScreeningDenominatorEncounterCodesNew3_precondition_10": {
+        "title": "Depression Screening Denominator Encounter Codes New",
+        "description": "Encounter, Performed: Depression Screening Denominator Encounter Codes New",
+        "code_list_id": "2.16.840.1.113883.3.600.1916",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_DEPRESSION_SCREENING_DENOMINATOR_ENCOUNTER_CODES_NEW",
+        "source_data_criteria": "OccurrenceADepressionScreeningDenominatorEncounterCodesNew3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_13": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_19": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceADepressionDiagnosis5_precondition_20": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceADepressionDiagnosis5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_19"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_16": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceADepressionDiagnosis5_precondition_17": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceADepressionDiagnosis5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_16"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_25": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_31": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceADepressionDiagnosis5_precondition_32": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceADepressionDiagnosis5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_31"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_28": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceADepressionDiagnosis5_precondition_29": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceADepressionDiagnosis5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_28"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_37": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_43": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceABipolarDiagnosis4_precondition_44": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceABipolarDiagnosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_43"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_40": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceABipolarDiagnosis4_precondition_41": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceABipolarDiagnosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_40"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_49": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_55": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceABipolarDiagnosis4_precondition_56": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceABipolarDiagnosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_55"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_52": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "OccurrenceABipolarDiagnosis4_precondition_53": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceABipolarDiagnosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_52"
+          }
+        ]
+      },
+      "RiskCategoryAssessmentAdolescentDepressionScreening_precondition_64": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.600.792",
+        "source_data_criteria": "RiskCategoryAssessmentAdolescentDepressionScreening",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "RiskCategoryAssessmentAdultDepressionScreening_precondition_66": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.600.792",
+        "source_data_criteria": "RiskCategoryAssessmentAdultDepressionScreening",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "RiskCategoryAssessmentAdolescentDepressionScreening_precondition_68": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.600.791",
+        "source_data_criteria": "RiskCategoryAssessmentAdolescentDepressionScreening",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "RiskCategoryAssessmentAdultDepressionScreening_precondition_70": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.600.791",
+        "source_data_criteria": "RiskCategoryAssessmentAdultDepressionScreening",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_76": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_79": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_80": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_79",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_82": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2451",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_84": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2450",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdolescentDepressionScreening2_precondition_97": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2450",
+          "title": "result"
+        }
+      },
+      "InterventionPerformedAdditionalEvaluationForDepressionAdolescent_precondition_86": {
+        "title": "Additional evaluation for depression - adolescent",
+        "description": "Intervention, Performed: Additional evaluation for depression - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.1542",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedAdditionalEvaluationForDepressionAdolescent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_97",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "InterventionOrderReferralForDepressionAdolescent_precondition_88": {
+        "title": "Referral for Depression Adolescent",
+        "description": "Intervention, Order: Referral for Depression Adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.537",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderReferralForDepressionAdolescent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_97",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderDepressionMedicationsAdolescent_precondition_90": {
+        "title": "Depression medications - adolescent",
+        "description": "Medication, Order: Depression medications - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.469",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderDepressionMedicationsAdolescent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_97",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "InterventionPerformedFollowUpForDepressionAdolescent_precondition_92": {
+        "title": "Follow-up for depression - adolescent",
+        "description": "Intervention, Performed: Follow-up for depression - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.467",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedFollowUpForDepressionAdolescent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_97",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedSuicideRiskAssessment_precondition_94": {
+        "title": "Suicide Risk Assessment",
+        "description": "Procedure, Performed: Suicide Risk Assessment",
+        "code_list_id": "2.16.840.1.113883.3.600.559",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedSuicideRiskAssessment",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdolescentDepressionScreening2_precondition_97",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_105": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ],
+        "subset_operators": [
+          {
+            "type": "RECENT"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_108": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2454",
+          "title": "result"
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_109": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_108",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_111": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2451",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_113": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2450",
+          "title": "result"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAdultDepressionScreening1_precondition_126": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2450",
+          "title": "result"
+        }
+      },
+      "InterventionPerformedAdditionalEvaluationForDepressionAdult_precondition_115": {
+        "title": "Additional evaluation for depression - adult",
+        "description": "Intervention, Performed: Additional evaluation for depression - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.1545",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedAdditionalEvaluationForDepressionAdult",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_126",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "InterventionOrderReferralForDepressionAdult_precondition_117": {
+        "title": "Referral for Depression Adult",
+        "description": "Intervention, Order: Referral for Depression Adult",
+        "code_list_id": "2.16.840.1.113883.3.600.538",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderReferralForDepressionAdult",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_126",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationOrderDepressionMedicationsAdult_precondition_119": {
+        "title": "Depression medications - adult",
+        "description": "Medication, Order: Depression medications - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.470",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderDepressionMedicationsAdult",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_126",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "InterventionPerformedFollowUpForDepressionAdult_precondition_121": {
+        "title": "Follow-up for depression - adult",
+        "description": "Intervention, Performed: Follow-up for depression - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.468",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedFollowUpForDepressionAdult",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_126",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "ProcedurePerformedSuicideRiskAssessment_precondition_123": {
+        "title": "Suicide Risk Assessment",
+        "description": "Procedure, Performed: Suicide Risk Assessment",
+        "code_list_id": "2.16.840.1.113883.3.600.559",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedSuicideRiskAssessment",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAdultDepressionScreening1_precondition_126",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "OccurrenceAAdultDepressionScreening1": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADULT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdultDepressionScreening1",
+        "variable": false
+      },
+      "OccurrenceAAdolescentDepressionScreening2": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "RISK_CATEGORY_ASSESSMENT_ADOLESCENT_DEPRESSION_SCREENING",
+        "source_data_criteria": "OccurrenceAAdolescentDepressionScreening2",
+        "variable": false
+      },
+      "MedicationOrderDepressionMedicationsAdolescent": {
+        "title": "Depression medications - adolescent",
+        "description": "Medication, Order: Depression medications - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.469",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderDepressionMedicationsAdolescent",
+        "variable": false
+      },
+      "MedicationOrderDepressionMedicationsAdult": {
+        "title": "Depression medications - adult",
+        "description": "Medication, Order: Depression medications - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.470",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderDepressionMedicationsAdult",
+        "variable": false
+      },
+      "InterventionPerformedFollowUpForDepressionAdolescent": {
+        "title": "Follow-up for depression - adolescent",
+        "description": "Intervention, Performed: Follow-up for depression - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.467",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedFollowUpForDepressionAdolescent",
+        "variable": false
+      },
+      "InterventionPerformedFollowUpForDepressionAdult": {
+        "title": "Follow-up for depression - adult",
+        "description": "Intervention, Performed: Follow-up for depression - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.468",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedFollowUpForDepressionAdult",
+        "variable": false
+      },
+      "InterventionOrderReferralForDepressionAdolescent": {
+        "title": "Referral for Depression Adolescent",
+        "description": "Intervention, Order: Referral for Depression Adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.537",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderReferralForDepressionAdolescent",
+        "variable": false
+      },
+      "InterventionOrderReferralForDepressionAdult": {
+        "title": "Referral for Depression Adult",
+        "description": "Intervention, Order: Referral for Depression Adult",
+        "code_list_id": "2.16.840.1.113883.3.600.538",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderReferralForDepressionAdult",
+        "variable": false
+      },
+      "OccurrenceADepressionScreeningDenominatorEncounterCodesNew3": {
+        "title": "Depression Screening Denominator Encounter Codes New",
+        "description": "Encounter, Performed: Depression Screening Denominator Encounter Codes New",
+        "code_list_id": "2.16.840.1.113883.3.600.1916",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_DEPRESSION_SCREENING_DENOMINATOR_ENCOUNTER_CODES_NEW",
+        "source_data_criteria": "OccurrenceADepressionScreeningDenominatorEncounterCodesNew3",
+        "variable": false
+      },
+      "InterventionPerformedAdditionalEvaluationForDepressionAdolescent": {
+        "title": "Additional evaluation for depression - adolescent",
+        "description": "Intervention, Performed: Additional evaluation for depression - adolescent",
+        "code_list_id": "2.16.840.1.113883.3.600.1542",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedAdditionalEvaluationForDepressionAdolescent",
+        "variable": false
+      },
+      "InterventionPerformedAdditionalEvaluationForDepressionAdult": {
+        "title": "Additional evaluation for depression - adult",
+        "description": "Intervention, Performed: Additional evaluation for depression - adult",
+        "code_list_id": "2.16.840.1.113883.3.600.1545",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedAdditionalEvaluationForDepressionAdult",
+        "variable": false
+      },
+      "ProcedurePerformedSuicideRiskAssessment": {
+        "title": "Suicide Risk Assessment",
+        "description": "Procedure, Performed: Suicide Risk Assessment",
+        "code_list_id": "2.16.840.1.113883.3.600.559",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedSuicideRiskAssessment",
+        "variable": false
+      },
+      "OccurrenceABipolarDiagnosis4": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_BIPOLAR_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceABipolarDiagnosis4",
+        "variable": false
+      },
+      "OccurrenceADepressionDiagnosis5": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DEPRESSION_DIAGNOSIS",
+        "source_data_criteria": "OccurrenceADepressionDiagnosis5",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "RiskCategoryAssessmentAdultDepressionScreening": {
+        "title": "Adult Depression Screening",
+        "description": "Risk Category Assessment: Adult Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentAdultDepressionScreening",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated": {
+        "title": "Medical reason contraindicated",
+        "description": "Risk Category Assessment not done: Medical reason contraindicated",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDonePatientReasonRefused": {
+        "title": "Patient Reason refused",
+        "description": "Risk Category Assessment not done: Patient Reason refused",
+        "code_list_id": "2.16.840.1.113883.3.600.2449",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDonePatientReasonRefused",
+        "variable": false
+      },
+      "RiskCategoryAssessmentAdolescentDepressionScreening": {
+        "title": "Adolescent Depression Screening",
+        "description": "Risk Category Assessment: Adolescent Depression Screening",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "RiskCategoryAssessmentAdolescentDepressionScreening",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated6": {
+        "title": "Medical reason contraindicated",
+        "description": "Risk Category Assessment not done: Medical reason contraindicated",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDoneMedicalReasonContraindicated6",
+        "variable": false
+      },
+      "RiskCategoryAssessmentNotDonePatientReasonRefused7": {
+        "title": "Patient Reason refused",
+        "description": "Risk Category Assessment not done: Patient Reason refused",
+        "code_list_id": "2.16.840.1.113883.3.600.2452",
+        "type": "risk_category_assessments",
+        "definition": "risk_category_assessment",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "RiskCategoryAssessmentNotDonePatientReasonRefused7",
+        "variable": false
+      },
+      "EncounterPerformedDepressionScreeningDenominatorEncounterCodesNew": {
+        "title": "Depression Screening Denominator Encounter Codes New",
+        "description": "Encounter, Performed: Depression Screening Denominator Encounter Codes New",
+        "code_list_id": "2.16.840.1.113883.3.600.1916",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedDepressionScreeningDenominatorEncounterCodesNew",
+        "variable": false
+      },
+      "DiagnosisActiveBipolarDiagnosis": {
+        "title": "Bipolar Diagnosis",
+        "description": "Diagnosis, Active: Bipolar Diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.450",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveBipolarDiagnosis",
+        "variable": false
+      },
+      "DiagnosisActiveDepressionDiagnosis": {
+        "title": "Depression diagnosis",
+        "description": "Diagnosis, Active: Depression diagnosis",
+        "code_list_id": "2.16.840.1.113883.3.600.145",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDepressionDiagnosis",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 [2.46] Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 [2.46] Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "The World Health Organization (WHO), as seen in Pratt & Brody (2008), found that major depression was the leading cause of disability worldwide. Depression causes suffering, decreases quality of life, and causes impairment in social and occupational functioning. It is associated with increased health care costs as well as with higher rates of many chronic medical conditions. Studies have shown that a higher number of depression symptoms are associated with poor health and impaired functioning, whether or not the criteria for a diagnosis of major depression are met. Persons 40-59 years of age had higher rates of depression than any other age group. Persons 12-17, 18-39 and 60 years of age and older had similar rates of depression. Depression was more common in females than in males. Non-Hispanic Black persons had higher rates of depression than non-Hispanic White persons. In the 18-39 and 40-59 age groups, those with income below the federal poverty level had higher rates of depression than those with higher income. Among persons 12-17 and 60 years of age and older, rates of depression did not vary significantly by poverty status. \r\n\r\nOverall, approximately 80% of persons with depression reported some level of difficulty in functioning because of their depressive symptoms. In addition, 35% of males and 22% of females with depression reported that their depressive symptoms make it very or extremely difficult for them to work, get things done at home, or get along with other people. More than one-half of all persons with mild depressive symptoms also reported some difficulty in daily functioning attributable to their symptoms. \r\n\r\n\r\n\r\n15–20 percent of adults older than age 65 in the United States have experienced depression (Geriatric Mental Health Foundation, 2008). 7 million adults aged 65 years and older are affected by depression (Steinman, 2007). Chronically ill Medicare beneficiaries with accompanying depression have significantly higher health care costs than those with chronic diseases alone (Unutzer, 2009). People aged 65 years and older accounted for 16 percent of suicide deaths in 2004 (Centers for Disease Control and Prevention, 2007).\r\n\r\n\r\n\r\nThe negative outcomes associated with early onset depression, make it crucial to identify and treat depression in its early stages. As reported in Borner et al. (2010), a study conducted by the World Health Organization (WHO) reported that in North America, primary care and family physicians are likely to provide the first line of treatment for depressive disorders. Others consistently report a 10% prevalence rate of depression in primary care patients. But studies have shown that primary care physicians fail to recognize up to 50% of depressed patients, purportedly because of time constraints and a lack of brief, sensitive, easy-to administer psychiatric screening instruments. Coyle et al. (2003), suggested that the picture is more grim for adolescents, and that more than 70% of children and adolescents suffering from serious mood disorders, go unrecognized or inadequately treated.  Healthy People 2020 recommends routine screening for mental health problems as a part of primary care for both children and adults (U.S. Department of Health and Human Services, 2014).   \r\n\r\n\r\n\r\nMajor depressive disorder (MDD) is a debilitating condition that has been increasingly recognized among youth, particularly adolescents. The prevalence of current or recent depression among children is 3% and among adolescents is 6%. The lifetime prevalence of MDD among adolescents may be as high as 20%. Adolescent-onset MDD is associated with an increased risk of death by suicide, suicide attempts, and recurrence of major depression by young adulthood. MDD is also associated with early pregnancy, decreased school performance, and impaired work, social, and family functioning during young adulthood (Williams et al., 2009). Every fifth adolescent may have a history of depression by age 18. The increase in the onset of depression occurs around puberty. According to Zalsman et al. (2006), as reported in Borner et al. (2010), depression ranks among the most commonly reported mental health problems in adolescent girls. \r\n\r\n\r\n\r\nThe economic burden of depression is substantial for individuals as well as society. Costs to an individual may include suffering, possible side effects from treatment, fees for mental health and medical visits and medications, time away from work and lost wages, transportation, and reduced quality of personal relationships. Costs to society may include loss of life, reduced productivity (because of both diminished capacity while at work and absenteeism from work), and increased costs of mental health and medical care. In 2000, the United States spent an estimated $83.1 billion in direct and indirect costs of depression (USPSTF, 2009).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The World Health Organization (WHO), as seen in Pratt & Brody (2008), found that major depression was the leading cause of disability worldwide. Depression causes suffering, decreases quality of life, and causes impairment in social and occupational functioning. It is associated with increased health care costs as well as with higher rates of many chronic medical conditions. Studies have shown that a higher number of depression symptoms are associated with poor health and impaired functioning, whether or not the criteria for a diagnosis of major depression are met. Persons 40-59 years of age had higher rates of depression than any other age group. Persons 12-17, 18-39 and 60 years of age and older had similar rates of depression. Depression was more common in females than in males. Non-Hispanic Black persons had higher rates of depression than non-Hispanic White persons. In the 18-39 and 40-59 age groups, those with income below the federal poverty level had higher rates of depression than those with higher income. Among persons 12-17 and 60 years of age and older, rates of depression did not vary significantly by poverty status. \r\n\r\nOverall, approximately 80% of persons with depression reported some level of difficulty in functioning because of their depressive symptoms. In addition, 35% of males and 22% of females with depression reported that their depressive symptoms make it very or extremely difficult for them to work, get things done at home, or get along with other people. More than one-half of all persons with mild depressive symptoms also reported some difficulty in daily functioning attributable to their symptoms. \r\n\r\n\r\n\r\n15–20 percent of adults older than age 65 in the United States have experienced depression (Geriatric Mental Health Foundation, 2008). 7 million adults aged 65 years and older are affected by depression (Steinman, 2007). Chronically ill Medicare beneficiaries with accompanying depression have significantly higher health care costs than those with chronic diseases alone (Unutzer, 2009). People aged 65 years and older accounted for 16 percent of suicide deaths in 2004 (Centers for Disease Control and Prevention, 2007).\r\n\r\n\r\n\r\nThe negative outcomes associated with early onset depression, make it crucial to identify and treat depression in its early stages. As reported in Borner et al. (2010), a study conducted by the World Health Organization (WHO) reported that in North America, primary care and family physicians are likely to provide the first line of treatment for depressive disorders. Others consistently report a 10% prevalence rate of depression in primary care patients. But studies have shown that primary care physicians fail to recognize up to 50% of depressed patients, purportedly because of time constraints and a lack of brief, sensitive, easy-to administer psychiatric screening instruments. Coyle et al. (2003), suggested that the picture is more grim for adolescents, and that more than 70% of children and adolescents suffering from serious mood disorders, go unrecognized or inadequately treated.  Healthy People 2020 recommends routine screening for mental health problems as a part of primary care for both children and adults (U.S. Department of Health and Human Services, 2014).   \r\n\r\n\r\n\r\nMajor depressive disorder (MDD) is a debilitating condition that has been increasingly recognized among youth, particularly adolescents. The prevalence of current or recent depression among children is 3% and among adolescents is 6%. The lifetime prevalence of MDD among adolescents may be as high as 20%. Adolescent-onset MDD is associated with an increased risk of death by suicide, suicide attempts, and recurrence of major depression by young adulthood. MDD is also associated with early pregnancy, decreased school performance, and impaired work, social, and family functioning during young adulthood (Williams et al., 2009). Every fifth adolescent may have a history of depression by age 18. The increase in the onset of depression occurs around puberty. According to Zalsman et al. (2006), as reported in Borner et al. (2010), depression ranks among the most commonly reported mental health problems in adolescent girls. \r\n\r\n\r\n\r\nThe economic burden of depression is substantial for individuals as well as society. Costs to an individual may include suffering, possible side effects from treatment, fees for mental health and medical visits and medications, time away from work and lost wages, transportation, and reduced quality of personal relationships. Costs to society may include loss of life, reduced productivity (because of both diminished capacity while at work and absenteeism from work), and increased costs of mental health and medical care. In 2000, the United States spent an estimated $83.1 billion in direct and indirect costs of depression (USPSTF, 2009).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Adolescent Recommendation (12-18 years):\r\n\r\nThe USPSTF recommends screening of adolescents (12-18 years of age), for major depressive disorder (MDD) when systems are in place to ensure accurate diagnosis, psychotherapy (cognitive-behavioral or interpersonal), and follow-up (AHRQ, 2010, p.141).\r\n\r\n\r\n\r\nClinicians and health care systems should try to consistently screen adolescents, ages 12-18,  for major depressive disorder, but only when systems are in place to ensure accurate diagnosis, careful selection of treatment, and close follow-up (ICSI, 2013, p. 16).\r\n\r\n\r\n\r\nAdult Recommendation (18 years and older):\r\n\r\nThe USPSTF recommends screening adults for depression when staff-assisted depression care supports are in place to assure accurate diagnosis, effective treatment, and follow-up (AHRQ, 2010, p.136). \r\n\r\n\r\n\r\nA system that has embedded the elements of best practice and has capacity to effectively manage the volume, should consider routine screening of all patients based on the recommendations of the U.S. Preventive Services Task Force (ICSI, 2013, p. 7). Clinicians should use a standardized instrument to screen for depression if it is suspected, based on risk factors or presentation. Clinicians should assess and treat for depression in patients with some comorbidities. Clinicians should acknowledge the impact of culture and cultural differences on physician and mental health. Clinicians should screen and monitor depression in pregnant and post-partum women (ICSI, 2013, p. 4).",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Adolescent Recommendation (12-18 years):\r\n\r\nThe USPSTF recommends screening of adolescents (12-18 years of age), for major depressive disorder (MDD) when systems are in place to ensure accurate diagnosis, psychotherapy (cognitive-behavioral or interpersonal), and follow-up (AHRQ, 2010, p.141).\r\n\r\n\r\n\r\nClinicians and health care systems should try to consistently screen adolescents, ages 12-18,  for major depressive disorder, but only when systems are in place to ensure accurate diagnosis, careful selection of treatment, and close follow-up (ICSI, 2013, p. 16).\r\n\r\n\r\n\r\nAdult Recommendation (18 years and older):\r\n\r\nThe USPSTF recommends screening adults for depression when staff-assisted depression care supports are in place to assure accurate diagnosis, effective treatment, and follow-up (AHRQ, 2010, p.136). \r\n\r\n\r\n\r\nA system that has embedded the elements of best practice and has capacity to effectively manage the volume, should consider routine screening of all patients based on the recommendations of the U.S. Preventive Services Task Force (ICSI, 2013, p. 7). Clinicians should use a standardized instrument to screen for depression if it is suspected, based on risk factors or presentation. Clinicians should assess and treat for depression in patients with some comorbidities. Clinicians should acknowledge the impact of culture and cultural differences on physician and mental health. Clinicians should screen and monitor depression in pregnant and post-partum women (ICSI, 2013, p. 4).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality.",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0418",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0418"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "2",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "2",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Mitchell J, Trangle M, Degnan B, Gabert T, Haight B, Kessler D, Mack N, Mallen E, Novak H, Rossmiller D, Setterlund L, Somers K, Valentino N, Vincent S. Institute for Clinical Systems Improvement. Adult Depression in Primary Care. Updated September 2013. https://www.icsi.org/_asset/fnhdm3/Depr.pdf",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Mitchell J, Trangle M, Degnan B, Gabert T, Haight B, Kessler D, Mack N, Mallen E, Novak H, Rossmiller D, Setterlund L, Somers K, Valentino N, Vincent S. Institute for Clinical Systems Improvement. Adult Depression in Primary Care. Updated September 2013. https://www.icsi.org/_asset/fnhdm3/Depr.pdf",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "Screening:\r\nCompletion of a clinical or diagnostic tool used to identify people at risk of developing or having a certain disease or condition, even in the absence of symptoms.  \r\nStandardized Depression Screening Tool – A normalized and validated depression screening tool developed  for the patient population in which it is being utilized\r\n\r\nExamples of depression screening tools include but are not limited to: \r\n•  Adolescent Screening Tools (12-17 years) \r\n  o  Patient Health Questionnaire for Adolescents (PHQ-A)\r\n  o  Beck Depression Inventory-Primary Care Version (BDI-PC)\r\n  o  Mood Feeling Questionnaire(MFQ)\r\n  o  Center for Epidemiologic Studies Depression Scale (CES-D)\r\n  o  PRIME MD-PHQ2 \r\n•  Adult Screening Tools (18 years and older) \r\n  o  Patient Health Questionnaire (PHQ9)\r\n  o  Beck Depression Inventory (BDI or BDI-II)\r\n  o  Center for Epidemiologic Studies Depression Scale (CES-D)\r\n  o  Depression Scale (DEPS)\r\n  o  Duke Anxiety-Depression Scale (DADS)\r\n  o  Geriatric Depression Scale (SDS)\r\n  o  Cornell Scale Screening\r\n  o  PRIME MD-PHQ2 \r\n\r\nFollow-Up Plan: \r\nDocumented follow-up for a positive depression screening must include one or more of the following:\r\n •  Additional evaluation for depression\r\n •  Suicide Risk Assessment\r\n •  Referral to a practitioner who is qualified to diagnose and treat depression\r\n •  Pharmacological interventions\r\n •  Other interventions or follow-up for the diagnosis or treatment of depression",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Screening:\r\nCompletion of a clinical or diagnostic tool used to identify people at risk of developing or having a certain disease or condition, even in the absence of symptoms.  \r\nStandardized Depression Screening Tool – A normalized and validated depression screening tool developed  for the patient population in which it is being utilized\r\n\r\nExamples of depression screening tools include but are not limited to: \r\n•  Adolescent Screening Tools (12-17 years) \r\n  o  Patient Health Questionnaire for Adolescents (PHQ-A)\r\n  o  Beck Depression Inventory-Primary Care Version (BDI-PC)\r\n  o  Mood Feeling Questionnaire(MFQ)\r\n  o  Center for Epidemiologic Studies Depression Scale (CES-D)\r\n  o  PRIME MD-PHQ2 \r\n•  Adult Screening Tools (18 years and older) \r\n  o  Patient Health Questionnaire (PHQ9)\r\n  o  Beck Depression Inventory (BDI or BDI-II)\r\n  o  Center for Epidemiologic Studies Depression Scale (CES-D)\r\n  o  Depression Scale (DEPS)\r\n  o  Duke Anxiety-Depression Scale (DADS)\r\n  o  Geriatric Depression Scale (SDS)\r\n  o  Cornell Scale Screening\r\n  o  PRIME MD-PHQ2 \r\n\r\nFollow-Up Plan: \r\nDocumented follow-up for a positive depression screening must include one or more of the following:\r\n •  Additional evaluation for depression\r\n •  Suicide Risk Assessment\r\n •  Referral to a practitioner who is qualified to diagnose and treat depression\r\n •  Pharmacological interventions\r\n •  Other interventions or follow-up for the diagnosis or treatment of depression",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "A clinical depression screen is completed on the date of the encounter using an age appropriate standardized depression screening tool AND if positive, a follow-up plan is documented on the date of the positive screen. \r\nScreening Tools:\r\n •  The name of the age appropriate standardized depression screening tool utilized must be documented in the medical record \r\n •  The depression screening must be reviewed and addressed in the office of the provider, filing the code, on the date of the encounter\r\n  o  The screening and encounter must occur on the same date\r\n •  Standardized Depression Screening Tools should be normalized and validated for the age appropriate patient population in which they are used and must be documented in the medical record\r\nFollow-Up Plan:\r\n • The follow-up plan must be related to a positive depression screening, example: “Patient referred for psychiatric evaluation due to positive depression screening.”",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "A clinical depression screen is completed on the date of the encounter using an age appropriate standardized depression screening tool AND if positive, a follow-up plan is documented on the date of the positive screen. \r\nScreening Tools:\r\n •  The name of the age appropriate standardized depression screening tool utilized must be documented in the medical record \r\n •  The depression screening must be reviewed and addressed in the office of the provider, filing the code, on the date of the encounter\r\n  o  The screening and encounter must occur on the same date\r\n •  Standardized Depression Screening Tools should be normalized and validated for the age appropriate patient population in which they are used and must be documented in the medical record\r\nFollow-Up Plan:\r\n • The follow-up plan must be related to a positive depression screening, example: “Patient referred for psychiatric evaluation due to positive depression screening.”",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "All patients aged 12 years and older before the beginning of the measurement period with at least one eligible encounter during the measurement period.",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "All patients aged 12 years and older before the beginning of the measurement period with at least one eligible encounter during the measurement period.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Patients with an active diagnosis for Depression or a diagnosis of Bipolar Disorder",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with an active diagnosis for Depression or a diagnosis of Bipolar Disorder",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients screened for clinical depression on the date of the encounter  using an age appropriate standardized tool AND if positive, a follow-up plan is documented on the date of the positive screen",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients screened for clinical depression on the date of the encounter  using an age appropriate standardized tool AND if positive, a follow-up plan is documented on the date of the positive screen",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Patient Reason(s)\r\nPatient refuses to participate \r\nOR\r\nMedical Reason(s)\t\r\nPatient is in an urgent or emergent situation where time is of the essence and to delay treatment would jeopardize the patient’s health status \r\nOR\r\nSituations where the patient’s functional capacity or motivation to improve may impact the accuracy of results of standardized depression assessment tools.  For example: certain court appointed cases or cases of delirium",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patient Reason(s)\r\nPatient refuses to participate \r\nOR\r\nMedical Reason(s)\t\r\nPatient is in an urgent or emergent situation where time is of the essence and to delay treatment would jeopardize the patient’s health status \r\nOR\r\nSituations where the patient’s functional capacity or motivation to improve may impact the accuracy of results of standardized depression assessment tools.  For example: certain court appointed cases or cases of delirium",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP","DENEX":"DENEX"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.600.791",
+    "2.16.840.1.113883.3.600.2449",
+    "2.16.840.1.113883.3.600.2452",
+    "2.16.840.1.113883.3.600.1916",
+    "2.16.840.1.113883.3.600.469",
+    "2.16.840.1.113883.3.600.450",
+    "2.16.840.1.113883.3.600.467",
+    "2.16.840.1.113883.3.600.468",
+    "2.16.840.1.113883.3.600.559",
+    "2.16.840.1.113883.3.600.1545",
+    "2.16.840.1.113883.3.600.538",
+    "2.16.840.1.113883.3.600.470",
+    "2.16.840.1.113883.3.600.145",
+    "2.16.840.1.113883.3.600.2454",
+    "2.16.840.1.113883.3.600.792",
+    "2.16.840.1.113883.3.600.2451",
+    "2.16.840.1.113883.3.600.2450",
+    "2.16.840.1.113883.3.600.1542",
+    "2.16.840.1.113883.3.600.537",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591"
+  ],
+  "population_ids": {
+    "IPP": "0A220117-5622-4514-AD92-83AFD25B713D",
+    "DENOM": "37613083-CBC2-4AC4-9B10-B7325A7A8C3D",
+    "DENEX": "82EDDBA8-FEE6-4EE1-963B-AF0E2E52022B",
+    "NUMER": "DCB5A4DF-8A12-4BED-A6B1-B1D99965CDB0",
+    "DENEXCEP": "6E2E3E1C-0E87-4107-B330-7A3F46111752"
+  }
+}

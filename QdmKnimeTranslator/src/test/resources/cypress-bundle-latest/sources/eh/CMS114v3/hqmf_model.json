@@ -1,0 +1,4111 @@
+{
+  "id": "0376",
+  "hqmf_id": "40280381-43DB-D64C-0144-6678B7972F10",
+  "hqmf_set_id": "32CFC834-843A-4F45-B359-8E158EAC4396",
+  "hqmf_version_number": 3,
+  "title": "Incidence of Potentially-Preventable Venous Thromboembolism",
+  "description": "This measure assesses the number of patients diagnosed with confirmed VTE during hospitalization (not present at admission) who did not receive VTE prophylaxis between hospital admission and the day before the VTE diagnostic testing order date.",
+  "cms_id": "CMS114v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "62AC6454-8AE7-4DDD-AFF7-E1F33841286D",
+      "preconditions": [
+        {
+          "id": 45,
+          "preconditions": [
+            {
+              "id": 23,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_23"
+            },
+            {
+              "id": 25,
+              "reference": "OccurrenceAEncounterInpatient1_precondition_25"
+            },
+            {
+              "id": 27,
+              "reference": "OccurrenceAEncounterInpatient1_precondition_27"
+            },
+            {
+              "id": 42,
+              "preconditions": [
+                {
+                  "id": 39,
+                  "preconditions": [
+                    {
+                      "id": 35,
+                      "reference": "DiagnosisActiveVenousThromboembolism_precondition_35"
+                    },
+                    {
+                      "id": 37,
+                      "reference": "DiagnosisActiveObstetricsVte_precondition_37"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 41,
+                  "preconditions": [
+                    {
+                      "id": 33,
+                      "preconditions": [
+                        {
+                          "id": 29,
+                          "reference": "DiagnosisActiveVenousThromboembolism_precondition_29"
+                        },
+                        {
+                          "id": 31,
+                          "reference": "DiagnosisActiveObstetricsVte_precondition_31"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue",
+                  "negation": true
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "5038C37F-2BF7-4B2B-9D4E-6D3E7A973878",
+      "preconditions": [
+        {
+          "id": 51,
+          "preconditions": [
+            {
+              "id": 46,
+              "reference": "OccurrenceAVteDiagnosticTest8_precondition_46"
+            },
+            {
+              "id": 49,
+              "reference": "OccurrenceAVteDiagnosticTest9_precondition_48"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "859AEA59-02CE-43BC-A045-AE2E912FE43F",
+      "preconditions": [
+        {
+          "id": 201,
+          "preconditions": [
+            {
+              "id": 199,
+              "preconditions": [
+                {
+                  "id": 52,
+                  "reference": "MedicationAdministeredUnfractionatedHeparin_precondition_52"
+                },
+                {
+                  "id": 112,
+                  "preconditions": [
+                    {
+                      "id": 83,
+                      "preconditions": [
+                        {
+                          "id": 67,
+                          "preconditions": [
+                            {
+                              "id": 54,
+                              "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_54"
+                            },
+                            {
+                              "id": 64,
+                              "preconditions": [
+                                {
+                                  "id": 56,
+                                  "reference": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_56"
+                                },
+                                {
+                                  "id": 58,
+                                  "reference": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_58"
+                                },
+                                {
+                                  "id": 60,
+                                  "reference": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_60"
+                                },
+                                {
+                                  "id": 62,
+                                  "reference": "MedicationAdministeredWarfarin_precondition_62"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 80,
+                          "preconditions": [
+                            {
+                              "id": 77,
+                              "preconditions": [
+                                {
+                                  "id": 69,
+                                  "reference": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_69"
+                                },
+                                {
+                                  "id": 71,
+                                  "reference": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_71"
+                                },
+                                {
+                                  "id": 73,
+                                  "reference": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_73"
+                                },
+                                {
+                                  "id": 75,
+                                  "reference": "MedicationAdministeredWarfarin_precondition_75"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 110,
+                      "preconditions": [
+                        {
+                          "id": 96,
+                          "preconditions": [
+                            {
+                              "id": 85,
+                              "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_85"
+                            },
+                            {
+                              "id": 93,
+                              "preconditions": [
+                                {
+                                  "id": 87,
+                                  "reference": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_87"
+                                },
+                                {
+                                  "id": 89,
+                                  "reference": "DeviceAppliedVenousFootPumpsVfp_precondition_89"
+                                },
+                                {
+                                  "id": 91,
+                                  "reference": "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_91"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "allTrue"
+                        },
+                        {
+                          "id": 107,
+                          "preconditions": [
+                            {
+                              "id": 104,
+                              "preconditions": [
+                                {
+                                  "id": 98,
+                                  "reference": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_98"
+                                },
+                                {
+                                  "id": 100,
+                                  "reference": "DeviceAppliedVenousFootPumpsVfp_precondition_100"
+                                },
+                                {
+                                  "id": 102,
+                                  "reference": "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_102"
+                                }
+                              ],
+                              "conjunction_code": "atLeastOneTrue"
+                            }
+                          ],
+                          "conjunction_code": "atLeastOneTrue"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 133,
+                  "preconditions": [
+                    {
+                      "id": 114,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_114"
+                    },
+                    {
+                      "id": 130,
+                      "preconditions": [
+                        {
+                          "id": 116,
+                          "reference": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_116"
+                        },
+                        {
+                          "id": 118,
+                          "reference": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_118"
+                        },
+                        {
+                          "id": 120,
+                          "reference": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_120"
+                        },
+                        {
+                          "id": 122,
+                          "reference": "MedicationAdministeredWarfarin_precondition_122"
+                        },
+                        {
+                          "id": 124,
+                          "reference": "DeviceAppliedVenousFootPumpsVfp_precondition_124"
+                        },
+                        {
+                          "id": 126,
+                          "reference": "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_126"
+                        },
+                        {
+                          "id": 128,
+                          "reference": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_128"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 152,
+                  "preconditions": [
+                    {
+                      "id": 149,
+                      "preconditions": [
+                        {
+                          "id": 135,
+                          "reference": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_135"
+                        },
+                        {
+                          "id": 137,
+                          "reference": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_137"
+                        },
+                        {
+                          "id": 139,
+                          "reference": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_139"
+                        },
+                        {
+                          "id": 141,
+                          "reference": "MedicationAdministeredWarfarin_precondition_141"
+                        },
+                        {
+                          "id": 143,
+                          "reference": "DeviceAppliedVenousFootPumpsVfp_precondition_143"
+                        },
+                        {
+                          "id": 145,
+                          "reference": "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_145"
+                        },
+                        {
+                          "id": 147,
+                          "reference": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_147"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 168,
+                  "preconditions": [
+                    {
+                      "id": 155,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_155"
+                    },
+                    {
+                      "id": 165,
+                      "preconditions": [
+                        {
+                          "id": 157,
+                          "reference": "DiagnosisActiveVteSuspected_precondition_157"
+                        },
+                        {
+                          "id": 159,
+                          "reference": "DiagnosisActiveObstetricsVte_precondition_159"
+                        },
+                        {
+                          "id": 161,
+                          "reference": "DiagnosisActiveVenousThromboembolism_precondition_161"
+                        },
+                        {
+                          "id": 163,
+                          "reference": "OccurrenceAVteDiagnosticTest8_precondition_163"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 178,
+                  "preconditions": [
+                    {
+                      "id": 170,
+                      "reference": "DiagnosisActiveVteSuspected_precondition_170"
+                    },
+                    {
+                      "id": 172,
+                      "reference": "DiagnosisActiveObstetricsVte_precondition_172"
+                    },
+                    {
+                      "id": 174,
+                      "reference": "DiagnosisActiveVenousThromboembolism_precondition_174"
+                    },
+                    {
+                      "id": 176,
+                      "reference": "OccurrenceAVteDiagnosticTest8_precondition_176"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 185,
+                  "preconditions": [
+                    {
+                      "id": 181,
+                      "reference": "InterventionOrderComfortMeasures_precondition_181"
+                    },
+                    {
+                      "id": 183,
+                      "reference": "InterventionPerformedComfortMeasures_precondition_183"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 197,
+                  "preconditions": [
+                    {
+                      "id": 188,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_188"
+                    },
+                    {
+                      "id": 194,
+                      "preconditions": [
+                        {
+                          "id": 190,
+                          "reference": "InterventionOrderComfortMeasures_precondition_190"
+                        },
+                        {
+                          "id": 192,
+                          "reference": "InterventionPerformedComfortMeasures_precondition_192"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "D87496C7-02BC-4DBD-8C6E-788A7B68ED45",
+      "preconditions": [
+        {
+          "id": 250,
+          "preconditions": [
+            {
+              "id": 206,
+              "preconditions": [
+                {
+                  "id": 202,
+                  "reference": "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12_precondition_202"
+                },
+                {
+                  "id": 204,
+                  "reference": "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12_precondition_204"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 212,
+              "preconditions": [
+                {
+                  "id": 208,
+                  "reference": "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5_precondition_208"
+                },
+                {
+                  "id": 210,
+                  "reference": "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5_precondition_210"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 218,
+              "preconditions": [
+                {
+                  "id": 214,
+                  "reference": "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3_precondition_214"
+                },
+                {
+                  "id": 216,
+                  "reference": "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3_precondition_216"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 224,
+              "preconditions": [
+                {
+                  "id": 220,
+                  "reference": "OccurrenceAWarfarin10_precondition_220"
+                },
+                {
+                  "id": 222,
+                  "reference": "OccurrenceAWarfarin10_precondition_222"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 230,
+              "preconditions": [
+                {
+                  "id": 226,
+                  "reference": "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6_precondition_226"
+                },
+                {
+                  "id": 228,
+                  "reference": "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6_precondition_228"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 236,
+              "preconditions": [
+                {
+                  "id": 232,
+                  "reference": "OccurrenceAVenousFootPumpsVfp7_precondition_232"
+                },
+                {
+                  "id": 234,
+                  "reference": "OccurrenceAVenousFootPumpsVfp7_precondition_234"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 242,
+              "preconditions": [
+                {
+                  "id": 238,
+                  "reference": "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4_precondition_238"
+                },
+                {
+                  "id": 240,
+                  "reference": "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4_precondition_240"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 248,
+              "preconditions": [
+                {
+                  "id": 244,
+                  "reference": "OccurrenceAGraduatedCompressionStockingsGcs2_precondition_244"
+                },
+                {
+                  "id": 246,
+                  "reference": "OccurrenceAGraduatedCompressionStockingsGcs2_precondition_246"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "atLeastOneTrue",
+          "negation": true
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "OccurrenceAVteDiagnosticTest8": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication13": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication13",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal14": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal14",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication15": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication15",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal16": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal16",
+      "variable": false
+    },
+    "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication17": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication17",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal18": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal18",
+      "variable": false
+    },
+    "DiagnosticStudyOrderVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Order: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyOrderVteDiagnosticTest",
+      "variable": false
+    },
+    "DiagnosticStudyResultVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication19": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication19",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal20": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal20",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication21": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication21",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal22": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal22",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_23": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_25": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "LENGTH_OF_STAY": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "unit": "d",
+            "value": "120",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_27": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EDU",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_43": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_35": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_43"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_37": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_43"
+        }
+      ]
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_29": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "field_values": {
+        "ORDINAL": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+          "title": "ordinality"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_43"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_31": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "field_values": {
+        "ORDINAL": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+          "title": "ordinality"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_43"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_46": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest9_precondition_48": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest9",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "MedicationAdministeredUnfractionatedHeparin_precondition_52": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Administered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_54": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_65": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_56": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_65"
+        }
+      ]
+    },
+    "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_58": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_65"
+        }
+      ]
+    },
+    "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_60": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_65"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_62": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_65"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_78": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient1_precondition_81": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_69": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_78"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_81"
+        }
+      ]
+    },
+    "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_71": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_78"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_81"
+        }
+      ]
+    },
+    "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_73": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_78"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_81"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_75": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_78"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_81"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_85": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_94": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_87": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_94"
+        }
+      ]
+    },
+    "DeviceAppliedVenousFootPumpsVfp_precondition_89": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedVenousFootPumpsVfp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_94"
+        }
+      ]
+    },
+    "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_91": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedGraduatedCompressionStockingsGcs",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_94"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_105": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient1_precondition_108": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_98": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_105"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_108"
+        }
+      ]
+    },
+    "DeviceAppliedVenousFootPumpsVfp_precondition_100": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedVenousFootPumpsVfp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_105"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_108"
+        }
+      ]
+    },
+    "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_102": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.412",
+      "source_data_criteria": "DeviceAppliedGraduatedCompressionStockingsGcs",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_105"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_108"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_114": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_131": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_116": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_118": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_120": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_122": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "DeviceAppliedVenousFootPumpsVfp_precondition_124": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedVenousFootPumpsVfp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_126": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedGraduatedCompressionStockingsGcs",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_128": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_131"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_150": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient1_precondition_153": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis_precondition_135": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis_precondition_137": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis_precondition_139": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "MedicationAdministeredWarfarin_precondition_141": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "DeviceAppliedVenousFootPumpsVfp_precondition_143": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedVenousFootPumpsVfp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "DeviceAppliedGraduatedCompressionStockingsGcs_precondition_145": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedGraduatedCompressionStockingsGcs",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc_precondition_147": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8_precondition_150"
+        },
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_153"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_155": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_166": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "DiagnosisActiveVteSuspected_precondition_157": {
+      "title": "VTE Suspected",
+      "description": "Diagnosis, Active: VTE Suspected",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.277",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVteSuspected",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_166"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_159": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_166"
+        }
+      ]
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_161": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_166"
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_163": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_166"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_179": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "DiagnosisActiveVteSuspected_precondition_170": {
+      "title": "VTE Suspected",
+      "description": "Diagnosis, Active: VTE Suspected",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.277",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVteSuspected",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_179",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_172": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_179",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_174": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_179",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVteDiagnosticTest8_precondition_176": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_179",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_186": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_181": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_186"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_183": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_186"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_188": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit11_precondition_195": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_190": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_195"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_192": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit11_precondition_195"
+        }
+      ]
+    },
+    "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12_precondition_202": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_DOSE_UNFRACTIONATED_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.223",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12_precondition_204": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_DOSE_UNFRACTIONATED_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.223",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5_precondition_208": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_MOLECULAR_WEIGHT_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.223",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5_precondition_210": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_MOLECULAR_WEIGHT_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.223",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3_precondition_214": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_INJECTABLE_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3_precondition_216": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_INJECTABLE_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAWarfarin10_precondition_220": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin10",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAWarfarin10_precondition_222": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin10",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6_precondition_226": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_ORAL_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6_precondition_228": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_ORAL_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAVenousFootPumpsVfp7_precondition_232": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_VENOUS_FOOT_PUMPS_VFP",
+      "source_data_criteria": "OccurrenceAVenousFootPumpsVfp7",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAVenousFootPumpsVfp7_precondition_234": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_VENOUS_FOOT_PUMPS_VFP",
+      "source_data_criteria": "OccurrenceAVenousFootPumpsVfp7",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4_precondition_238": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_INTERMITTENT_PNEUMATIC_COMPRESSION_DEVICES_IPC",
+      "source_data_criteria": "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4_precondition_240": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_INTERMITTENT_PNEUMATIC_COMPRESSION_DEVICES_IPC",
+      "source_data_criteria": "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAGraduatedCompressionStockingsGcs2_precondition_244": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_GRADUATED_COMPRESSION_STOCKINGS_GCS",
+      "source_data_criteria": "OccurrenceAGraduatedCompressionStockingsGcs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAVteDiagnosticTest8",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAGraduatedCompressionStockingsGcs2_precondition_246": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_GRADUATED_COMPRESSION_STOCKINGS_GCS",
+      "source_data_criteria": "OccurrenceAGraduatedCompressionStockingsGcs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "OccurrenceAGraduatedCompressionStockingsGcs2": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_GRADUATED_COMPRESSION_STOCKINGS_GCS",
+      "source_data_criteria": "OccurrenceAGraduatedCompressionStockingsGcs2",
+      "variable": false
+    },
+    "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_INJECTABLE_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAInjectableFactorXaInhibitorForVteProphylaxis3",
+      "variable": false
+    },
+    "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_INTERMITTENT_PNEUMATIC_COMPRESSION_DEVICES_IPC",
+      "source_data_criteria": "OccurrenceAIntermittentPneumaticCompressionDevicesIpc4",
+      "variable": false
+    },
+    "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_MOLECULAR_WEIGHT_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowMolecularWeightHeparinForVteProphylaxis5",
+      "variable": false
+    },
+    "DiagnosisActiveObstetricsVte": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false
+    },
+    "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_ORAL_FACTOR_XA_INHIBITOR_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceAOralFactorXaInhibitorForVteProphylaxis6",
+      "variable": false
+    },
+    "MedicationAdministeredUnfractionatedHeparin": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Administered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+      "variable": false
+    },
+    "OccurrenceAVenousFootPumpsVfp7": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DEVICE_APPLIED_VENOUS_FOOT_PUMPS_VFP",
+      "source_data_criteria": "OccurrenceAVenousFootPumpsVfp7",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false
+    },
+    "OccurrenceAVteDiagnosticTest8": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Ordered: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_ORDERED_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest8",
+      "variable": false
+    },
+    "OccurrenceAVteDiagnosticTest9": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSTIC_STUDY_RESULT_VTE_DIAGNOSTIC_TEST",
+      "source_data_criteria": "OccurrenceAVteDiagnosticTest9",
+      "variable": false
+    },
+    "DiagnosisActiveVteSuspected": {
+      "title": "VTE Suspected",
+      "description": "Diagnosis, Active: VTE Suspected",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.277",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVteSuspected",
+      "variable": false
+    },
+    "OccurrenceAWarfarin10": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin10",
+      "variable": false
+    },
+    "OccurrenceAEmergencyDepartmentVisit11": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit11",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false
+    },
+    "InterventionPerformedComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false
+    },
+    "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ADMINISTERED_LOW_DOSE_UNFRACTIONATED_HEPARIN_FOR_VTE_PROPHYLAXIS",
+      "source_data_criteria": "OccurrenceALowDoseUnfractionatedHeparinForVteProphylaxis12",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "DeviceAppliedGraduatedCompressionStockingsGcs": {
+      "title": "Graduated compression stockings (GCS)",
+      "description": "Device, Applied: Graduated compression stockings (GCS)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DeviceAppliedGraduatedCompressionStockingsGcs",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.256",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis": {
+      "title": "Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Injectable Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredInjectableFactorXaInhibitorForVteProphylaxis",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.211",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal",
+      "variable": false
+    },
+    "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc": {
+      "title": "Intermittent pneumatic compression devices (IPC)",
+      "description": "Device, Applied: Intermittent pneumatic compression devices (IPC)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DeviceAppliedIntermittentPneumaticCompressionDevicesIpc",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication13": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication13",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal14": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.214",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal14",
+      "variable": false
+    },
+    "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis": {
+      "title": "Low Molecular Weight Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Molecular Weight Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredLowMolecularWeightHeparinForVteProphylaxis",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication15": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication15",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal16": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.219",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal16",
+      "variable": false
+    },
+    "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis": {
+      "title": "Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "description": "Medication, Administered: Oral Factor Xa Inhibitor for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.134",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredOralFactorXaInhibitorForVteProphylaxis",
+      "variable": false
+    },
+    "DeviceAppliedVenousFootPumpsVfp": {
+      "title": "Venous foot pumps (VFP)",
+      "description": "Device, Applied: Venous foot pumps (VFP)",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DeviceAppliedVenousFootPumpsVfp",
+      "variable": false
+    },
+    "DeviceAppliedNotDoneMedicalContraindication17": {
+      "title": "Medical Contraindication",
+      "description": "Device, Applied not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDoneMedicalContraindication17",
+      "variable": false
+    },
+    "DeviceAppliedNotDonePatientRefusal18": {
+      "title": "Patient Refusal",
+      "description": "Device, Applied not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.230",
+      "type": "devices",
+      "definition": "device",
+      "status": "applied",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "DeviceAppliedNotDonePatientRefusal18",
+      "variable": false
+    },
+    "DiagnosticStudyOrderVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Order: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyOrderVteDiagnosticTest",
+      "variable": false
+    },
+    "DiagnosticStudyResultVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false
+    },
+    "MedicationAdministeredWarfarin": {
+      "title": "Warfarin",
+      "description": "Medication, Administered: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredWarfarin",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication19": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication19",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal20": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal20",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis": {
+      "title": "Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "description": "Medication, Administered: Low Dose Unfractionated Heparin for VTE Prophylaxis",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredLowDoseUnfractionatedHeparinForVteProphylaxis",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneMedicalContraindication21": {
+      "title": "Medical Contraindication",
+      "description": "Medication, Administered not done: Medical Contraindication",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneMedicalContraindication21",
+      "variable": false
+    },
+    "MedicationAdministeredNotDonePatientRefusal22": {
+      "title": "Patient Refusal",
+      "description": "Medication, Administered not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.39",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDonePatientRefusal22",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(C)) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(C)) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "OUTCOME",
+        "title": "Outcome"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "The concept of “failure to prevent” has generated interest in national health policy organizations to identify evidence-based practice that will improve patient safety in the hospital setting (Wachter et al 2008). The incidence of preventable venous thromboembolism (VTE) among hospitalized patients is overwhelming, and contributes to extended hospital stays, and the rising cost of health care. Zhan 2003, states that “VTE was the second most common medical complication of postoperative patients, the second most common cause of excess length of stay, and the third most common cause of excess mortality and excess charges”. According to Arnold, D.M. (2001), preventable VTE is defined as “objectively diagnosed Deep Vein Thrombosis (DVT) or Pulmonary Emboli (PE) that occurred in a setting in which thromboprophylaxis was indicated but was either administered inadequately or not administered at all.” In spite of formal guidelines, and recommendations for preventative care, pulmonary embolism is still the most common preventable cause of death among hospitalized patients (Wachter et al, 2008).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The concept of “failure to prevent” has generated interest in national health policy organizations to identify evidence-based practice that will improve patient safety in the hospital setting (Wachter et al 2008). The incidence of preventable venous thromboembolism (VTE) among hospitalized patients is overwhelming, and contributes to extended hospital stays, and the rising cost of health care. Zhan 2003, states that “VTE was the second most common medical complication of postoperative patients, the second most common cause of excess length of stay, and the third most common cause of excess mortality and excess charges”. According to Arnold, D.M. (2001), preventable VTE is defined as “objectively diagnosed Deep Vein Thrombosis (DVT) or Pulmonary Emboli (PE) that occurred in a setting in which thromboprophylaxis was indicated but was either administered inadequately or not administered at all.” In spite of formal guidelines, and recommendations for preventative care, pulmonary embolism is still the most common preventable cause of death among hospitalized patients (Wachter et al, 2008).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Failure to prevent VTE can result in delayed hospital discharge or readmission, increased risk for long-term mobidity from post-thrombotic syndrome, and recurrent thrombosis in the future.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Failure to prevent VTE can result in delayed hospital discharge or readmission, increased risk for long-term mobidity from post-thrombotic syndrome, and recurrent thrombosis in the future.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "A decrease in the rate",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A decrease in the rate",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "114",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "114",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Zhan, C., Miller M.R. Excessive length of stay, charges and mortality attributable to medical injures during hospitalization. JAMA 2003; 290:1868-1874.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Zhan, C., Miller M.R. Excessive length of stay, charges and mortality attributable to medical injures during hospitalization. JAMA 2003; 290:1868-1874.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nWhen low dose unfractionated heparin is not administered due to medical reasons, the intended administration route is subcutaneous.\n\nThe construct of Unfractionated Heparin (route: 'Intravenous route') intends to capture continually infused heparin rather than heparin flushes or pushes.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nWhen low dose unfractionated heparin is not administered due to medical reasons, the intended administration route is subcutaneous.\n\nThe construct of Unfractionated Heparin (route: 'Intravenous route') intends to capture continually infused heparin rather than heparin flushes or pushes.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients age 18 and older discharged from hospital inpatient acute care with a diagnosis of venous thromboembolism (VTE)and a length of stay less than or equal to 120 days.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients age 18 and older discharged from hospital inpatient acute care with a diagnosis of venous thromboembolism (VTE)and a length of stay less than or equal to 120 days.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Patients who developed VTE confirmed by a diagnostic test during hospitalization.",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who developed VTE confirmed by a diagnostic test during hospitalization.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients with comfort measures documented\nPatients with a principal diagnosis of VTE\nPatients with VTE present at admission\nPatients with reasons for not administering mechanical and pharmacologic prophylaxis",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with comfort measures documented\nPatients with a principal diagnosis of VTE\nPatients with VTE present at admission\nPatients with reasons for not administering mechanical and pharmacologic prophylaxis",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who received no VTE prophylaxis prior to the VTE diagnostic test order date.",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who received no VTE prophylaxis prior to the VTE diagnostic test order date.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

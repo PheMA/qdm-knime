@@ -1,0 +1,1452 @@
+{
+  "id": "ADE_TTR",
+  "hqmf_id": "40280381-454E-C5FA-0145-517F7383016D",
+  "hqmf_set_id": "A5E96A45-8132-4E72-BF4F-E8C81DB9E641",
+  "hqmf_version_number": 3,
+  "title": "ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range",
+  "description": "Average percentage of time in which patients aged 18 and older with atrial fibrillation who are on chronic warfarin therapy have International Normalized Ratio (INR) test results within the therapeutic range (i.e., TTR) during the measurement period.",
+  "cms_id": "CMS179v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "F959FBEC-B4D3-4EFA-9266-3A59CE238B5C",
+      "preconditions": [
+        {
+          "id": 38,
+          "preconditions": [
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            },
+            {
+              "id": 10,
+              "preconditions": [
+                {
+                  "id": 6,
+                  "reference": "EncounterPerformedFaceToFaceInteraction_precondition_6"
+                },
+                {
+                  "id": 8,
+                  "reference": "EncounterPerformedOfficeVisit_precondition_8"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 18,
+              "preconditions": [
+                {
+                  "id": 13,
+                  "reference": "OccurrenceAAtrialFibrillationFlutter1_precondition_13"
+                },
+                {
+                  "id": 17,
+                  "preconditions": [
+                    {
+                      "id": 15,
+                      "reference": "OccurrenceAAtrialFibrillationFlutter1_precondition_15"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue",
+                  "negation": true
+                }
+              ],
+              "conjunction_code": "allTrue"
+            },
+            {
+              "id": 25,
+              "preconditions": [
+                {
+                  "id": 22,
+                  "reference": "OccurrenceAValvularHeartDisease2_precondition_22"
+                },
+                {
+                  "id": 24,
+                  "preconditions": [
+                    {
+                      "id": 20,
+                      "reference": "OccurrenceAValvularHeartDisease2_precondition_20"
+                    }
+                  ],
+                  "conjunction_code": "allTrue",
+                  "negation": true
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 36,
+              "preconditions": [
+                {
+                  "id": 27,
+                  "reference": "MedicationActiveWarfarin_precondition_27"
+                },
+                {
+                  "id": 34,
+                  "preconditions": [
+                    {
+                      "id": 29,
+                      "reference": "OccurrenceAWarfarin3_precondition_29"
+                    },
+                    {
+                      "id": 33,
+                      "preconditions": [
+                        {
+                          "id": 31,
+                          "reference": "OccurrenceAWarfarin3_precondition_31"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "MSRPOPL": {
+      "conjunction?": true,
+      "type": "MSRPOPL",
+      "title": "Measure Population",
+      "hqmf_id": "2C5F4B52-A657-4F9B-9133-D33072FFEA59",
+      "preconditions": [
+        {
+          "id": 42,
+          "preconditions": [
+            {
+              "id": 40,
+              "reference": "LaboratoryTestResultInr_precondition_39"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "OBSERV": {
+      "conjunction?": false,
+      "type": "OBSERV",
+      "title": "Measure Observation",
+      "hqmf_id": "5CBEA1D0-4637-4A75-BFA4-FC5789E16B55",
+      "aggregator": "MEAN",
+      "preconditions": [
+        {
+          "id": 44,
+          "reference": "LaboratoryTestResultComputedValueInrPercentTtr_precondition_43"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "DiagnosisActiveAtrialFibrillationFlutter": {
+      "title": "Atrial Fibrillation/Flutter",
+      "description": "Diagnosis, Active: Atrial Fibrillation/Flutter",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.202",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveAtrialFibrillationFlutter",
+      "variable": false
+    },
+    "DiagnosisActiveValvularHeartDisease": {
+      "title": "Valvular Heart Disease",
+      "description": "Diagnosis, Active: Valvular Heart Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveValvularHeartDisease",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_6": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_8": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAAtrialFibrillationFlutter1_precondition_13": {
+      "title": "Atrial Fibrillation/Flutter",
+      "description": "Diagnosis, Active: Atrial Fibrillation/Flutter",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.202",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ATRIAL_FIBRILLATION_FLUTTER",
+      "source_data_criteria": "OccurrenceAAtrialFibrillationFlutter1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAAtrialFibrillationFlutter1_precondition_15": {
+      "title": "Atrial Fibrillation/Flutter",
+      "description": "Diagnosis, Active: Atrial Fibrillation/Flutter",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.202",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ATRIAL_FIBRILLATION_FLUTTER",
+      "source_data_criteria": "OccurrenceAAtrialFibrillationFlutter1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAValvularHeartDisease2_precondition_22": {
+      "title": "Valvular Heart Disease",
+      "description": "Diagnosis, Active: Valvular Heart Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_VALVULAR_HEART_DISEASE",
+      "source_data_criteria": "OccurrenceAValvularHeartDisease2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAValvularHeartDisease2_precondition_20": {
+      "title": "Valvular Heart Disease",
+      "description": "Diagnosis, Active: Valvular Heart Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_VALVULAR_HEART_DISEASE",
+      "source_data_criteria": "OccurrenceAValvularHeartDisease2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "MedicationActiveWarfarin_precondition_27": {
+      "title": "Warfarin",
+      "description": "Medication, Active: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveWarfarin",
+      "variable": false,
+      "field_values": {
+        "CUMULATIVE_MEDICATION_DURATION": {
+          "type": "IVL_PQ",
+          "low": {
+            "type": "PQ",
+            "unit": "d",
+            "value": "180",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAWarfarin3_precondition_29": {
+      "title": "Warfarin",
+      "description": "Medication, Active: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAWarfarin3_precondition_31": {
+      "title": "Warfarin",
+      "description": "Medication, Active: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestResultInr_precondition_39": {
+      "title": "INR",
+      "description": "Laboratory Test, Result: INR",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultInr",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "COUNT",
+          "value": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "value": "3",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "LaboratoryTestResultComputedValueInrPercentTtr_precondition_43": {
+      "title": "Computed Value INR percent TTR",
+      "description": "Laboratory Test, Result: Computed Value INR percent TTR",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1018",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultComputedValueInrPercentTtr",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "OccurrenceAAtrialFibrillationFlutter1": {
+      "title": "Atrial Fibrillation/Flutter",
+      "description": "Diagnosis, Active: Atrial Fibrillation/Flutter",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.202",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ATRIAL_FIBRILLATION_FLUTTER",
+      "source_data_criteria": "OccurrenceAAtrialFibrillationFlutter1",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "LaboratoryTestResultComputedValueInrPercentTtr": {
+      "title": "Computed Value INR percent TTR",
+      "description": "Laboratory Test, Result: Computed Value INR percent TTR",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1018",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultComputedValueInrPercentTtr",
+      "variable": false
+    },
+    "EncounterPerformedFaceToFaceInteraction": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false
+    },
+    "LaboratoryTestResultInr": {
+      "title": "INR",
+      "description": "Laboratory Test, Result: INR",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.213",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultInr",
+      "variable": false
+    },
+    "EncounterPerformedOfficeVisit": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false
+    },
+    "OccurrenceAValvularHeartDisease2": {
+      "title": "Valvular Heart Disease",
+      "description": "Diagnosis, Active: Valvular Heart Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_VALVULAR_HEART_DISEASE",
+      "source_data_criteria": "OccurrenceAValvularHeartDisease2",
+      "variable": false
+    },
+    "OccurrenceAWarfarin3": {
+      "title": "Warfarin",
+      "description": "Medication, Active: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_WARFARIN",
+      "source_data_criteria": "OccurrenceAWarfarin3",
+      "variable": false
+    },
+    "DiagnosisActiveAtrialFibrillationFlutter": {
+      "title": "Atrial Fibrillation/Flutter",
+      "description": "Diagnosis, Active: Atrial Fibrillation/Flutter",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.202",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveAtrialFibrillationFlutter",
+      "variable": false
+    },
+    "DiagnosisActiveValvularHeartDisease": {
+      "title": "Valvular Heart Disease",
+      "description": "Diagnosis, Active: Valvular Heart Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.104.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveValvularHeartDisease",
+      "variable": false
+    },
+    "MedicationActiveWarfarin": {
+      "title": "Warfarin",
+      "description": "Medication, Active: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveWarfarin",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  \r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  \r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "CONTVAR",
+        "title": "Continuous Variable"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "OUTCOME",
+        "title": "Outcome"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Millions of patients in the United States use warfarin to prevent strokes or to prevent or treat venous thromboembolism. Warfarin is highly effective, and has been in clinical use for over 50 years. However, warfarin is difficult to manage because it has many possible interactions with diet, other drugs, and comorbid conditions that may destabilize anticoagulation control. The possible consequences of insufficient or excessive anticoagulation are extremely serious and often fatal, making it imperative to pursue good control.\r\n\r\nThe international normalized ratio (INR) test is the laboratory test used to determine the degree to which the patient's coagulation has been successfully suppressed by the vitamin K antagonist (VKA). For most patients, the goal is to keep the INR between 2 and 3, which roughly corresponds to the blood taking 2 to 3 times as long to clot as would a normal person's blood. This level of anticoagulation has been shown to maximize benefit (i.e., protect patients from blood clots) while minimizing risk (i.e., risk of hemorrhage attributable to excessive anticoagulation). Therapeutic INR range (TTR) is a way of summarizing INR control over time.\r\n\r\nTTR has been followed before, mostly in the setting of clinical trials where it is used to evaluate the effectiveness of warfarin therapy, particularly when warfarin is being compared to some other strategy. However, TTR has not previously been used as a quality measure – in fact, there has been a general lack of quality measurement in oral anticoagulation. There is much evidence that better anticoagulation control (i.e., higher TTR) can protect patients from severe or even fatal adverse events.\r\n\r\nWe are using a well-established guideline for the expected frequency of warfarin monitoring.  The ACCP clinical practice guidelines for the management of antithrombotic agents published in 2008 recommends that laboratory monitoring of warfarin in patients on stable doses of warfarin occur at an interval of no longer than 4 weeks. There is fairly strong support for extending this interval from 28 to 42 days with patients who have achieved stable control.  For example, researchers at the VA who used the TTR as an outcome reported that the maximum follow-up interval can be safely extended from 28 days to 42 days after the patient has recorded three in-range INR values, without adversely impacting TTR.  \r\n\r\nIn 2012, the ACCP anticoagulation guidelines were updated to recommend that patients with very stable INRs can be tested every 12 weeks (or 84 days). The new guideline significantly increases the interval for which testing should occur in a subset of patients that are “very stable” – defined as a warfarin dose that has not changed in 6 months. Because the measurement period is set to only one year, it would be impossible to fully implement criteria for identifying patients whose dose has not changed in 6 months.  Also, because dose information is not consistently found in EHRs, building measure logic that is dependent on the availability of dose and dose adjustments was determined to be not currently feasible. Therefore, we have chosen not to allow an 84-day  follow-up interval, given its current level of evidentiary support and implementation challenges.  \r\n\r\nBecause the target therapeutic range for patients with atrial flutter is the same as that for atrial fibrillation without valvular heart disease, patients with atrial flutter are also included in the denominator of this measure.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Millions of patients in the United States use warfarin to prevent strokes or to prevent or treat venous thromboembolism. Warfarin is highly effective, and has been in clinical use for over 50 years. However, warfarin is difficult to manage because it has many possible interactions with diet, other drugs, and comorbid conditions that may destabilize anticoagulation control. The possible consequences of insufficient or excessive anticoagulation are extremely serious and often fatal, making it imperative to pursue good control.\r\n\r\nThe international normalized ratio (INR) test is the laboratory test used to determine the degree to which the patient's coagulation has been successfully suppressed by the vitamin K antagonist (VKA). For most patients, the goal is to keep the INR between 2 and 3, which roughly corresponds to the blood taking 2 to 3 times as long to clot as would a normal person's blood. This level of anticoagulation has been shown to maximize benefit (i.e., protect patients from blood clots) while minimizing risk (i.e., risk of hemorrhage attributable to excessive anticoagulation). Therapeutic INR range (TTR) is a way of summarizing INR control over time.\r\n\r\nTTR has been followed before, mostly in the setting of clinical trials where it is used to evaluate the effectiveness of warfarin therapy, particularly when warfarin is being compared to some other strategy. However, TTR has not previously been used as a quality measure – in fact, there has been a general lack of quality measurement in oral anticoagulation. There is much evidence that better anticoagulation control (i.e., higher TTR) can protect patients from severe or even fatal adverse events.\r\n\r\nWe are using a well-established guideline for the expected frequency of warfarin monitoring.  The ACCP clinical practice guidelines for the management of antithrombotic agents published in 2008 recommends that laboratory monitoring of warfarin in patients on stable doses of warfarin occur at an interval of no longer than 4 weeks. There is fairly strong support for extending this interval from 28 to 42 days with patients who have achieved stable control.  For example, researchers at the VA who used the TTR as an outcome reported that the maximum follow-up interval can be safely extended from 28 days to 42 days after the patient has recorded three in-range INR values, without adversely impacting TTR.  \r\n\r\nIn 2012, the ACCP anticoagulation guidelines were updated to recommend that patients with very stable INRs can be tested every 12 weeks (or 84 days). The new guideline significantly increases the interval for which testing should occur in a subset of patients that are “very stable” – defined as a warfarin dose that has not changed in 6 months. Because the measurement period is set to only one year, it would be impossible to fully implement criteria for identifying patients whose dose has not changed in 6 months.  Also, because dose information is not consistently found in EHRs, building measure logic that is dependent on the availability of dose and dose adjustments was determined to be not currently feasible. Therefore, we have chosen not to allow an 84-day  follow-up interval, given its current level of evidentiary support and implementation challenges.  \r\n\r\nBecause the target therapeutic range for patients with atrial flutter is the same as that for atrial fibrillation without valvular heart disease, patients with atrial flutter are also included in the denominator of this measure.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "“In patients with atrial fibrillation (AF), including those with paroxysmal AF, who have had a prior ischemic stroke, transient ischemic attack, or systemic embolism, we recommend long-term anticoagulation with an oral [vitamin K antagonist] VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the high risk of future ischemic stroke faced by this set of patients (Grade 1A).”\r\n\r\n“In patients with AF, including those with paroxysmal AF, who have two or more of the following risk factors for future ischemic stroke, we recommend long-term anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the increased risk of future ischemic stroke faced by this set of patients (Grade 1A). Two or more of the following risk factors apply: (1) age> 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.”\r\n\r\n“In patients with AF, including those with paroxysmal AF, with only one of the risk factors listed below, we recommend long-term antithrombotic therapy (Grade 1A), either as anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) [Grade 1A], or as aspirin, at a dose of 75 to 325 mg/d (Grade 1B). For these patients at intermediate risk of ischemic stroke, we suggest a VKA rather than aspirin (Grade 2A). This set of patients with AF is defined by having one of the following risk factors: (1) age > 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.\"\r\n\r\n“For patients with atrial flutter, we recommend that antithrombotic therapy decisions follow the same risk-based recommendations as for AF (Grade 1C).”\r\n\r\n“For patients who are receiving a stable dose of oral anticoagulants, we suggest monitoring at an interval of no longer than every 4 weeks.”",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "“In patients with atrial fibrillation (AF), including those with paroxysmal AF, who have had a prior ischemic stroke, transient ischemic attack, or systemic embolism, we recommend long-term anticoagulation with an oral [vitamin K antagonist] VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the high risk of future ischemic stroke faced by this set of patients (Grade 1A).”\r\n\r\n“In patients with AF, including those with paroxysmal AF, who have two or more of the following risk factors for future ischemic stroke, we recommend long-term anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the increased risk of future ischemic stroke faced by this set of patients (Grade 1A). Two or more of the following risk factors apply: (1) age> 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.”\r\n\r\n“In patients with AF, including those with paroxysmal AF, with only one of the risk factors listed below, we recommend long-term antithrombotic therapy (Grade 1A), either as anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) [Grade 1A], or as aspirin, at a dose of 75 to 325 mg/d (Grade 1B). For these patients at intermediate risk of ischemic stroke, we suggest a VKA rather than aspirin (Grade 2A). This set of patients with AF is defined by having one of the following risk factors: (1) age > 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.\"\r\n\r\n“For patients with atrial flutter, we recommend that antithrombotic therapy decisions follow the same risk-based recommendations as for AF (Grade 1C).”\r\n\r\n“For patients who are receiving a stable dose of oral anticoagulants, we suggest monitoring at an interval of no longer than every 4 weeks.”",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "A higher score indicates higher quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "A higher score indicates higher quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "NA",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "NA"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "179",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "179",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Schulman S, Parpia S, Stewart C, Rudd-Scott L, Julian JA, Levine M. Warfarin dose assessment every 4 weeks versus every 12 weeks in patients with stable international normalized ratios: a randomized trial. Ann Intern Med. 2011; 155: 653-9. 155/10/653 [pii]. 10.1059/0003-4819-155-10-201111150-00003.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Schulman S, Parpia S, Stewart C, Rudd-Scott L, Julian JA, Levine M. Warfarin dose assessment every 4 weeks versus every 12 weeks in patients with stable international normalized ratios: a randomized trial. Ann Intern Med. 2011; 155: 653-9. 155/10/653 [pii]. 10.1059/0003-4819-155-10-201111150-00003.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "CUMULATIVE MEDICATION DURATION is the total number of calendar days that an individual has active medications that contain the same drug ingredient of interest. In this measure, the active drug ingredient is warfarin. The number of active days of an occurrence of a medication (e.g., a medication order or an entry in a patient's medication list) is calculated by taking the difference (in calendar days) between the date that the medication became active and the date that the medication stopped being active. The cumulative medication duration is calculated as the sum of the number of active calendar days for each occurrence of a medication that contains the same active ingredient over a set period of time, excluding any gaps during which a medication was not active. All of the entries in the value set for warfarin (OID: 2.16.840.1.113883.3.117.1.7.1.232) must be included in determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named “CMS179v2_Supplemental_SQL_Logic_Reference.pdf” for this logic.\r\n\r\nA VALID INR INTERVAL is two INR values separated by 56 days or less. INR values must be obtained in outpatient care settings; INR values while the patient is admitted to a hospital for more than 23 hours should not be included.\r\n\r\nTHERAPEUTIC RANGE: for patients with atrial fibrillation and no valvular involvement, the target INR result = 2.0 – 3.0.\r\n\r\nPERCENT OF TIME IN THERAPEUTIC RANGE (TTR) is the percentage of time during which the interpolated INR values lie between 2.0 and 3.0. This can be from 0% to 100%. TTR percentage should be calculated for each patient that meets the criteria for the Measure Population. The average of these values is reported as the Measure Observation. The calculation for TTR is provided in the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf”.\r\n\r\nINTERPOLATED INR VALUES are obtained through the use of linear interpolation to assign an INR value to each day between successive observed INR values. The Rosendaal linear interpolation methodology used in this measure assumes a linear relationship between two INR values and allows the assignment of a specific INR to each day for each patient.",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "CUMULATIVE MEDICATION DURATION is the total number of calendar days that an individual has active medications that contain the same drug ingredient of interest. In this measure, the active drug ingredient is warfarin. The number of active days of an occurrence of a medication (e.g., a medication order or an entry in a patient's medication list) is calculated by taking the difference (in calendar days) between the date that the medication became active and the date that the medication stopped being active. The cumulative medication duration is calculated as the sum of the number of active calendar days for each occurrence of a medication that contains the same active ingredient over a set period of time, excluding any gaps during which a medication was not active. All of the entries in the value set for warfarin (OID: 2.16.840.1.113883.3.117.1.7.1.232) must be included in determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named “CMS179v2_Supplemental_SQL_Logic_Reference.pdf” for this logic.\r\n\r\nA VALID INR INTERVAL is two INR values separated by 56 days or less. INR values must be obtained in outpatient care settings; INR values while the patient is admitted to a hospital for more than 23 hours should not be included.\r\n\r\nTHERAPEUTIC RANGE: for patients with atrial fibrillation and no valvular involvement, the target INR result = 2.0 – 3.0.\r\n\r\nPERCENT OF TIME IN THERAPEUTIC RANGE (TTR) is the percentage of time during which the interpolated INR values lie between 2.0 and 3.0. This can be from 0% to 100%. TTR percentage should be calculated for each patient that meets the criteria for the Measure Population. The average of these values is reported as the Measure Observation. The calculation for TTR is provided in the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf”.\r\n\r\nINTERPOLATED INR VALUES are obtained through the use of linear interpolation to assign an INR value to each day between successive observed INR values. The Rosendaal linear interpolation methodology used in this measure assumes a linear relationship between two INR values and allows the assignment of a specific INR to each day for each patient.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "Please note that the logic expressions in the body section of the HQMF of this measure should *not* be used to calculate this clinical quality measure. They are only provided to represent the data elements needed for the calculation. In order to calculate this clinical quality measure correctly, only use the narrative specifications contained in the header section of the HQMF and the annotated database query found in the supplemental file named “CMS179v2_Supplemental_SQL_Logic_Reference.pdf”. \r\n\r\nThe calculation of TTR should include all available INR values for a given patient during the measurement period. When generating a QRDA-1 document for this measure, all available INR values during the measurement period should be included.\r\n\r\nThe following filters are applied to each patient’s INRs in order to calculate a patient-level TTR. INR values must be at least 0.8. Values less than 0.8 may represent aberrant results. INR values greater than 10 (i.e., outliers) must be replaced with a value of 10. An INR of 10 represents an abnormally high INR and would skew the results of the calculated TTR less than extreme values would (i.e., INR > 10). The INR value closest to \"2.5\" is used to calculate TTR, when there are more than one INR result on a single date.\r\n\r\nIn this measure, the active drug ingredient of primary interest is warfarin. CUMULATIVE MEDICATION DURATION should be calculated for all active warfarin-containing medications. All of the entries in the value set for warfarin must be included when determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf” for this logic.\r\n\r\nTo be excluded from the initial patient population, patients must have an active diagnosis of valvular heart disease during the measurement period.\r\n\r\nTo determine the proportion of patients with atrial fibrillation who are on chronic warfarin therapy and have sufficient INR monitoring to calculate a TTR, the reporting provider can divide the Measure Population by the Initial Patient Population.\r\n\r\nThe calculation for TTR is provided in the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf”.\r\n\r\nThe Measure Observation is the average of all patients’ percent TTR, which can be calculated by dividing the sum of all patients’ percent TTR by the number of patients in the Measure Population.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Please note that the logic expressions in the body section of the HQMF of this measure should *not* be used to calculate this clinical quality measure. They are only provided to represent the data elements needed for the calculation. In order to calculate this clinical quality measure correctly, only use the narrative specifications contained in the header section of the HQMF and the annotated database query found in the supplemental file named “CMS179v2_Supplemental_SQL_Logic_Reference.pdf”. \r\n\r\nThe calculation of TTR should include all available INR values for a given patient during the measurement period. When generating a QRDA-1 document for this measure, all available INR values during the measurement period should be included.\r\n\r\nThe following filters are applied to each patient’s INRs in order to calculate a patient-level TTR. INR values must be at least 0.8. Values less than 0.8 may represent aberrant results. INR values greater than 10 (i.e., outliers) must be replaced with a value of 10. An INR of 10 represents an abnormally high INR and would skew the results of the calculated TTR less than extreme values would (i.e., INR > 10). The INR value closest to \"2.5\" is used to calculate TTR, when there are more than one INR result on a single date.\r\n\r\nIn this measure, the active drug ingredient of primary interest is warfarin. CUMULATIVE MEDICATION DURATION should be calculated for all active warfarin-containing medications. All of the entries in the value set for warfarin must be included when determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf” for this logic.\r\n\r\nTo be excluded from the initial patient population, patients must have an active diagnosis of valvular heart disease during the measurement period.\r\n\r\nTo determine the proportion of patients with atrial fibrillation who are on chronic warfarin therapy and have sufficient INR monitoring to calculate a TTR, the reporting provider can divide the Measure Population by the Initial Patient Population.\r\n\r\nThe calculation for TTR is provided in the supplemental file named “CMS179v2 _Supplemental_SQL_Logic_Reference.pdf”.\r\n\r\nThe Measure Observation is the average of all patients’ percent TTR, which can be calculated by dividing the sum of all patients’ percent TTR by the number of patients in the Measure Population.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients aged 18 and older with atrial fibrillation without valvular heart disease who had been on chronic warfarin therapy for at least 180 days before the start of and during the measurement period. Patient should have at least one outpatient visit during the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients aged 18 and older with atrial fibrillation without valvular heart disease who had been on chronic warfarin therapy for at least 180 days before the start of and during the measurement period. Patient should have at least one outpatient visit during the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Not Applicable",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Not Applicable",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Not Applicable",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Equals All in Initial Patient Population with sufficient international normalized ratio (INR) results to calculate a warfarin time in therapeutic range (TTR)",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals All in Initial Patient Population with sufficient international normalized ratio (INR) results to calculate a warfarin time in therapeutic range (TTR)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Average percentage of time that patients in the measure population have INR results within the therapeutic range (i.e., TTR)",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Average percentage of time that patients in the measure population have INR results within the therapeutic range (i.e., TTR)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","MSRPOPL":"MSRPOPL","OBSERV":"OBSERV"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

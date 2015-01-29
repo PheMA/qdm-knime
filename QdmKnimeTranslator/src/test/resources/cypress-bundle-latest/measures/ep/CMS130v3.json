@@ -1,0 +1,1543 @@
+{
+  "id": "40280381-4555-E1C1-0145-762289881C2E",
+  "nqf_id": "0034",
+  "hqmf_id": "40280381-4555-E1C1-0145-762289881C2E",
+  "hqmf_set_id": "AA2A4BBC-864F-45EE-B17A-7EBCC62E6AAC",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS130v3",
+  "name": "Colorectal Cancer Screening",
+  "description": "Percentage of adults 50-75 years of age who had appropriate screening for colorectal cancer.",
+  "type": "ep",
+  "category": "General Practice Adult",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0034';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-762289881C2E';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.108.12.1001':{'SNOMED-CT':['109838007','1701000119104','187757001','187758006','269533000','269544008','285312008','285611007','301756000','312111009','312112002','312113007','312114001','312115000','314965007','315058005','363406005','363407001','363408006','363409003','363410008','363412000','363413005','363414004','363510005','425178004','449218003','93683002','93761005','93771007','93826009','93980002','94006002','94072004','94105000','94179005','94260004','94271003','94328005','94509004','94538001','94604000','94643001'],'ICD-9-CM':['153.0','153.1','153.2','153.3','153.4','153.5','153.6','153.7','153.8','153.9','154.0','154.1','197.5'],'ICD-10-CM':['C18.0','C18.1','C18.2','C18.3','C18.4','C18.5','C18.6','C18.7','C18.8','C18.9','C19','C20','C78.5']},'2.16.840.1.113883.3.464.1003.198.12.1019':{'SNOMED-CT':['235331003','26390003','303401008','307666008','307667004','307669001','31130001','36192008','427816007','44751009','456004','80294005'],'CPT':['44150','44151','44152','44153','44155','44156','44157','44158','44210','44211','44212']},'2.16.840.1.113883.3.464.1003.108.12.1020':{'SNOMED-CT':['12350003','174158000','174184006','235150006','235151005','25732003','303587008','310634005','34264006','367535003','418714002','427459009','443998000','444783004','446521004','446745002','447021001','73761001','8180007'],'CPT':['44388','44389','44390','44391','44392','44393','44394','44397','45355','45378','45379','45380','45381','45382','45383','45384','45385','45386','45387','45391','45392'],'HCPCS':['G0105','G0121']},'2.16.840.1.113883.3.464.1003.198.12.1011':{'LOINC':['12503-9','12504-7','14563-1','14564-9','14565-6','2335-8','27396-1','27401-9','27925-7','27926-5','29771-3','56490-6','56491-4','57905-2','58453-2']},'2.16.840.1.113883.3.464.1003.198.12.1010':{'SNOMED-CT':['112870002','396226005','425634007','44441009'],'CPT':['45330','45331','45332','45333','45334','45335','45337','45338','45339','45340','45341','45342','45345'],'HCPCS':['G0104']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1025':{'CPT':['99395','99396','99397']},'2.16.840.1.113883.3.464.1003.101.12.1023':{'CPT':['99385','99386','99387']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']},'2.16.840.1.113883.3.526.3.1240':{'HCPCS':['G0438','G0439']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_1 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(50, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(75, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1025\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_13 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_15 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1240\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisResolvedMalignantNeoplasmOfColon_precondition_21 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"resolved\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.108.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveMalignantNeoplasmOfColon_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.108.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisInactiveMalignantNeoplasmOfColon_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"inactive\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.108.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedTotalColectomy_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.198.12.1019\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedColonoscopy_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.108.12.1020\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(9, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultFecalOccultBloodTestFobt_precondition_35 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.198.12.1011\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedFlexibleSigmoidoscopy_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.198.12.1010\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBE(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(4, \"a\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('20', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_1, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_3,\n      atLeastOneTrue('17', patient, initialSpecificContext, hqmfjs.EncounterPerformedOfficeVisit_precondition_5, hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_7, hqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_9, hqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_11, hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_13, hqmfjs.EncounterPerformedAnnualWellnessVisit_precondition_15\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('41', patient, initialSpecificContext,\n      atLeastOneTrue('39', patient, initialSpecificContext, hqmfjs.ProcedurePerformedColonoscopy_precondition_33, hqmfjs.LaboratoryTestResultFecalOccultBloodTestFobt_precondition_35, hqmfjs.ProcedurePerformedFlexibleSigmoidoscopy_precondition_37\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('32', patient, initialSpecificContext,\n      atLeastOneTrue('29', patient, initialSpecificContext, hqmfjs.DiagnosisResolvedMalignantNeoplasmOfColon_precondition_21, hqmfjs.DiagnosisActiveMalignantNeoplasmOfColon_precondition_23, hqmfjs.DiagnosisInactiveMalignantNeoplasmOfColon_precondition_25, hqmfjs.ProcedurePerformedTotalColectomy_precondition_27\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0034",
+    "hqmf_id": "40280381-4555-E1C1-0145-762289881C2E",
+    "hqmf_set_id": "AA2A4BBC-864F-45EE-B17A-7EBCC62E6AAC",
+    "hqmf_version_number": 3,
+    "title": "Colorectal Cancer Screening",
+    "description": "Percentage of adults 50-75 years of age who had appropriate screening for colorectal cancer.",
+    "cms_id": "CMS130v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "4554098F-D160-45D2-A601-19B99450CE3C",
+        "preconditions": [
+          {
+            "id": 20,
+            "preconditions": [
+              {
+                "id": 1,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_1"
+              },
+              {
+                "id": 3,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_3"
+              },
+              {
+                "id": 17,
+                "preconditions": [
+                  {
+                    "id": 5,
+                    "reference": "EncounterPerformedOfficeVisit_precondition_5"
+                  },
+                  {
+                    "id": 7,
+                    "reference": "EncounterPerformedFaceToFaceInteraction_precondition_7"
+                  },
+                  {
+                    "id": 9,
+                    "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_9"
+                  },
+                  {
+                    "id": 11,
+                    "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_11"
+                  },
+                  {
+                    "id": 13,
+                    "reference": "EncounterPerformedHomeHealthcareServices_precondition_13"
+                  },
+                  {
+                    "id": 15,
+                    "reference": "EncounterPerformedAnnualWellnessVisit_precondition_15"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "FD984D3F-F50A-4301-8DCF-0DA6B418EE9E"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "4B563AE2-B0FD-4C13-B97D-572854FE2087",
+        "preconditions": [
+          {
+            "id": 32,
+            "preconditions": [
+              {
+                "id": 29,
+                "preconditions": [
+                  {
+                    "id": 21,
+                    "reference": "DiagnosisResolvedMalignantNeoplasmOfColon_precondition_21"
+                  },
+                  {
+                    "id": 23,
+                    "reference": "DiagnosisActiveMalignantNeoplasmOfColon_precondition_23"
+                  },
+                  {
+                    "id": 25,
+                    "reference": "DiagnosisInactiveMalignantNeoplasmOfColon_precondition_25"
+                  },
+                  {
+                    "id": 27,
+                    "reference": "ProcedurePerformedTotalColectomy_precondition_27"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "093E9894-71D9-49D0-B2FF-4CC0E00E2D09",
+        "preconditions": [
+          {
+            "id": 41,
+            "preconditions": [
+              {
+                "id": 39,
+                "preconditions": [
+                  {
+                    "id": 33,
+                    "reference": "ProcedurePerformedColonoscopy_precondition_33"
+                  },
+                  {
+                    "id": 35,
+                    "reference": "LaboratoryTestResultFecalOccultBloodTestFobt_precondition_35"
+                  },
+                  {
+                    "id": 37,
+                    "reference": "ProcedurePerformedFlexibleSigmoidoscopy_precondition_37"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_1": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "50",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_3": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "75",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_5": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_7": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_9": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_11": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_13": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedAnnualWellnessVisit_precondition_15": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "DiagnosisResolvedMalignantNeoplasmOfColon_precondition_21": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Resolved: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedMalignantNeoplasmOfColon",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "DiagnosisActiveMalignantNeoplasmOfColon_precondition_23": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Active: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveMalignantNeoplasmOfColon",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "DiagnosisInactiveMalignantNeoplasmOfColon_precondition_25": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Inactive: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "inactive",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisInactiveMalignantNeoplasmOfColon",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedTotalColectomy_precondition_27": {
+        "title": "Total Colectomy",
+        "description": "Procedure, Performed: Total Colectomy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1019",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedTotalColectomy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedColonoscopy_precondition_33": {
+        "title": "Colonoscopy",
+        "description": "Procedure, Performed: Colonoscopy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1020",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedColonoscopy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "9",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultFecalOccultBloodTestFobt_precondition_35": {
+        "title": "Fecal Occult Blood Test (FOBT)",
+        "description": "Laboratory Test, Result: Fecal Occult Blood Test (FOBT)",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1011",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultFecalOccultBloodTestFobt",
+        "variable": false,
+        "value": {
+          "type": "ANYNonNull"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "ProcedurePerformedFlexibleSigmoidoscopy_precondition_37": {
+        "title": "Flexible Sigmoidoscopy",
+        "description": "Procedure, Performed: Flexible Sigmoidoscopy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1010",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedFlexibleSigmoidoscopy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBE",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "4",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "DiagnosisResolvedMalignantNeoplasmOfColon": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Resolved: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "resolved",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisResolvedMalignantNeoplasmOfColon",
+        "variable": false
+      },
+      "ProcedurePerformedTotalColectomy": {
+        "title": "Total Colectomy",
+        "description": "Procedure, Performed: Total Colectomy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1019",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedTotalColectomy",
+        "variable": false
+      },
+      "ProcedurePerformedColonoscopy": {
+        "title": "Colonoscopy",
+        "description": "Procedure, Performed: Colonoscopy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1020",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedColonoscopy",
+        "variable": false
+      },
+      "ProcedurePerformedFlexibleSigmoidoscopy": {
+        "title": "Flexible Sigmoidoscopy",
+        "description": "Procedure, Performed: Flexible Sigmoidoscopy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1010",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedFlexibleSigmoidoscopy",
+        "variable": false
+      },
+      "LaboratoryTestResultFecalOccultBloodTestFobt": {
+        "title": "Fecal Occult Blood Test (FOBT)",
+        "description": "Laboratory Test, Result: Fecal Occult Blood Test (FOBT)",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1011",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultFecalOccultBloodTestFobt",
+        "variable": false
+      },
+      "DiagnosisActiveMalignantNeoplasmOfColon": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Active: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveMalignantNeoplasmOfColon",
+        "variable": false
+      },
+      "DiagnosisInactiveMalignantNeoplasmOfColon": {
+        "title": "Malignant Neoplasm of Colon",
+        "description": "Diagnosis, Inactive: Malignant Neoplasm of Colon",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "inactive",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "DiagnosisInactiveMalignantNeoplasmOfColon",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedAnnualWellnessVisit": {
+        "title": "Annual Wellness Visit",
+        "description": "Encounter, Performed: Annual Wellness Visit",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "An estimated 142,570 men and women were diagnosed with colon cancer in 2010. In the same year, 51,370 were estimated to have died from the disease, making colorectal cancer the third leading cause of cancer death in the United States (American Cancer Society 2010). \r\n\r\nScreening for colorectal cancer is extremely important as there are no signs or symptoms of the cancer in the early stages. If the disease is caught in its earliest stages, it has a five-year survival rate of 91%; however, the disease is often not caught this early. While screening is extremely effective in detecting colorectal cancer, it remains underutilized (American Cancer Society 2010). \r\n\r\nFecal occult blood tests, colonoscopy, and flexible sigmoidoscopy are shown to be effective screening methods (United States Preventive Services Task Force, 2008). Colorectal screening of individuals with no symptoms can identify polyps whose removal can prevent more than 90% of colorectal cancers (Rozen 2004). \r\n\r\nStudies have shown that the cost-effectiveness of colorectal cancer screening is $40,000 per life year gained, which is similar to the cost-effectiveness of mammography for breast cancer screening (Hawk and Levin 2005).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "An estimated 142,570 men and women were diagnosed with colon cancer in 2010. In the same year, 51,370 were estimated to have died from the disease, making colorectal cancer the third leading cause of cancer death in the United States (American Cancer Society 2010). \r\n\r\nScreening for colorectal cancer is extremely important as there are no signs or symptoms of the cancer in the early stages. If the disease is caught in its earliest stages, it has a five-year survival rate of 91%; however, the disease is often not caught this early. While screening is extremely effective in detecting colorectal cancer, it remains underutilized (American Cancer Society 2010). \r\n\r\nFecal occult blood tests, colonoscopy, and flexible sigmoidoscopy are shown to be effective screening methods (United States Preventive Services Task Force, 2008). Colorectal screening of individuals with no symptoms can identify polyps whose removal can prevent more than 90% of colorectal cancers (Rozen 2004). \r\n\r\nStudies have shown that the cost-effectiveness of colorectal cancer screening is $40,000 per life year gained, which is similar to the cost-effectiveness of mammography for breast cancer screening (Hawk and Levin 2005).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "The United States Preventive Services Task Force (2008): \r\n\r\n[1] The USPSTF recommends screening for colorectal cancer using fecal occult blood testing, sigmoidoscopy, or colonoscopy in adults, beginning at age 50 years and continuing until age 75 years (A recommendation). \r\n[2] The USPSTF concludes that the evidence is insufficient to assess the benefits and harms of computed tomographic (CT) colonography and fecal DNA testing as screening modalities for colorectal cancer (I statement). \r\n\r\nThe American Cancer Society, The American College of Radiology, and the U.S. Multi-Society Task Force on Colorectal Cancer (Levin et al. 2008): \r\n\r\nTests that Detect Adenomatous Polyps and Cancer\r\n[1] Colonoscopy (every 10 years) \r\n[2] Flexible sigmoidoscopy (every 5 years) \r\n[3] Double contrast barium enema (DCBE) (every 5 years)\r\n[4] Computed tomographic colonography (CTC) (every 5 years) \r\n\r\nTests that Primarily Detect Cancer: \r\n[1] Guaiac fecal occult blood test (gFOBT) with high sensitivity for cancer (annually) \r\n[2] Fecal immunochemical test (FIT) with high sensitivity for cancer (annually) \r\n[3] Stool DNA (sDNA) with high sensitivity for cancer (interval uncertain) \r\n\r\nModalities not approved: \r\n[1] Single digital rectal examination fecal occult blood test (FOBT) has a poor sensitivity for CRC and should not be performed as a primary screening method \r\n[2] Studies evaluating virtual colonoscopy and fecal DNA testing for CRC screening have yielded conflicting results and therefore cannot be recommended",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The United States Preventive Services Task Force (2008): \r\n\r\n[1] The USPSTF recommends screening for colorectal cancer using fecal occult blood testing, sigmoidoscopy, or colonoscopy in adults, beginning at age 50 years and continuing until age 75 years (A recommendation). \r\n[2] The USPSTF concludes that the evidence is insufficient to assess the benefits and harms of computed tomographic (CT) colonography and fecal DNA testing as screening modalities for colorectal cancer (I statement). \r\n\r\nThe American Cancer Society, The American College of Radiology, and the U.S. Multi-Society Task Force on Colorectal Cancer (Levin et al. 2008): \r\n\r\nTests that Detect Adenomatous Polyps and Cancer\r\n[1] Colonoscopy (every 10 years) \r\n[2] Flexible sigmoidoscopy (every 5 years) \r\n[3] Double contrast barium enema (DCBE) (every 5 years)\r\n[4] Computed tomographic colonography (CTC) (every 5 years) \r\n\r\nTests that Primarily Detect Cancer: \r\n[1] Guaiac fecal occult blood test (gFOBT) with high sensitivity for cancer (annually) \r\n[2] Fecal immunochemical test (FIT) with high sensitivity for cancer (annually) \r\n[3] Stool DNA (sDNA) with high sensitivity for cancer (interval uncertain) \r\n\r\nModalities not approved: \r\n[1] Single digital rectal examination fecal occult blood test (FOBT) has a poor sensitivity for CRC and should not be performed as a primary screening method \r\n[2] Studies evaluating virtual colonoscopy and fecal DNA testing for CRC screening have yielded conflicting results and therefore cannot be recommended",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0034",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0034"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "130",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "130",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Rozen, P. 2004. Cancer of the gastrointestinal tract: early detection or early prevention? Eur J Cancer Prev 13(1):71-5.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Rozen, P. 2004. Cancer of the gastrointestinal tract: early detection or early prevention? Eur J Cancer Prev 13(1):71-5.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "None",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients 50-75 years of age with a visit during the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients 50-75 years of age with a visit during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Patients with a diagnosis or past history of total colectomy or colorectal cancer",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with a diagnosis or past history of total colectomy or colorectal cancer",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients with one or more screenings for colorectal cancer. Appropriate screenings are defined by any one of the following criteria below: \r\n- Fecal occult blood test (FOBT) during the measurement period \r\n- Flexible sigmoidoscopy during the measurement period or the four years prior to the measurement period \r\n- Colonoscopy during the measurement period or the nine years prior to the measurement period",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with one or more screenings for colorectal cancer. Appropriate screenings are defined by any one of the following criteria below: \r\n- Fecal occult blood test (FOBT) during the measurement period \r\n- Flexible sigmoidoscopy during the measurement period or the four years prior to the measurement period \r\n- Colonoscopy during the measurement period or the nine years prior to the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.108.12.1001",
+    "2.16.840.1.113883.3.464.1003.198.12.1019",
+    "2.16.840.1.113883.3.464.1003.108.12.1020",
+    "2.16.840.1.113883.3.464.1003.198.12.1011",
+    "2.16.840.1.113883.3.464.1003.198.12.1010",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1025",
+    "2.16.840.1.113883.3.464.1003.101.12.1023",
+    "2.16.840.1.113883.3.464.1003.101.12.1016",
+    "2.16.840.1.113883.3.526.3.1240"
+  ],
+  "population_ids": {
+    "IPP": "4554098F-D160-45D2-A601-19B99450CE3C",
+    "DENOM": "FD984D3F-F50A-4301-8DCF-0DA6B418EE9E",
+    "DENEX": "4B563AE2-B0FD-4C13-B97D-572854FE2087",
+    "NUMER": "093E9894-71D9-49D0-B2FF-4CC0E00E2D09"
+  }
+}

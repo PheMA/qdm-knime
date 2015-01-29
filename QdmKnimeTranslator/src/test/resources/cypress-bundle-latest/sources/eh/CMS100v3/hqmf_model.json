@@ -1,0 +1,2286 @@
+{
+  "id": "0142",
+  "hqmf_id": "40280381-446B-B8C2-0144-9DFA522927ED",
+  "hqmf_set_id": "BB481284-30DD-4383-928C-82385BBF1B17",
+  "hqmf_version_number": 3,
+  "title": "Aspirin Prescribed at Discharge",
+  "description": "Acute myocardial infarction (AMI) patients who are prescribed aspirin at hospital discharge",
+  "cms_id": "CMS100v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "042A78AB-E09D-4124-A8DD-91BBE6FADADF",
+      "preconditions": [
+        {
+          "id": 13,
+          "preconditions": [
+            {
+              "id": 5,
+              "reference": "DiagnosisActiveHospitalMeasuresAmi_precondition_5"
+            },
+            {
+              "id": 7,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_7"
+            },
+            {
+              "id": 9,
+              "reference": "OccurrenceAEncounterInpatient1_precondition_9"
+            },
+            {
+              "id": 11,
+              "reference": "OccurrenceAEncounterInpatient1_precondition_11"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "07199C87-79AB-43FA-A141-723891E81276"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "2E8D38B6-1FE3-4677-8987-F987DDBCCD7A",
+      "preconditions": [
+        {
+          "id": 55,
+          "preconditions": [
+            {
+              "id": 53,
+              "preconditions": [
+                {
+                  "id": 18,
+                  "preconditions": [
+                    {
+                      "id": 14,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_14"
+                    },
+                    {
+                      "id": 16,
+                      "reference": "OccurrenceAComfortMeasures3_precondition_16"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 25,
+                  "preconditions": [
+                    {
+                      "id": 20,
+                      "reference": "OccurrenceAComfortMeasures3_precondition_20"
+                    },
+                    {
+                      "id": 24,
+                      "preconditions": [
+                        {
+                          "id": 22,
+                          "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_22"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 32,
+                  "preconditions": [
+                    {
+                      "id": 29,
+                      "reference": "OccurrenceAClinicalTrialParticipant4_precondition_29"
+                    },
+                    {
+                      "id": 31,
+                      "preconditions": [
+                        {
+                          "id": 27,
+                          "reference": "OccurrenceAClinicalTrialParticipant4_precondition_27"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 41,
+                  "preconditions": [
+                    {
+                      "id": 34,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_34"
+                    },
+                    {
+                      "id": 38,
+                      "reference": "OccurrenceAClinicalTrialParticipant4_precondition_38"
+                    },
+                    {
+                      "id": 40,
+                      "preconditions": [
+                        {
+                          "id": 36,
+                          "reference": "OccurrenceAClinicalTrialParticipant4_precondition_36"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 43,
+                  "reference": "OccurrenceAEncounterInpatient1_precondition_43"
+                },
+                {
+                  "id": 45,
+                  "reference": "OccurrenceAEncounterInpatient1_precondition_45"
+                },
+                {
+                  "id": 47,
+                  "reference": "OccurrenceAEncounterInpatient1_precondition_47"
+                },
+                {
+                  "id": 49,
+                  "reference": "OccurrenceAEncounterInpatient1_precondition_49"
+                },
+                {
+                  "id": 51,
+                  "reference": "OccurrenceAEncounterInpatient1_precondition_51"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEXCEP": {
+      "conjunction?": true,
+      "type": "DENEXCEP",
+      "title": "Denominator Exception",
+      "hqmf_id": "73A8305A-4FF2-4D87-9CED-FC01C8218E1C",
+      "preconditions": [
+        {
+          "id": 91,
+          "preconditions": [
+            {
+              "id": 89,
+              "preconditions": [
+                {
+                  "id": 61,
+                  "preconditions": [
+                    {
+                      "id": 56,
+                      "reference": "MedicationAdministeredHospitalMeasuresAspirin_precondition_56"
+                    },
+                    {
+                      "id": 60,
+                      "preconditions": [
+                        {
+                          "id": 58,
+                          "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_58"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 67,
+                  "preconditions": [
+                    {
+                      "id": 63,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit2_precondition_63"
+                    },
+                    {
+                      "id": 65,
+                      "reference": "MedicationAdministeredHospitalMeasuresAspirin_precondition_65"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 79,
+                  "preconditions": [
+                    {
+                      "id": 69,
+                      "reference": "MedicationAllergyAspirinAllergen_precondition_69"
+                    },
+                    {
+                      "id": 71,
+                      "reference": "MedicationOrderAspirinIngredientSpecific_precondition_71"
+                    },
+                    {
+                      "id": 73,
+                      "reference": "MedicationDischargeAspirinIngredientSpecific_precondition_73"
+                    },
+                    {
+                      "id": 75,
+                      "reference": "MedicationOrderAspirinIngredientSpecific_precondition_75"
+                    },
+                    {
+                      "id": 77,
+                      "reference": "MedicationDischargeAspirinIngredientSpecific_precondition_77"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 86,
+                  "preconditions": [
+                    {
+                      "id": 82,
+                      "reference": "MedicationDischargeWarfarin_precondition_82"
+                    },
+                    {
+                      "id": 84,
+                      "reference": "MedicationDischargeOtherAnticoagulantsForAmi_precondition_84"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "D734B747-A571-4EA9-8A10-F7AA7D1A79AA",
+      "preconditions": [
+        {
+          "id": 94,
+          "preconditions": [
+            {
+              "id": 92,
+              "reference": "MedicationDischargeHospitalMeasuresAspirin_precondition_92"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "MedicationAdministeredNotDoneHospitalMeasuresHold": {
+      "title": "Hospital Measures - Hold",
+      "description": "Medication, Administered not done: Hospital Measures - Hold",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneHospitalMeasuresHold",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "OccurrenceAEmergencyDepartmentVisit2": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false
+    },
+    "MedicationDischargeNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Discharge not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationDischargeNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Discharge not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationOrderNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Order not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationOrderNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Order not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "InterventionPerformedComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false
+    },
+    "PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "DiagnosisActiveHospitalMeasuresAmi_precondition_5": {
+      "title": "Hospital Measures - AMI",
+      "description": "Diagnosis, Active: Hospital Measures - AMI",
+      "code_list_id": "2.16.840.1.113883.3.666.5.3011",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveHospitalMeasuresAmi",
+      "variable": false,
+      "field_values": {
+        "ORDINAL": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+          "title": "ordinality"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_7": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_9": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "LENGTH_OF_STAY": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "unit": "d",
+            "value": "120",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_11": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EDU",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit2_precondition_14": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAComfortMeasures3_precondition_16": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "INTERVENTION_PERFORMED_COMFORT_MEASURES",
+      "source_data_criteria": "OccurrenceAComfortMeasures3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit2"
+        }
+      ]
+    },
+    "OccurrenceAComfortMeasures3_precondition_20": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "INTERVENTION_PERFORMED_COMFORT_MEASURES",
+      "source_data_criteria": "OccurrenceAComfortMeasures3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit2_precondition_22": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAClinicalTrialParticipant4_precondition_29": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT",
+      "source_data_criteria": "OccurrenceAClinicalTrialParticipant4",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAClinicalTrialParticipant4_precondition_27": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT",
+      "source_data_criteria": "OccurrenceAClinicalTrialParticipant4",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit2_precondition_34": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAClinicalTrialParticipant4_precondition_38": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT",
+      "source_data_criteria": "OccurrenceAClinicalTrialParticipant4",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEmergencyDepartmentVisit2"
+        }
+      ]
+    },
+    "OccurrenceAClinicalTrialParticipant4_precondition_36": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT",
+      "source_data_criteria": "OccurrenceAClinicalTrialParticipant4",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit2"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_43": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_45": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.308",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_47": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.209",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_49": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.207",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient1_precondition_51": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+          "title": "discharge status"
+        }
+      }
+    },
+    "MedicationAdministeredHospitalMeasuresAspirin_precondition_56": {
+      "title": "Hospital Measures-Aspirin",
+      "description": "Medication, Administered: Hospital Measures-Aspirin",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.666.5.1145",
+      "source_data_criteria": "MedicationAdministeredHospitalMeasuresAspirin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit2_precondition_58": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit2_precondition_63": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredHospitalMeasuresAspirin_precondition_65": {
+      "title": "Hospital Measures-Aspirin",
+      "description": "Medication, Administered: Hospital Measures-Aspirin",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.666.5.1145",
+      "source_data_criteria": "MedicationAdministeredHospitalMeasuresAspirin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit2"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_80": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "MedicationAllergyAspirinAllergen_precondition_69": {
+      "title": "Aspirin Allergen",
+      "description": "Medication, Allergy: Aspirin Allergen",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.139",
+      "type": "medications",
+      "definition": "medication_allergy",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationAllergyAspirinAllergen",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_80"
+        }
+      ]
+    },
+    "MedicationOrderAspirinIngredientSpecific_precondition_71": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Order: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_80"
+        }
+      ]
+    },
+    "MedicationDischargeAspirinIngredientSpecific_precondition_73": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Discharge: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+      "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_80"
+        }
+      ]
+    },
+    "MedicationOrderAspirinIngredientSpecific_precondition_75": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Order: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_80"
+        }
+      ]
+    },
+    "MedicationDischargeAspirinIngredientSpecific_precondition_77": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Discharge: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+      "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_80"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient1_precondition_87": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "MedicationDischargeWarfarin_precondition_82": {
+      "title": "Warfarin",
+      "description": "Medication, Discharge: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeWarfarin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_87"
+        }
+      ]
+    },
+    "MedicationDischargeOtherAnticoagulantsForAmi_precondition_84": {
+      "title": "Other Anticoagulants for AMI",
+      "description": "Medication, Discharge: Other Anticoagulants for AMI",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.31",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeOtherAnticoagulantsForAmi",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1_precondition_87"
+        }
+      ]
+    },
+    "MedicationDischargeHospitalMeasuresAspirin_precondition_92": {
+      "title": "Hospital Measures-Aspirin",
+      "description": "Medication, Discharge: Hospital Measures-Aspirin",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeHospitalMeasuresAspirin",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient1"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "DiagnosisActiveHospitalMeasuresAmi": {
+      "title": "Hospital Measures - AMI",
+      "description": "Diagnosis, Active: Hospital Measures - AMI",
+      "code_list_id": "2.16.840.1.113883.3.666.5.3011",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveHospitalMeasuresAmi",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "MedicationDischargeHospitalMeasuresAspirin": {
+      "title": "Hospital Measures-Aspirin",
+      "description": "Medication, Discharge: Hospital Measures-Aspirin",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeHospitalMeasuresAspirin",
+      "variable": false
+    },
+    "MedicationAllergyAspirinAllergen": {
+      "title": "Aspirin Allergen",
+      "description": "Medication, Allergy: Aspirin Allergen",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.139",
+      "type": "medications",
+      "definition": "medication_allergy",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationAllergyAspirinAllergen",
+      "variable": false
+    },
+    "MedicationAdministeredHospitalMeasuresAspirin": {
+      "title": "Hospital Measures-Aspirin",
+      "description": "Medication, Administered: Hospital Measures-Aspirin",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredHospitalMeasuresAspirin",
+      "variable": false
+    },
+    "MedicationAdministeredNotDoneHospitalMeasuresHold": {
+      "title": "Hospital Measures - Hold",
+      "description": "Medication, Administered not done: Hospital Measures - Hold",
+      "code_list_id": "2.16.840.1.113883.3.666.5.626",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationAdministeredNotDoneHospitalMeasuresHold",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient1": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient1",
+      "variable": false
+    },
+    "OccurrenceAEmergencyDepartmentVisit2": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit2",
+      "variable": false
+    },
+    "OccurrenceAComfortMeasures3": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "INTERVENTION_PERFORMED_COMFORT_MEASURES",
+      "source_data_criteria": "OccurrenceAComfortMeasures3",
+      "variable": false
+    },
+    "MedicationDischargeWarfarin": {
+      "title": "Warfarin",
+      "description": "Medication, Discharge: Warfarin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeWarfarin",
+      "variable": false
+    },
+    "MedicationDischargeOtherAnticoagulantsForAmi": {
+      "title": "Other Anticoagulants for AMI",
+      "description": "Medication, Discharge: Other Anticoagulants for AMI",
+      "code_list_id": "2.16.840.1.113762.1.4.1045.31",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeOtherAnticoagulantsForAmi",
+      "variable": false
+    },
+    "MedicationDischargeAspirinIngredientSpecific": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Discharge: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+      "variable": false
+    },
+    "MedicationDischargeNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Discharge not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationDischargeNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Discharge not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "discharge",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationDischargeNotDonePatientRefusal",
+      "variable": false
+    },
+    "MedicationOrderAspirinIngredientSpecific": {
+      "title": "Aspirin ingredient specific",
+      "description": "Medication, Order: Aspirin ingredient specific",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+      "variable": false
+    },
+    "MedicationOrderNotDoneMedicalReason": {
+      "title": "Medical Reason",
+      "description": "Medication, Order not done: Medical Reason",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDoneMedicalReason",
+      "variable": false
+    },
+    "MedicationOrderNotDonePatientRefusal": {
+      "title": "Patient Refusal",
+      "description": "Medication, Order not done: Patient Refusal",
+      "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": true,
+      "source_data_criteria": "MedicationOrderNotDonePatientRefusal",
+      "variable": false
+    },
+    "OccurrenceAClinicalTrialParticipant4": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PATIENT_CHARACTERISTIC_CLINICAL_TRIAL_PARTICIPANT_CLINICAL_TRIAL_PARTICIPANT",
+      "source_data_criteria": "OccurrenceAClinicalTrialParticipant4",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      }
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "InterventionPerformedComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false
+    },
+    "PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant": {
+      "title": "Clinical Trial Participant",
+      "description": "Patient Characteristic Clinical Trial Participant: Clinical Trial Participant",
+      "code_list_id": "2.16.840.1.113883.3.526.2.643",
+      "type": "characteristic",
+      "definition": "patient_characteristic_clinical_trial_participant",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicClinicalTrialParticipantClinicalTrialParticipant",
+      "variable": false,
+      "inline_code_list": {
+        "SNOMED-CT": [
+          "428024001"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Measure specifications are in the Public Domain.\n\nLOINC (R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Measure specifications are in the Public Domain.\n\nLOINC (R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT(c)) copyright 2004-2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Aspirin therapy in patients who have suffered an acute myocardial infarction reduces the risk of adverse events and mortality. Studies have demonstrated that aspirin can reduce this risk by 20% (Antiplatelet Trialists' Collaboration, 1994). National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI (O'Gara, 2013; Jneid, 2012; and Smith, 2011).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Aspirin therapy in patients who have suffered an acute myocardial infarction reduces the risk of adverse events and mortality. Studies have demonstrated that aspirin can reduce this risk by 20% (Antiplatelet Trialists' Collaboration, 1994). National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI (O'Gara, 2013; Jneid, 2012; and Smith, 2011).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0142",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0142"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "None",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "100",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "100",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Smith SC Jr, Benjamin EJ, Bonow RO, Braun LT, Creager MA, et al. AHA/ACCF secondary prevention and risk reduction therapy for patients with coronary and other atherosclerotic vascular disease: 2011 update: a guideline from the American Heart Association and American College of Cardiology Foundation. Circulation. 2011;124:2458–2473.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Smith SC Jr, Benjamin EJ, Bonow RO, Braun LT, Creager MA, et al. AHA/ACCF secondary prevention and risk reduction therapy for patients with coronary and other atherosclerotic vascular disease: 2011 update: a guideline from the American Heart Association and American College of Cardiology Foundation. Circulation. 2011;124:2458–2473.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "Exclusion element guidance: \nThe intent for the exclusion for patients who are clinical trial participants was to be limited to patients participating in a clinical trial for acute myocardial infarction (AMI), ST elevation myocardial infarction (STEMI), non-ST elevation myocardial infarction (non-STEMI), heart attack, or acute coronary syndrome (ACS), the same conditions as covered by the measure. However, the value set specifying clinical trial participation is not limited to a specific type of trial.\n\nMedical or patient reasons for not performing a test or giving a medication are categories for valid medical or patient reasons that are not specifically listed in the exclusion section of the measure. Each is expected to be captured and made available for measurement or clinical decision support within the EHR workflow but the exact method or location of capture is a local or vendor decision.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Exclusion element guidance: \nThe intent for the exclusion for patients who are clinical trial participants was to be limited to patients participating in a clinical trial for acute myocardial infarction (AMI), ST elevation myocardial infarction (STEMI), non-ST elevation myocardial infarction (non-STEMI), heart attack, or acute coronary syndrome (ACS), the same conditions as covered by the measure. However, the value set specifying clinical trial participation is not limited to a specific type of trial.\n\nMedical or patient reasons for not performing a test or giving a medication are categories for valid medical or patient reasons that are not specifically listed in the exclusion section of the measure. Each is expected to be captured and made available for measurement or clinical decision support within the EHR workflow but the exact method or location of capture is a local or vendor decision.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "All hospital discharges for acute myocardial infarction (AMI) with hospital stays <= 120 days during the measurement year for patients age 18 and older at the time of hospital admission.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "All hospital discharges for acute myocardial infarction (AMI) with hospital stays <= 120 days during the measurement year for patients age 18 and older at the time of hospital admission.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Patients age 18 and older with an ICD-9-CM Principal Diagnosis Code for Acute Myocardial Infarction (AMI).",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients age 18 and older with an ICD-9-CM Principal Diagnosis Code for Acute Myocardial Infarction (AMI).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients with Comfort Measures Only documented. \nPatients enrolled in clinical trials.\nPatients discharged to another hospital. \nPatients who left against medical advice. \nPatients who expired.\nPatients discharged to home for hospice care.\nPatients discharged to a health care facility for hospice care.",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with Comfort Measures Only documented. \nPatients enrolled in clinical trials.\nPatients discharged to another hospital. \nPatients who left against medical advice. \nPatients who expired.\nPatients discharged to home for hospice care.\nPatients discharged to a health care facility for hospice care.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Acute Myocardial Infarction patients who are prescribed aspirin at hospital discharge.",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Acute Myocardial Infarction patients who are prescribed aspirin at hospital discharge.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "Patients with a documented Reason for No Aspirin at Discharge. This includes patients with an Aspirin allergy, patients discharged on Warfarin or other specific anticoagulant medications, patients with a hold on the administration of Aspirin medications, and patients with a medical or patient reason for not prescribing this medication.",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with a documented Reason for No Aspirin at Discharge. This includes patients with an Aspirin allergy, patients discharged on Warfarin or other specific anticoagulant medications, patients with a hold on the administration of Aspirin medications, and patients with a medical or patient reason for not prescribing this medication.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity, and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity, and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

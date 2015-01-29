@@ -1,0 +1,2194 @@
+{
+  "id": "40280381-4555-E1C1-0145-9038DC102B22",
+  "nqf_id": "0036",
+  "hqmf_id": "40280381-4555-E1C1-0145-9038DC102B22",
+  "hqmf_set_id": "59E84144-6332-4369-AEBD-03A7899CA3DA",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS126v3",
+  "name": "Use of Appropriate Medications for Asthma",
+  "description": "Percentage of patients 5-64 years of age who were identified as having persistent asthma and were appropriately prescribed medication during the measurement period.",
+  "type": "ep",
+  "category": "Core",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0036';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-9038DC102B22';\n        hqmfjs.sub_id = 'd';\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.101.12.1022':{'CPT':['99381','99382','99383','99384']},'2.16.840.1.113883.3.464.1003.101.12.1024':{'CPT':['99391','99392','99393','99394']},'2.16.840.1.113883.3.464.1003.102.12.1007':{'SNOMED-CT':['135836000','13645005','195951007','196001008','285381006','313296004','313297008','313299006'],'ICD-9-CM':['493.20','493.21','493.22','496'],'ICD-10-CM':['J44.0','J44.1','J44.9']},'2.16.840.1.113883.3.464.1003.102.12.1004':{'SNOMED-CT':['16003001','16846004','195957006','195958001','195959009','195963002','196026004','21072009','233674008','233675009','233677001','23958009','266355005','266356006','2912004','31898008','33325001','47895001','4981000','57686001','60805002','66110007','66987001','68328006','70756004','77690003','86680006','87433001'],'ICD-9-CM':['492.0','492.8','506.4','518.1','518.2'],'ICD-10-CM':['J43.0','J43.1','J43.2','J43.8','J43.9','J68.4','J98.2','J98.3']},'2.16.840.1.113883.3.464.1003.102.12.1002':{'SNOMED-CT':['190905008','190909002','235978006','81423003','86092005','86555001'],'ICD-9-CM':['277.00','277.01','277.02','277.03','277.09'],'ICD-10-CM':['E84.0','E84.11','E84.19','E84.8','E84.9']},'2.16.840.1.113883.3.464.1003.102.12.1018':{'SNOMED-CT':['397767007','65710008','67905004'],'ICD-9-CM':['518.81'],'ICD-10-CM':['J96.00','J96.01','J96.02','J96.20','J96.21','J96.22']},'2.16.840.1.113883.3.464.1003.196.12.1212':{'RxNorm':['1085795','1085798','1085805','1148643','1245270','1245276','1246288','1246304','1246314','1246316','1248840','1313826','197637','197638','198255','198257','198258','198261','198263','198264','198266','198381','199331','199655','199904','200224','237178','241063','242438','243327','245322','247047','247048','247481','248333','249984','252559','308103','308105','308107','308113','308119','308120','310045','310616','310617','310658','311759','313263','313264','313271','313272','313278','313284','313285','313291','313297','313298','313302','313304','313306','313310','313312','313758','313794','314240','314241','315111','317769','317831','346574','348472','349094','351109','351246','359468','403866','409732','411090','421824','425539','428923','428925','428980','431807','434109','434226','562480','597829','617270','692475','692477','701712','706550','730834','746199','746336','746341','746803','746810','746812','746814','746821','746832','752376','755737','755738','756248','756292','756306','756346','756347','790278','790283','792945','828927','831246','831257','831261','831263','833245','885241','895994','895999','896004','896018','896021','896025','896028','896030','896161','896184','896186','896192','896209','896218','896228','896231','896236','896239','896244','896267','896272','897296','966522','966525','966527','966536','966540','966545','966548','966564','966595','966604','966610','966635','966675']},'2.16.840.1.113883.3.464.1003.102.12.1023':{'SNOMED-CT':['426656000','426979002','427295004','5281000124103'],'ICD-10-CM':['J45.30','J45.31','J45.32','J45.40','J45.41','J45.42','J45.50','J45.51','J45.52']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']},'2.16.840.1.113883.3.464.1003.101.12.1025':{'CPT':['99395','99396','99397']},'2.16.840.1.113883.3.464.1003.101.12.1023':{'CPT':['99385','99386','99387']},'2.16.840.1.113883.3.464.1003.101.12.1016':{'CPT':['99341','99342','99343','99344','99345','99347','99348','99349','99350']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAPersistentAsthma1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1023\", \"specificOccurrence\": \"OccurrenceAPersistentAsthma1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAChronicObstructivePulmonaryDisease2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1007\", \"specificOccurrence\": \"OccurrenceAChronicObstructivePulmonaryDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAEmphysema3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1004\", \"specificOccurrence\": \"OccurrenceAEmphysema3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACysticFibrosis4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1002\", \"specificOccurrence\": \"OccurrenceACysticFibrosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteRespiratoryFailure5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1018\", \"specificOccurrence\": \"OccurrenceAAcuteRespiratoryFailure5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActivePersistentAsthma = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveChronicObstructivePulmonaryDisease = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1007\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveEmphysema = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1004\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveCysticFibrosis = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1002\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcuteRespiratoryFailure = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1018\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_6 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(5, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_8 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(64, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAPersistentAsthma1_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1023\", \"specificOccurrence\": \"OccurrenceAPersistentAsthma1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1024\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1025\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1023\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1022\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedHomeHealthcareServices_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1016\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAPersistentAsthma1_precondition_12 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1023\", \"specificOccurrence\": \"OccurrenceAPersistentAsthma1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAChronicObstructivePulmonaryDisease2_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1007\", \"specificOccurrence\": \"OccurrenceAChronicObstructivePulmonaryDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAChronicObstructivePulmonaryDisease2_precondition_35 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1007\", \"specificOccurrence\": \"OccurrenceAChronicObstructivePulmonaryDisease2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmphysema3_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1004\", \"specificOccurrence\": \"OccurrenceAEmphysema3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAEmphysema3_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1004\", \"specificOccurrence\": \"OccurrenceAEmphysema3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceACysticFibrosis4_precondition_47 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1002\", \"specificOccurrence\": \"OccurrenceACysticFibrosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceACysticFibrosis4_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1002\", \"specificOccurrence\": \"OccurrenceACysticFibrosis4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteRespiratoryFailure5_precondition_54 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1018\", \"specificOccurrence\": \"OccurrenceAAcuteRespiratoryFailure5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteRespiratoryFailure5_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1018\", \"specificOccurrence\": \"OccurrenceAAcuteRespiratoryFailure5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationDispensedPreferredAsthmaTherapy_precondition_64 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"dispensed\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1212\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_67 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(5, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_69 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(11, \"a\", true)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_72 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(12, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_74 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(18, \"a\", true)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_77 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(19, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_79 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(50, \"a\", true)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_82 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(51, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_84 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(64, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAPersistentAsthma1\",\"type\":\"DIAGNOSIS_ACTIVE_PERSISTENT_ASTHMA\",\"function\":\"OccurrenceAPersistentAsthma1\"},{\"id\":\"OccurrenceAChronicObstructivePulmonaryDisease2\",\"type\":\"DIAGNOSIS_ACTIVE_CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE\",\"function\":\"OccurrenceAChronicObstructivePulmonaryDisease2\"},{\"id\":\"OccurrenceAEmphysema3\",\"type\":\"DIAGNOSIS_ACTIVE_EMPHYSEMA\",\"function\":\"OccurrenceAEmphysema3\"},{\"id\":\"OccurrenceACysticFibrosis4\",\"type\":\"DIAGNOSIS_ACTIVE_CYSTIC_FIBROSIS\",\"function\":\"OccurrenceACysticFibrosis4\"},{\"id\":\"OccurrenceAAcuteRespiratoryFailure5\",\"type\":\"DIAGNOSIS_ACTIVE_ACUTE_RESPIRATORY_FAILURE\",\"function\":\"OccurrenceAAcuteRespiratoryFailure5\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('32', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_6, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_8, hqmfjs.OccurrenceAPersistentAsthma1_precondition_10,\n      atLeastOneTrue('28', patient, initialSpecificContext, hqmfjs.EncounterPerformedOfficeVisit_precondition_14, hqmfjs.EncounterPerformedFaceToFaceInteraction_precondition_16, hqmfjs.EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_18, hqmfjs.EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_20, hqmfjs.EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_22, hqmfjs.EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_24, hqmfjs.EncounterPerformedHomeHealthcareServices_precondition_26\n      ),\n      allFalse('31', patient, initialSpecificContext, hqmfjs.OccurrenceAPersistentAsthma1_precondition_12\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('STRAT_2', patient, initialSpecificContext,\n    allTrue('81', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_77, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_79\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('66', patient, initialSpecificContext, hqmfjs.MedicationDispensedPreferredAsthmaTherapy_precondition_64\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('63', patient, initialSpecificContext,\n      atLeastOneTrue('61', patient, initialSpecificContext,\n        allTrue('38', patient, initialSpecificContext, hqmfjs.OccurrenceAChronicObstructivePulmonaryDisease2_precondition_33,\n          allFalse('37', patient, initialSpecificContext, hqmfjs.OccurrenceAChronicObstructivePulmonaryDisease2_precondition_35\n          )\n        ),\n        allTrue('45', patient, initialSpecificContext, hqmfjs.OccurrenceAEmphysema3_precondition_40,\n          allFalse('44', patient, initialSpecificContext, hqmfjs.OccurrenceAEmphysema3_precondition_42\n          )\n        ),\n        allTrue('52', patient, initialSpecificContext, hqmfjs.OccurrenceACysticFibrosis4_precondition_47,\n          allFalse('51', patient, initialSpecificContext, hqmfjs.OccurrenceACysticFibrosis4_precondition_49\n          )\n        ),\n        allTrue('59', patient, initialSpecificContext, hqmfjs.OccurrenceAAcuteRespiratoryFailure5_precondition_54,\n          allFalse('58', patient, initialSpecificContext, hqmfjs.OccurrenceAAcuteRespiratoryFailure5_precondition_56\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0036",
+    "hqmf_id": "40280381-4555-E1C1-0145-9038DC102B22",
+    "hqmf_set_id": "59E84144-6332-4369-AEBD-03A7899CA3DA",
+    "hqmf_version_number": 3,
+    "title": "Use of Appropriate Medications for Asthma",
+    "description": "Percentage of patients 5-64 years of age who were identified as having persistent asthma and were appropriately prescribed medication during the measurement period.",
+    "cms_id": "CMS126v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "DD566B59-01E5-4FDC-9D35-2C3A39862249",
+        "preconditions": [
+          {
+            "id": 32,
+            "preconditions": [
+              {
+                "id": 6,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_6"
+              },
+              {
+                "id": 8,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_8"
+              },
+              {
+                "id": 10,
+                "reference": "OccurrenceAPersistentAsthma1_precondition_10"
+              },
+              {
+                "id": 28,
+                "preconditions": [
+                  {
+                    "id": 14,
+                    "reference": "EncounterPerformedOfficeVisit_precondition_14"
+                  },
+                  {
+                    "id": 16,
+                    "reference": "EncounterPerformedFaceToFaceInteraction_precondition_16"
+                  },
+                  {
+                    "id": 18,
+                    "reference": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_18"
+                  },
+                  {
+                    "id": 20,
+                    "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_20"
+                  },
+                  {
+                    "id": 22,
+                    "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_22"
+                  },
+                  {
+                    "id": 24,
+                    "reference": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_24"
+                  },
+                  {
+                    "id": 26,
+                    "reference": "EncounterPerformedHomeHealthcareServices_precondition_26"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              },
+              {
+                "id": 31,
+                "preconditions": [
+                  {
+                    "id": 12,
+                    "reference": "OccurrenceAPersistentAsthma1_precondition_12"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue",
+                "negation": true
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "2462FFDF-92AA-4529-8FB4-91041E870D53"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "5CFFDFCA-6889-4D87-83D4-F4ECED3BEE99",
+        "preconditions": [
+          {
+            "id": 63,
+            "preconditions": [
+              {
+                "id": 61,
+                "preconditions": [
+                  {
+                    "id": 38,
+                    "preconditions": [
+                      {
+                        "id": 33,
+                        "reference": "OccurrenceAChronicObstructivePulmonaryDisease2_precondition_33"
+                      },
+                      {
+                        "id": 37,
+                        "preconditions": [
+                          {
+                            "id": 35,
+                            "reference": "OccurrenceAChronicObstructivePulmonaryDisease2_precondition_35"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 45,
+                    "preconditions": [
+                      {
+                        "id": 40,
+                        "reference": "OccurrenceAEmphysema3_precondition_40"
+                      },
+                      {
+                        "id": 44,
+                        "preconditions": [
+                          {
+                            "id": 42,
+                            "reference": "OccurrenceAEmphysema3_precondition_42"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 52,
+                    "preconditions": [
+                      {
+                        "id": 47,
+                        "reference": "OccurrenceACysticFibrosis4_precondition_47"
+                      },
+                      {
+                        "id": 51,
+                        "preconditions": [
+                          {
+                            "id": 49,
+                            "reference": "OccurrenceACysticFibrosis4_precondition_49"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 59,
+                    "preconditions": [
+                      {
+                        "id": 54,
+                        "reference": "OccurrenceAAcuteRespiratoryFailure5_precondition_54"
+                      },
+                      {
+                        "id": 58,
+                        "preconditions": [
+                          {
+                            "id": 56,
+                            "reference": "OccurrenceAAcuteRespiratoryFailure5_precondition_56"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "C38518D3-F7E7-4B34-A833-16517BF716E0",
+        "preconditions": [
+          {
+            "id": 66,
+            "preconditions": [
+              {
+                "id": 64,
+                "reference": "MedicationDispensedPreferredAsthmaTherapy_precondition_64"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-66493A34443E",
+        "preconditions": [
+          {
+            "id": 71,
+            "preconditions": [
+              {
+                "id": 67,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_67"
+              },
+              {
+                "id": 69,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_69"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT_1": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-66493BC34440",
+        "preconditions": [
+          {
+            "id": 76,
+            "preconditions": [
+              {
+                "id": 72,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_72"
+              },
+              {
+                "id": 74,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_74"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT_2": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-66493D314442",
+        "preconditions": [
+          {
+            "id": 81,
+            "preconditions": [
+              {
+                "id": 77,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_77"
+              },
+              {
+                "id": 79,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_79"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "STRAT_3": {
+        "conjunction?": true,
+        "type": "STRAT",
+        "hqmf_id": "40280381-3D61-56A7-013E-66493E984444",
+        "preconditions": [
+          {
+            "id": 86,
+            "preconditions": [
+              {
+                "id": 82,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_82"
+              },
+              {
+                "id": 84,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_84"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "DiagnosisActivePersistentAsthma": {
+        "title": "Persistent Asthma",
+        "description": "Diagnosis, Active: Persistent Asthma",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1023",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePersistentAsthma",
+        "variable": false
+      },
+      "DiagnosisActiveChronicObstructivePulmonaryDisease": {
+        "title": "Chronic Obstructive Pulmonary Disease",
+        "description": "Diagnosis, Active: Chronic Obstructive Pulmonary Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1007",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveChronicObstructivePulmonaryDisease",
+        "variable": false
+      },
+      "DiagnosisActiveEmphysema": {
+        "title": "Emphysema",
+        "description": "Diagnosis, Active: Emphysema",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1004",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveEmphysema",
+        "variable": false
+      },
+      "DiagnosisActiveCysticFibrosis": {
+        "title": "Cystic Fibrosis",
+        "description": "Diagnosis, Active: Cystic Fibrosis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1002",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveCysticFibrosis",
+        "variable": false
+      },
+      "DiagnosisActiveAcuteRespiratoryFailure": {
+        "title": "Acute Respiratory Failure",
+        "description": "Diagnosis, Active: Acute Respiratory Failure",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1018",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteRespiratoryFailure",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_6": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "5",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_8": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "64",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAPersistentAsthma1_precondition_10": {
+        "title": "Persistent Asthma",
+        "description": "Diagnosis, Active: Persistent Asthma",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1023",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PERSISTENT_ASTHMA",
+        "source_data_criteria": "OccurrenceAPersistentAsthma1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedOfficeVisit_precondition_14": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedFaceToFaceInteraction_precondition_16": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17_precondition_18": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_20": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_22": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17_precondition_24": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "EncounterPerformedHomeHealthcareServices_precondition_26": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAPersistentAsthma1_precondition_12": {
+        "title": "Persistent Asthma",
+        "description": "Diagnosis, Active: Persistent Asthma",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1023",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PERSISTENT_ASTHMA",
+        "source_data_criteria": "OccurrenceAPersistentAsthma1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAChronicObstructivePulmonaryDisease2_precondition_33": {
+        "title": "Chronic Obstructive Pulmonary Disease",
+        "description": "Diagnosis, Active: Chronic Obstructive Pulmonary Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1007",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE",
+        "source_data_criteria": "OccurrenceAChronicObstructivePulmonaryDisease2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAChronicObstructivePulmonaryDisease2_precondition_35": {
+        "title": "Chronic Obstructive Pulmonary Disease",
+        "description": "Diagnosis, Active: Chronic Obstructive Pulmonary Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1007",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE",
+        "source_data_criteria": "OccurrenceAChronicObstructivePulmonaryDisease2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEmphysema3_precondition_40": {
+        "title": "Emphysema",
+        "description": "Diagnosis, Active: Emphysema",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1004",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_EMPHYSEMA",
+        "source_data_criteria": "OccurrenceAEmphysema3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAEmphysema3_precondition_42": {
+        "title": "Emphysema",
+        "description": "Diagnosis, Active: Emphysema",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1004",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_EMPHYSEMA",
+        "source_data_criteria": "OccurrenceAEmphysema3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceACysticFibrosis4_precondition_47": {
+        "title": "Cystic Fibrosis",
+        "description": "Diagnosis, Active: Cystic Fibrosis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1002",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CYSTIC_FIBROSIS",
+        "source_data_criteria": "OccurrenceACysticFibrosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceACysticFibrosis4_precondition_49": {
+        "title": "Cystic Fibrosis",
+        "description": "Diagnosis, Active: Cystic Fibrosis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1002",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CYSTIC_FIBROSIS",
+        "source_data_criteria": "OccurrenceACysticFibrosis4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAcuteRespiratoryFailure5_precondition_54": {
+        "title": "Acute Respiratory Failure",
+        "description": "Diagnosis, Active: Acute Respiratory Failure",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1018",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_RESPIRATORY_FAILURE",
+        "source_data_criteria": "OccurrenceAAcuteRespiratoryFailure5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceAAcuteRespiratoryFailure5_precondition_56": {
+        "title": "Acute Respiratory Failure",
+        "description": "Diagnosis, Active: Acute Respiratory Failure",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1018",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_RESPIRATORY_FAILURE",
+        "source_data_criteria": "OccurrenceAAcuteRespiratoryFailure5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationDispensedPreferredAsthmaTherapy_precondition_64": {
+        "title": "Preferred Asthma Therapy",
+        "description": "Medication, Dispensed: Preferred Asthma Therapy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1212",
+        "type": "medications",
+        "definition": "medication",
+        "status": "dispensed",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDispensedPreferredAsthmaTherapy",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_67": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "5",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_69": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "11",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_72": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "12",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_74": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_77": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "19",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_79": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "50",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_82": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "51",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_84": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "64",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "MedicationDispensedPreferredAsthmaTherapy": {
+        "title": "Preferred Asthma Therapy",
+        "description": "Medication, Dispensed: Preferred Asthma Therapy",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1212",
+        "type": "medications",
+        "definition": "medication",
+        "status": "dispensed",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDispensedPreferredAsthmaTherapy",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+        "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+        "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+        "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedHomeHealthcareServices": {
+        "title": "Home Healthcare Services",
+        "description": "Encounter, Performed: Home Healthcare Services",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17": {
+        "title": "Preventive Care - Established Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1024",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareEstablishedOfficeVisit0To17",
+        "variable": false
+      },
+      "EncounterPerformedPreventiveCareInitialOfficeVisit0To17": {
+        "title": "Preventive Care- Initial Office Visit, 0 to 17",
+        "description": "Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1022",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedPreventiveCareInitialOfficeVisit0To17",
+        "variable": false
+      },
+      "OccurrenceAPersistentAsthma1": {
+        "title": "Persistent Asthma",
+        "description": "Diagnosis, Active: Persistent Asthma",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1023",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PERSISTENT_ASTHMA",
+        "source_data_criteria": "OccurrenceAPersistentAsthma1",
+        "variable": false
+      },
+      "OccurrenceAChronicObstructivePulmonaryDisease2": {
+        "title": "Chronic Obstructive Pulmonary Disease",
+        "description": "Diagnosis, Active: Chronic Obstructive Pulmonary Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1007",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CHRONIC_OBSTRUCTIVE_PULMONARY_DISEASE",
+        "source_data_criteria": "OccurrenceAChronicObstructivePulmonaryDisease2",
+        "variable": false
+      },
+      "OccurrenceAEmphysema3": {
+        "title": "Emphysema",
+        "description": "Diagnosis, Active: Emphysema",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1004",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_EMPHYSEMA",
+        "source_data_criteria": "OccurrenceAEmphysema3",
+        "variable": false
+      },
+      "OccurrenceACysticFibrosis4": {
+        "title": "Cystic Fibrosis",
+        "description": "Diagnosis, Active: Cystic Fibrosis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1002",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_CYSTIC_FIBROSIS",
+        "source_data_criteria": "OccurrenceACysticFibrosis4",
+        "variable": false
+      },
+      "OccurrenceAAcuteRespiratoryFailure5": {
+        "title": "Acute Respiratory Failure",
+        "description": "Diagnosis, Active: Acute Respiratory Failure",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1018",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_RESPIRATORY_FAILURE",
+        "source_data_criteria": "OccurrenceAAcuteRespiratoryFailure5",
+        "variable": false
+      },
+      "DiagnosisActivePersistentAsthma": {
+        "title": "Persistent Asthma",
+        "description": "Diagnosis, Active: Persistent Asthma",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1023",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActivePersistentAsthma",
+        "variable": false
+      },
+      "DiagnosisActiveChronicObstructivePulmonaryDisease": {
+        "title": "Chronic Obstructive Pulmonary Disease",
+        "description": "Diagnosis, Active: Chronic Obstructive Pulmonary Disease",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1007",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveChronicObstructivePulmonaryDisease",
+        "variable": false
+      },
+      "DiagnosisActiveEmphysema": {
+        "title": "Emphysema",
+        "description": "Diagnosis, Active: Emphysema",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1004",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveEmphysema",
+        "variable": false
+      },
+      "DiagnosisActiveCysticFibrosis": {
+        "title": "Cystic Fibrosis",
+        "description": "Diagnosis, Active: Cystic Fibrosis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1002",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveCysticFibrosis",
+        "variable": false
+      },
+      "DiagnosisActiveAcuteRespiratoryFailure": {
+        "title": "Acute Respiratory Failure",
+        "description": "Diagnosis, Active: Acute Respiratory Failure",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1018",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteRespiratoryFailure",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \n\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \n\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \n\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \n\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \n\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \n\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "Report a total score, and each of the following strata:\nStratum 1: Patients age 5-11 \nStratum 2: Patients age 12-18\nStratum 3: Patients age 19-50\nStratum 4: Patients age 51-64",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Report a total score, and each of the following strata:\nStratum 1: Patients age 5-11 \nStratum 2: Patients age 12-18\nStratum 3: Patients age 19-50\nStratum 4: Patients age 51-64",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Asthma is one of the most prevalent chronic diseases, becoming increasingly more commonplace over the past twenty years. Approximately 24.6 million Americans have asthma, and it is responsible for over 3,000 deaths in the U.S. annually (American Lung Association 2010). In 2006, 13.3 million clinical visits (hospital, outpatient, emergency department, and physician offices) were attributed to asthma (Centers for Disease Control and Prevention 2009). The incidence rate, and subsequently the number of asthma-related health visits, is expected to increase by an additional 100 million globally by 2025 (World Health Organization 2007).\n\nAsthma accounts for over $20 billion spent on health care in the United States. Direct costs, including prescriptions, make up $15.6 billion of that total. Indirect costs, such as lost productivity, add an additional $5.1 billion (Centers for Disease Control and Prevention 2009). Inpatient hospitalization accounts for over 50 percent of overall asthma-related costs (Bahadori et al. 2009). In addition to the direct financial burden, asthma is also a leading cause of absenteeism and productivity, accounting for an estimated 14.2 million missed workdays for adults and over 14 million missed school days for children (Akinbami et al. 2009). Studies have shown that the indirect costs of asthma are becoming a growing financial burden on patients, and resulting in significant additional costs (Bahadori et al. 2009).\n\nAppropriate medication management could potentially prevent a significant proportion of asthma-related costs (hospitalizations, emergency room visits and missed work and school days) (Akinbami et al. 2009). The Asthma Regional Council supported this inference, stating that proper management could potentially save at least 25 percent of total asthma costs, or $5 billion, nationally by reducing health care costs (American Lung Association 2009).\n\nAnother initiative, the Children’s Health Fund’s Childhood Asthma Initiative, examined patients enrolled in an asthma intervention program. Results illustrated that treatment that aligned with clinical guidelines reduced the severity of symptoms experienced, as well as asthma-related events (e.g., hospitalizations, emergency room visits, etc.) (Columbia University 2010). Additionally, subsequent savings attributed to improved clinical outcomes totaled to nearly $4.2 million or $4,525 per patient. This translated to a significant reduction in federally subsidized and private insurance-based costs for this population (Columbia University 2010).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Asthma is one of the most prevalent chronic diseases, becoming increasingly more commonplace over the past twenty years. Approximately 24.6 million Americans have asthma, and it is responsible for over 3,000 deaths in the U.S. annually (American Lung Association 2010). In 2006, 13.3 million clinical visits (hospital, outpatient, emergency department, and physician offices) were attributed to asthma (Centers for Disease Control and Prevention 2009). The incidence rate, and subsequently the number of asthma-related health visits, is expected to increase by an additional 100 million globally by 2025 (World Health Organization 2007).\n\nAsthma accounts for over $20 billion spent on health care in the United States. Direct costs, including prescriptions, make up $15.6 billion of that total. Indirect costs, such as lost productivity, add an additional $5.1 billion (Centers for Disease Control and Prevention 2009). Inpatient hospitalization accounts for over 50 percent of overall asthma-related costs (Bahadori et al. 2009). In addition to the direct financial burden, asthma is also a leading cause of absenteeism and productivity, accounting for an estimated 14.2 million missed workdays for adults and over 14 million missed school days for children (Akinbami et al. 2009). Studies have shown that the indirect costs of asthma are becoming a growing financial burden on patients, and resulting in significant additional costs (Bahadori et al. 2009).\n\nAppropriate medication management could potentially prevent a significant proportion of asthma-related costs (hospitalizations, emergency room visits and missed work and school days) (Akinbami et al. 2009). The Asthma Regional Council supported this inference, stating that proper management could potentially save at least 25 percent of total asthma costs, or $5 billion, nationally by reducing health care costs (American Lung Association 2009).\n\nAnother initiative, the Children’s Health Fund’s Childhood Asthma Initiative, examined patients enrolled in an asthma intervention program. Results illustrated that treatment that aligned with clinical guidelines reduced the severity of symptoms experienced, as well as asthma-related events (e.g., hospitalizations, emergency room visits, etc.) (Columbia University 2010). Additionally, subsequent savings attributed to improved clinical outcomes totaled to nearly $4.2 million or $4,525 per patient. This translated to a significant reduction in federally subsidized and private insurance-based costs for this population (Columbia University 2010).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "National Heart Lung and Blood Institute/National Asthma and Education Prevention Program (2007) \n• Long-term control medications (include inhaled corticosteroids (ICSs), inhaled long-acting bronchodilators, leukotriene modifiers, cromolyn, theophylline, and immunomodulators) are used daily to achieve and maintain control of persistent asthma. The most effective are those that attenuate the underlying inflammation characteristic of asthma. The Expert Panel defines anti-inflammatory medications as those that cause a reduction in the markers of airway inflammation in airway tissue or airway secretions (e.g., eosinophils, mast cells, activated lymphocytes, macrophages, and cytokines; or Eosinophil cationic protein (ECP) and tryptase; or extravascular leakage of albumin, fibrinogen, or other vascular protein). \n• Inhaled corticosteroids are the preferred treatment option for mild persistent asthma in adults and children. Leukotriene Receptor Antagonists (LTRAs) are an alternative, although not preferred, treatment. \n• Long-acting beta-2 agonists (LABAs) should only be used in combination with ICSs for long-term control and prevention of symptoms in moderate or severe persistent asthma (step 3 care or higher in children =5 years of age and adults). There is a strong recommendation against the use of LABAs as monotherapy. Of the adjunctive therapies available, long-acting beta-2 agonists is the preferred therapy to combine with ICS in youths =12 years of age and adults. \n• The beneficial effects of long-acting beta-2 agonists in combination therapy for the great majority of patients who require more therapy than low-dose ICS alone to control asthma (i.e., require step 3 care or higher) should be weighed against the increased risk of severe exacerbations, although uncommon, associated with the daily use of long-acting beta-2 agonists (see discussion in text). \n• The NHLBI/NAEPP guideline strongly recommends against the use of long-acting beta-2 agonists for the treatment of acute symptoms or exacerbations.",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "National Heart Lung and Blood Institute/National Asthma and Education Prevention Program (2007) \n• Long-term control medications (include inhaled corticosteroids (ICSs), inhaled long-acting bronchodilators, leukotriene modifiers, cromolyn, theophylline, and immunomodulators) are used daily to achieve and maintain control of persistent asthma. The most effective are those that attenuate the underlying inflammation characteristic of asthma. The Expert Panel defines anti-inflammatory medications as those that cause a reduction in the markers of airway inflammation in airway tissue or airway secretions (e.g., eosinophils, mast cells, activated lymphocytes, macrophages, and cytokines; or Eosinophil cationic protein (ECP) and tryptase; or extravascular leakage of albumin, fibrinogen, or other vascular protein). \n• Inhaled corticosteroids are the preferred treatment option for mild persistent asthma in adults and children. Leukotriene Receptor Antagonists (LTRAs) are an alternative, although not preferred, treatment. \n• Long-acting beta-2 agonists (LABAs) should only be used in combination with ICSs for long-term control and prevention of symptoms in moderate or severe persistent asthma (step 3 care or higher in children =5 years of age and adults). There is a strong recommendation against the use of LABAs as monotherapy. Of the adjunctive therapies available, long-acting beta-2 agonists is the preferred therapy to combine with ICS in youths =12 years of age and adults. \n• The beneficial effects of long-acting beta-2 agonists in combination therapy for the great majority of patients who require more therapy than low-dose ICS alone to control asthma (i.e., require step 3 care or higher) should be weighed against the increased risk of severe exacerbations, although uncommon, associated with the daily use of long-acting beta-2 agonists (see discussion in text). \n• The NHLBI/NAEPP guideline strongly recommends against the use of long-acting beta-2 agonists for the treatment of acute symptoms or exacerbations.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0036",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0036"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "126",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "126",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "World Health Organization. 2007. Global surveillance, prevention and control of chronic respiratory diseases: a comprehensive approach.  http://www.who.int/gard/publications/GARD_Manual/en/index.html",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "World Health Organization. 2007. Global surveillance, prevention and control of chronic respiratory diseases: a comprehensive approach.  http://www.who.int/gard/publications/GARD_Manual/en/index.html",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "None",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Patients 5-64 years of age with persistent asthma and a visit during the measurement period",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients 5-64 years of age with persistent asthma and a visit during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Patients with emphysema, COPD, cystic fibrosis or acute respiratory failure during or prior to the measurement period",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with emphysema, COPD, cystic fibrosis or acute respiratory failure during or prior to the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients who were dispensed at least one prescription for a preferred therapy during the measurement period",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients who were dispensed at least one prescription for a preferred therapy during the measurement period",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX","title":"5-64","id":"Population1"},
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX","STRAT":"STRAT","stratification":"40280381-3D61-56A7-013E-66493A34443E","title":"RS1: 5-11","id":"Population2"},
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX","STRAT":"STRAT_1","stratification":"40280381-3D61-56A7-013E-66493BC34440","title":"RS2: 12-18","id":"Population3"},
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX","STRAT":"STRAT_2","stratification":"40280381-3D61-56A7-013E-66493D314442","title":"RS3: 19-50","id":"Population4"},
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX","STRAT":"STRAT_3","stratification":"40280381-3D61-56A7-013E-66493E984444","title":"RS4: 51-64","id":"Population5"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "sub_id": "d",
+  "subtitle": "RS3: 19-50",
+  "short_subtitle": "RS3: 19-50",
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.101.12.1022",
+    "2.16.840.1.113883.3.464.1003.101.12.1024",
+    "2.16.840.1.113883.3.464.1003.102.12.1007",
+    "2.16.840.1.113883.3.464.1003.102.12.1004",
+    "2.16.840.1.113883.3.464.1003.102.12.1002",
+    "2.16.840.1.113883.3.464.1003.102.12.1018",
+    "2.16.840.1.113883.3.464.1003.196.12.1212",
+    "2.16.840.1.113883.3.464.1003.102.12.1023",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048",
+    "2.16.840.1.113883.3.464.1003.101.12.1025",
+    "2.16.840.1.113883.3.464.1003.101.12.1023",
+    "2.16.840.1.113883.3.464.1003.101.12.1016"
+  ],
+  "population_ids": {
+    "STRAT": "40280381-3D61-56A7-013E-66493D314442",
+    "IPP": "DD566B59-01E5-4FDC-9D35-2C3A39862249",
+    "DENOM": "2462FFDF-92AA-4529-8FB4-91041E870D53",
+    "DENEX": "5CFFDFCA-6889-4D87-83D4-F4ECED3BEE99",
+    "NUMER": "C38518D3-F7E7-4B34-A833-16517BF716E0",
+    "stratification": "40280381-3D61-56A7-013E-66493D314442"
+  }
+}

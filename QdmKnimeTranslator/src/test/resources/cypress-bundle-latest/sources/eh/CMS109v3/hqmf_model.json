@@ -1,0 +1,2273 @@
+{
+  "id": "0374",
+  "hqmf_id": "40280381-43DB-D64C-0144-65DF36C22E97",
+  "hqmf_set_id": "BCCE43DD-08E3-46C3-BFDD-0B1B472690F0",
+  "hqmf_version_number": 3,
+  "title": "Venous Thromboembolism Patients Receiving Unfractionated Heparin with Dosages/Platelet Count Monitoring by Protocol or Nomogram",
+  "description": "This measure assesses the number of patients diagnosed with confirmed VTE who received intravenous (IV) UFH therapy dosages AND had their platelet counts monitored using defined parameters such as a nomogram or protocol.",
+  "cms_id": "CMS109v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "27467DA8-824E-4FA9-B534-582884939B7A",
+      "preconditions": [
+        {
+          "id": 30,
+          "preconditions": [
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            },
+            {
+              "id": 6,
+              "reference": "OccurrenceAEncounterInpatient2_precondition_6"
+            },
+            {
+              "id": 8,
+              "reference": "OccurrenceAEncounterInpatient2_precondition_8"
+            },
+            {
+              "id": 28,
+              "preconditions": [
+                {
+                  "id": 19,
+                  "preconditions": [
+                    {
+                      "id": 10,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_10"
+                    },
+                    {
+                      "id": 16,
+                      "preconditions": [
+                        {
+                          "id": 12,
+                          "reference": "DiagnosisActiveVenousThromboembolism_precondition_12"
+                        },
+                        {
+                          "id": 14,
+                          "reference": "DiagnosisActiveObstetricsVte_precondition_14"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 25,
+                  "preconditions": [
+                    {
+                      "id": 21,
+                      "reference": "DiagnosisActiveVenousThromboembolism_precondition_21"
+                    },
+                    {
+                      "id": 23,
+                      "reference": "DiagnosisActiveObstetricsVte_precondition_23"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "809E9DE7-4EA3-49AD-87B0-DE790571085E",
+      "preconditions": [
+        {
+          "id": 57,
+          "preconditions": [
+            {
+              "id": 45,
+              "preconditions": [
+                {
+                  "id": 31,
+                  "reference": "DiagnosticStudyResultVteDiagnosticTest_precondition_31"
+                },
+                {
+                  "id": 33,
+                  "reference": "DiagnosticStudyResultVteDiagnosticTest_precondition_33"
+                },
+                {
+                  "id": 43,
+                  "preconditions": [
+                    {
+                      "id": 35,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_35"
+                    },
+                    {
+                      "id": 41,
+                      "preconditions": [
+                        {
+                          "id": 37,
+                          "reference": "DiagnosticStudyResultVteDiagnosticTest_precondition_37"
+                        },
+                        {
+                          "id": 39,
+                          "reference": "DiagnosticStudyResultVteDiagnosticTest_precondition_39"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 55,
+              "preconditions": [
+                {
+                  "id": 51,
+                  "preconditions": [
+                    {
+                      "id": 47,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_47"
+                    },
+                    {
+                      "id": 49,
+                      "reference": "MedicationAdministeredUnfractionatedHeparin_precondition_49"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 53,
+                  "reference": "MedicationAdministeredUnfractionatedHeparin_precondition_53"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "F1192D18-70B5-4DE5-9E15-DCF298A4C11E",
+      "preconditions": [
+        {
+          "id": 88,
+          "preconditions": [
+            {
+              "id": 86,
+              "preconditions": [
+                {
+                  "id": 67,
+                  "preconditions": [
+                    {
+                      "id": 58,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_58"
+                    },
+                    {
+                      "id": 64,
+                      "preconditions": [
+                        {
+                          "id": 60,
+                          "reference": "InterventionOrderComfortMeasures_precondition_60"
+                        },
+                        {
+                          "id": 62,
+                          "reference": "InterventionPerformedComfortMeasures_precondition_62"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 73,
+                  "preconditions": [
+                    {
+                      "id": 69,
+                      "reference": "InterventionOrderComfortMeasures_precondition_69"
+                    },
+                    {
+                      "id": 71,
+                      "reference": "InterventionPerformedComfortMeasures_precondition_71"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                },
+                {
+                  "id": 76,
+                  "reference": "OccurrenceAEncounterInpatient2_precondition_76"
+                },
+                {
+                  "id": 78,
+                  "reference": "OccurrenceAEncounterInpatient2_precondition_78"
+                },
+                {
+                  "id": 80,
+                  "reference": "OccurrenceAEncounterInpatient2_precondition_80"
+                },
+                {
+                  "id": 82,
+                  "reference": "OccurrenceAEncounterInpatient2_precondition_82"
+                },
+                {
+                  "id": 84,
+                  "reference": "OccurrenceAEncounterInpatient2_precondition_84"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "83C17B19-6574-4BAB-96B8-B0D2256A2D37",
+      "preconditions": [
+        {
+          "id": 113,
+          "preconditions": [
+            {
+              "id": 97,
+              "preconditions": [
+                {
+                  "id": 89,
+                  "reference": "OccurrenceAUnfractionatedHeparin3_precondition_89"
+                },
+                {
+                  "id": 95,
+                  "preconditions": [
+                    {
+                      "id": 91,
+                      "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_91"
+                    },
+                    {
+                      "id": 93,
+                      "reference": "OccurrenceAUnfractionatedHeparin3_precondition_93"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 110,
+              "preconditions": [
+                {
+                  "id": 107,
+                  "preconditions": [
+                    {
+                      "id": 103,
+                      "preconditions": [
+                        {
+                          "id": 99,
+                          "reference": "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_99"
+                        },
+                        {
+                          "id": 101,
+                          "reference": "ProcedurePerformedClinicalPathwayProtocol_precondition_101"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 105,
+                      "reference": "LaboratoryTestPerformedPlateletCount_precondition_105"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "allTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient2": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "MedicationOrderUnfractionatedHeparin": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Order: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderUnfractionatedHeparin",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient2_precondition_6": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "LENGTH_OF_STAY": {
+          "type": "IVL_PQ",
+          "high": {
+            "type": "PQ",
+            "unit": "d",
+            "value": "120",
+            "inclusive?": true,
+            "derived?": false
+          }
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_8": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EDU",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_10": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_17": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_12": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_17"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_14": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_17"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient2_precondition_26": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism_precondition_21": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_26"
+        }
+      ]
+    },
+    "DiagnosisActiveObstetricsVte_precondition_23": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_26"
+        }
+      ]
+    },
+    "DiagnosticStudyResultVteDiagnosticTest_precondition_31": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosticStudyResultVteDiagnosticTest_precondition_33": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient2"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_35": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosticStudyResultVteDiagnosticTest_precondition_37": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "4",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "DiagnosticStudyResultVteDiagnosticTest_precondition_39": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_47": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationAdministeredUnfractionatedHeparin_precondition_49": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Administered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "MedicationAdministeredUnfractionatedHeparin_precondition_53": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Administered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+          "title": "route"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_58": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_65": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_60": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_65"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_62": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1_precondition_65"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient2_precondition_74": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures_precondition_69": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_74"
+        }
+      ]
+    },
+    "InterventionPerformedComfortMeasures_precondition_71": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_74"
+        }
+      ]
+    },
+    "OccurrenceAEncounterInpatient2_precondition_76": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_78": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.308",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_80": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_82": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.209",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_84": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false,
+      "field_values": {
+        "DISCHARGE_STATUS": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.207",
+          "title": "discharge status"
+        }
+      }
+    },
+    "OccurrenceAUnfractionatedHeparin3_precondition_89": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Ordered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+      "source_data_criteria": "OccurrenceAUnfractionatedHeparin3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEncounterInpatient2"
+        }
+      ]
+    },
+    "OccurrenceAEmergencyDepartmentVisit1_precondition_91": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "OccurrenceAEncounterInpatient2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "h",
+              "value": "1",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceAUnfractionatedHeparin3_precondition_93": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Ordered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+      "source_data_criteria": "OccurrenceAUnfractionatedHeparin3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceAEmergencyDepartmentVisit1"
+        }
+      ]
+    },
+    "OccurrenceAUnfractionatedHeparin3_precondition_108": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Ordered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+      "source_data_criteria": "OccurrenceAUnfractionatedHeparin3",
+      "variable": false,
+      "field_values": {
+        "ROUTE": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+          "title": "route"
+        }
+      }
+    },
+    "OccurrenceAEncounterInpatient2_precondition_111": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false
+    },
+    "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_99": {
+      "title": "Treatment Adjusted by Protocol",
+      "description": "Procedure, Performed: Treatment Adjusted by Protocol",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.278",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedTreatmentAdjustedByProtocol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAUnfractionatedHeparin3_precondition_108"
+        },
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_111"
+        }
+      ]
+    },
+    "ProcedurePerformedClinicalPathwayProtocol_precondition_101": {
+      "title": "Clinical Pathway Protocol",
+      "description": "Procedure, Performed: Clinical Pathway Protocol",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.253",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedClinicalPathwayProtocol",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAUnfractionatedHeparin3_precondition_108"
+        },
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_111"
+        }
+      ]
+    },
+    "LaboratoryTestPerformedPlateletCount_precondition_105": {
+      "title": "Platelet Count",
+      "description": "Laboratory Test, Performed: Platelet Count",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedPlateletCount",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceAUnfractionatedHeparin3_precondition_108"
+        },
+        {
+          "type": "DURING",
+          "reference": "OccurrenceAEncounterInpatient2_precondition_111"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "ProcedurePerformedClinicalPathwayProtocol": {
+      "title": "Clinical Pathway Protocol",
+      "description": "Procedure, Performed: Clinical Pathway Protocol",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.253",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedClinicalPathwayProtocol",
+      "variable": false
+    },
+    "InterventionOrderComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Order: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderComfortMeasures",
+      "variable": false
+    },
+    "InterventionPerformedComfortMeasures": {
+      "title": "Comfort Measures ",
+      "description": "Intervention, Performed: Comfort Measures ",
+      "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedComfortMeasures",
+      "variable": false
+    },
+    "OccurrenceAEmergencyDepartmentVisit1": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_EMERGENCY_DEPARTMENT_VISIT",
+      "source_data_criteria": "OccurrenceAEmergencyDepartmentVisit1",
+      "variable": false
+    },
+    "OccurrenceAEncounterInpatient2": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_ENCOUNTER_INPATIENT",
+      "source_data_criteria": "OccurrenceAEncounterInpatient2",
+      "variable": false
+    },
+    "DiagnosisActiveObstetricsVte": {
+      "title": "Obstetrics VTE",
+      "description": "Diagnosis, Active: Obstetrics VTE",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveObstetricsVte",
+      "variable": false
+    },
+    "LaboratoryTestPerformedPlateletCount": {
+      "title": "Platelet Count",
+      "description": "Laboratory Test, Performed: Platelet Count",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestPerformedPlateletCount",
+      "variable": false
+    },
+    "ProcedurePerformedTreatmentAdjustedByProtocol": {
+      "title": "Treatment Adjusted by Protocol",
+      "description": "Procedure, Performed: Treatment Adjusted by Protocol",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.278",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedTreatmentAdjustedByProtocol",
+      "variable": false
+    },
+    "MedicationAdministeredUnfractionatedHeparin": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Administered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "administered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+      "variable": false
+    },
+    "OccurrenceAUnfractionatedHeparin3": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Ordered: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+      "source_data_criteria": "OccurrenceAUnfractionatedHeparin3",
+      "variable": false
+    },
+    "DiagnosisActiveVenousThromboembolism": {
+      "title": "Venous Thromboembolism",
+      "description": "Diagnosis, Active: Venous Thromboembolism",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+      "variable": false
+    },
+    "DiagnosticStudyResultVteDiagnosticTest": {
+      "title": "VTE Diagnostic Test",
+      "description": "Diagnostic Study, Result: VTE Diagnostic Test",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+      "type": "diagnostic_studies",
+      "definition": "diagnostic_study_result",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosticStudyResultVteDiagnosticTest",
+      "variable": false
+    },
+    "EncounterPerformedEmergencyDepartmentVisit": {
+      "title": "Emergency Department Visit",
+      "description": "Encounter, Performed: Emergency Department Visit",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+      "variable": false
+    },
+    "EncounterPerformedEncounterInpatient": {
+      "title": "Encounter Inpatient",
+      "description": "Encounter, Performed: Encounter Inpatient",
+      "code_list_id": "2.16.840.1.113883.3.666.5.307",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEncounterInpatient",
+      "variable": false
+    },
+    "MedicationOrderUnfractionatedHeparin": {
+      "title": "Unfractionated Heparin",
+      "description": "Medication, Order: Unfractionated Heparin",
+      "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderUnfractionatedHeparin",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms(R) (SNOMED CT(c)) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Measure specifications are in the Public Domain.\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms(R) (SNOMED CT(c)) copyright 2004-–2010 International Health Terminology Standards Development Organization. All rights reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Heparin is commonly involved in adverse drug events (Geerts et al., 2008). Sub-therapeutic and supratherapeutic levels can lead to thromboembolic or bleeding complications that may increase the patient’s length of stay. The use of weight-based nomograms has increased the likelihood that a therapeutic partial prothromboplastin time (aPTT) will be achieved within the first 24 to 48 hours of therapy. The risk of recurrent thromboembolism is reduced when a therapeutic level of heparin is reached quickly. Unfractionated heparin (UFH) management by weight-based aPTT adjusted protocols have demonstrated their ability through clinical trials to achieve a therapeutic aPTT more rapidly than with standard UFH dosing without increasing major bleeding (Rashke et al, 1993).\n\nHeparin nomograms are superior compared to routine care in the timely achievement of therapeutic anticoagulation despite the trend toward patients having aPTTs above the target range (ahrq.gov/clinic/ptsafety/chap9.htm, retrieved October 6, 2011). Heparin-induced thrombocytopenia (HIT) occurs more commonly in patients who receive UFH than in those who receive low molecular weight heparin (Martin et. al., 2005). HIT is defined as an unexplained fall in platelet count (specifically, a 50% fall in platelet count from baseline, even if the platelet count remains above 150 x 109/L) (Warkentin et. al., 2008). Platelet counts generally begin to fall 5-10 days after the initiation of heparin therapy. Prompt recognition of HIT is important so that heparin can be discontinued and the risk of venous and arterial thrombosis minimized. To detect HIT, platelet count monitoring is recommended for all patients treated with UFH (Warkentin et. al., 2008).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Heparin is commonly involved in adverse drug events (Geerts et al., 2008). Sub-therapeutic and supratherapeutic levels can lead to thromboembolic or bleeding complications that may increase the patient’s length of stay. The use of weight-based nomograms has increased the likelihood that a therapeutic partial prothromboplastin time (aPTT) will be achieved within the first 24 to 48 hours of therapy. The risk of recurrent thromboembolism is reduced when a therapeutic level of heparin is reached quickly. Unfractionated heparin (UFH) management by weight-based aPTT adjusted protocols have demonstrated their ability through clinical trials to achieve a therapeutic aPTT more rapidly than with standard UFH dosing without increasing major bleeding (Rashke et al, 1993).\n\nHeparin nomograms are superior compared to routine care in the timely achievement of therapeutic anticoagulation despite the trend toward patients having aPTTs above the target range (ahrq.gov/clinic/ptsafety/chap9.htm, retrieved October 6, 2011). Heparin-induced thrombocytopenia (HIT) occurs more commonly in patients who receive UFH than in those who receive low molecular weight heparin (Martin et. al., 2005). HIT is defined as an unexplained fall in platelet count (specifically, a 50% fall in platelet count from baseline, even if the platelet count remains above 150 x 109/L) (Warkentin et. al., 2008). Platelet counts generally begin to fall 5-10 days after the initiation of heparin therapy. Prompt recognition of HIT is important so that heparin can be discontinued and the risk of venous and arterial thrombosis minimized. To detect HIT, platelet count monitoring is recommended for all patients treated with UFH (Warkentin et. al., 2008).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "NoneHeparin-induced thrombocytopenia (HIT) may occur in patients who receive unfractionated heparin (UHF) for treatment of thromboembolism. Prompt recognition of HIT by evaluation of platelet counts can allow for detection of HIT, and the subsequent discontinuation of UFH.  Management of UFH by nomogram/protocol is recommended to decrease the time outside of the therapeutic range.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "NoneHeparin-induced thrombocytopenia (HIT) may occur in patients who receive unfractionated heparin (UHF) for treatment of thromboembolism. Prompt recognition of HIT by evaluation of platelet counts can allow for detection of HIT, and the subsequent discontinuation of UFH.  Management of UFH by nomogram/protocol is recommended to decrease the time outside of the therapeutic range.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "An increase in rate",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "An increase in rate",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "109",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "109",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Warkentin TE, Roberts RS, Hirsh J, et al. An improved definition of immune heparin-induced thrombocytopenia in postoperative orthopedic patients. Arch Intern Med 2003; 163:2518-24.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Warkentin TE, Roberts RS, Hirsh J, et al. An improved definition of immune heparin-induced thrombocytopenia in postoperative orthopedic patients. Arch Intern Med 2003; 163:2518-24.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nTreatment adjustment by protocol and/or use of a clinical pathway must be specific to unfractionated heparin therapy. Heparin protocols and clinical pathways may include use of a nomogram.\n\nThe construct of Unfractionated Heparin (route: 'Intravenous route') intends to capture continually infused heparin rather than heparin flushes or pushes.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nTreatment adjustment by protocol and/or use of a clinical pathway must be specific to unfractionated heparin therapy. Heparin protocols and clinical pathways may include use of a nomogram.\n\nThe construct of Unfractionated Heparin (route: 'Intravenous route') intends to capture continually infused heparin rather than heparin flushes or pushes.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients age 18 and older discharged from hospital inpatient acute care with a diagnosis of venous thromboembolism (VTE)and a length of stay less than or equal to 120 days.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients age 18 and older discharged from hospital inpatient acute care with a diagnosis of venous thromboembolism (VTE)and a length of stay less than or equal to 120 days.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Patients with VTE confirmed through a diagnostic test and receiving IV UFH therapy",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with VTE confirmed through a diagnostic test and receiving IV UFH therapy",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients with comfort measures documented\nPatients discharged to another hospital\nPatients who left against medical advice\nPatients who expired\nPatients discharged to home for hospice care\nPatients discharged to a health care facility for hospice care",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with comfort measures documented\nPatients discharged to another hospital\nPatients who left against medical advice\nPatients who expired\nPatients discharged to home for hospice care\nPatients discharged to a health care facility for hospice care",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients who have their IV UFH therapy dosages and platelet counts monitored according to defined parameters such as a nomogram or protocol.\nPatients who are on UFH therapy for less than 24 hours and have their UFH therapy dosages monitored according to defined parameters such as a nomogram or protocol.",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who have their IV UFH therapy dosages and platelet counts monitored according to defined parameters such as a nomogram or protocol.\nPatients who are on UFH therapy for less than 24 hours and have their UFH therapy dosages monitored according to defined parameters such as a nomogram or protocol.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

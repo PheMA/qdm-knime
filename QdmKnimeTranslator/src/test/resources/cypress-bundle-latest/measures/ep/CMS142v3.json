@@ -1,0 +1,2623 @@
+{
+  "id": "40280381-4555-E1C1-0145-6C81E59112B1",
+  "nqf_id": "0089",
+  "hqmf_id": "40280381-4555-E1C1-0145-6C81E59112B1",
+  "hqmf_set_id": "53D6D7C3-43FB-4D24-8099-17E74C022C05",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS142v3",
+  "name": "Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care",
+  "description": "Percentage of patients aged 18 years and older with a diagnosis of diabetic retinopathy who had a dilated macular or fundus exam performed with documented communication to the physician who manages the ongoing care of the patient with diabetes mellitus regarding the findings of the macular or fundus exam at least once within 12 months",
+  "type": "ep",
+  "category": "Diabetes",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0089';\n        hqmfjs.hqmf_id = '40280381-4555-E1C1-0145-6C81E59112B1';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.101.12.1008':{'CPT':['99241','99242','99243','99244','99245']},'2.16.840.1.113883.3.464.1003.101.12.1014':{'CPT':['99324','99325','99326','99327','99328','99334','99335','99336','99337']},'2.16.840.1.113883.3.464.1003.101.12.1012':{'CPT':['99304','99305','99306','99307','99308','99309','99310']},'2.16.840.1.113883.3.526.3.1007':{'SNOMED-CT':['161590003','183932001','183964008','183966005','216952002','266721009','269191009','274512008','31438003','35688006','371133007','397745006','407563006','410534003','410536001','416098002','416406003','428119001','445528004','59037007','62014003','79899007']},'2.16.840.1.113883.3.526.3.1008':{'SNOMED-CT':['105480006','160932005','160934006','182890002','182895007','182897004','182900006','182902003','183944003','183945002','184081006','185479006','185481008','224187001','225928004','258147002','266710000','266966009','275694009','275936005','281399006','30164005','310343007','373787003','385648002','406149000','408367005','413310006','413311005','413312003','416432009','423656007','424739004','443390004','5015009']},'2.16.840.1.113883.3.526.3.1251':{'LOINC':['32451-7']},'2.16.840.1.113883.3.526.3.1285':{'CPT':['92002','92004','92012','92014']},'2.16.840.1.113883.3.526.3.1283':{'SNOMED-CT':['312903003','312904009','312905005','399876000','59276001']},'2.16.840.1.113883.3.526.3.1284':{'SNOMED-CT':['428341000124108']},'2.16.840.1.113883.3.526.3.1320':{'SNOMED-CT':['193350004','193387007','232020009','312911008','312912001','312920004','312921000','312922007','314010006','314011005','314014002','314015001','37231002','399864000','420486006','421779007','432789001']},'2.16.840.1.113883.3.526.3.327':{'SNOMED-CT':['193349004','193350004','232020009','232021008','232022001','232023006','25412000','311782002','312903003','312904009','312905005','312906006','312907002','312908007','312909004','312912001','314010006','314011005','314014002','314015001','390834004','399862001','399863006','399864000','399865004','399866003','399868002','399869005','399870006','399871005','399872003','399873008','399874002','399875001','399876000','399877009','420486006','420789003','421779007','422034002','4855003','59276001'],'ICD-9-CM':['362.01','362.02','362.03','362.04','362.05','362.06'],'ICD-10-CM':['E08.311','E08.319','E08.321','E08.329','E08.331','E08.339','E08.341','E08.349','E08.351','E08.359','E09.311','E09.319','E09.321','E09.329','E09.331','E09.339','E09.341','E09.349','E09.351','E09.359','E10.311','E10.319','E10.321','E10.329','E10.331','E10.339','E10.341','E10.349','E10.351','E10.359','E11.311','E11.319','E11.321','E11.329','E11.331','E11.339','E11.341','E11.349','E11.351','E11.359','E13.311','E13.319','E13.321','E13.329','E13.331','E13.339','E13.341','E13.349','E13.351','E13.359']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']},'2.16.840.1.113883.3.464.1003.101.12.1001':{'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215']},'2.16.840.1.113883.3.464.1003.101.12.1048':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDoneMedicalReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1283\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDonePatientReason = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1283\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDoneMedicalReason7 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1284\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDonePatientReason8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1284\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDoneMedicalReason9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1320\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderNotDonePatientReason10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1320\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedCareServicesInLongTermResidentialFacility = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedFaceToFaceInteraction = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNursingFacilityVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedOfficeVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedOphthalmologicalServices = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedOutpatientConsultation = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveDiabeticRetinopathy = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_12 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAOphthalmologicalServices5(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAOphthalmologicalServices5(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_25 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceANursingFacilityVisit3(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceANursingFacilityVisit3(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_43 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_45 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAOfficeVisit4(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6_precondition_50 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAOutpatientConsultation6(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_54 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAOutpatientConsultation6(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_59 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAFaceToFaceInteraction2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceADiabeticRetinopathy11_precondition_63 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.327\", \"specificOccurrence\": \"OccurrenceADiabeticRetinopathy11\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.OccurrenceAFaceToFaceInteraction2(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5_precondition_71 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_73 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3_precondition_75 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_77 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6_precondition_79 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_81 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosticStudyResultMacularExam_precondition_84 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedureResults\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1251\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.GROUP_DURING_CHILDREN_140(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_DURING_CHILDREN_140 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAOphthalmologicalServices5_precondition_71(patient, initialSpecificContext),\n    hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_73(patient, initialSpecificContext),\n    hqmfjs.OccurrenceANursingFacilityVisit3_precondition_75(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOfficeVisit4_precondition_77(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOutpatientConsultation6_precondition_79(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_81(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5_precondition_100 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_102 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3_precondition_104 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_106 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6_precondition_108 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_110 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_87 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1284\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_SAS_CHILDREN_142 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAOphthalmologicalServices5_precondition_100(patient, initialSpecificContext),\n    hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_102(patient, initialSpecificContext),\n    hqmfjs.OccurrenceANursingFacilityVisit3_precondition_104(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOfficeVisit4_precondition_106(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOutpatientConsultation6_precondition_108(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_110(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_89 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1284\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_91 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1320\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_93 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1320\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_95 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1007\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1283\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_97 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.526.3.1008\", \"valueSetId\": \"2.16.840.1.113883.3.526.3.1283\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_142(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAOphthalmologicalServices5_precondition_124 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1285\", \"specificOccurrence\": \"OccurrenceAOphthalmologicalServices5\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_126 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1014\", \"specificOccurrence\": \"OccurrenceACareServicesInLongTermResidentialFacility1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceANursingFacilityVisit3_precondition_128 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1012\", \"specificOccurrence\": \"OccurrenceANursingFacilityVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOfficeVisit4_precondition_130 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1001\", \"specificOccurrence\": \"OccurrenceAOfficeVisit4\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAOutpatientConsultation6_precondition_132 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1008\", \"specificOccurrence\": \"OccurrenceAOutpatientConsultation6\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_134 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1048\", \"specificOccurrence\": \"OccurrenceAFaceToFaceInteraction2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_115 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1283\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_144(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_SAS_CHILDREN_144 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAOphthalmologicalServices5_precondition_124(patient, initialSpecificContext),\n    hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_126(patient, initialSpecificContext),\n    hqmfjs.OccurrenceANursingFacilityVisit3_precondition_128(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOfficeVisit4_precondition_130(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAOutpatientConsultation6_precondition_132(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_134(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_117 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1320\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_144(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_119 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"procedures\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.526.3.1284\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.GROUP_SAS_CHILDREN_144(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceACareServicesInLongTermResidentialFacility1\",\"type\":\"ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY\",\"function\":\"OccurrenceACareServicesInLongTermResidentialFacility1\"},{\"id\":\"OccurrenceAFaceToFaceInteraction2\",\"type\":\"ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION\",\"function\":\"OccurrenceAFaceToFaceInteraction2\"},{\"id\":\"OccurrenceANursingFacilityVisit3\",\"type\":\"ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT\",\"function\":\"OccurrenceANursingFacilityVisit3\"},{\"id\":\"OccurrenceAOfficeVisit4\",\"type\":\"ENCOUNTER_PERFORMED_OFFICE_VISIT\",\"function\":\"OccurrenceAOfficeVisit4\"},{\"id\":\"OccurrenceAOphthalmologicalServices5\",\"type\":\"ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES\",\"function\":\"OccurrenceAOphthalmologicalServices5\"},{\"id\":\"OccurrenceAOutpatientConsultation6\",\"type\":\"ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION\",\"function\":\"OccurrenceAOutpatientConsultation6\"},{\"id\":\"OccurrenceADiabeticRetinopathy11\",\"type\":\"DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY\",\"function\":\"OccurrenceADiabeticRetinopathy11\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('70', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_12,\n      atLeastOneTrue('68', patient, initialSpecificContext,\n        allTrue('21', patient, initialSpecificContext, hqmfjs.OccurrenceAOphthalmologicalServices5_precondition_14, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_16,\n          allFalse('20', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_18\n          )\n        ),\n        allTrue('30', patient, initialSpecificContext, hqmfjs.OccurrenceACareServicesInLongTermResidentialFacility1_precondition_23, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_25,\n          allFalse('29', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_27\n          )\n        ),\n        allTrue('39', patient, initialSpecificContext, hqmfjs.OccurrenceANursingFacilityVisit3_precondition_32, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_34,\n          allFalse('38', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_36\n          )\n        ),\n        allTrue('48', patient, initialSpecificContext, hqmfjs.OccurrenceAOfficeVisit4_precondition_41, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_43,\n          allFalse('47', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_45\n          )\n        ),\n        allTrue('57', patient, initialSpecificContext, hqmfjs.OccurrenceAOutpatientConsultation6_precondition_50, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_52,\n          allFalse('56', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_54\n          )\n        ),\n        allTrue('66', patient, initialSpecificContext, hqmfjs.OccurrenceAFaceToFaceInteraction2_precondition_59, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_61,\n          allFalse('65', patient, initialSpecificContext, hqmfjs.OccurrenceADiabeticRetinopathy11_precondition_63\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('86', patient, initialSpecificContext, hqmfjs.DiagnosticStudyResultMacularExam_precondition_84\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('138', patient, initialSpecificContext,\n      allTrue('123', patient, initialSpecificContext, hqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_115,\n        atLeastOneTrue('121', patient, initialSpecificContext, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_117, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_119\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient) { return new Boolean(false); }\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    allTrue('114', patient, initialSpecificContext,\n      atLeastOneTrue('99', patient, initialSpecificContext, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_87, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_89, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_91, hqmfjs.CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_93, hqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_95, hqmfjs.CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_97\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = null;\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": false,
+  "hqmf_document": {
+    "id": "0089",
+    "hqmf_id": "40280381-4555-E1C1-0145-6C81E59112B1",
+    "hqmf_set_id": "53D6D7C3-43FB-4D24-8099-17E74C022C05",
+    "hqmf_version_number": 3,
+    "title": "Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care",
+    "description": "Percentage of patients aged 18 years and older with a diagnosis of diabetic retinopathy who had a dilated macular or fundus exam performed with documented communication to the physician who manages the ongoing care of the patient with diabetes mellitus regarding the findings of the macular or fundus exam at least once within 12 months",
+    "cms_id": "CMS142v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "7D2EB82E-A97D-40A5-A207-2460DD3D4250",
+        "preconditions": [
+          {
+            "id": 70,
+            "preconditions": [
+              {
+                "id": 12,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_12"
+              },
+              {
+                "id": 68,
+                "preconditions": [
+                  {
+                    "id": 21,
+                    "preconditions": [
+                      {
+                        "id": 14,
+                        "reference": "OccurrenceAOphthalmologicalServices5_precondition_14"
+                      },
+                      {
+                        "id": 16,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_16"
+                      },
+                      {
+                        "id": 20,
+                        "preconditions": [
+                          {
+                            "id": 18,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_18"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 30,
+                    "preconditions": [
+                      {
+                        "id": 23,
+                        "reference": "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_23"
+                      },
+                      {
+                        "id": 25,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_25"
+                      },
+                      {
+                        "id": 29,
+                        "preconditions": [
+                          {
+                            "id": 27,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_27"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 39,
+                    "preconditions": [
+                      {
+                        "id": 32,
+                        "reference": "OccurrenceANursingFacilityVisit3_precondition_32"
+                      },
+                      {
+                        "id": 34,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_34"
+                      },
+                      {
+                        "id": 38,
+                        "preconditions": [
+                          {
+                            "id": 36,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_36"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 48,
+                    "preconditions": [
+                      {
+                        "id": 41,
+                        "reference": "OccurrenceAOfficeVisit4_precondition_41"
+                      },
+                      {
+                        "id": 43,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_43"
+                      },
+                      {
+                        "id": 47,
+                        "preconditions": [
+                          {
+                            "id": 45,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_45"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 57,
+                    "preconditions": [
+                      {
+                        "id": 50,
+                        "reference": "OccurrenceAOutpatientConsultation6_precondition_50"
+                      },
+                      {
+                        "id": 52,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_52"
+                      },
+                      {
+                        "id": 56,
+                        "preconditions": [
+                          {
+                            "id": 54,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_54"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 66,
+                    "preconditions": [
+                      {
+                        "id": 59,
+                        "reference": "OccurrenceAFaceToFaceInteraction2_precondition_59"
+                      },
+                      {
+                        "id": 61,
+                        "reference": "OccurrenceADiabeticRetinopathy11_precondition_61"
+                      },
+                      {
+                        "id": 65,
+                        "preconditions": [
+                          {
+                            "id": 63,
+                            "reference": "OccurrenceADiabeticRetinopathy11_precondition_63"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "3E33E05C-5D05-46A3-91E4-99241935DE40",
+        "preconditions": [
+          {
+            "id": 86,
+            "preconditions": [
+              {
+                "id": 84,
+                "reference": "DiagnosticStudyResultMacularExam_precondition_84"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "E980BD04-F549-4870-9D4F-BE8E10FD4A9B",
+        "preconditions": [
+          {
+            "id": 114,
+            "preconditions": [
+              {
+                "id": 99,
+                "preconditions": [
+                  {
+                    "id": 87,
+                    "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_87"
+                  },
+                  {
+                    "id": 89,
+                    "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_89"
+                  },
+                  {
+                    "id": 91,
+                    "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_91"
+                  },
+                  {
+                    "id": 93,
+                    "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_93"
+                  },
+                  {
+                    "id": 95,
+                    "reference": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_95"
+                  },
+                  {
+                    "id": 97,
+                    "reference": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_97"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "DF102887-117F-4AB6-A9B6-EE3F57AA5C8E",
+        "preconditions": [
+          {
+            "id": 138,
+            "preconditions": [
+              {
+                "id": 123,
+                "preconditions": [
+                  {
+                    "id": 115,
+                    "reference": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_115"
+                  },
+                  {
+                    "id": 121,
+                    "preconditions": [
+                      {
+                        "id": 117,
+                        "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_117"
+                      },
+                      {
+                        "id": 119,
+                        "reference": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_119"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceACareServicesInLongTermResidentialFacility1": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteraction2": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false
+      },
+      "OccurrenceANursingFacilityVisit3": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAOphthalmologicalServices5": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false
+      },
+      "OccurrenceAOutpatientConsultation6": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason7": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason7",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason8": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason8",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason9": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason9",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason10": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason10",
+        "variable": false
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedNursingFacilityVisit": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedOphthalmologicalServices": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOphthalmologicalServices",
+        "variable": false
+      },
+      "EncounterPerformedOutpatientConsultation": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOutpatientConsultation",
+        "variable": false
+      },
+      "DiagnosisActiveDiabeticRetinopathy": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDiabeticRetinopathy",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_12": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAOphthalmologicalServices5_precondition_14": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_16": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAOphthalmologicalServices5"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_18": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAOphthalmologicalServices5"
+          }
+        ]
+      },
+      "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_23": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_25": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceACareServicesInLongTermResidentialFacility1"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_27": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceACareServicesInLongTermResidentialFacility1"
+          }
+        ]
+      },
+      "OccurrenceANursingFacilityVisit3_precondition_32": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_34": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceANursingFacilityVisit3"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_36": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceANursingFacilityVisit3"
+          }
+        ]
+      },
+      "OccurrenceAOfficeVisit4_precondition_41": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_43": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_45": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAOfficeVisit4"
+          }
+        ]
+      },
+      "OccurrenceAOutpatientConsultation6_precondition_50": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_52": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAOutpatientConsultation6"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_54": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAOutpatientConsultation6"
+          }
+        ]
+      },
+      "OccurrenceAFaceToFaceInteraction2_precondition_59": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_61": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAFaceToFaceInteraction2"
+          }
+        ]
+      },
+      "OccurrenceADiabeticRetinopathy11_precondition_63": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "OccurrenceAFaceToFaceInteraction2"
+          }
+        ]
+      },
+      "OccurrenceAOphthalmologicalServices5_precondition_71": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false
+      },
+      "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_73": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false
+      },
+      "OccurrenceANursingFacilityVisit3_precondition_75": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4_precondition_77": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAOutpatientConsultation6_precondition_79": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteraction2_precondition_81": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false
+      },
+      "DiagnosticStudyResultMacularExam_precondition_84": {
+        "title": "Macular Exam",
+        "description": "Diagnostic Study, Result: Macular Exam",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1251",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study_result",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyResultMacularExam",
+        "variable": false,
+        "value": {
+          "type": "ANYNonNull"
+        },
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "GROUP_DURING_CHILDREN_140"
+          }
+        ]
+      },
+      "GROUP_DURING_CHILDREN_140": {
+        "title": "GROUP_DURING_CHILDREN_140",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAOphthalmologicalServices5_precondition_71",
+          "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_73",
+          "OccurrenceANursingFacilityVisit3_precondition_75",
+          "OccurrenceAOfficeVisit4_precondition_77",
+          "OccurrenceAOutpatientConsultation6_precondition_79",
+          "OccurrenceAFaceToFaceInteraction2_precondition_81"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_DURING_CHILDREN_140",
+        "variable": false
+      },
+      "OccurrenceAOphthalmologicalServices5_precondition_100": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false
+      },
+      "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_102": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false
+      },
+      "OccurrenceANursingFacilityVisit3_precondition_104": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4_precondition_106": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAOutpatientConsultation6_precondition_108": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteraction2_precondition_110": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_87": {
+        "title": "Macular Edema Findings Absent",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Absent",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "GROUP_SAS_CHILDREN_142": {
+        "title": "GROUP_SAS_CHILDREN_142",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAOphthalmologicalServices5_precondition_100",
+          "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_102",
+          "OccurrenceANursingFacilityVisit3_precondition_104",
+          "OccurrenceAOfficeVisit4_precondition_106",
+          "OccurrenceAOutpatientConsultation6_precondition_108",
+          "OccurrenceAFaceToFaceInteraction2_precondition_110"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_SAS_CHILDREN_142",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_89": {
+        "title": "Macular Edema Findings Absent",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Absent",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_91": {
+        "title": "Macular Edema Findings Present",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Present",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_93": {
+        "title": "Macular Edema Findings Present",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Present",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_95": {
+        "title": "Level of Severity of Retinopathy Findings",
+        "description": "Communication: From Provider to Provider: Level of Severity of Retinopathy Findings",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1007",
+        "source_data_criteria": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_97": {
+        "title": "Level of Severity of Retinopathy Findings",
+        "description": "Communication: From Provider to Provider: Level of Severity of Retinopathy Findings",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.526.3.1008",
+        "source_data_criteria": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_142"
+          }
+        ]
+      },
+      "OccurrenceAOphthalmologicalServices5_precondition_124": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false
+      },
+      "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_126": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false
+      },
+      "OccurrenceANursingFacilityVisit3_precondition_128": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4_precondition_130": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAOutpatientConsultation6_precondition_132": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteraction2_precondition_134": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings_precondition_115": {
+        "title": "Level of Severity of Retinopathy Findings",
+        "description": "Communication: From Provider to Provider: Level of Severity of Retinopathy Findings",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_144"
+          }
+        ]
+      },
+      "GROUP_SAS_CHILDREN_144": {
+        "title": "GROUP_SAS_CHILDREN_144",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAOphthalmologicalServices5_precondition_124",
+          "OccurrenceACareServicesInLongTermResidentialFacility1_precondition_126",
+          "OccurrenceANursingFacilityVisit3_precondition_128",
+          "OccurrenceAOfficeVisit4_precondition_130",
+          "OccurrenceAOutpatientConsultation6_precondition_132",
+          "OccurrenceAFaceToFaceInteraction2_precondition_134"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_SAS_CHILDREN_144",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsPresent_precondition_117": {
+        "title": "Macular Edema Findings Present",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Present",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_144"
+          }
+        ]
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent_precondition_119": {
+        "title": "Macular Edema Findings Absent",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Absent",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "GROUP_SAS_CHILDREN_144"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "OccurrenceACareServicesInLongTermResidentialFacility1": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_CARE_SERVICES_IN_LONG_TERM_RESIDENTIAL_FACILITY",
+        "source_data_criteria": "OccurrenceACareServicesInLongTermResidentialFacility1",
+        "variable": false
+      },
+      "OccurrenceAFaceToFaceInteraction2": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_FACE_TO_FACE_INTERACTION",
+        "source_data_criteria": "OccurrenceAFaceToFaceInteraction2",
+        "variable": false
+      },
+      "DiagnosticStudyResultMacularExam": {
+        "title": "Macular Exam",
+        "description": "Diagnostic Study, Result: Macular Exam",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1251",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study_result",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyResultMacularExam",
+        "variable": false
+      },
+      "OccurrenceANursingFacilityVisit3": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_NURSING_FACILITY_VISIT",
+        "source_data_criteria": "OccurrenceANursingFacilityVisit3",
+        "variable": false
+      },
+      "OccurrenceAOfficeVisit4": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OFFICE_VISIT",
+        "source_data_criteria": "OccurrenceAOfficeVisit4",
+        "variable": false
+      },
+      "OccurrenceAOphthalmologicalServices5": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OPHTHALMOLOGICAL_SERVICES",
+        "source_data_criteria": "OccurrenceAOphthalmologicalServices5",
+        "variable": false
+      },
+      "OccurrenceAOutpatientConsultation6": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_OUTPATIENT_CONSULTATION",
+        "source_data_criteria": "OccurrenceAOutpatientConsultation6",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings": {
+        "title": "Level of Severity of Retinopathy Findings",
+        "description": "Communication: From Provider to Provider: Level of Severity of Retinopathy Findings",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderLevelOfSeverityOfRetinopathyFindings",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1283",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent": {
+        "title": "Macular Edema Findings Absent",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Absent",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsAbsent",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason7": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason7",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason8": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1284",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason8",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderMacularEdemaFindingsPresent": {
+        "title": "Macular Edema Findings Present",
+        "description": "Communication: From Provider to Provider: Macular Edema Findings Present",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToProviderMacularEdemaFindingsPresent",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDoneMedicalReason9": {
+        "title": "Medical Reason",
+        "description": "Communication: From Provider to Provider not done: Medical Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDoneMedicalReason9",
+        "variable": false
+      },
+      "CommunicationFromProviderToProviderNotDonePatientReason10": {
+        "title": "Patient Reason",
+        "description": "Communication: From Provider to Provider not done: Patient Reason",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1320",
+        "type": "communications",
+        "definition": "communication_from_provider_to_provider",
+        "hard_status": false,
+        "negation": true,
+        "source_data_criteria": "CommunicationFromProviderToProviderNotDonePatientReason10",
+        "variable": false
+      },
+      "OccurrenceADiabeticRetinopathy11": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_RETINOPATHY",
+        "source_data_criteria": "OccurrenceADiabeticRetinopathy11",
+        "variable": false
+      },
+      "EncounterPerformedCareServicesInLongTermResidentialFacility": {
+        "title": "Care Services in Long-Term Residential Facility",
+        "description": "Encounter, Performed: Care Services in Long-Term Residential Facility",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1014",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedCareServicesInLongTermResidentialFacility",
+        "variable": false
+      },
+      "EncounterPerformedFaceToFaceInteraction": {
+        "title": "Face-to-Face Interaction",
+        "description": "Encounter, Performed: Face-to-Face Interaction",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+        "variable": false
+      },
+      "EncounterPerformedNursingFacilityVisit": {
+        "title": "Nursing Facility Visit",
+        "description": "Encounter, Performed: Nursing Facility Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1012",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNursingFacilityVisit",
+        "variable": false
+      },
+      "EncounterPerformedOfficeVisit": {
+        "title": "Office Visit",
+        "description": "Encounter, Performed: Office Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOfficeVisit",
+        "variable": false
+      },
+      "EncounterPerformedOphthalmologicalServices": {
+        "title": "Ophthalmological Services",
+        "description": "Encounter, Performed: Ophthalmological Services",
+        "code_list_id": "2.16.840.1.113883.3.526.3.1285",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOphthalmologicalServices",
+        "variable": false
+      },
+      "EncounterPerformedOutpatientConsultation": {
+        "title": "Outpatient Consultation",
+        "description": "Encounter, Performed: Outpatient Consultation",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1008",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedOutpatientConsultation",
+        "variable": false
+      },
+      "DiagnosisActiveDiabeticRetinopathy": {
+        "title": "Diabetic Retinopathy",
+        "description": "Diagnosis, Active: Diabetic Retinopathy",
+        "code_list_id": "2.16.840.1.113883.3.526.3.327",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveDiabeticRetinopathy",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Copyright 2013 National Committee for Quality Assurance (NCQA) and American Medical Association. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Copyright 2013 National Committee for Quality Assurance (NCQA) and American Medical Association. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "The physician that manages the ongoing care of the patient with diabetes should be aware of the patient's dilated eye examination and severity of retinopathy to manage the ongoing diabetes care. Such communication is important in assisting the physician to better manage the diabetes. Several studies have shown that better management of diabetes is directly related to lower rates of development of diabetic eye disease (Diabetes Control and Complications Trial – DCCT, UK Prospective Diabetes Study – UKPDS).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The physician that manages the ongoing care of the patient with diabetes should be aware of the patient's dilated eye examination and severity of retinopathy to manage the ongoing diabetes care. Such communication is important in assisting the physician to better manage the diabetes. Several studies have shown that better management of diabetes is directly related to lower rates of development of diabetic eye disease (Diabetes Control and Complications Trial – DCCT, UK Prospective Diabetes Study – UKPDS).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "The ophthalmologist should communicate examination results to the physician who is managing ongoing diabetes care. (A:III) (AAO, 2008)",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The ophthalmologist should communicate examination results to the physician who is managing ongoing diabetes care. (A:III) (AAO, 2008)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0089",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0089"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]) and the National Committee for Quality Assurance (NCQA). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI) or NCQA. Neither the AMA, PCPI, NCQA nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, PCPI, NCQA and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measures (Measures) and related data specifications have been developed by the American Medical Association (AMA) - convened Physician Consortium for Performance Improvement(R) (PCPI[R]) and the National Committee for Quality Assurance (NCQA). These Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The Measures, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, eg, use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial uses of the Measures require a license agreement between the user and the AMA, (on behalf of the PCPI) or NCQA. Neither the AMA, PCPI, NCQA nor its members shall be responsible for any use of the Measures. \n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. \n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The AMA, PCPI, NCQA and its members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "142",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "142",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "American Academy of Ophthalmology. Preferred Practice Pattern: Diabetic Retinopathy. 2008.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "American Academy of Ophthalmology. Preferred Practice Pattern: Diabetic Retinopathy. 2008.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "Communication – May include documentation in the medical record indicating that the findings of the dilated macular or fundus exam were communicated (eg, verbally, by letter) with the clinician managing the patient’s diabetic care OR a copy of a letter in the medical record to the clinician managing the patient’s diabetic care outlining the findings of the dilated macular or fundus exam.\n\nFindings - Includes level of severity of retinopathy (eg, mild nonproliferative, moderate nonproliferative, severe nonproliferative, very severe nonproliferative, proliferative) AND the presence or absence of macular edema.",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Communication – May include documentation in the medical record indicating that the findings of the dilated macular or fundus exam were communicated (eg, verbally, by letter) with the clinician managing the patient’s diabetic care OR a copy of a letter in the medical record to the clinician managing the patient’s diabetic care outlining the findings of the dilated macular or fundus exam.\n\nFindings - Includes level of severity of retinopathy (eg, mild nonproliferative, moderate nonproliferative, severe nonproliferative, very severe nonproliferative, proliferative) AND the presence or absence of macular edema.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "The measure, as written, does not specifically require documentation of laterality. Coding limitations in particular clinical terminologies do not currently allow for that level of specificity (ICD-10-CM includes laterality, but ICD-9-CM and SNOMED-CT do not uniformly include this distinction). Therefore, at this time, it is not a requirement of this measure to indicate laterality of the diagnoses, findings or procedures. Available coding to capture the data elements specified in this measure has been provided. It is assumed that the eligible professional will record laterality in the patient medical record, as quality care and clinical documentation should include laterality.\n\nThe communication of results to the physician providing ongoing care of a patient’s diabetes should be completed soon after the dilated exam is performed.  Eligible professionals reporting on this measure should note that all data for the reporting year is to be submitted by the deadline established by CMS.  Therefore, eligible professionals who see patients towards the end of the reporting period (ie, December in particular), should communicate the results of the dilated macular exam as soon as possible in order for those patients to be counted in the measure numerator.  Communicating the results as soon as possible after the date of the exam will ensure the data are included in the submission to CMS.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "The measure, as written, does not specifically require documentation of laterality. Coding limitations in particular clinical terminologies do not currently allow for that level of specificity (ICD-10-CM includes laterality, but ICD-9-CM and SNOMED-CT do not uniformly include this distinction). Therefore, at this time, it is not a requirement of this measure to indicate laterality of the diagnoses, findings or procedures. Available coding to capture the data elements specified in this measure has been provided. It is assumed that the eligible professional will record laterality in the patient medical record, as quality care and clinical documentation should include laterality.\n\nThe communication of results to the physician providing ongoing care of a patient’s diabetes should be completed soon after the dilated exam is performed.  Eligible professionals reporting on this measure should note that all data for the reporting year is to be submitted by the deadline established by CMS.  Therefore, eligible professionals who see patients towards the end of the reporting period (ie, December in particular), should communicate the results of the dilated macular exam as soon as possible in order for those patients to be counted in the measure numerator.  Communicating the results as soon as possible after the date of the exam will ensure the data are included in the submission to CMS.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "All patients aged 18 years and older with a diagnosis of diabetic retinopathy",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "All patients aged 18 years and older with a diagnosis of diabetic retinopathy",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population who had a dilated macular or fundus exam performed",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population who had a dilated macular or fundus exam performed",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "None",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Patients with documentation, at least once within 12 months, of the findings of the dilated macular or fundus exam via communication to the physician who manages the patient’s diabetic care",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Patients with documentation, at least once within 12 months, of the findings of the dilated macular or fundus exam via communication to the physician who manages the patient’s diabetic care",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "Documentation of medical reason(s) for not communicating the findings of the dilated macular or fundus exam to the physician who manages the ongoing care of the patient with diabetes\n\nDocumentation of patient reason(s) for not communicating the findings of the dilated macular or fundus exam to the physician who manages the ongoing care of the patient with diabetes",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Documentation of medical reason(s) for not communicating the findings of the dilated macular or fundus exam to the physician who manages the ongoing care of the patient with diabetes\n\nDocumentation of patient reason(s) for not communicating the findings of the dilated macular or fundus exam to the physician who manages the ongoing care of the patient with diabetes",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEXCEP":"DENEXCEP"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.101.12.1008",
+    "2.16.840.1.113883.3.464.1003.101.12.1014",
+    "2.16.840.1.113883.3.464.1003.101.12.1012",
+    "2.16.840.1.113883.3.526.3.1007",
+    "2.16.840.1.113883.3.526.3.1008",
+    "2.16.840.1.113883.3.526.3.1251",
+    "2.16.840.1.113883.3.526.3.1285",
+    "2.16.840.1.113883.3.526.3.1283",
+    "2.16.840.1.113883.3.526.3.1284",
+    "2.16.840.1.113883.3.526.3.1320",
+    "2.16.840.1.113883.3.526.3.327",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1048"
+  ],
+  "population_ids": {
+    "IPP": "7D2EB82E-A97D-40A5-A207-2460DD3D4250",
+    "DENOM": "3E33E05C-5D05-46A3-91E4-99241935DE40",
+    "NUMER": "DF102887-117F-4AB6-A9B6-EE3F57AA5C8E",
+    "DENEXCEP": "E980BD04-F549-4870-9D4F-BE8E10FD4A9B"
+  }
+}

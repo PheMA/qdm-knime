@@ -1,0 +1,2095 @@
+{
+  "id": "0062",
+  "hqmf_id": "40280381-4555-E1C1-0145-761ED1A91C0B",
+  "hqmf_set_id": "7B2A9277-43DA-4D99-9BEE-6AC271A07747",
+  "hqmf_version_number": 3,
+  "title": "Diabetes: Urine Protein Screening",
+  "description": "The percentage of patients 18-75 years of age with diabetes who had a nephropathy screening test or evidence of nephropathy during the measurement period.",
+  "cms_id": "CMS134v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "DF16D61D-9115-4E94-800C-4B3687030249",
+      "preconditions": [
+        {
+          "id": 31,
+          "preconditions": [
+            {
+              "id": 7,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_7"
+            },
+            {
+              "id": 9,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_9"
+            },
+            {
+              "id": 11,
+              "reference": "OccurrenceADiabetes2_precondition_11"
+            },
+            {
+              "id": 27,
+              "preconditions": [
+                {
+                  "id": 15,
+                  "reference": "EncounterPerformedOfficeVisit_precondition_15"
+                },
+                {
+                  "id": 17,
+                  "reference": "EncounterPerformedFaceToFaceInteraction_precondition_17"
+                },
+                {
+                  "id": 19,
+                  "reference": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_19"
+                },
+                {
+                  "id": 21,
+                  "reference": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_21"
+                },
+                {
+                  "id": 23,
+                  "reference": "EncounterPerformedHomeHealthcareServices_precondition_23"
+                },
+                {
+                  "id": 25,
+                  "reference": "EncounterPerformedAnnualWellnessVisit_precondition_25"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 30,
+              "preconditions": [
+                {
+                  "id": 13,
+                  "reference": "OccurrenceADiabetes2_precondition_13"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "3E27A3C9-EBE6-47C1-AED0-22A7708196A9"
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "0D071DF8-9429-4399-A16B-AEA573219180",
+      "preconditions": [
+        {
+          "id": 88,
+          "preconditions": [
+            {
+              "id": 86,
+              "preconditions": [
+                {
+                  "id": 37,
+                  "preconditions": [
+                    {
+                      "id": 32,
+                      "reference": "OccurrenceAAceInhibitorOrArb1_precondition_32"
+                    },
+                    {
+                      "id": 36,
+                      "preconditions": [
+                        {
+                          "id": 34,
+                          "reference": "OccurrenceAAceInhibitorOrArb1_precondition_34"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 44,
+                  "preconditions": [
+                    {
+                      "id": 39,
+                      "reference": "OccurrenceAHypertensiveChronicKidneyDisease5_precondition_39"
+                    },
+                    {
+                      "id": 43,
+                      "preconditions": [
+                        {
+                          "id": 41,
+                          "reference": "OccurrenceAHypertensiveChronicKidneyDisease5_precondition_41"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 51,
+                  "preconditions": [
+                    {
+                      "id": 46,
+                      "reference": "OccurrenceAGlomerulonephritisAndNephroticSyndrome4_precondition_46"
+                    },
+                    {
+                      "id": 50,
+                      "preconditions": [
+                        {
+                          "id": 48,
+                          "reference": "OccurrenceAGlomerulonephritisAndNephroticSyndrome4_precondition_48"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 58,
+                  "preconditions": [
+                    {
+                      "id": 53,
+                      "reference": "OccurrenceADiabeticNephropathy3_precondition_53"
+                    },
+                    {
+                      "id": 57,
+                      "preconditions": [
+                        {
+                          "id": 55,
+                          "reference": "OccurrenceADiabeticNephropathy3_precondition_55"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 65,
+                  "preconditions": [
+                    {
+                      "id": 60,
+                      "reference": "OccurrenceAProteinuria6_precondition_60"
+                    },
+                    {
+                      "id": 64,
+                      "preconditions": [
+                        {
+                          "id": 62,
+                          "reference": "OccurrenceAProteinuria6_precondition_62"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue",
+                      "negation": true
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 83,
+                  "preconditions": [
+                    {
+                      "id": 67,
+                      "reference": "ProcedurePerformedKidneyTransplant_precondition_67"
+                    },
+                    {
+                      "id": 69,
+                      "reference": "ProcedurePerformedVascularAccessForDialysis_precondition_69"
+                    },
+                    {
+                      "id": 71,
+                      "reference": "ProcedurePerformedDialysisServices_precondition_71"
+                    },
+                    {
+                      "id": 73,
+                      "reference": "InterventionPerformedOtherServicesRelatedToDialysis_precondition_73"
+                    },
+                    {
+                      "id": 75,
+                      "reference": "InterventionPerformedDialysisEducation_precondition_75"
+                    },
+                    {
+                      "id": 77,
+                      "reference": "EncounterPerformedEsrdMonthlyOutpatientServices_precondition_77"
+                    },
+                    {
+                      "id": 79,
+                      "reference": "LaboratoryTestResultMicroalbuminTest_precondition_79"
+                    },
+                    {
+                      "id": 81,
+                      "reference": "LaboratoryTestResultMacroalbuminTest_precondition_81"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "MedicationActiveAceInhibitorOrArb": {
+      "title": "ACE Inhibitor or ARB",
+      "description": "Medication, Active: ACE Inhibitor or ARB",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1139",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAceInhibitorOrArb",
+      "variable": false
+    },
+    "DiagnosisActiveDiabetes": {
+      "title": "Diabetes",
+      "description": "Diagnosis, Active: Diabetes",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiabetes",
+      "variable": false
+    },
+    "DiagnosisActiveDiabeticNephropathy": {
+      "title": "Diabetic Nephropathy",
+      "description": "Diagnosis, Active: Diabetic Nephropathy",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1004",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiabeticNephropathy",
+      "variable": false
+    },
+    "DiagnosisActiveGlomerulonephritisAndNephroticSyndrome": {
+      "title": "Glomerulonephritis and Nephrotic Syndrome",
+      "description": "Diagnosis, Active: Glomerulonephritis and Nephrotic Syndrome",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1018",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveGlomerulonephritisAndNephroticSyndrome",
+      "variable": false
+    },
+    "DiagnosisActiveHypertensiveChronicKidneyDisease": {
+      "title": "Hypertensive Chronic Kidney Disease",
+      "description": "Diagnosis, Active: Hypertensive Chronic Kidney Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveHypertensiveChronicKidneyDisease",
+      "variable": false
+    },
+    "DiagnosisActiveProteinuria": {
+      "title": "Proteinuria",
+      "description": "Diagnosis, Active: Proteinuria",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1003",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveProteinuria",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_7": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_9": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "75",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceADiabetes2_precondition_11": {
+      "title": "Diabetes",
+      "description": "Diagnosis, Active: Diabetes",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETES",
+      "source_data_criteria": "OccurrenceADiabetes2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedOfficeVisit_precondition_15": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedFaceToFaceInteraction_precondition_17": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp_precondition_19": {
+      "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp_precondition_21": {
+      "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedHomeHealthcareServices_precondition_23": {
+      "title": "Home Healthcare Services",
+      "description": "Encounter, Performed: Home Healthcare Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedAnnualWellnessVisit_precondition_25": {
+      "title": "Annual Wellness Visit",
+      "description": "Encounter, Performed: Annual Wellness Visit",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceADiabetes2_precondition_13": {
+      "title": "Diabetes",
+      "description": "Diagnosis, Active: Diabetes",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETES",
+      "source_data_criteria": "OccurrenceADiabetes2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAAceInhibitorOrArb1_precondition_32": {
+      "title": "ACE Inhibitor or ARB",
+      "description": "Medication, Active: ACE Inhibitor or ARB",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1139",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_ACE_INHIBITOR_OR_ARB",
+      "source_data_criteria": "OccurrenceAAceInhibitorOrArb1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAAceInhibitorOrArb1_precondition_34": {
+      "title": "ACE Inhibitor or ARB",
+      "description": "Medication, Active: ACE Inhibitor or ARB",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1139",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_ACE_INHIBITOR_OR_ARB",
+      "source_data_criteria": "OccurrenceAAceInhibitorOrArb1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAHypertensiveChronicKidneyDisease5_precondition_39": {
+      "title": "Hypertensive Chronic Kidney Disease",
+      "description": "Diagnosis, Active: Hypertensive Chronic Kidney Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_HYPERTENSIVE_CHRONIC_KIDNEY_DISEASE",
+      "source_data_criteria": "OccurrenceAHypertensiveChronicKidneyDisease5",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAHypertensiveChronicKidneyDisease5_precondition_41": {
+      "title": "Hypertensive Chronic Kidney Disease",
+      "description": "Diagnosis, Active: Hypertensive Chronic Kidney Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_HYPERTENSIVE_CHRONIC_KIDNEY_DISEASE",
+      "source_data_criteria": "OccurrenceAHypertensiveChronicKidneyDisease5",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAGlomerulonephritisAndNephroticSyndrome4_precondition_46": {
+      "title": "Glomerulonephritis and Nephrotic Syndrome",
+      "description": "Diagnosis, Active: Glomerulonephritis and Nephrotic Syndrome",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1018",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_GLOMERULONEPHRITIS_AND_NEPHROTIC_SYNDROME",
+      "source_data_criteria": "OccurrenceAGlomerulonephritisAndNephroticSyndrome4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAGlomerulonephritisAndNephroticSyndrome4_precondition_48": {
+      "title": "Glomerulonephritis and Nephrotic Syndrome",
+      "description": "Diagnosis, Active: Glomerulonephritis and Nephrotic Syndrome",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1018",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_GLOMERULONEPHRITIS_AND_NEPHROTIC_SYNDROME",
+      "source_data_criteria": "OccurrenceAGlomerulonephritisAndNephroticSyndrome4",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceADiabeticNephropathy3_precondition_53": {
+      "title": "Diabetic Nephropathy",
+      "description": "Diagnosis, Active: Diabetic Nephropathy",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1004",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_NEPHROPATHY",
+      "source_data_criteria": "OccurrenceADiabeticNephropathy3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceADiabeticNephropathy3_precondition_55": {
+      "title": "Diabetic Nephropathy",
+      "description": "Diagnosis, Active: Diabetic Nephropathy",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1004",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_NEPHROPATHY",
+      "source_data_criteria": "OccurrenceADiabeticNephropathy3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAProteinuria6_precondition_60": {
+      "title": "Proteinuria",
+      "description": "Diagnosis, Active: Proteinuria",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1003",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROTEINURIA",
+      "source_data_criteria": "OccurrenceAProteinuria6",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAProteinuria6_precondition_62": {
+      "title": "Proteinuria",
+      "description": "Diagnosis, Active: Proteinuria",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1003",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROTEINURIA",
+      "source_data_criteria": "OccurrenceAProteinuria6",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedurePerformedKidneyTransplant_precondition_67": {
+      "title": "Kidney Transplant",
+      "description": "Procedure, Performed: Kidney Transplant",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1012",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedKidneyTransplant",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedurePerformedVascularAccessForDialysis_precondition_69": {
+      "title": "Vascular Access for Dialysis",
+      "description": "Procedure, Performed: Vascular Access for Dialysis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1011",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedVascularAccessForDialysis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedurePerformedDialysisServices_precondition_71": {
+      "title": "Dialysis Services",
+      "description": "Procedure, Performed: Dialysis Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1013",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedDialysisServices",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "InterventionPerformedOtherServicesRelatedToDialysis_precondition_73": {
+      "title": "Other Services Related to Dialysis",
+      "description": "Intervention, Performed: Other Services Related to Dialysis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1015",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedOtherServicesRelatedToDialysis",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "InterventionPerformedDialysisEducation_precondition_75": {
+      "title": "Dialysis Education",
+      "description": "Intervention, Performed: Dialysis Education",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1016",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedDialysisEducation",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "EncounterPerformedEsrdMonthlyOutpatientServices_precondition_77": {
+      "title": "ESRD Monthly Outpatient Services",
+      "description": "Encounter, Performed: ESRD Monthly Outpatient Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1014",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEsrdMonthlyOutpatientServices",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestResultMicroalbuminTest_precondition_79": {
+      "title": "Microalbumin Test",
+      "description": "Laboratory Test, Result: Microalbumin Test",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1005",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultMicroalbuminTest",
+      "variable": false,
+      "value": {
+        "type": "ANYNonNull"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "LaboratoryTestResultMacroalbuminTest_precondition_81": {
+      "title": "Macroalbumin Test",
+      "description": "Laboratory Test, Result: Macroalbumin Test",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1019",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultMacroalbuminTest",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.121.12.1016",
+        "title": "result"
+      },
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "OccurrenceAAceInhibitorOrArb1": {
+      "title": "ACE Inhibitor or ARB",
+      "description": "Medication, Active: ACE Inhibitor or ARB",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1139",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ACTIVE_ACE_INHIBITOR_OR_ARB",
+      "source_data_criteria": "OccurrenceAAceInhibitorOrArb1",
+      "variable": false
+    },
+    "EncounterPerformedAnnualWellnessVisit": {
+      "title": "Annual Wellness Visit",
+      "description": "Encounter, Performed: Annual Wellness Visit",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1240",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedAnnualWellnessVisit",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "OccurrenceADiabetes2": {
+      "title": "Diabetes",
+      "description": "Diagnosis, Active: Diabetes",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETES",
+      "source_data_criteria": "OccurrenceADiabetes2",
+      "variable": false
+    },
+    "OccurrenceADiabeticNephropathy3": {
+      "title": "Diabetic Nephropathy",
+      "description": "Diagnosis, Active: Diabetic Nephropathy",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1004",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_DIABETIC_NEPHROPATHY",
+      "source_data_criteria": "OccurrenceADiabeticNephropathy3",
+      "variable": false
+    },
+    "InterventionPerformedDialysisEducation": {
+      "title": "Dialysis Education",
+      "description": "Intervention, Performed: Dialysis Education",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1016",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedDialysisEducation",
+      "variable": false
+    },
+    "ProcedurePerformedDialysisServices": {
+      "title": "Dialysis Services",
+      "description": "Procedure, Performed: Dialysis Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1013",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedDialysisServices",
+      "variable": false
+    },
+    "EncounterPerformedEsrdMonthlyOutpatientServices": {
+      "title": "ESRD Monthly Outpatient Services",
+      "description": "Encounter, Performed: ESRD Monthly Outpatient Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1014",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedEsrdMonthlyOutpatientServices",
+      "variable": false
+    },
+    "EncounterPerformedFaceToFaceInteraction": {
+      "title": "Face-to-Face Interaction",
+      "description": "Encounter, Performed: Face-to-Face Interaction",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1048",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedFaceToFaceInteraction",
+      "variable": false
+    },
+    "OccurrenceAGlomerulonephritisAndNephroticSyndrome4": {
+      "title": "Glomerulonephritis and Nephrotic Syndrome",
+      "description": "Diagnosis, Active: Glomerulonephritis and Nephrotic Syndrome",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1018",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_GLOMERULONEPHRITIS_AND_NEPHROTIC_SYNDROME",
+      "source_data_criteria": "OccurrenceAGlomerulonephritisAndNephroticSyndrome4",
+      "variable": false
+    },
+    "EncounterPerformedHomeHealthcareServices": {
+      "title": "Home Healthcare Services",
+      "description": "Encounter, Performed: Home Healthcare Services",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1016",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedHomeHealthcareServices",
+      "variable": false
+    },
+    "OccurrenceAHypertensiveChronicKidneyDisease5": {
+      "title": "Hypertensive Chronic Kidney Disease",
+      "description": "Diagnosis, Active: Hypertensive Chronic Kidney Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_HYPERTENSIVE_CHRONIC_KIDNEY_DISEASE",
+      "source_data_criteria": "OccurrenceAHypertensiveChronicKidneyDisease5",
+      "variable": false
+    },
+    "ProcedurePerformedKidneyTransplant": {
+      "title": "Kidney Transplant",
+      "description": "Procedure, Performed: Kidney Transplant",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1012",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedKidneyTransplant",
+      "variable": false
+    },
+    "LaboratoryTestResultMacroalbuminTest": {
+      "title": "Macroalbumin Test",
+      "description": "Laboratory Test, Result: Macroalbumin Test",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1019",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultMacroalbuminTest",
+      "variable": false
+    },
+    "LaboratoryTestResultMicroalbuminTest": {
+      "title": "Microalbumin Test",
+      "description": "Laboratory Test, Result: Microalbumin Test",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1005",
+      "type": "laboratory_tests",
+      "definition": "laboratory_test",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "LaboratoryTestResultMicroalbuminTest",
+      "variable": false
+    },
+    "EncounterPerformedOfficeVisit": {
+      "title": "Office Visit",
+      "description": "Encounter, Performed: Office Visit",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedOfficeVisit",
+      "variable": false
+    },
+    "InterventionPerformedOtherServicesRelatedToDialysis": {
+      "title": "Other Services Related to Dialysis",
+      "description": "Intervention, Performed: Other Services Related to Dialysis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1015",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "InterventionPerformedOtherServicesRelatedToDialysis",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp": {
+      "title": "Preventive Care Services - Established Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1025",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesEstablishedOfficeVisit18AndUp",
+      "variable": false
+    },
+    "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp": {
+      "title": "Preventive Care Services-Initial Office Visit, 18 and Up",
+      "description": "Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1023",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedPreventiveCareServicesInitialOfficeVisit18AndUp",
+      "variable": false
+    },
+    "OccurrenceAProteinuria6": {
+      "title": "Proteinuria",
+      "description": "Diagnosis, Active: Proteinuria",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1003",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PROTEINURIA",
+      "source_data_criteria": "OccurrenceAProteinuria6",
+      "variable": false
+    },
+    "ProcedurePerformedVascularAccessForDialysis": {
+      "title": "Vascular Access for Dialysis",
+      "description": "Procedure, Performed: Vascular Access for Dialysis",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1011",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedVascularAccessForDialysis",
+      "variable": false
+    },
+    "MedicationActiveAceInhibitorOrArb": {
+      "title": "ACE Inhibitor or ARB",
+      "description": "Medication, Active: ACE Inhibitor or ARB",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1139",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveAceInhibitorOrArb",
+      "variable": false
+    },
+    "DiagnosisActiveDiabetes": {
+      "title": "Diabetes",
+      "description": "Diagnosis, Active: Diabetes",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.103.12.1001",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiabetes",
+      "variable": false
+    },
+    "DiagnosisActiveDiabeticNephropathy": {
+      "title": "Diabetic Nephropathy",
+      "description": "Diagnosis, Active: Diabetic Nephropathy",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1004",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveDiabeticNephropathy",
+      "variable": false
+    },
+    "DiagnosisActiveGlomerulonephritisAndNephroticSyndrome": {
+      "title": "Glomerulonephritis and Nephrotic Syndrome",
+      "description": "Diagnosis, Active: Glomerulonephritis and Nephrotic Syndrome",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1018",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveGlomerulonephritisAndNephroticSyndrome",
+      "variable": false
+    },
+    "DiagnosisActiveHypertensiveChronicKidneyDisease": {
+      "title": "Hypertensive Chronic Kidney Disease",
+      "description": "Diagnosis, Active: Hypertensive Chronic Kidney Disease",
+      "code_list_id": "2.16.840.1.113883.3.464.1003.109.12.1017",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveHypertensiveChronicKidneyDisease",
+      "variable": false
+    },
+    "DiagnosisActiveProteinuria": {
+      "title": "Proteinuria",
+      "description": "Diagnosis, Active: Proteinuria",
+      "code_list_id": "2.16.840.1.113883.3.526.3.1003",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveProteinuria",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Diabetes mellitus (diabetes) is a group of diseases characterized by high blood glucose levels caused by the body's inability to correctly produce or utilize the hormone insulin (National Institute of Diabetes and Digestive and Kidney Diseases 2011). It is recognized as a leading cause of death and disability in the U.S. and is highly underreported as a cause of death (National Institute of Diabetes and Digestive and Kidney Diseases 2011). Diabetes may cause life-threatening, life-ending or life-altering complications, including end-stage kidney disease. Diabetes is the primary cause of kidney failure, accounting for 44 percent of newly diagnosed cases in 2005 (National Institute of Diabetes and Digestive and Kidney Diseases 2011). Clinical guidelines recommend regular testing to evaluate urine albumin excretions and serum creatinine and the estimated glomerular filtration rate derived from serum creatinine, in addition to comparing measurements when screening for chronic kidney disease (American Diabetes Association 2009; American Association of Clinical Endocrinologists 2007).",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Diabetes mellitus (diabetes) is a group of diseases characterized by high blood glucose levels caused by the body's inability to correctly produce or utilize the hormone insulin (National Institute of Diabetes and Digestive and Kidney Diseases 2011). It is recognized as a leading cause of death and disability in the U.S. and is highly underreported as a cause of death (National Institute of Diabetes and Digestive and Kidney Diseases 2011). Diabetes may cause life-threatening, life-ending or life-altering complications, including end-stage kidney disease. Diabetes is the primary cause of kidney failure, accounting for 44 percent of newly diagnosed cases in 2005 (National Institute of Diabetes and Digestive and Kidney Diseases 2011). Clinical guidelines recommend regular testing to evaluate urine albumin excretions and serum creatinine and the estimated glomerular filtration rate derived from serum creatinine, in addition to comparing measurements when screening for chronic kidney disease (American Diabetes Association 2009; American Association of Clinical Endocrinologists 2007).",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "American Diabetes Association (2009):\r\n- Perform an annual test to assess urine albumin excretion in type 1 diabetic patients with diabetes duration of >=5 years and in all type 2 diabetic patients, starting at diagnosis. (Level of Evidence E)\r\n- Measure serum creatinine at least annually in all adults with diabetes regardless of the degree of urine albumin excretion. The serum creatinine should be used to estimate GFR and stage the level of chronic kidney disease (CKD), if present. (Level of Evidence E)\r\n- In the treatment of the nonpregnant patient with micro- or macroalbuminuria, either ACE Inhibitors or ARBs should be used. (Level of Evidence A)\r\n\r\nAmerican Association of Clinical Endocrinologists (2007): Screen all patients with diabetes mellitus for chronic kidney disease annually; screening should begin 5 years after diagnosis in patients with Type 1 diabetes mellitus (T1DM) and at the time of diagnosis in patients with Type 2 diabetes mellitus (T2DM). Testing includes:\r\n- Measurement of albumin-to-creatinine ratio in a spot urine specimen and measurement of the estimated glomerular filtration rate derived from serum creatinine\r\n- The following are diagnostic criteria for chronic kidney disease:\r\n. Estimated glomerular filtration rate <60 mL/min/1.73 m2 or albumin-to-creatinine ratio >=30 mg albumin/g creatinine\r\n. Microalbuminuria >=30 mg albumin/g creatinine\r\n. Macroalbuminuria >=300 mg albumin/g creatinine (Grade A)\r\n. Prescribe an angiotensin-converting enzyme inhibitor or an angiotensin receptor blocker in the antihypertensive regimen in the absence of contraindications. (Grade A)\r\n\r\nCalifornia Healthcare Foundation/American Geriatrics Society (2003): A test for the presence of microalbumin should be performed at diagnosis in patients with type 2 diabetes mellitus. After the initial screening and in the absence of previously demonstrated macro- or microalbuminuria, a test for the presence of microalbumin should be performed annually. (Level III, Grade A)",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "American Diabetes Association (2009):\r\n- Perform an annual test to assess urine albumin excretion in type 1 diabetic patients with diabetes duration of >=5 years and in all type 2 diabetic patients, starting at diagnosis. (Level of Evidence E)\r\n- Measure serum creatinine at least annually in all adults with diabetes regardless of the degree of urine albumin excretion. The serum creatinine should be used to estimate GFR and stage the level of chronic kidney disease (CKD), if present. (Level of Evidence E)\r\n- In the treatment of the nonpregnant patient with micro- or macroalbuminuria, either ACE Inhibitors or ARBs should be used. (Level of Evidence A)\r\n\r\nAmerican Association of Clinical Endocrinologists (2007): Screen all patients with diabetes mellitus for chronic kidney disease annually; screening should begin 5 years after diagnosis in patients with Type 1 diabetes mellitus (T1DM) and at the time of diagnosis in patients with Type 2 diabetes mellitus (T2DM). Testing includes:\r\n- Measurement of albumin-to-creatinine ratio in a spot urine specimen and measurement of the estimated glomerular filtration rate derived from serum creatinine\r\n- The following are diagnostic criteria for chronic kidney disease:\r\n. Estimated glomerular filtration rate <60 mL/min/1.73 m2 or albumin-to-creatinine ratio >=30 mg albumin/g creatinine\r\n. Microalbuminuria >=30 mg albumin/g creatinine\r\n. Macroalbuminuria >=300 mg albumin/g creatinine (Grade A)\r\n. Prescribe an angiotensin-converting enzyme inhibitor or an angiotensin receptor blocker in the antihypertensive regimen in the absence of contraindications. (Grade A)\r\n\r\nCalifornia Healthcare Foundation/American Geriatrics Society (2003): A test for the presence of microalbumin should be performed at diagnosis in patients with type 2 diabetes mellitus. After the initial screening and in the absence of previously demonstrated macro- or microalbuminuria, a test for the presence of microalbumin should be performed annually. (Level III, Grade A)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0062",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0062"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "134",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "134",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "National Institute of Diabetes and Digestive and Kidney Diseases. 2011. \"Causes of Diabetes.\" (September) \r\nhttp://diabetes.niddk.nih.gov/dm/pubs/causes/index.aspx",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "National Institute of Diabetes and Digestive and Kidney Diseases. 2011. \"Causes of Diabetes.\" (September) \r\nhttp://diabetes.niddk.nih.gov/dm/pubs/causes/index.aspx",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "Only patients with a diagnosis of Type 1 or Type 2 diabetes should be included in the denominator of this measure; patients with a diagnosis of secondary diabetes due to another condition should not be included.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Only patients with a diagnosis of Type 1 or Type 2 diabetes should be included in the denominator of this measure; patients with a diagnosis of secondary diabetes due to another condition should not be included.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients 18-75 years of age with diabetes with a visit during the measurement period",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients 18-75 years of age with diabetes with a visit during the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients with a screening for nephropathy or evidence of nephropathy during the measurement period",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with a screening for nephropathy or evidence of nephropathy during the measurement period",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

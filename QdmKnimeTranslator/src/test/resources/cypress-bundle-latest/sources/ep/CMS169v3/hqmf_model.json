@@ -1,0 +1,2777 @@
+{
+  "id": "0110",
+  "hqmf_id": "40280381-4555-E1C1-0145-AA02634B31FA",
+  "hqmf_set_id": "B99AAEF6-7889-4ABA-85FC-5A2B739DD098",
+  "hqmf_version_number": 3,
+  "title": "Bipolar Disorder and Major Depression: Appraisal for alcohol or chemical substance use",
+  "description": "Percentage of patients with depression or bipolar disorder with evidence of an initial assessment that includes an appraisal for alcohol or chemical substance use.",
+  "cms_id": "CMS169v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "61731F2D-B53F-417D-BFA8-4D81BB877B97",
+      "preconditions": [
+        {
+          "id": 6,
+          "preconditions": [
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "82D85A6A-3B2D-4CA7-8148-E455AFCBC9FA",
+      "preconditions": [
+        {
+          "id": 78,
+          "preconditions": [
+            {
+              "id": 7,
+              "reference": "OccurrenceABhOutpatientEncounter3_precondition_7"
+            },
+            {
+              "id": 9,
+              "reference": "OccurrenceABhOutpatientEncounter3_precondition_9"
+            },
+            {
+              "id": 15,
+              "preconditions": [
+                {
+                  "id": 11,
+                  "reference": "DiagnosisActiveBhConditionInvolvingUnipolarDepression_precondition_11"
+                },
+                {
+                  "id": 13,
+                  "reference": "DiagnosisActiveBhConditionInvolvingBipolarDisorder_precondition_13"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 34,
+              "preconditions": [
+                {
+                  "id": 18,
+                  "reference": "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_18"
+                },
+                {
+                  "id": 20,
+                  "reference": "ProcedureOrderBhElectroconvulsiveTherapy_precondition_20"
+                },
+                {
+                  "id": 22,
+                  "reference": "OccurrenceABhAntidepressantMedication1_precondition_22"
+                },
+                {
+                  "id": 24,
+                  "reference": "MedicationOrderBhMoodStabilizerMedication_precondition_24"
+                },
+                {
+                  "id": 26,
+                  "reference": "ProcedurePerformedBhCounselingForDepression_precondition_26"
+                },
+                {
+                  "id": 28,
+                  "reference": "ProcedureOrderBhCounselingForDepression_precondition_28"
+                },
+                {
+                  "id": 30,
+                  "reference": "EncounterOrderBhOutpatientPsychotherapy_precondition_30"
+                },
+                {
+                  "id": 32,
+                  "reference": "EncounterPerformedBhOutpatientPsychotherapy_precondition_32"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 77,
+              "preconditions": [
+                {
+                  "id": 42,
+                  "reference": "OccurrenceABhOutpatientEncounter3_precondition_42"
+                },
+                {
+                  "id": 49,
+                  "reference": "OccurrenceABhOutpatientEncounter3_precondition_49"
+                },
+                {
+                  "id": 56,
+                  "reference": "OccurrenceABhOutpatientEncounter3_precondition_56"
+                },
+                {
+                  "id": 75,
+                  "reference": "OccurrenceABhOutpatientEncounter3_precondition_75"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "42FDFC0F-EB66-464A-8312-96B86E66FAA6",
+      "preconditions": [
+        {
+          "id": 129,
+          "preconditions": [
+            {
+              "id": 83,
+              "preconditions": [
+                {
+                  "id": 79,
+                  "reference": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_79"
+                },
+                {
+                  "id": 81,
+                  "reference": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_81"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            },
+            {
+              "id": 127,
+              "preconditions": [
+                {
+                  "id": 104,
+                  "reference": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_104"
+                },
+                {
+                  "id": 125,
+                  "reference": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_125"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "MedicationActiveBhAntidepressantMedication": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Active: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveBhAntidepressantMedication",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingBipolarDisorder": {
+      "title": "BH Condition Involving Bipolar Disorder",
+      "description": "Diagnosis, Active: BH Condition Involving Bipolar Disorder",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1504",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingBipolarDisorder",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingUnipolarDepression": {
+      "title": "BH Condition Involving Unipolar Depression",
+      "description": "Diagnosis, Active: BH Condition Involving Unipolar Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1505",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingUnipolarDepression",
+      "variable": false
+    },
+    "MedicationActiveBhMoodStabilizerMedication": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Active: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveBhMoodStabilizerMedication",
+      "variable": false
+    },
+    "OccurrenceABhOutpatientEncounter3": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "MedicationOrderBhAntidepressantMedication": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Order: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhAntidepressantMedication",
+      "variable": false
+    },
+    "ProcedurePerformedBhAssessmentForAlcoholOrOtherDrugs": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhAssessmentForAlcoholOrOtherDrugs",
+      "variable": false
+    },
+    "EncounterPerformedBhOutpatientEncounter": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_7": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_9": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_16": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingUnipolarDepression_precondition_11": {
+      "title": "BH Condition Involving Unipolar Depression",
+      "description": "Diagnosis, Active: BH Condition Involving Unipolar Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1505",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingUnipolarDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_16"
+        }
+      ]
+    },
+    "DiagnosisActiveBhConditionInvolvingBipolarDisorder_precondition_13": {
+      "title": "BH Condition Involving Bipolar Disorder",
+      "description": "Diagnosis, Active: BH Condition Involving Bipolar Disorder",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1504",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingBipolarDisorder",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_16"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_35": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_18": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Performed: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhElectroconvulsiveTherapy_precondition_20": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Order: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhAntidepressantMedication1_precondition_22": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Ordered: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_BH_ANTIDEPRESSANT_MEDICATION",
+      "source_data_criteria": "OccurrenceABhAntidepressantMedication1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderBhMoodStabilizerMedication_precondition_24": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Order: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhMoodStabilizerMedication",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedurePerformedBhCounselingForDepression_precondition_26": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Performed: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhCounselingForDepression_precondition_28": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Order: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterOrderBhOutpatientPsychotherapy_precondition_30": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Order: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "EncounterOrderBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientPsychotherapy_precondition_32": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Performed: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_35",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientEncounter_precondition_37": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "DiagnosisActiveBhConditionInvolvingBipolarDisorder"
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientEncounter_precondition_39": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "DiagnosisActiveBhConditionInvolvingUnipolarDepression"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_42": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "GROUP_SAS_CHILDREN_131",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "180",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_SAS_CHILDREN_131": {
+      "title": "GROUP_SAS_CHILDREN_131",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedBhOutpatientEncounter_precondition_37",
+        "EncounterPerformedBhOutpatientEncounter_precondition_39"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SAS_CHILDREN_131",
+      "variable": false
+    },
+    "EncounterPerformedBhOutpatientEncounter_precondition_44": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MedicationActiveBhAntidepressantMedication"
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientEncounter_precondition_46": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MedicationActiveBhMoodStabilizerMedication"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_49": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "GROUP_SAS_CHILDREN_133",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "180",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_SAS_CHILDREN_133": {
+      "title": "GROUP_SAS_CHILDREN_133",
+      "description": "",
+      "children_criteria": [
+        "EncounterPerformedBhOutpatientEncounter_precondition_44",
+        "EncounterPerformedBhOutpatientEncounter_precondition_46"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SAS_CHILDREN_133",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingBipolarDisorder_precondition_51": {
+      "title": "BH Condition Involving Bipolar Disorder",
+      "description": "Diagnosis, Active: BH Condition Involving Bipolar Disorder",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1504",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingBipolarDisorder",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "EncounterPerformedBhOutpatientEncounter"
+        }
+      ]
+    },
+    "DiagnosisActiveBhConditionInvolvingUnipolarDepression_precondition_53": {
+      "title": "BH Condition Involving Unipolar Depression",
+      "description": "Diagnosis, Active: BH Condition Involving Unipolar Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1505",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingUnipolarDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SDU",
+          "reference": "EncounterPerformedBhOutpatientEncounter"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_56": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "GROUP_SAS_CHILDREN_135",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "180",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_SAS_CHILDREN_135": {
+      "title": "GROUP_SAS_CHILDREN_135",
+      "description": "",
+      "children_criteria": [
+        "DiagnosisActiveBhConditionInvolvingBipolarDisorder_precondition_51",
+        "DiagnosisActiveBhConditionInvolvingUnipolarDepression_precondition_53"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SAS_CHILDREN_135",
+      "variable": false
+    },
+    "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_58": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Performed: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhElectroconvulsiveTherapy",
+      "variable": false
+    },
+    "ProcedureOrderBhElectroconvulsiveTherapy_precondition_60": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Order: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhElectroconvulsiveTherapy",
+      "variable": false
+    },
+    "OccurrenceABhAntidepressantMedication1_precondition_62": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Ordered: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_BH_ANTIDEPRESSANT_MEDICATION",
+      "source_data_criteria": "OccurrenceABhAntidepressantMedication1",
+      "variable": false
+    },
+    "MedicationOrderBhMoodStabilizerMedication_precondition_64": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Order: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhMoodStabilizerMedication",
+      "variable": false
+    },
+    "ProcedurePerformedBhCounselingForDepression_precondition_66": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Performed: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhCounselingForDepression",
+      "variable": false
+    },
+    "ProcedureOrderBhCounselingForDepression_precondition_68": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Order: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhCounselingForDepression",
+      "variable": false
+    },
+    "EncounterOrderBhOutpatientPsychotherapy_precondition_70": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Order: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "EncounterOrderBhOutpatientPsychotherapy",
+      "variable": false
+    },
+    "EncounterPerformedBhOutpatientPsychotherapy_precondition_72": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Performed: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientPsychotherapy",
+      "variable": false
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_75": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "GROUP_SAS_CHILDREN_137",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "180",
+              "inclusive?": false,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_SAS_CHILDREN_137": {
+      "title": "GROUP_SAS_CHILDREN_137",
+      "description": "",
+      "children_criteria": [
+        "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_58",
+        "ProcedureOrderBhElectroconvulsiveTherapy_precondition_60",
+        "OccurrenceABhAntidepressantMedication1_precondition_62",
+        "MedicationOrderBhMoodStabilizerMedication_precondition_64",
+        "ProcedurePerformedBhCounselingForDepression_precondition_66",
+        "ProcedureOrderBhCounselingForDepression_precondition_68",
+        "EncounterOrderBhOutpatientPsychotherapy_precondition_70",
+        "EncounterPerformedBhOutpatientPsychotherapy_precondition_72"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_SAS_CHILDREN_137",
+      "variable": false
+    },
+    "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_79": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_BH_ASSESSMENT_FOR_ALCOHOL_OR_OTHER_DRUGS",
+      "source_data_criteria": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3"
+        }
+      ]
+    },
+    "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_81": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_BH_ASSESSMENT_FOR_ALCOHOL_OR_OTHER_DRUGS",
+      "source_data_criteria": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABhOutpatientEncounter3",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_102": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_85": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Performed: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhElectroconvulsiveTherapy_precondition_87": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Order: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhAntidepressantMedication1_precondition_89": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Ordered: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_BH_ANTIDEPRESSANT_MEDICATION",
+      "source_data_criteria": "OccurrenceABhAntidepressantMedication1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderBhMoodStabilizerMedication_precondition_91": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Order: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhMoodStabilizerMedication",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedurePerformedBhCounselingForDepression_precondition_93": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Performed: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhCounselingForDepression_precondition_95": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Order: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterOrderBhOutpatientPsychotherapy_precondition_97": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Order: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "EncounterOrderBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientPsychotherapy_precondition_99": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Performed: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_102",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_FIRST_139": {
+      "title": "GROUP_FIRST_139",
+      "description": "",
+      "children_criteria": [
+        "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_85",
+        "ProcedureOrderBhElectroconvulsiveTherapy_precondition_87",
+        "OccurrenceABhAntidepressantMedication1_precondition_89",
+        "MedicationOrderBhMoodStabilizerMedication_precondition_91",
+        "ProcedurePerformedBhCounselingForDepression_precondition_93",
+        "ProcedureOrderBhCounselingForDepression_precondition_95",
+        "EncounterOrderBhOutpatientPsychotherapy_precondition_97",
+        "EncounterPerformedBhOutpatientPsychotherapy_precondition_99"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_139",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_104": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_BH_ASSESSMENT_FOR_ALCOHOL_OR_OTHER_DRUGS",
+      "source_data_criteria": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "GROUP_FIRST_139"
+        }
+      ]
+    },
+    "OccurrenceABhOutpatientEncounter3_precondition_123": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_106": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Performed: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhElectroconvulsiveTherapy_precondition_108": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Order: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhElectroconvulsiveTherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABhAntidepressantMedication1_precondition_110": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Ordered: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_BH_ANTIDEPRESSANT_MEDICATION",
+      "source_data_criteria": "OccurrenceABhAntidepressantMedication1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderBhMoodStabilizerMedication_precondition_112": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Order: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhMoodStabilizerMedication",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedurePerformedBhCounselingForDepression_precondition_114": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Performed: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "ProcedureOrderBhCounselingForDepression_precondition_116": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Order: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhCounselingForDepression",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterOrderBhOutpatientPsychotherapy_precondition_118": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Order: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "EncounterOrderBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "EncounterPerformedBhOutpatientPsychotherapy_precondition_120": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Performed: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientPsychotherapy",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "OccurrenceABhOutpatientEncounter3_precondition_123",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "42",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "GROUP_FIRST_141": {
+      "title": "GROUP_FIRST_141",
+      "description": "",
+      "children_criteria": [
+        "ProcedurePerformedBhElectroconvulsiveTherapy_precondition_106",
+        "ProcedureOrderBhElectroconvulsiveTherapy_precondition_108",
+        "OccurrenceABhAntidepressantMedication1_precondition_110",
+        "MedicationOrderBhMoodStabilizerMedication_precondition_112",
+        "ProcedurePerformedBhCounselingForDepression_precondition_114",
+        "ProcedureOrderBhCounselingForDepression_precondition_116",
+        "EncounterOrderBhOutpatientPsychotherapy_precondition_118",
+        "EncounterPerformedBhOutpatientPsychotherapy_precondition_120"
+      ],
+      "derivation_operator": "UNION",
+      "type": "derived",
+      "definition": "derived",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "GROUP_FIRST_141",
+      "variable": false,
+      "subset_operators": [
+        {
+          "type": "FIRST"
+        }
+      ]
+    },
+    "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2_precondition_125": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_BH_ASSESSMENT_FOR_ALCOHOL_OR_OTHER_DRUGS",
+      "source_data_criteria": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SAS",
+          "reference": "GROUP_FIRST_141",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            },
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "0",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "MedicationActiveBhAntidepressantMedication": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Active: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveBhAntidepressantMedication",
+      "variable": false
+    },
+    "OccurrenceABhAntidepressantMedication1": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Ordered: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "MEDICATION_ORDERED_BH_ANTIDEPRESSANT_MEDICATION",
+      "source_data_criteria": "OccurrenceABhAntidepressantMedication1",
+      "variable": false
+    },
+    "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PROCEDURE_PERFORMED_BH_ASSESSMENT_FOR_ALCOHOL_OR_OTHER_DRUGS",
+      "source_data_criteria": "OccurrenceABhAssessmentForAlcoholOrOtherDrugs2",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingBipolarDisorder": {
+      "title": "BH Condition Involving Bipolar Disorder",
+      "description": "Diagnosis, Active: BH Condition Involving Bipolar Disorder",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1504",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingBipolarDisorder",
+      "variable": false
+    },
+    "DiagnosisActiveBhConditionInvolvingUnipolarDepression": {
+      "title": "BH Condition Involving Unipolar Depression",
+      "description": "Diagnosis, Active: BH Condition Involving Unipolar Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1505",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActiveBhConditionInvolvingUnipolarDepression",
+      "variable": false
+    },
+    "ProcedureOrderBhCounselingForDepression": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Order: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhCounselingForDepression",
+      "variable": false
+    },
+    "ProcedurePerformedBhCounselingForDepression": {
+      "title": "BH Counseling for Depression",
+      "description": "Procedure, Performed: BH Counseling for Depression",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1616",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhCounselingForDepression",
+      "variable": false
+    },
+    "ProcedurePerformedBhElectroconvulsiveTherapy": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Performed: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhElectroconvulsiveTherapy",
+      "variable": false
+    },
+    "ProcedureOrderBhElectroconvulsiveTherapy": {
+      "title": "BH Electroconvulsive Therapy",
+      "description": "Procedure, Order: BH Electroconvulsive Therapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1533",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderBhElectroconvulsiveTherapy",
+      "variable": false
+    },
+    "MedicationActiveBhMoodStabilizerMedication": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Active: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "MedicationActiveBhMoodStabilizerMedication",
+      "variable": false
+    },
+    "MedicationOrderBhMoodStabilizerMedication": {
+      "title": "BH Mood Stabilizer Medication",
+      "description": "Medication, Order: BH Mood Stabilizer Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.950",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhMoodStabilizerMedication",
+      "variable": false
+    },
+    "OccurrenceABhOutpatientEncounter3": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BH_OUTPATIENT_ENCOUNTER",
+      "source_data_criteria": "OccurrenceABhOutpatientEncounter3",
+      "variable": false
+    },
+    "EncounterPerformedBhOutpatientPsychotherapy": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Performed: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientPsychotherapy",
+      "variable": false
+    },
+    "EncounterOrderBhOutpatientPsychotherapy": {
+      "title": "BH Outpatient Psychotherapy",
+      "description": "Encounter, Order: BH Outpatient Psychotherapy",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.973",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "EncounterOrderBhOutpatientPsychotherapy",
+      "variable": false
+    },
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "MedicationOrderBhAntidepressantMedication": {
+      "title": "BH Antidepressant Medication",
+      "description": "Medication, Order: BH Antidepressant Medication",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.972",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBhAntidepressantMedication",
+      "variable": false
+    },
+    "ProcedurePerformedBhAssessmentForAlcoholOrOtherDrugs": {
+      "title": "BH Assessment for Alcohol or Other Drugs",
+      "description": "Procedure, Performed: BH Assessment for Alcohol or Other Drugs",
+      "code_list_id": "2.16.840.1.113883.3.1257.1.1604",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "ProcedurePerformedBhAssessmentForAlcoholOrOtherDrugs",
+      "variable": false
+    },
+    "EncounterPerformedBhOutpatientEncounter": {
+      "title": "BH Outpatient encounter",
+      "description": "Encounter, Performed: BH Outpatient encounter",
+      "code_list_id": "2.16.840.1.113883.3.464.1.49",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBhOutpatientEncounter",
+      "variable": false
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "This measure is copyrighted by CQAIMH.  It may be used for research, teaching, and quality measurement / improvement activities – provided the following:\r\n• The materials are not sold, distributed or licensed for commercial purposes\r\n• CQAIMH’s copyright is acknowledged in reproductions of these materials\r\n• Modifications to the materials are not made without CQAIMH’s permission",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This measure is copyrighted by CQAIMH.  It may be used for research, teaching, and quality measurement / improvement activities – provided the following:\r\n• The materials are not sold, distributed or licensed for commercial purposes\r\n• CQAIMH’s copyright is acknowledged in reproductions of these materials\r\n• Modifications to the materials are not made without CQAIMH’s permission",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Individuals with bipolar disorder or major depression have high rates of co-morbid substance abuse and should be screened for substance use disorders. Between 40-70% of people with bipolar disorder have a history of substance use disorder. A current or past co-morbid substance use disorder may lead to worse outcomes for bipolar disorders, including more symptoms, more suicide attempts, longer episodes and lower quality of life. Substance abuse may obscure or exacerbate mood swings that have no other apparent external cause. Substance abuse may also precipitate mood episodes or be used by patients to self-treat in an attempt to improve the symptoms of episodes. Patients suffering from major depressive disorder with co-morbid addiction are more likely to require hospitalization, more likely to attempt suicide and less likely to comply with treatment than are patients with these disorders of similar severity not complicated by these factors.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Individuals with bipolar disorder or major depression have high rates of co-morbid substance abuse and should be screened for substance use disorders. Between 40-70% of people with bipolar disorder have a history of substance use disorder. A current or past co-morbid substance use disorder may lead to worse outcomes for bipolar disorders, including more symptoms, more suicide attempts, longer episodes and lower quality of life. Substance abuse may obscure or exacerbate mood swings that have no other apparent external cause. Substance abuse may also precipitate mood episodes or be used by patients to self-treat in an attempt to improve the symptoms of episodes. Patients suffering from major depressive disorder with co-morbid addiction are more likely to require hospitalization, more likely to attempt suicide and less likely to comply with treatment than are patients with these disorders of similar severity not complicated by these factors.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Perform a diagnostic evaluation to assess the presence of an alcohol or substance use disorder or other factors that may contribute to the disease process or complicate its treatment. A complete diagnosis of depression should address history of substance use and treatment for substance use disorders.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Perform a diagnostic evaluation to assess the presence of an alcohol or substance use disorder or other factors that may contribute to the disease process or complicate its treatment. A complete diagnosis of depression should address history of substance use and treatment for substance use disorders.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0110",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0110"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "This measure is an initial eSpecification of the endorsed measure, and has not been field tested.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "This measure is an initial eSpecification of the endorsed measure, and has not been field tested.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "169",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "169",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "American Psychiatric Association, Practice Guideline for the Treatment of Patients with Major Depressive Disorder (2000)",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "American Psychiatric Association, Practice Guideline for the Treatment of Patients with Major Depressive Disorder (2000)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "None",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "The intent of the measure is that the assessment be performed for a single episode for each patient.  Due to current limitations of the eMeasure specification system, it is possible for there to be up to two treatment episodes per patient, identified through up to two index episodes. As a result, the numerator criteria of this measure can be satisfied if a substance use assessment is performed within either treatment episode.  Future versions of the measure should address this issue.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "The intent of the measure is that the assessment be performed for a single episode for each patient.  Due to current limitations of the eMeasure specification system, it is possible for there to be up to two treatment episodes per patient, identified through up to two index episodes. As a result, the numerator criteria of this measure can be satisfied if a substance use assessment is performed within either treatment episode.  Future versions of the measure should address this issue.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "Patients 18 years of age or older at the start of the measurement period.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients 18 years of age or older at the start of the measurement period.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Patients in the Initial Patient Population with a new diagnosis of unipolar depression or bipolar disorder during the first 323 days of the measurement period, and evidence of treatment for unipolar depression or bipolar disorder within 42 days of diagnosis. The existence of a 'new diagnosis' is established by the absence of diagnoses and treatments of unipolar depression or bipolar disorder during the 180 days prior to the diagnosis.",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients in the Initial Patient Population with a new diagnosis of unipolar depression or bipolar disorder during the first 323 days of the measurement period, and evidence of treatment for unipolar depression or bipolar disorder within 42 days of diagnosis. The existence of a 'new diagnosis' is established by the absence of diagnoses and treatments of unipolar depression or bipolar disorder during the 180 days prior to the diagnosis.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients in the denominator with evidence of an assessment for alcohol or other substance use following or concurrent with the new diagnosis, and prior to or concurrent with the initiation of treatment for that diagnosis.   \r\n\r\n(Note: the endorsed measure calls for the assessment to be performed prior to discussion of the treatment plan with the patient, but the current approach was considered more feasible in an EHR setting.  The \"Assessment for Alcohol or Other Drug Use\" required in the numerator is meant to capture a provider's assessment of the patient's symptoms of substance use.  The essence of the measure is to avoid treating the patient for unipolar depression or bipolar disorder without an assessment of their use of alcohol or other drugs.)",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients in the denominator with evidence of an assessment for alcohol or other substance use following or concurrent with the new diagnosis, and prior to or concurrent with the initiation of treatment for that diagnosis.   \r\n\r\n(Note: the endorsed measure calls for the assessment to be performed prior to discussion of the treatment plan with the patient, but the current approach was considered more feasible in an EHR setting.  The \"Assessment for Alcohol or Other Drug Use\" required in the numerator is meant to capture a provider's assessment of the patient's symptoms of substance use.  The essence of the measure is to avoid treating the patient for unipolar depression or bipolar disorder without an assessment of their use of alcohol or other drugs.)",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "None",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "None",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity, and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity, and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

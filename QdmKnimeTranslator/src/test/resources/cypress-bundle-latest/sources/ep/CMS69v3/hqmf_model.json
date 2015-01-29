@@ -1,0 +1,2670 @@
+{
+  "id": "0421",
+  "hqmf_id": "40280381-4555-E1C1-0145-D2B36DBB3FE6",
+  "hqmf_set_id": "9A031BB8-3D9B-11E1-8634-00237D5BF174",
+  "hqmf_version_number": 3,
+  "title": "Preventive Care and Screening: Body Mass Index (BMI) Screening and Follow-Up Plan",
+  "description": "Percentage of patients aged 18 years and older with a BMI documented during the current encounter or during the previous six months AND with a BMI outside of normal parameters, a follow-up plan is documented during the encounter or during the previous six months of the current encounter  \r\n\r\nNormal Parameters:       Age 65 years and older BMI => 23 and < 30 kg/m2  \r\n                                    Age 18 – 64 years BMI => 18.5 and < 25 kg/m2",
+  "cms_id": "CMS69v3",
+  "population_criteria": {
+    "IPP": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "1C936855-E644-44C0-B264-49A28756FDB1",
+      "preconditions": [
+        {
+          "id": 19,
+          "preconditions": [
+            {
+              "id": 4,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+            },
+            {
+              "id": 6,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_6"
+            },
+            {
+              "id": 8,
+              "reference": "OccurrenceABmiEncounterCodeSet2_precondition_8"
+            },
+            {
+              "id": 18,
+              "preconditions": [
+                {
+                  "id": 16,
+                  "preconditions": [
+                    {
+                      "id": 10,
+                      "reference": "ProcedureOrderPalliativeCare_precondition_10"
+                    },
+                    {
+                      "id": 12,
+                      "reference": "PhysicalExamPerformedBmiLoincValue_precondition_12"
+                    },
+                    {
+                      "id": 14,
+                      "reference": "PhysicalExamPerformedBmiLoincValue_precondition_14"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "27F1591C-2060-462C-B5D7-7FE86A44B534"
+    },
+    "DENEX": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "9B0C3C26-D621-4EA3-81FB-A839A3012044",
+      "preconditions": [
+        {
+          "id": 25,
+          "preconditions": [
+            {
+              "id": 22,
+              "reference": "OccurrenceAPregnancyDx3_precondition_22"
+            },
+            {
+              "id": 24,
+              "preconditions": [
+                {
+                  "id": 20,
+                  "reference": "OccurrenceAPregnancyDx3_precondition_20"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "3095531C-24D7-4AFB-9BCB-F1901FF0FF69",
+      "preconditions": [
+        {
+          "id": 67,
+          "preconditions": [
+            {
+              "id": 65,
+              "preconditions": [
+                {
+                  "id": 33,
+                  "preconditions": [
+                    {
+                      "id": 26,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_26"
+                    },
+                    {
+                      "id": 28,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_28"
+                    },
+                    {
+                      "id": 31,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_30"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 48,
+                  "preconditions": [
+                    {
+                      "id": 41,
+                      "preconditions": [
+                        {
+                          "id": 35,
+                          "reference": "InterventionOrderAboveNormalFollowUp_precondition_35"
+                        },
+                        {
+                          "id": 37,
+                          "reference": "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_37"
+                        },
+                        {
+                          "id": 39,
+                          "reference": "MedicationOrderAboveNormalMedications_precondition_39"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 43,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_43"
+                    },
+                    {
+                      "id": 46,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_45"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 63,
+                  "preconditions": [
+                    {
+                      "id": 56,
+                      "preconditions": [
+                        {
+                          "id": 50,
+                          "reference": "InterventionOrderBelowNormalFollowUp_precondition_50"
+                        },
+                        {
+                          "id": 52,
+                          "reference": "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_52"
+                        },
+                        {
+                          "id": 54,
+                          "reference": "MedicationOrderBelowNormalMedications_precondition_54"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 58,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_58"
+                    },
+                    {
+                      "id": 61,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_60"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "IPP_1": {
+      "conjunction?": true,
+      "type": "IPP",
+      "title": "Initial Patient Population",
+      "hqmf_id": "6E701B1C-6CA5-4AD5-98C9-5F766745EA89",
+      "preconditions": [
+        {
+          "id": 81,
+          "preconditions": [
+            {
+              "id": 68,
+              "reference": "PatientCharacteristicBirthdateBirthDate_precondition_68"
+            },
+            {
+              "id": 70,
+              "reference": "OccurrenceABmiEncounterCodeSet2_precondition_70"
+            },
+            {
+              "id": 80,
+              "preconditions": [
+                {
+                  "id": 78,
+                  "preconditions": [
+                    {
+                      "id": 72,
+                      "reference": "ProcedureOrderPalliativeCare_precondition_72"
+                    },
+                    {
+                      "id": 74,
+                      "reference": "PhysicalExamPerformedBmiLoincValue_precondition_74"
+                    },
+                    {
+                      "id": 76,
+                      "reference": "PhysicalExamPerformedBmiLoincValue_precondition_76"
+                    }
+                  ],
+                  "conjunction_code": "atLeastOneTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "DENOM_1": {
+      "conjunction?": true,
+      "type": "DENOM",
+      "title": "Denominator",
+      "hqmf_id": "E4DC29B8-EB26-4A01-ABB0-4F99FC03BA39"
+    },
+    "DENEX_1": {
+      "conjunction?": true,
+      "type": "DENEX",
+      "title": "Denominator",
+      "hqmf_id": "BB1B4301-C275-4BAC-87C9-6E960B1601DA",
+      "preconditions": [
+        {
+          "id": 87,
+          "preconditions": [
+            {
+              "id": 84,
+              "reference": "OccurrenceAPregnancyDx3_precondition_84"
+            },
+            {
+              "id": 86,
+              "preconditions": [
+                {
+                  "id": 82,
+                  "reference": "OccurrenceAPregnancyDx3_precondition_82"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue",
+              "negation": true
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    },
+    "NUMER_1": {
+      "conjunction?": true,
+      "type": "NUMER",
+      "title": "Numerator",
+      "hqmf_id": "7669026D-3683-44CC-A2C5-3D62EB2F8A33",
+      "preconditions": [
+        {
+          "id": 129,
+          "preconditions": [
+            {
+              "id": 127,
+              "preconditions": [
+                {
+                  "id": 95,
+                  "preconditions": [
+                    {
+                      "id": 89,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_88"
+                    },
+                    {
+                      "id": 91,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_91"
+                    },
+                    {
+                      "id": 93,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_93"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 110,
+                  "preconditions": [
+                    {
+                      "id": 103,
+                      "preconditions": [
+                        {
+                          "id": 97,
+                          "reference": "InterventionOrderAboveNormalFollowUp_precondition_97"
+                        },
+                        {
+                          "id": 99,
+                          "reference": "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_99"
+                        },
+                        {
+                          "id": 101,
+                          "reference": "MedicationOrderAboveNormalMedications_precondition_101"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 105,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_105"
+                    },
+                    {
+                      "id": 108,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_107"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                },
+                {
+                  "id": 125,
+                  "preconditions": [
+                    {
+                      "id": 118,
+                      "preconditions": [
+                        {
+                          "id": 112,
+                          "reference": "InterventionOrderBelowNormalFollowUp_precondition_112"
+                        },
+                        {
+                          "id": 114,
+                          "reference": "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_114"
+                        },
+                        {
+                          "id": 116,
+                          "reference": "MedicationOrderBelowNormalMedications_precondition_116"
+                        }
+                      ],
+                      "conjunction_code": "atLeastOneTrue"
+                    },
+                    {
+                      "id": 120,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_120"
+                    },
+                    {
+                      "id": 123,
+                      "reference": "OccurrenceABmiLoincValue1_precondition_122"
+                    }
+                  ],
+                  "conjunction_code": "allTrue"
+                }
+              ],
+              "conjunction_code": "atLeastOneTrue"
+            }
+          ],
+          "conjunction_code": "allTrue"
+        }
+      ]
+    }
+  },
+  "data_criteria": {
+    "OccurrenceABmiEncounterCodeSet2": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BMI_ENCOUNTER_CODE_SET",
+      "source_data_criteria": "OccurrenceABmiEncounterCodeSet2",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDoneMedicalOrOtherReasonNotDone": {
+      "title": "Medical or Other reason not done",
+      "description": "Physical Exam, Performed not done: Medical or Other reason not done",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalOrOtherReasonNotDone",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused": {
+      "title": "Patient Reason Refused",
+      "description": "Physical Exam, Performed not done: Patient Reason Refused",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused",
+      "variable": false
+    },
+    "PhysicalExamFindingBmiLoincValue": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Finding: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingBmiLoincValue",
+      "variable": false
+    },
+    "EncounterPerformedBmiEncounterCodeSet": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBmiEncounterCodeSet",
+      "variable": false
+    },
+    "DiagnosisActivePregnancyDx": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePregnancyDx",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "18",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_6": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "64",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiEncounterCodeSet2_precondition_8": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BMI_ENCOUNTER_CODE_SET",
+      "source_data_criteria": "OccurrenceABmiEncounterCodeSet2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedureOrderPalliativeCare_precondition_10": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "PhysicalExamPerformedBmiLoincValue_precondition_12": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Performed: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1.1502",
+      "source_data_criteria": "PhysicalExamPerformedBmiLoincValue",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "PhysicalExamPerformedBmiLoincValue_precondition_14": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Performed: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1.1503",
+      "source_data_criteria": "PhysicalExamPerformedBmiLoincValue",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "OccurrenceAPregnancyDx3_precondition_22": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY_DX",
+      "source_data_criteria": "OccurrenceAPregnancyDx3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancyDx3_precondition_20": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY_DX",
+      "source_data_criteria": "OccurrenceAPregnancyDx3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_26": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "18.5",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_28": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "25",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_30": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "InterventionOrderAboveNormalFollowUp_precondition_35": {
+      "title": "Above Normal Follow-up",
+      "description": "Intervention, Order: Above Normal Follow-up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1525",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderAboveNormalFollowUp",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_37": {
+      "title": "Referrals where weight assessment may occur",
+      "description": "Intervention, Order: Referrals where weight assessment may occur",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1527",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralsWhereWeightAssessmentMayOccur",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderAboveNormalMedications_precondition_39": {
+      "title": "Above Normal Medications",
+      "description": "Medication, Order: Above Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1498",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAboveNormalMedications",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_43": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "25",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_45": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "InterventionOrderBelowNormalFollowUp_precondition_50": {
+      "title": "Below Normal Follow up",
+      "description": "Intervention, Order: Below Normal Follow up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1528",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderBelowNormalFollowUp",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_52": {
+      "title": "Referrals where weight assessment may occur",
+      "description": "Intervention, Order: Referrals where weight assessment may occur",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1527",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralsWhereWeightAssessmentMayOccur",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderBelowNormalMedications_precondition_54": {
+      "title": "Below Normal Medications",
+      "description": "Medication, Order: Below Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1499",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBelowNormalMedications",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_58": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "18.5",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_60": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "PatientCharacteristicBirthdateBirthDate_precondition_68": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      },
+      "temporal_references": [
+        {
+          "type": "SBS",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "low": {
+              "type": "PQ",
+              "unit": "a",
+              "value": "65",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiEncounterCodeSet2_precondition_70": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BMI_ENCOUNTER_CODE_SET",
+      "source_data_criteria": "OccurrenceABmiEncounterCodeSet2",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "ProcedureOrderPalliativeCare_precondition_72": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "PhysicalExamPerformedBmiLoincValue_precondition_74": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Performed: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1.1502",
+      "source_data_criteria": "PhysicalExamPerformedBmiLoincValue",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "PhysicalExamPerformedBmiLoincValue_precondition_76": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Performed: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "negation_code_list_id": "2.16.840.1.113883.3.600.1.1503",
+      "source_data_criteria": "PhysicalExamPerformedBmiLoincValue",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "DURING",
+          "reference": "OccurrenceABmiEncounterCodeSet2"
+        }
+      ]
+    },
+    "OccurrenceAPregnancyDx3_precondition_84": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY_DX",
+      "source_data_criteria": "OccurrenceAPregnancyDx3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceAPregnancyDx3_precondition_82": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY_DX",
+      "source_data_criteria": "OccurrenceAPregnancyDx3",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "EBS",
+          "reference": "MeasurePeriod"
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_88": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_91": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "23",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_93": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "30",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "InterventionOrderAboveNormalFollowUp_precondition_97": {
+      "title": "Above Normal Follow-up",
+      "description": "Intervention, Order: Above Normal Follow-up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1525",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderAboveNormalFollowUp",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_99": {
+      "title": "Referrals where weight assessment may occur",
+      "description": "Intervention, Order: Referrals where weight assessment may occur",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1527",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralsWhereWeightAssessmentMayOccur",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderAboveNormalMedications_precondition_101": {
+      "title": "Above Normal Medications",
+      "description": "Medication, Order: Above Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1498",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAboveNormalMedications",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2387",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_105": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "low": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "30",
+          "inclusive?": true,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_107": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    },
+    "InterventionOrderBelowNormalFollowUp_precondition_112": {
+      "title": "Below Normal Follow up",
+      "description": "Intervention, Order: Below Normal Follow up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1528",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderBelowNormalFollowUp",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "InterventionOrderReferralsWhereWeightAssessmentMayOccur_precondition_114": {
+      "title": "Referrals where weight assessment may occur",
+      "description": "Intervention, Order: Referrals where weight assessment may occur",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1527",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralsWhereWeightAssessmentMayOccur",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrderBelowNormalMedications_precondition_116": {
+      "title": "Below Normal Medications",
+      "description": "Medication, Order: Below Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1499",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBelowNormalMedications",
+      "variable": false,
+      "field_values": {
+        "REASON": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.600.2388",
+          "title": "reason"
+        }
+      },
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ]
+    },
+    "OccurrenceABmiLoincValue1_precondition_120": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "value": {
+        "type": "IVL_PQ",
+        "high": {
+          "type": "PQ",
+          "unit": "kg/m2",
+          "value": "23",
+          "inclusive?": false,
+          "derived?": false
+        }
+      }
+    },
+    "OccurrenceABmiLoincValue1_precondition_122": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false,
+      "temporal_references": [
+        {
+          "type": "SBE",
+          "reference": "OccurrenceABmiEncounterCodeSet2",
+          "range": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "mo",
+              "value": "6",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      ],
+      "subset_operators": [
+        {
+          "type": "RECENT"
+        }
+      ]
+    }
+  },
+  "source_data_criteria": {
+    "PatientCharacteristicBirthdateBirthDate": {
+      "title": "birth date",
+      "description": "Patient Characteristic Birthdate: birth date",
+      "code_list_id": "2.16.840.1.113883.3.560.100.4",
+      "property": "birthtime",
+      "type": "characteristic",
+      "definition": "patient_characteristic_birthdate",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+      "variable": false,
+      "inline_code_list": {
+        "LOINC": [
+          "21112-8"
+        ]
+      }
+    },
+    "OccurrenceABmiLoincValue1": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "PHYSICAL_EXAM_BMI_LOINC_VALUE",
+      "source_data_criteria": "OccurrenceABmiLoincValue1",
+      "variable": false
+    },
+    "MedicationOrderAboveNormalMedications": {
+      "title": "Above Normal Medications",
+      "description": "Medication, Order: Above Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1498",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderAboveNormalMedications",
+      "variable": false
+    },
+    "MedicationOrderBelowNormalMedications": {
+      "title": "Below Normal Medications",
+      "description": "Medication, Order: Below Normal Medications",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1499",
+      "type": "medications",
+      "definition": "medication",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "MedicationOrderBelowNormalMedications",
+      "variable": false
+    },
+    "InterventionOrderAboveNormalFollowUp": {
+      "title": "Above Normal Follow-up",
+      "description": "Intervention, Order: Above Normal Follow-up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1525",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderAboveNormalFollowUp",
+      "variable": false
+    },
+    "InterventionOrderReferralsWhereWeightAssessmentMayOccur": {
+      "title": "Referrals where weight assessment may occur",
+      "description": "Intervention, Order: Referrals where weight assessment may occur",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1527",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderReferralsWhereWeightAssessmentMayOccur",
+      "variable": false
+    },
+    "InterventionOrderBelowNormalFollowUp": {
+      "title": "Below Normal Follow up",
+      "description": "Intervention, Order: Below Normal Follow up",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1528",
+      "type": "interventions",
+      "definition": "intervention",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "InterventionOrderBelowNormalFollowUp",
+      "variable": false
+    },
+    "ProcedureOrderPalliativeCare": {
+      "title": "Palliative Care",
+      "description": "Procedure, Order: Palliative Care",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1579",
+      "type": "procedures",
+      "definition": "procedure",
+      "status": "ordered",
+      "hard_status": true,
+      "negation": false,
+      "source_data_criteria": "ProcedureOrderPalliativeCare",
+      "variable": false
+    },
+    "OccurrenceABmiEncounterCodeSet2": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "ENCOUNTER_PERFORMED_BMI_ENCOUNTER_CODE_SET",
+      "source_data_criteria": "OccurrenceABmiEncounterCodeSet2",
+      "variable": false
+    },
+    "OccurrenceAPregnancyDx3": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "specific_occurrence": "A",
+      "specific_occurrence_const": "DIAGNOSIS_ACTIVE_PREGNANCY_DX",
+      "source_data_criteria": "OccurrenceAPregnancyDx3",
+      "variable": false
+    },
+    "PhysicalExamPerformedBmiLoincValue": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Performed: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamPerformedBmiLoincValue",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDoneMedicalOrOtherReasonNotDone": {
+      "title": "Medical or Other reason not done",
+      "description": "Physical Exam, Performed not done: Medical or Other reason not done",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDoneMedicalOrOtherReasonNotDone",
+      "variable": false
+    },
+    "PhysicalExamPerformedNotDonePatientReasonRefused": {
+      "title": "Patient Reason Refused",
+      "description": "Physical Exam, Performed not done: Patient Reason Refused",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "status": "performed",
+      "hard_status": false,
+      "negation": true,
+      "source_data_criteria": "PhysicalExamPerformedNotDonePatientReasonRefused",
+      "variable": false
+    },
+    "PhysicalExamFindingBmiLoincValue": {
+      "title": "BMI LOINC Value",
+      "description": "Physical Exam, Finding: BMI LOINC Value",
+      "code_list_id": "2.16.840.1.113883.3.600.1.681",
+      "type": "physical_exams",
+      "definition": "physical_exam",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PhysicalExamFindingBmiLoincValue",
+      "variable": false
+    },
+    "EncounterPerformedBmiEncounterCodeSet": {
+      "title": "BMI Encounter Code Set",
+      "description": "Encounter, Performed: BMI Encounter Code Set",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1751",
+      "type": "encounters",
+      "definition": "encounter",
+      "status": "performed",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "EncounterPerformedBmiEncounterCodeSet",
+      "variable": false
+    },
+    "DiagnosisActivePregnancyDx": {
+      "title": "Pregnancy Dx",
+      "description": "Diagnosis, Active: Pregnancy Dx",
+      "code_list_id": "2.16.840.1.113883.3.600.1.1623",
+      "type": "conditions",
+      "definition": "diagnosis",
+      "status": "active",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "DiagnosisActivePregnancyDx",
+      "variable": false
+    },
+    "PatientCharacteristicSexOncAdministrativeSex": {
+      "title": "ONC Administrative Sex",
+      "description": "Patient Characteristic Sex: ONC Administrative Sex",
+      "code_list_id": "2.16.840.1.113762.1.4.1",
+      "property": "gender",
+      "type": "characteristic",
+      "definition": "patient_characteristic_gender",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+      "variable": false,
+      "value": {
+        "type": "CD",
+        "system": "Administrative Sex",
+        "code": "F"
+      }
+    },
+    "PatientCharacteristicRaceRace": {
+      "title": "Race",
+      "description": "Patient Characteristic Race: Race",
+      "code_list_id": "2.16.840.1.114222.4.11.836",
+      "property": "race",
+      "type": "characteristic",
+      "definition": "patient_characteristic_race",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicRaceRace",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "1002-5",
+          "2028-9",
+          "2054-5",
+          "2076-8",
+          "2106-3",
+          "2131-1"
+        ]
+      }
+    },
+    "PatientCharacteristicEthnicityEthnicity": {
+      "title": "Ethnicity",
+      "description": "Patient Characteristic Ethnicity: Ethnicity",
+      "code_list_id": "2.16.840.1.114222.4.11.837",
+      "property": "ethnicity",
+      "type": "characteristic",
+      "definition": "patient_characteristic_ethnicity",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+      "variable": false,
+      "inline_code_list": {
+        "CDC Race": [
+          "2135-2",
+          "2186-5"
+        ]
+      }
+    },
+    "PatientCharacteristicPayerPayer": {
+      "title": "Payer",
+      "description": "Patient Characteristic Payer: Payer",
+      "code_list_id": "2.16.840.1.114222.4.11.3591",
+      "property": "payer",
+      "type": "characteristic",
+      "definition": "patient_characteristic_payer",
+      "hard_status": false,
+      "negation": false,
+      "source_data_criteria": "PatientCharacteristicPayerPayer",
+      "variable": false,
+      "inline_code_list": {
+        "Source of Payment Typology": [
+          "1",
+          "11",
+          "111",
+          "112",
+          "113",
+          "119",
+          "12",
+          "121",
+          "122",
+          "123",
+          "129",
+          "19",
+          "2",
+          "21",
+          "211",
+          "212",
+          "213",
+          "219",
+          "22",
+          "23",
+          "24",
+          "25",
+          "29",
+          "3",
+          "31",
+          "311",
+          "3111",
+          "3112",
+          "3113",
+          "3114",
+          "3115",
+          "3116",
+          "3119",
+          "312",
+          "3121",
+          "3122",
+          "3123",
+          "313",
+          "32",
+          "321",
+          "3211",
+          "3212",
+          "32121",
+          "32122",
+          "32123",
+          "32124",
+          "32125",
+          "32126",
+          "322",
+          "3221",
+          "3222",
+          "3223",
+          "3229",
+          "33",
+          "331",
+          "332",
+          "333",
+          "334",
+          "34",
+          "341",
+          "342",
+          "343",
+          "349",
+          "35",
+          "36",
+          "361",
+          "362",
+          "369",
+          "37",
+          "371",
+          "3711",
+          "3712",
+          "3713",
+          "372",
+          "379",
+          "38",
+          "381",
+          "3811",
+          "3812",
+          "3813",
+          "3819",
+          "382",
+          "389",
+          "39",
+          "4",
+          "41",
+          "42",
+          "43",
+          "44",
+          "5",
+          "51",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "519",
+          "52",
+          "521",
+          "522",
+          "523",
+          "529",
+          "53",
+          "54",
+          "55",
+          "59",
+          "6",
+          "61",
+          "611",
+          "612",
+          "613",
+          "619",
+          "62",
+          "63",
+          "64",
+          "69",
+          "7",
+          "71",
+          "72",
+          "73",
+          "79",
+          "8",
+          "81",
+          "82",
+          "821",
+          "822",
+          "823",
+          "83",
+          "84",
+          "85",
+          "89",
+          "9",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "951",
+          "953",
+          "954",
+          "959",
+          "96",
+          "98",
+          "99",
+          "9999"
+        ]
+      }
+    }
+  },
+  "attributes": [
+    {
+      "code": "OTH",
+      "name": "Finalized Date/Time",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Finalized Date/Time"
+      },
+      "value_obj": {
+        "type": "TS"
+      }
+    },
+    {
+      "code": "COPY",
+      "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 [2.46] Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+      "name": "Copyright",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "COPY",
+        "title": "Copyright"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. Quality Insights of Pennsylvania disclaims all liability for use or accuracy of any Current Procedural Terminology (CPT [R]) or other coding contained in the specifications.\r\n\r\nCPT (R) contained in the Measure specifications is copyright 2007-2014 American Medical Association. \r\n\r\nLOINC (R) copyright 2004-2014 [2.46] Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms (R) (SNOMED CT [R]) copyright 2004-2013 [2013-09] International Health Terminology Standards Development Organization. All Rights Reserved.\r\n\r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRSCORE",
+      "name": "Measure Scoring",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRSCORE",
+        "title": "Measure Scoring"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20367",
+        "code": "PROPOR",
+        "title": "Proportion"
+      }
+    },
+    {
+      "code": "MSRTYPE",
+      "name": "Measure Type",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRTYPE",
+        "title": "Measure Type"
+      },
+      "value_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.1.11.20368",
+        "code": "PROCESS",
+        "title": "Process"
+      }
+    },
+    {
+      "code": "STRAT",
+      "value": "None",
+      "name": "Stratification",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "STRAT",
+        "title": "Stratification"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRADJ",
+      "value": "None",
+      "name": "Risk Adjustment",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRADJ",
+        "title": "Risk Adjustment"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRAGG",
+      "value": "None",
+      "name": "Rate Aggregation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "MSRAGG",
+        "title": "Rate Aggregation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "RAT",
+      "value": "Normal Parameters for Age 65 Years and Older\r\n\r\nWinter et al. (2014) performed a meta-analysis looking at the relationship between BMI and all-cause mortality among adults 65 and older. They identified a higher risk of mortality among those with a BMI <23 kg/m2 and recommended monitoring weight status in this group to address any modifiable causes of weight loss promptly with due consideration of individual comorbidities. Dahl et al. (2013) reported that old persons (70-79) who were overweight had a lower mortality risk than old persons who were of normal weight, even after controlling for weight change and multimorbidity. The study also shows that persons who increased or decreased in BMI had a greater mortality risk than those who had a stable BMI, particularly those aged 70 to 79. Their results provide support to the belief that the World Health Organization guidelines for BMI are overly restrictive in old age.\r\n\r\nBMI Above Upper Parameters\r\n\r\nObesity continues to be a costly public health concern in the United States. The Centers for Disease Control and Prevention (CDC, 2010) reported  in 2009, no state met the Healthy People 2010 obesity target of 15 percent and the self-reported overall prevalence of obesity among adults had increased 1.1 percentage points in 2007 to 26.7 percent (2010). Ogden, Carroll, Kit and Flegel (2013) reported the prevalence of BMI-defined obesity in adults is high and continues to exceed 30% in most sex-age groups (34.9% overall). They also stated the overall prevalence of obesity did not differ between men and women in 2011-2012; however, among non-Hispanic Black adults, 56.6% of women were obese compared with 37.1% of men. In addition to the continued high prevalence rate for adults in general, Flegel, Carroll, Kit & Ogden (2012) report a significant increase for men and for non-Hispanic Black and Mexican American women over the 12-year period from 1999 through 2010 (2012). Moyer (2012) reported: Obesity is associated with such health problems as an increased risk for coronary artery disease, type 2 diabetes, various types of cancer, gallstones and disability. These comorbid medical conditions are associated with a higher use of health care services and costs among obese patients (p. 373).  \r\n\r\nObesity is also associated with an increased risk of death, particularly in adults younger than age 65 years and has been shown to reduce life expectancy by 6 to 20 years depending on age and race (LeBlanc et al., 2011). Masters et al. (2013) also showed mortality due to obesity varied by race and gender. They estimated adult deaths between 1986 and 2006 associated with overweight and obesity was 5.0% and 15.6% for Black and White men, and 26.8% and 21.7% for Black and White women, respectively.  They also found a stronger association than previous research demonstrated between obesity and mortality risk at older ages. \r\n\r\nFinkelstein, Trogdon, Cohen & Dietz (2009) found that in 2006, across all payers, per capita medical spending for the obese is $1,429 higher per year (42 percent) than for someone of normal weight.  Using 2008 dollars, this was estimated to be equivalent to $147 billion dollars in medical care costs related to obesity. \r\n\r\nPadula, Allen & Nair (2014) examined data from a commercial claims and encounter database to estimate the cost for obesity and associated comorbidities among working-age adults who had a claim with a primary or secondary diagnosis of obesity in 2006-2007. The mean net expenditure for inpatient and outpatient claims was $1907 per patient per visit.  The increase in cost for comorbidities ranged from $527 for obesity with congestive heart failure (CHF) to $15, 733 for the combination of obesity, diabetes mellitus, hypertension and depression. \r\n\r\nIn addition to a high prevalence rate of obesity, less than 50% of obese adults in 2010 received advice to exercise or perform physical activity (Barnes & Schoenborn, 2012). \r\n\r\nBMI Below Normal Parameters \r\n\r\nIn the National Center of Health Statistics (NCHS) Health E-Stat, Fryer & Ogden (2012) reported that poor nutrition or underlying health conditions can result in underweight. Results from the 2007-2010 National Health and Nutrition Examination Survey (NHANES), using measured heights and weights, indicate an estimated 1.7% of U.S. adults are underweight with women more likely to be underweight than men (2012).\r\n\r\nIn a cohort study conducted by Borrell & Lalitha (2014), data from NHANES III (1988-1994) was linked to the National Death Index mortality file with follow-up to 2006, and showed that when compared to their normal weight counterparts (BMI 18.5-25 kg/m2), underweight (BMI <18.5 kg/m2) had significantly higher death rates (Hazard Ratio=2.27; 95% confidence intervals (CI) = 1.78, 2.90).\r\n\r\nRanhoff, Gjoen & Mowe (2005) recommended using BMI < 23 kg/m2 for the elderly to identify positive results with malnutrition screens and poor nutritional status.",
+      "name": "Rationale",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "RAT",
+        "title": "Rationale"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Normal Parameters for Age 65 Years and Older\r\n\r\nWinter et al. (2014) performed a meta-analysis looking at the relationship between BMI and all-cause mortality among adults 65 and older. They identified a higher risk of mortality among those with a BMI <23 kg/m2 and recommended monitoring weight status in this group to address any modifiable causes of weight loss promptly with due consideration of individual comorbidities. Dahl et al. (2013) reported that old persons (70-79) who were overweight had a lower mortality risk than old persons who were of normal weight, even after controlling for weight change and multimorbidity. The study also shows that persons who increased or decreased in BMI had a greater mortality risk than those who had a stable BMI, particularly those aged 70 to 79. Their results provide support to the belief that the World Health Organization guidelines for BMI are overly restrictive in old age.\r\n\r\nBMI Above Upper Parameters\r\n\r\nObesity continues to be a costly public health concern in the United States. The Centers for Disease Control and Prevention (CDC, 2010) reported  in 2009, no state met the Healthy People 2010 obesity target of 15 percent and the self-reported overall prevalence of obesity among adults had increased 1.1 percentage points in 2007 to 26.7 percent (2010). Ogden, Carroll, Kit and Flegel (2013) reported the prevalence of BMI-defined obesity in adults is high and continues to exceed 30% in most sex-age groups (34.9% overall). They also stated the overall prevalence of obesity did not differ between men and women in 2011-2012; however, among non-Hispanic Black adults, 56.6% of women were obese compared with 37.1% of men. In addition to the continued high prevalence rate for adults in general, Flegel, Carroll, Kit & Ogden (2012) report a significant increase for men and for non-Hispanic Black and Mexican American women over the 12-year period from 1999 through 2010 (2012). Moyer (2012) reported: Obesity is associated with such health problems as an increased risk for coronary artery disease, type 2 diabetes, various types of cancer, gallstones and disability. These comorbid medical conditions are associated with a higher use of health care services and costs among obese patients (p. 373).  \r\n\r\nObesity is also associated with an increased risk of death, particularly in adults younger than age 65 years and has been shown to reduce life expectancy by 6 to 20 years depending on age and race (LeBlanc et al., 2011). Masters et al. (2013) also showed mortality due to obesity varied by race and gender. They estimated adult deaths between 1986 and 2006 associated with overweight and obesity was 5.0% and 15.6% for Black and White men, and 26.8% and 21.7% for Black and White women, respectively.  They also found a stronger association than previous research demonstrated between obesity and mortality risk at older ages. \r\n\r\nFinkelstein, Trogdon, Cohen & Dietz (2009) found that in 2006, across all payers, per capita medical spending for the obese is $1,429 higher per year (42 percent) than for someone of normal weight.  Using 2008 dollars, this was estimated to be equivalent to $147 billion dollars in medical care costs related to obesity. \r\n\r\nPadula, Allen & Nair (2014) examined data from a commercial claims and encounter database to estimate the cost for obesity and associated comorbidities among working-age adults who had a claim with a primary or secondary diagnosis of obesity in 2006-2007. The mean net expenditure for inpatient and outpatient claims was $1907 per patient per visit.  The increase in cost for comorbidities ranged from $527 for obesity with congestive heart failure (CHF) to $15, 733 for the combination of obesity, diabetes mellitus, hypertension and depression. \r\n\r\nIn addition to a high prevalence rate of obesity, less than 50% of obese adults in 2010 received advice to exercise or perform physical activity (Barnes & Schoenborn, 2012). \r\n\r\nBMI Below Normal Parameters \r\n\r\nIn the National Center of Health Statistics (NCHS) Health E-Stat, Fryer & Ogden (2012) reported that poor nutrition or underlying health conditions can result in underweight. Results from the 2007-2010 National Health and Nutrition Examination Survey (NHANES), using measured heights and weights, indicate an estimated 1.7% of U.S. adults are underweight with women more likely to be underweight than men (2012).\r\n\r\nIn a cohort study conducted by Borrell & Lalitha (2014), data from NHANES III (1988-1994) was linked to the National Death Index mortality file with follow-up to 2006, and showed that when compared to their normal weight counterparts (BMI 18.5-25 kg/m2), underweight (BMI <18.5 kg/m2) had significantly higher death rates (Hazard Ratio=2.27; 95% confidence intervals (CI) = 1.78, 2.90).\r\n\r\nRanhoff, Gjoen & Mowe (2005) recommended using BMI < 23 kg/m2 for the elderly to identify positive results with malnutrition screens and poor nutritional status.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "CRS",
+      "value": "Although multiple clinical recommendations addressing obesity have been developed by professional organizations, societies and associations, two recommendations have been identified which exemplify the intent of the measure and address the numerator and denominator.\r\n\r\nThe US Preventive Health Services Task Force (USPSTF) recommends that clinicians screen all adults (aged 18 years and older) for obesity. Clinicians should offer or refer patients with a BMI of 30 or higher to intensive, multicomponent behavioral interventions. This is a B recommendation (Moyer, 2012).\r\n\r\nAs cited in Wilkinson et al. (2013), the Institute for Clinical Systems Improvement (ICSI) Preventive Services for Adults, Obesity Screening (Level II) Recommendation provides the following guidance: \r\n       \r\n-Record height, weight and calculate body mass index at least annually\r\n  •  Clinicians should consider waist circumference measurement to estimate disease risk for patients who have BMI scores indicative of overweight or obesity class I. For adult patients with a BMI of 25 to 34.9 kg/m2, sex-specific waist circumference cutoffs should be used in conjunction with BMI to identify increased disease risk.\r\n\r\n-A BMI greater or equal to 30 is defined as obese\r\n-A BMI of 25-29 is defined as overweight\r\n-Intensive intervention for obese individuals, based on BMI, is recommended by the U.S. Preventive Services to help control weight\r\n\r\nSimilarly, the 2013 joint report/guideline from the American Heart Association, American College of Cardiology and the Obesity Society also recommend measuring height and weight and calculating BMI at annual visits or more frequently, using the current cutpoints for overweight (BMI >25.0-29.9 kg/m2) and obesity (BMI ?30 kg/m2) to identify adults who may be at elevated risk of mortality from all causes. They also recommended counseling overweight and obese individuals on their increased risk for CVD, type 2 diabetes, and all-cause mortality, and need for lifestyle changes.",
+      "name": "Clinical Recommendation Statement",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "CRS",
+        "title": "Clinical Recommendation Statement"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Although multiple clinical recommendations addressing obesity have been developed by professional organizations, societies and associations, two recommendations have been identified which exemplify the intent of the measure and address the numerator and denominator.\r\n\r\nThe US Preventive Health Services Task Force (USPSTF) recommends that clinicians screen all adults (aged 18 years and older) for obesity. Clinicians should offer or refer patients with a BMI of 30 or higher to intensive, multicomponent behavioral interventions. This is a B recommendation (Moyer, 2012).\r\n\r\nAs cited in Wilkinson et al. (2013), the Institute for Clinical Systems Improvement (ICSI) Preventive Services for Adults, Obesity Screening (Level II) Recommendation provides the following guidance: \r\n       \r\n-Record height, weight and calculate body mass index at least annually\r\n  •  Clinicians should consider waist circumference measurement to estimate disease risk for patients who have BMI scores indicative of overweight or obesity class I. For adult patients with a BMI of 25 to 34.9 kg/m2, sex-specific waist circumference cutoffs should be used in conjunction with BMI to identify increased disease risk.\r\n\r\n-A BMI greater or equal to 30 is defined as obese\r\n-A BMI of 25-29 is defined as overweight\r\n-Intensive intervention for obese individuals, based on BMI, is recommended by the U.S. Preventive Services to help control weight\r\n\r\nSimilarly, the 2013 joint report/guideline from the American Heart Association, American College of Cardiology and the Obesity Society also recommend measuring height and weight and calculating BMI at annual visits or more frequently, using the current cutpoints for overweight (BMI >25.0-29.9 kg/m2) and obesity (BMI ?30 kg/m2) to identify adults who may be at elevated risk of mortality from all causes. They also recommended counseling overweight and obese individuals on their increased risk for CVD, type 2 diabetes, and all-cause mortality, and need for lifestyle changes.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IDUR",
+      "value": "Higher score indicates better quality",
+      "name": "Improvement Notation",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "IDUR",
+        "title": "Improvement Notation"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Higher score indicates better quality",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "0421",
+      "name": "NQF ID Number",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "NQF ID Number"
+      },
+      "value_obj": {
+        "type": "II",
+        "root": "2.16.840.1.113883.3.560.1",
+        "extension": "0421"
+      }
+    },
+    {
+      "code": "DISC",
+      "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\n\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+      "name": "Disclaimer",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "DISC",
+        "title": "Disclaimer",
+        "original_text": "Disclaimer"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\n\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "69",
+      "name": "eMeasure Identifier",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "eMeasure Identifier"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "69",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "REF",
+      "value": "Jensen, M.D., Ryan, D.H., Apovian, C.M., Ard, J.D., Comuzzie, A. G., Donato, K.A., … Yanovski, S.Z. (2013).  Practice guidelines and the obesity society report of the american college of cardiology/american heart association task force on 2013 AHA/ACC/TOS guideline for the management of overweight and obesity in adults: A report of the american college of cardiology/american heart association task force on practice guidelines and the obesity society. Circulation. doi: 10.1161/01.cir.0000437739.71477.",
+      "name": "Reference",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "REF",
+        "title": "Reference"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Jensen, M.D., Ryan, D.H., Apovian, C.M., Ard, J.D., Comuzzie, A. G., Donato, K.A., … Yanovski, S.Z. (2013).  Practice guidelines and the obesity society report of the american college of cardiology/american heart association task force on 2013 AHA/ACC/TOS guideline for the management of overweight and obesity in adults: A report of the american college of cardiology/american heart association task force on practice guidelines and the obesity society. Circulation. doi: 10.1161/01.cir.0000437739.71477.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DEF",
+      "value": "BMI- Body mass index (BMI) is a number calculated using the Quetelet index: weight divided by height squared (W/H2) and is commonly used to classify weight categories. BMI can be calculated using:\r\n\r\nMetric Units:  BMI = Weight (kg) / (Height (m) x Height (m))    \r\nOR             \r\nEnglish Units: BMI = Weight (lbs.) / (Height (in) x Height (in)) x 703\r\n\r\nFollow-Up Plan – Proposed outline of treatment to be conducted as a result of a BMI out of normal parameters. A follow-up plan may include, but is not limited to: documentation of education, referral (e.g. a registered dietician, nutritionist, occupational therapist, physical therapist, primary care provider, exercise physiologist, mental health professional, or surgeon), pharmacological interventions, dietary supplements, exercise counseling or nutrition counseling.",
+      "name": "Definition",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.3.560",
+        "code": "DEF",
+        "title": "Definition"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "BMI- Body mass index (BMI) is a number calculated using the Quetelet index: weight divided by height squared (W/H2) and is commonly used to classify weight categories. BMI can be calculated using:\r\n\r\nMetric Units:  BMI = Weight (kg) / (Height (m) x Height (m))    \r\nOR             \r\nEnglish Units: BMI = Weight (lbs.) / (Height (in) x Height (in)) x 703\r\n\r\nFollow-Up Plan – Proposed outline of treatment to be conducted as a result of a BMI out of normal parameters. A follow-up plan may include, but is not limited to: documentation of education, referral (e.g. a registered dietician, nutritionist, occupational therapist, physical therapist, primary care provider, exercise physiologist, mental health professional, or surgeon), pharmacological interventions, dietary supplements, exercise counseling or nutrition counseling.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "GUIDE",
+      "value": "•  There is no diagnosis associated with this measure.\r\n•  This measure is to be reported a minimum of once per reporting period for patients seen during the reporting period. \r\n•  This measure may be reported by eligible professionals who perform the quality actions described in the measure based on the services provided at the time of the qualifying visit and the measure-specific denominator coding. \r\n\r\nBMI Measurement Guidance:\r\n•  Height and Weight - An eligible professional or their staff is required to measure both height and weight. Both height and weight must be measured within six months of the current encounter and may be obtained from separate encounters.  Self-reported values cannot be used.\r\n•  The BMI may be documented in the medical record of the provider or in outside medical records obtained by the provider. \r\n•  If the most recent documented BMI is outside of normal parameters, then a follow-up plan is documented during the encounter or during the previous six months of the current encounter.\r\n•  The documented follow-up plan must be based on the most recent documented BMI, outside of normal parameters, example: “Patient referred to nutrition counseling for BMI above normal parameters”. (See Definitions for examples of a follow-up plan treatments). \r\n•  If more than one BMI is reported during the measurement period, the most recent BMI will be used to determine if the performance has been met.",
+      "name": "Guidance",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.4",
+        "code": "GUIDE",
+        "title": "Guidance"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "•  There is no diagnosis associated with this measure.\r\n•  This measure is to be reported a minimum of once per reporting period for patients seen during the reporting period. \r\n•  This measure may be reported by eligible professionals who perform the quality actions described in the measure based on the services provided at the time of the qualifying visit and the measure-specific denominator coding. \r\n\r\nBMI Measurement Guidance:\r\n•  Height and Weight - An eligible professional or their staff is required to measure both height and weight. Both height and weight must be measured within six months of the current encounter and may be obtained from separate encounters.  Self-reported values cannot be used.\r\n•  The BMI may be documented in the medical record of the provider or in outside medical records obtained by the provider. \r\n•  If the most recent documented BMI is outside of normal parameters, then a follow-up plan is documented during the encounter or during the previous six months of the current encounter.\r\n•  The documented follow-up plan must be based on the most recent documented BMI, outside of normal parameters, example: “Patient referred to nutrition counseling for BMI above normal parameters”. (See Definitions for examples of a follow-up plan treatments). \r\n•  If more than one BMI is reported during the measurement period, the most recent BMI will be used to determine if the performance has been met.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "TBD",
+      "name": "Transmission Format",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Transmission Format"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "TBD",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "IPP",
+      "value": "There are two (2) Initial Patient Populations for this measure: \r\nInitial Patient Population 1:  All patients 18 through 64 years on the date of the encounter with at least one eligible encounter during the measurement period NOT INCLUDING encounters where the patient is receiving palliative care, refuses measurement of height and/or weight, the patient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status, or there is any other reason documented in the medical record by the provider explaining why BMI measurement was not appropriate.\r\nInitial Patient Population 2: All patients 65 years of age and older on the date of the encounter with at least one eligible encounter during the measurement period NOT INCLUDING encounters where the patient is receiving palliative care, refuses measurement of height and/or weight, the patient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status, or there is any other reason documented in the medical record by the provider explaining why BMI measurement was not appropriate.",
+      "name": "Initial Patient Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "IPP",
+        "original_text": "Initial Patient Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "There are two (2) Initial Patient Populations for this measure: \r\nInitial Patient Population 1:  All patients 18 through 64 years on the date of the encounter with at least one eligible encounter during the measurement period NOT INCLUDING encounters where the patient is receiving palliative care, refuses measurement of height and/or weight, the patient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status, or there is any other reason documented in the medical record by the provider explaining why BMI measurement was not appropriate.\r\nInitial Patient Population 2: All patients 65 years of age and older on the date of the encounter with at least one eligible encounter during the measurement period NOT INCLUDING encounters where the patient is receiving palliative care, refuses measurement of height and/or weight, the patient is in an urgent or emergent medical situation where time is of the essence and to delay treatment would jeopardize the patient’s health status, or there is any other reason documented in the medical record by the provider explaining why BMI measurement was not appropriate.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENOM",
+      "value": "Equals Initial Patient Population",
+      "name": "Denominator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENOM",
+        "original_text": "Denominator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Equals Initial Patient Population",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Patients who are pregnant.",
+      "name": "Denominator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Denominator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients who are pregnant.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "NUMER",
+      "value": "Patients with a documented BMI during the encounter or during the previous six months, AND when the BMI is outside of normal parameters, a follow-up plan is documented during the encounter or during the previous six months of the current encounter.",
+      "name": "Numerator",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "NUMER",
+        "original_text": "Numerator"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Patients with a documented BMI during the encounter or during the previous six months, AND when the BMI is outside of normal parameters, a follow-up plan is documented during the encounter or during the previous six months of the current encounter.",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Numerator Exclusions",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Numerator Exclusions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "DENEXCEP",
+      "value": "None",
+      "name": "Denominator Exceptions",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "DENEXCEP",
+        "original_text": "Denominator Exceptions"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "None",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "MSRPOPL",
+      "value": "Not Applicable",
+      "name": "Measure Population",
+      "code_obj": {
+        "type": "CD",
+        "system": "2.16.840.1.113883.5.1063",
+        "code": "MSRPOPL",
+        "original_text": "Measure Population"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "Not Applicable",
+      "name": "Measure Observations",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Measure Observations"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "Not Applicable",
+        "media_type": "text/plain"
+      }
+    },
+    {
+      "code": "OTH",
+      "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+      "name": "Supplemental Data Elements",
+      "code_obj": {
+        "type": "CD",
+        "null_flavor": "OTH",
+        "original_text": "Supplemental Data Elements"
+      },
+      "value_obj": {
+        "type": "ED",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "media_type": "text/plain"
+      }
+    }
+  ],
+  "populations": [
+    {"NUMER":"NUMER","DENOM":"DENOM","IPP":"IPP","DENEX":"DENEX","title":"18-64","id":"Population1"},
+    {"IPP":"IPP_1","DENOM":"DENOM_1","DENEX":"DENEX_1","NUMER":"NUMER_1","title":"65+","id":"Population2"}
+  ],
+  "measure_period": {
+    "type": "IVL_TS",
+    "low": {
+      "type": "TS",
+      "value": "201201010000",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "high": {
+      "type": "TS",
+      "value": "201212312359",
+      "inclusive?": true,
+      "derived?": false
+    },
+    "width": {
+      "type": "PQ",
+      "unit": "a",
+      "value": "1",
+      "inclusive?": true,
+      "derived?": false
+    }
+  }
+}

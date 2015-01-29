@@ -1,0 +1,1571 @@
+{
+  "id": "40280381-4600-425F-0146-1F6E280C0F09",
+  "nqf_id": "0002",
+  "hqmf_id": "40280381-4600-425F-0146-1F6E280C0F09",
+  "hqmf_set_id": "BEB1C33C-2549-4E7F-9567-05ED38448464",
+  "hqmf_version_number": 3,
+  "cms_id": "CMS146v3",
+  "name": "Appropriate Testing for Children with Pharyngitis",
+  "description": "Percentage of children 2-18 years of age who were diagnosed with pharyngitis, ordered an antibiotic and received a group A streptococcus (strep) test for the episode.",
+  "type": "ep",
+  "category": "Core",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0002';\n        hqmfjs.hqmf_id = '40280381-4600-425F-0146-1F6E280C0F09';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.464.1003.196.12.1001':{'RxNorm':['1013659','1013662','1013665','1043022','1043027','1043030','105152','105170','105171','108449','1113012','1148107','1244762','1249602','1302650','1302659','1302664','1302669','1302674','1373014','141962','141963','142118','1423080','1483787','197449','197450','197451','197452','197453','197454','197511','197512','197516','197517','197518','197595','197596','197633','197650','197984','197985','198048','198049','198050','198250','198252','198332','198334','198335','199026','199027','199332','199370','199884','199885','199886','200346','204466','204844','204871','204929','205964','207362','207364','207390','207391','226633','239191','240637','240639','240640','240741','240984','242807','245240','245242','246282','248656','250582','283535','284215','308177','308181','308182','308188','308189','308191','308192','308194','308207','308208','308210','308212','308459','308460','308461','309040','309042','309043','309044','309045','309047','309048','309049','309051','309052','309053','309054','309058','309076','309077','309078','309079','309080','309081','309085','309086','309087','309090','309091','309092','309093','309095','309096','309097','309098','309099','309100','309101','309110','309111','309112','309113','309114','309115','309304','309308','309309','309310','309322','309329','309335','309336','309339','309860','310026','310027','310028','310029','310030','310151','310154','310155','310156','310157','310160','310163','310165','311296','311787','312127','312128','312130','313133','313134','313135','313137','313251','313253','313797','313799','313800','313819','313850','313888','313920','313926','313929','314108','315065','315090','315219','317127','348869','348870','351121','351127','351156','351239','359383','359385','359465','403840','403921','403945','406524','406696','409823','413716','419849','434018','476193','476299','476322','476325','476327','476576','476623','477391','486912','487129','562251','562253','562266','562508','562707','597194','597298','597455','597808','598006','598025','617296','617302','617304','617309','617316','617322','617423','617430','617993','617995','623677','623695','629695','629697','629699','636559','637173','645617','686355','686383','686400','686405','686406','686418','700408','728207','731538','731564','731567','731570','731572','731575','745047','745053','745276','745278','745280','745282','745302','745303','745462','745519','745560','745561','745585','749780','749783','756189','756192','757460','757464','757466','761979','762666','762893','789980','796301','799048','802550','835341','835700','836306','847360','852868','854220','858062','858372','861416','863538','877486','895915','900424','901399','904288','993109','997632','997656','997665','997999','998004','998756']},'2.16.840.1.113883.3.464.1003.101.12.1061':{'SNOMED-CT':['12843005','18170008','185349003','185463005','185465003','19681004','207195004','270427003','270430005','308335008','390906007','406547006','439708006','87790002','90526000'],'CPT':['99201','99202','99203','99204','99205','99212','99213','99214','99215','99218','99219','99220','99281','99282','99283','99284','99285','99381','99382','99383','99384','99385','99386','99387','99391','99392','99393','99394','99395','99396','99397']},'2.16.840.1.113883.3.464.1003.102.12.1011':{'ICD-9-CM':['034.0','462'],'SNOMED-CT':['1532007','195655000','195656004','195657008','195658003','195659006','195660001','195662009','232399005','232400003','363746003','40766000','43878008','55355000','58031004'],'ICD-10-CM':['J02.0','J02.9']},'2.16.840.1.113883.3.464.1003.102.12.1012':{'SNOMED-CT':['17741008','195666007','195667003','195668008','195669000','195670004','195671000','195672007','195673002','195676005','195677001','302911003'],'ICD-9-CM':['463'],'ICD-10-CM':['J03.00','J03.01','J03.80','J03.81','J03.90','J03.91']},'2.16.840.1.113883.3.464.1003.198.12.1012':{'LOINC':['11268-0','17656-0','18481-2','31971-5','49610-9','5036-9','60489-2','626-2','6556-5','6557-3','6558-1','6559-9','68954-7']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.113762.1.4.1':{'AdministrativeSex':['F','M','U']},'2.16.840.1.114222.4.11.836':{'CDC Race':['1002-5','2028-9','2054-5','2076-8','2106-3','2131-1']},'2.16.840.1.113883.3.560.100.4':{'LOINC':['21112-8']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['1','11','111','112','113','119','12','121','122','123','129','19','2','21','211','212','213','219','22','23','24','25','29','3','31','311','3111','3112','3113','3114','3115','3116','3119','312','3121','3122','3123','313','32','321','3211','3212','32121','32122','32123','32124','32125','32126','322','3221','3222','3223','3229','33','331','332','333','334','34','341','342','343','349','35','36','361','362','369','37','371','3711','3712','3713','372','379','38','381','3811','3812','3813','3819','382','389','39','4','41','42','43','44','5','51','511','512','513','514','515','519','52','521','522','523','529','53','54','55','59','6','61','611','612','613','619','62','63','64','69','7','71','72','73','79','8','81','82','821','822','823','83','84','85','89','9','91','92','93','94','95','951','953','954','959','96','98','99','9999']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAAcutePharyngitis1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1011\", \"specificOccurrence\": \"OccurrenceAAcutePharyngitis1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteTonsillitis2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1012\", \"specificOccurrence\": \"OccurrenceAAcuteTonsillitis2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAmbulatoryEdVisit3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\", \"specificOccurrence\": \"OccurrenceAAmbulatoryEdVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAmbulatoryEdVisit3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\", \"specificOccurrence\": \"OccurrenceAAmbulatoryEdVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcutePharyngitis = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1011\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcuteTonsillitis = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedAmbulatoryEdVisit = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"F\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  matching = new Boolean(value.includedIn({\"CDC Race\":[\"1002-5\",\"2028-9\",\"2054-5\",\"2076-8\",\"2106-3\",\"2131-1\"]}));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_4 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(new PQ(2, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_6 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.MeasurePeriod(patient), new IVL_PQ(null, new PQ(18, \"a\", false)));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\", \"specificOccurrence\": \"OccurrenceAAmbulatoryEdVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderAntibioticMedicationsForPharyngitis_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAAmbulatoryEdVisit3(patient), new IVL_PQ(null, new PQ(3, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAcutePharyngitis1_precondition_12 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1011\", \"specificOccurrence\": \"OccurrenceAAcutePharyngitis1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteTonsillitis2_precondition_14 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1012\", \"specificOccurrence\": \"OccurrenceAAcuteTonsillitis2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\", \"specificOccurrence\": \"OccurrenceAAmbulatoryEdVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = DURING(events, hqmfjs.GROUP_DURING_CHILDREN_47(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_DURING_CHILDREN_47 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAAcutePharyngitis1_precondition_12(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAAcuteTonsillitis2_precondition_14(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_24 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.101.12.1061\", \"specificOccurrence\": \"OccurrenceAAmbulatoryEdVisit3\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAcutePharyngitis1_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1011\", \"specificOccurrence\": \"OccurrenceAAcutePharyngitis1\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_24(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteTonsillitis2_precondition_21 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1012\", \"specificOccurrence\": \"OccurrenceAAcuteTonsillitis2\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_24(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAAcutePharyngitis1_precondition_31 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1011\", \"specificOccurrence\": \"OccurrenceAAcutePharyngitis1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.OccurrenceAAcuteTonsillitis2_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.102.12.1012\", \"specificOccurrence\": \"OccurrenceAAcuteTonsillitis2\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.MedicationActiveAntibioticMedicationsForPharyngitis_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.196.12.1001\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.GROUP_SBS_CHILDREN_49(patient), new IVL_PQ(null, new PQ(30, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_SBS_CHILDREN_49 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.OccurrenceAAcutePharyngitis1_precondition_31(patient, initialSpecificContext),\n    hqmfjs.OccurrenceAAcuteTonsillitis2_precondition_33(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultGroupAStreptococcusTest_precondition_39 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.198.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.OccurrenceAAmbulatoryEdVisit3(patient), new IVL_PQ(null, new PQ(3, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestResultGroupAStreptococcusTest_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.464.1003.198.12.1012\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new ANYNonNull());\n  if (events.length > 0 || !Logger.short_circuit) events = SAE(events, hqmfjs.OccurrenceAAmbulatoryEdVisit3(patient), new IVL_PQ(null, new PQ(3, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAAcutePharyngitis1\",\"type\":\"DIAGNOSIS_ACTIVE_ACUTE_PHARYNGITIS\",\"function\":\"OccurrenceAAcutePharyngitis1\"},{\"id\":\"OccurrenceAAcuteTonsillitis2\",\"type\":\"DIAGNOSIS_ACTIVE_ACUTE_TONSILLITIS\",\"function\":\"OccurrenceAAcuteTonsillitis2\"},{\"id\":\"OccurrenceAAmbulatoryEdVisit3\",\"type\":\"ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT\",\"function\":\"OccurrenceAAmbulatoryEdVisit3\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('30', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_4, hqmfjs.PatientCharacteristicBirthdateBirthDate_precondition_6,\n      allTrue('28', patient, initialSpecificContext, hqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_8, hqmfjs.MedicationOrderAntibioticMedicationsForPharyngitis_precondition_10,\n        atLeastOneTrue('26', patient, initialSpecificContext, hqmfjs.OccurrenceAAmbulatoryEdVisit3_precondition_17,\n          atLeastOneTrue('23', patient, initialSpecificContext, hqmfjs.OccurrenceAAcutePharyngitis1_precondition_19, hqmfjs.OccurrenceAAcuteTonsillitis2_precondition_21\n          )\n        )\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('45', patient, initialSpecificContext,\n      atLeastOneTrue('43', patient, initialSpecificContext, hqmfjs.LaboratoryTestResultGroupAStreptococcusTest_precondition_39, hqmfjs.LaboratoryTestResultGroupAStreptococcusTest_precondition_41\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    allTrue('38', patient, initialSpecificContext, hqmfjs.MedicationActiveAntibioticMedicationsForPharyngitis_precondition_36\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        \n        \n        var occurrenceId = [\"OccurrenceAAmbulatoryEdVisit3\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, observ, occurrenceId,false,stratification);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0002",
+    "hqmf_id": "40280381-4600-425F-0146-1F6E280C0F09",
+    "hqmf_set_id": "BEB1C33C-2549-4E7F-9567-05ED38448464",
+    "hqmf_version_number": 3,
+    "title": "Appropriate Testing for Children with Pharyngitis",
+    "description": "Percentage of children 2-18 years of age who were diagnosed with pharyngitis, ordered an antibiotic and received a group A streptococcus (strep) test for the episode.",
+    "cms_id": "CMS146v3",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "9D1135EA-BA90-45E7-8EED-F7335D1CC934",
+        "preconditions": [
+          {
+            "id": 30,
+            "preconditions": [
+              {
+                "id": 4,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_4"
+              },
+              {
+                "id": 6,
+                "reference": "PatientCharacteristicBirthdateBirthDate_precondition_6"
+              },
+              {
+                "id": 28,
+                "preconditions": [
+                  {
+                    "id": 8,
+                    "reference": "OccurrenceAAmbulatoryEdVisit3_precondition_8"
+                  },
+                  {
+                    "id": 10,
+                    "reference": "MedicationOrderAntibioticMedicationsForPharyngitis_precondition_10"
+                  },
+                  {
+                    "id": 26,
+                    "preconditions": [
+                      {
+                        "id": 17,
+                        "reference": "OccurrenceAAmbulatoryEdVisit3_precondition_17"
+                      },
+                      {
+                        "id": 23,
+                        "preconditions": [
+                          {
+                            "id": 19,
+                            "reference": "OccurrenceAAcutePharyngitis1_precondition_19"
+                          },
+                          {
+                            "id": 21,
+                            "reference": "OccurrenceAAcuteTonsillitis2_precondition_21"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue"
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "D04EFECB-A901-4565-BDDB-826510499092"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator",
+        "hqmf_id": "0525FBA2-F068-4706-ADB5-E345852DC55B",
+        "preconditions": [
+          {
+            "id": 38,
+            "preconditions": [
+              {
+                "id": 36,
+                "reference": "MedicationActiveAntibioticMedicationsForPharyngitis_precondition_36"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "3F4CDE57-1C5C-4250-A338-55FED6775F57",
+        "preconditions": [
+          {
+            "id": 45,
+            "preconditions": [
+              {
+                "id": 43,
+                "preconditions": [
+                  {
+                    "id": 39,
+                    "reference": "LaboratoryTestResultGroupAStreptococcusTest_precondition_39"
+                  },
+                  {
+                    "id": 41,
+                    "reference": "LaboratoryTestResultGroupAStreptococcusTest_precondition_41"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "OccurrenceAAmbulatoryEdVisit3": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT",
+        "source_data_criteria": "OccurrenceAAmbulatoryEdVisit3",
+        "variable": false
+      },
+      "DiagnosisActiveAcutePharyngitis": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcutePharyngitis",
+        "variable": false
+      },
+      "DiagnosisActiveAcuteTonsillitis": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteTonsillitis",
+        "variable": false
+      },
+      "EncounterPerformedAmbulatoryEdVisit": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAmbulatoryEdVisit",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_4": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "2",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "PatientCharacteristicBirthdateBirthDate_precondition_6": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MeasurePeriod",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": false,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAmbulatoryEdVisit3_precondition_8": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT",
+        "source_data_criteria": "OccurrenceAAmbulatoryEdVisit3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "MedicationOrderAntibioticMedicationsForPharyngitis_precondition_10": {
+        "title": "Antibiotic Medications for Pharyngitis",
+        "description": "Medication, Order: Antibiotic Medications for Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderAntibioticMedicationsForPharyngitis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAAmbulatoryEdVisit3",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "3",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "OccurrenceAAcutePharyngitis1_precondition_12": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_PHARYNGITIS",
+        "source_data_criteria": "OccurrenceAAcutePharyngitis1",
+        "variable": false
+      },
+      "OccurrenceAAcuteTonsillitis2_precondition_14": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_TONSILLITIS",
+        "source_data_criteria": "OccurrenceAAcuteTonsillitis2",
+        "variable": false
+      },
+      "OccurrenceAAmbulatoryEdVisit3_precondition_17": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT",
+        "source_data_criteria": "OccurrenceAAmbulatoryEdVisit3",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "DURING",
+            "reference": "GROUP_DURING_CHILDREN_47"
+          }
+        ]
+      },
+      "GROUP_DURING_CHILDREN_47": {
+        "title": "GROUP_DURING_CHILDREN_47",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAAcutePharyngitis1_precondition_12",
+          "OccurrenceAAcuteTonsillitis2_precondition_14"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_DURING_CHILDREN_47",
+        "variable": false
+      },
+      "OccurrenceAAmbulatoryEdVisit3_precondition_24": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT",
+        "source_data_criteria": "OccurrenceAAmbulatoryEdVisit3",
+        "variable": false
+      },
+      "OccurrenceAAcutePharyngitis1_precondition_19": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_PHARYNGITIS",
+        "source_data_criteria": "OccurrenceAAcutePharyngitis1",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAAmbulatoryEdVisit3_precondition_24"
+          }
+        ]
+      },
+      "OccurrenceAAcuteTonsillitis2_precondition_21": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_TONSILLITIS",
+        "source_data_criteria": "OccurrenceAAcuteTonsillitis2",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "OccurrenceAAmbulatoryEdVisit3_precondition_24"
+          }
+        ]
+      },
+      "OccurrenceAAcutePharyngitis1_precondition_31": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_PHARYNGITIS",
+        "source_data_criteria": "OccurrenceAAcutePharyngitis1",
+        "variable": false
+      },
+      "OccurrenceAAcuteTonsillitis2_precondition_33": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_TONSILLITIS",
+        "source_data_criteria": "OccurrenceAAcuteTonsillitis2",
+        "variable": false
+      },
+      "MedicationActiveAntibioticMedicationsForPharyngitis_precondition_36": {
+        "title": "Antibiotic Medications for Pharyngitis",
+        "description": "Medication, Active: Antibiotic Medications for Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationActiveAntibioticMedicationsForPharyngitis",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "GROUP_SBS_CHILDREN_49",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "30",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "GROUP_SBS_CHILDREN_49": {
+        "title": "GROUP_SBS_CHILDREN_49",
+        "description": "",
+        "children_criteria": [
+          "OccurrenceAAcutePharyngitis1_precondition_31",
+          "OccurrenceAAcuteTonsillitis2_precondition_33"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_SBS_CHILDREN_49",
+        "variable": false
+      },
+      "LaboratoryTestResultGroupAStreptococcusTest_precondition_39": {
+        "title": "Group A Streptococcus Test",
+        "description": "Laboratory Test, Result: Group A Streptococcus Test",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1012",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultGroupAStreptococcusTest",
+        "variable": false,
+        "value": {
+          "type": "ANYNonNull"
+        },
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "OccurrenceAAmbulatoryEdVisit3",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "3",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "LaboratoryTestResultGroupAStreptococcusTest_precondition_41": {
+        "title": "Group A Streptococcus Test",
+        "description": "Laboratory Test, Result: Group A Streptococcus Test",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1012",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultGroupAStreptococcusTest",
+        "variable": false,
+        "value": {
+          "type": "ANYNonNull"
+        },
+        "temporal_references": [
+          {
+            "type": "SAE",
+            "reference": "OccurrenceAAmbulatoryEdVisit3",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "3",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthDate": {
+        "title": "birth date",
+        "description": "Patient Characteristic Birthdate: birth date",
+        "code_list_id": "2.16.840.1.113883.3.560.100.4",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthDate",
+        "variable": false,
+        "inline_code_list": {
+          "LOINC": [
+            "21112-8"
+          ]
+        }
+      },
+      "MedicationOrderAntibioticMedicationsForPharyngitis": {
+        "title": "Antibiotic Medications for Pharyngitis",
+        "description": "Medication, Order: Antibiotic Medications for Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderAntibioticMedicationsForPharyngitis",
+        "variable": false
+      },
+      "MedicationActiveAntibioticMedicationsForPharyngitis": {
+        "title": "Antibiotic Medications for Pharyngitis",
+        "description": "Medication, Active: Antibiotic Medications for Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.196.12.1001",
+        "type": "medications",
+        "definition": "medication",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationActiveAntibioticMedicationsForPharyngitis",
+        "variable": false
+      },
+      "OccurrenceAAcutePharyngitis1": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_PHARYNGITIS",
+        "source_data_criteria": "OccurrenceAAcutePharyngitis1",
+        "variable": false
+      },
+      "OccurrenceAAcuteTonsillitis2": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "DIAGNOSIS_ACTIVE_ACUTE_TONSILLITIS",
+        "source_data_criteria": "OccurrenceAAcuteTonsillitis2",
+        "variable": false
+      },
+      "LaboratoryTestResultGroupAStreptococcusTest": {
+        "title": "Group A Streptococcus Test",
+        "description": "Laboratory Test, Result: Group A Streptococcus Test",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.198.12.1012",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestResultGroupAStreptococcusTest",
+        "variable": false
+      },
+      "OccurrenceAAmbulatoryEdVisit3": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "ENCOUNTER_PERFORMED_AMBULATORY_ED_VISIT",
+        "source_data_criteria": "OccurrenceAAmbulatoryEdVisit3",
+        "variable": false
+      },
+      "DiagnosisActiveAcutePharyngitis": {
+        "title": "Acute Pharyngitis",
+        "description": "Diagnosis, Active: Acute Pharyngitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcutePharyngitis",
+        "variable": false
+      },
+      "DiagnosisActiveAcuteTonsillitis": {
+        "title": "Acute Tonsillitis",
+        "description": "Diagnosis, Active: Acute Tonsillitis",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.102.12.1012",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteTonsillitis",
+        "variable": false
+      },
+      "EncounterPerformedAmbulatoryEdVisit": {
+        "title": "Ambulatory/ED Visit",
+        "description": "Encounter, Performed: Ambulatory/ED Visit",
+        "code_list_id": "2.16.840.1.113883.3.464.1003.101.12.1061",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedAmbulatoryEdVisit",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "F"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "1",
+            "11",
+            "111",
+            "112",
+            "113",
+            "119",
+            "12",
+            "121",
+            "122",
+            "123",
+            "129",
+            "19",
+            "2",
+            "21",
+            "211",
+            "212",
+            "213",
+            "219",
+            "22",
+            "23",
+            "24",
+            "25",
+            "29",
+            "3",
+            "31",
+            "311",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3119",
+            "312",
+            "3121",
+            "3122",
+            "3123",
+            "313",
+            "32",
+            "321",
+            "3211",
+            "3212",
+            "32121",
+            "32122",
+            "32123",
+            "32124",
+            "32125",
+            "32126",
+            "322",
+            "3221",
+            "3222",
+            "3223",
+            "3229",
+            "33",
+            "331",
+            "332",
+            "333",
+            "334",
+            "34",
+            "341",
+            "342",
+            "343",
+            "349",
+            "35",
+            "36",
+            "361",
+            "362",
+            "369",
+            "37",
+            "371",
+            "3711",
+            "3712",
+            "3713",
+            "372",
+            "379",
+            "38",
+            "381",
+            "3811",
+            "3812",
+            "3813",
+            "3819",
+            "382",
+            "389",
+            "39",
+            "4",
+            "41",
+            "42",
+            "43",
+            "44",
+            "5",
+            "51",
+            "511",
+            "512",
+            "513",
+            "514",
+            "515",
+            "519",
+            "52",
+            "521",
+            "522",
+            "523",
+            "529",
+            "53",
+            "54",
+            "55",
+            "59",
+            "6",
+            "61",
+            "611",
+            "612",
+            "613",
+            "619",
+            "62",
+            "63",
+            "64",
+            "69",
+            "7",
+            "71",
+            "72",
+            "73",
+            "79",
+            "8",
+            "81",
+            "82",
+            "821",
+            "822",
+            "823",
+            "83",
+            "84",
+            "85",
+            "89",
+            "9",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "951",
+            "953",
+            "954",
+            "959",
+            "96",
+            "98",
+            "99",
+            "9999"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "1002-5",
+            "2028-9",
+            "2054-5",
+            "2076-8",
+            "2106-3",
+            "2131-1"
+          ]
+        }
+      }
+    },
+    "attributes": [
+      {
+        "code": "OTH",
+        "name": "Finalized Date/Time",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Finalized Date/Time"
+        },
+        "value_obj": {
+          "type": "TS"
+        }
+      },
+      {
+        "code": "COPY",
+        "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+        "name": "Copyright",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "COPY",
+          "title": "Copyright"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). \r\n\r\nThe Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. \r\n\r\n(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. \r\n\r\nLimited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.\r\n\r\nCPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRSCORE",
+        "name": "Measure Scoring",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRSCORE",
+          "title": "Measure Scoring"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20367",
+          "code": "PROPOR",
+          "title": "Proportion"
+        }
+      },
+      {
+        "code": "MSRTYPE",
+        "name": "Measure Type",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRTYPE",
+          "title": "Measure Type"
+        },
+        "value_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.1.11.20368",
+          "code": "PROCESS",
+          "title": "Process"
+        }
+      },
+      {
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "STRAT",
+          "title": "Stratification"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRADJ",
+          "title": "Risk Adjustment"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "MSRAGG",
+          "title": "Rate Aggregation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "RAT",
+        "value": "Group A streptococcal bacterial infections and other infections that cause pharyngitis (which are most often viral) often produce the same signs and symptoms (IDSA 2002). The American Academy of Pediatrics, the Centers for Disease Control and Prevention, and the Infectious Diseases Society of America all recommend a diagnostic test for Strep A to improve diagnostic accuracy and avoid unnecessary antibiotic treatment (Linder et al. 2005).  A study on antibiotic treatment of children with sore throat found that although only 15 to 36 percent of children with sore throat have Strep A pharyngitis, physicians prescribed antibiotics to 53 percent of children with a chief complaint of sore throat between 1995 and 2003 (Linder et al. 2005).",
+        "name": "Rationale",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "RAT",
+          "title": "Rationale"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Group A streptococcal bacterial infections and other infections that cause pharyngitis (which are most often viral) often produce the same signs and symptoms (IDSA 2002). The American Academy of Pediatrics, the Centers for Disease Control and Prevention, and the Infectious Diseases Society of America all recommend a diagnostic test for Strep A to improve diagnostic accuracy and avoid unnecessary antibiotic treatment (Linder et al. 2005).  A study on antibiotic treatment of children with sore throat found that although only 15 to 36 percent of children with sore throat have Strep A pharyngitis, physicians prescribed antibiotics to 53 percent of children with a chief complaint of sore throat between 1995 and 2003 (Linder et al. 2005).",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "CRS",
+        "value": "Institute for Clinical Systems Improvement (ICSI) (2007) \r\n\r\nReduce unnecessary use of antibiotics. Antibiotic treatment should be reserved for a bacterial illness. Diagnosis of group A beta streptococcal Pharyngitis should be made by laboratory testing rather than clinically. \r\n\r\nInfectious Disease Society of America (Bisno et al. 2002) \r\n\r\nThe signs and symptoms of group A streptococcal and other (most frequently viral) pharyngitides overlap broadly. Therefore, unless the physician is able with confidence to exclude the diagnosis of streptococcal pharyngitis on epidemiological and clinical grounds alone, a laboratory test should be done to determine whether group A streptococci are present in the pharynx. \r\n\r\nWith the exception of very rare infections by certain other pharyngeal bacterial pathogens (eg, Corynebacterium diphtheriae and Neisseria gonorrhoeae), antimicrobial therapy is of no proven benefit as treatment for acute pharyngitis due to bacteria other than group A streptococci. Therefore, it is extremely important that physicians exclude the diagnosis of group A streptococcal pharyngitis to prevent inappropriate administration of antimicrobials to large numbers of patients with pharyngitis. \r\n\r\nMichigan Quality Improvement Consortium (2007)\r\n\r\nProbability of group A beta hemolytic streptococci (GABHS): Low; Testing: None; Treatment: Symptomatic treatment only. Avoid antibiotics. Probability of GABHS: Intermediate or High; Testing: Throat Culture (TC) OR Rapid Screen; Treatment: If TC is positive, use antibiotics. If TC is negative, use symptomatic treatment only. Avoid antibiotics. If treatment is started and culture result is negative, stop antibiotics. If Rapid Screen is positive, use antibiotics. If Rapid Screen is negative, culture (Culture is optional for age 16 and over) and only use antibiotics if throat culture is positive. (Michigan, 2007)",
+        "name": "Clinical Recommendation Statement",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "CRS",
+          "title": "Clinical Recommendation Statement"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Institute for Clinical Systems Improvement (ICSI) (2007) \r\n\r\nReduce unnecessary use of antibiotics. Antibiotic treatment should be reserved for a bacterial illness. Diagnosis of group A beta streptococcal Pharyngitis should be made by laboratory testing rather than clinically. \r\n\r\nInfectious Disease Society of America (Bisno et al. 2002) \r\n\r\nThe signs and symptoms of group A streptococcal and other (most frequently viral) pharyngitides overlap broadly. Therefore, unless the physician is able with confidence to exclude the diagnosis of streptococcal pharyngitis on epidemiological and clinical grounds alone, a laboratory test should be done to determine whether group A streptococci are present in the pharynx. \r\n\r\nWith the exception of very rare infections by certain other pharyngeal bacterial pathogens (eg, Corynebacterium diphtheriae and Neisseria gonorrhoeae), antimicrobial therapy is of no proven benefit as treatment for acute pharyngitis due to bacteria other than group A streptococci. Therefore, it is extremely important that physicians exclude the diagnosis of group A streptococcal pharyngitis to prevent inappropriate administration of antimicrobials to large numbers of patients with pharyngitis. \r\n\r\nMichigan Quality Improvement Consortium (2007)\r\n\r\nProbability of group A beta hemolytic streptococci (GABHS): Low; Testing: None; Treatment: Symptomatic treatment only. Avoid antibiotics. Probability of GABHS: Intermediate or High; Testing: Throat Culture (TC) OR Rapid Screen; Treatment: If TC is positive, use antibiotics. If TC is negative, use symptomatic treatment only. Avoid antibiotics. If treatment is started and culture result is negative, stop antibiotics. If Rapid Screen is positive, use antibiotics. If Rapid Screen is negative, culture (Culture is optional for age 16 and over) and only use antibiotics if throat culture is positive. (Michigan, 2007)",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IDUR",
+        "value": "Higher score indicates better quality",
+        "name": "Improvement Notation",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "IDUR",
+          "title": "Improvement Notation"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Higher score indicates better quality",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "0002",
+        "name": "NQF ID Number",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "NQF ID Number"
+        },
+        "value_obj": {
+          "type": "II",
+          "root": "2.16.840.1.113883.3.560.1",
+          "extension": "0002"
+        }
+      },
+      {
+        "code": "DISC",
+        "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+        "name": "Disclaimer",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "DISC",
+          "title": "Disclaimer",
+          "original_text": "Disclaimer"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\r\n\r\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\r\n \r\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "146",
+        "name": "eMeasure Identifier",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "eMeasure Identifier"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "146",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "REF",
+        "value": "Michigan Quality Improvement Consortium. 2007. Acute pharyngitis in children. Southfield: Michigan Quality Improvement Consortium.",
+        "name": "Reference",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "REF",
+          "title": "Reference"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Michigan Quality Improvement Consortium. 2007. Acute pharyngitis in children. Southfield: Michigan Quality Improvement Consortium.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.3.560",
+          "code": "DEF",
+          "title": "Definition"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "GUIDE",
+        "value": "This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure.",
+        "name": "Guidance",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.4",
+          "code": "GUIDE",
+          "title": "Guidance"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure.",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Transmission Format"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "TBD",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "IPP",
+        "value": "Children 2-18 years of age who had an outpatient or emergency department (ED) visit with a diagnosis of pharyngitis during the measurement period and an antibiotic ordered on or three days after the visit",
+        "name": "Initial Patient Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "IPP",
+          "original_text": "Initial Patient Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Children 2-18 years of age who had an outpatient or emergency department (ED) visit with a diagnosis of pharyngitis during the measurement period and an antibiotic ordered on or three days after the visit",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENOM",
+        "value": "Equals Initial Patient Population",
+        "name": "Denominator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENOM",
+          "original_text": "Denominator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Equals Initial Patient Population",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Children who are taking antibiotics in the 30 days prior to the diagnosis of pharyngitis",
+        "name": "Denominator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Denominator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Children who are taking antibiotics in the 30 days prior to the diagnosis of pharyngitis",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "NUMER",
+        "value": "Children with a group A streptococcus test in the 7-day period from 3 days prior through 3 days after the diagnosis of pharyngitis",
+        "name": "Numerator",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "NUMER",
+          "original_text": "Numerator"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Children with a group A streptococcus test in the 7-day period from 3 days prior through 3 days after the diagnosis of pharyngitis",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Numerator Exclusions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "DENEXCEP",
+          "original_text": "Denominator Exceptions"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "None",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population",
+        "code_obj": {
+          "type": "CD",
+          "system": "2.16.840.1.113883.5.1063",
+          "code": "MSRPOPL",
+          "original_text": "Measure Population"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Measure Observations"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "Not Applicable",
+          "media_type": "text/plain"
+        }
+      },
+      {
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements",
+        "code_obj": {
+          "type": "CD",
+          "null_flavor": "OTH",
+          "original_text": "Supplemental Data Elements"
+        },
+        "value_obj": {
+          "type": "ED",
+          "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+          "media_type": "text/plain"
+        }
+      }
+    ],
+    "populations": [
+      {"IPP":"IPP","DENOM":"DENOM","NUMER":"NUMER","DENEX":"DENEX"}
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.464.1003.196.12.1001",
+    "2.16.840.1.113883.3.464.1003.101.12.1061",
+    "2.16.840.1.113883.3.464.1003.102.12.1011",
+    "2.16.840.1.113883.3.464.1003.102.12.1012",
+    "2.16.840.1.113883.3.464.1003.198.12.1012",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.113883.3.560.100.4",
+    "2.16.840.1.114222.4.11.3591"
+  ],
+  "population_ids": {
+    "IPP": "9D1135EA-BA90-45E7-8EED-F7335D1CC934",
+    "DENOM": "D04EFECB-A901-4565-BDDB-826510499092",
+    "DENEX": "0525FBA2-F068-4706-ADB5-E345852DC55B",
+    "NUMER": "3F4CDE57-1C5C-4250-A338-55FED6775F57"
+  }
+}
