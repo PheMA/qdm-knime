@@ -35,8 +35,6 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
-import BeanService.RxConcept;
-import BeanService.RxConceptGroup;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import edu.phema.Enum.QdmKnime.CodeSystemEnum;
@@ -50,6 +48,8 @@ import edu.phema.jaxb.ihe.svs.ValueSetResponseType;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 import edu.phema.knime.nodeSettings.TableCreator;
+import edu.phema.rxnorm.BeanService.RxConcept;
+import edu.phema.rxnorm.BeanService.RxConceptGroup;
 import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManager;
 
 /**

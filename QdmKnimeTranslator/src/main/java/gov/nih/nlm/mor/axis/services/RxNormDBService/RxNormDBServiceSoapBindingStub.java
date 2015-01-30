@@ -40,7 +40,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "prop_name"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxPropertyConcept"));
-        oper.setReturnClass(BeanService.RxPropertyConcept[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxPropertyConcept[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRxPropertyReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -53,7 +53,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "type"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxNode"));
-        oper.setReturnClass(BeanService.RxNode[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxNode[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAllClassesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -64,7 +64,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "ids"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConcept"));
-        oper.setReturnClass(BeanService.RxConcept[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConcept[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getMultiIngredBrandReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -79,7 +79,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "options"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("urn:BeanService", "RxMatchGroup"));
-        oper.setReturnClass(BeanService.RxMatchGroup.class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxMatchGroup.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getApproximateMatchReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -99,7 +99,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "name"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConceptGroup"));
-        oper.setReturnClass(BeanService.RxConceptGroup[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getDrugsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -151,7 +151,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rxcui"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("urn:BeanService", "RxConcept"));
-        oper.setReturnClass(BeanService.RxConcept.class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConcept.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRxConceptPropertiesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -164,7 +164,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "propCat"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxPropertyConcept"));
-        oper.setReturnClass(BeanService.RxPropertyConcept[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxPropertyConcept[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAllPropertiesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -203,7 +203,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "termType_list"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConceptGroup"));
-        oper.setReturnClass(BeanService.RxConceptGroup[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRelatedByTypeReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -214,7 +214,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rxcui"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConceptGroup"));
-        oper.setReturnClass(BeanService.RxConceptGroup[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAllRelatedInfoReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -225,7 +225,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "ttyList"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxMinimalConcept"));
-        oper.setReturnClass(BeanService.RxMinimalConcept[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxMinimalConcept[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAllConceptsByTTYReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -278,7 +278,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "ttyfilter"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxDrugMember"));
-        oper.setReturnClass(BeanService.RxDrugMember[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxDrugMember[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getClassMembersReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -289,7 +289,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rxcui"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("urn:BeanService", "RxcuiStatus"));
-        oper.setReturnClass(BeanService.RxcuiStatus.class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxcuiStatus.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRxcuiStatusReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -306,7 +306,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "oneLevel"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("urn:BeanService", "RxTree"));
-        oper.setReturnClass(BeanService.RxTree.class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxTree.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getClassHierarchyReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -321,7 +321,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "proxyTicket"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxTermInfo"));
-        oper.setReturnClass(BeanService.RxTermInfo[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxTermInfo[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getProprietaryInformationReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -338,7 +338,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rxaui"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxTermInfo"));
-        oper.setReturnClass(BeanService.RxTermInfo[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxTermInfo[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getProprietaryInformationReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -447,7 +447,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "rela_list"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_soapenc_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConceptGroup"));
-        oper.setReturnClass(BeanService.RxConceptGroup[].class);
+        oper.setReturnClass(edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRelatedByRelationshipReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -495,7 +495,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_Attribute");
             cachedSerQNames.add(qName);
-            cls = BeanService.Attribute[].class;
+            cls = edu.phema.rxnorm.BeanService.Attribute[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "Attribute");
             qName2 = null;
@@ -504,7 +504,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_AttributeGroup");
             cachedSerQNames.add(qName);
-            cls = BeanService.AttributeGroup[].class;
+            cls = edu.phema.rxnorm.BeanService.AttributeGroup[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "AttributeGroup");
             qName2 = null;
@@ -513,7 +513,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxConcept[].class;
+            cls = edu.phema.rxnorm.BeanService.RxConcept[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxConcept");
             qName2 = null;
@@ -522,7 +522,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxConceptGroup");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxConceptGroup[].class;
+            cls = edu.phema.rxnorm.BeanService.RxConceptGroup[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxConceptGroup");
             qName2 = null;
@@ -531,7 +531,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxDrugMember");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxDrugMember[].class;
+            cls = edu.phema.rxnorm.BeanService.RxDrugMember[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxDrugMember");
             qName2 = null;
@@ -540,7 +540,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxEdge");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxEdge[].class;
+            cls = edu.phema.rxnorm.BeanService.RxEdge[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxEdge");
             qName2 = null;
@@ -549,7 +549,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxMatchInfo");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxMatchInfo[].class;
+            cls = edu.phema.rxnorm.BeanService.RxMatchInfo[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxMatchInfo");
             qName2 = null;
@@ -558,7 +558,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxMinimalConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxMinimalConcept[].class;
+            cls = edu.phema.rxnorm.BeanService.RxMinimalConcept[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxMinimalConcept");
             qName2 = null;
@@ -567,7 +567,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxNode");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxNode[].class;
+            cls = edu.phema.rxnorm.BeanService.RxNode[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxNode");
             qName2 = null;
@@ -576,7 +576,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxPropertyConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxPropertyConcept[].class;
+            cls = edu.phema.rxnorm.BeanService.RxPropertyConcept[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxPropertyConcept");
             qName2 = null;
@@ -585,7 +585,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("http://mor.nlm.nih.gov/axis/services/RxNormDBService", "ArrayOf_tns1_RxTermInfo");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxTermInfo[].class;
+            cls = edu.phema.rxnorm.BeanService.RxTermInfo[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxTermInfo");
             qName2 = null;
@@ -603,98 +603,98 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "Attribute");
             cachedSerQNames.add(qName);
-            cls = BeanService.Attribute.class;
+            cls = edu.phema.rxnorm.BeanService.Attribute.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "AttributeGroup");
             cachedSerQNames.add(qName);
-            cls = BeanService.AttributeGroup.class;
+            cls = edu.phema.rxnorm.BeanService.AttributeGroup.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxConcept.class;
+            cls = edu.phema.rxnorm.BeanService.RxConcept.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxConceptGroup");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxConceptGroup.class;
+            cls = edu.phema.rxnorm.BeanService.RxConceptGroup.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxcuiStatus");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxcuiStatus.class;
+            cls = edu.phema.rxnorm.BeanService.RxcuiStatus.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxDrugMember");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxDrugMember.class;
+            cls = edu.phema.rxnorm.BeanService.RxDrugMember.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxEdge");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxEdge.class;
+            cls = edu.phema.rxnorm.BeanService.RxEdge.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxMatchGroup");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxMatchGroup.class;
+            cls = edu.phema.rxnorm.BeanService.RxMatchGroup.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxMatchInfo");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxMatchInfo.class;
+            cls = edu.phema.rxnorm.BeanService.RxMatchInfo.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxMinimalConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxMinimalConcept.class;
+            cls = edu.phema.rxnorm.BeanService.RxMinimalConcept.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxNode");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxNode.class;
+            cls = edu.phema.rxnorm.BeanService.RxNode.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxPropertyConcept");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxPropertyConcept.class;
+            cls = edu.phema.rxnorm.BeanService.RxPropertyConcept.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxTermInfo");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxTermInfo.class;
+            cls = edu.phema.rxnorm.BeanService.RxTermInfo.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("urn:BeanService", "RxTree");
             cachedSerQNames.add(qName);
-            cls = BeanService.RxTree.class;
+            cls = edu.phema.rxnorm.BeanService.RxTree.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -790,7 +790,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxPropertyConcept[] getRxProperty(java.lang.String rxcui, java.lang.String prop_name) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxPropertyConcept[] getRxProperty(java.lang.String rxcui, java.lang.String prop_name) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -811,9 +811,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxPropertyConcept[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxPropertyConcept[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxPropertyConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxPropertyConcept[].class);
+                return (edu.phema.rxnorm.BeanService.RxPropertyConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxPropertyConcept[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -821,7 +821,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxNode[] getAllClasses(java.lang.String src, java.lang.String type) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxNode[] getAllClasses(java.lang.String src, java.lang.String type) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -842,9 +842,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxNode[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxNode[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxNode[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxNode[].class);
+                return (edu.phema.rxnorm.BeanService.RxNode[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxNode[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -852,7 +852,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConcept[] getMultiIngredBrand(java.lang.String[] ids) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConcept[] getMultiIngredBrand(java.lang.String[] ids) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -873,9 +873,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConcept[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConcept[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConcept[].class);
+                return (edu.phema.rxnorm.BeanService.RxConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConcept[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -883,7 +883,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxMatchGroup getApproximateMatch(java.lang.String term, int ranks, int options) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxMatchGroup getApproximateMatch(java.lang.String term, int ranks, int options) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -904,9 +904,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxMatchGroup) _resp;
+                return (edu.phema.rxnorm.BeanService.RxMatchGroup) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxMatchGroup) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxMatchGroup.class);
+                return (edu.phema.rxnorm.BeanService.RxMatchGroup) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxMatchGroup.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -945,7 +945,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConceptGroup[] getDrugs(java.lang.String name) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConceptGroup[] getDrugs(java.lang.String name) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -966,9 +966,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConceptGroup[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConceptGroup[].class);
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1100,7 +1100,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConcept getRxConceptProperties(java.lang.String rxcui) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConcept getRxConceptProperties(java.lang.String rxcui) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1121,9 +1121,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConcept) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConcept) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConcept) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConcept.class);
+                return (edu.phema.rxnorm.BeanService.RxConcept) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConcept.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1131,7 +1131,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxPropertyConcept[] getAllProperties(java.lang.String rxcui, java.lang.String[] propCat) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxPropertyConcept[] getAllProperties(java.lang.String rxcui, java.lang.String[] propCat) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1152,9 +1152,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxPropertyConcept[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxPropertyConcept[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxPropertyConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxPropertyConcept[].class);
+                return (edu.phema.rxnorm.BeanService.RxPropertyConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxPropertyConcept[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1224,7 +1224,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConceptGroup[] getRelatedByType(java.lang.String rxcui, java.lang.String[] termType_list) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConceptGroup[] getRelatedByType(java.lang.String rxcui, java.lang.String[] termType_list) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1245,9 +1245,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConceptGroup[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConceptGroup[].class);
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1255,7 +1255,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConceptGroup[] getAllRelatedInfo(java.lang.String rxcui) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConceptGroup[] getAllRelatedInfo(java.lang.String rxcui) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1276,9 +1276,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConceptGroup[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConceptGroup[].class);
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1286,7 +1286,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxMinimalConcept[] getAllConceptsByTTY(java.lang.String[] ttyList) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxMinimalConcept[] getAllConceptsByTTY(java.lang.String[] ttyList) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1307,9 +1307,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxMinimalConcept[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxMinimalConcept[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxMinimalConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxMinimalConcept[].class);
+                return (edu.phema.rxnorm.BeanService.RxMinimalConcept[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxMinimalConcept[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1410,7 +1410,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxDrugMember[] getClassMembers(java.lang.String id, java.lang.String src, java.lang.String rela, java.lang.String trans, java.lang.String[] ttyfilter) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxDrugMember[] getClassMembers(java.lang.String id, java.lang.String src, java.lang.String rela, java.lang.String trans, java.lang.String[] ttyfilter) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1431,9 +1431,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxDrugMember[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxDrugMember[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxDrugMember[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxDrugMember[].class);
+                return (edu.phema.rxnorm.BeanService.RxDrugMember[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxDrugMember[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1441,7 +1441,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxcuiStatus getRxcuiStatus(java.lang.String rxcui) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxcuiStatus getRxcuiStatus(java.lang.String rxcui) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1462,9 +1462,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxcuiStatus) _resp;
+                return (edu.phema.rxnorm.BeanService.RxcuiStatus) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxcuiStatus) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxcuiStatus.class);
+                return (edu.phema.rxnorm.BeanService.RxcuiStatus) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxcuiStatus.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1472,7 +1472,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxTree getClassHierarchy(java.lang.String rxcui, java.lang.String src, java.lang.String type, int oneLevel) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxTree getClassHierarchy(java.lang.String rxcui, java.lang.String src, java.lang.String type, int oneLevel) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1493,9 +1493,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxTree) _resp;
+                return (edu.phema.rxnorm.BeanService.RxTree) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxTree) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxTree.class);
+                return (edu.phema.rxnorm.BeanService.RxTree) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxTree.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1503,7 +1503,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1524,9 +1524,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxTermInfo[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxTermInfo[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxTermInfo[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxTermInfo[].class);
+                return (edu.phema.rxnorm.BeanService.RxTermInfo[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxTermInfo[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1534,7 +1534,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket, java.lang.String rxaui) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket, java.lang.String rxaui) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1555,9 +1555,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxTermInfo[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxTermInfo[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxTermInfo[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxTermInfo[].class);
+                return (edu.phema.rxnorm.BeanService.RxTermInfo[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxTermInfo[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1782,7 +1782,7 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
 }
     }
 
-    public BeanService.RxConceptGroup[] getRelatedByRelationship(java.lang.String rxcui, java.lang.String[] rela_list) throws java.rmi.RemoteException {
+    public edu.phema.rxnorm.BeanService.RxConceptGroup[] getRelatedByRelationship(java.lang.String rxcui, java.lang.String[] rela_list) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1803,9 +1803,9 @@ public class RxNormDBServiceSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (BeanService.RxConceptGroup[]) _resp;
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, BeanService.RxConceptGroup[].class);
+                return (edu.phema.rxnorm.BeanService.RxConceptGroup[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.phema.rxnorm.BeanService.RxConceptGroup[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

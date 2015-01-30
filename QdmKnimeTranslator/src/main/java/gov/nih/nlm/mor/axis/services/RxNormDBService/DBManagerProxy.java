@@ -50,25 +50,25 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     dBManager.close();
   }
   
-  public BeanService.RxPropertyConcept[] getRxProperty(java.lang.String rxcui, java.lang.String prop_name) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxPropertyConcept[] getRxProperty(java.lang.String rxcui, java.lang.String prop_name) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getRxProperty(rxcui, prop_name);
   }
   
-  public BeanService.RxNode[] getAllClasses(java.lang.String src, java.lang.String type) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxNode[] getAllClasses(java.lang.String src, java.lang.String type) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getAllClasses(src, type);
   }
   
-  public BeanService.RxConcept[] getMultiIngredBrand(java.lang.String[] ids) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConcept[] getMultiIngredBrand(java.lang.String[] ids) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getMultiIngredBrand(ids);
   }
   
-  public BeanService.RxMatchGroup getApproximateMatch(java.lang.String term, int ranks, int options) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxMatchGroup getApproximateMatch(java.lang.String term, int ranks, int options) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getApproximateMatch(term, ranks, options);
@@ -80,7 +80,7 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     return dBManager.getDisplayTerms();
   }
   
-  public BeanService.RxConceptGroup[] getDrugs(java.lang.String name) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConceptGroup[] getDrugs(java.lang.String name) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getDrugs(name);
@@ -110,13 +110,13 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     return dBManager.getRelaTypes();
   }
   
-  public BeanService.RxConcept getRxConceptProperties(java.lang.String rxcui) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConcept getRxConceptProperties(java.lang.String rxcui) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getRxConceptProperties(rxcui);
   }
   
-  public BeanService.RxPropertyConcept[] getAllProperties(java.lang.String rxcui, java.lang.String[] propCat) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxPropertyConcept[] getAllProperties(java.lang.String rxcui, java.lang.String[] propCat) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getAllProperties(rxcui, propCat);
@@ -134,19 +134,19 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     return dBManager.filterByProperty(rxcui, prop_name, prop_value);
   }
   
-  public BeanService.RxConceptGroup[] getRelatedByType(java.lang.String rxcui, java.lang.String[] termType_list) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConceptGroup[] getRelatedByType(java.lang.String rxcui, java.lang.String[] termType_list) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getRelatedByType(rxcui, termType_list);
   }
   
-  public BeanService.RxConceptGroup[] getAllRelatedInfo(java.lang.String rxcui) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConceptGroup[] getAllRelatedInfo(java.lang.String rxcui) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getAllRelatedInfo(rxcui);
   }
   
-  public BeanService.RxMinimalConcept[] getAllConceptsByTTY(java.lang.String[] ttyList) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxMinimalConcept[] getAllConceptsByTTY(java.lang.String[] ttyList) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getAllConceptsByTTY(ttyList);
@@ -170,31 +170,31 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     return dBManager.getTermTypes();
   }
   
-  public BeanService.RxDrugMember[] getClassMembers(java.lang.String id, java.lang.String src, java.lang.String rela, java.lang.String trans, java.lang.String[] ttyfilter) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxDrugMember[] getClassMembers(java.lang.String id, java.lang.String src, java.lang.String rela, java.lang.String trans, java.lang.String[] ttyfilter) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getClassMembers(id, src, rela, trans, ttyfilter);
   }
   
-  public BeanService.RxcuiStatus getRxcuiStatus(java.lang.String rxcui) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxcuiStatus getRxcuiStatus(java.lang.String rxcui) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getRxcuiStatus(rxcui);
   }
   
-  public BeanService.RxTree getClassHierarchy(java.lang.String rxcui, java.lang.String src, java.lang.String type, int oneLevel) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxTree getClassHierarchy(java.lang.String rxcui, java.lang.String src, java.lang.String type, int oneLevel) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getClassHierarchy(rxcui, src, type, oneLevel);
   }
   
-  public BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getProprietaryInformation(rxcui, sources, proxyTicket);
   }
   
-  public BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket, java.lang.String rxaui) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxTermInfo[] getProprietaryInformation(java.lang.String rxcui, java.lang.String[] sources, java.lang.String proxyTicket, java.lang.String rxaui) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getProprietaryInformation(rxcui, sources, proxyTicket, rxaui);
@@ -242,7 +242,7 @@ public class DBManagerProxy implements gov.nih.nlm.mor.axis.services.RxNormDBSer
     return dBManager.findRxcuiByString(term, sources, allSourcesFlag, matchType);
   }
   
-  public BeanService.RxConceptGroup[] getRelatedByRelationship(java.lang.String rxcui, java.lang.String[] rela_list) throws java.rmi.RemoteException{
+  public edu.phema.rxnorm.BeanService.RxConceptGroup[] getRelatedByRelationship(java.lang.String rxcui, java.lang.String[] rela_list) throws java.rmi.RemoteException{
     if (dBManager == null)
       _initDBManagerProxy();
     return dBManager.getRelatedByRelationship(rxcui, rela_list);

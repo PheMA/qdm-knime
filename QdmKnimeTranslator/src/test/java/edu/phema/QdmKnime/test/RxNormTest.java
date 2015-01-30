@@ -3,6 +3,8 @@
  */
 package edu.phema.QdmKnime.test;
 
+import edu.phema.rxnorm.BeanService.RxConcept;
+import edu.phema.rxnorm.BeanService.RxConceptGroup;
 import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManager;
 import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManagerService;
 import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManagerServiceLocator;
@@ -12,9 +14,6 @@ import java.net.URL;
 import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
-
-import BeanService.RxConcept;
-import BeanService.RxConceptGroup;
 
 /**
  * @author moh
