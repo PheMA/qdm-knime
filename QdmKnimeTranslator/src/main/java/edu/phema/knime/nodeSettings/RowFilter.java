@@ -284,37 +284,37 @@ public class RowFilter {
 				"", objectFactory);
 		upperBoundConfig.getEntryOrConfig().add(upperBoundDatacell);
 		lowerBoundConfig.getEntryOrConfig().add(lowerBoundDatacell);
-		if (upperBound == null | type == null 
-				| type == CreateTableColumnClassEnum.String){
+		if (upperBound == null || type == null 
+				|| type.equals(CreateTableColumnClassEnum.String)){
 			upperBoundDatacell.setIsnull(true);
 		} else {
 			upperBoundDatacell.setValue(type.CELL_CLASS);
 			Config dataCellConfig = objectFactory.createConfig();
 			dataCellConfig.setKey(type.CELL_CLASS);
 			upperBoundConfig.getEntryOrConfig().add(dataCellConfig);
-			if (type == CreateTableColumnClassEnum.Double){
+			if (type.equals(CreateTableColumnClassEnum.Double)){
 				dataCellConfig.getEntryOrConfig().add(
 						Toolkit.makeEntry("DoubleCell", EntryType.XDOUBLE, 
 								String.valueOf(upperBound), objectFactory));
-			} else if (type == CreateTableColumnClassEnum.Int){
+			} else if (type.equals(CreateTableColumnClassEnum.Int)){
 				dataCellConfig.getEntryOrConfig().add(
 						Toolkit.makeEntry("IntCell", EntryType.XINT, 
 								String.valueOf(upperBound), objectFactory));
 			}
 		}
-		if (lowerBound == null | type == null 
-				| type == CreateTableColumnClassEnum.String){
+		if (lowerBound == null || type == null 
+				| type.equals(CreateTableColumnClassEnum.String)){
 			lowerBoundDatacell.setIsnull(true);
 		} else {
 			lowerBoundDatacell.setValue(type.CELL_CLASS);
 			Config dataCellConfig = objectFactory.createConfig();
 			dataCellConfig.setKey(type.CELL_CLASS);
 			lowerBoundConfig.getEntryOrConfig().add(dataCellConfig);
-			if (type == CreateTableColumnClassEnum.Double){
+			if (type.equals(CreateTableColumnClassEnum.Double)){
 				dataCellConfig.getEntryOrConfig().add(
 						Toolkit.makeEntry("DoubleCell", EntryType.XDOUBLE, 
 								String.valueOf(lowerBound), objectFactory));
-			} else if (type == CreateTableColumnClassEnum.Int){
+			} else if (type.equals(CreateTableColumnClassEnum.Int)){
 				dataCellConfig.getEntryOrConfig().add(
 						Toolkit.makeEntry("IntCell", EntryType.XINT, 
 								String.valueOf(lowerBound), objectFactory));
@@ -398,7 +398,7 @@ public class RowFilter {
 		obj.setRangeValues(CreateTableColumnClassEnum.Double, new Double (12.0), new Double (7.0));
 		// obj.setRangeValues(CreateTableColumnClassEnum.Int, new Integer (12), null);
 		// obj.setMissingValuesMatch();
-		obj.setStringMatching("\\d+", false, true, true);
+		//obj.setStringMatching("\\d+", false, true, true);
 		System.out.println(obj.getSettings());
 	}
 

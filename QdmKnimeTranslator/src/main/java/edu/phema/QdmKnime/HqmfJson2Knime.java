@@ -34,7 +34,7 @@ public class HqmfJson2Knime {
 	 * 
 	 */
 	
-	VsacConnector vsac;
+	private VsacConnector vsac;
 	
 	public HqmfJson2Knime(VsacConnector vsac) {
 		// TODO Auto-generated constructor stub
@@ -50,6 +50,14 @@ public class HqmfJson2Knime {
 		ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
 		HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
 		HashMap <NodeInterface, Integer> nodeLevels = new HashMap <NodeInterface, Integer> (); // Start with 0
+		HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
+		
+		/*
+		 * Measure Period object need to be created and linked to sourceDataCriteria every time it is used
+		 * It cannot be reused
+		 * */
+		String measureStart = measure.getMeasureStartDatetime();  // yyyyMMddHHmm
+		String measureEnd = measure.getMeasureEndDatetime();   // yyyyMMddHHmm
 		
 		for (String sourceDataCriteriaName : measure.getSourceDataCrtieriaList()){
 			QdmDataElement element = new QdmDataElement(nodes.size());
@@ -69,6 +77,38 @@ public class HqmfJson2Knime {
 					e.printStackTrace();
 				};
 			}
+		}
+		
+		for (String dataCriteriaName : measure.getDataCrtieriaList()){
+			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(
+					measure.getDataCriteriaInfo(dataCriteriaName, "source_data_criteria"));
+			NodeInterface frontier = sourceElement; 
+			int frontierLevel = nodeLevels.get(frontier);   // for nodeLevels
+			if (! measure.typeOfValueInDataCriteria(dataCriteriaName).equals("")){
+				String text = measure.getDataCriteriaInfo(dataCriteriaName, "value");
+				String columnType = "unknown";
+				Attribute attr_value = new Attribute(nodes.size());
+				nodes.add(attr_value);
+				Connection conn = new Connection(conns.size());
+				conns.add(conn);
+				conn.setSource(frontier.getId(), 0);
+				conn.setDest(attr_value.getId(), 1);  // Port for native nodes start from 1
+				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
+				nodeLevels.put(attr_value, ++ frontierLevel);
+				attr_value.setAttributeName("value");
+				if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("IVL_PQ")){
+					text = "value: " + measure.getTextOfValueIVL_PQInDataCriteria(dataCriteriaName);
+					columnType = "Double";
+					Double[] high_low = measure.getValueIVL_PQInDataCriteriaHL(dataCriteriaName);
+					attr_value.setMode_Comparison(high_low[0], high_low[1]);
+				} else if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("CD")){
+					columnType = "String";
+				}
+				sourceElement.addQdmAttributes("value", columnType, text);
+				attr_value.setAnnotationText(text);
+				frontier = attr_value; 
+			}
+			dataCriteriaNodes.put(dataCriteriaName, frontier);
 		}
 		
 		ArrayList<ArrayList<NodeInterface>> nodesTable = new ArrayList<ArrayList<NodeInterface>> ();

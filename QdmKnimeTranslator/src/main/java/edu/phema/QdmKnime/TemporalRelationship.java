@@ -288,14 +288,14 @@ public class TemporalRelationship extends MetaNode implements
 	private boolean haveGoodOperations(){
 		return 	operator != Operator.none && 
 				quantity != 0 && ( 
-				temporalType == TemporalTypeCode.EAE ||
-				temporalType == TemporalTypeCode.EAS ||
-				temporalType == TemporalTypeCode.EBE ||
-				temporalType == TemporalTypeCode.EBS ||
-				temporalType == TemporalTypeCode.SAE ||
-				temporalType == TemporalTypeCode.SAS ||
-				temporalType == TemporalTypeCode.SBE ||
-				temporalType == TemporalTypeCode.SBS);	
+				temporalType.equals(TemporalTypeCode.EAE) ||
+				temporalType.equals(TemporalTypeCode.EAS) ||
+				temporalType.equals(TemporalTypeCode.EBE) ||
+				temporalType.equals(TemporalTypeCode.EBS) ||
+				temporalType.equals(TemporalTypeCode.SAE) ||
+				temporalType.equals(TemporalTypeCode.SAS) ||
+				temporalType.equals(TemporalTypeCode.SBE) ||
+				temporalType.equals(TemporalTypeCode.SBS));	
 	}
 	
 	private String getOperatorSettingNodeFolder(){

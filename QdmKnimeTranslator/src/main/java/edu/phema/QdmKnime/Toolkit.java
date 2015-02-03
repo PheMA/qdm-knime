@@ -70,7 +70,7 @@ public class Toolkit {
 		HashMap <String, Config> ret = new HashMap <String, Config>();
 		Object[] subNodes = inConfig.getEntryOrConfig().toArray();
 		for (Object node : subNodes){
-			if (node.getClass() == Config.class){
+			if (node.getClass().equals(Config.class)){
 				Config configNode = (Config) node;
 				ret.put(configNode.getKey(), configNode);
 			}
@@ -82,7 +82,7 @@ public class Toolkit {
 		HashMap <String, Entry> ret = new HashMap <String, Entry>();
 		Object[] subNodes = inConfig.getEntryOrConfig().toArray();
 		for (Object node : subNodes){
-			if (node.getClass() == Entry.class){
+			if (node.getClass().equals(Entry.class)){
 				Entry entryNode = (Entry) node;
 				ret.put(entryNode.getKey(), entryNode);
 			}

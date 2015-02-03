@@ -28,7 +28,7 @@ import edu.phema.knime.nodeSettings.RowFilter;
  */
 public class Attribute implements NodeInterface {
 
-	int id = Integer.MIN_VALUE;
+	private int id = Integer.MIN_VALUE;
 	
 	private Path workflowRoot = Paths.get("");
 	
@@ -78,7 +78,11 @@ public class Attribute implements NodeInterface {
 		rowFilter.setIncludeOrExclude(false);
 	}
 	
-	public void setMode_Comparison(Number upper, Number lower){
+	
+	/*
+	 * upper/lower bounds can be null
+	 * */
+	public void setMode_Comparison(Double upper, Double lower){
 		rowFilter.setRangeValues(CreateTableColumnClassEnum.Double, upper, lower);
 		rowFilter.setIncludeOrExclude(true);
 	}
@@ -92,7 +96,11 @@ public class Attribute implements NodeInterface {
 	public void setAttributeName (String attribute){
 		//this.attributeName = attribute;
 		rowFilter.setColumnName(attribute);
-		rowFilter.setAnnotationText("Attribute: " + attribute);
+		
+	}
+	
+	public void setAnnotationText (String text) {
+		rowFilter.setAnnotationText("Attribute: " + text);
 	}
 	
 	public String getAttributeName (){

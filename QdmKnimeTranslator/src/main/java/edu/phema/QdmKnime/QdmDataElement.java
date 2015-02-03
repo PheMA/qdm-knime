@@ -205,6 +205,8 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.QdmDataElementInterface#setValueSetOid(java.lang.String)
+	 * 
+	 * The oid here doesn't connect to vsac.  It is to construct a value set xml
 	 */
 	@Override
 	public void setValueSetOid(String oid) {
@@ -331,7 +333,7 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 		// TODO Auto-generated method stub
 		ArrayList<String> codes = new ArrayList<String>();
 		for (CD cd : valueSet){
-			if(cd.getCodeSystemName() == codeSystem.name()){
+			if(cd.getCodeSystemName().equals(codeSystem.name())){
 				codes.add(cd.getCode());
 			}
 		}
@@ -359,7 +361,7 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 		// TODO Auto-generated method stub
 		ArrayList<String> names = new ArrayList<String>();
 		for (CD cd : valueSet){
-			if(cd.getCodeSystemName() == codeSystem.name()){
+			if(cd.getCodeSystemName().equals(codeSystem.name())){
 				names.add(cd.getDisplayName());
 			}
 		}
@@ -535,7 +537,7 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 					tb.setCell(cd.getDisplayName(), i, 4);
 					
 					
-					if (cd.getCodeSystemName().equals("RXNORM") | cd.getCodeSystem().equals("2.16.840.1.113883.6.88")){
+					if (cd.getCodeSystemName().equals("RXNORM") || cd.getCodeSystem().equals("2.16.840.1.113883.6.88")){
 						String[] types = {"IN", "BN"};
 						RxConceptGroup[] rxConceptGroups = rxnormManager
 								.getRelatedByType(cd.getCode(),  types);
