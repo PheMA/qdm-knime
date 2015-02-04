@@ -69,6 +69,16 @@ public class RowFilter {
 		rowFilterNode.setKey("rowFilter");
 		
 		model.getEntryOrConfig().add(rowFilterNode);
+		
+		rowFilterNode.getEntryOrConfig().add(
+				Toolkit.makeEntry("RowFilter_TypeID", EntryType.XSTRING, 
+				"RangeVal_RowFilter", objectFactory));
+
+		rowFilterNode.getEntryOrConfig().add(
+				Toolkit.makeEntry("ColumnName", EntryType.XSTRING, 
+				"column1", objectFactory));
+
+		
 		rowFilterNode.getEntryOrConfig().add(
 				Toolkit.makeEntry("include", EntryType.XBOOLEAN, 
 				"true", objectFactory));
@@ -341,7 +351,7 @@ public class RowFilter {
 			entriesMap.get("columnName").setValue(columnName);
 		} else {
 			rowFilterNode.getEntryOrConfig().add(
-					Toolkit.makeEntry("columnName", EntryType.XSTRING, 
+					Toolkit.makeEntry("ColumnName", EntryType.XSTRING, 
 					columnName, objectFactory));
 		}
 	}

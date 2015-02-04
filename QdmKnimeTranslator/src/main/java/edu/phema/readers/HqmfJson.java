@@ -10,6 +10,7 @@ import java.io.IOException;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -191,7 +192,7 @@ public class HqmfJson {
 		return re;
 	}
 	
-	public String typeOfFieldValueINDataCriteria(String criteriaKey, String fieldKey){
+	public String typeOfFieldValueInDataCriteria(String criteriaKey, String fieldKey){
 		String re = "";
 		try{
 			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
@@ -221,13 +222,22 @@ public class HqmfJson {
 		return re;
 	}
 	
-	public String getTextOfValueIVL_PQInDataCriteria (String criteriaKey) {
-		String re = "";
+	public String getTextOfValueInDataCriteria (String criteriaKey) {
+		String re = "value:%%00010";
 		try{
 			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
 			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
 			JSONObject value_obj = criterion.getJSONObject("value");
-			re = getIVL_PQDescription(value_obj);
+			if (value_obj == null) {
+				throw new JSONException(
+						"Cannot find value at " + criteriaKey);
+			}
+			if (value_obj.getString("type").equals("IVL_PQ")){
+				re = re + getIVL_PQDescription(value_obj);
+			} else {
+				re = re + value_obj.toString(); 
+			}
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -251,14 +261,54 @@ public class HqmfJson {
 		return re;
 	}
 	
-	public String getTextOfFieldValues_IVL_PQInDataCriteria (String criteriaKey, String fieldKey) {
-		String re = "";
+	public HashMap<String, String> getFieldValuesCDInDataCriteria (String criteriaKey, String fieldKey) {
+		HashMap<String, String> re = new HashMap<String, String>();
 		try{
 			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
 			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
 			JSONObject field_values_obj = criterion.getJSONObject("field_values");
 			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
-			re = getIVL_PQDescription(field_obj);
+			for(String key : JSONObject.getNames(field_obj)){
+				re.put(key, field_obj.getString(key));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+	
+	public HashMap<String, String> getValueCDInDataCriteria (String criteriaKey) {
+		HashMap<String, String> re = new HashMap<String, String>();
+		try{
+			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+			JSONObject value_obj = criterion.getJSONObject("value");
+			for(String key : JSONObject.getNames(value_obj)){
+				re.put(key, value_obj.getString(key));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+
+	
+	public String getTextOfFieldValuesInDataCriteria (String criteriaKey, String fieldKey) {
+		String re = fieldKey + ":%%00010";
+		try{
+			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+			JSONObject field_values_obj = criterion.getJSONObject("field_values");
+			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
+			if (field_obj == null) {
+				throw new JSONException(
+						"Cannot find field value " + fieldKey + " at " + criteriaKey);
+			}
+			if (field_obj.getString("type").equals("IVL_PQ")){
+				re = re + getIVL_PQDescription(field_obj);
+			} else {
+				re = re + field_obj.toString(); 
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -329,7 +379,7 @@ public class HqmfJson {
 		System.out.println(hqmf.getPopulationList()[0]);
 		System.out.println(hqmf.getMeasureStartDatetime());
 		System.out.println(hqmf.getSourceDataCriteriaInfo("LaboratoryTestResultLdlCTest", "negation"));
-		System.out.println(hqmf.getTextOfValueIVL_PQInDataCriteria("LaboratoryTestResultLdlCTest_precondition_64"));
+		System.out.println(hqmf.getTextOfValueInDataCriteria("LaboratoryTestResultLdlCTest_precondition_64"));
 		System.out.println(hqmf.getDataCriteriaInfo("LaboratoryTestResultLdlCTest_precondition_64", "value"));
 	}
 

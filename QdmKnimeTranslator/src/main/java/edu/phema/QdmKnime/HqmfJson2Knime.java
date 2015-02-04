@@ -9,16 +9,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 
 import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 
 import edu.phema.QdmKnimeInterfaces.ConnectionInterface;
 import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.QdmDataElementInterface;
+import edu.phema.jaxb.ihe.svs.ConceptListType;
+import edu.phema.jaxb.ihe.svs.RetrieveValueSetResponseType;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 import edu.phema.readers.HqmfJson;
@@ -85,7 +89,7 @@ public class HqmfJson2Knime {
 			NodeInterface frontier = sourceElement; 
 			int frontierLevel = nodeLevels.get(frontier);   // for nodeLevels
 			if (! measure.typeOfValueInDataCriteria(dataCriteriaName).equals("")){
-				String text = measure.getDataCriteriaInfo(dataCriteriaName, "value");
+				String text = measure.getTextOfValueInDataCriteria(dataCriteriaName);
 				String columnType = "unknown";
 				Attribute attr_value = new Attribute(nodes.size());
 				nodes.add(attr_value);
@@ -97,16 +101,84 @@ public class HqmfJson2Knime {
 				nodeLevels.put(attr_value, ++ frontierLevel);
 				attr_value.setAttributeName("value");
 				if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("IVL_PQ")){
-					text = "value: " + measure.getTextOfValueIVL_PQInDataCriteria(dataCriteriaName);
 					columnType = "Double";
 					Double[] high_low = measure.getValueIVL_PQInDataCriteriaHL(dataCriteriaName);
 					attr_value.setMode_Comparison(high_low[0], high_low[1]);
 				} else if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("CD")){
 					columnType = "String";
+					ArrayList<String> codes = new ArrayList<String>();
+					ArrayList<String> displayNames = new ArrayList<String>();
+					HashMap<String, String> cd = measure.getValueCDInDataCriteria(dataCriteriaName);
+					String oid = cd.get("code_list_id");
+					String code = cd.get("code");
+					if (oid != null){
+						JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
+						codes.addAll(getCodes(returnedValueSet));
+						displayNames.addAll(getCodeDisplayNames(returnedValueSet));
+					} 
+					if (code != null){
+						codes.add(code);
+					}
+					ArrayList<String> allStrings = new ArrayList<String>();
+					allStrings.addAll(codes);
+					allStrings.addAll(displayNames);
+					String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
+					attr_value.setMode_textTool(regExp, false, false, true);
+
 				}
 				sourceElement.addQdmAttributes("value", columnType, text);
 				attr_value.setAnnotationText(text);
 				frontier = attr_value; 
+			}
+			
+			/*
+			 * field_values
+			 * */
+			for (String fieldName : measure.getDataCriteriaFieldsList(dataCriteriaName)){
+				String text = measure.getTextOfFieldValuesInDataCriteria(dataCriteriaName, fieldName);
+				String columnType = "unknown";
+				Attribute attr_value = new Attribute(nodes.size());
+				nodes.add(attr_value);
+				Connection conn = new Connection(conns.size());
+				conns.add(conn);
+				conn.setSource(frontier.getId(), 0);
+				conn.setDest(attr_value.getId(), 1);  // Port for native nodes start from 1
+				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
+				nodeLevels.put(attr_value, ++ frontierLevel);
+				attr_value.setAttributeName(fieldName);
+				if (measure.typeOfFieldValueInDataCriteria(dataCriteriaName, fieldName).equals("IVL_PQ")){
+					columnType = "Double";
+					Double[] high_low = measure.getFieldValues_IVL_PQInDataCriteriaHL(dataCriteriaName, fieldName);
+					attr_value.setMode_Comparison(high_low[0], high_low[1]);
+				} else if (measure.typeOfFieldValueInDataCriteria(dataCriteriaName, fieldName).equals("CD")){
+					columnType = "String";
+					ArrayList<String> codes = new ArrayList<String>();
+					ArrayList<String> displayNames = new ArrayList<String>();
+					HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
+					String oid = cd.get("code_list_id");
+					String code = cd.get("code");
+					if (oid != null){
+						JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
+						codes.addAll(getCodes(returnedValueSet));
+						displayNames.addAll(getCodeDisplayNames(returnedValueSet));
+					} 
+					if (code != null){
+						codes.add(code);
+					}
+					ArrayList<String> allStrings = new ArrayList<String>();
+					allStrings.addAll(codes);
+					allStrings.addAll(displayNames);
+					String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
+					attr_value.setMode_textTool(regExp, false, false, true);
+				}
+				sourceElement.addQdmAttributes(fieldName, columnType, text);
+				attr_value.setAnnotationText(text);
+				frontier = attr_value; 
+				
+				/*
+				 * temporal_references
+				 * */
+				
 			}
 			dataCriteriaNodes.put(dataCriteriaName, frontier);
 		}
@@ -127,8 +199,8 @@ public class HqmfJson2Knime {
 			ArrayList<NodeInterface> column = nodesTable.get(i);
 			for (int j = 0; j < column.size(); j ++){
 				NodeInterface node = column.get(j);
-				node.setX(200 * (i + 1));
-				node.setY(100 * (j + 1));
+				node.setX(300 * (i + 1));
+				node.setY(150 * (j + 1));
 			}
 		}
 		
@@ -143,6 +215,38 @@ public class HqmfJson2Knime {
 		}
 	}
 
+	private static ArrayList<String> getCodeDisplayNames(JAXBElement<RetrieveValueSetResponseType> vsacXmlJaxb){
+		ArrayList<String> re = new ArrayList<String>();
+		
+		for(int i = 0; 
+				i < vsacXmlJaxb.getValue().getValueSet().getConceptList().size(); 
+				i++){
+			ConceptListType concepts = 
+					vsacXmlJaxb.getValue().getValueSet().getConceptList().get(i);
+			for (int j = 0; j < concepts.getConcept().size(); j ++){
+				re.add(concepts.getConcept().get(j).getDisplayName());
+			}
+		}
+		return re;
+	}
+	
+	private static ArrayList<String> getCodes(JAXBElement<RetrieveValueSetResponseType> vsacXmlJaxb){
+		ArrayList<String> re = new ArrayList<String>();
+		
+		for(int i = 0; 
+				i < vsacXmlJaxb.getValue().getValueSet().getConceptList().size(); 
+				i++){
+			ConceptListType concepts = 
+					vsacXmlJaxb.getValue().getValueSet().getConceptList().get(i);
+			for (int j = 0; j < concepts.getConcept().size(); j ++){
+				re.add(concepts.getConcept().get(j).getCode());
+			}
+		}
+		return re;
+	}
+
+	
+	
 	/**
 	 * @param args
 	 * @throws IOException 
