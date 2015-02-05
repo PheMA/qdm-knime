@@ -15,6 +15,7 @@ import java.util.HashMap;
 
 import javax.xml.rpc.ServiceException;
 
+import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface.Unit;
 import edu.phema.jaxb.knime.Config;
 import edu.phema.jaxb.knime.Entry;
 import edu.phema.jaxb.knime.EntryType;
@@ -167,5 +168,21 @@ public class Toolkit {
 		inConfig.getEntryOrConfig().add(cred);
 		
 	}
+	
+	public static Unit timeUnits(String s) {
+		Unit u;
+		switch (s) {
+		case "s": u = Unit.seconds; break;
+		case "min": u = Unit.minutes; break;
+		case "h": u = Unit.hours; break;
+		case "d": u = Unit.days; break;
+		case "wk": u = Unit.weeks; break;
+		case "mo": u = Unit.months; break;
+		case "a": u = Unit.years; break;
+		default: throw new IndexOutOfBoundsException("Unknown time unit " + s);
+		}
+		return u;
+	}
+
 	
 }

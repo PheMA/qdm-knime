@@ -417,7 +417,7 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 				
 			} catch (IllegalArgumentException e){ // don't repeatly print same error
 				if (! unknownSystem.equals(cd.getCodeSystemName())){
-					System.err.println("Unknown codeSystem " + cd.getCodeSystem());
+					// System.err.println("Unknown codeSystem " + cd.getCodeSystem());
 				}
 				unknownSystem = cd.getCodeSystem();
 			}

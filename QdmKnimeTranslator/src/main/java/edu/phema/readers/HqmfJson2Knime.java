@@ -1,11 +1,12 @@
 /**
  * 
  */
-package edu.phema.QdmKnime;
+package edu.phema.readers;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,15 +18,26 @@ import net.lingala.zip4j.exception.ZipException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import edu.phema.QdmKnime.Attribute;
+import edu.phema.QdmKnime.Connection;
+import edu.phema.QdmKnime.KnimeProject;
+import edu.phema.QdmKnime.MeasurePeriod;
+import edu.phema.QdmKnime.QdmDataElement;
+import edu.phema.QdmKnime.TemporalRelationship;
+import edu.phema.QdmKnime.Toolkit;
 import edu.phema.QdmKnimeInterfaces.ConnectionInterface;
 import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.QdmDataElementInterface;
+import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface;
+import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface.Operator;
+import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface.TemporalTypeCode;
+import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface.Unit;
 import edu.phema.jaxb.ihe.svs.ConceptListType;
 import edu.phema.jaxb.ihe.svs.RetrieveValueSetResponseType;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
-import edu.phema.readers.HqmfJson;
 import edu.phema.vsac.VsacConnector;
 
 /**
@@ -46,15 +58,21 @@ public class HqmfJson2Knime {
 	}
 	
 	public void translate(Path hqmfJsonPath, Path outputPath) 
-			throws IOException, JSONException, WrittenAlreadyException, SetUpIncompleteException {
+			throws IOException, JSONException, WrittenAlreadyException, SetUpIncompleteException, ParseException {
 		String jsonDoc = Toolkit.readFile(hqmfJsonPath.toString());
-		HqmfJson measure = new HqmfJson(jsonDoc);
-		KnimeProject kProject = new KnimeProject(outputPath.getParent(), outputPath.getFileName().toString());
-		ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface>();  // the index will the knime id
-		ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
-		HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
-		HashMap <NodeInterface, Integer> nodeLevels = new HashMap <NodeInterface, Integer> (); // Start with 0
-		HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
+		final HqmfJson measure = new HqmfJson(jsonDoc);
+		final KnimeProject kProject = new KnimeProject(outputPath.getParent(), outputPath.getFileName().toString());
+		final ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface>();  // the index will the knime id
+		final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
+		final HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
+		// HashMap <NodeInterface, Integer> nodeLevels = new HashMap <NodeInterface, Integer> (); // Start with 0
+		final HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
+		final HashMap <TemporalRelationshipInterface, String> rightSideOfTemporals = 
+				new HashMap <TemporalRelationshipInterface, String>();
+		/*
+		 * nodeTrace is to count level of the nodes to make nodes graphically better arranged.
+		 * */
+		final HashMap<NodeInterface, NodeInterface> nodeTrace = new HashMap<NodeInterface, NodeInterface>(); 
 		
 		/*
 		 * Measure Period object need to be created and linked to sourceDataCriteria every time it is used
@@ -67,7 +85,7 @@ public class HqmfJson2Knime {
 			QdmDataElement element = new QdmDataElement(nodes.size());
 			nodes.add(element);
 			sourceDataCriteriaNodes.put(sourceDataCriteriaName, element);
-			nodeLevels.put(element, new Integer(0));
+			// nodeLevels.put(element, new Integer(0));
 			String description = measure.getSourceDataCriteriaInfo(sourceDataCriteriaName, "description");
 			element.setQdmDataElementText(description);
 			int endTypeIndex = description.matches(":") ? description.indexOf(":") - 1 : description.length() - 1;
@@ -87,7 +105,7 @@ public class HqmfJson2Knime {
 			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(
 					measure.getDataCriteriaInfo(dataCriteriaName, "source_data_criteria"));
 			NodeInterface frontier = sourceElement; 
-			int frontierLevel = nodeLevels.get(frontier);   // for nodeLevels
+			// int frontierLevel = nodeLevels.get(frontier);   // for nodeLevels
 			if (! measure.typeOfValueInDataCriteria(dataCriteriaName).equals("")){
 				String text = measure.getTextOfValueInDataCriteria(dataCriteriaName);
 				String columnType = "unknown";
@@ -95,10 +113,10 @@ public class HqmfJson2Knime {
 				nodes.add(attr_value);
 				Connection conn = new Connection(conns.size());
 				conns.add(conn);
-				conn.setSource(frontier.getId(), 0);
+				conn.setSource(frontier.getId(), frontier.getGoodOutPorts()[0]);
 				conn.setDest(attr_value.getId(), 1);  // Port for native nodes start from 1
 				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
-				nodeLevels.put(attr_value, ++ frontierLevel);
+				nodeTrace.put(attr_value, frontier);
 				attr_value.setAttributeName("value");
 				if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("IVL_PQ")){
 					columnType = "Double";
@@ -141,10 +159,10 @@ public class HqmfJson2Knime {
 				nodes.add(attr_value);
 				Connection conn = new Connection(conns.size());
 				conns.add(conn);
-				conn.setSource(frontier.getId(), 0);
+				conn.setSource(frontier.getId(), frontier.getGoodOutPorts()[0]);
 				conn.setDest(attr_value.getId(), 1);  // Port for native nodes start from 1
 				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
-				nodeLevels.put(attr_value, ++ frontierLevel);
+				nodeTrace.put(attr_value, frontier);
 				attr_value.setAttributeName(fieldName);
 				if (measure.typeOfFieldValueInDataCriteria(dataCriteriaName, fieldName).equals("IVL_PQ")){
 					columnType = "Double";
@@ -175,24 +193,108 @@ public class HqmfJson2Knime {
 				attr_value.setAnnotationText(text);
 				frontier = attr_value; 
 				
-				/*
-				 * temporal_references
-				 * */
 				
+			}
+			/*
+			 * temporal_references
+			 * */
+			int numberOfTemporals = measure.getNumberOfTemporalRefsInDataCriteria(dataCriteriaName);
+			//System.err.println(dataCriteriaName + " Numbers of temporals: " + numberOfTemporals);
+			/*
+			 * Temporal Step 1: make temporal nodes, and connect the left side, update trace
+			 * */
+			if (numberOfTemporals > 0) {
+				HashMap <String, String> temporalReference = 
+						measure.getTemporalRefInDataCritieria(dataCriteriaName, 0);
+				String typeString = temporalReference.get("type");
+				String referenceString = temporalReference.get("reference");
+				TemporalTypeCode typeEnum = TemporalTypeCode.SBS;
+				try{
+					typeEnum = Enum.valueOf(TemporalTypeCode.class, typeString);
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+					System.err.println("Unrecognized temporal reference "
+							+ typeString + " at " + dataCriteriaName);
+					System.err.println("Please look at the SBS node. ");
+				}
+				
+				TemporalRelationship temporalNode = new TemporalRelationship(
+						nodes.size(), typeEnum);
+				nodes.add(temporalNode);
+				temporalNode.setLeftId(frontier.getId());
+				JSONObject ivlPq = measure.getTemporalRange_IVL_PQInDataCritieria(dataCriteriaName, 0);
+				if (ivlPq != null){
+					ivlPqInTemporal(ivlPq, temporalNode);
+				}
+				
+				Connection connLeft = new Connection(conns.size());
+				int connLeftSourcePort = frontier.getGoodOutPorts()[0];
+				connLeft.setSource(frontier.getId(), connLeftSourcePort);
+				connLeft.setDest(temporalNode.getId(), 0);
+				conns.add(connLeft);
+				nodeTrace.put(temporalNode, frontier);
+				if (referenceString.equals("MeasurePeriod")){
+					MeasurePeriod measurePeriodNode = new MeasurePeriod(
+								nodes.size(), measureStart, measureEnd);
+					nodes.add(measurePeriodNode);
+					Connection connMeasurePeriodIn = new Connection(conns.size());
+					conns.add(connMeasurePeriodIn);
+					connMeasurePeriodIn.setSource(frontier.getId(), connLeftSourcePort);
+					connMeasurePeriodIn.setDest(measurePeriodNode.getId(), 0);
+					nodeTrace.put(measurePeriodNode, frontier);
+					Connection connMeasurePeriodOut = new Connection(conns.size());
+					conns.add(connMeasurePeriodOut);
+					connMeasurePeriodOut.setSource(measurePeriodNode.getId(), measurePeriodNode.getGoodOutPorts()[0]);
+					connMeasurePeriodOut.setDest(temporalNode.getId(), 1);
+					temporalNode.setRightId(frontier.getOutputElementId(connLeftSourcePort));
+					nodeTrace.put(temporalNode, measurePeriodNode);
+				} else {
+					rightSideOfTemporals.put(temporalNode, referenceString);
+				}
+				frontier = temporalNode;
 			}
 			dataCriteriaNodes.put(dataCriteriaName, frontier);
 		}
+		
+		/*
+		 * Temporal Step 2: after all the data criteria nodes are created, add the right side of the
+		 * temporal nodes
+		 * When build nodeTrace, select the highest level source. 
+		 * */
+		
+		for (TemporalRelationshipInterface temporalNode : 
+			rightSideOfTemporals.keySet()
+			.toArray(new TemporalRelationshipInterface[rightSideOfTemporals.size()])) {
+			String referenceString = rightSideOfTemporals.get(temporalNode);
+			//System.err.println(referenceString);
+			NodeInterface rightNode = dataCriteriaNodes.get(referenceString);
+			if (rightNode != null) {
+				Connection connRight = new Connection (conns.size());
+				conns.add(connRight);
+				int connRightSourcePort = rightNode.getGoodOutPorts()[0];
+				connRight.setSource(rightNode.getId(), connRightSourcePort);
+				connRight.setDest(temporalNode.getId(), 1);
+				temporalNode.setRightId(rightNode.getOutputElementId(rightNode.getGoodOutPorts()[0]));
+				int leftLevel = getNodeLevel(nodeTrace.get(temporalNode), nodeTrace);
+				int rightLevel = getNodeLevel(rightNode, nodeTrace);
+				if (rightLevel > leftLevel){
+					nodeTrace.put(temporalNode, rightNode);
+				}
+			}
+		}
+		
 		
 		ArrayList<ArrayList<NodeInterface>> nodesTable = new ArrayList<ArrayList<NodeInterface>> ();
 		for (NodeInterface node : nodes){
 			/*
 			 * Initiate columns
 			 * */
-			for (int i = nodesTable.size(); i <= nodeLevels.get(node).intValue(); i ++){
+			int nodeLevel = getNodeLevel(node, nodeTrace); 
+			for (int i = nodesTable.size(); i <= nodeLevel; i ++){
 				nodesTable.add(new ArrayList<NodeInterface>());
 			}
 			
-			nodesTable.get(nodeLevels.get(node).intValue()).add(node);
+			nodesTable.get(nodeLevel).add(node);
 		}
 		
 		for (int i = 0; i < nodesTable.size(); i ++){
@@ -215,6 +317,42 @@ public class HqmfJson2Knime {
 		}
 	}
 
+	private static void ivlPqInTemporal (JSONObject ivl_pq, TemporalRelationshipInterface temporalNode) throws JSONException{
+		JSONObject pq = null;
+		if (ivl_pq.has("high")){
+			pq = ivl_pq.getJSONObject("high");
+			if (pq.getBoolean("inclusive?")){
+				temporalNode.setOperator(Operator.lessThanOrEqualTo);
+			} else {
+				temporalNode.setOperator(Operator.lessThan);
+			}
+			
+			
+		} else if (ivl_pq.has("low")){
+			pq = ivl_pq.getJSONObject("low");
+			if (pq.getBoolean("inclusive?")){
+				temporalNode.setOperator(Operator.greaterThanOrEqualTo);
+			} else {
+				temporalNode.setOperator(Operator.greaterThan);
+			}
+			
+		} 
+		if (pq != null) {
+			try {
+				
+				temporalNode.setQuantity(Integer.valueOf(pq.getString("value")));
+				
+				Unit unitEnum = Toolkit.timeUnits(pq.getString("unit"));
+				
+				temporalNode.setUnit(unitEnum);
+			} catch (IndexOutOfBoundsException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
 	private static ArrayList<String> getCodeDisplayNames(JAXBElement<RetrieveValueSetResponseType> vsacXmlJaxb){
 		ArrayList<String> re = new ArrayList<String>();
 		
@@ -245,14 +383,25 @@ public class HqmfJson2Knime {
 		return re;
 	}
 
-	
+	private static int getNodeLevel (NodeInterface node, HashMap <NodeInterface, NodeInterface> nodeTrace){
+		int nodeLevel = 0;
+		for (NodeInterface current = node; 
+				nodeTrace.containsKey(current); 
+				current = nodeTrace.get(current)){
+			nodeLevel ++;
+		}
+		return nodeLevel;
+	}
 	
 	/**
 	 * @param args
 	 * @throws IOException 
 	 * @throws JSONException 
+	 * @throws ParseException 
+	 * @throws SetUpIncompleteException 
+	 * @throws WrittenAlreadyException 
 	 */
-	public static void main(String[] args) throws IOException, JSONException {
+	public static void main(String[] args) throws IOException, JSONException, WrittenAlreadyException, SetUpIncompleteException, ParseException {
 		// TODO Auto-generated method stub
 		Path hqmfJsonFile = Paths.get("src/test/resources/cypress-bundle-latest/sources/eh/CMS30v4/hqmf_model.json");
 		Path outputDir = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS30v4");

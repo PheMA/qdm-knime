@@ -235,7 +235,7 @@ public class Attribute implements NodeInterface {
 	@Override
 	public int[] getGoodOutPorts() {
 		// TODO Auto-generated method stub
-		return new int[] {0};
+		return new int[] {1};
 	}
 
 	/* (non-Javadoc)
