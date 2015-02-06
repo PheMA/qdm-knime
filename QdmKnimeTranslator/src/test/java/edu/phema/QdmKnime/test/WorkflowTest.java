@@ -149,27 +149,27 @@ public class WorkflowTest {
 		int connAId = newConnection();
 		Connection connA = new Connection(connAId);
 		project.addKnimeConnection(connA);
-		connA.setSource(nodeA.getId(), 1);
-		connA.setDest(nodeB.getId(), 1);
+		connA.setSource(nodeA, 1);
+		connA.setDest(nodeB, 1);
 //		connA.addBendpoint(100, 100);
 		
 		int connBId = newConnection();
 		Connection connB = new Connection(connBId);
 		project.addKnimeConnection(connB);
-		connB.setSource(nodeAId, 1);
-		connB.setDest(nodeCId, 1);
+		connB.setSource(nodeA, 1);
+		connB.setDest(nodeC, 1);
 
 		int connCId = newConnection();
 		Connection connC = new Connection(connCId);
 		project.addKnimeConnection(connC);
-		connC.setSource(nodeD.getId(), 0);
-		connC.setDest(nodeA.getId(), 0);
+		connC.setSource(nodeD, 0);
+		connC.setDest(nodeA, 0);
 		
 		int connDId = newConnection();
 		Connection connD = new Connection(connDId);
 		project.addKnimeConnection(connD);
-		connD.setSource(nodeE.getId(), 0);
-		connD.setDest(nodeF.getId(), 1);
+		connD.setSource(nodeE, 0);
+		connD.setDest(nodeF, 1);
 		
 		
 		

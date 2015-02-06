@@ -7,8 +7,10 @@ import edu.phema.jaxb.knime.ObjectFactory;
 
 public interface ConnectionInterface {
 	void setId (int id);
-	void setSource (int sourceID, int port);
-	void setDest (int destID, int port);
+	void setSource (NodeInterface source, int port);
+	void setDest (NodeInterface dest, int port);
+	NodeInterface getSource();
+	NodeInterface getDest();
 
 	void addBendpoint (int x, int y);   // from source to destiny 
 	Point[] getBendpoins();

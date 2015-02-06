@@ -5,6 +5,7 @@ package edu.phema.QdmKnime;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,6 +30,8 @@ import edu.phema.knime.exceptions.WrittenAlreadyException;
  *
  */
 public class KnimeProject {
+	
+	public boolean SET_UP_LAYOUT = false;
 
 	private final Path workingDir;
 	
@@ -89,9 +92,74 @@ public class KnimeProject {
 		return workingDir.resolve(projectName + ".zip");
 	}
 	
+	private static int getNodeLevel (NodeInterface node, HashMap <NodeInterface, NodeInterface> nodeTrace){
+		int nodeLevel = 0;
+		for (NodeInterface current = node; 
+				nodeTrace.containsKey(current); 
+				current = nodeTrace.get(current)){
+			nodeLevel ++;
+		}
+		return nodeLevel;
+	}
+
+	
 	public synchronized void buildProject() 
 			throws WrittenAlreadyException, SetUpIncompleteException, 
 			IOException, ZipException, JAXBException {
+		
+		/*
+		 * nodeTrace is to count level of the nodes to make nodes graphically better arranged.
+		 * */
+		if (SET_UP_LAYOUT) {
+			/*
+			 * Build nodeTrace
+			 * */
+			HashMap<NodeInterface, NodeInterface> nodeTrace = 
+					new HashMap<NodeInterface, NodeInterface>(); // destNode -> sourceNode
+			for (ConnectionInterface conn : knimeConnections){
+				NodeInterface sourceNode = conn.getSource();
+				NodeInterface destNode = conn.getDest();
+				NodeInterface previousSource = nodeTrace.get(destNode);
+				/*
+				 * A node should be located at its highest level
+				 * */
+				if (previousSource == null || 
+						getNodeLevel(sourceNode, nodeTrace) > getNodeLevel(previousSource, nodeTrace)){
+					nodeTrace.put(destNode, sourceNode);
+				} 
+			}
+			
+			/*
+			 * Use a table to order the nodes in x and y axises.
+			 * */
+			ArrayList<ArrayList<NodeInterface>> nodesTable = new ArrayList<ArrayList<NodeInterface>> ();
+			for (NodeInterface node : knimeNodes){
+				/*
+				 * Initiate columns
+				 * */
+				int nodeLevel = getNodeLevel(node, nodeTrace); 
+				for (int i = nodesTable.size(); i <= nodeLevel; i ++){
+					nodesTable.add(new ArrayList<NodeInterface>());
+				}
+				
+				nodesTable.get(nodeLevel).add(node);
+			}
+			
+			
+			/*
+			 * Assign physical location (x, y) of each nodes. 
+			 * */
+			for (int i = 0; i < nodesTable.size(); i ++){
+				ArrayList<NodeInterface> column = nodesTable.get(i);
+				for (int j = 0; j < column.size(); j ++){
+					NodeInterface node = column.get(j);
+					node.setX(300 * (i + 1));
+					node.setY(150 * (j + 1));
+				}
+			}
+			
+		}
+		
 		Config nodesConfig = elementFactory.createConfig();
 		nodesConfig.setKey("nodes");
 		rootConfig.getEntryOrConfig().add(nodesConfig);

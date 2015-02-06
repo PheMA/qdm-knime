@@ -19,6 +19,7 @@ import org.apache.commons.io.FileUtils;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import edu.phema.QdmKnimeInterfaces.LogicalRelationshipInterface;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 
@@ -397,5 +398,25 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		
 	}
 
+	public static int[] findGoodPortPair(NodeInterface leftNode, NodeInterface rightNode){
+		int[] re = new int[2];
+		int[] leftPorts = leftNode.getGoodOutPorts();
+		int[] rightPorts = rightNode.getGoodOutPorts();
+		re[0] = leftPorts[0];
+		re[1] = rightPorts[0];
+		boolean found = false;
+		for (int i = 0; i < leftPorts.length && ! found; i++){
+			for (int j = 0; j < rightPorts.length && ! found; j++){
+				if (leftNode.getOutputElementId(leftPorts[i]) == 
+						rightNode.getOutputElementId(rightPorts[j])){
+					re[0] = leftPorts[i];
+					re[1] = rightPorts[j];
+					found = true;
+				}
+			}
+		}
+		
+		return re;
+	}
 
 }

@@ -245,7 +245,7 @@ public class Attribute implements NodeInterface {
 	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
 		int ret = Integer.MIN_VALUE;
-		if (port == 0)
+		if (port == 1)
 			ret = resourceElementId;
 		else throw new IndexOutOfBoundsException();
 		return ret;

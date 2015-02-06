@@ -30,6 +30,9 @@ public class HqmfJson {
 	 */
 	
 	final private JSONObject rootJsonObject;
+	
+	final private ArrayList<JSONObject> jsonObjRegistry = new ArrayList<JSONObject>();
+	
 //	final String id;
 //	final String hqmf_id;
 //	final String hqmf_set_id;
@@ -43,6 +46,11 @@ public class HqmfJson {
 		rootJsonObject = new JSONObject(hqmfJsonString);
 	}
 	
+	private int registerJsonObject(JSONObject obj) {
+		int re = jsonObjRegistry.size();
+		jsonObjRegistry.add(obj);
+		return re;
+	}
 	
 	/*
 	 * id, hqmf_id, hqmf_set_id, hqmf_version_number
@@ -60,21 +68,116 @@ public class HqmfJson {
 		return re;
 	}
 
+	public String getStringValue(int jsonReg, String key){
+		String re = null;
+		JSONObject obj = jsonObjRegistry.get(jsonReg);
+		if (obj.has(key)){
+			try {
+				re = obj.getString(key);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return re;
+	}
+	
+	public Boolean getBooleanValue(int jsonReg, String key){
+		Boolean re = null;
+		JSONObject obj = jsonObjRegistry.get(jsonReg);
+		if (obj.has(key)){
+			try {
+				re = Boolean.valueOf(obj.getBoolean(key));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return re;
+	}
+	
+	public Boolean getBooleanValue(Integer jsonReg, String key){
+		return this.getBooleanValue(jsonReg.intValue(), key);
+	}
+	
+	public String getStringValue(Integer jsonReg, String key){
+		return getStringValue(jsonReg.intValue(), key);
+	}
+
+	public int getJsonObjectRegistry(int parentJsonReg, String key){
+		int re = Integer.MIN_VALUE;
+		JSONObject parent = jsonObjRegistry.get(parentJsonReg);
+		try {
+			re = this.registerJsonObject(parent.getJSONObject(key));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return re;
+	}
+	
+	public int getJsonObjectRegistry(Integer parentJsonReg, String key){
+		return getJsonObjectRegistry(parentJsonReg.intValue(), key);
+	}
+	
+	public int[] getJsonArrayRegistries (int parentJson, String key) {
+		JSONObject parent = jsonObjRegistry.get(parentJson);
+		int[] re = null;
+		if (parent.has(key)){
+			try {
+				JSONArray children = parent.getJSONArray(key);
+				int size = children.length();
+				re = new int[size];
+				for (int i = 0; i < size; i ++){
+					JSONObject child = children.getJSONObject(i);
+					re[i] = this.registerJsonObject(child);
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return re;
+	}
+	
+	public int[] getJsonArrayRegestries(Integer parentJsonReg, String key){
+		return this.getJsonArrayRegistries(parentJsonReg.intValue(), key);
+	}
 	
 	/*
 	 * Order is not preserved
 	 * */
-	public String[] getPopulationList() {
-		String [] re = new String[] {};
+	public HashMap<String, String> getPopulationsList() {
+		HashMap <String, String> re = new HashMap <String, String>();
 		try{
-			JSONArray populationsArray = rootJsonObject.getJSONArray("populations");
+			JSONArray populationsArray = rootJsonObject.getJSONArray("population_criteria");
 			JSONObject populationsMap = populationsArray.getJSONObject(0);
-			re = JSONObject.getNames(populationsMap);
+			String[] keys = JSONObject.getNames(populationsMap);
+			for (String key : keys){
+				re.put(key, populationsMap.getString(key));
+			}
 		} catch(JSONException e){
 			e.printStackTrace();
 		}
 		
 		return re;		
+	}
+	
+	public HashMap <String, Integer> getPopulationCriteriaAccesses (){
+		HashMap<String, Integer> re = new HashMap<String, Integer> ();
+		try {
+			JSONObject populationCriteria = rootJsonObject.getJSONObject("population_criteria");
+			String[] pops = JSONObject.getNames(populationCriteria);
+			for (String pop : pops) {
+				re.put(pop, this.registerJsonObject(populationCriteria.getJSONObject(pop)));
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return re;
 	}
 	
 	public String[] getSourceDataCrtieriaList(){
@@ -439,7 +542,7 @@ public class HqmfJson {
 		HqmfJson hqmf = new HqmfJson(jsonString);
 		System.out.println(hqmf.getInfo("id"));
 		System.out.println(hqmf.getInfo("cms_id"));
-		System.out.println(hqmf.getPopulationList()[0]);
+		System.out.println(hqmf.getPopulationsList().toString());
 		System.out.println(hqmf.getMeasureStartDatetime());
 		System.out.println(hqmf.getSourceDataCriteriaInfo("LaboratoryTestResultLdlCTest", "negation"));
 		System.out.println(hqmf.getTextOfValueInDataCriteria("LaboratoryTestResultLdlCTest_precondition_64"));

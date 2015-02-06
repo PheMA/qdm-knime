@@ -14,9 +14,13 @@ import javax.xml.bind.Marshaller;
 //import javax.xml.namespace.QName;
 
 
+
+
 import org.junit.Test;
 
 import edu.phema.QdmKnime.Connection;
+import edu.phema.QdmKnime.LogicalOperator;
+import edu.phema.QdmKnimeInterfaces.LogicalRelationshipInterface.LogicalTypeCode;
 import edu.phema.jaxb.knime.ObjectFactory;
 
 /**
@@ -31,8 +35,8 @@ public class ConnectionTest {
 		ObjectFactory elementFactory = new ObjectFactory();
 		Connection conn = new Connection();
 		conn.setId(2);
-		conn.setSource(-1, 0);
-		conn.setDest(61, 1);
+		conn.setSource(new LogicalOperator (0, LogicalTypeCode.AND), 0);
+		conn.setDest(new LogicalOperator (0, LogicalTypeCode.OR), 1);
 		conn.addBendpoint(178, 95);
 		conn.addBendpoint(578, 95);
 		

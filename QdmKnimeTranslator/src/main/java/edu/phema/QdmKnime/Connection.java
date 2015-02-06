@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import edu.phema.QdmKnimeInterfaces.ConnectionInterface;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.jaxb.knime.Config;
 import edu.phema.jaxb.knime.Entry;
 import edu.phema.jaxb.knime.EntryType;
@@ -23,9 +24,9 @@ public class Connection implements ConnectionInterface {
 	 */
 	
 	private ArrayList <Point> bendpoints = new ArrayList<Point>();
-	private int sourceID;
+	private NodeInterface source;
 	private int sourcePort;
-	private int destID;
+	private NodeInterface dest;
 	private int destPort;
 	private int id;
 	
@@ -50,9 +51,9 @@ public class Connection implements ConnectionInterface {
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.ConnectionInterface#setSource(int, int)
 	 */
 	@Override
-	public void setSource(int sourceID, int port) {
+	public void setSource(NodeInterface source, int port) {
 		// TODO Auto-generated method stub
-		this.sourceID = sourceID;
+		this.source = source;
 		this.sourcePort = port;
 	}
 
@@ -60,9 +61,9 @@ public class Connection implements ConnectionInterface {
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.ConnectionInterface#setDest(int, int)
 	 */
 	@Override
-	public void setDest(int destID, int port) {
+	public void setDest(NodeInterface dest, int port) {
 		// TODO Auto-generated method stub
-		this.destID = destID;
+		this.dest = dest;
 		this.destPort = port;
 	}
 
@@ -98,13 +99,13 @@ public class Connection implements ConnectionInterface {
 		Entry entrySourceID = elementFactory.createEntry();
 		entrySourceID.setKey("sourceID");
 		entrySourceID.setType(EntryType.XINT);
-		entrySourceID.setValue(String.valueOf(sourceID));		
+		entrySourceID.setValue(String.valueOf(source.getId()));		
 		connectionXml.getEntryOrConfig().add(entrySourceID);
 		
 		Entry entryDestID = elementFactory.createEntry();
 		entryDestID.setKey("destID");
 		entryDestID.setType(EntryType.XINT);
-		entryDestID.setValue(String.valueOf(destID));		
+		entryDestID.setValue(String.valueOf(dest.getId()));		
 		connectionXml.getEntryOrConfig().add(entryDestID);
 
 		Entry entrySourcePort = elementFactory.createEntry();
@@ -167,6 +168,18 @@ public class Connection implements ConnectionInterface {
 		}
 		
 		return connectionXml;
+	}
+
+	@Override
+	public NodeInterface getSource() {
+		// TODO Auto-generated method stub
+		return source;
+	}
+
+	@Override
+	public NodeInterface getDest() {
+		// TODO Auto-generated method stub
+		return dest;
 	}
 
 }
