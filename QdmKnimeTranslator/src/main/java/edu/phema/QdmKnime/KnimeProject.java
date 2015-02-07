@@ -43,9 +43,9 @@ public class KnimeProject {
 	
 	private final JAXBElement<Config> jaxbRoot = elementFactory.createConfig(rootConfig);
 	
-	public final ArrayList<NodeInterface> knimeNodes = new ArrayList<NodeInterface>();
+	private final ArrayList<NodeInterface> knimeNodes = new ArrayList<NodeInterface>();
 	
-	public final ArrayList<ConnectionInterface> knimeConnections = new ArrayList<ConnectionInterface>();
+	private final ArrayList<ConnectionInterface> knimeConnections = new ArrayList<ConnectionInterface>();
 	
 	/**
 	 * @throws IOException 
@@ -65,19 +65,27 @@ public class KnimeProject {
 	}
 
 	public synchronized void addKnimeNode (NodeInterface node){
+		node.setId(knimeNodes.size());
 		knimeNodes.add(node);
 	}
 	
 	public synchronized void addKnimeNodes (ArrayList<NodeInterface> nodes){
-		knimeNodes.addAll(nodes);
+		for (NodeInterface node : nodes){
+			node.setId(knimeNodes.size());
+			knimeNodes.add(node);
+		}
 	}
 	
 	public synchronized void addKnimeConnection (ConnectionInterface connection){
+		connection.setId(knimeConnections.size());
 		knimeConnections.add(connection);
 	}
 	
 	public synchronized void addKnimeConnections (ArrayList<ConnectionInterface> connections){
-		knimeConnections.addAll(connections);
+		for (ConnectionInterface conn : connections){
+			conn.setId(knimeConnections.size());
+			knimeConnections.add(conn);
+		}
 	}
 	
 	public synchronized Path getProjectDir(){

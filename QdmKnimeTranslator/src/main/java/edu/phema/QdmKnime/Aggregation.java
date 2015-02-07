@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import edu.phema.QdmKnimeInterfaces.AggregationInterface;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 
@@ -31,11 +32,11 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 	String nodeText = "";
 	String groupByNodeText = "";
 	String filterNodeText = "";
-	String folderName = "Aggregative";
+//	String folderName = "Aggregative";
 	final int numberOfInPorts = 1;
 	final int numberOfOutPorts = 1;
 	
-	int inputElementId = super.getId(); 
+	NodeInterface inputElement = this; 
 	
 	public Aggregation() {
 		// TODO Auto-generated constructor stub
@@ -44,21 +45,21 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 	/**
 	 * @param id
 	 */
-	public Aggregation(int id) {
-		super(id);
-		folderName = this.m_makeFolderName();
+//	public Aggregation(int id) {
+//		super(id);
+//		folderName = this.m_makeFolderName();
 		// TODO Auto-generated constructor stub
-	}
+//	}
 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#setInputElementId(int, int)
 	 */
 	@Override
-	public void setInputElementId(int port, int elementId)
+	public void setInputElement(int port, NodeInterface node)
 			throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
 		if (port == 0)
-			inputElementId = elementId;
+			inputElement = node;
 		else
 			throw new IndexOutOfBoundsException("Aggregation node " + this.getId() + " only have one input port. ");
 	}
@@ -67,27 +68,27 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#getOutputElementId(int)
 	 */
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		return inputElementId;
+		return inputElement;
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.AggregationInterface#setInputElementId(int)
 	 */
 	@Override
-	public void setInputElementId(int elementId) {
+	public void setInputElement(NodeInterface node) {
 		// TODO Auto-generated method stub
-		setInputElementId(0, elementId);
+		setInputElement(0, node);
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.phema.QdmKnimeInterfaces.AggregationInterface#getOutputElementId()
+	 * @see edu.phema.QdmKnimeInterfaces.AggregationInterface#getOutputElement()
 	 */
 	@Override
-	public int getOutputElementId() {
+	public NodeInterface getOutputElement() {
 		// TODO Auto-generated method stub
-		return getOutputElementId(0);
+		return getOutputElement(0);
 	}
 
 	/* (non-Javadoc)
@@ -131,7 +132,7 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 		String inZipFolderName = "AGGREGATION";
 		Path workflowRoot = super.getWorkflowRoot();
 		//folderName = m_makeFolderName();
-		Path nodeFolderPath = workflowRoot.resolve(folderName);
+		Path nodeFolderPath = workflowRoot.resolve(this.getFolderName());
 		if (nodeFolderPath.toFile().exists()) {
 			throw new WrittenAlreadyException(nodeFolderPath.toString() + " exists already! ");
 		}
@@ -245,13 +246,13 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 		return 1;
 	}
 
-	private synchronized String m_makeFolderName(){
-		String nameString = "Aggregative";
-		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
-		String fn = nameString.substring(0, Math.min(nameString.length(), 12))
-				+ " (#" + sn + ")"; 
-		return fn;
-	}
+//	private synchronized String m_makeFolderName(){
+//		String nameString = "Aggregative";
+//		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+//		String fn = nameString.substring(0, Math.min(nameString.length(), 12))
+//				+ " (#" + sn + ")"; 
+//		return fn;
+//	}
 
 	
 	/* (non-Javadoc)
@@ -269,7 +270,11 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 	@Override
 	public String getFolderName() {
 		// TODO Auto-generated method stub
-		return folderName;
+		String nameString = "Aggregative";
+		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+		String fn = nameString.substring(0, Math.min(nameString.length(), 12))
+				+ " (#" + sn + ")"; 
+		return fn;
 	}
 
 	/* (non-Javadoc)
@@ -281,13 +286,5 @@ public class Aggregation extends MetaNode implements AggregationInterface {
 		return new int[] {0};
 	}
 	
-	@Override
-	public void setId(int id){
-		if (inputElementId == super.getId()){
-			inputElementId = id;
-		}
-		super.setId(id);
-		folderName = this.m_makeFolderName();
-	}
 
 }

@@ -34,7 +34,7 @@ public class Attribute implements NodeInterface {
 	
 	private final Point nodeLocation = new Point(150, new Random().nextInt(500));
 	
-	private int resourceElementId = Integer.MIN_VALUE; 
+	private NodeInterface resourceElement = null; 
 	
 	private int nodeWidth = 130;
 	
@@ -60,18 +60,18 @@ public class Attribute implements NodeInterface {
 		}
 	}
 
-	public Attribute(int id) {
+//	public Attribute(int id) {
 		// TODO Auto-generated constructor stub
-		this.id = id;
-		try {
-			rowFilter = new RowFilter();
-			rowFilter.setAnnotationText("Attribute");
-		} catch (JAXBException | IOException e) {
+//		this.id = id;
+//		try {
+//			rowFilter = new RowFilter();
+//			rowFilter.setAnnotationText("Attribute");
+//		} catch (JAXBException | IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new RuntimeException("Cannot read template for row filter node. ");
-		}
-	}
+//			e.printStackTrace();
+//			throw new RuntimeException("Cannot read template for row filter node. ");
+//		}
+//	}
 	
 	public void setMode_isPresent(){
 		rowFilter.setMissingValuesMatch();
@@ -239,16 +239,21 @@ public class Attribute implements NodeInterface {
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#getOutputElementId(int)
+	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#getOutputElement(int)
 	 */
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) {
 		// TODO Auto-generated method stub
-		int ret = Integer.MIN_VALUE;
-		if (port == 1)
-			ret = resourceElementId;
-		else throw new IndexOutOfBoundsException();
-		return ret;
+		NodeInterface re = null;
+		
+		re = resourceElement;
+		return re;
+	}
+	
+	public NodeInterface getOutputElement(){
+		NodeInterface re = null;
+		re = this.getOutputElement(1);
+		return re;
 	}
 
 	/* (non-Javadoc)
@@ -325,11 +330,11 @@ public class Attribute implements NodeInterface {
 	}
 
 	@Override
-	public void setInputElementId(int port, int elementId)
+	public void setInputElement(int port, NodeInterface node)
 			throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
 		if (port == 0)
-			resourceElementId = elementId;
+			resourceElement = node;
 		else
 			throw new IndexOutOfBoundsException();
 			

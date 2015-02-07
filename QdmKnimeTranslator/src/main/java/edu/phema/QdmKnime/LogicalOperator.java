@@ -54,12 +54,12 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	// private int nodeWidth = 130;
 	// private int nodeHeight = 67;
 	
-	private int leftElementNodeId  = Integer.MIN_VALUE;
-	private int rightElementNodeId = Integer.MIN_VALUE;
+	private NodeInterface leftElementNode  = this;
+	private NodeInterface rightElementNode = this;
 	
 	private final ArrayList<m_OutPort> myOutPorts;   // Not sure if it is a good design
 	
-	private String folderName;   // end folder name for the node "AND (#3)", defined in method write
+	// private String folderName;   // end folder name for the node "AND (#3)", defined in method write
 	
 	private Path sourceFolder = Paths.get("src/main/resources/metaNodeRepos/logicalOperators");
 	
@@ -79,33 +79,22 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		super();
 		logic = typeCode;
 		myOutPorts = m_getOutPorts();
-		super.setX(300 + randMachine.nextInt(5) * 50);
-		super.setY(100 + randMachine.nextInt(5) * 25);
-		folderName = m_makeFolderName();  // #Unknown
+//		super.setX(300 + randMachine.nextInt(5) * 50);
+//		super.setY(100 + randMachine.nextInt(5) * 25);
+//		folderName = m_makeFolderName();  // #Unknown
 	}
 	
-	public LogicalOperator(int id, LogicalTypeCode typeCode){
-		super(id);
-		logic = typeCode;
-		myOutPorts = m_getOutPorts();
-		leftElementNodeId = id;
-		rightElementNodeId = id;
-		super.setX(300 + randMachine.nextInt(5) * 50);
-		super.setY(100 + randMachine.nextInt(5) * 25);
-		folderName = m_makeFolderName();
-	}
+//	public LogicalOperator(int id, LogicalTypeCode typeCode){
+//		super(id);
+//		logic = typeCode;
+//		myOutPorts = m_getOutPorts();
+//		leftElementNodeId = id;
+//		rightElementNodeId = id;
+//		super.setX(300 + randMachine.nextInt(5) * 50);
+//		super.setY(100 + randMachine.nextInt(5) * 25);
+//		folderName = m_makeFolderName();
+//	}
 
-	@Override
-	public synchronized void setId(int id){
-		super.setId(id);
-		folderName = m_makeFolderName();
-		if (leftElementNodeId == Integer.MIN_VALUE){
-			leftElementNodeId = id;
-		}
-		if (rightElementNodeId == Integer.MIN_VALUE){
-			rightElementNodeId = id;
-		}
-	}
 	
 	/* (non-Javadoc)
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.NodeInterface#setRoot(java.lang.String)
@@ -130,7 +119,7 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		
 		Path workflowRoot = super.getWorkflowRoot();
 		//folderName = m_makeFolderName();
-		Path nodeFolderPath = workflowRoot.resolve(folderName);
+		Path nodeFolderPath = workflowRoot.resolve(this.getFolderName());
 		if (nodeFolderPath.toFile().exists()) {
 			throw new WrittenAlreadyException(nodeFolderPath.toString() + " exists already! ");
 		}
@@ -217,13 +206,13 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		return name;
 	}
 	
-	private synchronized String m_makeFolderName(){
-		String logicName = logic.name();
-		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
-		String fn = logicName.substring(0, Math.min(logicName.length(), 12))
-				+ " (#" + sn + ")"; 
-		return fn;
-	}
+//	private synchronized String m_makeFolderName(){
+//		String logicName = logic.name();
+//		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+//		String fn = logicName.substring(0, Math.min(logicName.length(), 12))
+//				+ " (#" + sn + ")"; 
+//		return fn;
+//	}
 
 	
 	/* (non-Javadoc)
@@ -267,21 +256,21 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.LogicalRelationshipInterface#setLeftId(java.lang.String)
+	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.LogicalRelationshipInterface#setLeftElement(java.lang.String)
 	 */
 	@Override
-	public synchronized void setLeftId(int element_node_id) {
+	public synchronized void setLeftElement(NodeInterface node) {
 		// TODO Auto-generated method stub
-		leftElementNodeId = element_node_id;
+		leftElementNode = node;
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.LogicalRelationshipInterface#setRightId(java.lang.String)
+	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.LogicalRelationshipInterface#setRightElement(java.lang.String)
 	 */
 	@Override
-	public synchronized void setRightId(int element_node_id) {
+	public synchronized void setRightElement(NodeInterface node) {
 		// TODO Auto-generated method stub
-		rightElementNodeId = element_node_id;
+		rightElementNode = node;
 	}
 	
 	
@@ -298,9 +287,9 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.LogicalRelationshipInterface#getOutputElementId(int)
 	 */
 	@Override
-	public synchronized int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public synchronized NodeInterface getOutputElement(int port) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		return myOutPorts.get(port).getElementNodeId();
+		return myOutPorts.get(port).getElementNode();
 	}
 
 	/* (non-Javadoc)
@@ -313,39 +302,39 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	}
 
 	private synchronized ArrayList<m_OutPort> m_getOutPorts(){
-		int currentNodeId = super.getId();
+		NodeInterface currentNode = this;
 		ArrayList<m_OutPort> outPorts = new ArrayList<m_OutPort>();
 		switch (logic) {
 			case OR:
-				outPorts.add(new m_OutPort(currentNodeId, EntityLevel.patient));
+				outPorts.add(new m_OutPort(currentNode, EntityLevel.patient));
 				outPorts.add(new m_OutPort(
-						leftElementNodeId == rightElementNodeId ? leftElementNodeId : currentNodeId, 
+						leftElementNode == rightElementNode ? leftElementNode : currentNode, 
 						EntityLevel.event));
 				break;
 			case AND:
-				outPorts.add(new m_OutPort(leftElementNodeId, EntityLevel.event));
-				outPorts.add(new m_OutPort(leftElementNodeId, EntityLevel.event));
-				outPorts.add(new m_OutPort(currentNodeId, EntityLevel.patient));
-				outPorts.add(new m_OutPort(rightElementNodeId, EntityLevel.event));
-				outPorts.add(new m_OutPort(rightElementNodeId, EntityLevel.event));
+				outPorts.add(new m_OutPort(leftElementNode, EntityLevel.event));
+				outPorts.add(new m_OutPort(leftElementNode, EntityLevel.event));
+				outPorts.add(new m_OutPort(currentNode, EntityLevel.patient));
+				outPorts.add(new m_OutPort(rightElementNode, EntityLevel.event));
+				outPorts.add(new m_OutPort(rightElementNode, EntityLevel.event));
 				break;
 			case AND_NOT:
-				outPorts.add(new m_OutPort(leftElementNodeId, EntityLevel.event));
-				outPorts.add(new m_OutPort(leftElementNodeId, EntityLevel.event));
+				outPorts.add(new m_OutPort(leftElementNode, EntityLevel.event));
+				outPorts.add(new m_OutPort(leftElementNode, EntityLevel.event));
 				break;
 		}
 		return outPorts;
 	}
 	
 	private class m_OutPort {
-		int elementNodeId;
+		NodeInterface elementNode;
 		EntityLevel level;
-		m_OutPort(int elementNodeId, EntityLevel eventsOrPatients){
-			this.elementNodeId = elementNodeId;
+		m_OutPort(NodeInterface elementNode, EntityLevel eventsOrPatients){
+			this.elementNode = elementNode;
 			level = eventsOrPatients;
 		}
-		public synchronized int getElementNodeId(){
-			return elementNodeId;
+		public synchronized NodeInterface getElementNode(){
+			return elementNode;
 		}
 		public synchronized EntityLevel getEventsOrPatients (){
 			return level;
@@ -355,7 +344,12 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	@Override
 	public synchronized String getFolderName() {
 		// TODO Auto-generated method stub
-		return folderName;
+		String logicName = logic.name();
+		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+		String fn = logicName.substring(0, Math.min(logicName.length(), 12))
+				+ " (#" + sn + ")"; 
+		return fn;
+
 	}
 
 	@Override
@@ -367,15 +361,15 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		switch (logic) {
 			case AND:
 				GoodOutPorts = 
-					leftElementNodeId == rightElementNodeId ? new int[]{0, 2, 4} : new int[]{1, 2, 3};
+					leftElementNode == rightElementNode ? new int[]{0, 2, 4} : new int[]{1, 2, 3};
 				break;
 			case OR:
 				GoodOutPorts = 
-					leftElementNodeId == rightElementNodeId ? new int[]{1} : new int[]{0};
+					leftElementNode == rightElementNode ? new int[]{1} : new int[]{0};
 				break;
 			case AND_NOT:
 				GoodOutPorts = 
-					leftElementNodeId == rightElementNodeId ? new int[]{0} : new int[]{1};
+					leftElementNode == rightElementNode ? new int[]{0} : new int[]{1};
 				break;
 			default:
 				GoodOutPorts = new int[]{};
@@ -386,13 +380,13 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 	}
 
 	@Override
-	public void setInputElementId(int port, int elementId)
+	public void setInputElement(int port, NodeInterface node)
 			throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
 		if (port == 0) {
-			this.setLeftId(elementId);
+			this.setLeftElement(node);
 		} else if (port == 1){
-			this.setRightId(elementId);
+			this.setRightElement(node);
 		} else
 			throw new IndexOutOfBoundsException();
 		
@@ -407,8 +401,8 @@ public class LogicalOperator extends MetaNode implements LogicalRelationshipInte
 		boolean found = false;
 		for (int i = 0; i < leftPorts.length && ! found; i++){
 			for (int j = 0; j < rightPorts.length && ! found; j++){
-				if (leftNode.getOutputElementId(leftPorts[i]) == 
-						rightNode.getOutputElementId(rightPorts[j])){
+				if (leftNode.getOutputElement(leftPorts[i]) == 
+						rightNode.getOutputElement(rightPorts[j])){
 					re[0] = leftPorts[i];
 					re[1] = rightPorts[j];
 					found = true;

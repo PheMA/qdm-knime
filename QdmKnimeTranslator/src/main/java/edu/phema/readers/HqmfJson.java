@@ -33,6 +33,8 @@ public class HqmfJson {
 	
 	final private ArrayList<JSONObject> jsonObjRegistry = new ArrayList<JSONObject>();
 	
+	final public int ROOT_ACCESS;
+	
 //	final String id;
 //	final String hqmf_id;
 //	final String hqmf_set_id;
@@ -44,6 +46,7 @@ public class HqmfJson {
 	public HqmfJson(String hqmfJsonString) throws JSONException {
 		// TODO Auto-generated constructor stub
 		rootJsonObject = new JSONObject(hqmfJsonString);
+		ROOT_ACCESS = this.registerJsonObject(rootJsonObject);
 	}
 	
 	private int registerJsonObject(JSONObject obj) {
@@ -105,19 +108,19 @@ public class HqmfJson {
 		return getStringValue(jsonReg.intValue(), key);
 	}
 
-	public int getJsonObjectRegistry(int parentJsonReg, String key){
-		int re = Integer.MIN_VALUE;
+	public Integer getJsonObjectRegistry(int parentJsonReg, String key){
+		Integer re = null;
 		JSONObject parent = jsonObjRegistry.get(parentJsonReg);
 		try {
-			re = this.registerJsonObject(parent.getJSONObject(key));
+			re = new Integer(this.registerJsonObject(parent.getJSONObject(key)));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return re;
 	}
 	
-	public int getJsonObjectRegistry(Integer parentJsonReg, String key){
+	public Integer getJsonObjectRegistry(Integer parentJsonReg, String key){
 		return getJsonObjectRegistry(parentJsonReg.intValue(), key);
 	}
 	
@@ -180,15 +183,22 @@ public class HqmfJson {
 		return re;
 	}
 	
-	public String[] getSourceDataCrtieriaList(){
-		String [] re = new String[] {};
-		JSONObject sourceDataCriteria;
+	public HashMap <String, Integer> getSourceDataCrtieriaAccesses(){
+		HashMap <String, Integer> re = new HashMap <String, Integer>();
+		JSONObject sourceDataCriteria = null;
+		String[] names;
 		try {
 			sourceDataCriteria = rootJsonObject.getJSONObject("source_data_criteria");
-			re = JSONObject.getNames(sourceDataCriteria);
+			names = JSONObject.getNames(sourceDataCriteria);
+			for (String name : names){
+				re.put(name, 
+						new Integer(this.registerJsonObject(
+								sourceDataCriteria.getJSONObject(name))));
+				
+			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return re;
 	}
@@ -222,163 +232,151 @@ public class HqmfJson {
 	}
 
 	
-	public String getSourceDataCriteriaInfo(String criteriaKey, String infoKey){
-		String re = null;
-		try{
-			JSONObject sourceDataCriteria = rootJsonObject.getJSONObject("source_data_criteria");
-			JSONObject criterion = sourceDataCriteria.getJSONObject(criteriaKey);
-			re = criterion.getString(infoKey);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return re;
-	}
-	
-	public String[] getDataCrtieriaList(){
-		String [] re = new String[] {};
+	public HashMap<String, Integer> getDataCrtieriaAccesses(){
+		String [] names = new String[] {};
+		HashMap<String, Integer> re = new HashMap<String, Integer>();
 		JSONObject dataCriteria;
 		try {
 			dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			re = JSONObject.getNames(dataCriteria);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return re;
-	}
-
-	public String getDataCriteriaInfo(String criteriaKey, String infoKey){
-		String re = null;
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			re = criterion.getString(infoKey);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return re;
-	}
-
-	public String[] getDataCriteriaFieldsList(String criteriaKey) {
-		String[] re = new String[]{};
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			if (criterion.has("field_values")){
-				JSONObject field_values = criterion.getJSONObject("field_values");
-				re = JSONObject.getNames(field_values);
+			names = JSONObject.getNames(dataCriteria);
+			for (String name : names){
+				re.put(name, this.registerJsonObject(dataCriteria.getJSONObject(name)));
 			}
 		} catch (JSONException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return re;
 	}
+
+//	public String getDataCriteriaInfo(String criteriaKey, String infoKey){
+//		String re = null;
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			re = criterion.getString(infoKey);
+//		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
+
+//	public String[] getDataCriteriaFieldsList(String criteriaKey) {
+//		String[] re = new String[]{};
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			if (criterion.has("field_values")){
+//				JSONObject field_values = criterion.getJSONObject("field_values");
+//				re = JSONObject.getNames(field_values);
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 	
 	/*
 	 * That is lab result
 	 * re = "" means there no "value" object
 	 * */
-	public String typeOfValueInDataCriteria(String criteriaKey){
-		String re = "";
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			if (criterion.has("value")) {
-				JSONObject value_obj = criterion.getJSONObject("value");
-				re = value_obj.getString("type");
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return re;
-	}
+//	public String typeOfValueInDataCriteria(String criteriaKey){
+//		String re = "";
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			if (criterion.has("value")) {
+//				JSONObject value_obj = criterion.getJSONObject("value");
+//				re = value_obj.getString("type");
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 	
-	public String typeOfFieldValueInDataCriteria(String criteriaKey, String fieldKey){
-		String re = "";
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			JSONObject field_values_obj = criterion.getJSONObject("field_values");
-			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
-			re = field_obj.getString("type");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return re;
-	}
+//	public String typeOfFieldValueInDataCriteria(String criteriaKey, String fieldKey){
+//		String re = "";
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			JSONObject field_values_obj = criterion.getJSONObject("field_values");
+//			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
+//			re = field_obj.getString("type");
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 	
 	/*
 	 * return: {Double high, Double low}
 	 * */
-	public Double[] getValueIVL_PQInDataCriteriaHL (String criteriaKey) {
-		Double[] re = new Double[2];
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			JSONObject value_obj = criterion.getJSONObject("value");
-			re = getIVL_PQValues(value_obj);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return re;
-	}
+//	public Double[] getValueIVL_PQInDataCriteriaHL (String criteriaKey) {
+//		Double[] re = new Double[2];
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			JSONObject value_obj = criterion.getJSONObject("value");
+//			re = getIVL_PQValues(value_obj);
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 	
-	public String getTextOfValueInDataCriteria (String criteriaKey) {
-		String re = "value:%%00010";
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			JSONObject value_obj = criterion.getJSONObject("value");
-			if (value_obj == null) {
-				throw new JSONException(
-						"Cannot find value at " + criteriaKey);
-			}
-			if (value_obj.getString("type").equals("IVL_PQ")){
-				re = re + getIVL_PQDescription(value_obj);
-			} else {
-				re = re + value_obj.toString(); 
-			}
-
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return re;
-	}
+//	public String getTextOfValueInDataCriteria (String criteriaKey) {
+//		String re = "value:%%00010";
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			JSONObject value_obj = criterion.getJSONObject("value");
+//			if (value_obj == null) {
+//				throw new JSONException(
+//						"Cannot find value at " + criteriaKey);
+//			}
+//			if (value_obj.getString("type").equals("IVL_PQ")){
+//				re = re + getIVL_PQDescription(value_obj);
+//			} else {
+//				re = re + value_obj.toString(); 
+//			}
+//
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 
 	/*
 	 * return: {Double high, Double low}
 	 * */
-	public Double[] getFieldValues_IVL_PQInDataCriteriaHL (String criteriaKey, String fieldKey) {
+	public Double[] getHighLowOfIVL_PQ (Integer access) {
 		Double[] re = new Double[2];
+		JSONObject ivl_pq = jsonObjRegistry.get(access.intValue());
 		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			JSONObject field_values_obj = criterion.getJSONObject("field_values");
-			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
-			re = getIVL_PQValues(field_obj);
+			re = getIVL_PQValues(ivl_pq);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return re;
 	}
 	
-	public HashMap<String, String> getFieldValuesCDInDataCriteria (String criteriaKey, String fieldKey) {
-		HashMap<String, String> re = new HashMap<String, String>();
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
-			JSONObject field_values_obj = criterion.getJSONObject("field_values");
-			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
-			for(String key : JSONObject.getNames(field_obj)){
-				re.put(key, field_obj.getString(key));
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return re;
-	}
+//	public HashMap<String, String> getFieldValuesCDInDataCriteria (String criteriaKey, String fieldKey) {
+//		HashMap<String, String> re = new HashMap<String, String>();
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criteriaKey);
+//			JSONObject field_values_obj = criterion.getJSONObject("field_values");
+//			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
+//			for(String key : JSONObject.getNames(field_obj)){
+//				re.put(key, field_obj.getString(key));
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 	
 	public HashMap<String, String> getValueCDInDataCriteria (String criteriaKey) {
 		HashMap<String, String> re = new HashMap<String, String>();
@@ -395,91 +393,100 @@ public class HqmfJson {
 		return re;
 	}
 
-	
-	public String getTextOfFieldValuesInDataCriteria (String criterionKey, String fieldKey) {
-		String re = fieldKey + ":%%00010";
-		try{
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
-			JSONObject field_values_obj = criterion.getJSONObject("field_values");
-			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
-			if (field_obj == null) {
-				throw new JSONException(
-						"Cannot find field value " + fieldKey + " at " + criterionKey);
+	public HashMap <String, Integer> getChildrenJSONObjectAccesses (Integer access){
+		HashMap <String, Integer> re = new HashMap <String, Integer>();
+		JSONObject current = jsonObjRegistry.get(access.intValue());
+		String[] names = JSONObject.getNames(current);
+		for (String name : names){
+			try {
+				re.put(name, new Integer(this.registerJsonObject(current.getJSONObject(name))));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			if (field_obj.getString("type").equals("IVL_PQ")){
-				re = re + getIVL_PQDescription(field_obj);
-			} else {
-				re = re + field_obj.toString(); 
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
 		}
 		return re;
 	}
-
-	public int getNumberOfTemporalRefsInDataCriteria (String criterionKey) {
-		int re = 0;
-		try {
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
-			if (criterion.has("temporal_references")){
-				JSONArray temporalReferences = criterion.getJSONArray("temporal_references");
-				re = temporalReferences.length();
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		return re;
-	}
 	
-	public HashMap<String, String> getTemporalRefInDataCritieria (String criterionKey, int index){
-		HashMap<String, String> re = new HashMap<String, String>();
-		try {
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
-			JSONObject temporalRef;
-			if (criterion.has("temporal_references")){
-				JSONArray temporalReferences = criterion.getJSONArray("temporal_references");
-				if (index >= 0 && index < temporalReferences.length()){
-					temporalRef = temporalReferences.getJSONObject(index);
-					String[] keys = JSONObject.getNames(temporalRef);
-					for (String key : keys) {
-						re.put(key, temporalRef.getString(key));
-					}
-				}
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+//	public String getTextOfFieldValuesInDataCriteria (String criterionKey, String fieldKey) {
+//		String re = fieldKey + ":%%00010";
+//		try{
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
+//			JSONObject field_values_obj = criterion.getJSONObject("field_values");
+//			JSONObject field_obj = field_values_obj.getJSONObject(fieldKey);
+//			if (field_obj == null) {
+//				throw new JSONException(
+//						"Cannot find field value " + fieldKey + " at " + criterionKey);
+//			}
+//			if (field_obj.getString("type").equals("IVL_PQ")){
+//				re = re + getIVL_PQDescription(field_obj);
+//			} else {
+//				re = re + field_obj.toString(); 
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return re;
+//	}
 
-		return re;
-	}
+//	public int getNumberOfTemporalRefsInDataCriteria (String criterionKey) {
+//		int re = 0;
+//		try {
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
+//			if (criterion.has("temporal_references")){
+//				JSONArray temporalReferences = criterion.getJSONArray("temporal_references");
+//				re = temporalReferences.length();
+//			}
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
+//		return re;
+//	}
 	
-	public JSONObject getTemporalRange_IVL_PQInDataCritieria(String criterionKey, int index){
+//	public HashMap<String, String> getTemporalRefInDataCritieria (String criterionKey, int index){
+//		HashMap<String, String> re = new HashMap<String, String>();
+//		try {
+//			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
+//			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
+//			JSONObject temporalRef;
+//			if (criterion.has("temporal_references")){
+//				JSONArray temporalReferences = criterion.getJSONArray("temporal_references");
+//				if (index >= 0 && index < temporalReferences.length()){
+//					temporalRef = temporalReferences.getJSONObject(index);
+//					String[] keys = JSONObject.getNames(temporalRef);
+//					for (String key : keys) {
+//						re.put(key, temporalRef.getString(key));
+//					}
+//				}
+//			}
+//		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
+
+//		return re;
+//	}
+	
+	public Integer getTemporalRange_IVL_PQInDataCritieria(Integer access){
 		JSONObject ivlPq = null;
+		JSONObject temporalRef = jsonObjRegistry.get(access.intValue());
 		try {
-			JSONObject dataCriteria = rootJsonObject.getJSONObject("data_criteria");
-			JSONObject criterion = dataCriteria.getJSONObject(criterionKey);
-			JSONObject temporalRef;
-			if (criterion.has("temporal_references")){
-				JSONArray temporalReferences = criterion.getJSONArray("temporal_references");
-				if (index >= 0 && index < temporalReferences.length()){
-					temporalRef = temporalReferences.getJSONObject(index);
-					if (temporalRef.has("range") && 
-							temporalRef.getJSONObject("range").getString("type").equals("IVL_PQ")){
-						ivlPq = temporalRef.getJSONObject("range");
-					}
-					
-				}
+			if (temporalRef.has("range") && 
+					temporalRef.getJSONObject("range").getString("type").equals("IVL_PQ")){
+				ivlPq = temporalRef.getJSONObject("range");
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
-		return ivlPq;
+		}
+		Integer re = null;
+		if (ivlPq != null){
+			re = new Integer(this.registerJsonObject(ivlPq));
+		}
+		return re;
 	}
 	
 	private static Double[] getIVL_PQValues (JSONObject ivl_pq) throws NumberFormatException, JSONException{
@@ -495,14 +502,19 @@ public class HqmfJson {
 		return re;
 	}
 	
-	private static String getIVL_PQDescription (JSONObject ivl_pq) {
+	public String getIVL_PQDescription (Integer access) {
 		String re = "";
+		JSONObject ivl_pq = jsonObjRegistry.get(access.intValue());
 		if (ivl_pq.has("high")){
 			JSONObject high_obj;
 			String unit = "";
 			try {
 				high_obj = ivl_pq.getJSONObject("high");
-				re = re + " less than: " + high_obj.getString("value");
+				re = re + 
+						(high_obj.has("inclusive?") && high_obj.getBoolean("inclusive?") ? 
+								" less than or equal to: " : 
+									" less than: ") + 
+						high_obj.getString("value");
 				if (high_obj.has("unit")){
 					re = re + " " + high_obj.getString("unit");
 				}
@@ -516,7 +528,10 @@ public class HqmfJson {
 			String unit = "";
 			try {
 				low_obj = ivl_pq.getJSONObject("low");
-				re = re + " greater than: " + low_obj.getString("value");
+				re = re + (
+						low_obj.has("inclusive?") && low_obj.getBoolean("inclusive?") ?
+							" greater than or eaqual to: "	: 
+								" greater than: ") + low_obj.getString("value");
 				if (low_obj.has("unit")){
 					re = re + " " + low_obj.getString("unit");
 				}
@@ -544,12 +559,12 @@ public class HqmfJson {
 		System.out.println(hqmf.getInfo("cms_id"));
 		System.out.println(hqmf.getPopulationsList().toString());
 		System.out.println(hqmf.getMeasureStartDatetime());
-		System.out.println(hqmf.getSourceDataCriteriaInfo("LaboratoryTestResultLdlCTest", "negation"));
-		System.out.println(hqmf.getTextOfValueInDataCriteria("LaboratoryTestResultLdlCTest_precondition_64"));
-		System.out.println(hqmf.getDataCriteriaInfo("LaboratoryTestResultLdlCTest_precondition_64", "value"));
-		System.out.println(hqmf.getTemporalRefInDataCritieria("DiagnosisActiveHospitalMeasuresAmi_precondition_7", 0).toString());
-		System.out.println(hqmf.getTemporalRange_IVL_PQInDataCritieria(
-				"OccurrenceAEmergencyDepartmentVisit2_precondition_46", 0));
+//		System.out.println(hqmf.getSourceDataCriteriaInfo("LaboratoryTestResultLdlCTest", "negation"));
+//		System.out.println(hqmf.getTextOfValueInDataCriteria("LaboratoryTestResultLdlCTest_precondition_64"));
+//		System.out.println(hqmf.getDataCriteriaInfo("LaboratoryTestResultLdlCTest_precondition_64", "value"));
+//		System.out.println(hqmf.getTemporalRefInDataCritieria("DiagnosisActiveHospitalMeasuresAmi_precondition_7", 0).toString());
+//		System.out.println(hqmf.getTemporalRange_IVL_PQInDataCritieria(
+//				"OccurrenceAEmergencyDepartmentVisit2_precondition_46", 0));
 	}
 
 }

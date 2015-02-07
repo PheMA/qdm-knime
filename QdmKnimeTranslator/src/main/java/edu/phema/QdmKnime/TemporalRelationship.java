@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
@@ -32,8 +33,8 @@ public class TemporalRelationship extends MetaNode implements
 	 */
 	private final TemporalTypeCode temporalType;
 	
-	private int leftElementNodeId = Integer.MIN_VALUE;
-	private int rightElementNodeId = Integer.MIN_VALUE;
+	private NodeInterface leftElementNode = this;
+	private NodeInterface rightElementNode = this;
 
 	@SuppressWarnings("unused")
 	private Operator operator = Operator.none;
@@ -44,7 +45,7 @@ public class TemporalRelationship extends MetaNode implements
 	@SuppressWarnings("unused")
 	private Unit unit = Unit.days;
 	
-	String folderName;
+//	String folderName;
 	
 	private Path sourceFolder = Paths.get("src/main/resources/metaNodeRepos/temporalRelationships");
 	
@@ -56,7 +57,7 @@ public class TemporalRelationship extends MetaNode implements
 	public TemporalRelationship(TemporalTypeCode temporalType) {
 		// TODO Auto-generated constructor stub
 		this.temporalType = temporalType;
-		folderName = m_makeFolderName();
+//		folderName = m_makeFolderName();
 		super.setX(300 + randMachine.nextInt(5) * 50);
 		super.setY(100 + randMachine.nextInt(5) * 25);
 	}
@@ -64,71 +65,57 @@ public class TemporalRelationship extends MetaNode implements
 	/**
 	 * @param id
 	 */
-	public TemporalRelationship(int id, TemporalTypeCode temporalType) {
-		super(id);
+//	public TemporalRelationship(int id, TemporalTypeCode temporalType) {
+//		super(id);
 		// TODO Auto-generated constructor stub
-		this.temporalType = temporalType;
-		folderName = m_makeFolderName();
-		super.setX(300 + randMachine.nextInt(5) * 50);
-		super.setY(100 + randMachine.nextInt(5) * 25);
+//		this.temporalType = temporalType;
+//		folderName = m_makeFolderName();
+//		super.setX(300 + randMachine.nextInt(5) * 50);
+//		super.setY(100 + randMachine.nextInt(5) * 25);
 		
 		/*
 		 * The following is useless mostly
 		 * */
-		leftElementNodeId = id;
-		rightElementNodeId = id;
-	}
+//		leftElementNodeId = id;
+//		rightElementNodeId = id;
+//	}
 	
+
+	/* (non-Javadoc)
+	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#setLeftElement(NodeInterface)
+	 */
 	@Override
-	public void setId(int id){
-		super.setId(id);
-		folderName = m_makeFolderName();
-		/*
-		 * The following is useless mostly
-		 * */
-		if (leftElementNodeId == Integer.MIN_VALUE) {
-			leftElementNodeId = id;
-		}
-		if (leftElementNodeId == Integer.MIN_VALUE) {
-			leftElementNodeId = id;
-		}
+	public void setLeftElement(NodeInterface node) {
+		// TODO Auto-generated method stub
+		leftElementNode = node;
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#setLeftId(int)
+	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#setRightElement(NodeInterface)
 	 */
 	@Override
-	public void setLeftId(int element_node_id) {
+	public void setRightElement(NodeInterface node) {
 		// TODO Auto-generated method stub
-		leftElementNodeId = element_node_id;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#setRightId(int)
-	 */
-	@Override
-	public void setRightId(int element_node_id) {
-		// TODO Auto-generated method stub
-		rightElementNodeId = element_node_id;
+		rightElementNode = node;
 	}
 
 
 	/* (non-Javadoc)
-	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#getLeftId()
+	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#getLeftElement()
 	 */
 	@Override
-	public synchronized int getLeftId() {
+	public synchronized NodeInterface getLeftElement() {
 		// TODO Auto-generated method stub
-		return leftElementNodeId;
+		return leftElementNode;
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#getRightId()
+	 * @see edu.vanderbilt.phema.QdmKnimeInterfaces.TemporalRelationshipInterface#getRightElement()
 	 */
 	@Override
-	public synchronized int getRightId() {
+	public synchronized NodeInterface getRightElement() {
 		// TODO Auto-generated method stub
-		return rightElementNodeId;
+		return rightElementNode;
 	}
 
 	/* (non-Javadoc)
@@ -173,7 +160,7 @@ public class TemporalRelationship extends MetaNode implements
 		
 		Path workflowRoot = super.getWorkflowRoot();
 		//folderName = m_makeFolderName();
-		Path nodeFolderPath = workflowRoot.resolve(folderName);
+		Path nodeFolderPath = workflowRoot.resolve(this.getFolderName());
 		if (nodeFolderPath.toFile().exists()) {
 			throw new WrittenAlreadyException(nodeFolderPath.toString() + " exists already! ");
 		}
@@ -374,7 +361,11 @@ public class TemporalRelationship extends MetaNode implements
 	@Override
 	public synchronized String getFolderName() {
 		// TODO Auto-generated method stub
-		return folderName;
+		String temperalName = temporalType.name();
+		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+		String fn = temperalName.substring(0, Math.min(temperalName.length(), 12))
+				+ " (#" + sn + ")"; 
+		return fn;
 	}
 
 	/* (non-Javadoc)
@@ -386,13 +377,13 @@ public class TemporalRelationship extends MetaNode implements
 		return new int[] {0, 1};
 	}
 	
-	private synchronized String m_makeFolderName(){
-		String temperalName = temporalType.name();
-		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
-		String fn = temperalName.substring(0, Math.min(temperalName.length(), 12))
-				+ " (#" + sn + ")"; 
-		return fn;
-	}
+//	private synchronized String m_makeFolderName(){
+//		String temperalName = temporalType.name();
+//		String sn = super.getId() == super.UNKNOWN_ID ? "Unknown" : String.valueOf(super.getId());
+//		String fn = temperalName.substring(0, Math.min(temperalName.length(), 12))
+//				+ " (#" + sn + ")"; 
+//		return fn;
+//	}
 
 	@Override
 	public TemporalTypeCode getTemporalType() {
@@ -419,27 +410,24 @@ public class TemporalRelationship extends MetaNode implements
 	}
 
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) {
 		// TODO Auto-generated method stub
-		int ret = Integer.MIN_VALUE;
+		NodeInterface ret = null;
 		if (port == 0){
-			ret = this.getLeftId();
+			ret = this.getLeftElement();
 		} else if (port == 1) {
-			ret = this.getRightId();
-		} else {
-			throw new IndexOutOfBoundsException();
-		}
+			ret = this.getRightElement();
+		} 
 		return ret;
 	}
 
 	@Override
-	public void setInputElementId(int port, int elementId)
-			throws IndexOutOfBoundsException {
+	public void setInputElement(int port, NodeInterface node) {
 		// TODO Auto-generated method stub
 		if (port == 0)
-			this.setLeftId(elementId);
+			this.setLeftElement(node);
 		else if (port == 1)
-			this.setRightId(elementId);
+			this.setRightElement(node);
 		else throw new IndexOutOfBoundsException();
 	}
 

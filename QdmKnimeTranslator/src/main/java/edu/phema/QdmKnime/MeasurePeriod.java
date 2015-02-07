@@ -18,6 +18,7 @@ import org.apache.commons.io.FileUtils;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import edu.phema.QdmKnimeInterfaces.MeasurePeriodInterface;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 
@@ -34,42 +35,44 @@ public class MeasurePeriod extends MetaNode implements MeasurePeriodInterface {
 	Date measureStart = null;
 	Date measureEnd = null;
 	String dateFormat = "yyyyMMddHHmm";
+	NodeInterface inputElement = this;
+	
 	
 	public MeasurePeriod() {
 		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	/**
 	 * @param id
 	 */
-	public MeasurePeriod(int id) {
-		super(id);
+//	public MeasurePeriod(int id) {
+//		super(id);
 		// TODO Auto-generated constructor stub
-	}
+//	}
 	
-	public MeasurePeriod(int id, String start_yyyyMMddHHmm, String end_yyyyMMddHHmm) throws ParseException{
-		super(id);
+	public MeasurePeriod(String start_yyyyMMddHHmm, String end_yyyyMMddHHmm) throws ParseException{
 		this.setMeasureStart(start_yyyyMMddHHmm);
 		this.setMeasureEnd(end_yyyyMMddHHmm);
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#setInputElementId(int, int)
+	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#setInputElement(int, NodeInterface)
 	 */
 	@Override
-	public void setInputElementId(int port, int elementId)
+	public void setInputElement(int port, NodeInterface node)
 			throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		// Do nothing
+		inputElement = node;
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#getOutputElementId(int)
 	 */
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		return Integer.MIN_VALUE;
+		return inputElement;
 	}
 
 	/* (non-Javadoc)

@@ -34,9 +34,9 @@ public class Connection implements ConnectionInterface {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Connection(int id){
-		this.id = id;
-	}
+//	public Connection(int id){
+//		this.id = id;
+//	}
 		
 	/* (non-Javadoc)
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.ConnectionInterface#setId(int)

@@ -29,8 +29,8 @@ public interface NodeInterface {
 	int getNumberOfInPorts();    // 2 for temporalRelationship (0, 1)
 	int getNumberOfOutPorts() throws SetUpIncompleteException;   // 2 for temporalRelationship
 	int[] getGoodOutPorts();
-	void setInputElementId(int port, int elementId) throws IndexOutOfBoundsException; 
-	int getOutputElementId(int port) throws IndexOutOfBoundsException;
+	void setInputElement(int port, NodeInterface node) throws IndexOutOfBoundsException; 
+	NodeInterface getOutputElement(int port) throws IndexOutOfBoundsException;
 	int getX();        // Left upper point on the canvas
 	int getY();
 	void setWidth(int w);

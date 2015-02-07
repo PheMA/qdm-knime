@@ -42,9 +42,9 @@ public abstract class MetaNode implements NodeInterface {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MetaNode(int id){
-		this.id = id;		
-	}
+//	public MetaNode(int id){
+//		this.id = id;		
+//	}
 
 	/* (non-Javadoc)
 	 * @see edu.vanderbilt.mc.phema.QdmKnimeInterfaces.NodeInterface#setRoot(java.lang.String)

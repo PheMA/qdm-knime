@@ -39,6 +39,7 @@ import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import edu.phema.Enum.QdmKnime.CodeSystemEnum;
 import edu.phema.Enum.QdmKnime.CreateTableColumnClassEnum;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.QdmDataElementInterface;
 import edu.phema.jaxb.ihe.svs.CD;
 import edu.phema.jaxb.ihe.svs.ConceptListType;
@@ -85,13 +86,13 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 	/**
 	 * @param id
 	 */
-	public QdmDataElement(int id) {
-		super(id);
+//	public QdmDataElement(int id) {
+//		super(id);
 		// TODO Auto-generated constructor stub
-		requiredAttributes = initializeAttributesTable();
-		attributeTableRowCount = 2;
-		rxnormManager = Toolkit.getRxnormManager();
-	}
+//		requiredAttributes = initializeAttributesTable();
+//		attributeTableRowCount = 2;
+//		rxnormManager = Toolkit.getRxnormManager();
+//	}
 	
 	private static TableCreator initializeAttributesTable(){
 		TableCreator attributeTable = null;
@@ -711,18 +712,20 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 	}
 
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) {
 		// TODO Auto-generated method stub
-		if (port > 0)
-			throw new IndexOutOfBoundsException();
-		return this.getId();
+		NodeInterface re = null;
+		if (port == 0){
+			re = this;
+		}
+		return re;
 	}
 
 	@Override
-	public void setInputElementId(int port, int elementId)
-			throws IndexOutOfBoundsException {
+	public void setInputElement(int port, NodeInterface node) {
 		// TODO Auto-generated method stub
-		throw new IndexOutOfBoundsException("QDM Data Element has no input elements! ");
+		//throw new IndexOutOfBoundsException("QDM Data Element has no input elements! ");
+		// Do nothing
 	}
 
 }

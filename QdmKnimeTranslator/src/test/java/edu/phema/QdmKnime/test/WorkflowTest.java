@@ -36,16 +36,16 @@ import edu.phema.vsac.VsacConnector;
  */
 public class WorkflowTest {
 
-	int currentNodeId = 0;
-	int currentConnectionId = 0;
+//	int currentNodeId = 0;
+//	int currentConnectionId = 0;
 	
-	private int newNode(){
-		return currentNodeId++;
-	}
+//	private int newNode(){
+//		return currentNodeId++;
+//	}
 	
-	private int newConnection(){
-		return currentConnectionId++;
-	}
+//	private int newConnection(){
+//		return currentConnectionId++;
+//	}
 
 	@Test
 	public void smokeTest() throws IOException, WrittenAlreadyException, SetUpIncompleteException, ZipException, JAXBException {
@@ -61,9 +61,9 @@ public class WorkflowTest {
 		 * Set up the nodes
 		 * */
 				
-		int nodeAId = newNode();
+//		int nodeAId = newNode();
 		
-		LogicalOperator nodeA = new LogicalOperator(nodeAId, LogicalTypeCode.AND);
+		LogicalOperator nodeA = new LogicalOperator(LogicalTypeCode.AND);
 
 		project.addKnimeNode(nodeA);
 		
@@ -71,19 +71,19 @@ public class WorkflowTest {
 //		nodeA.setY(20);
 		
 		
-		int nodeBId = newNode();
-		LogicalOperator nodeB = new LogicalOperator(nodeBId, LogicalTypeCode.OR);
+//		int nodeBId = newNode();
+		LogicalOperator nodeB = new LogicalOperator(LogicalTypeCode.OR);
 		
 		project.addKnimeNode(nodeB);
 		
 //		nodeB.setX(150);
 //		nodeB.setY(150);
 		
-		nodeB.setLeftId(nodeAId);
+		nodeB.setLeftElement(nodeA);
 		
 		
-		int nodeCId = newNode();
-		TemporalRelationship nodeC = new TemporalRelationship(nodeCId, TemporalTypeCode.SBS);
+//		int nodeCId = newNode();
+		TemporalRelationship nodeC = new TemporalRelationship(TemporalTypeCode.SBS);
 		nodeC.setOperator(Operator.lessThanOrEqualTo);
 		nodeC.setQuantity(120);
 		nodeC.setUnit(Unit.days);
@@ -93,10 +93,10 @@ public class WorkflowTest {
 //		nodeB.setX(150);
 //		nodeB.setY(150);
 		
-		nodeB.setLeftId(nodeAId);
+		nodeB.setLeftElement(nodeA);
 		
-		int nodeDId = newNode();
-		QdmDataElement nodeD = new QdmDataElement(nodeDId);
+//		int nodeDId = newNode();
+		QdmDataElement nodeD = new QdmDataElement();
 		nodeD.setQdmDataType("Diagnosis Active");
 		nodeD.setX(100);
 		nodeD.setY(100);
@@ -116,8 +116,8 @@ public class WorkflowTest {
 		
 		//VsacConnector vsac = new VsacConnector("", ""); // UMLS username, passoword
 		
-		int nodeEId = newNode();
-		QdmDataElement nodeE = new QdmDataElement(nodeEId);
+//		int nodeEId = newNode();
+		QdmDataElement nodeE = new QdmDataElement();
 		nodeE.setQdmDataType("Medication Active");
 		nodeE.setX(100);
 		nodeE.setY(300);
@@ -125,15 +125,15 @@ public class WorkflowTest {
 		nodeE.setQdmDataElementText("check rxnorm");
 		project.addKnimeNode(nodeE);
 		
-		int nodeFId = newNode();
-		Attribute nodeF = new Attribute(nodeFId);
+//		int nodeFId = newNode();
+		Attribute nodeF = new Attribute();
 		nodeF.setAttributeName("dose");
-		nodeF.setInputElementId(0, nodeEId);
+		nodeF.setInputElement(0, nodeE);
 		nodeF.setMode_Comparison(null, 20.0);
 		//nodeF.setMode_isPresent();
 		
-		int nodeGId = newNode();
-		Aggregation nodeG = new Aggregation(nodeGId);
+//		int nodeGId = newNode();
+		Aggregation nodeG = new Aggregation();
 		nodeG.setNodeText("COUNT >= 5");
 		nodeG.setGroupByNodeText("COUNT");
 		nodeG.setFilterNodeText(">= 5");
@@ -146,27 +146,27 @@ public class WorkflowTest {
 		 * */
 		
 
-		int connAId = newConnection();
-		Connection connA = new Connection(connAId);
+//		int connAId = newConnection();
+		Connection connA = new Connection();
 		project.addKnimeConnection(connA);
 		connA.setSource(nodeA, 1);
 		connA.setDest(nodeB, 1);
 //		connA.addBendpoint(100, 100);
 		
-		int connBId = newConnection();
-		Connection connB = new Connection(connBId);
+//		int connBId = newConnection();
+		Connection connB = new Connection();
 		project.addKnimeConnection(connB);
 		connB.setSource(nodeA, 1);
 		connB.setDest(nodeC, 1);
 
-		int connCId = newConnection();
-		Connection connC = new Connection(connCId);
+//		int connCId = newConnection();
+		Connection connC = new Connection();
 		project.addKnimeConnection(connC);
 		connC.setSource(nodeD, 0);
 		connC.setDest(nodeA, 0);
 		
-		int connDId = newConnection();
-		Connection connD = new Connection(connDId);
+//		int connDId = newConnection();
+		Connection connD = new Connection();
 		project.addKnimeConnection(connD);
 		connD.setSource(nodeE, 0);
 		connD.setDest(nodeF, 1);

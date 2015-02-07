@@ -37,7 +37,8 @@ public class ValueSetTest {
 		String testVSACXml = "src/test/resources/valueSet_infection.xml";
 		String in = Toolkit.readFile(testVSACXml, Charset.defaultCharset());
 		//System.out.println(in);
-		QdmDataElement dataElement = new QdmDataElement(1);
+		QdmDataElement dataElement = new QdmDataElement();
+		dataElement.setId(0);
 		dataElement.setValueSet(in);
 		System.out.println(dataElement.getValueSetXML());
 		

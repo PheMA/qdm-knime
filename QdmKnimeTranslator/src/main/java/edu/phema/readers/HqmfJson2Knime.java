@@ -18,7 +18,6 @@ import net.lingala.zip4j.exception.ZipException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import edu.phema.QdmKnime.Attribute;
 import edu.phema.QdmKnime.Connection;
@@ -62,13 +61,13 @@ public class HqmfJson2Knime {
 	}
 	
 	public void translate(Path hqmfJsonPath, Path outputPath) 
-			throws IOException, JSONException, WrittenAlreadyException, SetUpIncompleteException, ParseException {
+			throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		String jsonDoc = Toolkit.readFile(hqmfJsonPath.toString());
 		final HqmfJson measure = new HqmfJson(jsonDoc);
 		final KnimeProject kProject = new KnimeProject(outputPath.getParent(), outputPath.getFileName().toString());
 		kProject.SET_UP_LAYOUT = true;
-		final ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface>();  // the index will the knime id
-		final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
+		//final ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface>();  // the index will the knime id
+		//final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
 		final HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
 		final HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
 		final HashMap <TemporalRelationshipInterface, String> rightSideOfTemporals = 
@@ -81,24 +80,31 @@ public class HqmfJson2Knime {
 		String measureStart = measure.getMeasureStartDatetime();  // yyyyMMddHHmm
 		String measureEnd = measure.getMeasureEndDatetime();   // yyyyMMddHHmm
 		
-		RelayNode databaseMasterConnectionNode = new RelayNode(nodes.size(), DataType.Database);
-		nodes.add(databaseMasterConnectionNode);
+		RelayNode databaseMasterConnectionNode = new RelayNode(DataType.Database);
+		kProject.addKnimeNode(databaseMasterConnectionNode);
 		databaseMasterConnectionNode.setComment("Plug your database connector here");
 		
-		for (String sourceDataCriteriaName : measure.getSourceDataCrtieriaList()){
-			QdmDataElement element = new QdmDataElement(nodes.size());
-			nodes.add(element);
-			Connection conn = new Connection(conns.size());
+		
+		/*
+		 * source_data_criteria
+		 * */
+		HashMap <String, Integer> sourceDataCriteriaAccesses = 
+				measure.getSourceDataCrtieriaAccesses();
+		for (String sourceDataCriteriaName : sourceDataCriteriaAccesses.keySet()){
+			Integer access = sourceDataCriteriaAccesses.get(sourceDataCriteriaName);
+			QdmDataElement element = new QdmDataElement();
+			kProject.addKnimeNode(element);
+			Connection conn = new Connection();
 			conn.setDest(element, 0);
 			conn.setSource(databaseMasterConnectionNode, 
 					databaseMasterConnectionNode.getGoodOutPorts()[0]);
-			conns.add(conn);
+			kProject.addKnimeConnection(conn);
 			sourceDataCriteriaNodes.put(sourceDataCriteriaName, element);
-			String description = measure.getSourceDataCriteriaInfo(sourceDataCriteriaName, "description");
+			String description = measure.getStringValue(access, "description");
 			element.setQdmDataElementText(description);
 			int endTypeIndex = description.matches(":") ? description.indexOf(":") - 1 : description.length() - 1;
 			element.setQdmDataType(description.substring(0, endTypeIndex));
-			String valueSet_oid = measure.getSourceDataCriteriaInfo(sourceDataCriteriaName, "code_list_id");
+			String valueSet_oid = measure.getStringValue(access, "code_list_id");
 			if (valueSet_oid != null) {
 				try {
 					element.setValueSet(vsac.getValueSetXml(valueSet_oid));
@@ -109,27 +115,38 @@ public class HqmfJson2Knime {
 			}
 		}
 		
-		for (String dataCriteriaName : measure.getDataCrtieriaList()){
+		
+		/*
+		 * Data Criteria
+		 * */
+		HashMap <String, Integer> dataCriteriaAccesses = 
+				measure.getDataCrtieriaAccesses();
+		for (String dataCriteriaName : dataCriteriaAccesses.keySet()){
+			Integer access = dataCriteriaAccesses.get(dataCriteriaName);
 			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(
-					measure.getDataCriteriaInfo(dataCriteriaName, "source_data_criteria"));
+					measure.getStringValue(access, "source_data_criteria"));
 			NodeInterface frontier = sourceElement; 
-			if (! measure.typeOfValueInDataCriteria(dataCriteriaName).equals("")){
-				String text = measure.getTextOfValueInDataCriteria(dataCriteriaName);
+			
+			/*
+			 * Attribute: value
+			 * */
+			Integer valueAccess = measure.getJsonObjectRegistry(access, "value");
+			if (valueAccess != null){
+				String text = "value:%%00010" + measure.getIVL_PQDescription(valueAccess);
 				String columnType = "unknown";
-				Attribute attr_value = new Attribute(nodes.size());
-				nodes.add(attr_value);
-				Connection conn = new Connection(conns.size());
-				conns.add(conn);
+				Attribute attr_value = new Attribute();
+				kProject.addKnimeNode(attr_value);
+				Connection conn = new Connection();
+				kProject.addKnimeConnection(conn);
 				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
 				conn.setDest(attr_value, 1);  // Port for native nodes start from 1
-				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
-				//nodeTrace.put(attr_value, frontier);
+				attr_value.setInputElement(0, frontier.getOutputElement(0));
 				attr_value.setAttributeName("value");
-				if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("IVL_PQ")){
+				if (measure.getStringValue(valueAccess, "type").equals("IVL_PQ")){
 					columnType = "Double";
-					Double[] high_low = measure.getValueIVL_PQInDataCriteriaHL(dataCriteriaName);
+					Double[] high_low = measure.getHighLowOfIVL_PQ(valueAccess);
 					attr_value.setMode_Comparison(high_low[0], high_low[1]);
-				} else if (measure.typeOfValueInDataCriteria(dataCriteriaName).equals("CD")){
+				} else if (measure.getStringValue(valueAccess, "type").equals("CD")){
 					columnType = "String";
 					ArrayList<String> codes = new ArrayList<String>();
 					ArrayList<String> displayNames = new ArrayList<String>();
@@ -159,29 +176,34 @@ public class HqmfJson2Knime {
 			/*
 			 * field_values
 			 * */
-			for (String fieldName : measure.getDataCriteriaFieldsList(dataCriteriaName)){
-				String text = measure.getTextOfFieldValuesInDataCriteria(dataCriteriaName, fieldName);
+			Integer fieldValueAccess = measure.getJsonObjectRegistry(access, "field_values");
+			HashMap <String, Integer> fieldValuesAccesses = fieldValueAccess != null ?
+					measure.getChildrenJSONObjectAccesses(fieldValueAccess) :
+					new HashMap <String, Integer>();
+			for (String fieldName : fieldValuesAccesses.keySet()){
+				Integer fieldAccess = fieldValuesAccesses.get(fieldName);
+				String text = fieldName + ":%%00010" + 
+						measure.getIVL_PQDescription(fieldAccess);
 				String columnType = "unknown";
-				Attribute attr_value = new Attribute(nodes.size());
-				nodes.add(attr_value);
-				Connection conn = new Connection(conns.size());
-				conns.add(conn);
+				Attribute attr_value = new Attribute();
+				kProject.addKnimeNode(attr_value);
+				Connection conn = new Connection();
+				kProject.addKnimeConnection(conn);
 				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
 				conn.setDest(attr_value, 1);  // Port for native nodes start from 1
-				attr_value.setInputElementId(0, frontier.getOutputElementId(0));
-				//nodeTrace.put(attr_value, frontier);
+				attr_value.setInputElement(0, frontier.getOutputElement(0));
 				attr_value.setAttributeName(fieldName);
-				if (measure.typeOfFieldValueInDataCriteria(dataCriteriaName, fieldName).equals("IVL_PQ")){
+				if (measure.getStringValue(fieldAccess, "type").equals("IVL_PQ")){
 					columnType = "Double";
-					Double[] high_low = measure.getFieldValues_IVL_PQInDataCriteriaHL(dataCriteriaName, fieldName);
+					Double[] high_low = measure.getHighLowOfIVL_PQ(fieldAccess);
 					attr_value.setMode_Comparison(high_low[0], high_low[1]);
-				} else if (measure.typeOfFieldValueInDataCriteria(dataCriteriaName, fieldName).equals("CD")){
+				} else if (measure.getStringValue(fieldAccess, "type").equals("CD")){
 					columnType = "String";
 					ArrayList<String> codes = new ArrayList<String>();
 					ArrayList<String> displayNames = new ArrayList<String>();
-					HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
-					String oid = cd.get("code_list_id");
-					String code = cd.get("code");
+					//HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
+					String oid = measure.getStringValue(fieldAccess, "code_list_id");
+					String code = measure.getStringValue(fieldAccess, "code");
 					if (oid != null){
 						JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
 						codes.addAll(getCodes(returnedValueSet));
@@ -205,16 +227,18 @@ public class HqmfJson2Knime {
 			/*
 			 * temporal_references
 			 * */
-			int numberOfTemporals = measure.getNumberOfTemporalRefsInDataCriteria(dataCriteriaName);
+			int[] temporalsAccesses = measure.getJsonArrayRegestries(access, "temporal_references");
 			//System.err.println(dataCriteriaName + " Numbers of temporals: " + numberOfTemporals);
 			/*
-			 * Temporal Step 1: make temporal nodes, and connect the left side, update trace
+			 * Temporal Step 1: make temporal nodes, and connect the left side
+			 * 
 			 * */
-			if (numberOfTemporals > 0) {
-				HashMap <String, String> temporalReference = 
-						measure.getTemporalRefInDataCritieria(dataCriteriaName, 0);
-				String typeString = temporalReference.get("type");
-				String referenceString = temporalReference.get("reference");
+			for (int i = 0; temporalsAccesses != null && i < temporalsAccesses.length; i ++) {
+				int temporalAcc = temporalsAccesses[i];
+//				HashMap <String, String> temporalReference = 
+//						measure.getTemporalRefInDataCritieria(dataCriteriaName, i);
+				String typeString = measure.getStringValue(temporalAcc, "type");
+				String referenceString = measure.getStringValue(temporalAcc, "reference");
 				TemporalTypeCode typeEnum = TemporalTypeCode.SBS;
 				try{
 					typeEnum = Enum.valueOf(TemporalTypeCode.class, typeString);
@@ -225,33 +249,31 @@ public class HqmfJson2Knime {
 					System.err.println("Please look at the SBS node. ");
 				}
 				
-				TemporalRelationship temporalNode = new TemporalRelationship(
-						nodes.size(), typeEnum);
-				nodes.add(temporalNode);
-				temporalNode.setLeftId(frontier.getId());
-				JSONObject ivlPq = measure.getTemporalRange_IVL_PQInDataCritieria(dataCriteriaName, 0);
-				if (ivlPq != null){
-					ivlPqInTemporal(ivlPq, temporalNode);
+				TemporalRelationship temporalNode = new TemporalRelationship(typeEnum);
+				kProject.addKnimeNode(temporalNode);
+				temporalNode.setLeftElement(frontier);
+				Integer ivlPqAccess = measure.getTemporalRange_IVL_PQInDataCritieria(new Integer(temporalAcc));
+				if (ivlPqAccess != null){
+					ivlPqInTemporal(ivlPqAccess.intValue(), measure, temporalNode);
 				}
 				
-				Connection connLeft = new Connection(conns.size());
+				Connection connLeft = new Connection();
 				int connLeftSourcePort = frontier.getGoodOutPorts()[0];
 				connLeft.setSource(frontier, connLeftSourcePort);
 				connLeft.setDest(temporalNode, 0);
-				conns.add(connLeft);
+				kProject.addKnimeConnection(connLeft);
 				if (referenceString.equals("MeasurePeriod")){
-					MeasurePeriod measurePeriodNode = new MeasurePeriod(
-								nodes.size(), measureStart, measureEnd);
-					nodes.add(measurePeriodNode);
-					Connection connMeasurePeriodIn = new Connection(conns.size());
-					conns.add(connMeasurePeriodIn);
+					MeasurePeriod measurePeriodNode = new MeasurePeriod(measureStart, measureEnd);
+					kProject.addKnimeNode(measurePeriodNode);
+					Connection connMeasurePeriodIn = new Connection();
+					kProject.addKnimeConnection(connMeasurePeriodIn);
 					connMeasurePeriodIn.setSource(frontier, connLeftSourcePort);
 					connMeasurePeriodIn.setDest(measurePeriodNode, 0);
-					Connection connMeasurePeriodOut = new Connection(conns.size());
-					conns.add(connMeasurePeriodOut);
+					Connection connMeasurePeriodOut = new Connection();
+					kProject.addKnimeConnection(connMeasurePeriodOut);
 					connMeasurePeriodOut.setSource(measurePeriodNode, measurePeriodNode.getGoodOutPorts()[0]);
 					connMeasurePeriodOut.setDest(temporalNode, 1);
-					temporalNode.setRightId(frontier.getOutputElementId(connLeftSourcePort));
+					temporalNode.setRightElement(frontier.getOutputElement(connLeftSourcePort));
 				} else {
 					rightSideOfTemporals.put(temporalNode, referenceString);
 				}
@@ -273,12 +295,12 @@ public class HqmfJson2Knime {
 			//System.err.println(referenceString);
 			NodeInterface rightNode = dataCriteriaNodes.get(referenceString);
 			if (rightNode != null) {
-				Connection connRight = new Connection (conns.size());
-				conns.add(connRight);
+				Connection connRight = new Connection();
+				kProject.addKnimeConnection(connRight);
 				int connRightSourcePort = rightNode.getGoodOutPorts()[0];
 				connRight.setSource(rightNode, connRightSourcePort);
 				connRight.setDest(temporalNode, 1);
-				temporalNode.setRightId(rightNode.getOutputElementId(rightNode.getGoodOutPorts()[0]));
+				temporalNode.setRightElement(rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
 			}
 		}
 		
@@ -293,9 +315,12 @@ public class HqmfJson2Knime {
 			/*
 			 * Explore the logical tree recursively
 			 * */
+			ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface> ();
+			ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface> ();
 			populationCriteriaOut.put(population, 
 					HqmfJson2Knime.explorePopCriteriaTree(access, nodes, conns, dataCriteriaNodes, measure));
-			
+			kProject.addKnimeNodes(nodes);
+			kProject.addKnimeConnections(conns);
 			
 		}
 		for (String population : populationCriteriaOut.keySet()){
@@ -318,59 +343,59 @@ public class HqmfJson2Knime {
 		 * Population: IPP (initial population)
 		 * */
 		if (nodeIPP != null){
-			RelayNode labelIPP = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelIPP);
+			RelayNode labelIPP = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelIPP);
 			labelIPP.setComment("Initial Population");
 			int nodeIPPOutPort = nodeIPP.getGoodOutPorts()[0];
-			labelIPP.setInputElementId(0, nodeIPP.getOutputElementId(nodeIPPOutPort));
-			Connection labelIPPConn = new Connection(conns.size());
+			labelIPP.setInputElement(0, nodeIPP.getOutputElement(nodeIPPOutPort));
+			Connection labelIPPConn = new Connection();
 			labelIPPConn.setSource(nodeIPP, nodeIPPOutPort);
 			labelIPPConn.setDest(labelIPP, 0);
-			conns.add(labelIPPConn);
+			kProject.addKnimeConnection(labelIPPConn);
 		}
 		
 		/*
 		 * Population: Denominator Exclusion (DENEX)
 		 * */
 		if (nodeDENEX != null){
-			RelayNode labelDENEX = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelDENEX);
+			RelayNode labelDENEX = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelDENEX);
 			labelDENEX.setComment("Denominator Exclusion");
 			int nodeDENEXOutPort = nodeDENEX.getGoodOutPorts()[0];
-			labelDENEX.setInputElementId(0, nodeDENEX.getOutputElementId(nodeDENEXOutPort));
-			Connection labelDENEXConn = new Connection(conns.size());
+			labelDENEX.setInputElement(0, nodeDENEX.getOutputElement(nodeDENEXOutPort));
+			Connection labelDENEXConn = new Connection();
 			labelDENEXConn.setSource(nodeDENEX, nodeDENEXOutPort);
 			labelDENEXConn.setDest(labelDENEX, 0);
-			conns.add(labelDENEXConn);
+			kProject.addKnimeConnection(labelDENEXConn);
 		}
 		
 		/*
 		 * Population: DENEXCEP (Denominator Exception)
 		 * */
 		if (nodeDENEXCEP != null){
-			RelayNode labelDENEXCEP = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelDENEXCEP);
+			RelayNode labelDENEXCEP = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelDENEXCEP);
 			labelDENEXCEP.setComment("Denominator Exception");
 			int nodeDENEXCEPOutPort = nodeDENEXCEP.getGoodOutPorts()[0];
-			labelDENEXCEP.setInputElementId(0, nodeDENEXCEP.getOutputElementId(nodeDENEXCEPOutPort));
-			Connection labelDENEXCEPConn = new Connection(conns.size());
+			labelDENEXCEP.setInputElement(0, nodeDENEXCEP.getOutputElement(nodeDENEXCEPOutPort));
+			Connection labelDENEXCEPConn = new Connection();
 			labelDENEXCEPConn.setSource(nodeDENEXCEP, nodeDENEXCEPOutPort);
 			labelDENEXCEPConn.setDest(labelDENEXCEP, 0);
-			conns.add(labelDENEXCEPConn);
+			kProject.addKnimeConnection(labelDENEXCEPConn);
 			if (nodeNUMER != null) {
-				LogicalOperator andNotNode = new LogicalOperator(nodes.size(), LogicalTypeCode.AND_NOT);
-				nodes.add(andNotNode);
+				LogicalOperator andNotNode = new LogicalOperator(LogicalTypeCode.AND_NOT);
+				kProject.addKnimeNode(andNotNode);
 				NodeInterface leftNode = nodeDENEXCEP;
 				NodeInterface rightNode = nodeNUMER;
 				int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
-				andNotNode.setLeftId(leftNode.getOutputElementId(goodPorts[0]));
-				andNotNode.setRightId(rightNode.getOutputElementId(goodPorts[1]));
-				Connection connLeft = new Connection(conns.size());
-				conns.add(connLeft);
+				andNotNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
+				andNotNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
+				Connection connLeft = new Connection();
+				kProject.addKnimeConnection(connLeft);
 				connLeft.setSource(leftNode, goodPorts[0]);
 				connLeft.setDest(andNotNode, 0);
-				Connection connRight = new Connection(conns.size());
-				conns.add(connRight);
+				Connection connRight = new Connection();
+				kProject.addKnimeConnection(connRight);
 				connRight.setSource(rightNode, goodPorts[1]);
 				connRight.setDest(andNotNode, 1);
 				nodeDENEXCEP_modified = andNotNode;
@@ -381,29 +406,29 @@ public class HqmfJson2Knime {
 		 * Population: Denominator (DENOM)
 		 * */
 		if (nodeDENOM != null){
-			RelayNode labelDENOM = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelDENOM);
+			RelayNode labelDENOM = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelDENOM);
 			labelDENOM.setComment("Denominator (Originial)");
 			int nodeDENOMOutPort = nodeDENOM.getGoodOutPorts()[0];
-			labelDENOM.setInputElementId(0, nodeDENOM.getOutputElementId(nodeDENOMOutPort));
-			Connection labelDENOMConn = new Connection(conns.size());
+			labelDENOM.setInputElement(0, nodeDENOM.getOutputElement(nodeDENOMOutPort));
+			Connection labelDENOMConn = new Connection();
 			labelDENOMConn.setSource(nodeDENOM, nodeDENOMOutPort);
 			labelDENOMConn.setDest(labelDENOM, 0);
-			conns.add(labelDENOMConn);
+			kProject.addKnimeConnection(labelDENOMConn);
 			if (nodeIPP != null){
-				LogicalOperator andNode = new LogicalOperator(nodes.size(), LogicalTypeCode.AND);
-				nodes.add(andNode);
+				LogicalOperator andNode = new LogicalOperator(LogicalTypeCode.AND);
+				kProject.addKnimeNode(andNode);
 				NodeInterface leftNode = nodeIPP;
 				NodeInterface rightNode = nodeDENOM_modified; 
 				int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
-				andNode.setLeftId(leftNode.getOutputElementId(goodPorts[0]));
-				andNode.setRightId(rightNode.getOutputElementId(goodPorts[1]));
-				Connection connLeft = new Connection(conns.size());
-				conns.add(connLeft);
+				andNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
+				andNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
+				Connection connLeft = new Connection();
+				kProject.addKnimeConnection(connLeft);
 				connLeft.setSource(leftNode, goodPorts[0]);
 				connLeft.setDest(andNode, 0);
-				Connection connRight = new Connection(conns.size());
-				conns.add(connRight);
+				Connection connRight = new Connection();
+				kProject.addKnimeConnection(connRight);
 				connRight.setSource(rightNode, goodPorts[1]);
 				connRight.setDest(andNode, 1);
 				nodeDENOM_modified = andNode;
@@ -413,95 +438,95 @@ public class HqmfJson2Knime {
 		}
 		
 		if (nodeDENOM_modified != null && nodeDENEX != null) {
-			LogicalOperator andNotNode = new LogicalOperator(nodes.size(), LogicalTypeCode.AND_NOT);
-			nodes.add(andNotNode);
+			LogicalOperator andNotNode = new LogicalOperator(LogicalTypeCode.AND_NOT);
+			kProject.addKnimeNode(andNotNode);
 			NodeInterface leftNode = nodeDENOM_modified;
 			NodeInterface rightNode = nodeDENEX;
 			int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
-			andNotNode.setLeftId(leftNode.getOutputElementId(goodPorts[0]));
-			andNotNode.setRightId(rightNode.getOutputElementId(goodPorts[1]));
-			Connection connLeft = new Connection(conns.size());
-			conns.add(connLeft);
+			andNotNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
+			andNotNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
+			Connection connLeft = new Connection();
+			kProject.addKnimeConnection(connLeft);
 			connLeft.setSource(leftNode, goodPorts[0]);
 			connLeft.setDest(andNotNode, 0);
-			Connection connRight = new Connection(conns.size());
-			conns.add(connRight);
+			Connection connRight = new Connection();
+			kProject.addKnimeConnection(connRight);
 			connRight.setSource(rightNode, goodPorts[1]);
 			connRight.setDest(andNotNode, 1);
 			nodeDENOM_modified = andNotNode;
 		}
 		if (nodeDENOM_modified != null && nodeDENEXCEP != null) {
-			LogicalOperator andNotNode = new LogicalOperator(nodes.size(), LogicalTypeCode.AND_NOT);
-			nodes.add(andNotNode);
+			LogicalOperator andNotNode = new LogicalOperator(LogicalTypeCode.AND_NOT);
+			kProject.addKnimeNode(andNotNode);
 			NodeInterface leftNode = nodeDENOM_modified;
 			NodeInterface rightNode = nodeDENEXCEP_modified;
 			int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
-			andNotNode.setLeftId(leftNode.getOutputElementId(goodPorts[0]));
-			andNotNode.setRightId(rightNode.getOutputElementId(goodPorts[1]));
-			Connection connLeft = new Connection(conns.size());
-			conns.add(connLeft);
+			andNotNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
+			andNotNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
+			Connection connLeft = new Connection();
+			kProject.addKnimeConnection(connLeft);
 			connLeft.setSource(leftNode, goodPorts[0]);
 			connLeft.setDest(andNotNode, 0);
-			Connection connRight = new Connection(conns.size());
-			conns.add(connRight);
+			Connection connRight = new Connection();
+			kProject.addKnimeConnection(connRight);
 			connRight.setSource(rightNode, goodPorts[1]);
 			connRight.setDest(andNotNode, 1);
 			nodeDENOM_modified = andNotNode;
 		}
 		
 		if (nodeDENOM_modified != null) {
-			RelayNode labelDENOM_modified = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelDENOM_modified);
+			RelayNode labelDENOM_modified = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelDENOM_modified);
 			labelDENOM_modified.setComment("Denominator (Real)");
 			int nodeOutPort = nodeDENOM_modified.getGoodOutPorts()[0];
-			labelDENOM_modified.setInputElementId(0, nodeDENOM_modified.getOutputElementId(nodeOutPort));
-			Connection labelDENOM_modifiedConn = new Connection(conns.size());
+			labelDENOM_modified.setInputElement(0, nodeDENOM_modified.getOutputElement(nodeOutPort));
+			Connection labelDENOM_modifiedConn = new Connection();
 			labelDENOM_modifiedConn.setSource(nodeDENOM_modified, nodeOutPort);
 			labelDENOM_modifiedConn.setDest(labelDENOM_modified, 0);
-			conns.add(labelDENOM_modifiedConn);
+			kProject.addKnimeConnection(labelDENOM_modifiedConn);
 		}
 		
 		/*
 		 * Populations: Numerator (NUMER)
 		 * */
 		if (nodeNUMER != null) {
-			RelayNode labelNUMER = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelNUMER);
+			RelayNode labelNUMER = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelNUMER);
 			labelNUMER.setComment("Numerator (Original)");
 			int nodeOutPort = nodeNUMER.getGoodOutPorts()[0];
-			labelNUMER.setInputElementId(0, nodeNUMER.getOutputElementId(nodeOutPort));
-			Connection labelNUMERConn = new Connection(conns.size());
+			labelNUMER.setInputElement(0, nodeNUMER.getOutputElement(nodeOutPort));
+			Connection labelNUMERConn = new Connection();
 			labelNUMERConn.setSource(nodeNUMER, nodeOutPort);
 			labelNUMERConn.setDest(labelNUMER, 0);
-			conns.add(labelNUMERConn);
+			kProject.addKnimeConnection(labelNUMERConn);
 		}
 		if (nodeDENOM_modified != null){
-			LogicalOperator andNode = new LogicalOperator(nodes.size(), LogicalTypeCode.AND);
-			nodes.add(andNode);
+			LogicalOperator andNode = new LogicalOperator(LogicalTypeCode.AND);
+			kProject.addKnimeNode(andNode);
 			NodeInterface leftNode = nodeNUMER;
 			NodeInterface rightNode = nodeDENOM_modified; 
 			int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
-			andNode.setLeftId(leftNode.getOutputElementId(goodPorts[0]));
-			andNode.setRightId(rightNode.getOutputElementId(goodPorts[1]));
-			Connection connLeft = new Connection(conns.size());
-			conns.add(connLeft);
+			andNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
+			andNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
+			Connection connLeft = new Connection();
+			kProject.addKnimeConnection(connLeft);
 			connLeft.setSource(leftNode, goodPorts[0]);
 			connLeft.setDest(andNode, 0);
-			Connection connRight = new Connection(conns.size());
-			conns.add(connRight);
+			Connection connRight = new Connection();
+			kProject.addKnimeConnection(connRight);
 			connRight.setSource(rightNode, goodPorts[1]);
 			connRight.setDest(andNode, 1);
 			nodeNUMER_modified = andNode;
 			
-			RelayNode labelNUMER_modified = new RelayNode(nodes.size(), DataType.Data);
-			nodes.add(labelNUMER_modified);
+			RelayNode labelNUMER_modified = new RelayNode(DataType.Data);
+			kProject.addKnimeNode(labelNUMER_modified);
 			labelNUMER_modified.setComment("Numerator (Real)");
 			int nodeOutPort = nodeNUMER_modified.getGoodOutPorts()[0];
-			labelNUMER_modified.setInputElementId(0, nodeNUMER_modified.getOutputElementId(nodeOutPort));
-			Connection labelNUMER_modifiedConn = new Connection(conns.size());
+			labelNUMER_modified.setInputElement(0, nodeNUMER_modified.getOutputElement(nodeOutPort));
+			Connection labelNUMER_modifiedConn = new Connection();
 			labelNUMER_modifiedConn.setSource(nodeNUMER_modified, nodeOutPort);
 			labelNUMER_modifiedConn.setDest(labelNUMER_modified, 0);
-			conns.add(labelNUMER_modifiedConn);
+			kProject.addKnimeConnection(labelNUMER_modifiedConn);
 			
 		}
 		
@@ -511,9 +536,6 @@ public class HqmfJson2Knime {
 		/*
 		 * Build Knime project
 		 * */
-		kProject.addKnimeNodes(nodes);
-		kProject.addKnimeConnections(conns);
-		
 		try {
 			kProject.buildProject();
 		} catch (ZipException | JAXBException e) {
@@ -522,37 +544,40 @@ public class HqmfJson2Knime {
 		}
 	}
 
-	private static void ivlPqInTemporal (JSONObject ivl_pq, TemporalRelationshipInterface temporalNode) throws JSONException{
-		JSONObject pq = null;
-		if (ivl_pq.has("high")){
-			pq = ivl_pq.getJSONObject("high");
-			if (pq.getBoolean("inclusive?")){
+	private static void ivlPqInTemporal (Integer ivlPqAccess, HqmfJson measure, TemporalRelationshipInterface temporalNode) {
+		Integer highPqAccess = measure.getJsonObjectRegistry(ivlPqAccess, "high");
+		Integer lowPqAccess = measure.getJsonObjectRegistry(ivlPqAccess, "low");
+		Integer pqAccess = null;
+		
+		if(highPqAccess != null){
+			if (measure.getBooleanValue(highPqAccess, "inclusive?")){
 				temporalNode.setOperator(Operator.lessThanOrEqualTo);
 			} else {
 				temporalNode.setOperator(Operator.lessThan);
 			}
+			pqAccess = highPqAccess;
 			
-			
-		} else if (ivl_pq.has("low")){
-			pq = ivl_pq.getJSONObject("low");
-			if (pq.getBoolean("inclusive?")){
+		} else if (lowPqAccess != null){
+			if (measure.getBooleanValue(lowPqAccess, "inclusive?")){
 				temporalNode.setOperator(Operator.greaterThanOrEqualTo);
 			} else {
 				temporalNode.setOperator(Operator.greaterThan);
 			}
-			
+			pqAccess = lowPqAccess;
 		} 
-		if (pq != null) {
-			try {
-				
-				temporalNode.setQuantity(Integer.valueOf(pq.getString("value")));
-				
-				Unit unitEnum = Toolkit.timeUnits(pq.getString("unit"));
-				
-				temporalNode.setUnit(unitEnum);
-			} catch (IndexOutOfBoundsException e) {
-				e.printStackTrace();
+		if (pqAccess != null) {
+			
+			String valueRe = measure.getStringValue(pqAccess, "value");
+			if (valueRe != null){
+				temporalNode.setQuantity(Integer.valueOf(valueRe));
 			}
+			
+			Unit unitEnum = Toolkit.timeUnits(measure.getStringValue(pqAccess, "unit"));
+			
+			if (unitEnum != null) {
+				temporalNode.setUnit(unitEnum);
+			}
+			
 		}
 		
 	}
@@ -594,16 +619,16 @@ public class HqmfJson2Knime {
 				LogicalOperator newNode;
 				if (leftNegated || rightNegated) {
 					newNode = 
-							new LogicalOperator(nodes.size(), LogicalTypeCode.AND_NOT);
+							new LogicalOperator(LogicalTypeCode.AND_NOT);
 				} else {
 					newNode = 
-							new LogicalOperator(nodes.size(), logicType);
+							new LogicalOperator(logicType);
 				}
 				nodes.add(newNode);
-				Connection connLeft = new Connection(conns.size());
+				Connection connLeft = new Connection();
 				connLeft.setDest(newNode, 0);
 				conns.add(connLeft);
-				Connection connRight = new Connection(conns.size());
+				Connection connRight = new Connection();
 				connRight.setDest(newNode, 1);
 				conns.add(connRight);
 				int[] sourcePorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
@@ -612,14 +637,14 @@ public class HqmfJson2Knime {
 					 * flip left and right
 					 * */
 					connRight.setSource(leftNode, sourcePorts[0]);
-					newNode.setRightId(leftNode.getOutputElementId(sourcePorts[0]));
+					newNode.setRightElement(leftNode.getOutputElement(sourcePorts[0]));
 					connLeft.setSource(rightNode, sourcePorts[1]);
-					newNode.setLeftId(rightNode.getOutputElementId(sourcePorts[1]));
+					newNode.setLeftElement(rightNode.getOutputElement(sourcePorts[1]));
 				} else {
 					connLeft.setSource(leftNode, sourcePorts[0]);
-					newNode.setLeftId(leftNode.getOutputElementId(sourcePorts[0]));
+					newNode.setLeftElement(leftNode.getOutputElement(sourcePorts[0]));
 					connRight.setSource(rightNode, sourcePorts[1]);
-					newNode.setRightId(rightNode.getOutputElementId(sourcePorts[1]));
+					newNode.setRightElement(rightNode.getOutputElement(sourcePorts[1]));
 				}
 				frontier = newNode;
 			}
@@ -673,7 +698,7 @@ public class HqmfJson2Knime {
 	 * @throws SetUpIncompleteException 
 	 * @throws WrittenAlreadyException 
 	 */
-	public static void main(String[] args) throws IOException, JSONException, WrittenAlreadyException, SetUpIncompleteException, ParseException {
+	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
 		Path hqmfJsonFile = Paths.get("src/test/resources/cypress-bundle-latest/sources/eh/CMS30v4/hqmf_model.json");
 		Path outputDir = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS30v4");

@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
+import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.RelayNodeInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
@@ -31,7 +32,7 @@ public class RelayNode extends MetaNode implements RelayNodeInterface {
 	
 	DataType knimeDataType;
 	
-	int inputElementId;
+	NodeInterface inputElement;
 	
 	String commentText = null;
 	
@@ -43,29 +44,32 @@ public class RelayNode extends MetaNode implements RelayNodeInterface {
 	/**
 	 * @param id
 	 */
-	public RelayNode(int id, DataType type) {
-		super(id);
+//	public RelayNode(int id, DataType type) {
+//		super(id);
 		// TODO Auto-generated constructor stub
-		this.knimeDataType = type;
-	}
+//		this.knimeDataType = type;
+//	}
 
 	/* (non-Javadoc)
-	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#setInputElementId(int, int)
+	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#setInputElement(int, NodeInterface)
 	 */
 	@Override
-	public void setInputElementId(int port, int elementId)
-			throws IndexOutOfBoundsException {
+	public void setInputElement(int port, NodeInterface node) {
 		// TODO Auto-generated method stub
-		inputElementId = elementId;
+		inputElement = node;
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.NodeInterface#getOutputElementId(int)
 	 */
 	@Override
-	public int getOutputElementId(int port) throws IndexOutOfBoundsException {
+	public NodeInterface getOutputElement(int port) {
 		// TODO Auto-generated method stub
-		return this.inputElementId;
+		NodeInterface re = null;
+		if (port == 0) {
+			re = this.inputElement;
+		}
+		return re;
 	}
 
 	/* (non-Javadoc)

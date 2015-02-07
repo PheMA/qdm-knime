@@ -170,7 +170,7 @@ public class Toolkit {
 	}
 	
 	public static Unit timeUnits(String s) {
-		Unit u;
+		Unit u = null;
 		switch (s) {
 		case "s": u = Unit.seconds; break;
 		case "min": u = Unit.minutes; break;
@@ -179,7 +179,6 @@ public class Toolkit {
 		case "wk": u = Unit.weeks; break;
 		case "mo": u = Unit.months; break;
 		case "a": u = Unit.years; break;
-		default: throw new IndexOutOfBoundsException("Unknown time unit " + s);
 		}
 		return u;
 	}

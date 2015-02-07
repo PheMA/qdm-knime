@@ -35,8 +35,12 @@ public class ConnectionTest {
 		ObjectFactory elementFactory = new ObjectFactory();
 		Connection conn = new Connection();
 		conn.setId(2);
-		conn.setSource(new LogicalOperator (0, LogicalTypeCode.AND), 0);
-		conn.setDest(new LogicalOperator (0, LogicalTypeCode.OR), 1);
+		LogicalOperator nodeA = new LogicalOperator (LogicalTypeCode.AND);
+		nodeA.setId(0);
+		conn.setSource(nodeA, 0);
+		LogicalOperator nodeB = new LogicalOperator (LogicalTypeCode.OR);
+		nodeB.setId(1);
+		conn.setDest(nodeB, 1);
 		conn.addBendpoint(178, 95);
 		conn.addBendpoint(578, 95);
 		
