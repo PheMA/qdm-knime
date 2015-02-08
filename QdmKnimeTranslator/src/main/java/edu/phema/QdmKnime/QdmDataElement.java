@@ -71,28 +71,20 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 	private String valueSetVersion = "";
 	private final HashMap<String, String> variablesForSQL = new HashMap<String, String>();
 	
-	private final TableCreator requiredAttributes;
+	private final TableCreator requiredAttributes = initializeAttributesTable();
 	private int attributeTableRowCount = 0;
 	private final DBManager rxnormManager; 
+	private final ArrayList<String> seenAttributes = new ArrayList<String>();
+	
 	
 	public QdmDataElement() {
 		// TODO Auto-generated constructor stub
 		
-		requiredAttributes = initializeAttributesTable();
+//		requiredAttributes = initializeAttributesTable();
 		attributeTableRowCount = 2;
 		rxnormManager = Toolkit.getRxnormManager();
 	}
 
-	/**
-	 * @param id
-	 */
-//	public QdmDataElement(int id) {
-//		super(id);
-		// TODO Auto-generated constructor stub
-//		requiredAttributes = initializeAttributesTable();
-//		attributeTableRowCount = 2;
-//		rxnormManager = Toolkit.getRxnormManager();
-//	}
 	
 	private static TableCreator initializeAttributesTable(){
 		TableCreator attributeTable = null;
@@ -458,16 +450,16 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 	public void addQdmAttributes(String requiredColumn, String dataType,
 			String explanation) {
 		// TODO Auto-generated method stub
-		if (requiredAttributes != null){
+		if (! seenAttributes.contains(requiredColumn)){
 			requiredAttributes.setCell(requiredColumn, 
 					attributeTableRowCount, 0);
 			requiredAttributes.setCell(dataType, 
 					attributeTableRowCount, 1);
 			requiredAttributes.setCell(explanation, 
 					attributeTableRowCount, 2);
+			attributeTableRowCount ++;
+			seenAttributes.add(requiredColumn);
 		}
-		attributeTableRowCount ++;
-
 	}
 
 	/* (non-Javadoc)

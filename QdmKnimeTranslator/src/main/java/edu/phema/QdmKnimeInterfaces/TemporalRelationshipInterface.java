@@ -8,7 +8,27 @@ public interface TemporalRelationshipInterface extends NodeInterface {
 		equalTo, greaterThan, greaterThanOrEqualTo, lessThan, lessThanOrEqualTo, none
 	};
 	public static enum TemporalTypeCode {
-		CONCURRENT, DURING, EAE, EAS, EBE, EBS, ECW, ECWS, EDU, OVERLAP, SAE, SAS, SBE, SBS, SCW, SCWE, SDU		
+		CONCURRENT(true, true, true, true), DURING(true, true, true, true), 
+		EAE(false, true, false, true), EAS(false, true, true, false), 
+		EBE(false, true, false, true), EBS(false, true, true, false), 
+		ECW(false, true, false, true), ECWS(false, true, true, false), 
+		EDU(false, true, true, true), OVERLAP(true, true, true, true), 
+		SAE(true, false, false, true), SAS(true, false, true, false), 
+		SBE(true, false, false, true), SBS(true, false, true, false), 
+		SCW(true, false, true, false), SCWE(true, false, false, true), 
+		SDU(true, false, true, true);
+		
+		public final boolean REQUIRE_LEFT_START;
+		public final boolean REQUIRE_LEFT_END;
+		public final boolean REQUIRE_RIGHT_START;
+		public final boolean REQUIRE_RIGHT_END;
+		TemporalTypeCode(boolean leftStart, boolean leftEnd, boolean rightStart, boolean rightEnd){
+			this.REQUIRE_LEFT_START = leftStart;
+			this.REQUIRE_LEFT_END = leftEnd;
+			this.REQUIRE_RIGHT_START = rightStart;
+			this.REQUIRE_RIGHT_END = rightEnd;
+		}
+		
 	};
 	void setLeftElement (NodeInterface node);
 	void setRightElement (NodeInterface node);
