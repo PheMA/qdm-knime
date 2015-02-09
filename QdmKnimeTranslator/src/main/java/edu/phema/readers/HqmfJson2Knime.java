@@ -408,7 +408,7 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeDENOM != null && nodeIPP != null){
 			nodeDENOM_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeIPP, nodeDENOM_modified, 
+					HqmfJson2Knime.logicTwoNodes(nodeDENOM, nodeIPP, 
 						LogicalTypeCode.AND, kProject);
 		} else if (nodeIPP != null) {
 			nodeDENOM_modified = nodeIPP;
@@ -703,7 +703,7 @@ public class HqmfJson2Knime {
 		Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
 		
 		Path hqmfJsonFile = hqmfJsonFile1;
-		Path outputDir = outputDir1;
+		Path outputDir = outputDir2;
 		
 		if (args.length == 2) {
 			hqmfJsonFile = Paths.get(args[0]);
