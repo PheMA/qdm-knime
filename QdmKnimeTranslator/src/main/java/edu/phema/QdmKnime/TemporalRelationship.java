@@ -16,6 +16,8 @@ import java.nio.file.StandardCopyOption;
 
 
 
+import java.util.HashMap;
+
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -75,7 +77,7 @@ public class TemporalRelationship extends MetaNode implements
 
 //	private Random randMachine = new Random();
 
-	
+	private final HashMap <String, String> toModifyAnnotation = new HashMap<String, String>();
 	
 	public TemporalRelationship(TemporalTypeCode temporalType) {
 		// TODO Auto-generated constructor stub
@@ -212,7 +214,59 @@ public class TemporalRelationship extends MetaNode implements
 		ZipFile zipFile = new ZipFile(tempZipPath.toString());
 		zipFile.extractAll(tempFolderForUnzip.toString());
 		
-				 
+		if (toModifyAnnotation.size() > 0){
+			Path workflowKnime = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name())
+					.resolve("workflow.knime");
+			Path workflowKnime_temp = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name())
+					.resolve("workflow.knime.temp");
+			Path workflowKnime_old = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name())
+					.resolve("workflow.knime.old");
+			
+			/*
+			 * in CONCURRENT node, the key for annotation of left/right input is somehow different,
+			 * which suchs. 
+			 * */
+			String annotationKey = "annotation_2";
+			if (temporalType.equals(TemporalTypeCode.CONCURRENT)){
+				annotationKey = "annotation_0";
+			}
+			
+			try {
+				Document workflowKnimeDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+						.parse(workflowKnime.toFile());
+				workflowKnimeDoc.getDocumentElement().normalize();
+				XPathExpression annotXpath = XPathFactory.newInstance()
+						.newXPath().compile("/config[@key=\"workflow.knime\"]/config[@key=\"annotations\"]/config[@key=\"" 
+								+ annotationKey + "\"]/entry[@key=\"text\"]");
+				
+				Node annotEntry = (Node) annotXpath.evaluate(workflowKnimeDoc, XPathConstants.NODE);
+				String annotText = annotEntry.getAttributes().getNamedItem("value").getTextContent();
+				for (String from : toModifyAnnotation.keySet()){
+					String to = toModifyAnnotation.get(from);
+					annotText = annotText.replace(from, to);
+				}
+				annotEntry.getAttributes().getNamedItem("value").setNodeValue(annotText);
+				
+				
+				
+				FileOutputStream workflowFOS = new FileOutputStream(workflowKnime_temp.toFile());
+				TransformerFactory.newInstance().newTransformer().transform(new DOMSource(workflowKnimeDoc), 
+						new StreamResult(workflowFOS));
+				workflowFOS.close();
+				
+				Files.move(workflowKnime, workflowKnime_old, StandardCopyOption.REPLACE_EXISTING);
+				Files.move(workflowKnime_temp, workflowKnime, StandardCopyOption.REPLACE_EXISTING);
+
+				
+				
+			} catch (SAXException | ParserConfigurationException | XPathExpressionException | 
+					TransformerException | TransformerFactoryConfigurationError e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 		if (haveGoodOperations()){
 			
 	
@@ -527,6 +581,12 @@ public class TemporalRelationship extends MetaNode implements
 		else if (port == 1)
 			this.setRightElement(node);
 		else throw new IndexOutOfBoundsException();
+	}
+
+	@Override
+	public void modifyAnnotateTexts(String old, String newText) {
+		// TODO Auto-generated method stub
+		toModifyAnnotation.put(old, newText);
 	}
 
 

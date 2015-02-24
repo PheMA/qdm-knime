@@ -74,6 +74,7 @@ public class HqmfJson2Knime {
 		final HashMap <TemporalRelationshipInterface, String> rightSideOfTemporals = 
 				new HashMap <TemporalRelationshipInterface, String>();
 		final HashMap <String, QdmDataElementInterface> dataCriteriaFindSource = new HashMap <String, QdmDataElementInterface>();
+		final HashMap <String, String> dataCriteria2Source = new HashMap<String, String>();
 		
 		/*
 		 * Measure Period object need to be created and linked to sourceDataCriteria every time it is used
@@ -125,8 +126,9 @@ public class HqmfJson2Knime {
 				measure.getDataCrtieriaAccesses();
 		for (String dataCriteriaName : dataCriteriaAccesses.keySet()){
 			Integer access = dataCriteriaAccesses.get(dataCriteriaName);
-			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(
-					measure.getStringValue(access, "source_data_criteria"));
+			String sourceDataCriteriaName = measure.getStringValue(access, "source_data_criteria");
+			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(sourceDataCriteriaName);
+			dataCriteria2Source.put(dataCriteriaName, sourceDataCriteriaName);
 			NodeInterface frontier = sourceElement; 
 			dataCriteriaFindSource.put(dataCriteriaName, sourceElement);
 			/*
@@ -257,6 +259,8 @@ public class HqmfJson2Knime {
 				TemporalRelationship temporalNode = new TemporalRelationship(typeEnum);
 				kProject.addKnimeNode(temporalNode);
 				temporalNode.setLeftElement(frontier);
+				temporalNode.modifyAnnotateTexts("leftDataElement", dataCriteriaName);
+				temporalNode.modifyAnnotateTexts("leftSourceDataElement", sourceDataCriteriaName);
 				Integer ivlPqAccess = measure.getTemporalRange_IVL_PQInDataCritieria(new Integer(temporalAcc));
 				if (ivlPqAccess != null){
 					ivlPqInTemporal(ivlPqAccess.intValue(), measure, temporalNode);
@@ -278,9 +282,12 @@ public class HqmfJson2Knime {
 					kProject.addKnimeConnection(connMeasurePeriodOut);
 					connMeasurePeriodOut.setSource(measurePeriodNode, measurePeriodNode.getGoodOutPorts()[0]);
 					connMeasurePeriodOut.setDest(temporalNode, 1);
+					temporalNode.modifyAnnotateTexts("rightDataElement", "Measure Period");
+					temporalNode.modifyAnnotateTexts("rightSourceDataElement", "Measure Period");
 					temporalNode.setRightElement(frontier.getOutputElement(connLeftSourcePort));
 				} else {
 					rightSideOfTemporals.put(temporalNode, referenceString);
+					temporalNode.modifyAnnotateTexts("rightDataElement", referenceString);
 				}
 				frontier = temporalNode;
 			}
@@ -330,6 +337,7 @@ public class HqmfJson2Knime {
 				connRight.setSource(rightNode, connRightSourcePort);
 				connRight.setDest(temporalNode, 1);
 				temporalNode.setRightElement(rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
+				temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
 			}
 			QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(referenceString);
 			if(temporalNode.getTemporalType().REQUIRE_RIGHT_START){
@@ -702,8 +710,8 @@ public class HqmfJson2Knime {
 		Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
 		Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
 		
-		Path hqmfJsonFile = hqmfJsonFile2;
-		Path outputDir = outputDir2;
+		Path hqmfJsonFile = hqmfJsonFile1;
+		Path outputDir = outputDir1;
 		
 		if (args.length == 2) {
 			hqmfJsonFile = Paths.get(args[0]);

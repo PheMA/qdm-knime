@@ -42,5 +42,6 @@ public interface TemporalRelationshipInterface extends NodeInterface {
 	void setOperator(Operator operator);  // <= 120 days: <=
 	void setQuantity(double quantity);    // <= 120 days: 120
 	void setUnit(Unit unit);            // <= 120 days: days
+	void modifyAnnotateTexts(String old, String newText);
 }
 

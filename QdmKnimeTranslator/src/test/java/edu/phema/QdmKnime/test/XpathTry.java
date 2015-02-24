@@ -1,5 +1,6 @@
 package edu.phema.QdmKnime.test;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +17,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import edu.phema.QdmKnime.Toolkit;
+
 public class XpathTry {
 
 	public XpathTry() {
@@ -25,12 +28,15 @@ public class XpathTry {
 	public static void main(String[] args) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
 		// TODO Auto-generated method stub
 		
-		Path settings_xml = Paths.get("src/main/resources/metaNodeRepos/temporalRelationships/SAE/Time Difference (#68)/settings.xml");
+		Path settings_xml = Paths.get("src/main/resources/metaNodeRepos/temporalRelationships/CONCURRENT/workflow.knime");
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(settings_xml.toFile());
-		XPathExpression granularity = XPathFactory.newInstance().newXPath().compile("/config/config[@key=\"model\"]/entry[@key=\"granularity\"]");
-		Node nl = (Node) granularity.evaluate(doc, XPathConstants.NODE);
-		nl.getAttributes().getNamedItem("value").setTextContent("Week");;
-		System.out.println(nl.getAttributes().getNamedItem("value").getNodeValue());
+		//System.out.print(Toolkit.readFile(settings_xml.toString()));
+		
+		XPathExpression xpath = XPathFactory.newInstance().newXPath().compile(
+				"/config[@key=\"workflow.knime\"]/config[@key=\"annotations\"]/config[@key=\"annotation_0\"]/entry[@key=\"text\"]");
+		Node nnode = (Node) xpath.evaluate(doc, XPathConstants.NODE);
+		String text = nnode.getAttributes().getNamedItem("value").getTextContent();
+		System.out.println(text);
 	}
 
 }
