@@ -37,10 +37,10 @@ public interface TemporalRelationshipInterface extends NodeInterface {
 	NodeInterface getRightElement();
 	TemporalTypeCode getTemporalType();
 	Operator getOperator();
-	int getQuantity();
+	double getQuantity();
 	Unit getUnit();
 	void setOperator(Operator operator);  // <= 120 days: <=
-	void setQuantity(int quantity);    // <= 120 days: 120
+	void setQuantity(double quantity);    // <= 120 days: 120
 	void setUnit(Unit unit);            // <= 120 days: days
 }
 

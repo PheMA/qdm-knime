@@ -530,7 +530,7 @@ public class HqmfJson2Knime {
 			
 			String valueRe = measure.getStringValue(pqAccess, "value");
 			if (valueRe != null){
-				temporalNode.setQuantity(Integer.valueOf(valueRe));
+				temporalNode.setQuantity(Double.valueOf(valueRe));
 			}
 			
 			Unit unitEnum = Toolkit.timeUnits(measure.getStringValue(pqAccess, "unit"));
@@ -702,7 +702,7 @@ public class HqmfJson2Knime {
 		Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
 		Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
 		
-		Path hqmfJsonFile = hqmfJsonFile1;
+		Path hqmfJsonFile = hqmfJsonFile2;
 		Path outputDir = outputDir2;
 		
 		if (args.length == 2) {

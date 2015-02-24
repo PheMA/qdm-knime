@@ -3,6 +3,8 @@
  */
 package edu.phema.QdmKnime;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
@@ -10,16 +12,39 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Random;
+//import java.util.Random;
+
+
 
 import org.apache.commons.io.FileUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
+import edu.phema.Enum.QdmKnime.CreateTableColumnClassEnum;
 import edu.phema.QdmKnimeInterfaces.NodeInterface;
 import edu.phema.QdmKnimeInterfaces.TemporalRelationshipInterface;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
+import edu.phema.knime.nodeSettings.RowFilter;
+
+import javax.xml.bind.JAXBException;
+//import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+//import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  * @author Huan
@@ -36,13 +61,10 @@ public class TemporalRelationship extends MetaNode implements
 	private NodeInterface leftElementNode = this;
 	private NodeInterface rightElementNode = this;
 
-	@SuppressWarnings("unused")
-	private Operator operator = Operator.none;
+	private Operator operator = Operator.greaterThan;
 
-	@SuppressWarnings("unused")
-	private int quantity = 0;
+	private double quantity = 0.0;
 
-	@SuppressWarnings("unused")
 	private Unit unit = Unit.days;
 	
 //	String folderName;
@@ -51,15 +73,16 @@ public class TemporalRelationship extends MetaNode implements
 	
 	private Path tempFolder = Paths.get("");
 
-	private Random randMachine = new Random();
+//	private Random randMachine = new Random();
 
+	
 	
 	public TemporalRelationship(TemporalTypeCode temporalType) {
 		// TODO Auto-generated constructor stub
 		this.temporalType = temporalType;
 //		folderName = m_makeFolderName();
-		super.setX(300 + randMachine.nextInt(5) * 50);
-		super.setY(100 + randMachine.nextInt(5) * 25);
+//		super.setX(300 + randMachine.nextInt(5) * 50);
+//		super.setY(100 + randMachine.nextInt(5) * 25);
 	}
 
 	/**
@@ -134,7 +157,7 @@ public class TemporalRelationship extends MetaNode implements
 	 * <= 120 days: 120
 	 */
 	@Override
-	public synchronized void setQuantity(int quantity) {
+	public synchronized void setQuantity(double quantity) {
 		// TODO Auto-generated method stub
 		this.quantity = quantity;
 
@@ -153,6 +176,7 @@ public class TemporalRelationship extends MetaNode implements
 	/* (non-Javadoc)
 	 * @see edu.vanderbilt.phema.QdmKnime.MetaNode#write()
 	 */
+	@SuppressWarnings("resource")
 	@Override
 	public synchronized void write() throws WrittenAlreadyException,
 			SetUpIncompleteException, IOException, ZipException {
@@ -191,26 +215,99 @@ public class TemporalRelationship extends MetaNode implements
 				 
 		if (haveGoodOperations()){
 			
+	
 			/*
-			 * Set up Operator (<= 120 days: <=)
+			 * Set up Unit for Time Difference
 			 * */
 			
-			Path operatorTemplate = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
-					).resolve(getOperatorSettingNodeFolder()).resolve("settings.xml.template");
-			Path operatorSettings = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
-					).resolve(getOperatorSettingNodeFolder()).resolve("settings.xml");
-			operatorSettings.toFile().delete();
+			Path timeDiffSettings = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getTimeDifferenceSettingNodeFolder()).resolve("settings.xml");
+			Path timeDiffSettings_temp = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getTimeDifferenceSettingNodeFolder()).resolve("settings.xml.temp");
+			Path timeDiffSettings_old = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getTimeDifferenceSettingNodeFolder()).resolve("settings.xml.old");
 			
-			String operatorTemplateContent = Toolkit.readFile(
-					operatorTemplate.toString(), 
-					Charset.defaultCharset());
-			String operatorSettingsContent = operatorTemplateContent.replace(
-					"#${setOperator}$#", getOperatorString());
+			//Files.move(timeDiffSettings, timeDiffSettings_old, StandardCopyOption.REPLACE_EXISTING);
 			
-			PrintWriter outStream = new PrintWriter(operatorSettings.toFile());
 			
-			outStream.print(operatorSettingsContent);
-			outStream.close();
+			try {
+				File timeDiffTemplateFile = timeDiffSettings.toFile();
+				Document timeDiffXmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(timeDiffTemplateFile);
+				timeDiffXmlDoc.getDocumentElement().normalize();
+				XPathExpression granXpath = XPathFactory.newInstance()
+						.newXPath().compile("/config/config[@key=\"model\"]/entry[@key=\"granularity\"]");
+				Node granEntry = (Node) granXpath.evaluate(timeDiffXmlDoc, XPathConstants.NODE);
+				/* update unit to getTimeUnitKnime() */
+				granEntry.getAttributes().getNamedItem("value").setNodeValue(getTimeUnitKnime()); 
+				
+				
+				FileOutputStream fosTimeDiff = new FileOutputStream(timeDiffSettings_temp.toFile());
+				TransformerFactory.newInstance().newTransformer().transform(new DOMSource(timeDiffXmlDoc), 
+						new StreamResult(fosTimeDiff));
+				fosTimeDiff.close();
+				
+				Files.move(timeDiffSettings, timeDiffSettings_old, StandardCopyOption.REPLACE_EXISTING);
+				Files.move(timeDiffSettings_temp, timeDiffSettings, StandardCopyOption.REPLACE_EXISTING);
+				
+			} catch (SAXException | ParserConfigurationException | XPathExpressionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerFactoryConfigurationError e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			/*
+			 * Set up quantity and operator on Row Filter
+			 * */
+			Path rowFilterSettings = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getRowFilterSettingNodeFolder()).resolve("settings.xml");
+			Path rowFilterSettings_temp = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getRowFilterSettingNodeFolder()).resolve("settings.xml.temp");
+			Path rowFilterSettings_old = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+					).resolve(getRowFilterSettingNodeFolder()).resolve("settings.xml.old");
+			
+			try {
+				RowFilter rowFilter = new RowFilter();
+				rowFilter.setIncludeOrExclude(true);
+				rowFilter.setColumnName("time_diff");
+				if (this.operator == Operator.lessThan || this.operator == Operator.lessThanOrEqualTo) {
+					rowFilter.setRangeValues(CreateTableColumnClassEnum.Double, Double.valueOf(quantity), Double.valueOf(0.0));
+				} else if (this.operator == Operator.equalTo) {
+					rowFilter.setRangeValues(CreateTableColumnClassEnum.Double, 
+							Double.valueOf(quantity + 0.5), Double.valueOf(quantity - 0.5));
+				} else /* Default greaterThan 0 */ {
+					rowFilter.setRangeValues(CreateTableColumnClassEnum.Double, null, Double.valueOf(quantity));
+				}
+				
+				PrintWriter pwRowFilter = new PrintWriter(rowFilterSettings_temp.toFile());
+				pwRowFilter.print(rowFilter.getSettings());
+				pwRowFilter.close();
+				
+				Files.move(rowFilterSettings, rowFilterSettings_old, StandardCopyOption.REPLACE_EXISTING);
+				Files.move(rowFilterSettings_temp, rowFilterSettings, StandardCopyOption.REPLACE_EXISTING);
+				
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+//			String operatorTemplateContent = Toolkit.readFile(
+//					operatorTemplate.toString(), 
+//					Charset.defaultCharset());
+//			String operatorSettingsContent = operatorTemplateContent.replace(
+//					"#${setOperator}$#", getOperatorString());
+			
+//			PrintWriter outStream = new PrintWriter(operatorSettings.toFile());
+			
+//			outStream.print(operatorSettingsContent);
+//			outStream.close();
 			
 			/*
 			 * Need to implement quantity and unit: 120 days
@@ -221,22 +318,22 @@ public class TemporalRelationship extends MetaNode implements
 			 * 
 			 * */
 			
-			Path timeShiftingTemplate = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
-					).resolve(getTimeShiftingSettingNodeFolder()).resolve("settings.xml.template");
-			Path timeShiftingSettings = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
-					).resolve(getTimeShiftingSettingNodeFolder()).resolve("settings.xml");
-			timeShiftingSettings.toFile().delete();
+//			Path timeShiftingTemplate = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+//					).resolve(getTimeShiftingSettingNodeFolder()).resolve("settings.xml.template");
+//			Path timeShiftingSettings = tempFolderForUnzip.resolve( /* Node Folder resource name */ temporalType.name()
+//					).resolve(getTimeShiftingSettingNodeFolder()).resolve("settings.xml");
+//			timeShiftingSettings.toFile().delete();
 			
-			String timeShiftingTemplateContent = Toolkit.readFile(
-					timeShiftingTemplate.toString(), 
-					Charset.defaultCharset());
-			String timeShiftingSettingsContent = timeShiftingTemplateContent
-					.replace("#${quantity}$#", String.valueOf(getQuantity()))
-					.replace("#${unit}$#", getShiftingUnitKnime());
+//			String timeShiftingTemplateContent = Toolkit.readFile(
+//					timeShiftingTemplate.toString(), 
+//					Charset.defaultCharset());
+//			String timeShiftingSettingsContent = timeShiftingTemplateContent
+//					.replace("#${quantity}$#", String.valueOf(getQuantity()))
+//					.replace("#${unit}$#", getShiftingUnitKnime());
 			
-			PrintWriter outStream2 = new PrintWriter(timeShiftingSettings.toFile());
-			outStream2.print(timeShiftingSettingsContent);
-			outStream2.close();
+//			PrintWriter outStream2 = new PrintWriter(timeShiftingSettings.toFile());
+//			outStream2.print(timeShiftingSettingsContent);
+//			outStream2.close();
 			
 			
 		}
@@ -245,7 +342,7 @@ public class TemporalRelationship extends MetaNode implements
 				nodeFolderPath, StandardCopyOption.REPLACE_EXISTING);
 	}
 	
-	private String getShiftingUnitKnime(){
+	private String getTimeUnitKnime(){
 		String re = "Day";
 		switch (unit){
 		case days: re = "Day"; break;
@@ -285,15 +382,16 @@ public class TemporalRelationship extends MetaNode implements
 				temporalType.equals(TemporalTypeCode.SBS));	
 	}
 	
-	private String getOperatorSettingNodeFolder(){
+	private String getRowFilterSettingNodeFolder(){
 		// The folder names happen to be all the same for all temporal types
-		String re = "Rule_based Row Filter (#55)";
+		//String re = "Rule_based Row Filter (#55)";
+		String re = "Row Filter (#67)";
 		return re;
 	}
 	
-	private String getTimeShiftingSettingNodeFolder(){
+	private String getTimeDifferenceSettingNodeFolder(){
 		// The folder names happen to be all the same for all temporal types
-		String re = "Date_Time Shift  (#60)";
+		String re = "Time Difference (#68)";
 		return re;
 	}
 	
@@ -398,7 +496,7 @@ public class TemporalRelationship extends MetaNode implements
 	}
 
 	@Override
-	public int getQuantity() {
+	public double getQuantity() {
 		// TODO Auto-generated method stub
 		return quantity;
 	}
