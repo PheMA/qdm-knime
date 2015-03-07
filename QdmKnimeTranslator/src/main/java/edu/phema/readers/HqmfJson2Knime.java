@@ -340,10 +340,10 @@ public class HqmfJson2Knime {
 				temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
 			}
 			QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(referenceString);
-			if(temporalNode.getTemporalType().REQUIRE_RIGHT_START){
+			if(rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_START){
 				rightSourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
 			}
-			if (temporalNode.getTemporalType().REQUIRE_RIGHT_END){
+			if (rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_END){
 				rightSourceElement.addQdmAttributes("stopDatetime", "DateAndTimeCell", "Stop/end timestamp");
 			}
 		}
@@ -704,11 +704,14 @@ public class HqmfJson2Knime {
 	 */
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
-		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/eh/CMS30v4/hqmf_model.json");
-		Path outputDir1 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS30v4");
+		// /Users/admin/Desktop
+		String measureName = "CMS9v3";
+		String measureType = "eh";
+		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
+		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
 		
-		Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
-		Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
+		//Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
+		//Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
 		
 		Path hqmfJsonFile = hqmfJsonFile1;
 		Path outputDir = outputDir1;
