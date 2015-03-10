@@ -129,6 +129,11 @@ public class HqmfJson2Knime {
 			String sourceDataCriteriaName = measure.getStringValue(access, "source_data_criteria");
 			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(sourceDataCriteriaName);
 			dataCriteria2Source.put(dataCriteriaName, sourceDataCriteriaName);
+			/*
+			 *  CMS159v3 doesn't work here.
+			 *  Check "GROUP_FIRST_129"
+			 *  
+			 * */
 			NodeInterface frontier = sourceElement; 
 			dataCriteriaFindSource.put(dataCriteriaName, sourceElement);
 			/*
@@ -302,8 +307,14 @@ public class HqmfJson2Knime {
 			}
 			for (int operatorAccess : subsetOperatorsAccesses){
 				String typeString = measure.getStringValue(operatorAccess, "type");
-				Integer ivlPqAccess = measure.getJsonObjectRegistry(operatorAccess, "value");
-				String ivlPqDesc = measure.getIVL_PQDescription(ivlPqAccess);
+				String ivlPqDesc = "";
+				try {
+					Integer ivlPqAccess = measure.getJsonObjectRegistry(operatorAccess, "value");
+					ivlPqDesc = measure.getIVL_PQDescription(ivlPqAccess);
+				} catch (NullPointerException e){
+					// Do nothing
+				}
+				
 				Aggregation aggrNode = new Aggregation();
 				kProject.addKnimeNode(aggrNode);
 				aggrNode.setGroupByNodeText(typeString);
@@ -705,8 +716,8 @@ public class HqmfJson2Knime {
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
 		// /Users/admin/Desktop
-		String measureName = "CMS9v3";
-		String measureType = "eh";
+		String measureName = "CMS123v3";
+		String measureType = "ep";
 		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
 		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
 		
