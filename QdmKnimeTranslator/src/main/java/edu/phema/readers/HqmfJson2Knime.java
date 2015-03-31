@@ -134,7 +134,20 @@ public class HqmfJson2Knime {
 			 *  Check "GROUP_FIRST_129"
 			 *  
 			 * */
-			NodeInterface frontier = sourceElement; 
+			
+			/*
+			 * make a relay node to label the source data element
+			 * */
+			RelayNode relaySource = new RelayNode(DataType.Data);
+			relaySource.setComment("Source Criterion: " + sourceDataCriteriaName);
+			relaySource.setInputElement(0, sourceElement);
+			kProject.addKnimeNode(relaySource);
+			Connection connSource = new Connection();
+			connSource.setSource(sourceElement, sourceElement.getGoodOutPorts()[0]);
+			connSource.setDest(relaySource, 0);
+			kProject.addKnimeConnection(connSource);
+			
+			NodeInterface frontier = relaySource; 
 			dataCriteriaFindSource.put(dataCriteriaName, sourceElement);
 			/*
 			 * Data Criteria/Attribute: value
@@ -342,12 +355,24 @@ public class HqmfJson2Knime {
 			//System.err.println(referenceString);
 			NodeInterface rightNode = dataCriteriaNodes.get(referenceString);
 			if (rightNode != null) {
-				Connection connRight = new Connection();
-				kProject.addKnimeConnection(connRight);
+				Connection connRight1 = new Connection();
+				Connection connRight2 = new Connection();
+				RelayNode relayReferred = new RelayNode(DataType.Data);
+				relayReferred.setComment("Data Criterion: " + referenceString);
+				relayReferred.setInputElement(0, rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
+				connRight1.setDest(relayReferred, relayReferred.getGoodOutPorts()[0]);  // 0
+				connRight2.setSource(relayReferred, 0);
+				
+				kProject.addKnimeConnection(connRight1);
+				kProject.addKnimeConnection(connRight2);
+				kProject.addKnimeNode(relayReferred);
+				
+				
 				int connRightSourcePort = rightNode.getGoodOutPorts()[0];
-				connRight.setSource(rightNode, connRightSourcePort);
-				connRight.setDest(temporalNode, 1);
-				temporalNode.setRightElement(rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
+				connRight1.setSource(rightNode, connRightSourcePort);
+				
+				connRight2.setDest(temporalNode, 1);
+				temporalNode.setRightElement(relayReferred.getOutputElement(relayReferred.getGoodOutPorts()[0]));
 				temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
 			}
 			QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(referenceString);
@@ -579,9 +604,28 @@ public class HqmfJson2Knime {
 		if (preconditionsAccesses == null){
 			preconditionsAccesses = new int[]{};
 		}
+		
+		/*
+		 * Prepare to connect to data criteria
+		 * */
 		String reference = measure.getStringValue(currentParentOfPreconditionsAccess, "reference");
-		if (reference != null) {
-			frontier = dataCriteria.get(reference);
+
+		
+		if (reference != null) {  
+			NodeInterface dataCriteriaNode = dataCriteria.get(reference);
+			int dataCriteriaNodeOutPort = dataCriteriaNode.getGoodOutPorts()[0];
+			
+			RelayNode relayDataCriteria = new RelayNode(DataType.Data);
+			relayDataCriteria.setComment("Data Criterion: " + reference);
+			relayDataCriteria.setInputElement(0, dataCriteriaNode.getOutputElement(dataCriteriaNodeOutPort));
+			Connection connRelay = new Connection();
+			connRelay.setSource(dataCriteriaNode, dataCriteriaNodeOutPort);
+			connRelay.setDest(relayDataCriteria, 0);
+			frontier = relayDataCriteria;
+			
+			nodes.add(relayDataCriteria);
+			conns.add(connRelay);
+			
 			Boolean negated = measure.getBooleanValue(currentParentOfPreconditionsAccess, "negation");
 			frontierNegated = negated != null && negated.booleanValue();
 		}
@@ -592,7 +636,7 @@ public class HqmfJson2Knime {
 					access, nodes, conns, dataCriteria, measure);
 			boolean rightNegated = measure.getBooleanValue(access, "negation") != null &&  
 					measure.getBooleanValue(access, "negation").booleanValue() ;
-			if (leftNode == null){
+			if (leftNode == null){          // in this situation, referred data criteria must also be null
 				frontier = rightNode;
 				frontierNegated = rightNegated;
 			} else {
@@ -611,6 +655,8 @@ public class HqmfJson2Knime {
 				Connection connRight = new Connection();
 				connRight.setDest(newNode, 1);
 				conns.add(connRight);
+				
+				
 				int[] sourcePorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
 				if (leftNegated && ! rightNegated){
 					/*
@@ -716,8 +762,8 @@ public class HqmfJson2Knime {
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
 		// /Users/admin/Desktop
-		String measureName = "CMS123v3";
-		String measureType = "ep";
+		String measureName = "CMS30v4";
+		String measureType = "eh";
 		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
 		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
 		
