@@ -36,6 +36,9 @@ public class RelayNode extends MetaNode implements RelayNodeInterface {
 	
 	String commentText = null;
 	
+	NodeInterface from;
+	NodeInterface to;
+	
 	public RelayNode(DataType type) {
 		// TODO Auto-generated constructor stub
 		this.knimeDataType = type;
@@ -205,6 +208,30 @@ public class RelayNode extends MetaNode implements RelayNodeInterface {
 	public int[] getGoodOutPorts() {
 		// TODO Auto-generated method stub
 		return new int[] {0};
+	}
+
+	@Override
+	public NodeInterface getFrom() {
+		// TODO Auto-generated method stub
+		return from;
+	}
+
+	@Override
+	public NodeInterface getTo() {
+		// TODO Auto-generated method stub
+		return to;
+	}
+
+	@Override
+	public void setFrom(NodeInterface from) {
+		// TODO Auto-generated method stub
+		this.from = from;
+	}
+
+	@Override
+	public void setTo(NodeInterface to) {
+		// TODO Auto-generated method stub
+		this.to = to;
 	}
 
 }

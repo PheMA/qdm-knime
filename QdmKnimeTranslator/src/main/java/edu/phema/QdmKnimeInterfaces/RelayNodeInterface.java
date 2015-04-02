@@ -24,5 +24,9 @@ public interface RelayNodeInterface extends NodeInterface {
 	
 	void setComment(String text);
 	void setDataType(DataType type);
+	NodeInterface getFrom();
+	NodeInterface getTo();
+	void setFrom(NodeInterface from);
+	void setTo(NodeInterface to);
 	DataType getDataType();
 }

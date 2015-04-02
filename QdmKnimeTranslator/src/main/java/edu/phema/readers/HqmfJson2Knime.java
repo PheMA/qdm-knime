@@ -71,8 +71,8 @@ public class HqmfJson2Knime {
 		//final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
 		final HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
 		final HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
-		final HashMap <TemporalRelationshipInterface, String> rightSideOfTemporals = 
-				new HashMap <TemporalRelationshipInterface, String>();
+		final HashMap <RelayNode, String> rightSideOfTemporals = 
+				new HashMap <RelayNode, String>();
 		final HashMap <String, QdmDataElementInterface> dataCriteriaFindSource = new HashMap <String, QdmDataElementInterface>();
 		final HashMap <String, String> dataCriteria2Source = new HashMap<String, String>();
 		
@@ -304,8 +304,16 @@ public class HqmfJson2Knime {
 					temporalNode.modifyAnnotateTexts("rightSourceDataElement", "Measure Period");
 					temporalNode.setRightElement(frontier.getOutputElement(connLeftSourcePort));
 				} else {
-					rightSideOfTemporals.put(temporalNode, referenceString);
+					RelayNode rightRelay = new RelayNode(DataType.Data);
+					rightRelay.setComment(referenceString);
+					kProject.addKnimeNode(rightRelay);
+					Connection connRightRelay = new Connection();
+					connRightRelay.setDest(temporalNode, 1);
+					connRightRelay.setSource(rightRelay, 0);
+					kProject.addKnimeConnection(connRightRelay);
+					rightSideOfTemporals.put(rightRelay, referenceString);
 					temporalNode.modifyAnnotateTexts("rightDataElement", referenceString);
+					rightRelay.setTo(temporalNode);
 				}
 				frontier = temporalNode;
 			}
@@ -348,38 +356,42 @@ public class HqmfJson2Knime {
 		 * When build nodeTrace, select the highest level source. 
 		 * */
 		
-		for (TemporalRelationshipInterface temporalNode : 
+		for (RelayNode relayReferred : 
 			rightSideOfTemporals.keySet()
-			.toArray(new TemporalRelationshipInterface[rightSideOfTemporals.size()])) {
-			String referenceString = rightSideOfTemporals.get(temporalNode);
+			.toArray(new RelayNode[rightSideOfTemporals.size()])) {
+			String referenceString = rightSideOfTemporals.get(relayReferred);
 			//System.err.println(referenceString);
 			NodeInterface rightNode = dataCriteriaNodes.get(referenceString);
+			TemporalRelationshipInterface temporalNode = (TemporalRelationshipInterface) relayReferred.getTo();
+
 			if (rightNode != null) {
-				Connection connRight1 = new Connection();
-				Connection connRight2 = new Connection();
-				RelayNode relayReferred = new RelayNode(DataType.Data);
-				relayReferred.setComment("Data Criterion: " + referenceString);
+				Connection connRight = new Connection();
+				//Connection connRight2 = new Connection();
+				//RelayNode relayReferred = new RelayNode(DataType.Data);
+				//relayReferred.setComment("Data Criterion: " + referenceString);
 				relayReferred.setInputElement(0, rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
-				connRight1.setDest(relayReferred, relayReferred.getGoodOutPorts()[0]);  // 0
-				connRight2.setSource(relayReferred, 0);
+				connRight.setDest(relayReferred, 0);  // 0
+				//connRight2.setSource(relayReferred, 0);
 				
-				kProject.addKnimeConnection(connRight1);
-				kProject.addKnimeConnection(connRight2);
-				kProject.addKnimeNode(relayReferred);
+				kProject.addKnimeConnection(connRight);
+				//kProject.addKnimeConnection(connRight2);
+				//kProject.addKnimeNode(relayReferred);
 				
 				
 				int connRightSourcePort = rightNode.getGoodOutPorts()[0];
-				connRight1.setSource(rightNode, connRightSourcePort);
+				connRight.setSource(rightNode, connRightSourcePort);
 				
-				connRight2.setDest(temporalNode, 1);
-				temporalNode.setRightElement(relayReferred.getOutputElement(relayReferred.getGoodOutPorts()[0]));
-				temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
+				//connRight2.setDest(temporalNode, 1);
+				if (temporalNode != null){
+					temporalNode.setRightElement(relayReferred.getOutputElement(relayReferred.getGoodOutPorts()[0]));
+				}
+				//temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
 			}
 			QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(referenceString);
-			if(rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_START){
+			if(rightSourceElement != null && temporalNode != null && temporalNode.getTemporalType().REQUIRE_RIGHT_START){
 				rightSourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
 			}
-			if (rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_END){
+			if (rightSourceElement != null && temporalNode != null && temporalNode.getTemporalType().REQUIRE_RIGHT_END){
 				rightSourceElement.addQdmAttributes("stopDatetime", "DateAndTimeCell", "Stop/end timestamp");
 			}
 		}
