@@ -32,7 +32,7 @@ public class Attribute implements NodeInterface {
 	
 	private Path workflowRoot = Paths.get("");
 	
-	private final Point nodeLocation = new Point(150, new Random().nextInt(500));
+	private final Point nodeLocation = new Point(-1, -1);
 	
 	private NodeInterface resourceElement = null; 
 	

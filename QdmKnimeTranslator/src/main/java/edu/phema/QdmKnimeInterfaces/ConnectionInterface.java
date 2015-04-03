@@ -12,6 +12,9 @@ public interface ConnectionInterface {
 	NodeInterface getSource();
 	NodeInterface getDest();
 
+	int getSourcePort();
+	int getDestPort();
+	
 	void addBendpoint (int x, int y);   // from source to destiny 
 	Point[] getBendpoins();
 	

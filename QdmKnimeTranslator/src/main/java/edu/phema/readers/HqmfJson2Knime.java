@@ -55,6 +55,9 @@ public class HqmfJson2Knime {
 	 */
 	
 	private VsacConnector vsac;
+	final static private int xSpace = 300;
+	final static private int ySpace = 150;
+	
 	
 	public HqmfJson2Knime(VsacConnector vsac) {
 		// TODO Auto-generated constructor stub
@@ -66,7 +69,7 @@ public class HqmfJson2Knime {
 		String jsonDoc = Toolkit.readFile(hqmfJsonPath.toString());
 		final HqmfJson measure = new HqmfJson(jsonDoc);
 		final KnimeProject kProject = new KnimeProject(outputPath.getParent(), outputPath.getFileName().toString());
-		kProject.SET_UP_LAYOUT = true;
+		kProject.SET_UP_LAYOUT = false;
 		//final ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface>();  // the index will the knime id
 		//final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
 		final HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
@@ -75,6 +78,13 @@ public class HqmfJson2Knime {
 				new HashMap <RelayNode, String>();
 		final HashMap <String, QdmDataElementInterface> dataCriteriaFindSource = new HashMap <String, QdmDataElementInterface>();
 		final HashMap <String, String> dataCriteria2Source = new HashMap<String, String>();
+		
+		final ArrayList<ArrayList> nodeMap1 = new ArrayList<ArrayList>();   // to lay out the nodes for human, source data
+		final ArrayList<ArrayList> nodeMap2 = new ArrayList<ArrayList>();  // data criteria
+		final ArrayList<ArrayList> nodeMap3 = new ArrayList<ArrayList>();  // population
+		int row = 0;  // variables
+		int col = 0;
+	
 		
 		/*
 		 * Measure Period object need to be created and linked to sourceDataCriteria every time it is used
@@ -86,17 +96,20 @@ public class HqmfJson2Knime {
 		RelayNode databaseMasterConnectionNode = new RelayNode(DataType.Database);
 		kProject.addKnimeNode(databaseMasterConnectionNode);
 		databaseMasterConnectionNode.setComment("Plug your database connector here");
-		
+		addToMap(nodeMap1, databaseMasterConnectionNode, 0, 0);
 		
 		/*
 		 * source_data_criteria
 		 * */
 		HashMap <String, Integer> sourceDataCriteriaAccesses = 
 				measure.getSourceDataCrtieriaAccesses();
+		row = 0;
+		col = 1;
 		for (String sourceDataCriteriaName : sourceDataCriteriaAccesses.keySet()){
 			Integer access = sourceDataCriteriaAccesses.get(sourceDataCriteriaName);
 			QdmDataElement element = new QdmDataElement();
 			kProject.addKnimeNode(element);
+			addToMap(nodeMap1, element, row, col);
 			Connection conn = new Connection();
 			conn.setDest(element, 0);
 			conn.setSource(databaseMasterConnectionNode, 
@@ -116,15 +129,22 @@ public class HqmfJson2Knime {
 					e.printStackTrace();
 				};
 			}
+			row ++;
 		}
+		row = 0;
+		col = 0;
+		
 		
 		
 		/*
 		 * Data Criteria
+		 * use nodeMap2 for lay out
 		 * */
 		HashMap <String, Integer> dataCriteriaAccesses = 
 				measure.getDataCrtieriaAccesses();
 		for (String dataCriteriaName : dataCriteriaAccesses.keySet()){
+			ArrayList<NodeInterface> rowLayOut = new ArrayList<NodeInterface>();
+			nodeMap2.add(rowLayOut);
 			Integer access = dataCriteriaAccesses.get(dataCriteriaName);
 			String sourceDataCriteriaName = measure.getStringValue(access, "source_data_criteria");
 			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(sourceDataCriteriaName);
@@ -142,6 +162,7 @@ public class HqmfJson2Knime {
 			relaySource.setComment("Source Criterion: " + sourceDataCriteriaName);
 			relaySource.setInputElement(0, sourceElement);
 			kProject.addKnimeNode(relaySource);
+			rowLayOut.add(relaySource);
 			Connection connSource = new Connection();
 			connSource.setSource(sourceElement, sourceElement.getGoodOutPorts()[0]);
 			connSource.setDest(relaySource, 0);
@@ -158,6 +179,7 @@ public class HqmfJson2Knime {
 				String columnType = "unknown";
 				Attribute attr_value = new Attribute();
 				kProject.addKnimeNode(attr_value);
+				rowLayOut.add(attr_value);
 				Connection conn = new Connection();
 				kProject.addKnimeConnection(conn);
 				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
@@ -209,6 +231,7 @@ public class HqmfJson2Knime {
 				String columnType = "unknown";
 				Attribute attr_value = new Attribute();
 				kProject.addKnimeNode(attr_value);
+				rowLayOut.add(attr_value);
 				Connection conn = new Connection();
 				kProject.addKnimeConnection(conn);
 				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
@@ -292,6 +315,7 @@ public class HqmfJson2Knime {
 				if (referenceString.equals("MeasurePeriod")){
 					MeasurePeriod measurePeriodNode = new MeasurePeriod(measureStart, measureEnd);
 					kProject.addKnimeNode(measurePeriodNode);
+					rowLayOut.add(measurePeriodNode);
 					Connection connMeasurePeriodIn = new Connection();
 					kProject.addKnimeConnection(connMeasurePeriodIn);
 					connMeasurePeriodIn.setSource(frontier, connLeftSourcePort);
@@ -307,6 +331,7 @@ public class HqmfJson2Knime {
 					RelayNode rightRelay = new RelayNode(DataType.Data);
 					rightRelay.setComment(referenceString);
 					kProject.addKnimeNode(rightRelay);
+					rowLayOut.add(rightRelay);
 					Connection connRightRelay = new Connection();
 					connRightRelay.setDest(temporalNode, 1);
 					connRightRelay.setSource(rightRelay, 0);
@@ -315,6 +340,7 @@ public class HqmfJson2Knime {
 					temporalNode.modifyAnnotateTexts("rightDataElement", referenceString);
 					rightRelay.setTo(temporalNode);
 				}
+				rowLayOut.add(temporalNode);
 				frontier = temporalNode;
 			}
 			
@@ -338,6 +364,7 @@ public class HqmfJson2Knime {
 				
 				Aggregation aggrNode = new Aggregation();
 				kProject.addKnimeNode(aggrNode);
+				rowLayOut.add(aggrNode);
 				aggrNode.setGroupByNodeText(typeString);
 				aggrNode.setFilterNodeText(ivlPqDesc);
 				Connection aggrConn = new Connection();
@@ -396,9 +423,16 @@ public class HqmfJson2Knime {
 			}
 		}
 		
+		/*
+		 * Population criteria
+		 * */
+		
 		final HashMap<String, Integer> populationsAccesses = measure.getPopulationCriteriaAccesses();
 		final HashMap<String, NodeInterface> populationCriteriaOut = 
 				new HashMap<String, NodeInterface>();
+		
+		ArrayList<NodeInterface> popNodes = new ArrayList<NodeInterface>();
+		ArrayList<ConnectionInterface> popConns = new ArrayList<ConnectionInterface>(); 
 		
 		for (String population : populationsAccesses.keySet().toArray(
 				new String[populationsAccesses.size()])){
@@ -410,19 +444,14 @@ public class HqmfJson2Knime {
 			ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface> ();
 			ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface> ();
 			NodeInterface populationOut = HqmfJson2Knime.explorePopCriteriaTree(access, nodes, conns, dataCriteriaNodes, measure);
-			kProject.addKnimeNodes(nodes);
-			kProject.addKnimeConnections(conns);
-
+			//kProject.addKnimeNodes(nodes);
+			//kProject.addKnimeConnections(conns);
+			popNodes.addAll(nodes);
+			popConns.addAll(conns);
 			populationCriteriaOut.put(population, populationOut);
 			if (populationOut != null) {
 				HqmfJson2Knime.labelAPopulation(
-						measure.getStringValue(access, "title"), populationOut, kProject);
-			}
-		}
-		for (String population : populationCriteriaOut.keySet()){
-			NodeInterface outNode = populationCriteriaOut.get(population);
-			if (outNode != null){
-				System.err.println(population + ": Node " + outNode.getId());
+						measure.getStringValue(access, "title"), populationOut, popNodes, popConns);
 			}
 		}
 		
@@ -456,7 +485,7 @@ public class HqmfJson2Knime {
 		if (nodeDENEXCEP != null && nodeNUMER != null){
 			nodeDENEXCEP_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENEXCEP, nodeNUMER, 
-						LogicalTypeCode.AND_NOT, kProject);;
+						LogicalTypeCode.AND_NOT, popNodes, popConns);;
 		}
 		
 		/*
@@ -465,7 +494,7 @@ public class HqmfJson2Knime {
 		if (nodeDENOM != null && nodeIPP != null){
 			nodeDENOM_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENOM, nodeIPP, 
-						LogicalTypeCode.AND, kProject);
+						LogicalTypeCode.AND, popNodes, popConns);
 		} else if (nodeIPP != null) {
 			nodeDENOM_modified = nodeIPP;
 		}
@@ -473,17 +502,17 @@ public class HqmfJson2Knime {
 		if (nodeDENOM_modified != null && nodeDENEX != null) {
 			nodeDENOM_modified = HqmfJson2Knime.logicTwoNodes(
 					nodeDENOM_modified, nodeDENEX, 
-					LogicalTypeCode.AND_NOT, kProject);
+					LogicalTypeCode.AND_NOT, popNodes, popConns);
 		}
 		
 		if (nodeDENOM_modified != null && nodeDENEXCEP != null) {
 			nodeDENOM_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENOM_modified, nodeDENEXCEP_modified, 
-							LogicalTypeCode.AND_NOT, kProject);
+							LogicalTypeCode.AND_NOT, popNodes, popConns);
 		}
 		
 		if (nodeDENOM_modified != null) {
-			HqmfJson2Knime.labelAPopulation("Denominator (Real)", nodeDENOM_modified, kProject);
+			HqmfJson2Knime.labelAPopulation("Denominator (Real)", nodeDENOM_modified, popNodes, popConns);
 		}
 		
 		
@@ -492,8 +521,8 @@ public class HqmfJson2Knime {
 		 * */
 		
 		if (nodeNUMER != null && nodeDENOM_modified != null){
-			nodeNUMER_modified = HqmfJson2Knime.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, kProject);;
-			HqmfJson2Knime.labelAPopulation("Numerator (Real)", nodeNUMER_modified, kProject);
+			nodeNUMER_modified = HqmfJson2Knime.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, popNodes, popConns);;
+			HqmfJson2Knime.labelAPopulation("Numerator (Real)", nodeNUMER_modified, popNodes, popConns);
 		}
 		
 		/*
@@ -511,18 +540,18 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeMSRPOPL != null && nodeIPP != null) {
 			nodeMSRPOPL_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, kProject);
+					HqmfJson2Knime.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, popNodes, popConns);
 		} else {
 			nodeMSRPOPL_modified = nodeMSRPOPL == null ? nodeMSRPOPL : nodeIPP;
 		}
 		if (nodeMSRPOPL_modified != null){
 			HqmfJson2Knime.labelAPopulation(
-				"Measure Population (Real)", nodeMSRPOPL_modified, kProject);
+				"Measure Population (Real)", nodeMSRPOPL_modified, popNodes, popConns);
 		}
 		
 		if (nodeOBSERV != null && nodeMSRPOPL_modified != null){
 			nodeOBSERV_modified = HqmfJson2Knime.logicTwoNodes(
-					nodeOBSERV, nodeMSRPOPL_modified, LogicalTypeCode.AND, kProject);
+					nodeOBSERV, nodeMSRPOPL_modified, LogicalTypeCode.AND, popNodes, popConns);
 		} 
 		if (nodeOBSERV_modified != null) {
 			Integer observAccess = populationsAccesses.get("OBSERV");
@@ -530,11 +559,11 @@ public class HqmfJson2Knime {
 				String aggregator = measure.getStringValue(observAccess, "aggregator");
 				if (aggregator != null) {
 					Aggregation aggr = new Aggregation();
-					kProject.addKnimeNode(aggr);
+					popNodes.add(aggr);
 					aggr.setGroupByNodeText(aggregator);
 					aggr.setFilterNodeText("Useless");
 					Connection aggrConn = new Connection();
-					kProject.addKnimeConnection(aggrConn);
+					popConns.add(aggrConn);
 					aggrConn.setSource(nodeOBSERV_modified, 
 							nodeOBSERV_modified.getGoodOutPorts()[0]);
 					aggrConn.setDest(aggr, 0);
@@ -542,9 +571,67 @@ public class HqmfJson2Knime {
 					nodeOBSERV_modified = aggr;
 				}
 			}
-			HqmfJson2Knime.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, kProject);
+			HqmfJson2Knime.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, popNodes, popConns);
+		}
+		
+		mapFlows(nodeMap3, popConns, popNodes);
+		
+		kProject.addKnimeNodes(popNodes);
+		kProject.addKnimeConnections(popConns);
+
+		for (String population : populationCriteriaOut.keySet()){
+			NodeInterface outNode = populationCriteriaOut.get(population);
+			if (outNode != null){
+				System.err.println(population + ": Node " + outNode.getId());
+			}
 		}
 
+		int nodeMap1Max = 0;
+		
+		for (int i = 0; i < nodeMap1.size(); i ++){
+			ArrayList<NodeInterface> nodesRow = nodeMap1.get(i);
+			for (int j = 0; j < nodesRow.size(); j ++){
+				if (j > nodeMap1Max){
+					nodeMap1Max = j;
+				}
+				NodeInterface node = nodesRow.get(j);
+				if (node != null){
+					node.setX(xSpace * (j + 1));
+					node.setY(ySpace * (i + 1));
+				}
+			}
+		}
+		
+		int nodeMap2Max = nodeMap1Max;
+		
+		for (int i = 0; i < nodeMap2.size(); i ++){
+			ArrayList<NodeInterface> nodesRow = nodeMap2.get(i);
+			for (int j = 0; j < nodesRow.size() ; j ++){
+				int jReal = j + nodeMap1Max + 1;
+				if (jReal > nodeMap2Max){
+					nodeMap2Max = jReal;
+				}
+				NodeInterface node = nodesRow.get(j);
+				if (node != null){
+					node.setX(xSpace * (jReal + 1));
+					node.setY(ySpace * (i + 1));
+				}
+			}
+		}
+		
+		for (int i = 0; i < nodeMap3.size(); i ++){
+			ArrayList<NodeInterface> nodesRow = nodeMap3.get(i);
+			for (int j = 0; j < nodesRow.size() ; j ++){
+				int jReal = j + nodeMap2Max + 1;
+				NodeInterface node = nodesRow.get(j);
+				if (node != null){
+					node.setX(xSpace * (jReal + 1));
+					node.setY(ySpace * (i + 1));
+				}
+			}
+		}
+
+		
 		/*
 		 * Population: Measure Observation
 		 * 
@@ -695,34 +782,39 @@ public class HqmfJson2Knime {
 		return frontier;
 	}
 	
-	private static void labelAPopulation (String label, NodeInterface frontier, KnimeProject kProject) {
+	private static NodeInterface labelAPopulation (String label, NodeInterface frontier, 
+			ArrayList<NodeInterface> nodes, ArrayList<ConnectionInterface> conns) {
+		
 		RelayNode labelNode = new RelayNode(DataType.Data);
-		kProject.addKnimeNode(labelNode);
+		//kProject.addKnimeNode(labelNode);
 		labelNode.setComment(label);
 		int frontierPort = frontier.getGoodOutPorts()[0];
 		labelNode.setInputElement(0, frontier.getOutputElement(frontierPort));
 		Connection labelConn = new Connection();
 		labelConn.setSource(frontier, frontierPort);
 		labelConn.setDest(labelNode, 0);
-		kProject.addKnimeConnection(labelConn);
+		//kProject.addKnimeConnection(labelConn);
+		nodes.add(labelNode);
+		conns.add(labelConn);
+		return labelNode;
 	}
 	
 	private static NodeInterface logicTwoNodes(
 			NodeInterface leftNode, NodeInterface rightNode, LogicalTypeCode logic,
-			KnimeProject kProject){
+			ArrayList<NodeInterface> nodes, ArrayList<ConnectionInterface> conns){
 		NodeInterface re = null;
 		if (leftNode != null && rightNode != null){
 			LogicalOperator logicNode = new LogicalOperator(logic);
-			kProject.addKnimeNode(logicNode);
+			nodes.add(logicNode);
 			int[] goodPorts = LogicalOperator.findGoodPortPair(leftNode, rightNode);
 			logicNode.setLeftElement(leftNode.getOutputElement(goodPorts[0]));
 			logicNode.setRightElement(rightNode.getOutputElement(goodPorts[1]));
 			Connection connLeft = new Connection();
-			kProject.addKnimeConnection(connLeft);
+			conns.add(connLeft);
 			connLeft.setSource(leftNode, goodPorts[0]);
 			connLeft.setDest(logicNode, 0);
 			Connection connRight = new Connection();
-			kProject.addKnimeConnection(connRight);
+			conns.add(connRight);
 			connRight.setSource(rightNode, goodPorts[1]);
 			connRight.setDest(logicNode, 1);
 			re = logicNode;
@@ -731,6 +823,7 @@ public class HqmfJson2Knime {
 		}
 		return re;
 	}
+	
 	
 	private static ArrayList<String> getCodeDisplayNames(JAXBElement<RetrieveValueSetResponseType> vsacXmlJaxb){
 		ArrayList<String> re = new ArrayList<String>();
@@ -762,6 +855,101 @@ public class HqmfJson2Knime {
 		return re;
 	}
 
+	private static void addToMap(ArrayList<ArrayList> map, NodeInterface node, int row, int col){
+		for (int i = map.size(); i <= row; i ++){
+			map.add(new ArrayList<NodeInterface>());
+		}
+		ArrayList<NodeInterface> rowObj = map.get(row);
+		for (int i = rowObj.size(); i <= col; i ++){
+			rowObj.add(null);
+		}
+		rowObj.set(col, node);
+	}
+	
+	private static void mapFlows(ArrayList<ArrayList> map, ArrayList<ConnectionInterface> conns, ArrayList<NodeInterface> nodes){
+		
+		HashMap<NodeInterface, NodeInterface[]> chase = new HashMap<NodeInterface, NodeInterface[]>();
+		for (ConnectionInterface conn : conns){
+			NodeInterface dest = conn.getDest();
+			NodeInterface[] destArray = chase.get(dest);
+			if(destArray == null){
+				destArray = new NodeInterface[10];
+				chase.put(dest, destArray);
+			}
+			NodeInterface source = conn.getSource();
+			
+			destArray[conn.getDestPort()] = source;
+			
+			
+		}
+
+		/*
+		 * Recursively find levels
+		 * 
+		 * */
+		HashMap<NodeInterface, Integer> nodeLevels = new HashMap<NodeInterface, Integer>();
+		//ArrayList<NodeInterface> rootNodes = new ArrayList<NodeInterface>();
+		int maxLevel = 0;
+		
+		for(NodeInterface node : nodes){
+			int level = seekLevel(chase, node);
+			nodeLevels.put(node, Integer.valueOf(level));
+			if (level > maxLevel){
+				maxLevel = level;
+			}
+			
+			//boolean isRoot = true;
+			//for(ConnectionInterface conn : conns){
+			//	if(conn.getSource() == node){
+			//		isRoot = false;
+			//	}
+			//}
+			//if(isRoot){
+			//	rootNodes.add(node);
+			//}
+		}
+		
+		//System.err.println(maxLevel);
+		
+		ArrayList[] flippedMap = new ArrayList[maxLevel + 1];
+		for(NodeInterface node : nodeLevels.keySet()){
+			int level = nodeLevels.get(node).intValue();
+			if (flippedMap[level] == null){
+				flippedMap[level] = new ArrayList<NodeInterface>();
+			}
+			ArrayList<NodeInterface> nodesOnLevel = flippedMap[level];
+			nodesOnLevel.add(node);
+		}
+		for (int i = 0; i <= maxLevel; i ++){
+			ArrayList<NodeInterface> nodesOnLevel = flippedMap[i];
+			for (int j = 0; nodesOnLevel != null && j < nodesOnLevel.size(); j ++){
+				addToMap(map, nodesOnLevel.get(j), j, i);
+			}
+		}
+	}
+	
+	/*
+	 * Recursively find levels
+	 * for mapFlows
+	 * */
+	private static int seekLevel(HashMap<NodeInterface, NodeInterface[]> chase, NodeInterface current){
+		NodeInterface[] sons = chase.get(current);
+		int thisLevel = 0;
+		if (sons != null){
+			for (NodeInterface son : sons){
+				int sonLevel = -1;
+				if (son != null){
+					sonLevel = seekLevel(chase, son);
+					if(sonLevel >= thisLevel){
+						thisLevel = sonLevel + 1;
+					}
+				}
+			}
+		}
+		return thisLevel;
+	}
+	
+	
 	
 	/**
 	 * @param args

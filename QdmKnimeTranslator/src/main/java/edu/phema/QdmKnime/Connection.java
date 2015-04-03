@@ -182,4 +182,16 @@ public class Connection implements ConnectionInterface {
 		return dest;
 	}
 
+	@Override
+	public int getSourcePort() {
+		// TODO Auto-generated method stub
+		return sourcePort;
+	}
+
+	@Override
+	public int getDestPort() {
+		// TODO Auto-generated method stub
+		return destPort;
+	}
+
 }

@@ -32,7 +32,7 @@ public abstract class MetaNode implements NodeInterface {
 		
 	private Path workflowRoot = Paths.get("");
 	
-	private final Point nodeLocation = new Point(10, 10);
+	private final Point nodeLocation = new Point(-1, -1);
 	
 	private int nodeWidth = 130;
 	
