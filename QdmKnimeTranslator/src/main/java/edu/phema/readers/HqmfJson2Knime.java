@@ -60,7 +60,6 @@ public class HqmfJson2Knime {
 	
 	
 	public HqmfJson2Knime(VsacConnector vsac) {
-		// TODO Auto-generated constructor stub
 		this.vsac = vsac;
 	}
 	
@@ -82,6 +81,7 @@ public class HqmfJson2Knime {
 		final ArrayList<ArrayList> nodeMap1 = new ArrayList<ArrayList>();   // to lay out the nodes for human, source data
 		final ArrayList<ArrayList> nodeMap2 = new ArrayList<ArrayList>();  // data criteria
 		final ArrayList<ArrayList> nodeMap3 = new ArrayList<ArrayList>();  // population
+		final ArrayList<ArrayList> nodeMap4 = new ArrayList<ArrayList>();  // postPop, real populations after population arithmetics
 		int row = 0;  // variables
 		int col = 0;
 	
@@ -125,7 +125,6 @@ public class HqmfJson2Knime {
 				try {
 					element.setValueSet(vsac.getValueSetXml(valueSet_oid));
 				} catch (JAXBException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				};
 			}
@@ -374,6 +373,16 @@ public class HqmfJson2Knime {
 				frontier = aggrNode;
 			}
 			
+			RelayNode dataCriteriaLabel = new RelayNode(DataType.Data);
+			rowLayOut.add(dataCriteriaLabel);
+			kProject.addKnimeNode(dataCriteriaLabel);
+			dataCriteriaLabel.setComment("Data Criterion: " + dataCriteriaName);
+			Connection dataCriteriaLabelConn = new Connection();
+			dataCriteriaLabelConn.setDest(dataCriteriaLabel, 0);
+			dataCriteriaLabelConn.setSource(frontier, frontier.getGoodOutPorts()[0]);
+			kProject.addKnimeConnection(dataCriteriaLabelConn);
+			
+			frontier = dataCriteriaLabel;
 			dataCriteriaNodes.put(dataCriteriaName, frontier);
 		}
 		
@@ -431,12 +440,15 @@ public class HqmfJson2Knime {
 		final HashMap<String, NodeInterface> populationCriteriaOut = 
 				new HashMap<String, NodeInterface>();
 		
-		ArrayList<NodeInterface> popNodes = new ArrayList<NodeInterface>();
-		ArrayList<ConnectionInterface> popConns = new ArrayList<ConnectionInterface>(); 
 		
 		for (String population : populationsAccesses.keySet().toArray(
 				new String[populationsAccesses.size()])){
 			Integer access = populationsAccesses.get(population);
+			
+			ArrayList<NodeInterface> popNodes = new ArrayList<NodeInterface>();
+			ArrayList<ConnectionInterface> popConns = new ArrayList<ConnectionInterface>(); 
+
+			ArrayList<ArrayList> nodeMapPop = new ArrayList<ArrayList>();
 			
 			/*
 			 * Explore the logical tree recursively
@@ -444,8 +456,6 @@ public class HqmfJson2Knime {
 			ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface> ();
 			ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface> ();
 			NodeInterface populationOut = HqmfJson2Knime.explorePopCriteriaTree(access, nodes, conns, dataCriteriaNodes, measure);
-			//kProject.addKnimeNodes(nodes);
-			//kProject.addKnimeConnections(conns);
 			popNodes.addAll(nodes);
 			popConns.addAll(conns);
 			populationCriteriaOut.put(population, populationOut);
@@ -453,7 +463,18 @@ public class HqmfJson2Knime {
 				HqmfJson2Knime.labelAPopulation(
 						measure.getStringValue(access, "title"), populationOut, popNodes, popConns);
 			}
+			kProject.addKnimeNodes(popNodes);
+			kProject.addKnimeConnections(popConns);
+			
+			mapFlows(nodeMapPop, popConns, popNodes);
+			nodeMap3.addAll(nodeMapPop);
+			
+			nodeMap3.add(new ArrayList<NodeInterface>());
 		}
+		
+		ArrayList<NodeInterface> postPopNodes = new ArrayList<NodeInterface>();
+		ArrayList<ConnectionInterface> postPopConns = new ArrayList<ConnectionInterface>(); 
+
 		
 		NodeInterface nodeIPP = populationCriteriaOut.get("IPP");
 		NodeInterface nodeDENOM = populationCriteriaOut.get("DENOM");
@@ -485,7 +506,7 @@ public class HqmfJson2Knime {
 		if (nodeDENEXCEP != null && nodeNUMER != null){
 			nodeDENEXCEP_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENEXCEP, nodeNUMER, 
-						LogicalTypeCode.AND_NOT, popNodes, popConns);;
+						LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);;
 		}
 		
 		/*
@@ -494,7 +515,7 @@ public class HqmfJson2Knime {
 		if (nodeDENOM != null && nodeIPP != null){
 			nodeDENOM_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENOM, nodeIPP, 
-						LogicalTypeCode.AND, popNodes, popConns);
+						LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} else if (nodeIPP != null) {
 			nodeDENOM_modified = nodeIPP;
 		}
@@ -502,17 +523,17 @@ public class HqmfJson2Knime {
 		if (nodeDENOM_modified != null && nodeDENEX != null) {
 			nodeDENOM_modified = HqmfJson2Knime.logicTwoNodes(
 					nodeDENOM_modified, nodeDENEX, 
-					LogicalTypeCode.AND_NOT, popNodes, popConns);
+					LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);
 		}
 		
 		if (nodeDENOM_modified != null && nodeDENEXCEP != null) {
 			nodeDENOM_modified = 
 					HqmfJson2Knime.logicTwoNodes(nodeDENOM_modified, nodeDENEXCEP_modified, 
-							LogicalTypeCode.AND_NOT, popNodes, popConns);
+							LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);
 		}
 		
 		if (nodeDENOM_modified != null) {
-			HqmfJson2Knime.labelAPopulation("Denominator (Real)", nodeDENOM_modified, popNodes, popConns);
+			HqmfJson2Knime.labelAPopulation("Denominator (Real)", nodeDENOM_modified, postPopNodes, postPopConns);
 		}
 		
 		
@@ -521,8 +542,8 @@ public class HqmfJson2Knime {
 		 * */
 		
 		if (nodeNUMER != null && nodeDENOM_modified != null){
-			nodeNUMER_modified = HqmfJson2Knime.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, popNodes, popConns);;
-			HqmfJson2Knime.labelAPopulation("Numerator (Real)", nodeNUMER_modified, popNodes, popConns);
+			nodeNUMER_modified = HqmfJson2Knime.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, postPopNodes, postPopConns);;
+			HqmfJson2Knime.labelAPopulation("Numerator (Real)", nodeNUMER_modified, postPopNodes, postPopConns);
 		}
 		
 		/*
@@ -540,18 +561,18 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeMSRPOPL != null && nodeIPP != null) {
 			nodeMSRPOPL_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, popNodes, popConns);
+					HqmfJson2Knime.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} else {
 			nodeMSRPOPL_modified = nodeMSRPOPL == null ? nodeMSRPOPL : nodeIPP;
 		}
 		if (nodeMSRPOPL_modified != null){
 			HqmfJson2Knime.labelAPopulation(
-				"Measure Population (Real)", nodeMSRPOPL_modified, popNodes, popConns);
+				"Measure Population (Real)", nodeMSRPOPL_modified, postPopNodes, postPopConns);
 		}
 		
 		if (nodeOBSERV != null && nodeMSRPOPL_modified != null){
 			nodeOBSERV_modified = HqmfJson2Knime.logicTwoNodes(
-					nodeOBSERV, nodeMSRPOPL_modified, LogicalTypeCode.AND, popNodes, popConns);
+					nodeOBSERV, nodeMSRPOPL_modified, LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} 
 		if (nodeOBSERV_modified != null) {
 			Integer observAccess = populationsAccesses.get("OBSERV");
@@ -559,11 +580,11 @@ public class HqmfJson2Knime {
 				String aggregator = measure.getStringValue(observAccess, "aggregator");
 				if (aggregator != null) {
 					Aggregation aggr = new Aggregation();
-					popNodes.add(aggr);
+					postPopNodes.add(aggr);
 					aggr.setGroupByNodeText(aggregator);
 					aggr.setFilterNodeText("Useless");
 					Connection aggrConn = new Connection();
-					popConns.add(aggrConn);
+					postPopConns.add(aggrConn);
 					aggrConn.setSource(nodeOBSERV_modified, 
 							nodeOBSERV_modified.getGoodOutPorts()[0]);
 					aggrConn.setDest(aggr, 0);
@@ -571,13 +592,13 @@ public class HqmfJson2Knime {
 					nodeOBSERV_modified = aggr;
 				}
 			}
-			HqmfJson2Knime.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, popNodes, popConns);
+			HqmfJson2Knime.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, postPopNodes, postPopConns);
 		}
 		
-		mapFlows(nodeMap3, popConns, popNodes);
+		mapFlows(nodeMap4, postPopConns, postPopNodes);
 		
-		kProject.addKnimeNodes(popNodes);
-		kProject.addKnimeConnections(popConns);
+		kProject.addKnimeNodes(postPopNodes);
+		kProject.addKnimeConnections(postPopConns);
 
 		for (String population : populationCriteriaOut.keySet()){
 			NodeInterface outNode = populationCriteriaOut.get(population);
@@ -619,10 +640,28 @@ public class HqmfJson2Knime {
 			}
 		}
 		
+		int nodeMap3Max = nodeMap2Max;
+		
 		for (int i = 0; i < nodeMap3.size(); i ++){
 			ArrayList<NodeInterface> nodesRow = nodeMap3.get(i);
 			for (int j = 0; j < nodesRow.size() ; j ++){
 				int jReal = j + nodeMap2Max + 1;
+				if (jReal > nodeMap3Max){
+					nodeMap3Max = jReal;
+				}
+				NodeInterface node = nodesRow.get(j);
+				if (node != null){
+					node.setX(xSpace * (jReal + 1));
+					node.setY(ySpace * (i + 1));
+				}
+			}
+		}
+
+		
+		for (int i = 0; i < nodeMap4.size(); i ++){
+			ArrayList<NodeInterface> nodesRow = nodeMap4.get(i);
+			for (int j = 0; j < nodesRow.size() ; j ++){
+				int jReal = j + nodeMap3Max + 1;
 				NodeInterface node = nodesRow.get(j);
 				if (node != null){
 					node.setX(xSpace * (jReal + 1));
@@ -643,7 +682,6 @@ public class HqmfJson2Knime {
 		try {
 			kProject.buildProject();
 		} catch (ZipException | JAXBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
