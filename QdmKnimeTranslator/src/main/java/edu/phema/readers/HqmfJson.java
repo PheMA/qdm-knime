@@ -85,6 +85,27 @@ public class HqmfJson {
 		return re;
 	}
 	
+	public String[] getStringArray(int jsonReg, String key){
+		String[] re = null;
+		JSONObject obj = jsonObjRegistry.get(jsonReg);
+		if(obj.has(key)){
+			try {
+				JSONArray jArray = obj.getJSONArray(key);
+				int size = jArray.length();
+				re = new String[size];
+				for (int i = 0; i < size; i ++){
+					re[i] = jArray.getString(i);
+				}
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return re;
+	}
+	
 	public Boolean getBooleanValue(int jsonReg, String key){
 		Boolean re = null;
 		JSONObject obj = jsonObjRegistry.get(jsonReg);

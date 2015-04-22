@@ -73,9 +73,9 @@ public class HqmfJson2Knime {
 		//final ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface>();
 		final HashMap <String, QdmDataElementInterface> sourceDataCriteriaNodes = new HashMap <String, QdmDataElementInterface> ();
 		final HashMap <String, NodeInterface> dataCriteriaNodes = new HashMap <String, NodeInterface> ();
-		final HashMap <RelayNode, String> rightSideOfTemporals = 
-				new HashMap <RelayNode, String>();
+		final HashMap <RelayNode, String> relaysNeedBefore = new HashMap <RelayNode, String>();
 		final HashMap <String, QdmDataElementInterface> dataCriteriaFindSource = new HashMap <String, QdmDataElementInterface>();
+		final HashMap <String, ArrayList> dataCriteriaFindDataCriterias = new HashMap <String, ArrayList>(); // ArrayList<String>
 		final HashMap <String, String> dataCriteria2Source = new HashMap<String, String>();
 		
 		final ArrayList<ArrayList> nodeMap1 = new ArrayList<ArrayList>();   // to lay out the nodes for human, source data
@@ -146,8 +146,12 @@ public class HqmfJson2Knime {
 			nodeMap2.add(rowLayOut);
 			Integer access = dataCriteriaAccesses.get(dataCriteriaName);
 			String sourceDataCriteriaName = measure.getStringValue(access, "source_data_criteria");
-			QdmDataElementInterface sourceElement = sourceDataCriteriaNodes.get(sourceDataCriteriaName);
+			//ArrayList<QdmDataElementInterface> sourceElements = new ArrayList<QdmDataElementInterface>();
+			QdmDataElementInterface singleSourceElement = sourceDataCriteriaNodes.get(sourceDataCriteriaName);
+
 			dataCriteria2Source.put(dataCriteriaName, sourceDataCriteriaName);
+			NodeInterface frontier = null;
+			
 			/*
 			 *  CMS159v3 doesn't work here.
 			 *  Check "GROUP_FIRST_129"
@@ -157,234 +161,260 @@ public class HqmfJson2Knime {
 			/*
 			 * make a relay node to label the source data element
 			 * */
-			RelayNode relaySource = new RelayNode(DataType.Data);
-			relaySource.setComment("Source Criterion: " + sourceDataCriteriaName);
-			relaySource.setInputElement(0, sourceElement);
-			kProject.addKnimeNode(relaySource);
-			rowLayOut.add(relaySource);
-			Connection connSource = new Connection();
-			connSource.setSource(sourceElement, sourceElement.getGoodOutPorts()[0]);
-			connSource.setDest(relaySource, 0);
-			kProject.addKnimeConnection(connSource);
-			
-			NodeInterface frontier = relaySource; 
-			dataCriteriaFindSource.put(dataCriteriaName, sourceElement);
-			/*
-			 * Data Criteria/Attribute: value
-			 * */
-			Integer valueAccess = measure.getJsonObjectRegistry(access, "value");
-			if (valueAccess != null){
-				String text = "value:%%00010" + measure.getIVL_PQDescription(valueAccess);
-				String columnType = "unknown";
-				Attribute attr_value = new Attribute();
-				kProject.addKnimeNode(attr_value);
-				rowLayOut.add(attr_value);
-				Connection conn = new Connection();
-				kProject.addKnimeConnection(conn);
-				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
-				conn.setDest(attr_value, 1);  // Port for native nodes start from 1
-				attr_value.setInputElement(0, frontier.getOutputElement(0));
-				attr_value.setAttributeName("value");
-				if (measure.getStringValue(valueAccess, "type").equals("IVL_PQ")){
-					columnType = "Double";
-					Double[] high_low = measure.getHighLowOfIVL_PQ(valueAccess);
-					attr_value.setMode_Comparison(high_low[0], high_low[1]);
-				} else if (measure.getStringValue(valueAccess, "type").equals("CD")){
-					columnType = "String";
-					ArrayList<String> codes = new ArrayList<String>();
-					ArrayList<String> displayNames = new ArrayList<String>();
-					HashMap<String, String> cd = measure.getValueCDInDataCriteria(dataCriteriaName);
-					String oid = cd.get("code_list_id");
-					String code = cd.get("code");
-					if (oid != null){
-						JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
-						codes.addAll(getCodes(returnedValueSet));
-						displayNames.addAll(getCodeDisplayNames(returnedValueSet));
-					} 
-					if (code != null){
-						codes.add(code);
+			if (singleSourceElement != null){ 
+				dataCriteriaFindSource.put(dataCriteriaName, singleSourceElement);
+				RelayNode relaySource = new RelayNode(DataType.Data);
+				relaySource.setComment("Source Criterion: " + sourceDataCriteriaName);
+				relaySource.setInputElement(0, singleSourceElement);
+				kProject.addKnimeNode(relaySource);
+				rowLayOut.add(relaySource);
+				Connection connSource = new Connection();
+				connSource.setSource(singleSourceElement, singleSourceElement.getGoodOutPorts()[0]);
+				connSource.setDest(relaySource, 0);
+				kProject.addKnimeConnection(connSource);
+				
+				frontier = relaySource; 
+				//dataCriteriaFindSource.put(dataCriteriaName, sourceElement);
+				/*
+				 * Data Criteria/Attribute: value
+				 * */
+				Integer valueAccess = measure.getJsonObjectRegistry(access, "value");
+				if (valueAccess != null){
+					String text = "value:%%00010" + measure.getIVL_PQDescription(valueAccess);
+					String columnType = "unknown";
+					Attribute attr_value = new Attribute();
+					kProject.addKnimeNode(attr_value);
+					rowLayOut.add(attr_value);
+					Connection conn = new Connection();
+					kProject.addKnimeConnection(conn);
+					conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
+					conn.setDest(attr_value, 1);  // Port for native nodes start from 1
+					attr_value.setInputElement(0, frontier.getOutputElement(0));
+					attr_value.setAttributeName("value");
+					if (measure.getStringValue(valueAccess, "type").equals("IVL_PQ")){
+						columnType = "Double";
+						Double[] high_low = measure.getHighLowOfIVL_PQ(valueAccess);
+						attr_value.setMode_Comparison(high_low[0], high_low[1]);
+					} else if (measure.getStringValue(valueAccess, "type").equals("CD")){
+						columnType = "String";
+						ArrayList<String> codes = new ArrayList<String>();
+						ArrayList<String> displayNames = new ArrayList<String>();
+						HashMap<String, String> cd = measure.getValueCDInDataCriteria(dataCriteriaName);
+						String oid = cd.get("code_list_id");
+						String code = cd.get("code");
+						if (oid != null){
+							JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
+							codes.addAll(getCodes(returnedValueSet));
+							displayNames.addAll(getCodeDisplayNames(returnedValueSet));
+						} 
+						if (code != null){
+							codes.add(code);
+						}
+						ArrayList<String> allStrings = new ArrayList<String>();
+						allStrings.addAll(codes);
+						allStrings.addAll(displayNames);
+						String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
+						attr_value.setMode_textTool(regExp, false, false, true);
+		
 					}
-					ArrayList<String> allStrings = new ArrayList<String>();
-					allStrings.addAll(codes);
-					allStrings.addAll(displayNames);
-					String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
-					attr_value.setMode_textTool(regExp, false, false, true);
-
+					singleSourceElement.addQdmAttributes("value", columnType, text);
+					attr_value.setAnnotationText(text);
+					frontier = attr_value; 
 				}
-				sourceElement.addQdmAttributes("value", columnType, text);
-				attr_value.setAnnotationText(text);
-				frontier = attr_value; 
-			}
-			
-			/*
-			 * Data Criteria/Attributes: field_values
-			 * */
-			Integer fieldValueAccess = measure.getJsonObjectRegistry(access, "field_values");
-			HashMap <String, Integer> fieldValuesAccesses = fieldValueAccess != null ?
-					measure.getChildrenJSONObjectAccesses(fieldValueAccess) :
-					new HashMap <String, Integer>();
-			for (String fieldName : fieldValuesAccesses.keySet()){
-				Integer fieldAccess = fieldValuesAccesses.get(fieldName);
-				String text = fieldName + ":%%00010" + 
-						measure.getIVL_PQDescription(fieldAccess);
-				String columnType = "unknown";
-				Attribute attr_value = new Attribute();
-				kProject.addKnimeNode(attr_value);
-				rowLayOut.add(attr_value);
-				Connection conn = new Connection();
-				kProject.addKnimeConnection(conn);
-				conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
-				conn.setDest(attr_value, 1);  // Port for native nodes start from 1
-				attr_value.setInputElement(0, frontier.getOutputElement(0));
-				attr_value.setAttributeName(fieldName);
-				if (measure.getStringValue(fieldAccess, "type").equals("IVL_PQ")){
-					columnType = "Double";
-					Double[] high_low = measure.getHighLowOfIVL_PQ(fieldAccess);
-					attr_value.setMode_Comparison(high_low[0], high_low[1]);
-				} else if (measure.getStringValue(fieldAccess, "type").equals("CD")){
-					columnType = "String";
-					ArrayList<String> codes = new ArrayList<String>();
-					ArrayList<String> displayNames = new ArrayList<String>();
-					//HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
-					String oid = measure.getStringValue(fieldAccess, "code_list_id");
-					String code = measure.getStringValue(fieldAccess, "code");
-					if (oid != null){
-						JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
-						codes.addAll(getCodes(returnedValueSet));
-						displayNames.addAll(getCodeDisplayNames(returnedValueSet));
-					} 
-					if (code != null){
-						codes.add(code);
+				
+				/*
+				 * Data Criteria/Attributes: field_values
+				 * */
+				Integer fieldValueAccess = measure.getJsonObjectRegistry(access, "field_values");
+				HashMap <String, Integer> fieldValuesAccesses = fieldValueAccess != null ?
+						measure.getChildrenJSONObjectAccesses(fieldValueAccess) :
+						new HashMap <String, Integer>();
+				for (String fieldName : fieldValuesAccesses.keySet()){
+					Integer fieldAccess = fieldValuesAccesses.get(fieldName);
+					String text = fieldName + ":%%00010" + 
+							measure.getIVL_PQDescription(fieldAccess);
+					String columnType = "unknown";
+					Attribute attr_value = new Attribute();
+					kProject.addKnimeNode(attr_value);
+					rowLayOut.add(attr_value);
+					Connection conn = new Connection();
+					kProject.addKnimeConnection(conn);
+					conn.setSource(frontier, frontier.getGoodOutPorts()[0]);
+					conn.setDest(attr_value, 1);  // Port for native nodes start from 1
+					attr_value.setInputElement(0, frontier.getOutputElement(0));
+					attr_value.setAttributeName(fieldName);
+					if (measure.getStringValue(fieldAccess, "type").equals("IVL_PQ")){
+						columnType = "Double";
+						Double[] high_low = measure.getHighLowOfIVL_PQ(fieldAccess);
+						attr_value.setMode_Comparison(high_low[0], high_low[1]);
+					} else if (measure.getStringValue(fieldAccess, "type").equals("CD")){
+						columnType = "String";
+						ArrayList<String> codes = new ArrayList<String>();
+						ArrayList<String> displayNames = new ArrayList<String>();
+						//HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
+						String oid = measure.getStringValue(fieldAccess, "code_list_id");
+						String code = measure.getStringValue(fieldAccess, "code");
+						if (oid != null){
+							JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
+							codes.addAll(getCodes(returnedValueSet));
+							displayNames.addAll(getCodeDisplayNames(returnedValueSet));
+						} 
+						if (code != null){
+							codes.add(code);
+						}
+						ArrayList<String> allStrings = new ArrayList<String>();
+						allStrings.addAll(codes);
+						allStrings.addAll(displayNames);
+						String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
+						attr_value.setMode_textTool(regExp, false, false, true);
 					}
-					ArrayList<String> allStrings = new ArrayList<String>();
-					allStrings.addAll(codes);
-					allStrings.addAll(displayNames);
-					String regExp = "\\b(" + StringUtils.join(allStrings, '|') + ")\\b";
-					attr_value.setMode_textTool(regExp, false, false, true);
+					singleSourceElement.addQdmAttributes(fieldName, columnType, text);
+					attr_value.setAnnotationText(text);
+					frontier = attr_value; 
+					
+					
 				}
-				sourceElement.addQdmAttributes(fieldName, columnType, text);
-				attr_value.setAnnotationText(text);
-				frontier = attr_value; 
+				/*
+				 * Data Criteria/temporal_references
+				 * */
+				int[] temporalsAccesses = measure.getJsonArrayRegestries(access, "temporal_references");
+				//System.err.println(dataCriteriaName + " Numbers of temporals: " + numberOfTemporals);
+				/*
+				 * Temporal Step 1: make temporal nodes, and connect the left side
+				 * 
+				 * */
+				for (int i = 0; temporalsAccesses != null && i < temporalsAccesses.length; i ++) {
+					int temporalAcc = temporalsAccesses[i];
+					String typeString = measure.getStringValue(temporalAcc, "type");
+					String referenceString = measure.getStringValue(temporalAcc, "reference");
+					TemporalTypeCode typeEnum = TemporalTypeCode.SBS;
+					try{
+						typeEnum = Enum.valueOf(TemporalTypeCode.class, typeString);
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+						System.err.println("Unrecognized temporal reference "
+								+ typeString + " at " + dataCriteriaName);
+						System.err.println("Please look at the SBS node. ");
+					}
+					if (typeEnum.REQUIRE_LEFT_START) {
+						singleSourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
+					}
+					if (typeEnum.REQUIRE_LEFT_END){
+						singleSourceElement.addQdmAttributes("stopDatetime", "DateAndTImeCell", "Stop/End timestamp");
+					}
+					TemporalRelationship temporalNode = new TemporalRelationship(typeEnum);
+					kProject.addKnimeNode(temporalNode);
+					temporalNode.setLeftElement(frontier);
+					temporalNode.modifyAnnotateTexts("leftDataElement", dataCriteriaName);
+					temporalNode.modifyAnnotateTexts("leftSourceDataElement", sourceDataCriteriaName);
+					Integer ivlPqAccess = measure.getTemporalRange_IVL_PQInDataCritieria(new Integer(temporalAcc));
+					if (ivlPqAccess != null){
+						ivlPqInTemporal(ivlPqAccess.intValue(), measure, temporalNode);
+					}
+					
+					Connection connLeft = new Connection();
+					int connLeftSourcePort = frontier.getGoodOutPorts()[0];
+					connLeft.setSource(frontier, connLeftSourcePort);
+					connLeft.setDest(temporalNode, 0);
+					kProject.addKnimeConnection(connLeft);
+					if (referenceString.equals("MeasurePeriod")){
+						MeasurePeriod measurePeriodNode = new MeasurePeriod(measureStart, measureEnd);
+						kProject.addKnimeNode(measurePeriodNode);
+						rowLayOut.add(measurePeriodNode);
+						Connection connMeasurePeriodIn = new Connection();
+						kProject.addKnimeConnection(connMeasurePeriodIn);
+						connMeasurePeriodIn.setSource(frontier, connLeftSourcePort);
+						connMeasurePeriodIn.setDest(measurePeriodNode, 0);
+						Connection connMeasurePeriodOut = new Connection();
+						kProject.addKnimeConnection(connMeasurePeriodOut);
+						connMeasurePeriodOut.setSource(measurePeriodNode, measurePeriodNode.getGoodOutPorts()[0]);
+						connMeasurePeriodOut.setDest(temporalNode, 1);
+						temporalNode.modifyAnnotateTexts("rightDataElement", "Measure Period");
+						temporalNode.modifyAnnotateTexts("rightSourceDataElement", "Measure Period");
+						temporalNode.setRightElement(frontier.getOutputElement(connLeftSourcePort));
+					} else {
+						RelayNode rightRelay = new RelayNode(DataType.Data);
+						rightRelay.setComment(referenceString);
+						kProject.addKnimeNode(rightRelay);
+						rowLayOut.add(rightRelay);
+						Connection connRightRelay = new Connection();
+						connRightRelay.setDest(temporalNode, 1);
+						connRightRelay.setSource(rightRelay, 0);
+						kProject.addKnimeConnection(connRightRelay);
+						relaysNeedBefore.put(rightRelay, referenceString);
+						temporalNode.modifyAnnotateTexts("rightDataElement", referenceString);
+						rightRelay.setTo(temporalNode);
+					}
+					rowLayOut.add(temporalNode);
+					frontier = temporalNode;
+				}
 				
+				/*
+				 * Data Criteria/subset_operators (aggregative)
+				 * 
+				 * */
+				int[] subsetOperatorsAccesses = measure.getJsonArrayRegestries(access, "subset_operators");
+				if (subsetOperatorsAccesses == null) {
+					subsetOperatorsAccesses = new int[] {};
+				}
+				for (int operatorAccess : subsetOperatorsAccesses){
+					String typeString = measure.getStringValue(operatorAccess, "type");
+					String ivlPqDesc = "";
+					try {
+						Integer ivlPqAccess = measure.getJsonObjectRegistry(operatorAccess, "value");
+						ivlPqDesc = measure.getIVL_PQDescription(ivlPqAccess);
+					} catch (NullPointerException e){
+						// Do nothing
+					}
+					
+					Aggregation aggrNode = new Aggregation();
+					kProject.addKnimeNode(aggrNode);
+					rowLayOut.add(aggrNode);
+					aggrNode.setGroupByNodeText(typeString);
+					aggrNode.setFilterNodeText(ivlPqDesc);
+					Connection aggrConn = new Connection();
+					kProject.addKnimeConnection(aggrConn);
+					aggrConn.setSource(frontier, frontier.getGoodOutPorts()[0]);
+					aggrConn.setDest(aggrNode, 0);
+					frontier = aggrNode;
+				}
+			} else {
+				/*
+				 *  GROUP
+				 * */
+				dataCriteriaFindDataCriterias.put(dataCriteriaName, new ArrayList<String>());
+				String[] childrenCriteriaReferences = measure.getStringArray(access, "children_criteria");
+				for (String childCriterionStr : childrenCriteriaReferences){
+					RelayNode referredCriterion = new RelayNode(DataType.Data);
+					referredCriterion.setComment("Data Criterion: " + childCriterionStr);
+					kProject.addKnimeNode(referredCriterion);
+					rowLayOut.add(referredCriterion);
+					relaysNeedBefore.put(referredCriterion, childCriterionStr);
+					dataCriteriaFindDataCriterias.get(dataCriteriaName).add(childCriterionStr);
+				}
 				
-			}
-			/*
-			 * Data Criteria/temporal_references
-			 * */
-			int[] temporalsAccesses = measure.getJsonArrayRegestries(access, "temporal_references");
-			//System.err.println(dataCriteriaName + " Numbers of temporals: " + numberOfTemporals);
-			/*
-			 * Temporal Step 1: make temporal nodes, and connect the left side
-			 * 
-			 * */
-			for (int i = 0; temporalsAccesses != null && i < temporalsAccesses.length; i ++) {
-				int temporalAcc = temporalsAccesses[i];
-				String typeString = measure.getStringValue(temporalAcc, "type");
-				String referenceString = measure.getStringValue(temporalAcc, "reference");
-				TemporalTypeCode typeEnum = TemporalTypeCode.SBS;
-				try{
-					typeEnum = Enum.valueOf(TemporalTypeCode.class, typeString);
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-					System.err.println("Unrecognized temporal reference "
-							+ typeString + " at " + dataCriteriaName);
-					System.err.println("Please look at the SBS node. ");
-				}
-				if (typeEnum.REQUIRE_LEFT_START) {
-					sourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
-				}
-				if (typeEnum.REQUIRE_LEFT_END){
-					sourceElement.addQdmAttributes("stopDatetime", "DateAndTImeCell", "Stop/End timestamp");
-				}
-				TemporalRelationship temporalNode = new TemporalRelationship(typeEnum);
-				kProject.addKnimeNode(temporalNode);
-				temporalNode.setLeftElement(frontier);
-				temporalNode.modifyAnnotateTexts("leftDataElement", dataCriteriaName);
-				temporalNode.modifyAnnotateTexts("leftSourceDataElement", sourceDataCriteriaName);
-				Integer ivlPqAccess = measure.getTemporalRange_IVL_PQInDataCritieria(new Integer(temporalAcc));
-				if (ivlPqAccess != null){
-					ivlPqInTemporal(ivlPqAccess.intValue(), measure, temporalNode);
-				}
-				
-				Connection connLeft = new Connection();
-				int connLeftSourcePort = frontier.getGoodOutPorts()[0];
-				connLeft.setSource(frontier, connLeftSourcePort);
-				connLeft.setDest(temporalNode, 0);
-				kProject.addKnimeConnection(connLeft);
-				if (referenceString.equals("MeasurePeriod")){
-					MeasurePeriod measurePeriodNode = new MeasurePeriod(measureStart, measureEnd);
-					kProject.addKnimeNode(measurePeriodNode);
-					rowLayOut.add(measurePeriodNode);
-					Connection connMeasurePeriodIn = new Connection();
-					kProject.addKnimeConnection(connMeasurePeriodIn);
-					connMeasurePeriodIn.setSource(frontier, connLeftSourcePort);
-					connMeasurePeriodIn.setDest(measurePeriodNode, 0);
-					Connection connMeasurePeriodOut = new Connection();
-					kProject.addKnimeConnection(connMeasurePeriodOut);
-					connMeasurePeriodOut.setSource(measurePeriodNode, measurePeriodNode.getGoodOutPorts()[0]);
-					connMeasurePeriodOut.setDest(temporalNode, 1);
-					temporalNode.modifyAnnotateTexts("rightDataElement", "Measure Period");
-					temporalNode.modifyAnnotateTexts("rightSourceDataElement", "Measure Period");
-					temporalNode.setRightElement(frontier.getOutputElement(connLeftSourcePort));
-				} else {
-					RelayNode rightRelay = new RelayNode(DataType.Data);
-					rightRelay.setComment(referenceString);
-					kProject.addKnimeNode(rightRelay);
-					rowLayOut.add(rightRelay);
-					Connection connRightRelay = new Connection();
-					connRightRelay.setDest(temporalNode, 1);
-					connRightRelay.setSource(rightRelay, 0);
-					kProject.addKnimeConnection(connRightRelay);
-					rightSideOfTemporals.put(rightRelay, referenceString);
-					temporalNode.modifyAnnotateTexts("rightDataElement", referenceString);
-					rightRelay.setTo(temporalNode);
-				}
-				rowLayOut.add(temporalNode);
-				frontier = temporalNode;
 			}
 			
-			/*
-			 * Data Criteria/subset_operators (aggregative)
-			 * 
-			 * */
-			int[] subsetOperatorsAccesses = measure.getJsonArrayRegestries(access, "subset_operators");
-			if (subsetOperatorsAccesses == null) {
-				subsetOperatorsAccesses = new int[] {};
-			}
-			for (int operatorAccess : subsetOperatorsAccesses){
-				String typeString = measure.getStringValue(operatorAccess, "type");
-				String ivlPqDesc = "";
-				try {
-					Integer ivlPqAccess = measure.getJsonObjectRegistry(operatorAccess, "value");
-					ivlPqDesc = measure.getIVL_PQDescription(ivlPqAccess);
-				} catch (NullPointerException e){
-					// Do nothing
-				}
-				
-				Aggregation aggrNode = new Aggregation();
-				kProject.addKnimeNode(aggrNode);
-				rowLayOut.add(aggrNode);
-				aggrNode.setGroupByNodeText(typeString);
-				aggrNode.setFilterNodeText(ivlPqDesc);
-				Connection aggrConn = new Connection();
-				kProject.addKnimeConnection(aggrConn);
-				aggrConn.setSource(frontier, frontier.getGoodOutPorts()[0]);
-				aggrConn.setDest(aggrNode, 0);
-				frontier = aggrNode;
-			}
+			
 			
 			RelayNode dataCriteriaLabel = new RelayNode(DataType.Data);
 			rowLayOut.add(dataCriteriaLabel);
 			kProject.addKnimeNode(dataCriteriaLabel);
 			dataCriteriaLabel.setComment("Data Criterion: " + dataCriteriaName);
-			Connection dataCriteriaLabelConn = new Connection();
-			dataCriteriaLabelConn.setDest(dataCriteriaLabel, 0);
-			dataCriteriaLabelConn.setSource(frontier, frontier.getGoodOutPorts()[0]);
-			kProject.addKnimeConnection(dataCriteriaLabelConn);
-			
+			if (singleSourceElement != null){
+				dataCriteriaLabel.setInputElement(0, singleSourceElement);
+			} else {
+				dataCriteriaLabel.setInputElement(0, dataCriteriaLabel);
+			}
+			if(frontier != null) {
+				Connection dataCriteriaLabelConn = new Connection();
+				dataCriteriaLabelConn.setDest(dataCriteriaLabel, 0);
+				dataCriteriaLabelConn.setSource(frontier, frontier.getGoodOutPorts()[0]);
+				kProject.addKnimeConnection(dataCriteriaLabelConn);
+			}
 			frontier = dataCriteriaLabel;
 			dataCriteriaNodes.put(dataCriteriaName, frontier);
-		}
+		} 
 		
 		/*
 		 * Temporal Step 2: after all the data criteria nodes are created, add the right side of the
@@ -393,42 +423,47 @@ public class HqmfJson2Knime {
 		 * */
 		
 		for (RelayNode relayReferred : 
-			rightSideOfTemporals.keySet()
-			.toArray(new RelayNode[rightSideOfTemporals.size()])) {
-			String referenceString = rightSideOfTemporals.get(relayReferred);
+			relaysNeedBefore.keySet()
+			.toArray(new RelayNode[relaysNeedBefore.size()])) {
+			String referenceString = relaysNeedBefore.get(relayReferred);
 			//System.err.println(referenceString);
-			NodeInterface rightNode = dataCriteriaNodes.get(referenceString);
-			TemporalRelationshipInterface temporalNode = (TemporalRelationshipInterface) relayReferred.getTo();
+			NodeInterface beforeNode = dataCriteriaNodes.get(referenceString);
+			NodeInterface maybeTemporalNode = relayReferred.getTo();
 
-			if (rightNode != null) {
+			if (beforeNode != null) {
 				Connection connRight = new Connection();
-				//Connection connRight2 = new Connection();
-				//RelayNode relayReferred = new RelayNode(DataType.Data);
-				//relayReferred.setComment("Data Criterion: " + referenceString);
-				relayReferred.setInputElement(0, rightNode.getOutputElement(rightNode.getGoodOutPorts()[0]));
+				relayReferred.setInputElement(0, beforeNode.getOutputElement(beforeNode.getGoodOutPorts()[0]));
 				connRight.setDest(relayReferred, 0);  // 0
-				//connRight2.setSource(relayReferred, 0);
-				
 				kProject.addKnimeConnection(connRight);
-				//kProject.addKnimeConnection(connRight2);
-				//kProject.addKnimeNode(relayReferred);
 				
 				
-				int connRightSourcePort = rightNode.getGoodOutPorts()[0];
-				connRight.setSource(rightNode, connRightSourcePort);
+				int connRightSourcePort = beforeNode.getGoodOutPorts()[0];
+				connRight.setSource(beforeNode, connRightSourcePort);
 				
-				//connRight2.setDest(temporalNode, 1);
-				if (temporalNode != null){
-					temporalNode.setRightElement(relayReferred.getOutputElement(relayReferred.getGoodOutPorts()[0]));
+			}
+			
+			/*
+			 * I need to fix here for GROUP
+			 * */
+			if (maybeTemporalNode != null && maybeTemporalNode instanceof TemporalRelationshipInterface){
+				TemporalRelationshipInterface temporalNode = (TemporalRelationshipInterface) maybeTemporalNode;
+				temporalNode.setRightElement(relayReferred.getOutputElement(relayReferred.getGoodOutPorts()[0])); // useless
+			
+				ArrayList<String> referenceStrings = new ArrayList<String>();
+				referenceStrings.add(referenceString);
+				ArrayList<String> daughterReferences = dataCriteriaFindDataCriterias.get(referenceString);
+				if (daughterReferences != null){
+					referenceStrings.addAll(daughterReferences);
 				}
-				//temporalNode.modifyAnnotateTexts("rightSourceDataElement", dataCriteria2Source.get(referenceString));
-			}
-			QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(referenceString);
-			if(rightSourceElement != null && temporalNode != null && temporalNode.getTemporalType().REQUIRE_RIGHT_START){
-				rightSourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
-			}
-			if (rightSourceElement != null && temporalNode != null && temporalNode.getTemporalType().REQUIRE_RIGHT_END){
-				rightSourceElement.addQdmAttributes("stopDatetime", "DateAndTimeCell", "Stop/end timestamp");
+				for(String refStr : referenceStrings){
+					QdmDataElementInterface rightSourceElement = dataCriteriaFindSource.get(refStr);
+					if(rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_START){
+						rightSourceElement.addQdmAttributes("startDatetime", "DateAndTimeCell", "Start timestamp");
+					}
+					if (rightSourceElement != null && temporalNode.getTemporalType().REQUIRE_RIGHT_END){
+						rightSourceElement.addQdmAttributes("stopDatetime", "DateAndTimeCell", "Stop/end timestamp");
+					}
+				}
 			}
 		}
 		
@@ -1000,7 +1035,7 @@ public class HqmfJson2Knime {
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
 		// /Users/admin/Desktop
-		String measureName = "CMS30v4";
+		String measureName = "CMS188v4";
 		String measureType = "eh";
 		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
 		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
