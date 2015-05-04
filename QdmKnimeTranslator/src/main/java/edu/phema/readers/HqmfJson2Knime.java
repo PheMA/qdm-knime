@@ -1035,7 +1035,7 @@ public class HqmfJson2Knime {
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
 		// TODO Auto-generated method stub
 		// /Users/admin/Desktop
-		String measureName = "CMS188v4";
+		String measureName = "CMS30v4";
 		String measureType = "eh";
 		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
 		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
