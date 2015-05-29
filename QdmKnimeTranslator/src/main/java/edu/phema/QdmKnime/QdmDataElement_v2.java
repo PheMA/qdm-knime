@@ -468,7 +468,7 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		/*
 		 * TODO Update the new zip file
 		 * */
-		String zipFileName = "DATA_ELEMENT.zip";
+		String zipFileName = "DATA_ELEMENT_V2.zip";
 		
 		Path tempZipPath = tempFolder.resolve(zipFileName);
 		tempZipPath.toFile().mkdirs();  // To make sure the "temp" folder is there. Do I need to check success? 
