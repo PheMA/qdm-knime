@@ -3,7 +3,10 @@
  */
 package edu.phema.QdmKnime;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.IOException;
@@ -193,6 +196,11 @@ public class KnimeProject {
 		mars.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		mars.marshal(jaxbRoot, outStream);
 		outStream.close();
+		
+		/*
+		 * Test data from Cypress
+		 * */
+		Files.copy(Paths.get("src/main/resources/cypress_data/cypress_all_v3.table"), getProjectDir().resolve("cypress_all_v3.table"), StandardCopyOption.REPLACE_EXISTING);
 		
 		ZipFile zipFile = new ZipFile(getProjectZipPath().toString());
 		ZipParameters parameters = new ZipParameters();

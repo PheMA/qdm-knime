@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 // import java.util.Set;
 
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -49,9 +50,11 @@ import edu.phema.jaxb.ihe.svs.ValueSetResponseType;
 import edu.phema.knime.exceptions.SetUpIncompleteException;
 import edu.phema.knime.exceptions.WrittenAlreadyException;
 import edu.phema.knime.nodeSettings.TableCreator;
+// import edu.phema.rxnorm.BeanService.RxConcept;
+// import edu.phema.rxnorm.BeanService.RxConceptGroup;
+// import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManager;
 import edu.phema.rxnorm.BeanService.RxConcept;
 import edu.phema.rxnorm.BeanService.RxConceptGroup;
-import gov.nih.nlm.mor.axis.services.RxNormDBService.DBManager;
 
 /**
  * @author moh
@@ -75,7 +78,7 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 	
 	private final TableCreator requiredAttributes = initializeAttributesTable();
 	private int attributeTableRowCount = 0;
-	private final DBManager rxnormManager; 
+	// private final DBManager rxnormManager; 
 	private final ArrayList<String> seenAttributes = new ArrayList<String>();
 	
 	
@@ -83,7 +86,7 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		
 //		requiredAttributes = initializeAttributesTable();
 		attributeTableRowCount = 2;
-		rxnormManager = Toolkit.getRxnormManager();
+		// rxnormManager = Toolkit.getRxnormManager();
 	}
 
 	
@@ -340,68 +343,6 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		return names.toArray(new String[names.size()]);
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.phema.QdmKnimeInterfaces.QdmDataElementInterface#addVariableForSQL(java.lang.String, java.lang.String)
-	 */
-	@Override
-	public void setVariableForSQL(String name, String variable) {
-		variablesForSQL.put(name, variable);
-	}
-	
-	/*
-	 * TODO Remove
-	 * */
-	public void addVariableForSQL(String name, String variable) {
-		String newName = name;
-		while (variablesForSQL.containsKey(newName) & newName.length() <= 32){
-			newName = newName + "_1";
-		}
-		variablesForSQL.put(newName, variable);
-	}
-
-	
-	public void updateVariablesForSQL(){
-		String inClause = "";
-		String inClauseI2b2 = "";
-		HashMap <CodeSystemEnum, String> inClauses = 
-				new HashMap<CodeSystemEnum, String>();
-		String unknownSystem = "";
-		for (CD cd : valueSet){
-			String quotedCode = "\"" + cd.getCode() + "\"";
-			if (inClause.equals("")){
-				inClause = quotedCode;
-			} else {
-				inClause = inClause + ", " + quotedCode;
-			}
-			try {
-				CodeSystemEnum syst = CodeSystemEnum.valueOf(cd.getCodeSystemName());
-				if (inClauses.containsKey(syst)){
-					inClauses.put(syst, inClauses.get(syst) + ", " + quotedCode);
-				} else {
-					inClauses.put(syst, quotedCode);
-				}
-				String i2b2QuotedCode = "\"" + syst.I2B2_PREFIX 
-						+ cd.getCode() + "\"";
-				if (inClauseI2b2.equals("")){
-					inClauseI2b2 = i2b2QuotedCode;
-				} else {
-					inClauseI2b2 = inClauseI2b2 + ", " + i2b2QuotedCode;
-				}
-				
-			} catch (IllegalArgumentException e){ // don't repeatly print same error
-				if (! unknownSystem.equals(cd.getCodeSystemName())){
-					// System.err.println("Unknown codeSystem " + cd.getCodeSystem());
-				}
-				unknownSystem = cd.getCodeSystem();
-			}
-		}
-		this.setVariableForSQL("IN", inClause);
-		this.setVariableForSQL("IN_i2b2", inClauseI2b2);
-		for (CodeSystemEnum codeSyst : inClauses.keySet()){
-			this.setVariableForSQL("IN_" + codeSyst.name(), 
-					inClauses.get(codeSyst));
-		}
-	}
 	
 	public CodeSystemEnum[] getAllCodeSystems(){
 		HashMap<CodeSystemEnum, Boolean> seen_systems = 
@@ -447,7 +388,6 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 	@Override
 	public void write() throws WrittenAlreadyException,
 			SetUpIncompleteException, IOException, ZipException {
-		this.updateVariablesForSQL();
 		
 		
 		/*
@@ -498,9 +438,8 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		 * */
 		
 		/*
-		 * TODO Remove rxnorm requirements
+		 * Removed rxnorm requirements
 		 * */
-		ArrayList<String> rxnormRegExUnits = new ArrayList<String>(); 
 		
 		if (valueSet.size() > 0){
 			try {
@@ -517,101 +456,30 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 					tb.setCell(cd.getCodeSystemName(), i, 2);
 					tb.setCell(cd.getCodeSystemVersion(), i, 3);
 					tb.setCell(cd.getDisplayName(), i, 4);
-					
-					/*
-					 * TODO remove this block for RXNORM
-					 * */
-					if (cd.getCodeSystemName().equals("RXNORM") || cd.getCodeSystem().equals("2.16.840.1.113883.6.88")){
-						String[] types = {"IN", "BN"};
-						RxConceptGroup[] rxConceptGroups = rxnormManager
-								.getRelatedByType(cd.getCode(),  types);
-						for (RxConceptGroup conceptGroup : rxConceptGroups){
-							RxConcept[] concepts = conceptGroup.getRxConcept();
-							ArrayList<String> strs = new ArrayList<String>();
-							for (RxConcept concept : concepts){
-								strs.add(concept.getSTR());		
-							}
-							if (strs.size() == 1) {
-								rxnormRegExUnits.add(strs.get(0));
-							} else if (conceptGroup.getType().equals("BN")) {
-								rxnormRegExUnits.addAll(strs);
-							} else {
-								for (int j = 0; j < strs.size(); j ++){
-									for (int k = 0; k < strs.size(); k ++){
-										if (j != k){
-											rxnormRegExUnits.add(
-													strs.get(j) + 
-													".{1,10}" +
-													strs.get(k));
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				/*
-				 * TODO remove variableForSQL
-				 * */
-				if (rxnormRegExUnits.size() > 0){
-					this.addVariableForSQL("REGEX_RXNORM", 
-							StringUtils.join(
-									rxnormRegExUnits.toArray(
-											new String[rxnormRegExUnits.size()]), 
-											'|'));
 				}
 				tb.setNodeAnnotationText(valueSetDisplayName);
 				String newSettings = tb.getSettings();
 				Path settingsXml = tempFolderForUnzip
-						.resolve("DATA_ELEMENT/Table Creator (#7)/settings.xml");
+						.resolve("DATA_ELEMENT_V2/Table Creator (#7)/settings.xml");
 				Files.move(settingsXml, 
-						tempFolderForUnzip.resolve("DATA_ELEMENT/Table Creator (#7)/settings.old.xml"), 
+						tempFolderForUnzip.resolve("DATA_ELEMENT_V2/Table Creator (#7)/settings.old.xml"), 
 						StandardCopyOption.REPLACE_EXISTING);
 				PrintWriter outStream = new PrintWriter(settingsXml.toFile());
 				outStream.print(newSettings);
 				outStream.close();
 
 			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		
-		/*
-		 * TODO remove
-		 * */
-		if (variablesForSQL.size() > 0){
-			try {
-				TableCreator tb = new TableCreator();
-				ArrayList<String> variableNames = 
-						new ArrayList<String>(variablesForSQL.keySet());
-				for (int i = 0; i < variableNames.size(); i ++){
-					tb.setColumnProperties(i, variableNames.get(i), 
-							CreateTableColumnClassEnum.String);
-					tb.setCell(variablesForSQL.get(variableNames.get(i)), 0, i);
-				}
-				tb.setNodeAnnotationText("Value set Tools%%00010for SQL");
-				String newSettings = tb.getSettings();
-				Path settingsXml = tempFolderForUnzip
-						.resolve("DATA_ELEMENT/Table Creator (#11)/settings.xml");
-				Files.move(settingsXml, 
-						tempFolderForUnzip.resolve("DATA_ELEMENT/Table Creator (#11)/settings.old.xml"), 
-						StandardCopyOption.REPLACE_EXISTING);
-				PrintWriter outStream = new PrintWriter(settingsXml.toFile());
-				outStream.print(newSettings);
-				outStream.close();
-				
-			} catch (JAXBException e) {
-				e.printStackTrace();
-			}
-			
-		}
 		
 		if (requiredAttributes != null) {
 			Path settingsXml = tempFolderForUnzip
-					.resolve("DATA_ELEMENT/Table Creator (#1)/settings.xml");
+					.resolve("DATA_ELEMENT_V2/Table Creator (#1)/settings.xml");
 			Files.move(settingsXml, 
-					tempFolderForUnzip.resolve("DATA_ELEMENT/Table Creator (#1)/settings.old.xml"), 
+					tempFolderForUnzip.resolve("DATA_ELEMENT_V2/Table Creator (#1)/settings.old.xml"), 
 					StandardCopyOption.REPLACE_EXISTING);
 			PrintWriter outStream = new PrintWriter(settingsXml.toFile());
 			outStream.print(requiredAttributes.getSettings());
@@ -620,7 +488,7 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		
 		if (! qdmText.equals("")){
 			Path workflowDir = tempFolderForUnzip
-					.resolve("DATA_ELEMENT");
+					.resolve("DATA_ELEMENT_V2");
 			Files.move(workflowDir.resolve("workflow.knime"), workflowDir.resolve("workflow.knime.old"), 
 					StandardCopyOption.REPLACE_EXISTING);
 			String templateString = Toolkit.readFile(
@@ -638,7 +506,7 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		
 		
 		
-		Files.move(tempFolderForUnzip.resolve("DATA_ELEMENT"), 
+		Files.move(tempFolderForUnzip.resolve("DATA_ELEMENT_V2"), 
 				nodeFolderPath, StandardCopyOption.REPLACE_EXISTING);
 
 	}
@@ -687,11 +555,6 @@ public class QdmDataElement_v2 extends MetaNode implements QdmDataElementInterfa
 		return goodPorts;
 	}
 
-	@Override
-	public String[] getVariableNamesForSQL() {
-		this.updateVariablesForSQL();
-		return variablesForSQL.keySet().toArray(new String[variablesForSQL.size()]);
-	}
 
 	@Override
 	public NodeInterface getOutputElement(int port) {

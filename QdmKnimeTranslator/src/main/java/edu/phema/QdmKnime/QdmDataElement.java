@@ -364,7 +364,6 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 	/* (non-Javadoc)
 	 * @see edu.phema.QdmKnimeInterfaces.QdmDataElementInterface#addVariableForSQL(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public void setVariableForSQL(String name, String variable) {
 		// TODO Auto-generated method stub
 		variablesForSQL.put(name, variable);
@@ -696,7 +695,6 @@ public class QdmDataElement extends MetaNode implements QdmDataElementInterface 
 		return goodPorts;
 	}
 
-	@Override
 	public String[] getVariableNamesForSQL() {
 		// TODO Auto-generated method stub
 		this.updateVariablesForSQL();

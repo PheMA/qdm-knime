@@ -44,8 +44,8 @@ public interface QdmDataElementInterface extends NodeInterface {
 	String[] getCodeDisplayNames();
 	String[] getCodeDisplayNames(CodeSystemEnum codeSystem);
 	
-	void setVariableForSQL(String name, String Variable);
-	String[] getVariableNamesForSQL();
+	// void setVariableForSQL(String name, String Variable);
+	// String[] getVariableNamesForSQL();
 	void addQdmAttributes(
 			String requiredColumn, String dataType, String explanation);
 	
