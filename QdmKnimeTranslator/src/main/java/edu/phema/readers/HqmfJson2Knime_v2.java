@@ -24,7 +24,9 @@ import edu.phema.QdmKnime.Attribute;
 import edu.phema.QdmKnime.Connection;
 import edu.phema.QdmKnime.KnimeProject;
 import edu.phema.QdmKnime.LogicalOperator;
-import edu.phema.QdmKnime.MeasurePeriod;
+//import edu.phema.QdmKnime.MeasurePeriod;
+import edu.phema.QdmKnime.MeasurePeriod_v2a;
+import edu.phema.QdmKnime.MeasurePeriod_v2b;
 import edu.phema.QdmKnime.QdmDataElement_v2;
 import edu.phema.QdmKnime.RelayNode;
 import edu.phema.QdmKnime.TemporalRelationship;
@@ -100,6 +102,14 @@ public class HqmfJson2Knime_v2 {
 		kProject.addKnimeNode(databaseMasterConnectionNode);
 		databaseMasterConnectionNode.setComment("Plug your database connector here");
 		addToMap(nodeMap1, databaseMasterConnectionNode, 0, 0);
+		
+		/*
+		 * Create measure period node v2a (with date times)
+		 * */
+		
+		MeasurePeriod_v2a measurePeriodStem = new MeasurePeriod_v2a(measureStart, measureEnd);
+		kProject.addKnimeNode(measurePeriodStem);
+		addToMap(nodeMap1, measurePeriodStem, 1, 0);
 		
 		/*
 		 * source_data_criteria
@@ -321,9 +331,13 @@ public class HqmfJson2Knime_v2 {
 					connLeft.setDest(temporalNode, 0);
 					kProject.addKnimeConnection(connLeft);
 					if (referenceString.equals("MeasurePeriod")){
-						MeasurePeriod measurePeriodNode = new MeasurePeriod(measureStart, measureEnd);
+						MeasurePeriod_v2b measurePeriodNode = new MeasurePeriod_v2b();
 						kProject.addKnimeNode(measurePeriodNode);
 						rowLayOut.add(measurePeriodNode);
+						Connection connMeasurePeriodFromStem = new Connection();
+						connMeasurePeriodFromStem.setSource(measurePeriodStem, 0);
+						connMeasurePeriodFromStem.setDest(measurePeriodNode, 1);
+						kProject.addKnimeConnection(connMeasurePeriodFromStem);
 						Connection connMeasurePeriodIn = new Connection();
 						kProject.addKnimeConnection(connMeasurePeriodIn);
 						connMeasurePeriodIn.setSource(frontier, connLeftSourcePort);
@@ -446,7 +460,7 @@ public class HqmfJson2Knime_v2 {
 			}
 			
 			/*
-			 * I need to fix here for GROUP
+			 * kinda handling GROUP
 			 * */
 			if (maybeTemporalNode != null && maybeTemporalNode instanceof TemporalRelationshipInterface){
 				TemporalRelationshipInterface temporalNode = (TemporalRelationshipInterface) maybeTemporalNode;
@@ -785,12 +799,13 @@ public class HqmfJson2Knime_v2 {
 		 * */
 		String reference = measure.getStringValue(currentParentOfPreconditionsAccess, "reference");
 
+		RelayNode relayDataCriteria = null;
 		
 		if (reference != null) {  
 			NodeInterface dataCriteriaNode = dataCriteria.get(reference);
 			int dataCriteriaNodeOutPort = dataCriteriaNode.getGoodOutPorts()[0];
 			
-			RelayNode relayDataCriteria = new RelayNode(DataType.Data);
+			relayDataCriteria = new RelayNode(DataType.Data);
 			relayDataCriteria.setComment("Data Criterion: " + reference);
 			relayDataCriteria.setInputElement(0, dataCriteriaNode.getOutputElement(dataCriteriaNodeOutPort));
 			Connection connRelay = new Connection();
@@ -798,7 +813,7 @@ public class HqmfJson2Knime_v2 {
 			connRelay.setDest(relayDataCriteria, 0);
 			frontier = relayDataCriteria;
 			
-			nodes.add(relayDataCriteria);
+			//nodes.add(relayDataCriteria);
 			conns.add(connRelay);
 			
 			Boolean negated = measure.getBooleanValue(currentParentOfPreconditionsAccess, "negation");
@@ -807,6 +822,11 @@ public class HqmfJson2Knime_v2 {
 		for (int access : preconditionsAccesses){
 			NodeInterface leftNode = frontier;
 			boolean leftNegated = frontierNegated;
+//			int currentNewNodeLoc = nodes.size(); 
+//			if(leftNode != null){   // match to if (leftNode == null)
+//				nodes.add(null);   // try to get an earlier spot before the recursive
+//			
+//			}
 			NodeInterface rightNode = explorePopCriteriaTree(
 					access, nodes, conns, dataCriteria, measure);
 			boolean rightNegated = measure.getBooleanValue(access, "negation") != null &&  
@@ -853,7 +873,9 @@ public class HqmfJson2Knime_v2 {
 			
 		}
 		
-		
+		if (relayDataCriteria != null){
+			nodes.add(relayDataCriteria);
+		}
 		
 		return frontier;
 	}

@@ -166,21 +166,36 @@ public class MeasurePeriod_v2a extends MetaNode implements MeasurePeriodInterfac
 		 * */
 		
 		
-		if (measureStart != null && measureEnd != null){
+		if (measureStart != null){
 			Path settingsTemplateInTemp = tempFolderForUnzip
 					.resolve(inZipFolderName)
-					.resolve("Java Snippet (#1)/settings.xml.template");
+					.resolve("String Input (#21)/settings.xml.template");
 			Path settingsInTemp = tempFolderForUnzip
 					.resolve(inZipFolderName)
-					.resolve("Java Snippet (#1)/settings.xml");
+					.resolve("String Input (#21)/settings.xml");
 			settingsInTemp.toFile().delete();
 			String settingsOutContent = Toolkit.readFile(settingsTemplateInTemp.toString())
-					.replace("$#{startyyyyMMddHHmm}#$", ft.format(measureStart))
+					.replace("$#{startyyyyMMddHHmm}#$", ft.format(measureStart));
+			PrintWriter outStream = new PrintWriter(settingsInTemp.toFile());
+			outStream.print(settingsOutContent);
+			outStream.close();
+		}
+		
+		if (measureEnd != null){
+			Path settingsTemplateInTemp = tempFolderForUnzip
+					.resolve(inZipFolderName)
+					.resolve("String Input (#20)/settings.xml.template");
+			Path settingsInTemp = tempFolderForUnzip
+					.resolve(inZipFolderName)
+					.resolve("String Input (#20)/settings.xml");
+			settingsInTemp.toFile().delete();
+			String settingsOutContent = Toolkit.readFile(settingsTemplateInTemp.toString())
 					.replace("$#{endyyyyMMddHHmm}#$", ft.format(measureEnd));
 			PrintWriter outStream = new PrintWriter(settingsInTemp.toFile());
 			outStream.print(settingsOutContent);
 			outStream.close();
 		}
+
 		
 		Files.move(tempFolderForUnzip.resolve(inZipFolderName), 
 				nodeFolderPath, StandardCopyOption.REPLACE_EXISTING);

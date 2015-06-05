@@ -54,6 +54,7 @@ public class RxNormTest {
 		
 		String[] types = {"IN", "BN"};
 		
+		//System.out.println( "aaabbb".replace("aa", "ca"));
 		
 		RxConceptGroup[] ret = dbmanager.getRelatedByType("597974",  types);
 		for (int i = 0; i < ret.length; i++){
