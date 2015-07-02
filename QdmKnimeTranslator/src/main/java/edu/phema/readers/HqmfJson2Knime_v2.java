@@ -1063,7 +1063,7 @@ public class HqmfJson2Knime_v2 {
 		String measureName = "CMS30v4";
 		String measureType = "eh";
 		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
-		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime").resolve(measureType).resolve(measureName);
+		Path outputDir1 = Paths.get("/Users/admin/Desktop/qdm2knime/eM2Kn_test").resolve(measureType).resolve(measureName);
 		
 		//Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
 		//Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
