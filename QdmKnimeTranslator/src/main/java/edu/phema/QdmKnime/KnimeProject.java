@@ -200,7 +200,7 @@ public class KnimeProject {
 		/*
 		 * Test data from Cypress
 		 * */
-		Files.copy(Paths.get("src/main/resources/cypress_data/cypress_all_v3.table"), getProjectDir().resolve("cypress_all_v3.table"), StandardCopyOption.REPLACE_EXISTING);
+		Files.copy(Paths.get("src/main/resources/cypress_data/cypress2.5_all_v4.table"), getProjectDir().resolve("cypress2.5_all_v4.table"), StandardCopyOption.REPLACE_EXISTING);
 		
 		ZipFile zipFile = new ZipFile(getProjectZipPath().toString());
 		ZipParameters parameters = new ZipParameters();
