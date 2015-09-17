@@ -36,6 +36,7 @@ public class MeasurePeriod_v2a extends MetaNode implements MeasurePeriodInterfac
 	Date measureStart = null;
 	Date measureEnd = null;
 	String dateFormat = "yyyyMMddHHmm";
+	//String dateFormat = "yyyyMMdd";
 	NodeInterface inputElement = this;
 	
 	
