@@ -514,10 +514,10 @@ public class HqmfJson {
 		Double[] re = new Double[2];
 		re[0] = null;
 		re[1] = null;
-		if (ivl_pq.has("high")){
+		if (ivl_pq.has("high") && !ivl_pq.getJSONObject("high").has("null_flavor")){
 			re[0] = new Double(Double.valueOf(ivl_pq.getJSONObject("high").getString("value")));
 		}
-		if (ivl_pq.has("low")){
+		if (ivl_pq.has("low") && !ivl_pq.getJSONObject("low").has("null_flavor")){
 			re[1] = new Double(Double.valueOf(ivl_pq.getJSONObject("low").getString("value")));
 		}
 		return re;
@@ -531,13 +531,15 @@ public class HqmfJson {
 			String unit = "";
 			try {
 				high_obj = ivl_pq.getJSONObject("high");
-				re = re + 
-						(high_obj.has("inclusive?") && high_obj.getBoolean("inclusive?") ? 
-								" less than or equal to: " : 
-									" less than: ") + 
-						high_obj.getString("value");
-				if (high_obj.has("unit")){
-					re = re + " " + high_obj.getString("unit");
+				if (!high_obj.has("null_flavor")) {
+					re = re + 
+							(high_obj.has("inclusive?") && high_obj.getBoolean("inclusive?") ? 
+									" less than or equal to: " : 
+										" less than: ") + 
+							high_obj.getString("value");
+					if (high_obj.has("unit")){
+						re = re + " " + high_obj.getString("unit");
+					}
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -549,12 +551,14 @@ public class HqmfJson {
 			String unit = "";
 			try {
 				low_obj = ivl_pq.getJSONObject("low");
-				re = re + (
-						low_obj.has("inclusive?") && low_obj.getBoolean("inclusive?") ?
-							" greater than or eaqual to: "	: 
-								" greater than: ") + low_obj.getString("value");
-				if (low_obj.has("unit")){
-					re = re + " " + low_obj.getString("unit");
+				if (!low_obj.has("null_flavor")) {
+					re = re + (
+							low_obj.has("inclusive?") && low_obj.getBoolean("inclusive?") ?
+								" greater than or equal to: "	: 
+									" greater than: ") + low_obj.getString("value");
+					if (low_obj.has("unit")){
+						re = re + " " + low_obj.getString("unit");
+					}
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
