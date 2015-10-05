@@ -418,12 +418,14 @@ public class HqmfJson {
 		HashMap <String, Integer> re = new HashMap <String, Integer>();
 		JSONObject current = jsonObjRegistry.get(access.intValue());
 		String[] names = JSONObject.getNames(current);
-		for (String name : names){
-			try {
-				re.put(name, new Integer(this.registerJsonObject(current.getJSONObject(name))));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		if (names != null) {
+			for (String name : names){
+				try {
+					re.put(name, new Integer(this.registerJsonObject(current.getJSONObject(name))));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return re;
