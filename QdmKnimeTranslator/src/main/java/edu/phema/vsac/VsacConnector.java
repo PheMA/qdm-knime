@@ -31,7 +31,8 @@ public class VsacConnector {
 	private String tgt;
 	private final String account;
 	private final String passcode;
-	private final String restServer = "https://vsac.nlm.nih.gov/vsac/ws";
+	private final String restServer = "https://vsac.nlm.nih.gov/vsac/svs";
+	private final String authServer = "https://vsac.nlm.nih.gov/vsac/ws";
 	Client client = ClientBuilder.newClient();
 	
 	
@@ -130,7 +131,7 @@ public class VsacConnector {
 	}
 	
 	private void renewTgt() throws ConnectException{
-		WebTarget target = client.target(restServer)
+		WebTarget target = client.target(authServer)
 				.path("Ticket");
 		Form form = new Form();
 		form.param("username", account);
@@ -146,7 +147,7 @@ public class VsacConnector {
 	
 	private String getTicket() throws ConnectException{
 		String ticket = "";
-		WebTarget target = client.target(restServer)
+		WebTarget target = client.target(authServer)
 				.path("Ticket/" + tgt);
 		Form form = new Form();
 		form.param("service", "http://umlsks.nlm.nih.gov");
