@@ -134,7 +134,7 @@ public class HqmfJson2Knime_v2 {
 			int endTypeIndex = description.matches(":") ? description.indexOf(":") - 1 : description.length() - 1;
 			element.setQdmDataType(description.substring(0, endTypeIndex));
 			String valueSet_oid = measure.getStringValue(access, "code_list_id");
-			if (valueSet_oid != null) {
+			if (valueSet_oid != null && !valueSet_oid.isEmpty()) {
 				try {
 					element.setValueSet(vsac.getValueSetXml(valueSet_oid));
 				} catch (JAXBException e) {
