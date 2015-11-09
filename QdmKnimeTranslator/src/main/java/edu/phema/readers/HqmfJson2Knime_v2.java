@@ -56,7 +56,7 @@ public class HqmfJson2Knime_v2 {
 	 * 
 	 */
 	
-	private VsacConnector vsac;
+	private VsacConnector vsac = null;
 	final static private int xSpace = 300;
 	final static private int ySpace = 150;
 	
@@ -134,7 +134,7 @@ public class HqmfJson2Knime_v2 {
 			int endTypeIndex = description.matches(":") ? description.indexOf(":") - 1 : description.length() - 1;
 			element.setQdmDataType(description.substring(0, endTypeIndex));
 			String valueSet_oid = measure.getStringValue(access, "code_list_id");
-			if (valueSet_oid != null && !valueSet_oid.isEmpty()) {
+			if (vsac != null && valueSet_oid != null && !valueSet_oid.isEmpty()) {
 				try {
 					element.setValueSet(vsac.getValueSetXml(valueSet_oid));
 				} catch (JAXBException e) {
@@ -215,7 +215,7 @@ public class HqmfJson2Knime_v2 {
 						HashMap<String, String> cd = measure.getValueCDInDataCriteria(dataCriteriaName);
 						String oid = cd.get("code_list_id");
 						String code = cd.get("code");
-						if (oid != null){
+						if (vsac != null && oid != null){
 							JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
 							codes.addAll(getCodes(returnedValueSet));
 							displayNames.addAll(getCodeDisplayNames(returnedValueSet));
@@ -267,7 +267,7 @@ public class HqmfJson2Knime_v2 {
 						//HashMap<String, String> cd = measure.getFieldValuesCDInDataCriteria(dataCriteriaName, fieldName);
 						String oid = measure.getStringValue(fieldAccess, "code_list_id");
 						String code = measure.getStringValue(fieldAccess, "code");
-						if (oid != null){
+						if (vsac != null && oid != null){
 							JAXBElement<RetrieveValueSetResponseType> returnedValueSet = vsac.getValueSetJaxb(oid);
 							codes.addAll(getCodes(returnedValueSet));
 							displayNames.addAll(getCodeDisplayNames(returnedValueSet));
@@ -1058,33 +1058,39 @@ public class HqmfJson2Knime_v2 {
 	 * @throws WrittenAlreadyException 
 	 */
 	public static void main(String[] args) throws IOException, WrittenAlreadyException, SetUpIncompleteException, ParseException, JSONException {
-		// TODO Auto-generated method stub
-		// /Users/admin/Desktop
-		String measureName = "CMS166v4";
-		String measureType = "ep";
-		Path hqmfJsonFile1 = Paths.get("src/test/resources/cypress-bundle-latest/sources/" + measureType + "/" + measureName + "/hqmf_model.json");
-		Path outputDir1 = Paths.get("/Users/moh/Desktop/eM2Kn_test").resolve(measureType).resolve(measureName);
-		
-		//Path hqmfJsonFile2 = Paths.get("src/test/resources/cypress-bundle-latest/sources/ep/CMS179v3/hqmf_model.json");
-		//Path outputDir2 = Paths.get(System.getProperty("java.io.tmpdir")).resolve("qdmKnime/CMS179v3");
-		//Path hqmfJsonFile3 = Paths.get("/Users/moh/Desktop/PhEMA/eM2Kn/Luke_hqmf_json.json");
-		//Path outputDir3 = Paths.get("/Users/moh/Desktop/eM2Kn_test/Lukeism");
-		
-		Path hqmfJsonFile = hqmfJsonFile1;
-		Path outputDir = outputDir1;
-		
-		if (args.length == 2) {
-			hqmfJsonFile = Paths.get(args[0]);
-			outputDir = Paths.get(args[1]);
+		if (args.length < 3) {
+			System.out.println("HqmfJson2Knime - generates a JSON-based HQMF file to a KNIME workflow");
+			System.out.println("  Usage: HqmfJson2Knime input_file_path, output_file_path, measure_name, [umls_username], [umls_password]");
+			System.out.println("     input_file_path:   fully qualified path to where the HQMF JSON file is located");
+			System.out.println("     output_directory:  fully qualified path to the directory where your results should be written.");
+			System.out.println("     measure_name:      the file name of the measure to create");
+			System.out.println("     umls_username:     Optional - username to log into the UMLS");
+			System.out.println("     umls_password:     Optional - password to log into the UMLS");
+			System.out.println("");
+			System.out.println("Notes on usage:");
+			System.out.println("  * The output file name will be the output directory + the measure name with a .zip extension");
+			System.out.println("  * If an output file already exists, it will be deleted and recreated");
+			System.out.println("  * Not providing the UMLS user or password will generate output without value sets.");
+			System.exit(-1);
 		}
-		if(outputDir.toFile().exists()){
+
+		Path hqmfJsonFile = Paths.get(args[0]);
+		Path outputDir = Paths.get(args[1]).resolve(args[2]);
+
+		if (outputDir.toFile().exists()) {
 			FileUtils.deleteDirectory(outputDir.toFile());
 		}
 		
 		if (Paths.get(outputDir.toString() + ".zip").toFile().exists()) {
 			Paths.get(outputDir.toString() + ".zip").toFile().delete();
 		}
-		HqmfJson2Knime_v2 translator = new HqmfJson2Knime_v2(new VsacConnector("henryhmo", "2525WestEnd"));
+		
+		VsacConnector vsacConnector = null;
+		if (args.length >= 5) {
+			vsacConnector = new VsacConnector(args[2], args[3]);
+		}
+
+		HqmfJson2Knime_v2 translator = new HqmfJson2Knime_v2(vsacConnector);
 		translator.translate(hqmfJsonFile, outputDir);
 		System.out.println(outputDir.toString());
 	}
