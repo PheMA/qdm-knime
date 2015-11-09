@@ -22,7 +22,7 @@ import edu.phema.jaxb.knime.ObjectFactory;
 
 public class TableCreator {
 
-	private final String templateDir = "src/main/resources/nodeXml/tableCreatorTemplate.xml";
+	private final String templateDir = "/nodeXml/tableCreatorTemplate.xml";
 	
 	private final JAXBElement<Config> xmlRootNode;
 	
@@ -56,7 +56,7 @@ public class TableCreator {
 		
 		xmlRootNode = jaxbContext.createUnmarshaller()
 				.unmarshal(
-				new StreamSource(new StringReader(Toolkit.readFile(templateDir, Charset.defaultCharset()))), 
+				new StreamSource(new StringReader(Toolkit.readResource(templateDir, Charset.defaultCharset()))), 
 				Config.class);
 		
 		Config model_ = null;

@@ -3,7 +3,10 @@
  */
 package edu.phema.QdmKnime;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -90,14 +93,29 @@ public class Toolkit {
 		}
 		return ret;
 	}
+	
+	public static String readResource(String path, Charset encoding) throws IOException {
+		InputStream is = Class.class.getResourceAsStream(path);
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		StringBuffer sb = new StringBuffer();
+		String line;
+		while ((line = br.readLine()) != null) {
+		  sb.append(line);
+		}
+		br.close();
+		isr.close();
+		is.close();
+		return sb.toString();
+	}
 
 	
 	/*
 	 * Copy from http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
 	 * */
 	public static String readFile(String path, Charset encoding) throws IOException {
-			  byte[] encoded = Files.readAllBytes(Paths.get(path));
-			  return new String(encoded, encoding);
+		byte[] encoded = Files.readAllBytes(Paths.get(path));
+		return new String(encoded, encoding);
 	}
 	
 	public static String readFile(String path) throws IOException {

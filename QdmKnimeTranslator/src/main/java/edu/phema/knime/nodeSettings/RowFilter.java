@@ -30,7 +30,7 @@ import edu.phema.jaxb.knime.ObjectFactory;
  */
 public class RowFilter {
 	
-	private final String templateDir = "src/main/resources/nodeXml/rowFilterTemplate.xml";
+	private final String templateDir = "/nodeXml/rowFilterTemplate.xml";
 	
 	private final JAXBElement<Config> xmlRootNode;
 	
@@ -56,7 +56,7 @@ public class RowFilter {
 		
 		xmlRootNode = jaxbContext.createUnmarshaller()
 				.unmarshal(
-				new StreamSource(new StringReader(Toolkit.readFile(templateDir, Charset.defaultCharset()))), 
+				new StreamSource(new StringReader(Toolkit.readResource(templateDir, Charset.defaultCharset()))), 
 				Config.class);
 		
 		HashMap <String, Config> configMap = Toolkit
