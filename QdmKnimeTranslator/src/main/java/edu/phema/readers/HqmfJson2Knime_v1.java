@@ -48,7 +48,7 @@ import edu.phema.vsac.VsacConnector;
  * @author Huan Mo
  *
  */
-public class HqmfJson2Knime {
+public class HqmfJson2Knime_v1 {
 
 	/**
 	 * 
@@ -59,7 +59,7 @@ public class HqmfJson2Knime {
 	final static private int ySpace = 150;
 	
 	
-	public HqmfJson2Knime(VsacConnector vsac) {
+	public HqmfJson2Knime_v1(VsacConnector vsac) {
 		this.vsac = vsac;
 	}
 	
@@ -490,12 +490,12 @@ public class HqmfJson2Knime {
 			 * */
 			ArrayList<NodeInterface> nodes = new ArrayList<NodeInterface> ();
 			ArrayList<ConnectionInterface> conns = new ArrayList<ConnectionInterface> ();
-			NodeInterface populationOut = HqmfJson2Knime.explorePopCriteriaTree(access, nodes, conns, dataCriteriaNodes, measure);
+			NodeInterface populationOut = HqmfJson2Knime_v1.explorePopCriteriaTree(access, nodes, conns, dataCriteriaNodes, measure);
 			popNodes.addAll(nodes);
 			popConns.addAll(conns);
 			populationCriteriaOut.put(population, populationOut);
 			if (populationOut != null) {
-				HqmfJson2Knime.labelAPopulation(
+				HqmfJson2Knime_v1.labelAPopulation(
 						measure.getStringValue(access, "title"), populationOut, popNodes, popConns);
 			}
 			kProject.addKnimeNodes(popNodes);
@@ -540,7 +540,7 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeDENEXCEP != null && nodeNUMER != null){
 			nodeDENEXCEP_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeDENEXCEP, nodeNUMER, 
+					HqmfJson2Knime_v1.logicTwoNodes(nodeDENEXCEP, nodeNUMER, 
 						LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);;
 		}
 		
@@ -549,26 +549,26 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeDENOM != null && nodeIPP != null){
 			nodeDENOM_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeDENOM, nodeIPP, 
+					HqmfJson2Knime_v1.logicTwoNodes(nodeDENOM, nodeIPP, 
 						LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} else if (nodeIPP != null) {
 			nodeDENOM_modified = nodeIPP;
 		}
 		
 		if (nodeDENOM_modified != null && nodeDENEX != null) {
-			nodeDENOM_modified = HqmfJson2Knime.logicTwoNodes(
+			nodeDENOM_modified = HqmfJson2Knime_v1.logicTwoNodes(
 					nodeDENOM_modified, nodeDENEX, 
 					LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);
 		}
 		
 		if (nodeDENOM_modified != null && nodeDENEXCEP != null) {
 			nodeDENOM_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeDENOM_modified, nodeDENEXCEP_modified, 
+					HqmfJson2Knime_v1.logicTwoNodes(nodeDENOM_modified, nodeDENEXCEP_modified, 
 							LogicalTypeCode.AND_NOT, postPopNodes, postPopConns);
 		}
 		
 		if (nodeDENOM_modified != null) {
-			HqmfJson2Knime.labelAPopulation("Denominator (Real)", nodeDENOM_modified, postPopNodes, postPopConns);
+			HqmfJson2Knime_v1.labelAPopulation("Denominator (Real)", nodeDENOM_modified, postPopNodes, postPopConns);
 		}
 		
 		
@@ -577,8 +577,8 @@ public class HqmfJson2Knime {
 		 * */
 		
 		if (nodeNUMER != null && nodeDENOM_modified != null){
-			nodeNUMER_modified = HqmfJson2Knime.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, postPopNodes, postPopConns);;
-			HqmfJson2Knime.labelAPopulation("Numerator (Real)", nodeNUMER_modified, postPopNodes, postPopConns);
+			nodeNUMER_modified = HqmfJson2Knime_v1.logicTwoNodes(nodeNUMER, nodeDENOM_modified, LogicalTypeCode.AND, postPopNodes, postPopConns);;
+			HqmfJson2Knime_v1.labelAPopulation("Numerator (Real)", nodeNUMER_modified, postPopNodes, postPopConns);
 		}
 		
 		/*
@@ -596,17 +596,17 @@ public class HqmfJson2Knime {
 		 * */
 		if (nodeMSRPOPL != null && nodeIPP != null) {
 			nodeMSRPOPL_modified = 
-					HqmfJson2Knime.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, postPopNodes, postPopConns);
+					HqmfJson2Knime_v1.logicTwoNodes(nodeMSRPOPL, nodeIPP, LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} else {
 			nodeMSRPOPL_modified = nodeMSRPOPL == null ? nodeMSRPOPL : nodeIPP;
 		}
 		if (nodeMSRPOPL_modified != null){
-			HqmfJson2Knime.labelAPopulation(
+			HqmfJson2Knime_v1.labelAPopulation(
 				"Measure Population (Real)", nodeMSRPOPL_modified, postPopNodes, postPopConns);
 		}
 		
 		if (nodeOBSERV != null && nodeMSRPOPL_modified != null){
-			nodeOBSERV_modified = HqmfJson2Knime.logicTwoNodes(
+			nodeOBSERV_modified = HqmfJson2Knime_v1.logicTwoNodes(
 					nodeOBSERV, nodeMSRPOPL_modified, LogicalTypeCode.AND, postPopNodes, postPopConns);
 		} 
 		if (nodeOBSERV_modified != null) {
@@ -627,7 +627,7 @@ public class HqmfJson2Knime {
 					nodeOBSERV_modified = aggr;
 				}
 			}
-			HqmfJson2Knime.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, postPopNodes, postPopConns);
+			HqmfJson2Knime_v1.labelAPopulation("Measure Observation (Real)", nodeOBSERV_modified, postPopNodes, postPopConns);
 		}
 		
 		mapFlows(nodeMap4, postPopConns, postPopNodes);
@@ -1057,7 +1057,7 @@ public class HqmfJson2Knime {
 		if (Paths.get(outputDir.toString() + ".zip").toFile().exists()) {
 			Paths.get(outputDir.toString() + ".zip").toFile().delete();
 		}
-		HqmfJson2Knime translator = new HqmfJson2Knime(new VsacConnector("henryhmo", "2525WestEnd"));
+		HqmfJson2Knime_v1 translator = new HqmfJson2Knime_v1(new VsacConnector("henryhmo", "2525WestEnd"));
 		translator.translate(hqmfJsonFile, outputDir);
 		System.out.println(outputDir.toString());
 	}
